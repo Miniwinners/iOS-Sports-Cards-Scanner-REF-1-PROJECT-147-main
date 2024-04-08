@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C7617E1D-1405-4988-8353-B06E27072366"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B732C8E5-0A07-41F1-A8C0-CA5D0624FC0E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sports Cards Scanner/Services/SCSAuthService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "reauthenticate()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B732C8E5-0A07-41F1-A8C0-CA5D0624FC0E - cafff06dd36c920e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Sports_Cards_Scanner.AuthService.reauthenticate() async throws -&gt; ()"
+                  moduleName = "Sports Cards Scanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vouliont/My%20Documents/Work/com.app.softinter/SportsCardsScanner/Sports%20Cards%20Scanner/Sports%20Cards%20Scanner/Services/SCSAuthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "389">
+               </Location>
+               <Location
+                  uuid = "B732C8E5-0A07-41F1-A8C0-CA5D0624FC0E - cafff06dd36c920e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Sports_Cards_Scanner.AuthService.reauthenticate() async throws -&gt; ()"
+                  moduleName = "Sports Cards Scanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vouliont/My%20Documents/Work/com.app.softinter/SportsCardsScanner/Sports%20Cards%20Scanner/Sports%20Cards%20Scanner/Services/SCSAuthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  uuid = "B732C8E5-0A07-41F1-A8C0-CA5D0624FC0E - cafff06dd36c9317"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Sports_Cards_Scanner.AuthService.reauthenticate() async throws -&gt; ()"
+                  moduleName = "Sports Cards Scanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vouliont/My%20Documents/Work/com.app.softinter/SportsCardsScanner/Sports%20Cards%20Scanner/Sports%20Cards%20Scanner/Services/SCSAuthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "248">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

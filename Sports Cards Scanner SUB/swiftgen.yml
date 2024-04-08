@@ -1,0 +1,21 @@
+strings:
+  - inputs: ${TARGET_NAME}/Resources/Localization/en.lproj
+    options:
+      separator: _
+    outputs:
+      templatePath: ${TARGET_NAME}/Resources/SwiftGenTemplates/custom-strings-template.stencil
+      output: ${TARGET_NAME}/Resources/Generated/LocalizableStrings.swift
+
+xcassets:
+  - inputs: ${TARGET_NAME}/Resources/Assets/Colors.xcassets
+    outputs:
+      templateName: swift5
+      output: ${TARGET_NAME}/Resources/Generated/Colors.swift
+      params:
+        enumName: Colors
+  - inputs: ${TARGET_NAME}/Resources/Assets/Images.xcassets
+    outputs:
+      templateName: swift5
+      output: ${TARGET_NAME}/Resources/Generated/Images.swift
+      params:
+        enumName: Images

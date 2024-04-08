@@ -1,0 +1,278 @@
+"common_close" = "Close";
+"common_cancel" = "Cancel";
+"common_done" = "Done";
+"common_reset" = "Reset";
+"common_error" = "Oops, something went wrong";
+"common_ok" = "Ok";
+
+"splash_loading" = "Loading";
+
+"signIn_title" = "Sign In";
+"signIn_email_title" = "Enter email";
+"signIn_email_placeholder" = "Enter email";
+"signIn_password_title" = "Enter password";
+"signIn_password_placeholder" = "Enter password";
+"signIn_password_forgot" = "Forgot Password?";
+"signIn_action_signIn" = "Sign In";
+"signIn_action_signUp" = "Sign Up";
+"signIn_signInWith" = "Sign in with";
+"signIn_noAccount" = "Don't have an account?";
+"signIn_action_signUp" = "Sign Up";
+"signIn_error_invalidEmail" = "Please enter a valid email address";
+"signIn_error_userNotFound" = "Please enter a valid email and password";
+"signIn_error_wrongPassword" = "Please enter correct password";
+
+"signUp_title" = "Sign Up";
+"signUp_email_title" = "Email address";
+"signUp_email_placeholder" = "Enter your email address";
+"signUp_password_title" = "Password";
+"signUp_password_placeholder" = "Enter your password";
+"signUp_password_requirements" = "Passwords must be at least %d characters and contain at least one uppercase letter (A-Z), one lowercase letter (a-z), one digit (0-9), and one special character (such as ! %% @ or #)";
+"signUp_confirmPassword_title" = "Password confirmation";
+"signUp_confirmPassword_placeholder" = "Enter your password confirmation";
+"signUp_action_signUp" = "Sign Up";
+"signUp_action_signIn" = "Sign In";
+"signUp_signInWith" = "Sign in with";
+"signUp_haveAccount" = "Already have an account?";
+"signUp_error_invalidEmail" = "Please enter a valid email address";
+"signUp_error_existUser" = "An account already exists with this email address";
+"signUp_error_noPasswordRequirements" = "Password must meet password requirements";
+"signUp_error_passwordsMismatch" = "Passwords must match";
+
+"dashboard_title" = "Dashboard";
+"dashboard_welcome_title" = "Welcome to the future of card collecting";
+"dashboard_welcome_description" = "Scan a card to build your collection";
+"dashboard_scanInstructions" = "Tap to open the scanner and your first card";
+"dashboard_currentValue" = "Current Value";
+"dashboard_highestValue" = "Highest Value";
+"dashboard_recentlyAdded" = "Recently Added";
+"dashboard_action_scanCard" = "Scan Card";
+
+"portfolio_title" = "Portfolio";
+"portfolio_scanInstructions" = "Tap to open the scanner and your first card";
+"portfolio_collection_create" = "Create\nCollection";
+"portfolio_deck_create" = "Create\nDeck";
+"portfolio_deck_description" = "Trading card game deck";
+"portfolio_collection_description" = "Custom Collection";
+"portfolio_cards" = "Cards";
+"portfolio_oneCard" = "1 Card";
+"portfolio_numberOfCards" = "%d Cards";
+"portfolio_allCards" = "All Cards";
+"portfolio_estimatedValue" = "Total Estimated Value";
+"portfolio_scanToAdd" = "Scan a card to add to your collection";
+
+"more_title" = "More";
+"more_item_cardCategories" = "Card Categories";
+"more_item_updatePassword" = "Update Password";
+"more_item_privacyPolicy" = "Privacy Policy";
+"more_item_termsAndConditions" = "Terms & Conditions";
+"more_item_pushNotifications" = "Enable Push Notifications";
+"more_item_logout" = "Logout";
+"more_item_deleteAccount" = "Delete Account";
+
+"cardCategories_title" = "Card Categories";
+"cardCategories_description" = "Select and order the card types you collect. This order will be reflected in your scanner and Portfolio";
+"cardCategories_minEnabledCategories" = "You must always have at least one active category.";
+
+"updatePassword_title" = "Update Password";
+"updatePassword_newPassword_title" = "Create new password";
+"updatePassword_newPassword_placeholder" = "Enter new password";
+"updatePassword_confirmNewPassword_title" = "Confirm new password";
+"updatePassword_confirmNewPassword_placeholder" = "Re-enter new password";
+"updatePassword_newPassword_requirements" = "Passwords must be at least %d characters and contain at least one uppercase letter (A-Z), one lowercase letter (a-z), one digit (0-9), and one special character (such as ! %% @ or #)";
+"updatePassword_action_save" = "Save";
+"updatePassword_error_noPasswordRequirements" = "Password must meet password requirements";
+"updatePassword_error_passwordsMismatch" = "Passwords must match";
+"updatePassword_error_needReauthenticate" = "Please reauthenticate to change your password";
+
+"cardCategory_baseball" = "Baseball";
+"cardCategory_pokemon" = "Pokemon";
+"cardCategory_basketball" = "Basketball";
+"cardCategory_football" = "Football";
+"cardCategory_magic" = "Magic: The Gathering";
+"cardCategory_magic_short" = "MTG";
+"cardCategory_hockey" = "Hockey";
+"cardCategory_soccer" = "Soccer";
+
+"forgotPassword_title" = "Forgot Password";
+"forgotPassword_description" = "Enter the email address for your account and we'll send you instructions to reset your password";
+"forgotPassword_email_title" = "Email address";
+"forgotPassword_email_placeholder" = "Enter your email address";
+"forgotPassword_action_send" = "Send";
+"forgotPassword_error_userNotFound" = "There are no users with this email address";
+"forgotPassword_error_invalidEmail" = "Please enter a valid email address";
+
+"resetPassword_title" = "Reset Password";
+"resetPassword_emailSent" = "Password reset instructions have been sent to the email address: %@";
+
+"scanCard_cardSide_front" = "Front of Card";
+"scanCard_noAuthorization_title" = "Allow %@ to access your camera";
+"scanCard_noAuthorization_description" = "This lets you scan cards";
+"scanCard_action_openSettings" = "Open Settings";
+"scanCard_gradeType_graded" = "Graded";
+"scanCard_gradeType_raw" = "Raw";
+
+"prompt_action_cancel" = "Cancel";
+"prompt_title" = "Are you sure?";
+"prompt_logout_description" = "Are you sure you want to log out of your account?";
+"prompt_logout_confirmAction" = "Log Out";
+"prompt_deleteAccount_description" = "Are you sure you want to delete your account?";
+"prompt_deleteAccount_keepAction" = "Keep";
+"prompt_deleteAccount_confirmAction" = "Delete";
+"prompt_deleteCollection_description" = "Deleting the collection will not delete the cards within the collection. The cards will remain in your portfolio.";
+"prompt_deleteCollection_keepAction" = "Keep";
+"prompt_deleteCollection_confirmAction" = "Delete";
+"prompt_deleteDeck_description" = "Deleting the deck will not delete the cards within the deck. The cards will remain in your portfolio.";
+"prompt_deleteDeck_keepAction" = "Keep";
+"prompt_deleteDeck_confirmAction" = "Delete";
+"prompt_removeCard_description" = "You are about to remove this card from your portfolio. This card would need to be scanned again to add back to your portfolio.";
+"prompt_removeCard_keepAction" = "Keep";
+"prompt_removeCard_confirmAction" = "Remove";
+
+"identifyingCard_title" = "%@ Card Captured";
+"identifyingCard_processTitle" = "Identifying card...";
+"identifyingCard_action_cancel" = "Cancel SCAN";
+
+"searchCard_title" = "Search Card";
+"searchCard_search_placeholder" = "Search for a card";
+"searchCard_error_tryAgain" = "Try again! Keep searching!";
+
+"card_missingImage" = "Missing\nImage";
+
+"cardDetails_action_addCard" = "Add to Portfolio";
+"cardDetails_action_findCard" = "Find Card";
+"cardDetails_action_editCard" = "Edit Card & Grade";
+"cardDetails_action_removeCard" = "Remove from Portfolio";
+
+"pricingReport_setCustomPrice" = "Set custom price";
+"pricingReport_editCustomPrice" = "Edit custom price";
+"pricingReport_viewReport" = "View Pricing Report";
+"pricingReport_valueEstimating" = "Value Estimate Pending";
+
+"pricingReport_details_priceReport" = "Price Report";
+"pricingReport_details_lastSoldPrice" = "Last Sold Price";
+"pricingReport_details_lastSoldDate" = "Last Sold Date";
+"pricingReport_details_recentSales" = "Recent Sales";
+"pricingReport_details_noSales" = "No recent sales";
+
+"cardDetail_year" = "Card Year";
+"cardDetail_cardNumber" = "Card #";
+"cardDetail_set" = "Set";
+"cardDetail_series" = "Series";
+"cardDetail_parallel" = "Parallel";
+"cardDetail_grade" = "Grade";
+"cardDetail_ungraded" = "Ungraded";
+"cardDetail_color" = "Color";
+"cardDetail_colors" = "Colors";
+"cardDetail_type" = "Type";
+"cardDetail_manaValue" = "Mana Value";
+"cardDetail_power" = "Power";
+"cardDetail_toughness" = "Toughness";
+"cardDetail_rarity" = "Rarity";
+
+"recentlyAdded_title" = "Recently Added Cards";
+
+"highestValue_title" = "Highest Value Cards";
+
+"currentValue_title" = "Current Value";
+"currentValue_valueByCategory" = "Value by Category";
+
+"editCard_title" = "Edit Details";
+"editCard_parallel" = "Parallel";
+"editCard_grade" = "Grade";
+"editCard_customPrice" = "Set custom price";
+"editCard_action_updateDetails" = "Update Details";
+"editCard_valueEstimating" = "Value Estimate Pending";
+
+"parallelSelection_title" = "Parallel";
+"parallelSelection_search_placeholder" = "Search";
+"parallelSelection_allOptions" = "All Options";
+"parallelSelection_missingSample" = "Missing sample";
+"parallelSelection_noResult" = "No Results Found";
+"parallelSelection_action_none" = "None";
+
+"gradeSelection_title" = "Grade";
+"gradeSelection_selectGrader" = "Select Grader";
+"gradeSelection_selectGrade" = "Select Grade";
+
+"createCollection_title" = "Create New Collection";
+"createCollection_collectionName_placeholder" = "Name your collection";
+"createCollection_action_create" = "Create";
+
+"cardCollection_estimatedValue" = "Estimated Value";
+"cardCollection_noCards" = "There are no cards in this collection";
+"cardCollection_action_addCards" = "Add Cards";
+
+"addCards_title" = "Add Cards to \"%@\"";
+"addCards_titleNoName_collection" = "Add Cards to Collection";
+"addCards_titleNoName_deck" = "Add Cards to Deck";
+"addCards_oneCardSelected" = "1 Card Selected";
+"addCards_numberOfCardsSelected" = "%d Cards Selected";
+"addCards_action_selectAll" = "Select All";
+"addCards_allCards" = "All Cards";
+"addCards_search_placeholder" = "Search for a card";
+"addCards_noResult" = "No Results Found";
+
+"sortCards_title" = "Sort by";
+"sortCards_option_dateRecent" = "Date Saved: Recent-Oldest";
+"sortCards_option_dateOldest" = "Date Saved: Oldest-Recent";
+"sortCards_option_nameDirect" = "Card Name: A-Z";
+"sortCards_option_nameReverse" = "Card Name: Z-A";
+"sortCards_option_yearRecent" = "Card Year: Recent-Oldest";
+"sortCards_option_yearOldest" = "Card Year: Oldest-Recent";
+
+"editCollection_title" = "Update Collection";
+"editCollection_collectionName_placeholder" = "Rename your collection";
+
+"createDeck_title" = "Create New Deck";
+"createDeck_deckName_title" = "Name your deck";
+"createDeck_deckName_placeholder" = "Enter a name";
+"createDeck_deckType_title" = "Deck Type";
+"createDeck_deckType_select" = "Select a card category";
+"createDeck_description_title" = "Description (optional)";
+"createDeck_description_placeholder" = "Enter a description for your Deck";
+"createDeck_action_create" = "Create";
+
+"cardDeck_noCards" = "There are no cards in this deck";
+"cardDeck_action_addCards" = "Add Cards";
+
+"editCardSet_menu_addCards" = "Add Cards";
+"editCardSet_menu_removeCards" = "Remove Cards";
+"editCardSet_menu_sortCards" = "Sort Cards";
+"editCardSet_menu_totalPrice" = "Total Price Estimate";
+"editCardSet_menu_renameCollection" = "Rename Collection";
+"editCardSet_menu_deleteCollection" = "Delete Collection";
+"editCardSet_menu_editDeck" = "Edit Deck";
+"editCardSet_menu_deleteDeck" = "Delete Deck";
+
+"editDeck_title" = "Update Deck";
+
+"legalityOption_standard" = "Standard";
+"legalityOption_pioneer" = "Pioneer";
+"legalityOption_modern" = "Modern";
+"legalityOption_legacy" = "Legacy";
+"legalityOption_vintage" = "Vintage";
+"legalityOption_commander" = "Commander";
+"legalityOption_oathbreaker" = "Oathbreaker";
+"legalityOption_alchemy" = "Alchemy";
+"legalityOption_explorer" = "Explorer";
+"legalityOption_brawl" = "Brawl";
+"legalityOption_historic" = "Historic";
+"legalityOption_pauper" = "Pauper";
+"legalityOption_penny" = "Penny";
+
+"cardLegality_legal" = "Legal";
+"cardLegality_notLegal" = "Not Legal";
+
+"magicCard_color_white" = "White";
+"magicCard_color_blue" = "Blue";
+"magicCard_color_black" = "Black";
+"magicCard_color_red" = "Red";
+"magicCard_color_green" = "Green";
+"magicCard_color_colorless" = "Colorless";
+
+"alert_noInternetConnection_title" = "Connectivity Issue";
+"alert_noInternetConnection_message" = "Internet connection appears to be offline ☹️";
+"alert_needRecentLogin_title" = "Re-authenticate";
+"alert_needRecentLogin_message" = "To delete an account, a recent login is required";
+"alert_needRecentLogin_action_logOut" = "Log Out";
