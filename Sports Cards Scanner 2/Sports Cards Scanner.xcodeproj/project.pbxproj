@@ -2856,7 +2856,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sports Cards Scanner/Sports Cards Scanner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G9URSGG6MM;
+				DEVELOPMENT_TEAM = 89SPL377XV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sports Cards Scanner/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Sports Cards Scanner";
@@ -2892,7 +2892,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sports Cards Scanner/Sports Cards Scanner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G9URSGG6MM;
+				DEVELOPMENT_TEAM = 89SPL377XV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sports Cards Scanner/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Sports Cards Scanner";
