@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41C055B72BC552EA00F2B98D /* SignInWithFaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */; };
+		41C055B92BC5538D00F2B98D /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 41C055B82BC5538D00F2B98D /* FacebookLogin */; };
 		41F8F62D2BC425BF00ED1FD7 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */; };
 		41F8F6312BC4290700ED1FD7 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F6302BC4281500ED1FD7 /* Ubuntu-Regular.ttf */; };
 		41F8F6322BC4290700ED1FD7 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F62F2BC4280A00ED1FD7 /* Ubuntu-Medium.ttf */; };
@@ -392,6 +394,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithFaceBookHelper.swift; sourceTree = "<group>"; };
 		41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		41F8F62E2BC427C900ED1FD7 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		41F8F62F2BC4280A00ED1FD7 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
@@ -767,6 +770,7 @@
 				4650DE922A9B576F00F6F13C /* Kingfisher in Frameworks */,
 				4619AE952A79032400753891 /* SnapKit in Frameworks */,
 				467CCC6E2A97E51E000AFC8F /* FirebaseFirestore in Frameworks */,
+				41C055B92BC5538D00F2B98D /* FacebookLogin in Frameworks */,
 				46A01D9D2A7FA153006AFB5E /* KeychainAccess in Frameworks */,
 				4650DF012AA1DC6700F6F13C /* FirebaseStorage in Frameworks */,
 				464D269A2A83844F00C7F4D4 /* GoogleSignIn in Frameworks */,
@@ -1932,6 +1936,7 @@
 			children = (
 				468E3E7B2A8AA13D0097C6EC /* SignInWithGoogleHelper.swift */,
 				468E3E7D2A8AA43E0097C6EC /* SignInWithAppleHelper.swift */,
+				41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */,
 			);
 			path = AuthHelpers;
 			sourceTree = "<group>";
@@ -2166,6 +2171,7 @@
 				4650DE912A9B576F00F6F13C /* Kingfisher */,
 				4650DF002AA1DC6700F6F13C /* FirebaseStorage */,
 				468C834B2AB1F7BE003DC91A /* MTGSDKSwift */,
+				41C055B82BC5538D00F2B98D /* FacebookLogin */,
 			);
 			productName = "Sports Cards Scanner";
 			productReference = 4619AE572A77965700753891 /* Sports Cards Scanner.app */;
@@ -2247,6 +2253,7 @@
 				464D26982A83844F00C7F4D4 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				4650DE902A9B576F00F6F13C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				468C834A2AB1F7BE003DC91A /* XCRemoteSwiftPackageReference "mtg-sdk-swift" */,
+				41C055B52BC552A200F2B98D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 4619AE582A77965700753891 /* Products */;
 			projectDirPath = "";
@@ -2654,6 +2661,7 @@
 				468C83102AAFAEDC003DC91A /* CreateEditDeckVC.swift in Sources */,
 				468C835B2AB5F8FF003DC91A /* SCPCard.swift in Sources */,
 				4645D3CD2AAF02FF008AD896 /* CardSortOption.swift in Sources */,
+				41C055B72BC552EA00F2B98D /* SignInWithFaceBookHelper.swift in Sources */,
 				46C55C5C2A9A4BCC001006E2 /* SCICard.swift in Sources */,
 				467CCC352A938876000AFC8F /* ScanCardViewControllerDelegate.swift in Sources */,
 				461CBD1E2AA6930D0025FF41 /* GradeSelectionViewController.swift in Sources */,
@@ -3038,6 +3046,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		41C055B52BC552A200F2B98D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
 		4619AE932A79032400753891 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -3097,6 +3113,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		41C055B82BC5538D00F2B98D /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41C055B52BC552A200F2B98D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
 		4619AE942A79032400753891 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4619AE932A79032400753891 /* XCRemoteSwiftPackageReference "SnapKit" */;

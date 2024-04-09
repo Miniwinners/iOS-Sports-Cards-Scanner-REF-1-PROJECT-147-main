@@ -33,4 +33,5 @@ extension UIColor {
     static var singINLabel = UIColor(red: 0, green: 0, blue: 0, alpha: 0.35)
     static var logInLabel = UIColor(red: 40/255, green: 42/255, blue: 43/255, alpha: 1)
     static var skyBlue = UIColor(red: 226/255, green: 243/255, blue: 255/255, alpha: 1)
+    static var tableViewBack = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
 }

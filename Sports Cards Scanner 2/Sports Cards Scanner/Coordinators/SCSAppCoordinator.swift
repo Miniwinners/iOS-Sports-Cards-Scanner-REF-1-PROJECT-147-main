@@ -288,6 +288,8 @@ private extension SCSAppCoordinator {
         zip(tabBar.items ?? [], TabBarItem.allCases).forEach {
             $0.image = $1.image
             $0.selectedImage = $1.selectedImage
+            $0.title = $1.text
+
         }
     }
 }

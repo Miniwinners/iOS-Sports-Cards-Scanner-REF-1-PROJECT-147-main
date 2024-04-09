@@ -42,7 +42,7 @@ extension CommonButton.SCSButtonStyle {
     private static let defaultAppearance: CommonButton.SCSAppearance = .init(
         configuration: defaultConfiguration,
         tintColor: .white,
-        backgroundColors: .init(primary: .blue, disabled: .blue, highlighted: .blue),
+        backgroundColors: .init(primary: .blue, disabled: .actionInactiveColor, highlighted: .actionActiveColor),
         foregroundColors: .init(primary: .white, disabled: .white, highlighted: .highlightColor)
     )
 

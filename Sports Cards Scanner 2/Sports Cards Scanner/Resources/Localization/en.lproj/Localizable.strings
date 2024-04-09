@@ -8,7 +8,7 @@
 "splash_loading" = "Loading";
 
 "signIn_title" = "Sign In";
-"signIn_email_title" = "Enter email";
+"signIn_email_title" = "Email Adress";
 "signIn_email_placeholder" = "Enter email";
 "signIn_password_title" = "Enter password";
 "signIn_password_placeholder" = "Enter password";
@@ -40,9 +40,9 @@
 "signUp_error_passwordsMismatch" = "Passwords must match";
 
 "dashboard_title" = "Dashboard";
-"dashboard_welcome_title" = "Welcome to the future of card collecting";
-"dashboard_welcome_description" = "Scan a card to build your collection";
-"dashboard_scanInstructions" = "Tap to open the scanner and your first card";
+"dashboard_welcome_title" = "Step into the future of card collection";
+"dashboard_welcome_description" = "Scan a card to expand your collection";
+"dashboard_scanInstructions" = "Tap to start scanning your card.";
 "dashboard_currentValue" = "Current Value";
 "dashboard_highestValue" = "Highest Value";
 "dashboard_recentlyAdded" = "Recently Added";

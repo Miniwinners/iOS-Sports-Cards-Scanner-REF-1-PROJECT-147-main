@@ -66,6 +66,7 @@ internal enum Images {
     internal static let scan = ImageAsset(name: "scan")
     internal static let scannerApp = ImageAsset(name: "scannerApp")
     internal static let search = ImageAsset(name: "search")
+    internal static let validEmail = ImageAsset(name: "validEmail")
     internal static let unchecked = ImageAsset(name: "unchecked")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

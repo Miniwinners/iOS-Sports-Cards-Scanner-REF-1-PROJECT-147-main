@@ -15,6 +15,12 @@ class TitledTextFieldView: UIView {
         set { textField.placeholder = newValue }
     }
 
+    lazy var validImage: UIImageView = { image in
+        image.image = Images.validEmail.image
+        image.isHidden = true
+        return image
+    }(UIImageView())
+
     lazy var titleLabel: UILabel = { label in
         label.font = .font(.ubuntuMedium500, size: 16)
         label.textColor = .logInLabel
@@ -29,6 +35,7 @@ class TitledTextFieldView: UIView {
         textField.textColor = .logInLabel
         textField.cornerRadius = 16
         textField.tintColor = .logInLabel
+
         return textField
     }(CommonTextField())
 
@@ -57,6 +64,12 @@ private extension TitledTextFieldView {
         addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        textField.addSubview(validImage)
+        validImage.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(28)
+            $0.right.equalToSuperview().inset(10)
         }
     }
 }

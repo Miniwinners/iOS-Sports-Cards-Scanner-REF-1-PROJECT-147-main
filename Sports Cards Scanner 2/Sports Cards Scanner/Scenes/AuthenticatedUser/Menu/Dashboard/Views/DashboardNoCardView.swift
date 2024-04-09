@@ -4,16 +4,18 @@ import SnapKit
 final class DashboardNoCardView: UIView {
 
     lazy var welcomeView: UIView = { view in
-        view.backgroundColor = .white
-        view.cornerRadius = 12
+        return view
+    }(UIView())
+
+    lazy var welcomeTextView: UIView = { view in
         return view
     }(UIView())
 
     lazy var welcomeTitleLabel: UILabel = { label in
         label.text = L10n.Dashboard.Welcome.title
         label.textColor = .black
-        label.font = .font(.interRegular, size: 20)
-        label.setLineHeight(22)
+        label.font = .font(.ubuntuBold700, size: 28)
+        label.setLineHeight(32)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -25,8 +27,8 @@ final class DashboardNoCardView: UIView {
 
     lazy var welcomeDescriptionLabel: UILabel = { label in
         label.text = L10n.Dashboard.Welcome.description
-        label.textColor = .black
-        label.font = .font(.interRegular, size: 16)
+        label.textColor = .singINLabel
+        label.font = .font(.ubuntuMedium500, size: 16)
         label.setLineHeight(22)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -35,16 +37,15 @@ final class DashboardNoCardView: UIView {
         return label
     }(UILabel())
 
-    lazy var scanInstructionsView: UIView = { view in
-        view.backgroundColor = .white
-        view.cornerRadius = 12
+    lazy var instructionsView: UIView = { view in
+        view.backgroundColor = .clear
         return view
     }(UIView())
 
     lazy var scanInstructionsLabel: UILabel = { label in
         label.text = L10n.Dashboard.scanInstructions
-        label.textColor = .black
-        label.font = .font(.interRegular, size: 20)
+        label.textColor = .singINLabel
+        label.font = .font(.ubuntuRegular400, size: 16)
         label.setLineHeight(22)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -52,8 +53,6 @@ final class DashboardNoCardView: UIView {
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }(UILabel())
-
-    lazy var arrowImageView: UIImageView = .init(image: Images.bottomArrow.image)
 
     convenience init() {
         self.init(frame: .zero)
@@ -64,56 +63,40 @@ final class DashboardNoCardView: UIView {
 
 private extension DashboardNoCardView {
     func setupSubviews_unique() {
+
         let innerView = UIView()
-        innerView.addSubviews(welcomeTitleLabel, scanImageView, welcomeDescriptionLabel)
+        welcomeView.addSubviews(welcomeTitleLabel, scanImageView, welcomeDescriptionLabel)
         welcomeTitleLabel.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(scanImageView.snp.bottom).offset(20)
         }
         scanImageView.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(20)
-            $0.top.lessThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(40)
-            $0.centerX.equalToSuperview()
-            $0.size.equalTo(140)
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
         welcomeDescriptionLabel.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(scanImageView.snp.bottom).offset(20)
-            $0.top.lessThanOrEqualTo(scanImageView.snp.bottom).offset(40)
-            $0.bottom.horizontalEdges.equalToSuperview()
+            $0.top.greaterThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(20)
+            $0.top.lessThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(40)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(10)
         }
-
         welcomeView.addSubview(innerView)
-        innerView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(42)
 
-            $0.top.greaterThanOrEqualToSuperview().inset(20)
-            $0.top.lessThanOrEqualToSuperview().inset(32)
-            $0.bottom.greaterThanOrEqualToSuperview().inset(32)
-            $0.bottom.lessThanOrEqualToSuperview().inset(20)
-        }
-
-        scanInstructionsView.addSubview(scanInstructionsLabel)
-        scanInstructionsLabel.snp.makeConstraints {
-            $0.top.greaterThanOrEqualToSuperview().inset(20)
-            $0.top.lessThanOrEqualToSuperview().inset(43)
-            $0.horizontalEdges.equalToSuperview().inset(42)
-            $0.bottom.greaterThanOrEqualToSuperview().inset(35)
-            $0.bottom.lessThanOrEqualToSuperview().inset(20)
-        }
-
-        addSubviews(welcomeView, scanInstructionsView, arrowImageView)
+        addSubviews(welcomeView)
         welcomeView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
+            $0.top.greaterThanOrEqualTo(20)
+            $0.top.lessThanOrEqualTo(32)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
-        scanInstructionsView.snp.makeConstraints {
-            $0.top.equalTo(welcomeView.snp.bottom).offset(30)
+        addSubview(instructionsView)
+        instructionsView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(600)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
-        arrowImageView.snp.makeConstraints {
-            $0.size.equalTo(61)
-            $0.top.equalTo(scanInstructionsView.snp.bottom).offset(10)
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(84)
+        instructionsView.addSubview(scanInstructionsLabel)
+
+        scanInstructionsLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }

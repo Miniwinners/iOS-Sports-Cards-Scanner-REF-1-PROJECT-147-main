@@ -266,9 +266,7 @@ private extension SCSSignUpVC {
 
     @objc func textFieldDidChange(_ textField: UITextField) {
         error = ""
-
         let updatedText = textField.text ?? ""
-
         switch textField {
         case signUpView.emailView.textField:
             email = updatedText.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -25,7 +25,8 @@ final class SCSSignInVC: UIViewController {
 
     private let minLengthValidator: LengthValidator = .init(minLength: 1)
     private let maxLengthValidator: LengthValidator = .init(maxLength: 255)
-
+    private let emailValidator: EmailValidator = .init()
+    private var validationTimer: Timer?
     private var email = "" {
         didSet { updateSignInButton() }
     }
@@ -77,7 +78,7 @@ private extension SCSSignInVC {
         }
 
         let statusBarView = UIView()
-        statusBarView.backgroundColor = .backColor
+        statusBarView.backgroundColor = .white
         view.addSubview(statusBarView)
         statusBarView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
@@ -107,6 +108,12 @@ private extension SCSSignInVC {
             .forEach {
                 $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             }
+        [signInView.appleButton, signInView.facebookButton, signInView.googleButton].forEach { button in
+            button.addTarget(self, action: #selector(handleTouch), for: .touchDown)
+            button.addTarget(self, action: #selector(handleTouchEnd), for: .touchUpInside)
+            button.addTarget(self, action: #selector(handleTouchEnd), for: .touchUpOutside)
+
+        }
     }
 
     func subscribeToKeyboardNotifications() {
@@ -131,6 +138,11 @@ private extension SCSSignInVC {
         } else {
             view.layoutIfNeeded()
         }
+    }
+
+    func validateEmail(_ email: String?) {
+        guard let email = email else { return }
+        signInView.emailView.validImage.isHidden = !emailValidator.isValueValid(email)
     }
 
     func handleSignInError(_ error: Error) {
@@ -247,20 +259,29 @@ private extension SCSSignInVC {
         delegate?.signInViewControllerDidPressForgotPassword(self)
     }
 
+    @objc func handleTouch(_ sender: UIButton) {
+        sender.backgroundColor = .blue
+    }
+    @objc func handleTouchEnd(_ sender: UIButton) {
+        sender.backgroundColor = .clear
+    }
+
     @objc func textFieldDidChange(_ textField: UITextField) {
         error = ""
-
         let updatedText = textField.text ?? ""
 
         switch textField {
         case signInView.emailView.textField:
             email = updatedText.trimmingCharacters(in: .whitespacesAndNewlines)
+            self.validateEmail(self.email)
+
         case signInView.passwordView.textField:
             password = updatedText
         default:
             break
         }
     }
+
 }
 
 // MARK: - TextField Delegate

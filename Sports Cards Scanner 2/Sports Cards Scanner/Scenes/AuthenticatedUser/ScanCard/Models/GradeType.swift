@@ -13,7 +13,7 @@ enum GradeType {
     var localizable: String {
         switch self {
         case .raw: return L10n.ScanCard.GradeType.raw
-        case .graded: return L10n.ScanCard.GradeType.graded.uppercased()
+        case .graded: return L10n.ScanCard.GradeType.graded
         }
     }
 }

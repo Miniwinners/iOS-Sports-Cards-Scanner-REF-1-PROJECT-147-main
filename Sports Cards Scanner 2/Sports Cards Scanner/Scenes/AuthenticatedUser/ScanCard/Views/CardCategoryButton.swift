@@ -9,21 +9,17 @@ final class CardCategoryButton: UIButton {
 
     lazy var categoryLabel: UILabel = { label in
         label.text = cardCategory?.title ?? ""
-        label.textColor = .white
-        label.font = .font(.interRegular, size: 16)
+        label.textColor = .black
+        label.font = .font(.ubuntuRegular400, size: 16)
         return label
     }(UILabel())
 
     lazy var disclosureImageView: UIImageView = .init(image: Images.disclosureBottom.image)
 
-    lazy var underlineView: UIView = { view in
-        view.backgroundColor = .white
-        return view
-    }(UIView())
-
     init() {
         super.init(frame: .zero)
-
+        self.backgroundColor = .white
+        self.layer.cornerRadius = 10
         setupSubviews_unique()
     }
 
@@ -37,8 +33,8 @@ final class CardCategoryButton: UIButton {
             categoryLabel.textColor = .highlightColor
             disclosureImageView.tintColor = .highlightColor
         default:
-            categoryLabel.textColor = .white
-            disclosureImageView.tintColor = .white
+            categoryLabel.textColor = .black
+            disclosureImageView.tintColor = .black
         }
     }
 
@@ -46,27 +42,25 @@ final class CardCategoryButton: UIButton {
 
 private extension CardCategoryButton {
     func setupSubviews_unique() {
-        configuration = .plain()
+        let leftSpacer = UIView()
+        let rightSpacer = UIView()
 
+        configuration = .plain()
         disclosureImageView.snp.makeConstraints {
             $0.width.equalTo(16)
             $0.height.equalTo(9)
         }
-
-        let stackView = UIStackView(arrangedSubviews: [categoryLabel, disclosureImageView])
+        leftSpacer.snp.makeConstraints { $0.width.equalTo(10) }
+        rightSpacer.snp.makeConstraints { $0.width.equalTo(5) }
+        let stackView = UIStackView(arrangedSubviews: [leftSpacer, categoryLabel, disclosureImageView, rightSpacer])
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.isUserInteractionEnabled = false
-
+        stackView.spacing = 10
         addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
 
-        addSubview(underlineView)
-        underlineView.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.horizontalEdges.bottom.equalToSuperview()
-        }
     }
 }
