@@ -13,14 +13,14 @@ final class UpdatePasswordCoordinator: SCSCoordinator {
     }
 
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let updatePasswordViewController = SCSUpdatePasswordVC(authService: authService)
+        let updatePasswordViewController = UpdatePasswordVC(authService: authService)
         updatePasswordViewController.delegate = self
         router.present_unique(updatePasswordViewController, animated: animated, onDismissed: onDismissed)
     }
 }
 
 extension UpdatePasswordCoordinator: UpdatePasswordViewControllerDelegate {
-    func updatePasswordViewControllerCloseTapped(_ viewController: SCSUpdatePasswordVC) {
+    func updatePasswordViewControllerCloseTapped(_ viewController: UpdatePasswordVC) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
@@ -30,7 +30,7 @@ extension UpdatePasswordCoordinator: UpdatePasswordViewControllerDelegate {
         router.dismissFully(animated: true)
     }
 
-    func updatePasswordViewControllerPasswordDidUpdate(_ viewController: SCSUpdatePasswordVC) {
+    func updatePasswordViewControllerPasswordDidUpdate(_ viewController: UpdatePasswordVC) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")

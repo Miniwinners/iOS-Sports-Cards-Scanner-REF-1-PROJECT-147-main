@@ -93,7 +93,7 @@ extension SCSAppCoordinator: SignUpViewControllerDelegate {
 }
 
 extension SCSAppCoordinator: MoreViewControllerDelegate {
-    func moreViewControllerDidPressItem(_ item: ProfileItem, in viewController: SCSMoreVC) {
+    func moreViewControllerDidPressItem(_ item: ProfileItem, in viewController: MoreViewController) {
         switch item {
         case .cardCategories:
             let router = SCSModalNavigationRouter(parentViewController: viewController)
@@ -216,7 +216,7 @@ private extension SCSAppCoordinator {
         let portfolioViewController = PortfolioViewController()
         portfolioViewController.delegate = self
 
-        let moreViewController = SCSMoreVC(authService: authService)
+        let moreViewController = MoreViewController(authService: authService)
         moreViewController.delegate = self
 
         let tabBarController = UITabBarController()
@@ -258,13 +258,13 @@ private extension SCSAppCoordinator {
     }
 
     func presentLogoutPrompt(from viewController: UIViewController) {
-        let router = PageSheetRouter(parentViewController: viewController)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController)
         let coordinator = LogoutPromptCoordinator(router: router, authService: authService)
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }
 
     func presentDeleteAccountPrompt(from viewController: UIViewController) {
-        let router = PageSheetRouter(parentViewController: viewController)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController)
         let coordinator = DeleteAccountPromptCoordinator(router: router, authService: authService)
         coordinator.onDeletingFailed = { [weak self] error in
             guard error.asAuthError.code == .requiresRecentLogin else { return }

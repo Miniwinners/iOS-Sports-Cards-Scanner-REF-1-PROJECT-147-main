@@ -60,7 +60,7 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
     }
 
     func cardDetailsViewControllerSelectGraderTapped(_ viewController: CardDetailsViewController) {
-        let router = PageSheetRouter(parentViewController: viewController)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController)
         let coordinator = GraderSelectionCoordinator(router: router, card: viewController.card)
         coordinator.didSelectGrader = { [unowned viewController] grader in
             viewController.graderDidSelect(grader)
@@ -112,7 +112,7 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
     func cardDetailsViewControllerRemoveCardTapped(_ card: CardRepresentable, in viewController: CardDetailsViewController) {
         cardDetailsViewController = viewController
 
-        let router = PageSheetRouter(parentViewController: viewController)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController)
         let coordinator = RemoveCardPromptCoordinator(router: router, card: card)
         coordinator.delegate = self
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)

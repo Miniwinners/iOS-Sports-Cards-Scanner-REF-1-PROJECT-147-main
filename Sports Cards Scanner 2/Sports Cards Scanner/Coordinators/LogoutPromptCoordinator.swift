@@ -14,7 +14,7 @@ final class LogoutPromptCoordinator {
 
 extension LogoutPromptCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = PromptViewController(description: L10n.Prompt.Logout.description)
+        let viewController = DeleteAccountVC(description: L10n.Prompt.Logout.description)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.Logout.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Common.cancel)
         viewController.delegate = self
@@ -22,12 +22,12 @@ extension LogoutPromptCoordinator: SCSCoordinator {
     }
 }
 
-extension LogoutPromptCoordinator: PromptViewControllerDelegate {
-    func promptViewControllerCancelTapped(_ viewController: PromptViewController) {
+extension LogoutPromptCoordinator: DeleteAccountVCdelegate {
+    func promptViewControllerCancelTapped(_ viewController: DeleteAccountVC) {
         try? authService.performSignOut()
     }
 
-    func promptViewControllerConfirmTapped(_ viewController: PromptViewController) {
+    func promptViewControllerConfirmTapped(_ viewController: DeleteAccountVC) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")

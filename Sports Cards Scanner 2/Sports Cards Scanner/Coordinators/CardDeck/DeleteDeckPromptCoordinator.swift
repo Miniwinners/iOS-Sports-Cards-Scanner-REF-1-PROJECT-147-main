@@ -19,7 +19,7 @@ final class DeleteDeckPromptCoordinator {
 
 extension DeleteDeckPromptCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = PromptViewController(description: L10n.Prompt.DeleteDeck.description)
+        let viewController = DeleteAccountVC(description: L10n.Prompt.DeleteDeck.description)
         viewController.delegate = self
         viewController.cancelButton.setButtonTitle(L10n.Prompt.DeleteDeck.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteDeck.keepAction)
@@ -27,14 +27,14 @@ extension DeleteDeckPromptCoordinator: SCSCoordinator {
     }
 }
 
-extension DeleteDeckPromptCoordinator: PromptViewControllerDelegate {
-    func promptViewControllerCancelTapped(_ viewController: PromptViewController) {
+extension DeleteDeckPromptCoordinator: DeleteAccountVCdelegate {
+    func promptViewControllerCancelTapped(_ viewController: DeleteAccountVC) {
         cardDeckManager.removeCardDeck()
         cardDeckManager.saveDeckIfNeeded()
         delegate?.deleteDeckPromptCoordinatorDeleteTapped(self)
     }
 
-    func promptViewControllerConfirmTapped(_ viewController: PromptViewController) {
+    func promptViewControllerConfirmTapped(_ viewController: DeleteAccountVC) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")

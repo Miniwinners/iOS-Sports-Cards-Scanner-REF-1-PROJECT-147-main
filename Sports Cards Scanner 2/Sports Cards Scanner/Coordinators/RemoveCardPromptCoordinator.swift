@@ -28,7 +28,7 @@ final class RemoveCardPromptCoordinator {
 
 extension RemoveCardPromptCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = PromptViewController(description: L10n.Prompt.RemoveCard.description)
+        let viewController = DeleteAccountVC(description: L10n.Prompt.RemoveCard.description)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.RemoveCard.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.RemoveCard.keepAction)
         viewController.delegate = self
@@ -36,8 +36,8 @@ extension RemoveCardPromptCoordinator: SCSCoordinator {
     }
 }
 
-extension RemoveCardPromptCoordinator: PromptViewControllerDelegate {
-    func promptViewControllerCancelTapped(_ viewController: PromptViewController) {
+extension RemoveCardPromptCoordinator: DeleteAccountVCdelegate {
+    func promptViewControllerCancelTapped(_ viewController: DeleteAccountVC) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
@@ -71,7 +71,7 @@ extension RemoveCardPromptCoordinator: PromptViewControllerDelegate {
         }
     }
 
-    func promptViewControllerConfirmTapped(_ viewController: PromptViewController) {
+    func promptViewControllerConfirmTapped(_ viewController: DeleteAccountVC) {
         if isRemoveCardInProcess { return }
         router.dismissFully(animated: true)
     }

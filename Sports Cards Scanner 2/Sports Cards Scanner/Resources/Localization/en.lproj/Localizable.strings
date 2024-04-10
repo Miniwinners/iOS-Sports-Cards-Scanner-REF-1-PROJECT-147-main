@@ -116,8 +116,9 @@
 "prompt_title" = "Are you sure?";
 "prompt_logout_description" = "Are you sure you want to log out of your account?";
 "prompt_logout_confirmAction" = "Log Out";
-"prompt_deleteAccount_description" = "Are you sure you want to delete your account?";
+"prompt_deleteAccount_description" = "Deleting the collection won't remove the cards; they'll stay in your portfolio.";
 "prompt_deleteAccount_keepAction" = "Keep";
+"prompt_deleteAccount_sure" = "Are you certain you wish to remove your account?";
 "prompt_deleteAccount_confirmAction" = "Delete";
 "prompt_deleteCollection_description" = "Deleting the collection will not delete the cards within the collection. The cards will remain in your portfolio.";
 "prompt_deleteCollection_keepAction" = "Keep";

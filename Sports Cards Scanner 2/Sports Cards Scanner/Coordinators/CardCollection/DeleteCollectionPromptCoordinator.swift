@@ -19,7 +19,7 @@ final class DeleteCollectionPromptCoordinator {
 
 extension DeleteCollectionPromptCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = PromptViewController(description: L10n.Prompt.DeleteCollection.description)
+        let viewController = DeleteAccountVC(description: L10n.Prompt.DeleteCollection.description)
         viewController.delegate = self
         viewController.cancelButton.setButtonTitle(L10n.Prompt.DeleteCollection.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteCollection.keepAction)
@@ -27,14 +27,14 @@ extension DeleteCollectionPromptCoordinator: SCSCoordinator {
     }
 }
 
-extension DeleteCollectionPromptCoordinator: PromptViewControllerDelegate {
-    func promptViewControllerCancelTapped(_ viewController: PromptViewController) {
+extension DeleteCollectionPromptCoordinator: DeleteAccountVCdelegate {
+    func promptViewControllerCancelTapped(_ viewController: DeleteAccountVC) {
         cardCollectionManager.removeCardCollection()
         cardCollectionManager.saveCollectionIfNeeded()
         delegate?.deleteCollectionPromptCoordinatorDeleteTapped(self)
     }
 
-    func promptViewControllerConfirmTapped(_ viewController: PromptViewController) {
+    func promptViewControllerConfirmTapped(_ viewController: DeleteAccountVC) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
