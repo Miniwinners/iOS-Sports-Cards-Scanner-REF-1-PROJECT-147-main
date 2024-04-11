@@ -3,13 +3,21 @@ import SnapKit
 
 final class UpdatePasswordView: UIView {
 
+    lazy var backView: UIView = { view in
+        view.setupBackView()
+        return view
+    }(UIView())
+
+    let lockContainer = UIView()
+    let unlockContainer = UIView()
+
     lazy var contentView: UIStackView = { stackView in
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.alignment = .fill
-        stackView.spacing = 20
+        stackView.alignment = . fill
+        stackView.spacing = 10
         return stackView
-    }(UIStackView(arrangedSubviews: [errorLabel, passwordView, confirmPasswordView, passwordRequirementsLabel]))
+    }(UIStackView(arrangedSubviews: [errorLabel, lockContainer, passwordView, unlockContainer, confirmPasswordView, passwordRequirementsLabel]))
 
     lazy var errorLabel: UILabel = { label in
         label.font = .font(.interRegular, size: 14)
@@ -19,8 +27,21 @@ final class UpdatePasswordView: UIView {
         return label
     }(UILabel())
 
+    lazy var lockImageView: UIImageView = { image in
+        image.image = Images.lockLogo.image
+        return image
+    }(UIImageView())
+
+    lazy var unlockImageView: UIImageView = { image in
+        image.image = Images.unlockLogo.image
+        return image
+    }(UIImageView())
+
     lazy var passwordView: TitledTextFieldView = { view in
         view.title = L10n.UpdatePassword.NewPassword.title
+        view.titleLabel.textAlignment = .center
+        view.titleLabel.font = .font(.ubuntuLight300, size: 16)
+        view.titleLabel.textColor = .logInLabel
         view.placeholder = L10n.UpdatePassword.NewPassword.placeholder
         view.textField.isSecureTextEntry = true
         view.textField.autocorrectionType = .no
@@ -30,6 +51,9 @@ final class UpdatePasswordView: UIView {
 
     lazy var confirmPasswordView: TitledTextFieldView = { view in
         view.title = L10n.UpdatePassword.ConfirmNewPassword.title
+        view.titleLabel.textAlignment = .center
+        view.titleLabel.font = .font(.ubuntuLight300, size: 16)
+        view.titleLabel.textColor = .logInLabel
         view.placeholder = L10n.UpdatePassword.ConfirmNewPassword.placeholder
         view.textField.isSecureTextEntry = true
         view.textField.autocorrectionType = .no
@@ -41,7 +65,7 @@ final class UpdatePasswordView: UIView {
         label.font = .font(.interRegular, size: 12)
         label.textColor = .labelColor
         label.numberOfLines = 0
-        label.text = L10n.UpdatePassword.NewPassword.requirements(8)
+        label.attributedText = makeTextBlue()
         label.setLineHeight(22)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
@@ -54,24 +78,68 @@ final class UpdatePasswordView: UIView {
 
     convenience init() {
         self.init(frame: .zero)
-
-        backgroundColor = .backColor
+        backgroundColor = .clear
         setupSubviews_unique()
     }
 }
 
 private extension UpdatePasswordView {
     func setupSubviews_unique() {
-        addSubviews(contentView, saveButton)
+        addSubview(backView)
+        backView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalToSuperview()
+            make.top.equalToSuperview().inset(22)
+        }
 
+        backView.addSubviews(contentView, saveButton)
+
+        lockContainer.addSubview(lockImageView)
+        unlockContainer.addSubview(unlockImageView)
+
+        lockContainer.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        unlockContainer.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
         contentView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(20)
+
+            $0.top.greaterThanOrEqualTo(50)
             $0.horizontalEdges.equalToSuperview().inset(20)
+        }
+        lockImageView.snp.makeConstraints {
+            $0.size.equalTo(40)
+            $0.center.equalToSuperview()
+        }
+        unlockImageView.snp.makeConstraints {
+            $0.height.equalTo(40)
+            $0.width.equalTo(56)
+            $0.center.equalToSuperview()
         }
         saveButton.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(54)
         }
+    }
+}
+
+private extension UpdatePasswordView {
+    func makeTextBlue() -> NSMutableAttributedString {
+        let fullText = L10n.UpdatePassword.NewPassword.requirements(8)
+        let words = [L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut1,
+                     L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut2,
+                     L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut3,
+                     L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut4,
+                     L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut5
+        ]
+        let atributeString = NSMutableAttributedString(string: fullText)
+        for word in words {
+            let range = (fullText as NSString).range(of: word)
+            if range.location != NSNotFound {
+                atributeString.addAttribute(.foregroundColor, value: UIColor.blue, range: range)
+            }
+        }
+        return atributeString
     }
 }

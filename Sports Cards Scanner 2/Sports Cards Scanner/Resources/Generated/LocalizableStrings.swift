@@ -736,6 +736,13 @@ internal enum L10n {
             internal static func requirements(_ p1: Int) -> String {
                 return L10n.tr("Localizable", "updatePassword_newPassword_requirements", p1)
             }
+            ///cutText in Blue
+            internal static var updatePassword_newPassword_cut1: String { L10n.tr("Localizable", "updatePassword_newPassword_cut1") }
+            internal static var updatePassword_newPassword_cut2: String { L10n.tr("Localizable", "updatePassword_newPassword_cut2") }
+            internal static var updatePassword_newPassword_cut3: String { L10n.tr("Localizable", "updatePassword_newPassword_cut3") }
+            internal static var updatePassword_newPassword_cut4: String { L10n.tr("Localizable", "updatePassword_newPassword_cut4") }
+            internal static var updatePassword_newPassword_cut5: String { L10n.tr("Localizable", "updatePassword_newPassword_cut5") }
+
             /// Create new password
             internal static var title: String { L10n.tr("Localizable", "updatePassword_newPassword_title") }
         }

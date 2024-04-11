@@ -44,3 +44,10 @@ extension UIView {
         return cornerMask
     }
 }
+
+extension UIView {
+    func setupBackView() {
+        layer.cornerRadius = 24
+        backgroundColor = .white
+    }
+}

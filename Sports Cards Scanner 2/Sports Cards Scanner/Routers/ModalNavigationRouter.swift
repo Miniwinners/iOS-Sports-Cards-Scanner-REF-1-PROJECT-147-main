@@ -1,4 +1,10 @@
 import UIKit
+import SnapKit
+enum PresentationStyle {
+    case close
+    case back
+    case backDone
+}
 
 final class SCSModalNavigationRouter: NSObject {
     unowned let parentViewController: UIViewController
@@ -20,6 +26,7 @@ final class SCSModalNavigationRouter: NSObject {
 }
 
 extension SCSModalNavigationRouter: SCSRouter {
+
     func present_unique(_ viewController: UIViewController, animated: Bool, onDismissed: Closure?) {
         onDismissForViewController[viewController] = onDismissed
 
@@ -92,4 +99,56 @@ extension SCSModalNavigationRouter: UIAdaptivePresentationControllerDelegate {
         }
         performOnDismiss(for: rootViewController)
     }
+}
+
+protocol CloseButton {
+    func closeButton ()
+}
+
+protocol BackButton {
+    func backButton()
+}
+
+protocol BackDoneButton {
+    func backDoneButton ()
+}
+extension UIViewController: CloseButton {
+    func closeButton() {
+        let closeButton = UIButton()
+        closeButton.setImage(Images.close.image, for: .normal)
+        closeButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        closeButton.backgroundColor = .white
+        closeButton.layer.cornerRadius = 22
+        closeButton.layer.masksToBounds = false
+        closeButton.layer.shadowColor = UIColor.black.cgColor
+        closeButton.layer.shadowOpacity = 0.1
+        closeButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        closeButton.layer.shadowRadius = 15
+        view.addSubview(closeButton)
+        closeButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.size.equalTo(44)
+
+        }
+    }
+
+    @objc func dismissVC() {
+        dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension UIViewController: BackButton {
+    func backButton() {
+
+    }
+
+}
+
+extension UIViewController: BackDoneButton {
+    func backDoneButton() {
+
+    }
+
 }

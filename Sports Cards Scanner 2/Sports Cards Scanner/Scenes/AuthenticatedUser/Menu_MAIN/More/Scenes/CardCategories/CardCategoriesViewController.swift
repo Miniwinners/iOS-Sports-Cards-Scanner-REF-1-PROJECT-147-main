@@ -52,13 +52,6 @@ final class CardCategoriesViewController: UIViewController {
 
 private extension CardCategoriesViewController {
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
 
         let tableView = cardCategoriesView.tableView
         tableView.register(CardCategoryTableViewCell.self, forCellReuseIdentifier: CardCategoryTableViewCell.className)

@@ -4,10 +4,10 @@ extension UINavigationBar {
     func applyDefaultAppearance() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithDefaultBackground()
-        navBarAppearance.backgroundColor = .backColor
+        navBarAppearance.backgroundColor = .white
         navBarAppearance.shadowColor = .clear
         navBarAppearance.titleTextAttributes = [
-            .font: UIFont.font(.interMedium, size: 20),
+            .font: UIFont.font(.ubuntuMedium500, size: 20),
             .foregroundColor: UIColor.labelColor
         ]
 

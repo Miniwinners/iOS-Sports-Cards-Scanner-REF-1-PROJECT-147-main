@@ -3,6 +3,7 @@ import UIKit
 protocol SCSRouter: AnyObject {
     func present_unique(_ viewController: UIViewController, animated: Bool)
     func present_unique(_ viewController: UIViewController, animated: Bool, onDismissed: Closure?)
+//    func present_unique(_ viewController: UIViewController, buttonType: presentationStyle, animated: Bool, onDismissed: Closure?)
 
     func dismiss_unique(_ viewController: UIViewController, animated: Bool)
     func dismissVC_unique(_ viewController: UIViewController, animated: Bool, onDismissed: Closure?)

@@ -27,7 +27,7 @@ class CommonTextField: UITextField {
             attributedPlaceholder = NSAttributedString(
                 string: newValue ?? "",
                 attributes: [
-                    .foregroundColor: UIColor.logInLabel,
+                    .foregroundColor: UIColor.singINLabel,
                     .font: UIFont.font(.ubuntuLight300, size: 16)
                 ]
             )

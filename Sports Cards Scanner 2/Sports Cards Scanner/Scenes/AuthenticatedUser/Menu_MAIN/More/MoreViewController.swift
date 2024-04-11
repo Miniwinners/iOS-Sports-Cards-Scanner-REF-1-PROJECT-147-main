@@ -1,5 +1,5 @@
 import UIKit
-
+import SnapKit
 final class MoreViewController: UIViewController {
 
     weak var delegate: MoreViewControllerDelegate?
@@ -30,6 +30,7 @@ final class MoreViewController: UIViewController {
 
     override func loadView() {
         view = moreView
+
     }
 
     override func viewDidLoad() {
@@ -51,6 +52,7 @@ private extension MoreViewController {
 
         moreView.tableView.delegate = self
         moreView.tableView.dataSource = self
+
     }
 }
 

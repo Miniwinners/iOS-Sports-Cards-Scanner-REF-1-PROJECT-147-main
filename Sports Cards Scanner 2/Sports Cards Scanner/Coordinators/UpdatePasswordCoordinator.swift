@@ -1,5 +1,5 @@
 import UIKit
-
+import SnapKit
 final class UpdatePasswordCoordinator: SCSCoordinator {
     var children: [SCSCoordinator] = []
 
@@ -16,6 +16,7 @@ final class UpdatePasswordCoordinator: SCSCoordinator {
         let updatePasswordViewController = UpdatePasswordVC(authService: authService)
         updatePasswordViewController.delegate = self
         router.present_unique(updatePasswordViewController, animated: animated, onDismissed: onDismissed)
+
     }
 }
 

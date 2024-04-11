@@ -1,5 +1,5 @@
 import UIKit
-
+import SnapKit
 final class UpdatePasswordVC: UIViewController {
 
     // MARK: - Subviews
@@ -71,23 +71,16 @@ final class UpdatePasswordVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViews_unique()
         setupActions_unique()
         updateSaveButton()
         updateErrorLabel(animated: false)
+
     }
 }
 
 private extension UpdatePasswordVC {
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
 
         [updatePasswordView.passwordView, updatePasswordView.confirmPasswordView]
             .map { $0.textField }

@@ -307,7 +307,7 @@
 		468C836D2AB60CA4003DC91A /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468C836C2AB60CA4003DC91A /* MultipartFormDataRequest.swift */; };
 		468E3E552A8800EB0097C6EC /* UITabBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E3E542A8800EB0097C6EC /* UITabBar_Extension.swift */; };
 		468E3E572A8801CB0097C6EC /* UINavigationBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E3E562A8801CB0097C6EC /* UINavigationBar_Extension.swift */; };
-		468E3E592A8803640097C6EC /* SCSModalNavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E3E582A8803640097C6EC /* SCSModalNavigationRouter.swift */; };
+		468E3E592A8803640097C6EC /* ModalNavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E3E582A8803640097C6EC /* ModalNavigationRouter.swift */; };
 		468E3E5B2A880AB50097C6EC /* CardCategoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E3E5A2A880AB50097C6EC /* CardCategoriesCoordinator.swift */; };
 		468E3E5F2A880BE10097C6EC /* MoreViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E3E5E2A880BE10097C6EC /* MoreViewControllerDelegate.swift */; };
 		468E3E612A897C490097C6EC /* CardCategoriesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E3E602A897C490097C6EC /* CardCategoriesManager.swift */; };
@@ -690,7 +690,7 @@
 		468C836C2AB60CA4003DC91A /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
 		468E3E542A8800EB0097C6EC /* UITabBar_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBar_Extension.swift; sourceTree = "<group>"; };
 		468E3E562A8801CB0097C6EC /* UINavigationBar_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extension.swift; sourceTree = "<group>"; };
-		468E3E582A8803640097C6EC /* SCSModalNavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCSModalNavigationRouter.swift; sourceTree = "<group>"; };
+		468E3E582A8803640097C6EC /* ModalNavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationRouter.swift; sourceTree = "<group>"; };
 		468E3E5A2A880AB50097C6EC /* CardCategoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategoriesCoordinator.swift; sourceTree = "<group>"; };
 		468E3E5E2A880BE10097C6EC /* MoreViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewControllerDelegate.swift; sourceTree = "<group>"; };
 		468E3E602A897C490097C6EC /* CardCategoriesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategoriesManager.swift; sourceTree = "<group>"; };
@@ -2064,7 +2064,7 @@
 			children = (
 				46A01DA62A811EE9006AFB5E /* SCSRouter.swift */,
 				46A01DA92A812284006AFB5E /* AppDelegateRouter.swift */,
-				468E3E582A8803640097C6EC /* SCSModalNavigationRouter.swift */,
+				468E3E582A8803640097C6EC /* ModalNavigationRouter.swift */,
 				467CCC302A93858D000AFC8F /* ModalPresentationRouter.swift */,
 				467CCC6A2A97A23C000AFC8F /* FullScreenRouter.swift */,
 				467CCC472A94E568000AFC8F /* DeleteAccountSheetRouter.swift */,
@@ -2688,7 +2688,7 @@
 				4688A76B2A823A7100882727 /* TextValidator.swift in Sources */,
 				467CCC0E2A91F65F000AFC8F /* ForgotPasswordCoordinator.swift in Sources */,
 				461CBD472AAC8A5E0025FF41 /* CardCollectible.swift in Sources */,
-				468E3E592A8803640097C6EC /* SCSModalNavigationRouter.swift in Sources */,
+				468E3E592A8803640097C6EC /* ModalNavigationRouter.swift in Sources */,
 				468E3E552A8800EB0097C6EC /* UITabBar_Extension.swift in Sources */,
 				467CCC3E2A94A561000AFC8F /* CardCategoryButton.swift in Sources */,
 				461E2EFB2A8FA73D009422E0 /* DashboardNoCardView.swift in Sources */,

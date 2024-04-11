@@ -16,10 +16,12 @@ extension ModalPresentationRouter: SCSRouter {
 
         if let presentedViewController = parentViewController.presentedViewController {
             performOnDismiss(for: presentedViewController)
+            viewController.closeButton()
             presentedViewController.dismiss(animated: animated) { [weak self] in
                 self?.parentViewController.present(viewController, animated: animated)
             }
         } else {
+            viewController.closeButton()
             parentViewController.present(viewController, animated: animated)
         }
     }

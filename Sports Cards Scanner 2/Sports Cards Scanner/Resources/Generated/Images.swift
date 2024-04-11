@@ -32,6 +32,14 @@ internal enum Images {
         internal static let list = ImageAsset(name: "cardsDisplay/list")
         internal static let swipable = ImageAsset(name: "cardsDisplay/swipable")
     }
+    internal enum CardsLogo {
+        internal static let footBall = ImageAsset(name: "footBall")
+        internal static let basketBall = ImageAsset(name: "basketBall")
+        internal static let baseBall = ImageAsset(name: "baseBall")
+        internal static let soccer = ImageAsset(name: "soccer")
+        internal static let hockey = ImageAsset(name: "hockey")
+    }
+    internal static let checkSign = ImageAsset(name: "checkSign")
     internal static let checked = ImageAsset(name: "checked")
     internal static let clear = ImageAsset(name: "clear")
     internal static let close = ImageAsset(name: "close")
@@ -46,6 +54,7 @@ internal enum Images {
     internal static let dashboard = ImageAsset(name: "dashboard")
     internal static let dashboardSelected = ImageAsset(name: "dashboardSelected")
     internal static let deck = ImageAsset(name: "deck")
+    internal static let deckSign = ImageAsset(name: "deckSign")
     internal static let disclose = ImageAsset(name: "disclose")
     internal static let disclosure = ImageAsset(name: "disclosure")
     internal static let disclosureBottom = ImageAsset(name: "disclosureBottom")
@@ -68,6 +77,8 @@ internal enum Images {
     internal static let search = ImageAsset(name: "search")
     internal static let validEmail = ImageAsset(name: "validEmail")
     internal static let unchecked = ImageAsset(name: "unchecked")
+    internal static let lockLogo = ImageAsset(name: "lockLogo")
+    internal static let unlockLogo = ImageAsset(name: "unlockLogo")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
