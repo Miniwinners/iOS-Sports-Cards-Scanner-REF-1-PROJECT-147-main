@@ -71,8 +71,8 @@
 "more_item_deleteAccount" = "Delete Account";
 
 "cardCategories_title" = "Card Categories";
-"cardCategories_description" = "Select and order the card types you collect. This order will be reflected in your scanner and Portfolio";
-"cardCategories_minEnabledCategories" = "You must always have at least one active category.";
+"cardCategories_description" = "Please select the card types you wish to include in your portfolio and scanner";
+"cardCategories_minEnabledCategories" = "You need to maintain at least one active category.";
 
 "updatePassword_title" = "Update Password";
 "updatePassword_newPassword_title" = "Create new password";
@@ -119,7 +119,7 @@
 
 "prompt_action_cancel" = "Cancel";
 "prompt_title" = "Are you sure?";
-"prompt_logout_description" = "Are you sure you want to log out of your account?";
+"prompt_logout_description" = "Are you certain you wish to remove your account?";
 "prompt_logout_confirmAction" = "Log Out";
 "prompt_deleteAccount_description" = "Deleting the collection won't remove the cards; they'll stay in your portfolio.";
 "prompt_deleteAccount_keepAction" = "Keep";

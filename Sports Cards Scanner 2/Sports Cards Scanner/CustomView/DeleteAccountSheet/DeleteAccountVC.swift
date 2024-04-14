@@ -3,12 +3,6 @@ import SnapKit
 
 final class DeleteAccountVC: UIViewController {
 
-    private var currentState: DeleteAccountStatus = .deleteStart {
-        didSet {
-            updateUIforState()
-        }
-    }
-
     private let promptTitle: String
     private let promptDescription: String
     weak var delegate: DeleteAccountVCdelegate?
@@ -21,7 +15,7 @@ final class DeleteAccountVC: UIViewController {
     }(UIView())
 
     lazy var titleLabel: UILabel = { label in
-        label.text = L10n.Prompt.title
+        label.text = promptTitle
         label.font = .font(.ubuntuBold700, size: 24)
         label.textColor = .black
         label.setLineHeight(28)
@@ -33,7 +27,7 @@ final class DeleteAccountVC: UIViewController {
     }(UILabel())
 
     lazy var descriptionLabel: UILabel = { label in
-        label.text = L10n.Prompt.DeleteAccount.description
+        label.text = promptDescription
         label.font = .font(.ubuntuRegular400, size: 14)
         label.textColor = .tableViewTitleLabel
         label.setLineHeight(22)
@@ -45,7 +39,6 @@ final class DeleteAccountVC: UIViewController {
     }(UILabel())
 
     lazy var cancelButton: CommonButton = { button in
-        button.setButtonTitle(L10n.Prompt.Action.cancel)
         button.borderColor = .blue
         button.borderWidth = 1
         button.layer.cornerRadius = 16
@@ -92,19 +85,6 @@ final class DeleteAccountVC: UIViewController {
         setupActions_unique()
     }
 
-    @objc func updateUIforState() {
-        switch currentState {
-        case .followDelete:
-            descriptionLabel.text = promptTitle
-        case .deleteStart:
-            self.title = L10n.Prompt.DeleteAccount.sureAction
-            currentState = .followDelete
-            descriptionLabel.text = title
-            cancelButton.setButtonTitle(L10n.Prompt.Action.cancel)
-            cancelButton.changeStyleToCancel()
-        }
-    }
-
 }
 
 private extension DeleteAccountVC {
@@ -117,7 +97,6 @@ private extension DeleteAccountVC {
 
         labelsContainerView.addSubview(labelsStackView)
         labelsStackView.snp.makeConstraints {
-//            $0.height.equalTo(78)
             $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
@@ -143,14 +122,12 @@ private extension DeleteAccountVC {
 
     func setupActions_unique() {
         cancelButton.addTarget(self, action: #selector(cancelTapped_unique(_:)), for: .touchUpInside)
-        cancelButton.addTarget(self, action: #selector(updateUIforState), for: .touchUpInside)
         confirmButton.addTarget(self, action: #selector(confirmTapped_unique(_:)), for: .touchUpInside)
     }
 
     // MARK: - Actions
 
     @objc func cancelTapped_unique(_ sender: CommonButton) {
-        if currentState == .followDelete {
             func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
                 print(qFvvUwywod)
                 print("\(rkjyOdUzcU)")
@@ -158,7 +135,7 @@ private extension DeleteAccountVC {
             }
 
             delegate?.promptViewControllerCancelTapped(self)
-        }
+
     }
 
     @objc func confirmTapped_unique(_ sender: CommonButton) {

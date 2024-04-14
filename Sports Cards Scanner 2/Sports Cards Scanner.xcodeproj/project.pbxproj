@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		419A48122BC6D53B00779F69 /* DeleteAccountStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419A48112BC6D53B00779F69 /* DeleteAccountStatus.swift */; };
 		41A8C1262BC6ABB900611139 /* DeleteCustomPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */; };
 		41C055B72BC552EA00F2B98D /* SignInWithFaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */; };
 		41C055B92BC5538D00F2B98D /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 41C055B82BC5538D00F2B98D /* FacebookLogin */; };
@@ -396,7 +395,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		419A48112BC6D53B00779F69 /* DeleteAccountStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountStatus.swift; sourceTree = "<group>"; };
 		41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCustomPresent.swift; sourceTree = "<group>"; };
 		41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithFaceBookHelper.swift; sourceTree = "<group>"; };
 		41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
@@ -1717,7 +1715,6 @@
 				467CCC422A94D86B000AFC8F /* DeleteAccountVC.swift */,
 				467CCC452A94DABD000AFC8F /* DeleteAccountVCdelegate.swift */,
 				41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */,
-				419A48112BC6D53B00779F69 /* DeleteAccountStatus.swift */,
 			);
 			path = DeleteAccountSheet;
 			sourceTree = "<group>";
@@ -2756,7 +2753,6 @@
 				4650DF0E2AA21F9700F6F13C /* CardDetailsItemTableViewCell.swift in Sources */,
 				467CCC762A980AFA000AFC8F /* Firestore_Extension.swift in Sources */,
 				4650DE9C2A9BAA7300F6F13C /* CardDetailsViewControllerDelegate.swift in Sources */,
-				419A48122BC6D53B00779F69 /* DeleteAccountStatus.swift in Sources */,
 				46C7BE492AC752E200FAD645 /* MagicCardIdentifier.swift in Sources */,
 				4660C0022A7BFF2B00FB80AF /* AuthService.swift in Sources */,
 				4660C0092A7CF69200FB80AF /* SignInView.swift in Sources */,

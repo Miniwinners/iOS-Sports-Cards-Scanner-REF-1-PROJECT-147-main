@@ -9,7 +9,7 @@ final class CreateEditDeckVC: UIViewController {
 
     private let cardDeckManager: CardDeckManager
 
-    private let categories: [CardCategory] = [.pokemon, .magic]
+//    private let categories: [CardCategory] = [.pokemon, .magic]
     private var deckType: CardCategory?
 
     private let minLengthValidator: LengthValidator = .init(minLength: 1)
@@ -112,7 +112,7 @@ private extension CreateEditDeckVC {
             deckView.setupForCreation()
 
             let deckTypeView = deckView.deckTypeView
-            deckTypeView.setOptions(categories.map({ $0.title }))
+//            deckTypeView.setOptions(categories.map({ $0.title }))
             deckTypeView.didSelectOption = { [weak self] optionIndex in
                 self?.deckTypeDidUpdate(index: optionIndex)
             }
@@ -156,9 +156,9 @@ private extension CreateEditDeckVC {
     }
 
     func deckTypeDidUpdate(index: Int) {
-        guard let category = category(at: index) else { return }
-        deckType = category
-        deckView.deckTypeView.setOptionTitle(category.title)
+//        guard let category = category(at: index) else { return }
+//        deckType = category
+//        deckView.deckTypeView.setOptionTitle(category.title)
         updateCreateButton_unique()
     }
 
@@ -172,9 +172,9 @@ private extension CreateEditDeckVC {
         deckView.doneButton.isEnabled = isUpdateEnabled
     }
 
-    func category(at index: Int) -> CardCategory? {
-        categories[safe: index]
-    }
+//    func category(at index: Int) -> CardCategory? {
+//        categories[safe: index]
+//    }
 
     // MARK: - Actions
 

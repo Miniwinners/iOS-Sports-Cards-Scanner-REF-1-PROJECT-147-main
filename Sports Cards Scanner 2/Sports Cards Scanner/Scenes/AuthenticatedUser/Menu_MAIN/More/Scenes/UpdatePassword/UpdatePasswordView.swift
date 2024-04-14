@@ -8,6 +8,15 @@ final class UpdatePasswordView: UIView {
         return view
     }(UIView())
 
+    lazy var titleLabel: UILabel = { label in
+        label.text = L10n.UpdatePassword.title
+        label.setLineHeight(24)
+        label.font = .font(.ubuntuBold700, size: 22)
+        label.textColor = .logInLabel
+        label.textAlignment = .center
+        return label
+    }(UILabel())
+
     let lockContainer = UIView()
     let unlockContainer = UIView()
 
@@ -90,21 +99,25 @@ private extension UpdatePasswordView {
             make.horizontalEdges.bottom.equalToSuperview()
             make.top.equalToSuperview().inset(22)
         }
+        backView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(65)
+            $0.horizontalEdges.equalToSuperview().inset(20)
 
+        }
         backView.addSubviews(contentView, saveButton)
 
         lockContainer.addSubview(lockImageView)
         unlockContainer.addSubview(unlockImageView)
 
-        lockContainer.snp.makeConstraints { make in
-            make.height.equalTo(50)
+        lockContainer.snp.makeConstraints {
+            $0.height.equalTo(50)
         }
-        unlockContainer.snp.makeConstraints { make in
-            make.height.equalTo(40)
+        unlockContainer.snp.makeConstraints {
+            $0.height.equalTo(50)
         }
         contentView.snp.makeConstraints {
-
-            $0.top.greaterThanOrEqualTo(50)
+            $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         lockImageView.snp.makeConstraints {

@@ -155,10 +155,7 @@ extension CardCategoriesViewController: UITableViewDataSource {
             return .init()
         }
 
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: CardCategoryTableViewCell.className,
-            for: indexPath
-        ) as? CardCategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CardCategoryTableViewCell.className, for: indexPath) as? CardCategoryTableViewCell
 
         cell?.setupCategoryCell(with: categoryModel, onCategoryDidSwitch: { [weak self] isEnabled in
             self?.setCategory(categoryModel.category, enabled: isEnabled)
@@ -175,6 +172,7 @@ extension CardCategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         cardCategoriesManager.moveCategory(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
+
 }
 
 // MARK: - Table View Drag Delegate
@@ -200,7 +198,7 @@ extension CardCategoriesViewController: UITableViewDragDelegate {
         }
 
         let preview = UIDragPreviewParameters()
-        preview.visiblePath = UIBezierPath(roundedRect: cell.bounds.insetBy(dx: 20, dy: 0), cornerRadius: 12)
+        preview.visiblePath = UIBezierPath(roundedRect: cell.bounds.insetBy(dx: 20, dy: 3), cornerRadius: 16)
         return preview
     }
 }
@@ -230,6 +228,7 @@ extension CardCategoriesViewController: UITableViewDropDelegate {
     }
 
     func tableView(_ tableView: UITableView, dropSessionDidEnd session: UIDropSession) {
+
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")

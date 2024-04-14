@@ -29,12 +29,12 @@ struct MagicCard: CardRepresentable {
         return gradersInfo
     }
 
-    var category: CardCategory { .magic }
+    var category: CardCategory { .soccer }
 
     var detailItemsList: [CardDetailsItem] {
         var items = [CardDetailsItem]()
 
-        items.append(.init(detailName: .category(category), description: name))
+//        items.append(.init(detailName: .category(category), description: name))
         items.append(.init(detailName: .year, description: year))
         items.append(.init(detailName: .cardNumber, description: cardNumber ?? "-"))
         items.append(.init(detailName: .series, description: series))

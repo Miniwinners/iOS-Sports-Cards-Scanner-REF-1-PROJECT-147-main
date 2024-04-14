@@ -21,7 +21,7 @@ struct PokemonCard: CardRepresentable {
         return gradersInfo
     }
 
-    var category: CardCategory { .pokemon }
+    var category: CardCategory { .soccer }
 
     var detailItemsList: [CardDetailsItem] {
         var items = [CardDetailsItem]()

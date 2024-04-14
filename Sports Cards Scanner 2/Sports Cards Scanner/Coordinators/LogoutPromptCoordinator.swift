@@ -16,7 +16,7 @@ extension LogoutPromptCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
         let viewController = DeleteAccountVC(description: L10n.Prompt.Logout.description)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.Logout.confirmAction)
-        viewController.confirmButton.setButtonTitle(L10n.Common.cancel)
+        viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteAccount.keepAction)
         viewController.delegate = self
         router.present_unique(viewController, animated: animated, onDismissed: onDismissed)
     }

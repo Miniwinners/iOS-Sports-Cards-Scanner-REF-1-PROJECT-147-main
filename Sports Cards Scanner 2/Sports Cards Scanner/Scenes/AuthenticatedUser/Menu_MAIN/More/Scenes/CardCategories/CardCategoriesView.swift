@@ -7,15 +7,8 @@ final class CardCategoriesView: UIView {
         view.setupBackView()
         return view
     }(UIView())
-
-    lazy var containerView: UIView = { view in
-        return view
-    }(UIView())
-
-    lazy var checkSignImageView: UIImageView = { image in
-        image.image = Images.checkSign.image
-        return image
-    }(UIImageView())
+    let containerView = UIView()
+    let containerImage = UIView()
 
     lazy var descriptionImage: UIImageView = { image in
         image.image = Images.deckSign.image
@@ -35,28 +28,37 @@ final class CardCategoriesView: UIView {
     lazy var imageLabelStack: UIStackView = { stackView in
         stackView.spacing = 10
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.alignment = .fill
+        stackView.distribution = .equalCentering
         return stackView
-    }(UIStackView())
+    }(UIStackView(arrangedSubviews: [containerImage, descriptionLabel]))
+
+    lazy var checkSignImageView: UIImageView = { image in
+        image.image = Images.checkSign.image
+        return image
+    }(UIImageView())
 
     lazy var tableView: UITableView = { tableView in
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 66
+        tableView.estimatedRowHeight = 74
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = false
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInset.top = 20
         tableView.contentInset.bottom = 20
+        tableView.sectionHeaderTopPadding = 0
+        tableView.backgroundColor = .clear
+
         return tableView
     }(UITableView())
 
     lazy var minEnabledCategoriesLabel: UILabel = { label in
         label.text = L10n.CardCategories.minEnabledCategories
-        label.font = .font(.interRegular, size: 12)
-        label.textColor = .labelColor4
+        label.font = .font(.ubuntuRegular400, size: 12)
+        label.textColor = .singINLabel
         label.numberOfLines = 0
         label.setLineHeight(14.5)
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
     }(UILabel())
 
@@ -65,67 +67,69 @@ final class CardCategoriesView: UIView {
         backgroundColor = .clear
         setupSubviews_unique()
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layoutTableFooterView()
-    }
 }
 
 private extension CardCategoriesView {
     func setupSubviews_unique() {
+        let checkSignView = UIView()
+
+        containerView.backgroundColor = .skyBlue
+        containerView.cornerRadius = 16
+
         addSubview(backView)
         backView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(22)
             make.horizontalEdges.bottom.equalToSuperview()
         }
-        addSubview(containerView)
+
+        backView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(50)
             make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.greaterThanOrEqualTo(120)
         }
+
         containerView.addSubview(imageLabelStack)
         imageLabelStack.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(10)
-            make.verticalEdges.equalToSuperview().inset(5)
+            make.edges.equalToSuperview().inset(20)
         }
-        imageLabelStack.addSubviews(descriptionImage, descriptionLabel)
+
+        containerImage.snp.makeConstraints { make in
+            make.height.equalTo(30)
+        }
+        containerImage.addSubview(descriptionImage)
+
         descriptionImage.snp.makeConstraints { make in
             make.height.equalTo(30)
             make.width.equalTo(44)
+            make.center.equalToSuperview()
         }
-        descriptionLabel.snp.makeConstraints { make in
-            make.height.equalTo(22)
-        }
-        backView.addSubview(tableView)
 
+        backView.addSubview(tableView)
+        backView.addSubview(checkSignView)
         tableView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(50)
+            $0.top.equalTo(checkSignView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
-        let headerView = UIView()
-        headerView.addSubview(minEnabledCategoriesLabel)
-
-        minEnabledCategoriesLabel.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview()
+        checkSignView.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.top.equalTo(containerView.snp.bottom).offset(23)
         }
 
-        tableView.tableHeaderView = headerView
-    }
+        checkSignView.addSubviews(checkSignImageView, minEnabledCategoriesLabel)
+        checkSignImageView.snp.makeConstraints { make in
+            make.size.equalTo(20)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().inset(15)
+        }
 
-    func layoutTableFooterView() {
-        guard let headerView = tableView.tableHeaderView else { return }
+        minEnabledCategoriesLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview()
+            make.left.equalTo(checkSignImageView.snp.right).offset(10)
+        }
 
-        let targetSize = CGSize(width: tableView.bounds.width, height: 0)
-        let headerSize = headerView.systemLayoutSizeFitting(
-            targetSize,
-            withHorizontalFittingPriority: .required,
-            verticalFittingPriority: .defaultLow
-        )
-        headerView.bounds.size = headerSize
-        tableView.tableHeaderView = headerView
     }
 
 }

@@ -5,11 +5,13 @@ final class CardCategoryTableViewCell: UITableViewCell {
 
     lazy var containerView: UIView = .init()
 
-    lazy var reorderImageView: UIImageView = .init(image: Images.reorder.image)
+    lazy var reorderImageView: UIImageView = { image in
+        return image
+    }(UIImageView())
 
     lazy var titleLabel: UILabel = { label in
-        label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 18)
+        label.textColor = .logInLabel
+        label.font = .font(.ubuntuMedium500, size: 16)
         return label
     }(UILabel())
 
@@ -34,7 +36,7 @@ final class CardCategoryTableViewCell: UITableViewCell {
     func setupCategoryCell(with categoryModel: CardCategoryModel, onCategoryDidSwitch: @escaping BoolClosure) {
         titleLabel.text = categoryModel.category.title
         switchView.setOn(categoryModel.isEnabled, animated: false)
-
+        reorderImageView.image = categoryModel.category.image
         self.onCategoryDidSwitch = onCategoryDidSwitch
     }
 
@@ -42,13 +44,6 @@ final class CardCategoryTableViewCell: UITableViewCell {
         if cellPosition == position { return }
         cellPosition = position
 
-        topConstraint.update(inset: position.containsPosition(.onTopPosition) ? 16 : 17)
-        bottomConstraint.update(inset: position.containsPosition(.atBottomPosition) ? 16 : 17)
-
-        var corners = UIRectCorner()
-        if position == .onTopPosition { corners.insert([.topLeft, .topRight]) }
-        if position == .atBottomPosition { corners.insert([.bottomLeft, .bottomRight]) }
-        backgroundView?.subviews.first?.roundCorners(corners, radius: 12)
     }
 
     func setSwitchOff(available: Bool) {
@@ -62,18 +57,19 @@ private extension CardCategoryTableViewCell {
     func setupSubviews_unique() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-
+        containerView.backgroundColor = .skyBlue
+        containerView.layer.cornerRadius = 16
         selectionStyle = .none
 
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview()
+            $0.verticalEdges.equalToSuperview().inset(3)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
 
         containerView.addSubview(reorderImageView)
         reorderImageView.snp.makeConstraints {
-            $0.size.equalTo(32)
+            $0.size.equalTo(22)
             $0.leading.equalToSuperview().inset(16)
             topConstraint = $0.top.equalToSuperview().inset(17).constraint
             bottomConstraint = $0.bottom.equalToSuperview().inset(17).priority(.high).constraint
@@ -101,7 +97,7 @@ private extension CardCategoryTableViewCell {
         let backgroundContainerView = UIView()
 
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .white
+        backgroundView.backgroundColor = .clear
         backgroundContainerView.addSubview(backgroundView)
 
         backgroundView.snp.makeConstraints {

@@ -20,10 +20,10 @@ struct CardWrapper: Codable {
         category = try container.decode(CardCategory.self, forKey: .category)
 
         switch category {
-        case .magic:
-            card = try container.decode(MagicCard.self, forKey: .card)
-        case .pokemon:
-            card = try container.decode(PokemonCard.self, forKey: .card)
+//        case .magic:
+//            card = try container.decode(MagicCard.self, forKey: .card)
+//        case .pokemon:
+//            card = try container.decode(PokemonCard.self, forKey: .card)
         default:
             card = try container.decode(SportCard.self, forKey: .card)
         }
