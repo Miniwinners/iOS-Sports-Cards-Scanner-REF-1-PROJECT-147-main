@@ -96,12 +96,12 @@ extension SCSAppCoordinator: MoreViewControllerDelegate {
     func moreViewControllerDidPressItem(_ item: ProfileItem, in viewController: MoreViewController) {
         switch item {
         case .cardCategories:
-            let router = ModalPresentationRouter(parentViewController: viewController)
+            let router = ModalPresentationRouter(parentViewController: viewController, presentStyle: .close)
             let coordinator = CardCategoriesCoordinator(router: router)
             presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
 
         case .updatePassword:
-            let router = ModalPresentationRouter(parentViewController: viewController)
+            let router = ModalPresentationRouter(parentViewController: viewController, presentStyle: .close)
             let coordinator = UpdatePasswordCoordinator(router: router, authService: authService)
             presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
 
@@ -246,7 +246,7 @@ private extension SCSAppCoordinator {
     }
 
     func presentScanCard(from viewController: UIViewController) {
-        let router = ModalPresentationRouter(parentViewController: viewController)
+        let router = ModalPresentationRouter(parentViewController: viewController, presentStyle: .common)
         let coordinator = ScanCardCoordinator(router: router)
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }

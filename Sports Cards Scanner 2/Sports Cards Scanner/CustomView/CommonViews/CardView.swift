@@ -4,7 +4,7 @@ import Kingfisher
 
 final class CardView: UIView {
 
-    static let viewHeight: CGFloat = 114
+    static let viewHeight: CGFloat = 400
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .labelColor4
@@ -135,26 +135,33 @@ private extension CardView {
         }
 
         addSubviews(titleLabel, subtitleLabel, pricesLabel, missingImageView, cardImageView, checkedView, numberView)
+//        titleLabel.backgroundColor = .red
+//        subtitleLabel.backgroundColor = .yellow
+//        pricesLabel.backgroundColor = .green
+//        missingImageView.backgroundColor = .blue
+//        cardImageView.backgroundColor = .orange
+//        numberView.backgroundColor = .gray
         self.snp.makeConstraints {
             $0.height.equalTo(Self.viewHeight)
         }
         titleLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.top.equalTo(cardImageView.snp.bottom).offset(5)
         }
         subtitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom)
             $0.leading.equalToSuperview()
         }
         pricesLabel.snp.makeConstraints {
+            $0.top.equalTo(subtitleLabel.snp.bottom).offset(5)
             numberPricesSpaceConstraint = $0.leading.greaterThanOrEqualTo(numberView.snp.trailing).offset(8).constraint
             pricesLeadingConstraint = $0.leading.equalToSuperview().priority(.high).constraint
             $0.bottom.equalToSuperview()
         }
         cardImageView.snp.makeConstraints {
-            $0.top.trailing.bottom.equalToSuperview()
-            $0.width.equalTo(82)
-            $0.leading.equalTo(titleLabel.snp.trailing).offset(16)
-            $0.leading.equalTo(subtitleLabel.snp.trailing).offset(16)
+            $0.top.leading.equalToSuperview()
+            $0.height.equalTo(195)
+            $0.width.equalTo(138)
             pricesTrailingConstraint = $0.leading.equalTo(pricesLabel.snp.trailing).offset(16).constraint
         }
         missingImageView.snp.makeConstraints {

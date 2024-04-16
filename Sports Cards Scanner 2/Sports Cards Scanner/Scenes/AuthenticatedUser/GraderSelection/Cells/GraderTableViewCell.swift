@@ -4,8 +4,9 @@ import SnapKit
 final class GraderTableViewCell: UITableViewCell {
 
     lazy var graderLabel: UILabel = { label in
-        label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 16)
+        label.textColor = .logInLabel
+        label.font = .font(.ubuntuRegular400, size: 16)
+        label.setLineHeight(22)
         return label
     }(UILabel())
 
@@ -55,7 +56,8 @@ private extension GraderTableViewCell {
 
         contentView.addSubview(graderLabel)
         graderLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(10)
         }
 
         contentView.addSubview(separatorView)
@@ -70,7 +72,7 @@ private extension GraderTableViewCell {
         let backgroundContainerView = UIView()
 
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .white
+        backgroundView.backgroundColor = .clear
         backgroundContainerView.addSubview(backgroundView)
 
         backgroundView.snp.makeConstraints {

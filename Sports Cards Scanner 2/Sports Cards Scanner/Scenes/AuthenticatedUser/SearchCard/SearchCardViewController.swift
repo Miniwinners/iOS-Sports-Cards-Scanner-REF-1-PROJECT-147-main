@@ -90,13 +90,6 @@ final class SearchCardViewController: UIViewController {
 
 private extension SearchCardViewController {
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
 
         searchCardView.searchTextField.delegate = self
 
@@ -217,5 +210,6 @@ extension SearchCardViewController: UITableViewDelegate {
 
         guard let card = getCard(at: indexPath) else { return }
         delegate?.searchCardViewControllerDidSelect(card: card, in: self)
+//        present(CardDetailsViewController(card: card), animated: true)
     }
 }

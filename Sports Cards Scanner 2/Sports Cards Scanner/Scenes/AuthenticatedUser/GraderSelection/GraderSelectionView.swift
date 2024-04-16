@@ -12,6 +12,7 @@ final class GraderSelectionView: UIView {
         tableView.rowHeight = 56
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = false
+        tableView.backgroundColor = .skyBlue
         return tableView
     }(UITableView())
 
@@ -39,16 +40,15 @@ private extension GraderSelectionView {
 
         addSubview(gradersTableView)
         gradersTableView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(36)
-            $0.horizontalEdges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(3)
         }
 
-        addSubview(cancelButton)
-        cancelButton.snp.makeConstraints {
-            $0.top.equalTo(gradersTableView.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20).priority(.high)
-            $0.height.equalTo(56)
-        }
+//        addSubview(cancelButton)
+//        cancelButton.snp.makeConstraints {
+//            $0.top.equalTo(gradersTableView.snp.bottom).offset(10)
+//            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+//            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20).priority(.high)
+//            $0.height.equalTo(56)
+//        }
     }
 }

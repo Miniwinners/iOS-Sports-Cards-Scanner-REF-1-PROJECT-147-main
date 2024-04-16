@@ -9,8 +9,8 @@ final class CardGraderButton: UIButton {
 
     lazy var graderLabel: UILabel = { label in
         label.text = cardGrader?.rawValue ?? ""
-        label.textColor = .labelColor
-        label.font = .font(.interRegular, size: 16)
+        label.textColor = .logInLabel
+        label.font = .font(.ubuntuMedium500, size: 16)
         return label
     }(UILabel())
 

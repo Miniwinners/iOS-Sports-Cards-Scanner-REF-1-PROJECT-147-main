@@ -1,7 +1,6 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-import FacebookLogin
 
 final class SignInWithFacebookHelper {
 //    @MainActor

@@ -3,10 +3,15 @@ import SnapKit
 
 final class SearchCardView: UIView {
 
+    lazy var backView: UIView = { view in
+        view.setupBackView()
+       return view
+    }(UIView())
+
     lazy var searchTextField: CommonTextField = { textField in
         textField.borderStyle = .none
         textField.font = .font(.interRegular, size: 16)
-        textField.backgroundColor = .white
+        textField.backgroundColor = .backColor
         textField.cornerRadius = 12
         textField.placeholder = L10n.SearchCard.Search.placeholder
         textField.rightViewMode = .always
@@ -35,6 +40,7 @@ final class SearchCardView: UIView {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.contentInset.bottom = 20
+        tableView.estimatedRowHeight = 400
         return tableView
     }(UITableView())
 
@@ -61,13 +67,18 @@ final class SearchCardView: UIView {
 
 private extension SearchCardView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
+        addSubview(backView)
+        backView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(22)
+            $0.horizontalEdges.bottom.equalToSuperview()
+        }
 
-        addSubviews(searchTextField, searchTableView, noResultsView)
+        backView.addSubviews(searchTextField, searchTableView, noResultsView)
         setupSearchTextField()
         searchTextField.snp.makeConstraints {
             $0.height.equalTo(48)
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(52)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         searchTableView.snp.makeConstraints {

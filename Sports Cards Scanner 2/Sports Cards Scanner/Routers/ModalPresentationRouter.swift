@@ -5,8 +5,11 @@ final class ModalPresentationRouter {
 
     private var onDismissForViewController: [UIViewController: Closure] = [:]
 
-    init(parentViewController: UIViewController) {
+    var presentStyle: PresentationStyle?
+
+    init(parentViewController: UIViewController, presentStyle: PresentationStyle?) {
         self.parentViewController = parentViewController
+        self.presentStyle = presentStyle
     }
 }
 
@@ -16,12 +19,34 @@ extension ModalPresentationRouter: SCSRouter {
 
         if let presentedViewController = parentViewController.presentedViewController {
             performOnDismiss(for: presentedViewController)
-            viewController.closeButton()
+            switch presentStyle {
+            case .back:
+                print("back")
+            case .backDone:
+                print("back done")
+            case .close:
+                viewController.closeButton()
+            case .common:
+                print("common")
+            default:
+                print("default")
+            }
             presentedViewController.dismiss(animated: animated) { [weak self] in
                 self?.parentViewController.present(viewController, animated: animated)
             }
         } else {
-            viewController.closeButton()
+            switch presentStyle {
+            case .back:
+                print("back")
+            case .backDone:
+                print("back done")
+            case .close:
+                viewController.closeButton()
+            case .common:
+                print("common")
+            default:
+                print("default")
+            }
             parentViewController.present(viewController, animated: animated)
         }
     }

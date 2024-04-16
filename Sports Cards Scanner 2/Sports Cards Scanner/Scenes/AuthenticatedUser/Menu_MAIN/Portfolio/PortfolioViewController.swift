@@ -122,10 +122,10 @@ private extension PortfolioViewController {
     // MARK: - Actions
 
     @objc func scanCardTapped() {
-        guard profileManager.isProfileLoaded else {
-            loadProfileInfo()
-            return
-        }
+//        guard profileManager.isProfileLoaded else {
+//            loadProfileInfo()
+//            return
+//        }
         guard cardsManager.isScanEnabled else { return }
         delegate?.portfolioViewControllerScanCardTapped(self)
     }

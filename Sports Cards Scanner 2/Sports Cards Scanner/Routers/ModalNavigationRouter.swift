@@ -1,10 +1,5 @@
 import UIKit
 import SnapKit
-enum PresentationStyle {
-    case close
-    case back
-    case backDone
-}
 
 final class SCSModalNavigationRouter: NSObject {
     unowned let parentViewController: UIViewController

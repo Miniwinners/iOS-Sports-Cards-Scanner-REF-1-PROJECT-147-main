@@ -19,8 +19,7 @@ final class CardDetailsViewController: UIViewController {
 
     private var isLoading = false {
         didSet {
-            cardDetailsView.addCardButton.isLoading = isLoading
-            cardDetailsView.removeCardButton.isLoading = isLoading
+             cardDetailsView.removeCardButton.isLoading = isLoading
         }
     }
 
@@ -81,7 +80,7 @@ final class CardDetailsViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     func graderDidSelect(_ grader: CardGrader) {
@@ -109,16 +108,11 @@ private extension CardDetailsViewController {
 
         cardDetailsView.hidesNoNeededViews(for: cardType)
 
-        if let navController = navigationController, navController.viewControllers.first != self {
-            addBackButton()
-        } else {
-            addCloseButton()
-        }
     }
 
     func setupViewsData_unique() {
-        cardDetailsView.cardTitleLabel.text = "\(card.title)\n\(card.subtitle)"
-
+        cardDetailsView.cardTitleLabel.text = "\(card.title)"
+        cardDetailsView.cardSubTitleLabel.text = "\(card.subtitle)"
         selectedGrader = card.customPrice.isNil ? card.selectedGrader : .CUSTOM
 
         cardDetailsView.cardGraderButton.cardGrader = selectedGrader

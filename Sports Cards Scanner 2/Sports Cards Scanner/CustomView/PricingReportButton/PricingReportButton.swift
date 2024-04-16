@@ -27,7 +27,7 @@ final class PricingReportButton: UIButton {
         case .highlighted:
             backgroundColor = .highlightColor2
         default:
-            backgroundColor = .fillColor
+            backgroundColor = .skyBlue
         }
     }
 
@@ -37,14 +37,10 @@ private extension PricingReportButton {
     func setupSubviews_unique() {
         configuration = .plain()
 
-        backgroundColor = .fillColor
+        backgroundColor = .skyBlue
         cornerRadius = 12
         borderWidth = 1
-        borderColor = .secondaryColor
-
-        snp.makeConstraints {
-            $0.height.equalTo(75)
-        }
+        layer.borderColor = UIColor.blue.cgColor
 
         [noPriceView, customPriceView, graderPriceView].forEach { view in
             addSubview(view)
