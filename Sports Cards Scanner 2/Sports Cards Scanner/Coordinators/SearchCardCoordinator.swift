@@ -34,9 +34,14 @@ extension SearchCardCoordinator: SearchCardViewControllerDelegate {
     }
 
     func searchCardViewControllerDidSelect(card: CardRepresentable, in viewController: SearchCardViewController) {
-        let coordinator = CardDetailsCoordinator(router: router, card: card, cardType: .searchedCard, encodedCardImage: scannedCard.encodedCardImage)
-        coordinator.delegate = self
-        presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
+
+        let router = ModalPresentationRouter(parentViewController: viewController, presentStyle: .close)
+        let coordinator = CardDetailsCoordinator(router: router, card: card, cardType: .searchedCard, encodedCardImage: self.scannedCard.encodedCardImage)
+            coordinator.delegate = self
+        self.presentChildCoordinator(coordinator, animated: true) {
+            self.router.dismissFully(animated: true)
+        }
+
     }
 }
 

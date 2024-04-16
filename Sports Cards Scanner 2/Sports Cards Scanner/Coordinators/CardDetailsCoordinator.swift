@@ -27,7 +27,6 @@ final class CardDetailsCoordinator {
 extension CardDetailsCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
         let viewController = CardDetailsViewController(card: card, cardType: cardType, encodedCardImage: encodedCardImage)
-        viewController.delegate = self
         router.present_unique(viewController, animated: animated, onDismissed: onDismissed)
     }
 }
@@ -102,11 +101,24 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
     }
 
     func cardDetailsViewControllerCardDidAdd(_ viewController: CardDetailsViewController) {
-        if let delegate = delegate {
-            delegate.cardDetailsCoordinatorCardDidAdd(self, from: viewController)
+        let cardsUpdater: CardsUpdater
+        if viewController.card is SearchedCard {
+            cardsUpdater = viewController.searchedCardsManager
         } else {
-            router.dismissFully(animated: true)
+            cardsUpdater = UserCardsManager.shared
         }
+
+        let viewController = EditCardViewController(card: viewController.card, cardsManager: cardsUpdater)
+        viewController.delegate = self
+        router.present_unique(viewController, animated: true)
+//        if let delegate = delegate {
+//            let viewController = EditCardViewController(card: card)
+//            viewController.delegate = self
+//            router.present_unique(viewController, animated: true)
+////            delegate.cardDetailsCoordinatorCardDidAdd(self, from: viewController)
+//        } else {
+//            router.dismissFully(animated: true)
+//        }
     }
 
     func cardDetailsViewControllerRemoveCardTapped(_ card: CardRepresentable, in viewController: CardDetailsViewController) {

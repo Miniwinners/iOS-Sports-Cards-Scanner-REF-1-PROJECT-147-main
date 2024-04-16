@@ -103,6 +103,7 @@ private extension CardDetailsView {
         }
         cardContainerView.addSubviews(cardTitleLabel, cardSubTitleLabel, cardImageView)
         cardContainerView.backgroundColor = .clear
+
         cardTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.horizontalEdges.equalToSuperview().inset(20)
@@ -120,7 +121,7 @@ private extension CardDetailsView {
 
         backView.addSubview(cardContainerView)
         cardContainerView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(48)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(50)
             $0.width.greaterThanOrEqualTo(263)
             $0.centerX.equalToSuperview()
             $0.height.greaterThanOrEqualTo(400)

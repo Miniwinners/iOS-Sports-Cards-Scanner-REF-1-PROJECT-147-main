@@ -94,9 +94,12 @@ final class CardDetailsViewController: UIViewController {
 
 private extension CardDetailsViewController {
     func setupViews_unique() {
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 24
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview().inset(50)
+            $0.bottom.horizontalEdges.equalToSuperview()
         }
 
         scrollView.addSubview(cardDetailsView)

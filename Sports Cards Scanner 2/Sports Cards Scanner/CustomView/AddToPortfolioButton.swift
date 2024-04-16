@@ -20,7 +20,7 @@ final class AddToPortfolioButton: UIButton {
     override func updateConfiguration() {
         switch state {
         case .highlighted:
-            backgroundColor = .highlightColor2
+            backgroundColor = .red
         default:
             backgroundColor = .blue
         }
@@ -30,6 +30,8 @@ final class AddToPortfolioButton: UIButton {
 
 private extension AddToPortfolioButton {
     func setup_subviews() {
+        configuration = .plain()
+
         backgroundColor = .blue
         layer.cornerRadius = 12
         addSubview(addImageView)

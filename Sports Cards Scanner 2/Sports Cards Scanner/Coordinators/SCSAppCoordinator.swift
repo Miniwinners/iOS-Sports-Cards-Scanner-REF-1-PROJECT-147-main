@@ -252,7 +252,7 @@ private extension SCSAppCoordinator {
     }
 
     func presentCardDetails(of card: CardRepresentable, from viewController: UIViewController) {
-        let router = SCSModalNavigationRouter(parentViewController: viewController)
+        let router = ModalPresentationRouter(parentViewController: viewController, presentStyle: .close)
         let coordinator = CardDetailsCoordinator(router: router, card: card)
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }
