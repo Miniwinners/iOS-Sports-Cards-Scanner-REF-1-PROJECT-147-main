@@ -96,12 +96,12 @@ extension SCSAppCoordinator: MoreViewControllerDelegate {
     func moreViewControllerDidPressItem(_ item: ProfileItem, in viewController: MoreViewController) {
         switch item {
         case .cardCategories:
-            let router = ModalPresentationRouter(parentViewController: viewController, presentStyle: .close)
+            let router = SCSModalNavigationRouter(parentViewController: viewController)
             let coordinator = CardCategoriesCoordinator(router: router)
             presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
 
         case .updatePassword:
-            let router = ModalPresentationRouter(parentViewController: viewController, presentStyle: .close)
+            let router = SCSModalNavigationRouter(parentViewController: viewController)
             let coordinator = UpdatePasswordCoordinator(router: router, authService: authService)
             presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
 
@@ -252,7 +252,7 @@ private extension SCSAppCoordinator {
     }
 
     func presentCardDetails(of card: CardRepresentable, from viewController: UIViewController) {
-        let router = ModalPresentationRouter(parentViewController: viewController, presentStyle: .close)
+        let router = SCSModalNavigationRouter(parentViewController: viewController)
         let coordinator = CardDetailsCoordinator(router: router, card: card)
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }
@@ -288,8 +288,6 @@ private extension SCSAppCoordinator {
         zip(tabBar.items ?? [], TabBarItem.allCases).forEach {
             $0.image = $1.image
             $0.selectedImage = $1.selectedImage
-            $0.title = $1.text
-
         }
     }
 }

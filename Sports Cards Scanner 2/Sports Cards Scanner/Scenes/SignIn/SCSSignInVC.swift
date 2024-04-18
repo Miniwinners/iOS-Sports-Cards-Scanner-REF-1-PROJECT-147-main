@@ -74,7 +74,7 @@ private extension SCSSignInVC {
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.edges.top.equalTo(view.safeAreaLayoutGuide)
         }
 
         let statusBarView = UIView()

@@ -62,7 +62,7 @@ import UIKit
         return DeleteAccountPresentStyle(presentedViewController: presented, presenting: presenting)
     }
  }
-//final class DeleteAccountSheetRouter: NSObject {
+// final class DeleteAccountSheetRouter: NSObject {
 //    unowned let parentViewController: UIViewController
 //
 //    private var onDismissForViewController: [UIViewController: Closure] = [:]
@@ -71,9 +71,9 @@ import UIKit
 //        self.parentViewController = parentViewController
 //        super.init()
 //    }
-//}
+// }
 //
-//extension DeleteAccountSheetRouter: SCSRouter {
+// extension DeleteAccountSheetRouter: SCSRouter {
 //    func present_unique(_ viewController: UIViewController, animated: Bool, onDismissed: Closure?) {
 //        onDismissForViewController[viewController] = onDismissed
 //
@@ -99,9 +99,9 @@ import UIKit
 //            onDismissed?()
 //        }
 //    }
-//}
+// }
 //
-//private extension DeleteAccountSheetRouter {
+// private extension DeleteAccountSheetRouter {
 //    func setupPresentationController(for viewController: UIViewController) {
 //        guard let presentationController = viewController.sheetPresentationController else { return }
 //
@@ -122,11 +122,11 @@ import UIKit
 //        onDismiss()
 //        onDismissForViewController[viewController] = nil
 //    }
-//}
+// }
 //
-//extension DeleteAccountSheetRouter: UIAdaptivePresentationControllerDelegate {
+// extension DeleteAccountSheetRouter: UIAdaptivePresentationControllerDelegate {
 //    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
 //        let presentedViewController = presentationController.presentedViewController
 //        performOnDismiss(for: presentedViewController)
 //    }
-//}
+// }

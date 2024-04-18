@@ -48,11 +48,11 @@ final class PortfolioView: UIView {
     }
 
     func updateCardCollection(_ collection: CardCollectible?) {
-        cardsView.collectionView.setCardSet(collection)
+//        cardsView.collectionView.setCardSet(collection)
     }
 
     func updateCardDeck(_ deck: CardCollectible?) {
-        cardsView.deckView.setCardSet(deck)
+//        cardsView.deckView.setCardSet(deck)
     }
 
     func updateCardsTotalValue(_ cardsValue: Double) {
@@ -82,7 +82,7 @@ final class PortfolioView: UIView {
 
 private extension PortfolioView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .skyBlue
 
         addSubview(scrollView)
         scrollView.snp.makeConstraints {

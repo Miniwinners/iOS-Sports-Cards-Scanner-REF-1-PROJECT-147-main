@@ -68,7 +68,7 @@ final class DashboardView: UIView {
 
 private extension DashboardView {
     func setupSubviews_unique() {
-        backgroundColor = .skyBlue
+        backgroundColor = .white
 
         addSubview(scrollView)
         scrollView.snp.makeConstraints {

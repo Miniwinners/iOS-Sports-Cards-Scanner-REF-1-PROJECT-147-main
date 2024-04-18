@@ -1,5 +1,5 @@
 import UIKit
-
+import SnapKit
 final class CardCollectionViewController: UIViewController {
 
     @UserDefault(UserDefaults.KeyOption.isTotalPriceVisible, defaultValue: true)
@@ -19,6 +19,8 @@ final class CardCollectionViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var cardCollectionView: CardCollectionView = .init()
+
+    lazy var closeButton: CloseButton = .init(style: .close)
 
     init(cardCollectionManager: CardCollectionManager = CardSetsManager.shared) {
         self.cardCollectionManager = cardCollectionManager
@@ -49,6 +51,9 @@ final class CardCollectionViewController: UIViewController {
         setupActions_unique()
         reloadData()
         subscribeToNotifications()
+
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +64,7 @@ final class CardCollectionViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 
@@ -155,6 +160,10 @@ private extension CardCollectionViewController {
     }
 
     // MARK: - Actions
+
+    @objc func close() {
+        dismiss(animated: true)
+    }
 
     @objc func closeTapped_unique() {
         delegate?.cardCollectionViewControllerCloseTapped(self)

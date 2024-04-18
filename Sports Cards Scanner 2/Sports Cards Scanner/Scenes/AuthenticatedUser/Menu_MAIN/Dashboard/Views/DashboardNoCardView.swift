@@ -57,6 +57,7 @@ final class DashboardNoCardView: UIView {
     convenience init() {
         self.init(frame: .zero)
         setupSubviews_unique()
+        backgroundColor = .skyBlue
     }
 
 }

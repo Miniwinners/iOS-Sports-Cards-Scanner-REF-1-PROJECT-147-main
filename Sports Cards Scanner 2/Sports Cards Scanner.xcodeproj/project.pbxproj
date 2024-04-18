@@ -1405,9 +1405,9 @@
 			children = (
 				468C83372AB07FB7003DC91A /* Menu */,
 				4650DF062AA201FA00F6F13C /* CardPhotoCollectionViewCell.swift */,
-				4650DE8A2A9B449900F6F13C /* CardTableViewCell.swift */,
 				46BF05032A86708000034B72 /* SelectableTableViewCell.swift */,
 				46BF050B2A8674A200034B72 /* SwitchableTableViewCell.swift */,
+				4650DE8A2A9B449900F6F13C /* CardTableViewCell.swift */,
 				4645D3C82AAE6D55008AD896 /* RemovableCardCollectionViewCell.swift */,
 			);
 			path = Cells;

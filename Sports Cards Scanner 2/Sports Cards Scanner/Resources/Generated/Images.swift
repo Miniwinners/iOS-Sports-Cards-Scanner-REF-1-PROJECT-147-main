@@ -28,6 +28,8 @@ internal enum Images {
     internal static let backArrow = ImageAsset(name: "backArrow")
     internal static let bottomArrow = ImageAsset(name: "bottomArrow")
     internal static let cardCheck = ImageAsset(name: "cardCheck")
+    internal static let cardNocards = ImageAsset(name: "cardNocards")
+
     internal enum CardsDisplay {
         internal static let collection = ImageAsset(name: "cardsDisplay/collection")
         internal static let list = ImageAsset(name: "cardsDisplay/list")
@@ -65,6 +67,8 @@ internal enum Images {
     internal static let forwardArrowWhite = ImageAsset(name: "forwardArrowWhite")
     internal static let facebookLogo = ImageAsset(name: "facebookLogo")
     internal static let googleLogo = ImageAsset(name: "googleLogo")
+    internal static let highValue1 = ImageAsset(name: "highValue1")
+    internal static let highValue2 = ImageAsset(name: "highValue2")
     internal static let loadingIndicator = ImageAsset(name: "loadingIndicator")
     internal static let menuDots = ImageAsset(name: "menuDots")
     internal static let more = ImageAsset(name: "more")
@@ -81,6 +85,13 @@ internal enum Images {
     internal static let unchecked = ImageAsset(name: "unchecked")
     internal static let lockLogo = ImageAsset(name: "lockLogo")
     internal static let unlockLogo = ImageAsset(name: "unlockLogo")
+    internal static let loading = ImageAsset(name: "loading")
+    internal static let addPlus = ImageAsset(name: "addPlus")
+    internal static let addPlus2 = ImageAsset(name: "addPlus2")
+    internal static let createDeck = ImageAsset(name: "createDeck")
+    internal static let createCollection = ImageAsset(name: "createCollection")
+    internal static let collectionCards = ImageAsset(name: "collectionCards")
+
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

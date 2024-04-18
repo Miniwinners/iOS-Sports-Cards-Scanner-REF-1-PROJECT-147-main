@@ -121,10 +121,10 @@ private extension DashboardViewController {
     // MARK: - Actions
 
     @objc func scanCardTapped() {
-//        guard profileManager.isProfileLoaded else {
-//            loadProfileInfo()
-//            return
-//        }
+        guard profileManager.isProfileLoaded else {
+            loadProfileInfo()
+            return
+        }
         guard cardsManager.isScanEnabled else { return }
         delegate?.dashboardViewControllerScanCardTapped(self)
     }

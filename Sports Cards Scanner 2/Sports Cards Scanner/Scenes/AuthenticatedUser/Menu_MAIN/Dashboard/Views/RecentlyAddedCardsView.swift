@@ -14,8 +14,7 @@ final class RecentlyAddedCardsView: UIView {
     lazy var titleLabel: UILabel = { label in
         label.text = L10n.Dashboard.recentlyAdded
         label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 20)
-        label.setLineHeight(22)
+        label.font = .font(.ubuntuMedium500, size: 24)
         return label
     }(UILabel())
 
@@ -23,11 +22,6 @@ final class RecentlyAddedCardsView: UIView {
         button.setImage(Images.disclose.image, for: .normal)
         return button
     }(UIButton(type: .system))
-
-    lazy var underlineView: UIView = { view in
-        view.backgroundColor = .dividerColor
-        return view
-    }(UIView())
 
     lazy var cardsCollectionView: UICollectionView = { collectionView in
         collectionView.register(CardPhotoCollectionViewCell.self, forCellWithReuseIdentifier: CardPhotoCollectionViewCell.className)
@@ -86,25 +80,20 @@ private extension RecentlyAddedCardsView {
 
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
+            $0.height.equalTo(30)
             $0.top.leading.equalToSuperview().inset(16)
         }
 
         addSubview(discloseButton)
         discloseButton.snp.makeConstraints {
             $0.size.equalTo(44)
-            $0.top.trailing.equalToSuperview().inset(6)
-        }
-
-        addSubview(underlineView)
-        underlineView.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.top.equalToSuperview().inset(50)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.centerY.equalTo(titleLabel)
+            $0.trailing.equalToSuperview().inset(6)
         }
 
         addSubview(cardsCollectionView)
         cardsCollectionView.snp.makeConstraints {
-            $0.top.equalTo(underlineView.snp.bottom).offset(10)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.horizontalEdges.bottom.equalToSuperview().inset(16)
             cardsViewHeightConstraint = $0.height.equalTo(0).constraint
         }

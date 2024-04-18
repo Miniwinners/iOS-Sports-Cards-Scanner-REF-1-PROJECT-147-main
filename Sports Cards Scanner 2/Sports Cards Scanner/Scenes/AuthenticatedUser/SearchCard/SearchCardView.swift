@@ -78,7 +78,7 @@ private extension SearchCardView {
         setupSearchTextField()
         searchTextField.snp.makeConstraints {
             $0.height.equalTo(48)
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(52)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(62)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         searchTableView.snp.makeConstraints {

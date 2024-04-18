@@ -38,7 +38,7 @@ final class SignInView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
-        stackView.spacing = 20
+        stackView.spacing = 15
         return stackView
     }(UIStackView(arrangedSubviews: [errorLabel, emailView, passwordView]))
 
@@ -105,13 +105,14 @@ final class SignInView: UIView {
         )
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.setTitleColor(.blue, for: .normal)
+        button.titleLabel?.textAlignment = .right
         return button
     }(UIButton(type: .system))
 
     lazy var otherSignInMethodsView: UIStackView = { stackView in
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
-        stackView.spacing = 10
+        stackView.spacing = 20
         return stackView
     }(UIStackView(arrangedSubviews: [appleButton, facebookButton, googleButton]))
 
@@ -153,8 +154,8 @@ final class SignInView: UIView {
 private extension SignInView {
     func setupSubviews_unique() {
         addSubviews(
-            titleLabel, welcomeLabel, enterDetails, logInWith, fieldsView, signInButton,
-            forgotPasswordButton, otherSignInMethodsView, noAccountView
+            titleLabel, welcomeLabel, enterDetails, logInWith, fieldsView, signInButton
+            , otherSignInMethodsView, noAccountView
         )
         setupConstraints_unique()
     }
@@ -172,36 +173,39 @@ private extension SignInView {
             $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(32)
-            $0.width.equalTo(324)
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
         enterDetails.snp.makeConstraints {
             $0.top.equalTo(welcomeLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(324)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(22)
         }
         logInWith.snp.makeConstraints {
             $0.top.equalTo(otherSignInMethodsView.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(30)
-            $0.width.equalTo(324)
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
         fieldsView.snp.makeConstraints {
             $0.top.equalTo(logInWith.snp.bottom).offset(20).priority(.medium)
             $0.top.greaterThanOrEqualTo(logInWith.snp.bottom).offset(20)
             $0.top.lessThanOrEqualTo(logInWith.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
+
         }
         signInButton.snp.makeConstraints {
             $0.top.equalTo(fieldsView.snp.bottom).offset(80)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(58)
         }
+
+        addSubview(forgotPasswordButton)
         forgotPasswordButton.snp.makeConstraints {
-            $0.top.equalTo(fieldsView.snp.bottom).offset(10)
-            $0.right.equalTo(fieldsView)
             $0.width.equalTo(130)
             $0.height.equalTo(22)
+            $0.right.equalToSuperview().inset(20)
+            $0.top.equalTo(fieldsView.snp.bottom).offset(10)
         }
         [appleButton, facebookButton, googleButton]
             .map { $0.snp }
@@ -217,7 +221,8 @@ private extension SignInView {
         noAccountView.snp.makeConstraints {
             $0.top.equalTo(signInButton.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-            $0.height.lessThanOrEqualTo(200)
+            $0.height.equalTo(20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(30)
         }
     }
 }

@@ -6,6 +6,11 @@ final class CardCollectionView: UIView {
     lazy var noCardsView: CardCollectionNoCardsView = .init()
     lazy var cardsView: CardCollectionCardsView = .init()
 
+    lazy var backView: UIView = { view in
+        view.setupBackView()
+        return view
+    }(UIView())
+
     convenience init() {
         self.init(frame: .zero)
         setupSubviews_unique()
@@ -14,18 +19,21 @@ final class CardCollectionView: UIView {
     func showNoCards() {
         cardsView.removeFromSuperview()
 
-        addSubview(noCardsView)
+        backView.addSubview(noCardsView)
         noCardsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview().inset(30)
+            $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
 
     func showCards() {
         noCardsView.removeFromSuperview()
 
-        addSubview(cardsView)
+        backView.addSubview(cardsView)
         cardsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview().inset(40)
+            $0.horizontalEdges.bottom.equalToSuperview()
+
         }
     }
 }
@@ -38,6 +46,11 @@ private extension CardCollectionView {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        backgroundColor = .backColor
+        backgroundColor = .clear
+        addSubview(backView)
+        backView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(22)
+            make.bottom.horizontalEdges.equalToSuperview()
+        }
     }
 }

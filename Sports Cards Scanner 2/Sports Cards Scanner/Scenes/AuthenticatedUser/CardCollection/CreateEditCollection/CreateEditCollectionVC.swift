@@ -12,10 +12,19 @@ final class CreateEditCollectionVC: UIViewController {
 
     // MARK: - Subviews
 
+    lazy var backView: UIView = { view in
+        view.setupBackView()
+        return view
+    }(UIView())
+
+    lazy var closeButton: CloseButton = .init(style: .close)
+
+    lazy var titleLabel: TitleLabel = .init()
+
     lazy var nameTextField: CommonTextField = { textField in
         textField.borderStyle = .none
         textField.font = .font(.interRegular, size: 16)
-        textField.backgroundColor = .white
+        textField.backgroundColor = .skyBlue
         textField.cornerRadius = 12
         textField.placeholder = L10n.CreateCollection.CollectionName.placeholder
         textField.returnKeyType = .done
@@ -32,6 +41,7 @@ final class CreateEditCollectionVC: UIViewController {
 
     lazy var createButton: CommonButton = { button in
         button.setButtonTitle(L10n.CreateCollection.Action.create)
+        button.setImage(Images.collectionCards.image, for: .normal)
         button.isEnabled = false
         return button
     }(CommonButton(style: .default))
@@ -70,7 +80,7 @@ final class CreateEditCollectionVC: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
     }
@@ -83,13 +93,19 @@ private extension CreateEditCollectionVC {
     }
 
     func setupViews_unique() {
-        view.backgroundColor = .backColor
+        view.backgroundColor = .clear
+        view.addSubview(backView)
+        backView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalToSuperview()
+            make.top.equalToSuperview().inset(22)
+        }
+//        setupNavigationItem()
 
-        setupNavigationItem()
-
-        view.addSubviews(nameTextField)
+        titleLabel.setupLabel(in: backView)
+        titleLabel.text = cardCollection.isNil ? L10n.CreateCollection.title : L10n.EditCollection.title
+        backView.addSubview(nameTextField)
         nameTextField.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(46)
         }
@@ -103,11 +119,12 @@ private extension CreateEditCollectionVC {
         }
 
         nameTextField.text = cardCollection?.name
-
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 
     func setupForCreation() {
-        view.addSubview(createButton)
+        backView.addSubview(createButton)
         createButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -121,7 +138,7 @@ private extension CreateEditCollectionVC {
         buttonsStackView.distribution = .fillEqually
         buttonsStackView.spacing = 20
 
-        view.addSubview(buttonsStackView)
+        backView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -140,20 +157,20 @@ private extension CreateEditCollectionVC {
         }
     }
 
-    func setupNavigationItem() {
-        if cardCollection.isNil {
-            navigationItem.rightBarButtonItem = .init(
-                image: Images.close.image,
-                style: .plain,
-                target: self,
-                action: #selector(closeTapped_unique)
-            )
-            navigationItem.rightBarButtonItem?.tintColor = .black
-        } else {
-            navigationItem.setHidesBackButton(true, animated: false)
-            navigationItem.leftBarButtonItem = nil
-        }
-    }
+//    func setupNavigationItem() {
+//        if cardCollection.isNil {
+//            navigationItem.rightBarButtonItem = .init(
+//                image: Images.close.image,
+//                style: .plain,
+//                target: self,
+//                action: #selector(closeTapped_unique)
+//            )
+//            navigationItem.rightBarButtonItem?.tintColor = .black
+//        } else {
+//            navigationItem.setHidesBackButton(true, animated: false)
+//            navigationItem.leftBarButtonItem = nil
+//        }
+//    }
 
     func updateCreateButton_unique() {
         guard cardCollection.isNil else { return }
@@ -166,6 +183,10 @@ private extension CreateEditCollectionVC {
     }
 
     // MARK: - Actions
+
+    @objc func close() {
+        dismiss(animated: true)
+    }
 
     @objc func closeTapped_unique() {
         delegate?.createCollectionVCCloseTapped(self)

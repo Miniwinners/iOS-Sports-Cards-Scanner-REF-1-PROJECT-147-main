@@ -17,6 +17,10 @@ final class CardDetailsView: UIView {
     lazy var cardImageView: UIImageView = { imageView in
         imageView.contentMode = .scaleAspectFill
         imageView.cornerRadius = 20
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOpacity = 0.5
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        imageView.layer.shadowRadius = 5
         return imageView
     }(UIImageView())
 
@@ -105,7 +109,7 @@ private extension CardDetailsView {
         cardContainerView.backgroundColor = .clear
 
         cardTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
+            $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         cardSubTitleLabel.snp.makeConstraints {
@@ -121,7 +125,7 @@ private extension CardDetailsView {
 
         backView.addSubview(cardContainerView)
         cardContainerView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(50)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(32)
             $0.width.greaterThanOrEqualTo(263)
             $0.centerX.equalToSuperview()
             $0.height.greaterThanOrEqualTo(400)

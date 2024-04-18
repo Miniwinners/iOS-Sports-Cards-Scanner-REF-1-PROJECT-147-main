@@ -62,7 +62,7 @@ extension ScanCardCoordinator: IdentifyingCardCoordinatorDelegate {
     }
 
     func identifyingCardCoordinatorDidFinish(withCard identifiedCard: CardRepresentable, coordinator: IdentifyingCardCoordinator) {
-        let router = ModalPresentationRouter(parentViewController: scanCardViewController, presentStyle: .common)
+        let router = SCSModalNavigationRouter(parentViewController: scanCardViewController)
         let coordinator = CardDetailsCoordinator(
             router: router,
             card: identifiedCard,
@@ -75,7 +75,7 @@ extension ScanCardCoordinator: IdentifyingCardCoordinatorDelegate {
     }
 
     func identifyingCardCoordinatorDidFinish(withError error: Error, coordinator: IdentifyingCardCoordinator) {
-        let router = ModalPresentationRouter(parentViewController: scanCardViewController, presentStyle: .close)
+        let router = SCSModalNavigationRouter(parentViewController: scanCardViewController)
         let coordinator = SearchCardCoordinator(router: router, card: scannedCard)
         presentChildCoordinator(coordinator, animated: true) { [weak self] in
             self?.scanCardViewController.restartScanning()

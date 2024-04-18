@@ -4,30 +4,29 @@ import SnapKit
 final class CategoryValueTableViewCell: UITableViewCell {
 
     lazy var categoryLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuMedium500, size: 14)
+        label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }(UILabel())
 
     lazy var valueLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 20)
+        label.font = .font(.ubuntuBold700, size: 20)
         label.textColor = .greenColor
         return label
     }(UILabel())
 
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 14)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuRegular400, size: 14)
+        label.textColor = .black
         label.numberOfLines = 0
         return label
     }(UILabel())
 
-    lazy var separatorView: UIView = { view in
-        view.backgroundColor = .dividerColor
-        return view
-    }(UIView())
+    lazy var cardImageView: UIImageView = { imageView in
+        return imageView
+    }(UIImageView())
 
     private var selfHeightConstraint: Constraint!
 
@@ -50,6 +49,10 @@ final class CategoryValueTableViewCell: UITableViewCell {
         valueLabel.setLineHeight(22)
     }
 
+    func setCardImage(_ image: UIImage) {
+        cardImageView.image = image
+    }
+
     func setCardsNumber(_ number: Int) {
         switch number {
         case 0:
@@ -64,45 +67,50 @@ final class CategoryValueTableViewCell: UITableViewCell {
     }
 
     func setCellPosition(_ cellPosition: CellPosition) {
-        separatorView.isHidden = cellPosition.containsPosition(.atBottomPosition)
-        selfHeightConstraint.update(offset: cellPosition.containsPosition(.atBottomPosition) ? 77 : 74)
+        selfHeightConstraint.update(offset: cellPosition.containsPosition(.atBottomPosition) ? 78 : 74)
     }
+    lazy var containerView: UIView = .init()
+
 }
 
-private extension CategoryValueTableViewCell {
-    func setupSubviews_unique() {
-        backgroundColor = .clear
-        contentView.backgroundColor = .clear
+extension CategoryValueTableViewCell {
 
+    func setupSubviews_unique() {
+        backgroundColor = .white
+        layer.cornerRadius = 16
+        layer.masksToBounds = true
         let highlightedView = UIView()
+        highlightedView.layer.cornerRadius = 16
         highlightedView.backgroundColor = .highlightColor2
         selectedBackgroundView = highlightedView
 
-        let containerView = UIView()
+        containerView.layer.cornerRadius = 16
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.horizontalEdges.equalToSuperview()
             $0.verticalEdges.equalToSuperview()
-            selfHeightConstraint = $0.height.equalTo(0).offset(74).constraint
+            selfHeightConstraint = $0.height.equalTo(0).offset(100).constraint
         }
 
-        containerView.addSubviews(categoryLabel, valueLabel, cardsNumberLabel, separatorView)
-        categoryLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10)
-            $0.leading.equalToSuperview()
+        containerView.addSubviews(cardImageView, categoryLabel, valueLabel, cardsNumberLabel)
+        cardImageView.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().inset(15)
+            make.size.equalTo(22)
         }
+        categoryLabel.snp.makeConstraints {
+//            $0.top.equalToSuperview().inset(10)
+            $0.leading.bottom.equalToSuperview().inset(15)
+        }
+
         valueLabel.snp.makeConstraints {
-            $0.top.equalTo(categoryLabel.snp.bottom).offset(10)
-            $0.leading.equalToSuperview()
+            $0.top.equalToSuperview().inset(15)
+            $0.right.equalToSuperview().inset(15)
         }
         cardsNumberLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(13)
+            $0.centerY.equalTo(categoryLabel)
             $0.leading.equalTo(categoryLabel.snp.trailing).offset(30)
-            $0.trailing.equalToSuperview()
+            $0.right.equalToSuperview().inset(15)
         }
-        separatorView.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.horizontalEdges.bottom.equalToSuperview()
-        }
+
     }
 }

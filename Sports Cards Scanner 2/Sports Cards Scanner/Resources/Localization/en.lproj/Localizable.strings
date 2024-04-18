@@ -50,8 +50,8 @@
 
 "portfolio_title" = "Portfolio";
 "portfolio_scanInstructions" = "Tap to open the scanner and your first card";
-"portfolio_collection_create" = "Create\nCollection";
-"portfolio_deck_create" = "Create\nDeck";
+"portfolio_collection_create" = "Create Collection";
+"portfolio_deck_create" = "Create Deck";
 "portfolio_deck_description" = "Trading card game deck";
 "portfolio_collection_description" = "Custom Collection";
 "portfolio_cards" = "Cards";
@@ -206,7 +206,7 @@
 "createCollection_action_create" = "Create";
 
 "cardCollection_estimatedValue" = "Estimated Value";
-"cardCollection_noCards" = "There are no cards in this collection";
+"cardCollection_noCards" = "This Collection has no cards";
 "cardCollection_action_addCards" = "Add Cards";
 
 "addCards_title" = "Add Cards to \"%@\"";

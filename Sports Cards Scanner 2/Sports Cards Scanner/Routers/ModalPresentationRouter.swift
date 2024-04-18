@@ -19,34 +19,35 @@ extension ModalPresentationRouter: SCSRouter {
 
         if let presentedViewController = parentViewController.presentedViewController {
             performOnDismiss(for: presentedViewController)
-            switch presentStyle {
-            case .back:
-                print("back")
-            case .backDone:
-                print("back done")
-            case .close:
-                viewController.closeButton()
-            case .common:
-                print("common")
-            default:
-                print("default")
-            }
+//            switch presentStyle {
+//            case .back:
+//                print("back")
+//            case .backDone:
+//                print("back done")
+//            case .close:
+//                viewController.closeButton()
+//                print("close")
+//            case .common:
+//                print("common")
+//            default:
+//                print("default")
+//            }
             presentedViewController.dismiss(animated: animated) { [weak self] in
                 self?.parentViewController.present(viewController, animated: animated)
             }
         } else {
-            switch presentStyle {
-            case .back:
-                print("back")
-            case .backDone:
-                print("back done")
-            case .close:
-                viewController.closeButton()
-            case .common:
-                print("common")
-            default:
-                print("default")
-            }
+//            switch presentStyle {
+//            case .back:
+//                print("back")
+//            case .backDone:
+//                print("back done")
+//            case .close:
+//                viewController.closeButton()
+//            case .common:
+//                print("common")
+//            default:
+//                print("default")
+//            }
             parentViewController.present(viewController, animated: animated)
         }
     }

@@ -16,6 +16,9 @@ final class SearchCardViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var searchCardView: SearchCardView = .init()
+    lazy var closeButton: CloseButton = { button in
+        return button
+    }(CloseButton(style: .close, frame: .zero))
 
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
@@ -41,6 +44,8 @@ final class SearchCardViewController: UIViewController {
 
     override func loadView() {
         view = searchCardView
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 
     override func viewDidLoad() {
@@ -63,7 +68,7 @@ final class SearchCardViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -130,6 +135,10 @@ private extension SearchCardViewController {
     }
 
     // MARK: - Actions
+
+    @objc func close() {
+        dismiss(animated: true)
+    }
 
     @objc func closeTapped_unique() {
         delegate?.searchCardViewControllerCloseTapped(self)
@@ -210,6 +219,5 @@ extension SearchCardViewController: UITableViewDelegate {
 
         guard let card = getCard(at: indexPath) else { return }
         delegate?.searchCardViewControllerDidSelect(card: card, in: self)
-//        present(CardDetailsViewController(card: card), animated: true)
     }
 }

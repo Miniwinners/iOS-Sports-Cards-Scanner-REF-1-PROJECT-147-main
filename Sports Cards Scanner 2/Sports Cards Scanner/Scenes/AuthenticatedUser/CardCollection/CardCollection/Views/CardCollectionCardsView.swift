@@ -133,7 +133,7 @@ final class CardCollectionCardsView: UIView {
 
 private extension CardCollectionCardsView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
 
         setupInfoContainer()
         setupPriceContainer()

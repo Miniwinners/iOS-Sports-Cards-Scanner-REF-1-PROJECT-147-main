@@ -5,6 +5,11 @@ final class PricingReportView: UIView {
 
     lazy var detailsView: PricingReportDetailsView = .init()
 
+    lazy var backView: UIView = { view in
+        view.setupBackView()
+        return view
+    }(UIView())
+
     lazy var noSalesView: CommonMessageView = { view in
         view.setMessageTitle(L10n.PricingReport.Details.noSales)
         return view
@@ -43,11 +48,16 @@ final class PricingReportView: UIView {
 
 private extension PricingReportView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
-
-        addSubview(salesTableView)
-        salesTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        backgroundColor = .clear
+        addSubview(backView)
+        backView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(22)
+            make.horizontalEdges.bottom.equalToSuperview()
+        }
+        backView.addSubview(salesTableView)
+        salesTableView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalToSuperview()
+            make.top.equalToSuperview().inset(32)
         }
 
         salesTableView.tableHeaderView = tableHeaderView

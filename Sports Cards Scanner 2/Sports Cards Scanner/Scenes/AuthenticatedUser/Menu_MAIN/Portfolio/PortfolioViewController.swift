@@ -98,7 +98,7 @@ private extension PortfolioViewController {
     }
 
     func categoryCards(at indexPath: IndexPath) -> CategoryCards? {
-        categoriesCardsInfo[safe: indexPath.row]
+        categoriesCardsInfo[safe: indexPath.section]
     }
 
     func loadProfileInfo() {
@@ -122,10 +122,10 @@ private extension PortfolioViewController {
     // MARK: - Actions
 
     @objc func scanCardTapped() {
-//        guard profileManager.isProfileLoaded else {
-//            loadProfileInfo()
-//            return
-//        }
+        guard profileManager.isProfileLoaded else {
+            loadProfileInfo()
+            return
+        }
         guard cardsManager.isScanEnabled else { return }
         delegate?.portfolioViewControllerScanCardTapped(self)
     }
@@ -164,11 +164,12 @@ private extension PortfolioViewController {
 
 extension PortfolioViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        categoriesCardsInfo.count
+
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categoriesCardsInfo.count
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -178,11 +179,29 @@ extension PortfolioViewController: UITableViewDataSource {
             cell?.setCategory(categoryCards.category)
             cell?.setCardsValue(categoryCards.cardsValue)
             cell?.setCardsNumber(categoryCards.cardsNumber)
+            cell?.setCardImage(categoryCards.category.image)
         }
         cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: categoriesCardsInfo))
 
         return cell ?? UITableViewCell()
     }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0: return 0
+        default: return 9
+        }
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = .clear
+        return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 78
+    }
+
 }
 
 // MARK: - TableView Delegate

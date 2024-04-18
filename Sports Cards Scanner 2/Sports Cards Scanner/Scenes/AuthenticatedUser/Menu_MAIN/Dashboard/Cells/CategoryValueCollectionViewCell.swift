@@ -7,25 +7,20 @@ final class CategoryValueCollectionViewCell: UICollectionViewCell {
 
     lazy var categoryLabel: UILabel = { label in
         label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 14)
+        label.font = .font(.ubuntuRegular400, size: 14)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }(UILabel())
 
     lazy var priceLabel: UILabel = { label in
         label.textColor = .greenColor
-        label.font = .font(.interRegular, size: 14)
+        label.font = .font(.ubuntuRegular400, size: 14)
         label.lineBreakMode = .byTruncatingMiddle
         label.textAlignment = .right
         return label
     }(UILabel())
 
-    lazy var underlineView: UIView = { view in
-        view.backgroundColor = .dividerColor
-        return view
-    }(UIView())
-
-    override init(frame: CGRect) {
+      override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews_unique()
     }
@@ -47,6 +42,7 @@ private extension CategoryValueCollectionViewCell {
         contentView.backgroundColor = .clear
 
         let containerView = UIView()
+        containerView.backgroundColor = .clear
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
             $0.height.equalTo(Self.cellHeight)
@@ -62,14 +58,9 @@ private extension CategoryValueCollectionViewCell {
         containerView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(7)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(4)
             $0.leading.greaterThanOrEqualTo(categoryLabel.snp.trailing).offset(8)
         }
 
-        containerView.addSubview(underlineView)
-        underlineView.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.horizontalEdges.bottom.equalToSuperview()
-        }
     }
 }

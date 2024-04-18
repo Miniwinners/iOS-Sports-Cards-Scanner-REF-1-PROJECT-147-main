@@ -3,9 +3,11 @@ import SnapKit
 
 final class CommonMessageView: UIView {
 
+    lazy var cardImage: UIImageView = .init(image: Images.cardNocards.image)
+
     lazy var titleLabel: UILabel = { label in
-        label.textColor = .labelColor
-        label.font = .font(.interRegular, size: 20)
+        label.textColor = .singINLabel
+        label.font = .font(.ubuntuLight300, size: 16)
         label.numberOfLines = 0
         return label
     }(UILabel())
@@ -22,13 +24,18 @@ final class CommonMessageView: UIView {
     }
 
     private func setupSubviews_unique() {
-        backgroundColor = .white
-        cornerRadius = 12
-
+        backgroundColor = .clear
+//        cornerRadius = 12
+        addSubview(cardImage)
+        cardImage.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.size.equalTo(32)
+        }
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(10)
-            $0.verticalEdges.equalToSuperview().inset(16)
+            $0.top.equalTo(cardImage.snp.bottom).offset(15)
+            $0.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(16)
         }
     }
 

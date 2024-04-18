@@ -13,21 +13,21 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>ios.team.1</string>
+	<string>kuzminov.a-techspaceapp.com</string>
 	<key>PROJECT_ID</key>
 	<string>sports-cards-scanner</string>
 	<key>STORAGE_BUCKET</key>
 	<string>sports-cards-scanner.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:92963946199:ios:6db98cbe4c1d3cdf233a92</string>
 </dict>

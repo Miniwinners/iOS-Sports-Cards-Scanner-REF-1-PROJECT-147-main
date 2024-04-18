@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
-
+import Foundation
 final class CardDetailsViewController: UIViewController {
 
     private let searchCardService: CardSearchable
@@ -25,6 +25,10 @@ final class CardDetailsViewController: UIViewController {
 
     // MARK: - Subviews
 
+    lazy var closeButton: CloseButton = { button in
+        return button
+    }(CloseButton(style: .close, frame: .zero))
+
     lazy var scrollView: UIScrollView = { scrollView in
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .white
@@ -33,6 +37,11 @@ final class CardDetailsViewController: UIViewController {
     }(BaseScrollView())
 
     lazy var cardDetailsView: CardDetailsView = .init()
+
+    lazy var backGroundView: UIView = .init()
+    lazy var indicatorImageView: UIImageView = .init(image: Images.loading.image)
+
+    lazy var overlayView: UIView = .init()
 
     init(
         card: CardRepresentable,
@@ -70,6 +79,7 @@ final class CardDetailsViewController: UIViewController {
         setupViewsData_unique()
         setupActions_unique()
         subscribeToNotifications()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +90,7 @@ final class CardDetailsViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     func graderDidSelect(_ grader: CardGrader) {
@@ -95,10 +105,16 @@ final class CardDetailsViewController: UIViewController {
 private extension CardDetailsViewController {
     func setupViews_unique() {
         view.backgroundColor = .clear
-        view.layer.cornerRadius = 24
-        view.addSubview(scrollView)
+        view.addSubview(backGroundView)
+        backGroundView.layer.cornerRadius = 24
+        backGroundView.backgroundColor = .white
+        backGroundView.snp.makeConstraints { make in
+            make.bottom.horizontalEdges.equalToSuperview()
+            make.top.equalToSuperview().inset(22)
+        }
+        backGroundView.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(50)
+            $0.top.equalToSuperview().inset(32)
             $0.bottom.horizontalEdges.equalToSuperview()
         }
 
@@ -110,7 +126,12 @@ private extension CardDetailsViewController {
         }
 
         cardDetailsView.hidesNoNeededViews(for: cardType)
-
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        view.addSubview(overlayView)
+        view.addSubview(indicatorImageView)
+        overlayView.alpha = 0
+        indicatorImageView.alpha = 0
     }
 
     func setupViewsData_unique() {
@@ -184,6 +205,10 @@ private extension CardDetailsViewController {
 
     // MARK: - Actions
 
+    @objc func close() {
+        dismiss(animated: true)
+    }
+
     @objc func closeTapped_unique() {
         delegate?.cardDetailsViewControllerCloseTapped(self)
     }
@@ -211,7 +236,38 @@ private extension CardDetailsViewController {
         }
     }
 
+    func setupLoadingScreen() {
+
+        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+
+        overlayView = UIView(frame: window.bounds)
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+
+        overlayView.addSubview(indicatorImageView)
+        indicatorImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(95)
+        }
+        window.addSubview(overlayView)
+
+        UIView.animate(withDuration: 0.3) {
+            self.overlayView.alpha = 1
+            self.indicatorImageView.alpha = 1
+            self.animateIndicator()
+
+        }
+    }
+
+    func animateIndicator() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.indicatorImageView.transform = self.indicatorImageView.transform.rotated(by: .pi)
+        } completion: { _ in
+            self.animateIndicator()
+        }
+    }
+
     @objc func addCardTapped() {
+        setupLoadingScreen()
         guard NetworkMonitoringService.shared.isNetworkAvailable else {
             let alertType: SCSAlertType = .noInternetConnection(okAction: nil)
             AlertService.shared.presentAC(type: alertType, in: self)
@@ -233,7 +289,16 @@ private extension CardDetailsViewController {
             detailedCard.imageSource = imageURL.absoluteString
             cardsManager.addNewCard(detailedCard)
             cardsManager.saveCardsIfNeeded()
-            delegate?.cardDetailsViewControllerCardDidAdd(self)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.overlayView.alpha = 0
+                }) { _ in
+                    self.overlayView.removeFromSuperview()
+
+                    self.delegate?.cardDetailsViewControllerCardDidAdd(self)
+
+                }
+            }
         }
     }
 

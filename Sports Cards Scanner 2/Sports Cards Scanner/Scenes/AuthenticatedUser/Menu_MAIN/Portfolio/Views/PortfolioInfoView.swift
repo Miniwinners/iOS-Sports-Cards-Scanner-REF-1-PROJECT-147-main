@@ -4,16 +4,47 @@ import SnapKit
 final class PortfolioInfoView: UIView {
 
     lazy var cardsValueLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 24)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuMedium500, size: 24)
+        label.textColor = .black
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.required, for: .vertical)
+        return label
+    }(UILabel())
+
+    lazy var containerView: UIView = { view in
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 24
+        view.layer.borderColor = UIColor.blue.cgColor
+        view.layer.borderWidth = 1
+        return view
+    }(UIView())
+
+    lazy var estimatedValueLabel: UILabel = { label in
+        label.font = .font(.ubuntuRegular400, size: 14)
+        label.text = L10n.Portfolio.estimatedValue
+        label.textColor = .black
+        return label
+    }(UILabel())
+
+    lazy var cardsLabel: UILabel = { label in
+        label.font = .font(.ubuntuRegular400, size: 14)
+        label.text = L10n.Portfolio.cards
+        label.textColor = .black
+        return label
+    }(UILabel())
+
+    lazy var titleLabel: UILabel = { label in
+        label.font = .font(.ubuntuMedium500, size: 24)
+        label.text = L10n.Portfolio.title
+        label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }(UILabel())
 
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 24)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuMedium500, size: 24)
+        label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -40,57 +71,43 @@ final class PortfolioInfoView: UIView {
 
 private extension PortfolioInfoView {
     func setupSubviews_unique() {
-        backgroundColor = .white
-        cornerRadius = 12
+        backgroundColor = .clear
+        addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.top.leading.equalToSuperview()
+            $0.height.equalTo(26)
+        }
+        addSubview(containerView)
+        containerView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.horizontalEdges.bottom.equalToSuperview()
+        }
         snp.makeConstraints {
-            $0.height.equalTo(122)
+            $0.height.equalTo(148)
+        }
+        containerView.addSubviews(estimatedValueLabel, cardsLabel)
+        estimatedValueLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(30)
+            $0.leading.equalToSuperview().inset(15)
+            $0.height.equalTo(18)
         }
 
-        setupStaticLabels()
-
-        addSubviews(cardsValueLabel, cardsNumberLabel)
+        containerView.addSubviews(cardsValueLabel, cardsNumberLabel)
         cardsValueLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(16)
-            $0.top.equalToSuperview().inset(58)
+            $0.leading.equalToSuperview().inset(15)
+            $0.height.equalTo(26)
+            $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(5)
         }
         cardsNumberLabel.snp.makeConstraints {
             $0.leading.greaterThanOrEqualTo(cardsValueLabel.snp.trailing).offset(8)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.top.equalToSuperview().inset(58)
+            $0.trailing.equalToSuperview().inset(15)
+            $0.top.equalToSuperview().inset(30)
+            $0.height.equalTo(26)
         }
-    }
-
-    func setupStaticLabels() {
-        let titleLabel = UILabel()
-        titleLabel.font = .font(.interBold, size: 24)
-        titleLabel.text = L10n.Portfolio.title
-        titleLabel.textColor = .labelColor
-        titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        titleLabel.setContentHuggingPriority(.required, for: .vertical)
-        titleLabel.setLineHeight(28)
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
-        }
-
-        let estimatedValueLabel = UILabel()
-        estimatedValueLabel.font = .font(.interRegular, size: 14)
-        estimatedValueLabel.text = L10n.Portfolio.estimatedValue
-        estimatedValueLabel.textColor = .labelColor
-        estimatedValueLabel.setLineHeight(22)
-        addSubview(estimatedValueLabel)
-        estimatedValueLabel.snp.makeConstraints {
-            $0.leading.bottom.equalToSuperview().inset(16)
-        }
-
-        let cardsLabel = UILabel()
-        cardsLabel.font = .font(.interRegular, size: 14)
-        cardsLabel.text = L10n.Portfolio.cards
-        cardsLabel.textColor = .labelColor
-        cardsLabel.setLineHeight(22)
-        addSubview(cardsLabel)
         cardsLabel.snp.makeConstraints {
-            $0.trailing.bottom.equalToSuperview().inset(16)
+            $0.trailing.equalToSuperview().inset(15)
+            $0.top.equalTo(cardsNumberLabel.snp.bottom).offset(5)
+            $0.height.equalTo(20)
         }
     }
 }

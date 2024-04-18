@@ -6,18 +6,21 @@ final class CurrentCardsValueView: UIView {
     private var categoryValues: [(CardCategory, Double)] = []
 
     private var categoriesViewHeightConstraint: Constraint?
-
+    private var spacing: CGFloat?
     lazy var titleLabel: UILabel = { label in
         label.text = L10n.Dashboard.currentValue
-        label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 20)
-        label.setLineHeight(22)
+        label.textColor = .logInLabel
+        label.font = .font(.ubuntuMedium500, size: 24)
         return label
     }(UILabel())
 
+    lazy var customViewOne: UIView = .init()
+    lazy var customViewTwo: UIView = .init()
+
     lazy var priceLabel: UILabel = { label in
         label.textColor = .greenColor
-        label.font = .font(.interMedium, size: 20)
+        label.textAlignment = .left
+        label.font = .font(.ubuntuBold700, size: 24)
         return label
     }(UILabel())
 
@@ -25,11 +28,6 @@ final class CurrentCardsValueView: UIView {
         button.setImage(Images.disclose.image, for: .normal)
         return button
     }(UIButton(type: .system))
-
-    lazy var underlineView: UIView = { view in
-        view.backgroundColor = .dividerColor
-        return view
-    }(UIView())
 
     lazy var categoriesCollectionView: UICollectionView = { collectionView in
         collectionView.register(CategoryValueCollectionViewCell.self, forCellWithReuseIdentifier: CategoryValueCollectionViewCell.className)
@@ -47,7 +45,6 @@ final class CurrentCardsValueView: UIView {
 
     func setCurrentCardsValue(_ value: Double) {
         priceLabel.text = value.formattedAsPrice
-        priceLabel.setLineHeight(22)
         priceLabel.lineBreakMode = .byTruncatingMiddle
     }
 
@@ -61,39 +58,49 @@ final class CurrentCardsValueView: UIView {
 
 private extension CurrentCardsValueView {
     func setupSubviews_unique() {
-        backgroundColor = .white
-        cornerRadius = 12
+        backgroundColor = .clear
+        customViewOne.backgroundColor = .skyBlue
+        customViewTwo.backgroundColor = .skyBlue
+        customViewOne.layer.cornerRadius = 16
+        customViewTwo.layer.cornerRadius = 16
 
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(16)
+            $0.width.equalTo(160)
+            $0.height.equalTo(30)
         }
 
         addSubview(priceLabel)
         priceLabel.snp.makeConstraints {
             $0.centerY.equalTo(titleLabel)
-            $0.leading.equalTo(titleLabel.snp.trailing).offset(12)
+            $0.leading.equalTo(titleLabel.snp.trailing).offset(10)
+            $0.height.equalTo(30)
         }
 
         addSubview(discloseButton)
         discloseButton.snp.makeConstraints {
             $0.size.equalTo(44)
-            $0.top.trailing.equalToSuperview().inset(6)
+            $0.trailing.equalToSuperview().inset(6)
+            $0.centerY.equalTo(titleLabel)
             $0.leading.equalTo(priceLabel.snp.trailing).offset(8)
         }
 
-        addSubview(underlineView)
-        underlineView.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.top.equalToSuperview().inset(50)
-            $0.horizontalEdges.equalToSuperview().inset(16)
-        }
+        let stackView = UIStackView(arrangedSubviews: [customViewOne, customViewTwo])
+
+        addSubview(stackView)
 
         addSubview(categoriesCollectionView)
         categoriesCollectionView.snp.makeConstraints {
-            $0.top.equalTo(underlineView.snp.bottom).offset(10)
-            $0.horizontalEdges.bottom.equalToSuperview().inset(16)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.horizontalEdges.bottom.equalToSuperview().inset(24)
             categoriesViewHeightConstraint = $0.height.equalTo(0).constraint
+        }
+        stackView.spacing = self.spacing ?? 10
+        stackView.distribution = .fillEqually
+        stackView.snp.makeConstraints { make in
+            make.size.equalTo(categoriesCollectionView).offset(24)
+            make.center.equalTo(categoriesCollectionView)
         }
     }
 
@@ -104,6 +111,7 @@ private extension CurrentCardsValueView {
     }
 
     func categoryValue(at indexPath: IndexPath) -> (CardCategory, Double)? {
+
         categoryValues[safe: indexPath.row]
     }
 
@@ -134,12 +142,12 @@ extension CurrentCardsValueView: UICollectionViewDataSource, UICollectionViewDel
         if let categoryValue = categoryValue(at: indexPath) {
             cell?.set(category: categoryValue.0, value: categoryValue.1)
         }
-
         return cell ?? UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = (collectionView.bounds.width - 20) / 2
+        spacing = collectionView.bounds.width - 2 * itemWidth
         let itemHeight = CategoryValueCollectionViewCell.cellHeight
         return .init(width: itemWidth, height: itemHeight)
     }

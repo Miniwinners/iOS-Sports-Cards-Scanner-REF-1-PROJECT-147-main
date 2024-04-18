@@ -87,7 +87,7 @@ final class SCSSignUpVC: UIViewController {
 
 private extension SCSSignUpVC {
     func setupViews_unique() {
-        view.backgroundColor = .backColor
+        view.backgroundColor = .white
 
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
@@ -95,7 +95,7 @@ private extension SCSSignUpVC {
         }
 
         let statusBarView = UIView()
-        statusBarView.backgroundColor = .backColor
+        statusBarView.backgroundColor = .white
         view.addSubview(statusBarView)
         statusBarView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()

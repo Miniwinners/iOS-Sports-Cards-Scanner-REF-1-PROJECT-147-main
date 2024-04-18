@@ -6,8 +6,8 @@ final class HighestCardsValueView: UIView {
     lazy var titleLabel: UILabel = { label in
         label.text = L10n.Dashboard.highestValue
         label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 20)
-        label.setLineHeight(22)
+        label.font = .font(.ubuntuMedium500, size: 24)
+        label.setLineHeight(28)
         return label
     }(UILabel())
 
@@ -15,11 +15,6 @@ final class HighestCardsValueView: UIView {
         button.setImage(Images.disclose.image, for: .normal)
         return button
     }(UIButton(type: .system))
-
-    lazy var underlineView: UIView = { view in
-        view.backgroundColor = .dividerColor
-        return view
-    }(UIView())
 
     lazy var cardButton: CommonButton = .init(style: .custom(createCardButtonAppearance()))
 
@@ -58,16 +53,9 @@ private extension HighestCardsValueView {
             $0.top.trailing.equalToSuperview().inset(6)
         }
 
-        addSubview(underlineView)
-        underlineView.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.top.equalToSuperview().inset(50)
-            $0.horizontalEdges.equalToSuperview().inset(16)
-        }
-
         addSubview(cardButton)
         cardButton.snp.makeConstraints {
-            $0.top.equalTo(underlineView.snp.bottom)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
 

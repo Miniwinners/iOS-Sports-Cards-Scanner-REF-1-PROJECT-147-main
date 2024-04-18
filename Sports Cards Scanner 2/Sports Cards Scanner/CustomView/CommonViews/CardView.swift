@@ -4,7 +4,7 @@ import Kingfisher
 
 final class CardView: UIView {
 
-    static let viewHeight: CGFloat = 400
+    static let viewHeight: CGFloat = 297
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .labelColor4
@@ -134,22 +134,29 @@ private extension CardView {
             $0.center.equalToSuperview()
         }
 
-        addSubviews(titleLabel, subtitleLabel, pricesLabel, missingImageView, cardImageView, checkedView, numberView)
+        addSubviews(cardImageView, titleLabel, subtitleLabel, pricesLabel, missingImageView, checkedView, numberView)
 //        titleLabel.backgroundColor = .red
 //        subtitleLabel.backgroundColor = .yellow
 //        pricesLabel.backgroundColor = .green
+//
 //        missingImageView.backgroundColor = .blue
 //        cardImageView.backgroundColor = .orange
 //        numberView.backgroundColor = .gray
         self.snp.makeConstraints {
             $0.height.equalTo(Self.viewHeight)
         }
+        cardImageView.snp.makeConstraints {
+            $0.top.leading.equalToSuperview()
+            $0.height.equalTo(195)
+            $0.width.equalTo(138)
+            pricesTrailingConstraint = $0.leading.equalTo(pricesLabel.snp.trailing).offset(16).constraint
+        }
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.top.equalTo(cardImageView.snp.bottom).offset(5)
         }
         subtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
             $0.leading.equalToSuperview()
         }
         pricesLabel.snp.makeConstraints {
@@ -158,12 +165,7 @@ private extension CardView {
             pricesLeadingConstraint = $0.leading.equalToSuperview().priority(.high).constraint
             $0.bottom.equalToSuperview()
         }
-        cardImageView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview()
-            $0.height.equalTo(195)
-            $0.width.equalTo(138)
-            pricesTrailingConstraint = $0.leading.equalTo(pricesLabel.snp.trailing).offset(16).constraint
-        }
+
         missingImageView.snp.makeConstraints {
             $0.edges.equalTo(cardImageView)
         }

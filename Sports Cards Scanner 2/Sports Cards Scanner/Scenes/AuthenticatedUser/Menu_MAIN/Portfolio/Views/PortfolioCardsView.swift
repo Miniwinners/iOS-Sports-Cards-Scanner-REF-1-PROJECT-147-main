@@ -7,16 +7,32 @@ final class PortfolioCardsView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 20
         return stackView
-    }(UIStackView(arrangedSubviews: [cardSetsView, infoView, categoriesCardsView]))
+    }(UIStackView(arrangedSubviews: [infoView, cardStackView, categoriesCardsView]))
 
-    lazy var cardSetsView: UIView = { view in
-        view.backgroundColor = .white
-        view.cornerRadius = 12
+    lazy var cardStackView: UIStackView = { stackView in
+        stackView.spacing = 10
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+        return stackView
+    }(UIStackView(arrangedSubviews: [collectionButton, deckButton]))
+
+    lazy var collectionView: DeckCollectionView = { view in
+        view.previewImage.image = Images.createDeck.image
+        view.titleCreate.text = L10n.Portfolio.Collection.create
+        view.subtitleCreate.text = L10n.Portfolio.Deck.description
+        view.backgroundColor = .clear
+        view.isUserInteractionEnabled = false
         return view
-    }(UIView())
+    }(DeckCollectionView())
 
-    lazy var collectionView: CardSetView = .init(setType: .collection)
-    lazy var deckView: CardSetView = .init(setType: .deck)
+    lazy var deckView: DeckCollectionView = { view in
+        view.previewImage.image = Images.createCollection.image
+        view.titleCreate.text = L10n.Portfolio.Deck.create
+        view.subtitleCreate.text = L10n.Portfolio.Collection.description
+        view.backgroundColor = .clear
+        view.isUserInteractionEnabled = false
+        return view
+    }(DeckCollectionView())
 
     lazy var collectionButton: CommonButton = .init(style: .custom(buttonAppearance))
     lazy var deckButton: CommonButton = .init(style: .custom(buttonAppearance))
@@ -24,7 +40,7 @@ final class PortfolioCardsView: UIView {
     lazy var infoView: PortfolioInfoView = .init()
 
     lazy var categoriesCardsView: UIView = { view in
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.cornerRadius = 12
         return view
     }(UIView())
@@ -34,6 +50,7 @@ final class PortfolioCardsView: UIView {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.isScrollEnabled = false
+        tableView.sectionHeaderTopPadding = 0
         return tableView
     }(UITableView())
 
@@ -45,7 +62,7 @@ final class PortfolioCardsView: UIView {
     }
 
     func updateCategories(number: Int) {
-        let height = 74 * CGFloat(number) + 3
+        let height = 74 * CGFloat(number) + 74
         categoriesCardsHeightConstraint.update(offset: height)
         categoriesTableView.reloadData()
     }
@@ -55,7 +72,7 @@ private extension PortfolioCardsView {
     var buttonAppearance: CommonButton.SCSAppearance {
         var configuration: UIButton.Configuration = .filled()
         configuration.cornerStyle = .fixed
-        configuration.background.cornerRadius = 0
+        configuration.background.cornerRadius = 16
         return .init(
             configuration: configuration,
             backgroundColors: .init(primary: .white, highlighted: .highlightColor2)
@@ -75,62 +92,35 @@ private extension PortfolioCardsView {
 
     func setupCardSetsView() {
         collectionButton.addSubview(collectionView)
-        collectionView.snp.makeConstraints {
-            $0.verticalEdges.leading.equalToSuperview().inset(16)
-            $0.trailing.equalToSuperview().inset(10)
-        }
         deckButton.addSubview(deckView)
-        deckView.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(10)
-            $0.verticalEdges.trailing.equalToSuperview().inset(16)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
-
-        let verticalLineView = UIView()
-        verticalLineView.backgroundColor = .dividerColor
-
-        cardSetsView.addSubviews(collectionButton, deckButton, verticalLineView)
-        collectionButton.snp.makeConstraints {
-            $0.verticalEdges.leading.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(0.5)
+        deckView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
-        deckButton.snp.makeConstraints {
-            $0.verticalEdges.trailing.equalToSuperview()
-            $0.leading.equalTo(collectionButton.snp.trailing)
-        }
-        verticalLineView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.verticalEdges.equalToSuperview().inset(16)
-            $0.width.equalTo(1)
-        }
-
-        cardSetsView.snp.makeConstraints {
-            $0.height.equalTo(108)
+        cardStackView.snp.makeConstraints {
+            $0.height.equalTo(200)
         }
     }
 
     func setupCategoriesCardsView() {
         let allCardsLabel = UILabel()
         allCardsLabel.text = L10n.Portfolio.allCards
-        allCardsLabel.font = .font(.interMedium, size: 20)
-        allCardsLabel.textColor = .labelColor
+        allCardsLabel.font = .font(.ubuntuMedium500, size: 24)
+        allCardsLabel.textColor = .black
         allCardsLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         allCardsLabel.setContentHuggingPriority(.required, for: .vertical)
-        allCardsLabel.setLineHeight(24)
+        allCardsLabel.setLineHeight(25)
 
-        let underlineView = UIView()
-        underlineView.backgroundColor = .dividerColor
-
-        categoriesCardsView.addSubviews(allCardsLabel, underlineView, categoriesTableView)
+        categoriesCardsView.addSubviews(allCardsLabel, categoriesTableView)
         allCardsLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().inset(16)
+            $0.left.equalToSuperview()
         }
-        underlineView.snp.makeConstraints {
-            $0.top.equalTo(allCardsLabel.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.height.equalTo(1)
-        }
+
         categoriesTableView.snp.makeConstraints {
-            $0.top.equalTo(underlineView.snp.bottom)
+            $0.top.equalTo(allCardsLabel.snp.bottom).offset(15)
             $0.horizontalEdges.bottom.equalToSuperview()
             categoriesCardsHeightConstraint = $0.height.equalTo(0).constraint
         }

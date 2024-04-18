@@ -5,7 +5,7 @@ final class DashboardCardsView: UIView {
 
     lazy var stackView: UIStackView = { stackView in
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 10
         return stackView
     }(UIStackView(arrangedSubviews: [currentValueView, highestValueView, recentlyAddedView]))
 
@@ -15,6 +15,7 @@ final class DashboardCardsView: UIView {
 
     convenience init() {
         self.init(frame: .zero)
+        backgroundColor = .white
         setupSubviews_unique()
     }
 
@@ -26,6 +27,9 @@ private extension DashboardCardsView {
         stackView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(84)
+        }
+        highestValueView.snp.makeConstraints { make in
+            make.height.greaterThanOrEqualTo(400)
         }
     }
 }

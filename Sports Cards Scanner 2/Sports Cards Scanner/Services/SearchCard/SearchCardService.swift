@@ -30,12 +30,12 @@ final class SearchCardService: CardSearchable {
 
     func getFullInfo(of card: CardRepresentable) async throws -> CardRepresentable {
         switch card.category {
-//        case .magic:
-//            let magicCard = try await getMagicCard(relatedTo: card)
-//            return magicCard
-//        case .pokemon:
-//            let pokemonCard = try await getPokemonCard(relatedTo: card)
-//            return pokemonCard
+        case .magic:
+            let magicCard = try await getMagicCard(relatedTo: card)
+            return magicCard
+        case .pokemon:
+            let pokemonCard = try await getPokemonCard(relatedTo: card)
+            return pokemonCard
         default:
             let sportCard = try await getSportCard(relatedTo: card)
             return sportCard
