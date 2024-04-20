@@ -40,27 +40,27 @@ final class CollectionMenuViewController: UIViewController {
         setupActions_unique()
     }
 
-    override var preferredContentSize: CGSize {
-        get {
-            let edgesButtonsHeightDiff: CGFloat = 8
-            let menuBottomSpace: CGFloat = 122
-            let height: CGFloat = (collectionMenuView.menuTableView.estimatedRowHeight * CGFloat(menuItems.count)) - edgesButtonsHeightDiff + menuBottomSpace
-            view.layoutIfNeeded()
-            return .init(width: view.frame.width, height: height)
-        }
-        set {
-            super.preferredContentSize = newValue
-        }
-    }
+//    override var preferredContentSize: CGSize {
+//        get {
+//            let edgesButtonsHeightDiff: CGFloat = 8
+//            let menuBottomSpace: CGFloat = 122
+//            let height: CGFloat = (collectionMenuView.menuTableView.estimatedRowHeight * CGFloat(menuItems.count)) - edgesButtonsHeightDiff + menuBottomSpace
+//            view.layoutIfNeeded()
+//            return .init(width: view.frame.width, height: height)
+//        }
+//        set {
+//            super.preferredContentSize = newValue
+//        }
+//    }
 }
 
 private extension CollectionMenuViewController {
     func setupViews_unique() {
-        let menuTableView = collectionMenuView.menuTableView
-        menuTableView.register(MenuSelectableCell.self, forCellReuseIdentifier: MenuSelectableCell.className)
-        menuTableView.register(MenuSwitchableCell.self, forCellReuseIdentifier: MenuSwitchableCell.className)
-        menuTableView.dataSource = self
-        menuTableView.delegate = self
+        let menuCollectionView = collectionMenuView.menuCollectionView
+        menuCollectionView.register(MenuSelectableCell.self, forCellWithReuseIdentifier: MenuSelectableCell.className)
+        menuCollectionView.register(MenuSwitchableCell.self, forCellWithReuseIdentifier: MenuSwitchableCell.className)
+        menuCollectionView.dataSource = self
+        menuCollectionView.delegate = self
     }
 
     func setupActions_unique() {
@@ -80,8 +80,8 @@ private extension CollectionMenuViewController {
 
 // MARK: - TableView DataSource
 
-extension CollectionMenuViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension CollectionMenuViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
@@ -91,7 +91,7 @@ extension CollectionMenuViewController: UITableViewDataSource {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
@@ -101,18 +101,18 @@ extension CollectionMenuViewController: UITableViewDataSource {
         return menuItems.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let menuItem = menuItem(at: indexPath) else {
             return .init()
         }
 
-        let cell: UITableViewCell?
+        let cell: UICollectionViewCell?
 
         switch menuItem {
         case .showTotalPrice:
-            let switchableCell = tableView.dequeueReusableCell(withIdentifier: MenuSwitchableCell.className, for: indexPath) as? MenuSwitchableCell
+            let switchableCell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuSwitchableCell.className, for: indexPath) as? MenuSwitchableCell
             switchableCell?.setMenuItem(menuItem, selected: isTotalPriceVisible)
-            switchableCell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: menuItems))
+//            switchableCell?.setCellPosition(UICollectionView.cellPosition(for: indexPath, basedOn: menuItems))
             switchableCell?.switchValueDidChange = { [weak self] isOn in
                 self?.isTotalPriceVisible = isOn
             }
@@ -120,23 +120,22 @@ extension CollectionMenuViewController: UITableViewDataSource {
             cell = switchableCell
 
         default:
-            let selectableCell = tableView.dequeueReusableCell(withIdentifier: MenuSelectableCell.className, for: indexPath) as? MenuSelectableCell
+            let selectableCell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuSelectableCell.className, for: indexPath) as? MenuSelectableCell
             selectableCell?.setMenuItem(menuItem)
-            selectableCell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: menuItems))
+//            selectableCell?.setCellPosition(UICollectionView.cellPosition(for: indexPath, basedOn: menuItems))
 
             cell = selectableCell
         }
 
-        return cell ?? UITableViewCell()
+        return cell ?? UICollectionViewCell()
     }
 }
 
 // MARK: - TableView Delegate
 
-extension CollectionMenuViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+extension CollectionMenuViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let menuItem = menuItem(at: indexPath),
               menuItem != .showTotalPrice
         else { return }

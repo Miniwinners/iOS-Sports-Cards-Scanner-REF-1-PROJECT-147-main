@@ -5,6 +5,13 @@ final class AddCardsToCollectionCategoriesView: UIView {
 
     private var categoriesTableHeightConstraint: Constraint!
 
+    lazy var backView: UIView = { view in
+        view.setupBackView()
+        return view
+    }(UIView())
+
+    lazy var titleLabel: TitleLabel = .init()
+
     lazy var categoriesContainerView: UIView = { view in
         view.backgroundColor = .white
         view.cornerRadius = 12
@@ -12,21 +19,18 @@ final class AddCardsToCollectionCategoriesView: UIView {
     }(UIView())
 
     lazy var selectedCardsLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 14)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuRegular400, size: 14)
+        label.textColor = .black
+        label.textAlignment = .right
         return label
     }(UILabel())
-
-    lazy var underlineView: UIView = { view in
-        view.backgroundColor = .dividerColor
-        return view
-    }(UIView())
 
     lazy var categoriesTableView: UITableView = { tableView in
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.isScrollEnabled = false
+        tableView.sectionHeaderTopPadding = 0
         return tableView
     }(UITableView())
 
@@ -52,7 +56,6 @@ final class AddCardsToCollectionCategoriesView: UIView {
         default:
             selectedCardsLabel.text = L10n.AddCards.numberOfCardsSelected(number)
         }
-        selectedCardsLabel.setLineHeight(22)
     }
 
     func updateCategories(count: Int) {
@@ -69,63 +72,75 @@ final class AddCardsToCollectionCategoriesView: UIView {
 
 private extension AddCardsToCollectionCategoriesView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
 
         setupCardsView()
         setupButtons_unique()
     }
 
     func setupCardsView() {
+
+        addSubview(backView)
+        backView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(22)
+            make.bottom.horizontalEdges.equalToSuperview()
+        }
+
+        titleLabel.setupLabel(in: backView)
+
         let allCardsLabel = UILabel()
-        allCardsLabel.font = .font(.interMedium, size: 20)
-        allCardsLabel.textColor = .labelColor
+        allCardsLabel.font = .font(.ubuntuMedium500, size: 22)
+        allCardsLabel.textColor = .black
         allCardsLabel.text = L10n.AddCards.allCards
-        allCardsLabel.setLineHeight(24)
         allCardsLabel.setContentHuggingPriority(.required, for: .vertical)
         allCardsLabel.setContentCompressionResistancePriority(.required, for: .vertical)
 
         categoriesContainerView.addSubviews(allCardsLabel, selectedCardsLabel)
+
         allCardsLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(16).priority(.high)
-        }
-        selectedCardsLabel.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(16)
+            $0.left.equalToSuperview()
+            $0.top.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview().inset(10) // Добавляем отступ снизу для определения высоты контейнера
         }
 
-        addSubview(categoriesContainerView)
-        categoriesContainerView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(14)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+        selectedCardsLabel.snp.makeConstraints {
+            $0.centerY.equalTo(allCardsLabel)
+            $0.right.equalToSuperview().inset(16) // Добавляем отступ справа
+            $0.height.equalTo(30)
+            $0.left.equalTo(allCardsLabel.snp.right).offset(15)
         }
+
+        backView.addSubview(categoriesContainerView)
+        categoriesContainerView.backgroundColor = .clear
+        categoriesContainerView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(50)
+        }
+
     }
 
     func setupButtons_unique() {
         let stackView = UIStackView(arrangedSubviews: [cancelButton, doneButton])
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 20
 
-        addSubview(stackView)
+        backView.addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.height.equalTo(128)
         }
     }
 
     func showCategories() {
         guard categoriesTableView.superview == nil else { return }
 
-        categoriesContainerView.addSubviews(underlineView, categoriesTableView)
-        underlineView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(50)
-            $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.height.equalTo(1)
-        }
+        backView.addSubviews(categoriesTableView)
         categoriesTableView.snp.makeConstraints {
-            $0.top.equalTo(underlineView.snp.bottom)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.top.equalTo(categoriesContainerView.snp.bottom).offset(10)
+            $0.horizontalEdges.bottom.equalToSuperview().inset(16)
             categoriesTableHeightConstraint = $0.height.equalTo(0).constraint
         }
     }
@@ -137,7 +152,6 @@ private extension AddCardsToCollectionCategoriesView {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        underlineView.removeFromSuperview()
         categoriesTableView.removeFromSuperview()
     }
 }

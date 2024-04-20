@@ -2,7 +2,6 @@ import UIKit
 import SnapKit
 
 class TitledTextFieldView: UIView {
-
     var title: String {
         get { titleLabel.text ?? "" }
         set { titleLabel.text = newValue }

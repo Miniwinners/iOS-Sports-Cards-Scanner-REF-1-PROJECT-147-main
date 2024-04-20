@@ -258,13 +258,13 @@ private extension SCSAppCoordinator {
     }
 
     func presentLogoutPrompt(from viewController: UIViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center)
         let coordinator = LogoutPromptCoordinator(router: router, authService: authService)
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }
 
     func presentDeleteAccountPrompt(from viewController: UIViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center)
         let coordinator = DeleteAccountPromptCoordinator(router: router, authService: authService)
         coordinator.onDeletingFailed = { [weak self] error in
             guard error.asAuthError.code == .requiresRecentLogin else { return }

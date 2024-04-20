@@ -7,8 +7,8 @@ final class OptionTableViewCell: UITableViewCell {
     private var titleBottomConstraint: Constraint!
 
     lazy var titleLabel: UILabel = { label in
-        label.textColor = .labelColor
-        label.font = .font(.interRegular, size: 16)
+        label.textColor = .black
+        label.font = .font(.ubuntuLight300, size: 16)
         return label
     }(UILabel())
 
@@ -41,7 +41,7 @@ final class OptionTableViewCell: UITableViewCell {
 private extension OptionTableViewCell {
     func setupSubviews_unique() {
         backgroundColor = .clear
-        contentView.backgroundColor = .clear
+        contentView.backgroundColor = .skyBlue
 
         let highlightedView = UIView()
         highlightedView.backgroundColor = .highlightColor2

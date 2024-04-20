@@ -40,26 +40,26 @@ final class DeckMenuViewController: UIViewController {
         setupActions_unique()
     }
 
-    override var preferredContentSize: CGSize {
-        get {
-            let edgesButtonsHeightDiff: CGFloat = 8
-            let menuBottomSpace: CGFloat = 122
-            let height: CGFloat = (deckMenuView.menuTableView.estimatedRowHeight * CGFloat(menuItems.count)) - edgesButtonsHeightDiff + menuBottomSpace
-            view.layoutIfNeeded()
-            return .init(width: view.frame.width, height: height)
-        }
-        set {
-            super.preferredContentSize = newValue
-        }
-    }
+//    override var preferredContentSize: CGSize {
+//        get {
+//            let edgesButtonsHeightDiff: CGFloat = 8
+//            let menuBottomSpace: CGFloat = 122
+//            let height: CGFloat = (deckMenuView.menuCollectionView.estimatedRowHeight * CGFloat(menuItems.count)) - edgesButtonsHeightDiff + menuBottomSpace
+//            view.layoutIfNeeded()
+//            return .init(width: view.frame.width, height: height)
+//        }
+//        set {
+//            super.preferredContentSize = newValue
+//        }
+//    }
 }
 
 private extension DeckMenuViewController {
     func setupViews_unique() {
-        let menuTableView = deckMenuView.menuTableView
-        menuTableView.register(MenuSelectableCell.self, forCellReuseIdentifier: MenuSelectableCell.className)
-        menuTableView.dataSource = self
-        menuTableView.delegate = self
+        let menuCollectionView = deckMenuView.menuCollectionView
+        menuCollectionView.register(MenuSelectableCell.self, forCellWithReuseIdentifier: MenuSelectableCell.className)
+        menuCollectionView.dataSource = self
+        menuCollectionView.delegate = self
     }
 
     func setupActions_unique() {
@@ -79,8 +79,8 @@ private extension DeckMenuViewController {
 
 // MARK: - TableView DataSource
 
-extension DeckMenuViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension DeckMenuViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
@@ -90,7 +90,7 @@ extension DeckMenuViewController: UITableViewDataSource {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
@@ -100,23 +100,23 @@ extension DeckMenuViewController: UITableViewDataSource {
         return menuItems.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MenuSelectableCell.className, for: indexPath) as? MenuSelectableCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuSelectableCell.className, for: indexPath) as? MenuSelectableCell
 
         if let menuItem = menuItem(at: indexPath) {
             cell?.setMenuItem(menuItem)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: menuItems))
+//        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: menuItems))
 
-        return cell ?? UITableViewCell()
+        return cell ?? UICollectionViewCell()
     }
 }
 
 // MARK: - TableView Delegate
 
-extension DeckMenuViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+extension DeckMenuViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
 
         guard let menuItem = menuItem(at: indexPath) else { return }
         delegate?.deckMenuViewControllerDidSelectItem(menuItem, in: self)

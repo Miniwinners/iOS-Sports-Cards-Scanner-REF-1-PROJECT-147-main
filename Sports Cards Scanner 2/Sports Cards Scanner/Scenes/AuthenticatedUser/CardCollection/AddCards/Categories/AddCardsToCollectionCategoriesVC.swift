@@ -12,6 +12,8 @@ final class AddCardsToCollectionCategoriesVC: UIViewController {
 
     lazy var addCardsView: AddCardsToCollectionCategoriesView = .init()
 
+    lazy var closeButton: CloseButton = .init(style: .back)
+
     init(helper: AddCardToCollectionHelper = .init()) {
         self.helper = helper
         self.categoriesInfo = helper.categoriesCardsInfo
@@ -39,9 +41,12 @@ final class AddCardsToCollectionCategoriesVC: UIViewController {
 
         super.viewDidLoad()
 
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
         setupNavigationItem()
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +58,7 @@ final class AddCardsToCollectionCategoriesVC: UIViewController {
 
 private extension AddCardsToCollectionCategoriesVC {
     func setupViews_unique() {
-        addCardsView.categoriesTableView.register(CategoryCardsTableViewCell.self, forCellReuseIdentifier: CategoryCardsTableViewCell.className)
+        addCardsView.categoriesTableView.register(CategoryValueTableViewCell.self, forCellReuseIdentifier: CategoryValueTableViewCell.className)
         addCardsView.categoriesTableView.dataSource = self
         addCardsView.categoriesTableView.delegate = self
 
@@ -72,9 +77,9 @@ private extension AddCardsToCollectionCategoriesVC {
         let screenWidth = UIScreen.current?.bounds.width ?? 0
 
         if titleWidth > screenWidth - 140 {
-            self.title = L10n.AddCards.TitleNoName.collection
+            self.addCardsView.titleLabel.text = L10n.AddCards.TitleNoName.collection
         } else {
-            self.title = title
+            self.addCardsView.titleLabel.text = title
         }
     }
 
@@ -84,10 +89,14 @@ private extension AddCardsToCollectionCategoriesVC {
     }
 
     func categoryInfo(at indexPath: IndexPath) -> CategoryCards? {
-        categoriesInfo[safe: indexPath.row]
+        categoriesInfo[safe: indexPath.section]
     }
 
     // MARK: - Actions
+
+    @objc func close() {
+        navigationController?.popViewController(animated: true)
+    }
 
     @objc func cancelTapped_unique() {
         delegate?.addCardsToCollectionCategoriesVCCancelTapped(self)
@@ -107,7 +116,7 @@ extension AddCardsToCollectionCategoriesVC: UITableViewDataSource {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        return 1
+        return categoriesInfo.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,20 +126,35 @@ extension AddCardsToCollectionCategoriesVC: UITableViewDataSource {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        return categoriesInfo.count
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCardsTableViewCell.className, for: indexPath) as? CategoryCardsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryValueTableViewCell.className, for: indexPath) as? CategoryValueTableViewCell
 
-        if let categoryInfo = categoryInfo(at: indexPath) {
-            cell?.setCategory(categoryInfo.category)
-            cell?.setCards(number: categoryInfo.cardsNumber)
+        if let categoryCards = categoryInfo(at: indexPath) {
+            cell?.setCategory(categoryCards.category)
+            cell?.setCardsValue(categoryCards.cardsValue)
+            cell?.setCardsNumber(categoryCards.cardsNumber)
+            cell?.setCardImage(categoryCards.category.image)
         }
+        cell?.backgroundColor = .skyBlue
         cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: categoriesInfo))
 
         return cell ?? UITableViewCell()
+
     }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 { return 0 } else { return 9 }
+
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = .clear
+        return header
+    }
+
 }
 
 extension AddCardsToCollectionCategoriesVC: UITableViewDelegate {

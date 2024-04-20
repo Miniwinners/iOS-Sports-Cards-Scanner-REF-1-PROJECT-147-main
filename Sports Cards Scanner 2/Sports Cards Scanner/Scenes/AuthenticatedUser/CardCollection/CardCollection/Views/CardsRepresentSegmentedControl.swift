@@ -4,7 +4,7 @@ final class CardsRepresentSegmentedControl: UISegmentedControl {
     override init(items: [Any]?) {
         super.init(items: items)
         setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-        backgroundColor = .backColor
+        backgroundColor = .skyBlue
         selectedSegmentTintColor = .white
     }
 

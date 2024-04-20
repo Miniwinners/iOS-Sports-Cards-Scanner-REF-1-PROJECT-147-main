@@ -6,10 +6,7 @@ final class CardCollectionView: UIView {
     lazy var noCardsView: CardCollectionNoCardsView = .init()
     lazy var cardsView: CardCollectionCardsView = .init()
 
-    lazy var backView: UIView = { view in
-        view.setupBackView()
-        return view
-    }(UIView())
+    lazy var backView: BackView = .init()
 
     convenience init() {
         self.init(frame: .zero)
@@ -47,10 +44,6 @@ private extension CardCollectionView {
         }
 
         backgroundColor = .clear
-        addSubview(backView)
-        backView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(22)
-            make.bottom.horizontalEdges.equalToSuperview()
-        }
+        backView.setupView(in: self)
     }
 }

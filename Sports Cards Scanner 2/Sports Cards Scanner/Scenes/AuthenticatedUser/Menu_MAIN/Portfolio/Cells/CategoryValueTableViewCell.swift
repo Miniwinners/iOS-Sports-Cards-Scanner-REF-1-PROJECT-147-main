@@ -20,7 +20,7 @@ final class CategoryValueTableViewCell: UITableViewCell {
     lazy var cardsNumberLabel: UILabel = { label in
         label.font = .font(.ubuntuRegular400, size: 14)
         label.textColor = .black
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         return label
     }(UILabel())
 
@@ -108,7 +108,7 @@ extension CategoryValueTableViewCell {
         }
         cardsNumberLabel.snp.makeConstraints {
             $0.centerY.equalTo(categoryLabel)
-            $0.leading.equalTo(categoryLabel.snp.trailing).offset(30)
+            $0.leading.equalTo(categoryLabel.snp.trailing).offset(10)
             $0.right.equalToSuperview().inset(15)
         }
 

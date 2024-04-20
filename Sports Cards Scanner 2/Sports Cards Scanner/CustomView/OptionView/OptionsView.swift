@@ -20,26 +20,20 @@ final class OptionsView: UIView {
     // MARK: - Subviews
 
     lazy var containerView: UIView = { view in
-        view.backgroundColor = .white
+        view.backgroundColor = .skyBlue
         view.cornerRadius = 12
         return view
     }(UIView())
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 16)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuLight300, size: 16)
+        label.textColor = .black
         return label
     }(UILabel())
 
-    lazy var disclosureImageView: UIImageView = .init(image: Images.disclosureBottom.image.withTintColor(.labelColor4))
+    lazy var disclosureImageView: UIImageView = .init(image: Images.disclosureBottom.image.withTintColor(.black))
 
     lazy var discloseButton: CommonButton = .init(style: .custom(buttonAppearance))
-
-    lazy var underlineView: UIView = { view in
-        view.backgroundColor = .dividerColor
-        view.layer.opacity = 0
-        return view
-    }(UIView())
 
     lazy var optionsTableView: UITableView = { tableView in
         tableView.register(OptionTableViewCell.self, forCellReuseIdentifier: OptionTableViewCell.className)
@@ -98,7 +92,6 @@ final class OptionsView: UIView {
                 self.layer.shadowOpacity = 1
             }
             self.disclosureImageView.transform = .init(rotationAngle: .pi)
-            self.underlineView.layer.opacity = 1
             self.superview?.layoutIfNeeded()
         }
     }
@@ -118,7 +111,6 @@ final class OptionsView: UIView {
         }
 
         UIView.animate(withDuration: animationDuration) {
-            self.underlineView.layer.opacity = 0
             self.layer.shadowOpacity = 0
             self.superview?.layoutIfNeeded()
         } completion: { _ in
@@ -135,7 +127,7 @@ private extension OptionsView {
         configuration.background.cornerRadius = 0
         return .init(
             configuration: configuration,
-            backgroundColors: .init(primary: .white, disabled: .secondaryColor, highlighted: .highlightColor2)
+            backgroundColors: .init(primary: .skyBlue, disabled: .secondaryColor, highlighted: .highlightColor2)
         )
     }
 
@@ -156,18 +148,14 @@ private extension OptionsView {
             $0.edges.equalToSuperview()
         }
 
-        containerView.addSubviews(discloseButton, underlineView, optionsTableView)
+        containerView.addSubviews(discloseButton, optionsTableView)
         discloseButton.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
             $0.height.equalTo(minHeight)
         }
-        underlineView.snp.makeConstraints {
-            $0.top.equalTo(discloseButton.snp.bottom)
-            $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.height.equalTo(1)
-        }
+
         optionsTableView.snp.makeConstraints {
-            $0.top.equalTo(underlineView.snp.bottom)
+            $0.top.equalTo(discloseButton.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview().priority(.high)
         }

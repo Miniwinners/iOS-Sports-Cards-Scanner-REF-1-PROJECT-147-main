@@ -96,6 +96,7 @@ final class CardCollectionNoCardsView: UIView {
 private extension CardCollectionNoCardsView {
     func setupSubviews_unique() {
         backgroundColor = .clear
+        titleLabel.setupLabel(in: self)
 
         priceContainerView.addSubviews(estimatedValueLabel, priceLabel)
 
@@ -109,7 +110,6 @@ private extension CardCollectionNoCardsView {
             $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(5)
         }
 
-        titleLabel.setupLabel(in: self)
         containerView.addSubview(menuButton)
 
         menuButton.snp.makeConstraints {

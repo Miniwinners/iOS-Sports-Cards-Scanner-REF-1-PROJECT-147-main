@@ -1,11 +1,12 @@
 import UIKit
 import SnapKit
 
-final class MenuSwitchableCell: SwitchableTableViewCell {
+final class MenuSwitchableCell: SwitchableCollectionViewCell {
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupSubviews_unique()
+
     }
 
     required init?(coder: NSCoder) {
@@ -17,29 +18,21 @@ final class MenuSwitchableCell: SwitchableTableViewCell {
         switchView.setOn(selected, animated: false)
     }
 
-    func setCellPosition(_ cellPosition: CellPosition) {
-        topConstraint.update(inset: cellPosition.containsPosition(.onTopPosition) ? 20 : 24)
-        bottomConstraint.update(inset: cellPosition.containsPosition(.atBottomPosition) ? 20 : 24)
-        separatorView.isHidden = cellPosition.containsPosition(.atBottomPosition)
-
-        var corners = UIRectCorner()
-        if cellPosition.containsPosition(.onTopPosition) { corners.insert([.topLeft, .topRight]) }
-        if cellPosition.containsPosition(.atBottomPosition) { corners.insert([.bottomLeft, .bottomRight]) }
-        backgroundView?.subviews.first?.roundCorners(corners, radius: 14)
-    }
-
 }
 
 private extension MenuSwitchableCell {
     func setupSubviews_unique() {
-        titleLabel.snp.updateConstraints {
-            $0.leading.equalToSuperview().inset(12)
+        switchView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(31)
+            $0.width.equalTo(48)
+            $0.top.equalToSuperview().inset(20)
         }
-        switchView.snp.updateConstraints {
-            $0.trailing.equalToSuperview().inset(12)
+        titleLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(20)
+            $0.height.equalTo(20)
+            $0.horizontalEdges.equalToSuperview()
         }
-        separatorView.snp.updateConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(12)
-        }
+
     }
 }

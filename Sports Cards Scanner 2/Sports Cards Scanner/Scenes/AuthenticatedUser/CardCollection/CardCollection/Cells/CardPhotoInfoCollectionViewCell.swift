@@ -78,7 +78,6 @@ private extension CardPhotoInfoCollectionViewCell {
         let photoBackView = UIView()
         photoBackView.backgroundColor = .backColor
         photoBackView.cornerRadius = 10
-
         photoBackView.addSubviews(photoView, overlayView)
         photoView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -95,18 +94,10 @@ private extension CardPhotoInfoCollectionViewCell {
             $0.edges.equalToSuperview()
         }
 
-        containerView.addSubviews(photoBackView, titleLabel, subtitleLabel)
+        containerView.addSubviews(photoBackView)
         photoBackView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview().inset(6)
-            $0.height.equalTo(photoBackView.snp.width).multipliedBy(1.41)
+            $0.edges.equalToSuperview()
         }
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(photoBackView.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(6)
-        }
-        subtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom)
-            $0.horizontalEdges.bottom.equalToSuperview().inset(6)
-        }
+
     }
 }

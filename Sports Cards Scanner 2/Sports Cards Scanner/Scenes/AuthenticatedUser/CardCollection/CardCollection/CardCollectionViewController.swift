@@ -53,7 +53,7 @@ final class CardCollectionViewController: UIViewController {
         subscribeToNotifications()
 
         closeButton.setCenter(in: view)
-        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +70,7 @@ final class CardCollectionViewController: UIViewController {
 
 private extension CardCollectionViewController {
     func setupViews_unique() {
-        setupNavigationItem()
+//        setupNavigationItem()
 
         let cardsDisplayOption = CardsDisplayOption.list
         cardCollectionView.cardsView.cardsDisplayControl.selectedSegmentIndex = cardsDisplayOption.index
@@ -96,7 +96,7 @@ private extension CardCollectionViewController {
         cardCollectionView.noCardsView.addCardsButton.addTarget(self, action: #selector(addCardsTapped), for: .touchUpInside)
         cardCollectionView.noCardsView.menuButton.addTarget(self, action: #selector(menuTapped_unique), for: .touchUpInside)
 
-        cardCollectionView.cardsView.menuButton.addTarget(self, action: #selector(menuTapped_unique), for: .touchUpInside)
+        cardCollectionView.cardsView.customContainer.menuButton.addTarget(self, action: #selector(menuTapped_unique), for: .touchUpInside)
         cardCollectionView.cardsView.cardsDisplayControl.addTarget(self, action: #selector(cardsDisplayOptionChanged(_:)), for: .valueChanged)
     }
 
@@ -275,7 +275,7 @@ extension CardCollectionViewController: UICollectionViewDelegateFlowLayout {
         let collectionViewWidth = collectionView.bounds.width
         let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         let horizontalSpacing = (flowLayout?.sectionInset.left ?? 0) + (flowLayout?.sectionInset.right ?? 0)
-        let itemsInRow: CGFloat = 3
+        let itemsInRow: CGFloat = 2
         let interitemSpacing = flowLayout?.minimumInteritemSpacing ?? 0
         let itemWidth = (collectionViewWidth - horizontalSpacing - interitemSpacing * (itemsInRow - 1)) / itemsInRow
         let itemHeight = CardPhotoInfoCollectionViewCell.calculateCellHeight(for: itemWidth)

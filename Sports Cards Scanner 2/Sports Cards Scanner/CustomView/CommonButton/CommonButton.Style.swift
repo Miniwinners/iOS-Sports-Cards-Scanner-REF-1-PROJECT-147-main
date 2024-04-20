@@ -50,7 +50,7 @@ extension CommonButton.SCSButtonStyle {
         configuration: cancelConfiguration,
         font: .font(.ubuntuRegular400, size: 16),
         foregroundColors: .init(primary: .labelColor, highlighted: .highlightColor),
-        strokeColors: .init(primary: .labelColor, disabled: .labelColor, highlighted: .highlightColor)
+        strokeColors: .init(primary: .blue, disabled: .labelColor, highlighted: .highlightColor)
     )
 
     private static let destructiveAppearance: CommonButton.SCSAppearance = .init(

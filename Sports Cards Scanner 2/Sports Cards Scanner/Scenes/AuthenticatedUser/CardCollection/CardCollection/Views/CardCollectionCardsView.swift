@@ -3,18 +3,9 @@ import SnapKit
 
 final class CardCollectionCardsView: UIView {
 
-    lazy var nameLabel: UILabel = { label in
-        label.font = .font(.interBold, size: 24)
-        label.textColor = .labelColor
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
-        return label
-    }(UILabel())
+    lazy var titleView: TitleLabel = .init()
 
-    lazy var menuButton: UIButton = { button in
-        button.setImage(Images.menuDots.image, for: .normal)
-        return button
-    }(UIButton(type: .system))
+    lazy var customContainer: CustomContainerView = .init()
 
     lazy var infoContainerView: UIView = { view in
         view.backgroundColor = .white
@@ -22,19 +13,9 @@ final class CardCollectionCardsView: UIView {
         return view
     }(UIView())
 
-    lazy var priceContainerView: UIView = .init()
-
-    lazy var priceLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .greenColor
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
-        return label
-    }(UILabel())
-
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .labelColor4
+        label.font = .font(.ubuntuMedium500, size: 22)
+        label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
@@ -66,8 +47,7 @@ final class CardCollectionCardsView: UIView {
     }
 
     func setCollectionName(_ name: String?) {
-        nameLabel.text = name
-        nameLabel.setLineHeight(28)
+        titleView.text = name
     }
 
     func setCards(count: Int) {
@@ -81,8 +61,8 @@ final class CardCollectionCardsView: UIView {
     }
 
     func setCards(price: Double) {
-        priceLabel.text = price.formattedAsPrice
-        priceLabel.setLineHeight(22)
+        customContainer.priceLabel.text = price.formattedAsPrice
+        customContainer.priceLabel.setLineHeight(22)
     }
 
     func setCardsDisplay(option: CardsDisplayOption) {
@@ -91,7 +71,7 @@ final class CardCollectionCardsView: UIView {
         case .collection: setupCardsViewIfNeeded(cardsCollectionView)
         case .list: setupCardsViewIfNeeded(cardsTableView)
         }
-
+        cardsSwipeableView.backgroundColor = .red
         cardsSwipeableView.isHidden = option != .swipable
         cardsCollectionView.isHidden = option != .collection
         cardsTableView.isHidden = option != .list
@@ -110,14 +90,8 @@ final class CardCollectionCardsView: UIView {
     }
 
     func showEstimatedValue() {
-        guard priceContainerView.superview == nil else { return }
+        guard customContainer.priceContainerView.superview == nil else { return }
 
-        infoContainerView.addSubview(priceContainerView)
-
-        priceContainerView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview().inset(16)
-            $0.bottom.equalTo(cardsNumberLabel.snp.top).inset(-12)
-        }
     }
 
     func hideEstimatedValue() {
@@ -127,7 +101,7 @@ final class CardCollectionCardsView: UIView {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        priceContainerView.removeFromSuperview()
+        customContainer.priceContainerView.removeFromSuperview()
     }
 }
 
@@ -138,63 +112,37 @@ private extension CardCollectionCardsView {
         setupInfoContainer()
         setupPriceContainer()
 
-        addSubviews(nameLabel, menuButton, infoContainerView)
-        nameLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.leading.equalToSuperview().inset(20)
+        titleView.setupLabel(in: self)
+        titleView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(12)
         }
-        menuButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(-10)
-            $0.leading.equalTo(nameLabel.snp.trailing).offset(8)
-            $0.trailing.equalToSuperview().inset(10)
-            $0.size.equalTo(44)
-        }
+        addSubview(infoContainerView)
         infoContainerView.snp.makeConstraints {
-            $0.top.equalTo(nameLabel.snp.bottom).offset(14)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(titleView.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(16)
         }
+        customContainer.setupLayout(in: self, top: infoContainerView)
+
     }
 
     func setupInfoContainer() {
         infoContainerView.addSubviews(cardsNumberLabel, cardsDisplayControl)
         cardsNumberLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16).priority(.high)
-            $0.leading.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(30)
+            $0.top.bottom.equalToSuperview().inset(10)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
         }
         cardsDisplayControl.snp.makeConstraints {
-            $0.top.equalTo(cardsNumberLabel)
-            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview()
             $0.width.equalTo(116)
             $0.height.equalTo(36)
         }
     }
 
     func setupPriceContainer() {
-        let estimatedValueLabel = UILabel()
-        estimatedValueLabel.font = .font(.interMedium, size: 16)
-        estimatedValueLabel.text = L10n.CardCollection.estimatedValue
-        estimatedValueLabel.textColor = .labelColor4
-        estimatedValueLabel.setLineHeight(22)
-        estimatedValueLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        estimatedValueLabel.setContentHuggingPriority(.required, for: .vertical)
+        customContainer.estimatedValueLabel.text = L10n.CardCollection.estimatedValue
 
-        let underlineView = UIView()
-        underlineView.backgroundColor = .dividerColor
-
-        priceContainerView.addSubviews(estimatedValueLabel, priceLabel, underlineView)
-        estimatedValueLabel.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
-        }
-        priceLabel.snp.makeConstraints {
-            $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(4)
-            $0.leading.equalToSuperview()
-        }
-        underlineView.snp.makeConstraints {
-            $0.top.equalTo(priceLabel.snp.bottom).offset(9)
-            $0.horizontalEdges.bottom.equalToSuperview()
-            $0.height.equalTo(1)
-        }
     }
 
     func setupCardsViewIfNeeded(_ cardsView: UIView) {
@@ -202,7 +150,7 @@ private extension CardCollectionCardsView {
 
         addSubview(cardsView)
         cardsView.snp.makeConstraints {
-            $0.top.equalTo(infoContainerView.snp.bottom).offset(20)
+            $0.top.equalTo(customContainer.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview()
             if cardsView === cardsSwipeableView {
                 $0.bottom.equalTo(safeAreaLayoutGuide)

@@ -25,6 +25,8 @@ final class AddCardsToCollectionCardsVC: UIViewController {
 
     lazy var addCardsView: AddCardsToCollectionCardsView = .init()
 
+    lazy var closeButton: CloseButton = .init(style: .back)
+
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
         return toolbar
@@ -58,10 +60,10 @@ final class AddCardsToCollectionCardsVC: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
-        setupNavigationItem()
+//        setupNavigationItem()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,11 +84,14 @@ private extension AddCardsToCollectionCardsVC {
 
         addCardsView.setSelectedCards(number: helper.allSelectedCards.count)
         addCardsView.setCategory(cardCategory)
+
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
     }
 
     func setupActions_unique() {
         addCardsView.clearSearchButton.addTarget(self, action: #selector(clearSearchTapped), for: .touchUpInside)
-        addCardsView.backButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
+//        addCardsView.backButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
         addCardsView.cancelButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
         addCardsView.doneButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
         addCardsView.selectAllButton.addTarget(self, action: #selector(selectAllCardsTapped), for: .touchUpInside)
@@ -99,9 +104,9 @@ private extension AddCardsToCollectionCardsVC {
         let screenWidth = UIScreen.current?.bounds.width ?? 0
 
         if titleWidth > screenWidth - 140 {
-            self.title = L10n.AddCards.TitleNoName.collection
+            self.addCardsView.titleLabel.text = L10n.AddCards.TitleNoName.collection
         } else {
-            self.title = title
+            self.addCardsView.titleLabel.text = title
         }
     }
 

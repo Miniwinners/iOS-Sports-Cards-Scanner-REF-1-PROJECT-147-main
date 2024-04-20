@@ -160,8 +160,32 @@ class TitleLabel: UILabel {
         self.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(24)
-            make.top.equalToSuperview().inset(32)
+            make.top.equalToSuperview().inset(42)
         }
     }
 
+}
+class BackView: UIView {
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViewAppearance()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupViewAppearance() {
+        backgroundColor = .white
+        layer.cornerRadius = 24
+    }
+
+    func setupView(in view: UIView) {
+        view.addSubview(self)
+        self.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(22)
+            make.horizontalEdges.bottom.equalToSuperview()
+        }
+    }
 }

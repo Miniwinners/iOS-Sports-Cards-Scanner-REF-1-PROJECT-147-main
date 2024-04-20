@@ -104,3 +104,101 @@ private extension SwitchableTableViewCell {
         switchValueDidChange?(sender.isOn)
     }
 }
+
+class SwitchableCollectionViewCell: UICollectionViewCell {
+
+    var switchValueDidChange: ((Bool) -> Void)?
+
+    lazy var containerView: UIView = .init()
+
+    lazy var titleLabel: UILabel = { label in
+        label.textColor = .black
+        label.font = .font(.ubuntuMedium500, size: 15)
+        label.textAlignment = .center
+        return label
+    }(UILabel())
+
+    lazy var switchView: UISwitch = { switchView in
+        return switchView
+    }(UISwitch())
+
+    private(set) var topConstraint: Constraint!
+    private(set) var bottomConstraint: Constraint!
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupSubviews_unique()
+        setupActions_unique()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension SwitchableCollectionViewCell {
+    func setupSubviews_unique() {
+        backgroundColor = .clear
+        contentView.backgroundColor = .skyBlue
+        layer.cornerRadius = 16
+        containerView.layer.cornerRadius = 16
+        contentView.layer.cornerRadius = 16
+
+        backgroundView = createBackgroundView()
+
+        contentView.addSubview(containerView)
+        containerView.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+        }
+
+        containerView.addSubview(switchView)
+        switchView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(31)
+            $0.width.equalTo(48)
+            $0.top.equalToSuperview().inset(15)
+        }
+
+        containerView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(15)
+            $0.height.equalTo(20)
+            $0.horizontalEdges.equalToSuperview()
+        }
+
+    }
+
+    func setupActions_unique() {
+        switchView.addTarget(self, action: #selector(switchDidTapped(_:)), for: .valueChanged)
+    }
+
+    func createBackgroundView() -> UIView {
+        let backgroundContainerView = UIView()
+
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .skyBlue
+        backgroundView.layer.cornerRadius = 16
+        backgroundContainerView.addSubview(backgroundView)
+
+        backgroundView.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+        }
+
+        return backgroundContainerView
+    }
+
+    // MARK: - Actions
+
+    @objc func switchDidTapped(_ sender: UISwitch) {
+        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
+            print(qFvvUwywod)
+            print("\(rkjyOdUzcU)")
+            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        }
+
+        switchValueDidChange?(sender.isOn)
+    }
+
+}

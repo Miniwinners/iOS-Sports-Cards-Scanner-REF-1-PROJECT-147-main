@@ -56,9 +56,9 @@ final class SwipeableCardsView: UIView {
 }
 
 private extension SwipeableCardsView {
-    var minInsets: UIEdgeInsets { .init(top: 25, left: 50, bottom: 25, right: 50) }
+    var minInsets: UIEdgeInsets { .init(top: 0, left: 0, bottom: 25, right: 0) }
 
-    var maxWidth: CGFloat { bounds.width - (minInsets.left + minInsets.right) }
+    var maxWidth: CGFloat { bounds.width  - (minInsets.left + minInsets.right)}
     var maxHeight: CGFloat { bounds.height - (minInsets.top + minInsets.bottom) }
 
     var initialCenter: CGPoint { .init(x: bounds.width / 2, y: bounds.height / 2) }
@@ -111,7 +111,8 @@ private extension SwipeableCardsView {
     func boundsDidUpdate() {
         if bounds.width == oldBounds.width { return }
         oldBounds = bounds
-
+        topView.backgroundColor = .blue
+        bottomView.backgroundColor = .yellow
         [topView, bottomView].forEach {
             $0.center = initialCenter
             $0.bounds.size = cardViewSize

@@ -5,10 +5,17 @@ final class AddCardsToCollectionCardsView: UIView {
 
     private var cardsHeightConstraint: Constraint!
 
+    lazy var backView: UIView = { view in
+        view.setupBackView()
+        return view
+    }(UIView())
+
+    lazy var titleLabel: TitleLabel = .init()
+
     lazy var searchTextField: CommonTextField = { textField in
         textField.borderStyle = .none
         textField.font = .font(.interRegular, size: 16)
-        textField.backgroundColor = .white
+        textField.backgroundColor = .skyBlue
         textField.cornerRadius = 12
         textField.placeholder = L10n.AddCards.Search.placeholder
         textField.rightViewMode = .always
@@ -27,18 +34,18 @@ final class AddCardsToCollectionCardsView: UIView {
     }(UIButton(type: .system))
 
     lazy var selectedCardsLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 18)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuMedium500, size: 22)
+        label.textColor = .black
         return label
     }(UILabel())
 
     lazy var selectAllButton: UIButton = { button in
         let attributedTitle = NSAttributedString(
             string: L10n.AddCards.Action.selectAll,
-            attributes: [.font: UIFont.font(.interRegular, size: 16)]
+            attributes: [.font: UIFont.font(.ubuntuRegular400, size: 14)]
         )
         button.setAttributedTitle(attributedTitle, for: .normal)
-        button.setTitleColor(.labelColor, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         return button
     }(UIButton(type: .system))
 
@@ -48,20 +55,21 @@ final class AddCardsToCollectionCardsView: UIView {
         return view
     }(UIView())
 
-    lazy var backButton: UIButton = { button in
-        button.setImage(Images.backArrow.image, for: .normal)
-        return button
-    }(UIButton(type: .system))
+//    lazy var backButton: UIButton = { button in
+//        button.setImage(Images.backArrow.image, for: .normal)
+//        return button
+//    }(UIButton(type: .system))
 
-    lazy var categoryLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 20)
-        label.textColor = .labelColor
-        return label
-    }(UILabel())
+//    lazy var categoryLabel: UILabel = { label in
+//        label.font = .font(.interMedium, size: 20)
+//        label.textColor = .labelColor
+//        return label
+//    }(UILabel())
 
     lazy var cardsCollectionView: UICollectionView = { collectionView in
         collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = false
+        collectionView.backgroundColor = .skyBlue
         return collectionView
     }(BaseCollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout()))
 
@@ -95,8 +103,8 @@ final class AddCardsToCollectionCardsView: UIView {
     }
 
     func setCategory(_ category: CardCategory) {
-        categoryLabel.text = category.title
-        categoryLabel.setLineHeight(24)
+//        categoryLabel.text = category.title
+//        categoryLabel.setLineHeight(24)
     }
 
     func setCards(count: Int) {
@@ -111,11 +119,11 @@ final class AddCardsToCollectionCardsView: UIView {
         let cardsHeight = itemHeight * rowsCount + interitemSpacing * (rowsCount - 1)
         cardsHeightConstraint.update(offset: max(0, cardsHeight))
 
-        backButton.snp.remakeConstraints {
-            $0.top.leading.equalToSuperview().inset(6)
-            $0.size.equalTo(44)
-            $0.bottom.equalToSuperview().inset(6).priority(cardsHeight <= 0 ? .required : .low)
-        }
+//        backButton.snp.remakeConstraints {
+//            $0.top.leading.equalToSuperview().inset(6)
+//            $0.size.equalTo(44)
+//            $0.bottom.equalToSuperview().inset(6).priority(cardsHeight <= 0 ? .required : .low)
+//        }
     }
 
     func setNoResultsView(visible: Bool) {
@@ -126,21 +134,26 @@ final class AddCardsToCollectionCardsView: UIView {
 
 private extension AddCardsToCollectionCardsView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
+        addSubview(backView)
+        backView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(22)
+            make.bottom.horizontalEdges.equalToSuperview()
+        }
+        titleLabel.setupLabel(in: backView)
 
         setupSearchTextField()
-        setupCardsContainer()
 
         let buttonsStackView = UIStackView(arrangedSubviews: [cancelButton, doneButton])
-        buttonsStackView.axis = .horizontal
+        buttonsStackView.axis = .vertical
         buttonsStackView.distribution = .fillEqually
-        buttonsStackView.spacing = 20
+        buttonsStackView.spacing = 25
 
-        addSubviews(searchTextField, selectedCardsLabel, selectAllButton, cardsContainerView, noResultsView, buttonsStackView)
+        backView.addSubviews(searchTextField, selectedCardsLabel, selectAllButton, cardsContainerView, noResultsView, buttonsStackView)
         searchTextField.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(48)
+            $0.height.equalTo(56)
         }
         selectedCardsLabel.snp.makeConstraints {
             $0.top.equalTo(searchTextField.snp.bottom).offset(20)
@@ -151,6 +164,8 @@ private extension AddCardsToCollectionCardsView {
             $0.centerY.equalTo(selectedCardsLabel)
             $0.trailing.equalToSuperview().inset(20)
         }
+        setupCardsContainer()
+
         cardsContainerView.snp.makeConstraints {
             $0.top.equalTo(selectedCardsLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
@@ -160,7 +175,7 @@ private extension AddCardsToCollectionCardsView {
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         buttonsStackView.snp.makeConstraints {
-            $0.height.equalTo(54)
+            $0.height.equalTo(112)
             $0.top.greaterThanOrEqualTo(cardsContainerView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
@@ -183,20 +198,11 @@ private extension AddCardsToCollectionCardsView {
     }
 
     func setupCardsContainer() {
-        cardsContainerView.addSubviews(backButton, categoryLabel, cardsCollectionView)
-        backButton.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(6)
-            $0.size.equalTo(44)
-            $0.bottom.equalToSuperview().inset(6).priority(.low)
-        }
-        categoryLabel.snp.makeConstraints {
-            $0.centerY.equalTo(backButton)
-            $0.leading.equalTo(backButton.snp.trailing).offset(2)
-        }
+        cardsContainerView.addSubview(cardsCollectionView)
         cardsCollectionView.snp.makeConstraints {
-            $0.top.equalTo(backButton.snp.bottom).offset(10)
+            $0.top.equalTo(selectAllButton.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(16).priority(.high)
+            $0.bottom.equalToSuperview().priority(.high)
             cardsHeightConstraint = $0.height.equalTo(0).priority(.medium).constraint
         }
     }
@@ -205,7 +211,7 @@ private extension AddCardsToCollectionCardsView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 12
         layout.minimumLineSpacing = 12
-        layout.sectionInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+        layout.sectionInset = .init(top: 16, left: 16, bottom: 16, right: 16)
         return layout
     }
 }

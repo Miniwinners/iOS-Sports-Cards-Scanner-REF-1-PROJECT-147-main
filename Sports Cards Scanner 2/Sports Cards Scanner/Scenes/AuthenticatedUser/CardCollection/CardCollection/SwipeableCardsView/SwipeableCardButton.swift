@@ -8,7 +8,7 @@ final class SwipeableCardButton: UIButton {
 
     lazy var photoContainerView: UIView = { view in
         view.cornerRadius = 20
-        view.backgroundColor = .backColor
+        view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
         return view
     }(UIView())
@@ -19,20 +19,20 @@ final class SwipeableCardButton: UIButton {
     }(UIImageView())
 
     lazy var overlayView: UIView = { view in
-        view.backgroundColor = .blackColor40
+        view.backgroundColor = .clear
         view.isHidden = true
         return view
     }(UIView())
 
     lazy var cardTitleLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .white
+        label.font = .font(.ubuntuBold700, size: 24)
+        label.textColor = .black
         return label
     }(UILabel())
 
     lazy var cardSubtitleLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .white
+        label.font = .font(.ubuntuRegular400, size: 16)
+        label.textColor = .black
         return label
     }(UILabel())
 
@@ -74,8 +74,8 @@ final class SwipeableCardButton: UIButton {
 private extension SwipeableCardButton {
     func setupConfiguration() {
         var configuration: UIButton.Configuration = .filled()
-        configuration.baseBackgroundColor = .cardBackColor
-        configuration.background.backgroundColorTransformer = .init({ _ in .cardBackColor })
+        configuration.baseBackgroundColor = .clear
+        configuration.background.backgroundColorTransformer = .init({ _ in .clear })
         configuration.background.cornerRadius = 24
         configuration.cornerStyle = .fixed
         self.configuration = configuration
@@ -90,18 +90,20 @@ private extension SwipeableCardButton {
             $0.edges.equalToSuperview()
         }
 
-        addSubviews(photoContainerView, cardTitleLabel, cardSubtitleLabel)
-        photoContainerView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview().inset(12)
-            $0.width.equalTo(cardPhotoView.snp.height).multipliedBy(Self.photoRatio)
-        }
+        addSubviews(cardTitleLabel, cardSubtitleLabel, photoContainerView)
         cardTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(cardPhotoView.snp.bottom).offset(16)
+            $0.top.equalToSuperview().inset(5)
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
         cardSubtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(cardTitleLabel.snp.bottom)
+            $0.top.equalTo(cardTitleLabel.snp.bottom).offset(5)
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
+        photoContainerView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.top.equalTo(cardSubtitleLabel.snp.bottom).offset(15)
+            $0.width.equalTo(cardPhotoView.snp.height).multipliedBy(Self.photoRatio)
+        }
+
     }
 }

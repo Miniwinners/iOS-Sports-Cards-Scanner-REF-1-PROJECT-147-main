@@ -44,7 +44,7 @@ final class CreateEditDeckVC: UIViewController {
         self.cardDeck = cardDeck
         self.cardDeckManager = cardDeckManager
         super.init(nibName: nil, bundle: nil)
-        title = cardDeck.isNil ? L10n.CreateDeck.title : L10n.EditDeck.title
+        deckView.titleLabel.text = cardDeck.isNil ? L10n.CreateDeck.title : L10n.EditDeck.title
     }
 
     required init?(coder: NSCoder) {
@@ -111,7 +111,7 @@ private extension CreateEditDeckVC {
 
     func setupViews_unique() {
         view.backgroundColor = .clear
-        setupNavigationItem()
+//        setupNavigationItem()
 
         let nameTextField = deckView.nameView.textField
         nameTextField.delegate = self
