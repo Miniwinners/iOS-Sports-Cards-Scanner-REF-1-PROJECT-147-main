@@ -15,7 +15,7 @@ final class CardDeckViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var cardDeckView: CardDeckView = .init()
-
+    lazy var closeButton: CloseButton = .init(style: .close)
     init(cardDeckManager: CardDeckManager = CardSetsManager.shared) {
         self.cardDeckManager = cardDeckManager
         super.init(nibName: nil, bundle: nil)
@@ -54,22 +54,24 @@ final class CardDeckViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
 }
 
 private extension CardDeckViewController {
     func setupViews_unique() {
-        setupNavigationItem()
+//        setupNavigationItem()
 
         let cardsView = cardDeckView.cardsTableView
         cardsView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.className)
         cardsView.dataSource = self
         cardsView.delegate = self
+        closeButton.setCenter(in: view)
     }
 
     func setupActions_unique() {
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
         cardDeckView.menuButton.addTarget(self, action: #selector(menuTapped_unique), for: .touchUpInside)
         cardDeckView.addCardsButton.addTarget(self, action: #selector(addCardTapped), for: .touchUpInside)
     }
@@ -84,18 +86,18 @@ private extension CardDeckViewController {
         )
     }
 
-    func setupNavigationItem() {
-        navigationItem.setHidesBackButton(true, animated: false)
-        navigationItem.leftBarButtonItem = nil
-
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
-    }
+//    func setupNavigationItem() {
+//        navigationItem.setHidesBackButton(true, animated: false)
+//        navigationItem.leftBarButtonItem = nil
+//
+//        navigationItem.rightBarButtonItem = .init(
+//            image: Images.close.image,
+//            style: .plain,
+//            target: self,
+//            action: #selector(closeTapped_unique)
+//        )
+//        navigationItem.rightBarButtonItem?.tintColor = .black
+//    }
 
     func reloadData_unique() {
         sortedCards = cardDeckManager.deckCards.sortedElements(by: selectedSortOption)

@@ -60,6 +60,11 @@ private extension DashboardViewController {
     var highestValuedCard: CardRepresentable? {
         cardsManager.highestValuedCards(count: 1).first
     }
+
+    var highestValueTwo: CardRepresentable? {
+        cardsManager.highestValuedCards(count: 2).first
+    }
+
     var recentlyAddedCards: [CardRepresentable] {
         cardsManager.recentlyAddedCards(count: 3)
     }
@@ -75,6 +80,7 @@ private extension DashboardViewController {
         cardsView.currentValueView.discloseButton.addTarget(self, action: #selector(discloseCurrentValueTapped), for: .touchUpInside)
         cardsView.highestValueView.discloseButton.addTarget(self, action: #selector(discloseHighestValueTapped), for: .touchUpInside)
         cardsView.highestValueView.cardButton.addTarget(self, action: #selector(showHighestValuedCardDetailsTapped), for: .touchUpInside)
+        cardsView.highestValueView.cardButtonTwo.addTarget(self, action: #selector(showHighestValuedCardDetailsTappedTwo), for: .touchUpInside)
         cardsView.recentlyAddedView.discloseButton.addTarget(self, action: #selector(discloseRecentlyAddedTapped), for: .touchUpInside)
     }
 
@@ -88,7 +94,7 @@ private extension DashboardViewController {
         } else {
             dashboardView.showCardsView()
             dashboardView.updateCurrentValueView(currentValue: currentCardsValue, categoryValues: categoriesCardsValue)
-            dashboardView.updateHighestValueView(with: highestValuedCard)
+            dashboardView.updateHighestValueView(first: highestValuedCard, second: highestValueTwo)
             dashboardView.updateRecentlyAddedView(with: recentlyAddedCards)
             dashboardView.cardsView.recentlyAddedView.delegate = self
         }
@@ -141,6 +147,11 @@ private extension DashboardViewController {
 
     @objc func showHighestValuedCardDetailsTapped() {
         guard let card = highestValuedCard else { return }
+        delegate?.dashboardViewControllerCardDetailsTapped(card: card, in: self)
+    }
+
+    @objc func showHighestValuedCardDetailsTappedTwo() {
+        guard let card = highestValueTwo else { return }
         delegate?.dashboardViewControllerCardDetailsTapped(card: card, in: self)
     }
 

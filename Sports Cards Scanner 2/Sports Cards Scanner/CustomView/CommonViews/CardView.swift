@@ -7,21 +7,21 @@ final class CardView: UIView {
     static let viewHeight: CGFloat = 297
 
     lazy var titleLabel: UILabel = { label in
-        label.textColor = .labelColor4
-        label.font = .font(.interMedium, size: 16)
+        label.textColor = .black
+        label.font = .font(.ubuntuMedium500, size: 16)
         label.numberOfLines = 1
         return label
     }(UILabel())
 
     lazy var subtitleLabel: UILabel = { label in
-        label.textColor = .labelColor4
-        label.font = .font(.interMedium, size: 16)
+        label.textColor = .singINLabel
+        label.font = .font(.ubuntuMedium500, size: 12)
         label.numberOfLines = 2
         return label
     }(UILabel())
 
     lazy var cardImageView: UIImageView = { imageView in
-        imageView.cornerRadius = 6
+        imageView.cornerRadius = 12
         imageView.contentMode = .scaleAspectFill
         return imageView
     }(UIImageView())
@@ -37,14 +37,14 @@ final class CardView: UIView {
     }(UILabel())
 
     lazy var missingImageView: UIView = { view in
-        view.cornerRadius = 6
-        view.backgroundColor = .backColor
+        view.cornerRadius = 12
+        view.backgroundColor = .black
         return view
     }(UIView())
 
     lazy var checkedView: UIView = { view in
         view.backgroundColor = .blackColor40
-        view.cornerRadius = 6
+        view.cornerRadius = 12
         view.isHidden = true
         return view
     }(UIView())
@@ -62,7 +62,7 @@ final class CardView: UIView {
     }(UIView())
 
     lazy var pricesLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
+        label.font = .font(.ubuntuMedium500, size: 16)
         label.textColor = .greenColor
         return label
     }(UILabel())
@@ -96,7 +96,7 @@ final class CardView: UIView {
         }
         pricesLabel.setLineHeight(22)
         pricesLabel.lineBreakMode = .byTruncatingMiddle
-        pricesLabel.textAlignment = .right
+        pricesLabel.textAlignment = .left
 
         if let imageURL = card.imageURL {
             missingImageLabel.isHidden = true
@@ -135,13 +135,7 @@ private extension CardView {
         }
 
         addSubviews(cardImageView, titleLabel, subtitleLabel, pricesLabel, missingImageView, checkedView, numberView)
-//        titleLabel.backgroundColor = .red
-//        subtitleLabel.backgroundColor = .yellow
-//        pricesLabel.backgroundColor = .green
-//
-//        missingImageView.backgroundColor = .blue
-//        cardImageView.backgroundColor = .orange
-//        numberView.backgroundColor = .gray
+
         self.snp.makeConstraints {
             $0.height.equalTo(Self.viewHeight)
         }
@@ -149,7 +143,7 @@ private extension CardView {
             $0.top.leading.equalToSuperview()
             $0.height.equalTo(195)
             $0.width.equalTo(138)
-            pricesTrailingConstraint = $0.leading.equalTo(pricesLabel.snp.trailing).offset(16).constraint
+            $0.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
@@ -161,8 +155,7 @@ private extension CardView {
         }
         pricesLabel.snp.makeConstraints {
             $0.top.equalTo(subtitleLabel.snp.bottom).offset(5)
-            numberPricesSpaceConstraint = $0.leading.greaterThanOrEqualTo(numberView.snp.trailing).offset(8).constraint
-            pricesLeadingConstraint = $0.leading.equalToSuperview().priority(.high).constraint
+            $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
 
@@ -171,10 +164,6 @@ private extension CardView {
         }
         checkedView.snp.makeConstraints {
             $0.edges.equalTo(cardImageView)
-        }
-        numberView.snp.makeConstraints {
-            $0.leading.bottom.equalToSuperview()
-            $0.size.equalTo(32)
         }
 
         missingImageView.addSubview(missingImageLabel)

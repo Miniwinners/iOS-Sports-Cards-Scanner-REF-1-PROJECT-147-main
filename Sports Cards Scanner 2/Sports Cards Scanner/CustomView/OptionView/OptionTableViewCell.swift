@@ -54,5 +54,6 @@ private extension OptionTableViewCell {
             titleTopConstraint = $0.top.equalToSuperview().inset(12).constraint
             titleBottomConstraint = $0.bottom.equalToSuperview().inset(12).constraint
         }
+
     }
 }

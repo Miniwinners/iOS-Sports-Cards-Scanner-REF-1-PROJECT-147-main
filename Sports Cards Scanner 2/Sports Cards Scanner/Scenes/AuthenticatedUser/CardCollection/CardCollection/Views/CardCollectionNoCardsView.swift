@@ -59,6 +59,7 @@ final class CardCollectionNoCardsView: UIView {
     lazy var addCardsButton: CommonButton = { button in
         button.setButtonTitle(L10n.CardCollection.Action.addCards)
         button.setImage(Images.addPlus2.image, for: .normal)
+        button.configuration?.imagePadding = 20
         return button
     }(CommonButton(style: .default))
 

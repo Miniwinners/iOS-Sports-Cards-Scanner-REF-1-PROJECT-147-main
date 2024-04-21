@@ -42,6 +42,7 @@ final class CreateEditCollectionVC: UIViewController {
     lazy var createButton: CommonButton = { button in
         button.setButtonTitle(L10n.CreateCollection.Action.create)
         button.setImage(Images.collectionCards.image, for: .normal)
+        button.configuration?.imagePadding = 10
         button.isEnabled = false
         return button
     }(CommonButton(style: .default))

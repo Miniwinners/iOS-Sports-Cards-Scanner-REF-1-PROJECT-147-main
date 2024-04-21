@@ -20,7 +20,7 @@ final class OptionsView: UIView {
     // MARK: - Subviews
 
     lazy var containerView: UIView = { view in
-        view.backgroundColor = .skyBlue
+        view.backgroundColor = .clear
         view.cornerRadius = 12
         return view
     }(UIView())
@@ -40,9 +40,15 @@ final class OptionsView: UIView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = .none
+        tableView.isScrollEnabled = true
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
+        tableView.estimatedRowHeight = 50
+        tableView.layer.cornerRadius = 12
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = UIColor(red: 0, green: 0, blue: 255/255, alpha: 0.1)
+
         return tableView
     }(UITableView())
 
@@ -92,6 +98,7 @@ final class OptionsView: UIView {
                 self.layer.shadowOpacity = 1
             }
             self.disclosureImageView.transform = .init(rotationAngle: .pi)
+
             self.superview?.layoutIfNeeded()
         }
     }
@@ -133,12 +140,10 @@ private extension OptionsView {
 
     func setupSubviews_unique() {
         cornerRadius = 12
-        clipsToBounds = false
         layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.25)
         layer.shadowOpacity = 0
-        layer.shadowRadius = 19
+        layer.shadowRadius = 1
         layer.shadowOffset = .init(width: 0, height: 4)
-
         snp.makeConstraints {
             selfHeightConstraint = $0.height.equalTo(0).offset(minHeight).constraint
         }
@@ -149,6 +154,7 @@ private extension OptionsView {
         }
 
         containerView.addSubviews(discloseButton, optionsTableView)
+
         discloseButton.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
             $0.height.equalTo(minHeight)
@@ -161,6 +167,7 @@ private extension OptionsView {
         }
 
         discloseButton.addSubviews(titleLabel, disclosureImageView)
+
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
@@ -228,9 +235,20 @@ extension OptionsView: UITableViewDataSource {
         if let option = option(at: indexPath) {
             cell?.setCellTitle(option)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: options))
+
+        // cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: options))
 
         return cell ?? UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            // Последняя ячейка в секции
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+        } else {
+            // Для всех других ячеек можно восстановить стандартные инсеты, если они были изменены
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        }
     }
 }
 

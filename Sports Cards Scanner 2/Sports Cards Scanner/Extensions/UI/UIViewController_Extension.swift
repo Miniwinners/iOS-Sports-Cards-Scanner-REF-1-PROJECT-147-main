@@ -158,7 +158,8 @@ class TitleLabel: UILabel {
     func setupLabel(in view: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(16)
+//            make.horizontalEdges.equalToSuperview().inset(16)
+            make.centerX.equalToSuperview()
             make.height.equalTo(24)
             make.top.equalToSuperview().inset(42)
         }

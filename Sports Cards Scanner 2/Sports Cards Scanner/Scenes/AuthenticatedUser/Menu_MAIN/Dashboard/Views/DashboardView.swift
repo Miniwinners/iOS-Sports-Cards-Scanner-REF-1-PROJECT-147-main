@@ -52,11 +52,11 @@ final class DashboardView: UIView {
         currentValueView.setCategoryValues(categoryValues)
     }
 
-    func updateHighestValueView(with highestValuedCard: CardRepresentable?) {
+    func updateHighestValueView(first highestValuedCard: CardRepresentable?, second highestTwo: CardRepresentable?) {
         let highestValueView = cardsView.highestValueView
         highestValueView.isHidden = highestValuedCard.isNil
         if let card = highestValuedCard {
-            highestValueView.setCard(card)
+            highestValueView.setCard(card, highestTwo ?? card)
         }
     }
 

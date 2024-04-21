@@ -88,15 +88,8 @@ final class CardDetailsView: UIView {
         editCardButton.isHidden = cardType != .addedCard
         findCardButtonContainer.isHidden = cardType != .identifiedCard
         removeCardButtonContainer.isHidden = cardType != .addedCard
-
-//        detailsListView.isHidden = cardType == .addedCard
-//        addCardButton.isHidden = cardType != .addedCard
-//        editCardButton.isHidden = cardType == .addedCard
-//        findCardButtonContainer.isHidden = cardType == .identifiedCard
-//        removeCardButtonContainer.isHidden = cardType == .addedCard
     }
 }
-
 private extension CardDetailsView {
     func setupSubviews_unique() {
         backgroundColor = .clear
@@ -107,7 +100,6 @@ private extension CardDetailsView {
         }
         cardContainerView.addSubviews(cardTitleLabel, cardSubTitleLabel, cardImageView)
         cardContainerView.backgroundColor = .clear
-
         cardTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(20)
@@ -137,40 +129,69 @@ private extension CardDetailsView {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(39)
         }
+
+        backView.addSubview(pricingReportButton)
+        pricingReportButton.snp.makeConstraints {
+            $0.top.equalTo(cardGraderButton.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.height.equalTo(70)
+        }
+
+        backView.addSubview(detailsListView)
+        detailsListView.snp.makeConstraints {
+            $0.top.equalTo(pricingReportButton.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(30)
+        }
+
+        backView.addSubview(editCardButton)
+        editCardButton.snp.makeConstraints {
+            $0.top.equalTo(detailsListView.snp.bottom).offset(30)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(60)
+        }
+
+        backView.addSubview(removeCardButtonContainer)
+        removeCardButtonContainer.snp.makeConstraints {
+            $0.top.equalTo(editCardButton.snp.bottom).offset(5)
+            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.height.equalTo(60)
+            $0.bottom.equalToSuperview()
+        }
+
         let stackView = UIStackView(arrangedSubviews: [
-            pricingReportButton, addCardButton
-//            cardGraderButton, pricingReportButton, detailsListView, addCardButton,
-//            editCardButton, findCardButtonContainer, removeCardButtonContainer
+            pricingReportButton, addCardButton, detailsListView,
+            cardGraderButton, pricingReportButton, addCardButton,
+            editCardButton, findCardButtonContainer, removeCardButtonContainer
         ])
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         stackView.spacing = 10
         stackView.distribution = .fillEqually
         addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.top.equalTo(cardGraderButton.snp.bottom).offset(15)
-            $0.horizontalEdges.bottom.equalToSuperview().inset(20)
-            $0.height.equalTo(130)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+
         }
 
-//        cardGraderButton.snp.makeConstraints {
-//            $0.height.equalTo(39)
-//        }
-//        pricingReportButton.snp.makeConstraints {
-//            $0.height.equalTo(430)
-//
-//        }
-//        addCardButton.snp.makeConstraints {
-//            $0.height.equalTo(430)
-//        }
-//        editCardButton.snp.makeConstraints {
-//            $0.height.equalTo(54)
-//        }
-//        findCardButton.snp.makeConstraints {
-//            $0.height.equalTo(42)
-//        }
-//        removeCardButton.snp.makeConstraints {
-//            $0.height.equalTo(42)
-//        }
+        cardGraderButton.snp.makeConstraints {
+            $0.height.equalTo(39)
+        }
+        pricingReportButton.snp.makeConstraints {
+            $0.height.equalTo(430)
+
+        }
+        addCardButton.snp.makeConstraints {
+            $0.height.equalTo(430)
+        }
+        editCardButton.snp.makeConstraints {
+            $0.height.equalTo(54)
+        }
+        findCardButton.snp.makeConstraints {
+            $0.height.equalTo(42)
+        }
+        removeCardButton.snp.makeConstraints {
+            $0.height.equalTo(42)
+        }
     }
 
     func getButtonContainer(for cancelTypedButton: UIButton) -> UIView {

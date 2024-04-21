@@ -9,7 +9,7 @@ final class CreateEditDeckVC: UIViewController {
 
     private let cardDeckManager: CardDeckManager
 
-    private let categories: [CardCategory] = [.pokemon, .magic]
+    private let categories: [CardCategory] = [.basketball, .magic, .pokemon]
     private var deckType: CardCategory?
 
     private let minLengthValidator: LengthValidator = .init(minLength: 1)
@@ -111,7 +111,6 @@ private extension CreateEditDeckVC {
 
     func setupViews_unique() {
         view.backgroundColor = .clear
-//        setupNavigationItem()
 
         let nameTextField = deckView.nameView.textField
         nameTextField.delegate = self
@@ -152,21 +151,6 @@ private extension CreateEditDeckVC {
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    func setupNavigationItem() {
-        if cardDeck.isNil {
-            navigationItem.rightBarButtonItem = .init(
-                image: Images.close.image,
-                style: .plain,
-                target: self,
-                action: #selector(closeTapped_unique)
-            )
-            navigationItem.rightBarButtonItem?.tintColor = .black
-        } else {
-            navigationItem.setHidesBackButton(true, animated: false)
-            navigationItem.leftBarButtonItem = nil
-        }
     }
 
     func deckTypeDidUpdate(index: Int) {

@@ -19,7 +19,6 @@ final class CreateEditDeckView: UIView {
         view.textField.autocorrectionType = .no
         view.textField.returnKeyType = .done
         view.textField.autocapitalizationType = .sentences
-        view.backgroundColor = .red
         return view
     }(TitledTextFieldView())
 
@@ -35,11 +34,12 @@ final class CreateEditDeckView: UIView {
     }(UILabel())
 
     lazy var deckTypeView: OptionsView = { view in
-        view.containerView.backgroundColor = .clear
-         view.setOptionTitle(L10n.CreateDeck.DeckType.select)
-        view.showsShadow = false
+        view.setOptionTitle(L10n.CreateDeck.DeckType.select)
+        view.showsShadow = true
+        view.discloseButton.layer.cornerRadius = 12
+
         return view
-    }(OptionsView(minHeight: 48, maxHeight: 129))
+    }(OptionsView(minHeight: 48, maxHeight: 150))
 
     lazy var descriptionLabel: UILabel = { label in
         label.font = .font(.ubuntuLight300, size: 16)
@@ -62,6 +62,7 @@ final class CreateEditDeckView: UIView {
     lazy var createButton: CommonButton = { button in
         button.setButtonTitle(L10n.CreateDeck.Action.create)
         button.setImage(Images.collectionCards.image, for: .normal)
+        button.configuration?.imagePadding = 20
         return button
     }(CommonButton(style: .default))
 
@@ -138,20 +139,21 @@ private extension CreateEditDeckView {
             make.centerX.equalToSuperview()
             make.size.equalTo(32)
         }
-        addSubviews(nameView, descriptionImage, descriptionLabel, descriptionTextView)
+        // descriptionImage
+        addSubviews(nameView, descriptionLabel, descriptionTextView)
         nameView.snp.makeConstraints {
             $0.top.equalTo(titleImage.snp.bottom).offset(5)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
 
-        descriptionImage.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(nameView.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(32)
-        }
+//        descriptionImage.snp.makeConstraints { make in
+//            make.top.greaterThanOrEqualTo(nameView.snp.bottom).offset(500)
+//            make.centerX.equalToSuperview()
+//            make.size.equalTo(32)
+//        }
 
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(descriptionImage.snp.bottom).offset(5)
+            $0.top.equalTo(nameView.snp.bottom).offset(20).priority(.high)
             $0.centerX.equalToSuperview()
         }
         descriptionTextView.snp.makeConstraints {

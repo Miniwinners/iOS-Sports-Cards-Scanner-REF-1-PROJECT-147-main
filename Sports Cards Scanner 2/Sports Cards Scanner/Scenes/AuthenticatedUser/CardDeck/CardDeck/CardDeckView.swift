@@ -3,13 +3,8 @@ import SnapKit
 
 final class CardDeckView: UIView {
 
-    lazy var nameLabel: UILabel = { label in
-        label.font = .font(.interBold, size: 24)
-        label.textColor = .labelColor
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
-        return label
-    }(UILabel())
+    lazy var backView: BackView = .init()
+    lazy var titleLabel: TitleLabel = .init()
 
     lazy var menuButton: UIButton = { button in
         button.setImage(Images.menuDots.image, for: .normal)
@@ -17,23 +12,23 @@ final class CardDeckView: UIView {
     }(UIButton(type: .system))
 
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 18)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuMedium500, size: 16)
+        label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }(UILabel())
 
     lazy var nameSecondaryLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 18)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuMedium500, size: 22)
+        label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }(UILabel())
 
     lazy var priceLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
+        label.font = .font(.ubuntuMedium500, size: 16)
         label.textColor = .greenColor
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .horizontal)
@@ -65,8 +60,7 @@ final class CardDeckView: UIView {
     }
 
     func setDeck(name: String?) {
-        nameLabel.text = name
-        nameLabel.setLineHeight(28)
+        titleLabel.text = name
         nameSecondaryLabel.text = name
         nameSecondaryLabel.setLineHeight(22)
     }
@@ -98,38 +92,25 @@ final class CardDeckView: UIView {
 
 private extension CardDeckView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
+        backView.setupView(in: self)
 
-        let underlineView = UIView()
-        underlineView.backgroundColor = .dividerColor
+        titleLabel.setupLabel(in: backView)
 
-        addSubviews(nameLabel, menuButton, cardsNumberLabel, underlineView, nameSecondaryLabel, priceLabel, cardsTableView, noCardsView, addCardsButton)
-        nameLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.leading.equalToSuperview().inset(20)
-        }
-        menuButton.snp.makeConstraints {
-            $0.size.equalTo(44)
-            $0.top.equalTo(safeAreaLayoutGuide).inset(-10)
-            $0.trailing.equalToSuperview().inset(10)
-            $0.leading.equalTo(nameLabel.snp.trailing).offset(8)
-        }
+        addSubviews(menuButton, cardsNumberLabel, nameSecondaryLabel, priceLabel, cardsTableView, noCardsView, addCardsButton)
+
         cardsNumberLabel.snp.makeConstraints {
-            $0.top.equalTo(nameLabel.snp.bottom).offset(14)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(14)
             $0.leading.equalToSuperview().inset(20)
         }
-        underlineView.snp.makeConstraints {
-            $0.top.equalTo(cardsNumberLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(1)
-        }
+
         nameSecondaryLabel.snp.makeConstraints {
-            $0.top.equalTo(underlineView.snp.bottom).offset(20)
+            $0.top.equalTo(cardsNumberLabel.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(20)
         }
         priceLabel.snp.makeConstraints {
-            $0.centerY.equalTo(nameSecondaryLabel)
-            $0.leading.equalTo(nameSecondaryLabel.snp.trailing).offset(8)
+            $0.centerY.equalTo(cardsNumberLabel)
+            $0.leading.equalTo(cardsNumberLabel.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().inset(20)
         }
         cardsTableView.snp.makeConstraints {
@@ -137,13 +118,19 @@ private extension CardDeckView {
             $0.horizontalEdges.bottom.equalToSuperview()
         }
         noCardsView.snp.makeConstraints {
-            $0.top.equalTo(nameSecondaryLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.center.equalToSuperview()
         }
         addCardsButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(54)
+        }
+
+        menuButton.snp.makeConstraints {
+            $0.size.equalTo(44)
+            $0.centerY.equalTo(nameSecondaryLabel)
+            $0.trailing.equalToSuperview().inset(30)
+            $0.leading.equalTo(nameSecondaryLabel.snp.trailing).offset(8)
         }
     }
 }
