@@ -5,7 +5,7 @@ final class UpdatePasswordVC: UIViewController {
     // MARK: - Subviews
 
     lazy var updatePasswordView: UpdatePasswordView = .init()
-
+    lazy var closeButton: CloseButton = .init(style: .close)
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
         return toolbar
@@ -75,7 +75,10 @@ final class UpdatePasswordVC: UIViewController {
         setupActions_unique()
         updateSaveButton()
         updateErrorLabel(animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
 
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 }
 

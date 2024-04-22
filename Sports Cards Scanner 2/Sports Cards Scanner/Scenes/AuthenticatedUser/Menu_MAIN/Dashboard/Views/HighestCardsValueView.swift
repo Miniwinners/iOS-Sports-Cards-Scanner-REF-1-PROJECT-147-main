@@ -11,6 +11,9 @@ final class HighestCardsValueView: UIView {
         return label
     }(UILabel())
 
+    lazy var numOneImage: UIImageView = .init(image: Images.highValue1.image)
+    lazy var numTwoImage: UIImageView = .init(image: Images.highValue2.image)
+
     lazy var stackView: UIStackView = { stackView in
         stackView.axis = .horizontal
         stackView.spacing = 10
@@ -19,9 +22,14 @@ final class HighestCardsValueView: UIView {
     }(UIStackView(arrangedSubviews: [cardButton, cardButtonTwo]))
 
     lazy var discloseButton: UIButton = { button in
-        button.setImage(Images.disclose.image, for: .normal)
         return button
     }(UIButton(type: .system))
+
+    lazy var coverButton: UIImageView = { image in
+        image.layer.cornerRadius = 14
+        image.image = Images.disclose.image
+        return image
+    }(UIImageView())
 
     lazy var cardButton: CommonButton = .init(style: .custom(createCardButtonAppearance()))
     lazy var cardButtonTwo: CommonButton = .init(style: .custom(createCardButtonAppearance()))
@@ -59,8 +67,13 @@ private extension HighestCardsValueView {
         addSubview(discloseButton)
         discloseButton.snp.makeConstraints {
             $0.size.equalTo(28)
-            $0.trailing.equalToSuperview().inset(6)
+            $0.trailing.equalToSuperview()
             $0.centerY.equalTo(titleLabel)
+        }
+
+        discloseButton.addSubview(coverButton)
+        coverButton.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
 
         addSubview(stackView)
@@ -70,6 +83,7 @@ private extension HighestCardsValueView {
         }
 
         cardButton.addSubview(cardView)
+
         cardView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(10)
         }
@@ -82,6 +96,21 @@ private extension HighestCardsValueView {
         }
         cardViewTwo.isUserInteractionEnabled = false
         cardViewTwo.setCardsNumber(2)
+
+        cardButton.addSubview(numOneImage)
+        numOneImage.snp.makeConstraints { make in
+            make.height.equalTo(36)
+            make.width.equalTo(25)
+            make.top.equalToSuperview()
+            make.right.equalToSuperview().inset(20)
+        }
+        cardButtonTwo.addSubview(numTwoImage)
+        numTwoImage.snp.makeConstraints { make in
+            make.height.equalTo(36)
+            make.width.equalTo(25)
+            make.top.equalToSuperview()
+            make.right.equalToSuperview().inset(20)
+        }
     }
 
     private func createCardButtonAppearance() -> CommonButton.SCSAppearance {

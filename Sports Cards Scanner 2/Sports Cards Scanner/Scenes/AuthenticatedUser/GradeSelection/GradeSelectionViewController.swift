@@ -10,12 +10,13 @@ final class GradeSelectionViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var gradeSelectionView: GradeSelectionView = .init()
-
+    lazy var closeButton: CloseButton = .init(style: .back)
+    lazy var doneButton: DoneButton = .init()
     init(grader: CardGrader, grade: CardGrade?) {
         self.selectedGrader = grader
         self.selectedGrade = grade
         super.init(nibName: nil, bundle: nil)
-        title = L10n.GradeSelection.title
+        gradeSelectionView.titleLabel.text = L10n.GradeSelection.title
     }
 
     required init?(coder: NSCoder) {
@@ -36,9 +37,14 @@ final class GradeSelectionViewController: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(pop), for: .touchUpInside)
+        doneButton.setInView(view)
+        doneButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
+        gradeSelectionView.updateDetailsButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
     }
 
 }
@@ -61,18 +67,8 @@ private extension GradeSelectionViewController {
     }
 
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            title: L10n.Common.done,
-            style: .plain,
-            target: self,
-            action: #selector(doneTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes(
-            [.font: UIFont.font(.interMedium, size: 16)],
-            for: .normal
-        )
-        navigationItem.rightBarButtonItem?.isEnabled = canSave
 
+        gradeSelectionView.updateDetailsButton.isHidden = canSave
         gradeSelectionView.graderOptionsView.setOptionTitle(selectedGrader.rawValue)
         gradeSelectionView.gradeOptionsView.setOptionTitle(selectedGrade?.name ?? L10n.GradeSelection.selectGrade)
 
@@ -107,14 +103,12 @@ private extension GradeSelectionViewController {
         gradeSelectionView.gradeOptionsView.setOptions(gradeOptions)
         gradeSelectionView.gradeOptionsView.discloseButton.isEnabled = selectedGrader != .RAW
 
-        navigationItem.rightBarButtonItem?.isEnabled = canSave
     }
 
     func gradeDidUpdate(gradeIndex: Int) {
         selectedGrade = availableGrades[gradeIndex]
         gradeSelectionView.gradeOptionsView.setOptionTitle(selectedGrade?.name ?? L10n.GradeSelection.selectGrade)
-
-        navigationItem.rightBarButtonItem?.isEnabled = canSave
+        gradeSelectionView.updateDetailsButton.isHidden = false
     }
 
     // MARK: - Actions
@@ -122,7 +116,9 @@ private extension GradeSelectionViewController {
     @objc func doneTapped_unique() {
         gradeDidSelect?(selectedGrader, selectedGrade)
     }
-
+    @objc func pop() {
+        navigationController?.popViewController(animated: true)
+    }
     @objc func graderSelectionTapped() {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
@@ -142,4 +138,5 @@ private extension GradeSelectionViewController {
 
         return gradeSelectionView.graderOptionsView.closeOptionsView()
     }
+
 }

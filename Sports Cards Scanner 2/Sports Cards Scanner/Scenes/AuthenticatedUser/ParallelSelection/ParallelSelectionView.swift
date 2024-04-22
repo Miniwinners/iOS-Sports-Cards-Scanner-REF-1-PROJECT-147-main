@@ -3,10 +3,13 @@ import SnapKit
 
 final class ParallelSelectionView: UIView {
 
+    lazy var backView: BackView = .init()
+    lazy var titleLabel: TitleLabel = .init()
+
     lazy var searchTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.interRegular, size: 16)
-        textField.backgroundColor = .white
+        textField.font = .font(.ubuntuRegular400, size: 16)
+        textField.backgroundColor = .skyBlue
         textField.cornerRadius = 12
         textField.placeholder = L10n.ParallelSelection.Search.placeholder
         textField.rightViewMode = .always
@@ -68,13 +71,14 @@ final class ParallelSelectionView: UIView {
 
 private extension ParallelSelectionView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
-
+        backgroundColor = .clear
+        backView.setupView(in: self)
+        titleLabel.setupLabel(in: backView)
         setupSearchTextField()
 
-        addSubviews(searchTextField, allOptionsLabel, noneParallelButton, underlineView, parallelsCollectionView, noResultsView)
+        backView.addSubviews(searchTextField, allOptionsLabel, noneParallelButton, underlineView, parallelsCollectionView, noResultsView)
         searchTextField.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(48)
         }

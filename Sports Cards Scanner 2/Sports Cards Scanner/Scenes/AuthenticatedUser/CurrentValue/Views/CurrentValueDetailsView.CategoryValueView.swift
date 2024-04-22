@@ -41,6 +41,9 @@ private extension CurrentValueDetailsView.CategoryValueView {
     func setupSubviews_unique() {
         categoryLabel.textColor = .labelColor
         categoryLabel.font = .font(.interMedium, size: 18)
+        colorView.layer.cornerRadius = 7
+        colorView.layer.masksToBounds = false
+        colorView.clipsToBounds = true
         valueLabel.textColor = .labelColor
         valueLabel.font = .font(.interMedium, size: 18)
         valueLabel.lineBreakMode = .byTruncatingMiddle

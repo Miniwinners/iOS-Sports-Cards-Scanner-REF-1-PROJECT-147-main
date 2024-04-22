@@ -42,9 +42,9 @@ class CloseButton: UIButton {
         layer.cornerRadius = 22
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        layer.shadowRadius = 15
+        layer.shadowOpacity = 0.7
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowRadius = 2
 
         // Setting image based on the style
         switch style {
@@ -189,4 +189,36 @@ class BackView: UIView {
             make.horizontalEdges.bottom.equalToSuperview()
         }
     }
+}
+
+class DoneButton: UIButton {
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupButton()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupButton() {
+        backgroundColor = .clear
+        setTitle("Done", for: .normal)
+        titleLabel?.font = .font(.ubuntuMedium500, size: 16)
+        titleLabel?.textColor = .black
+        setTitleColor(.black, for: .normal)
+
+    }
+
+    func setInView(_ view: UIView) {
+        view.addSubview(self)
+        self.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(35)
+            make.right.equalToSuperview().inset(20)
+            make.height.equalTo(22)
+            make.width.equalTo(40)
+        }
+    }
+
 }

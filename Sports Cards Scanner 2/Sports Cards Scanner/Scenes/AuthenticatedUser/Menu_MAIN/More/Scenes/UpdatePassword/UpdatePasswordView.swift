@@ -3,10 +3,7 @@ import SnapKit
 
 final class UpdatePasswordView: UIView {
 
-    lazy var backView: UIView = { view in
-        view.setupBackView()
-        return view
-    }(UIView())
+    lazy var backView: BackView = .init()
 
     lazy var titleLabel: UILabel = { label in
         label.text = L10n.UpdatePassword.title
@@ -94,11 +91,7 @@ final class UpdatePasswordView: UIView {
 
 private extension UpdatePasswordView {
     func setupSubviews_unique() {
-        addSubview(backView)
-        backView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalToSuperview()
-            make.top.equalToSuperview().inset(22)
-        }
+        backView.setupView(in: self)
         backView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(65)

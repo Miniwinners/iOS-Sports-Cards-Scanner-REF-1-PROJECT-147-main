@@ -1,11 +1,17 @@
 import UIKit
 import SnapKit
 
+enum ButtonTypeReport {
+    case main
+    case add
+}
+
 final class PricingReportButton: UIButton {
 
+    private var priceButtonType: ButtonTypeReport!
+    lazy var graderPriceView: GraderPriceView = .init(type: priceButtonType)
     lazy var noPriceView: NoPriceView = .init()
     lazy var customPriceView: CustomPriceView = .init()
-    lazy var graderPriceView: GraderPriceView = .init()
 
     enum ReportMode {
         case noPrice
@@ -17,8 +23,9 @@ final class PricingReportButton: UIButton {
         didSet { reportModeDidUpdate() }
     }
 
-    convenience init() {
+    convenience init(priceButtonType: ButtonTypeReport) {
         self.init(frame: .zero)
+        self.priceButtonType = priceButtonType
         setupSubviews_unique()
     }
 
@@ -36,12 +43,9 @@ final class PricingReportButton: UIButton {
 private extension PricingReportButton {
     func setupSubviews_unique() {
         configuration = .plain()
-
         backgroundColor = .skyBlue
-        cornerRadius = 12
-        borderWidth = 1
-        layer.borderColor = UIColor.blue.cgColor
-
+        layer.cornerRadius = 12
+        clipsToBounds = true
         [noPriceView, customPriceView, graderPriceView].forEach { view in
             addSubview(view)
             view.isUserInteractionEnabled = false

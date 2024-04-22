@@ -3,6 +3,9 @@ import SnapKit
 
 final class GraderSelectionView: UIView {
 
+    lazy var backView: BackView = .init()
+    lazy var titleLabel: TitleLabel = .init()
+
     lazy var grabberView: SCSGrabberView = .init()
 
     lazy var gradersTableView: UITableView = { tableView in
@@ -30,7 +33,7 @@ final class GraderSelectionView: UIView {
 
 private extension GraderSelectionView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
 
         addSubview(grabberView)
         grabberView.snp.makeConstraints {

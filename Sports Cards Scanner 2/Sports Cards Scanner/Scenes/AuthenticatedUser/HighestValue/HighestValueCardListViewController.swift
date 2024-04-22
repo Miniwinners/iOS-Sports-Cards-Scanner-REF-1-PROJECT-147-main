@@ -1,16 +1,23 @@
 import UIKit
-
-final class HighestValueCardListViewController: UITableViewController {
+import SnapKit
+final class HighestValueCardListViewController: UIViewController {
 
     private let cardsManager: UserCardsManager
     private var highestValueCards: [CardRepresentable] = []
 
     weak var delegate: HighestValueListViewControllerDelegate?
 
+    lazy var closeButton: CloseButton = .init(style: .close)
+    lazy var titleLabel: TitleLabel = .init()
+    lazy var backView: BackView = .init()
+    lazy var collectionViewValue: UICollectionView = { collection in
+
+        return collection
+    }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
     init(cardsManager: UserCardsManager = .shared) {
         self.cardsManager = cardsManager
-        super.init(style: .plain)
-        title = L10n.HighestValue.title
+        super.init(nibName: nil, bundle: nil)
+        titleLabel.text = L10n.HighestValue.title
     }
 
     required init?(coder: NSCoder) {
@@ -40,26 +47,30 @@ final class HighestValueCardListViewController: UITableViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
 }
 
 private extension HighestValueCardListViewController {
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        view.backgroundColor = .clear
+        backView.setupView(in: view)
+        titleLabel.setupLabel(in: backView)
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
 
-        tableView.backgroundColor = .backColor
-        tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = .none
-        tableView.contentInset.bottom = 20
-        tableView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.className)
+        backView.addSubview(collectionViewValue)
+        collectionViewValue.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.horizontalEdges.bottom.equalToSuperview()
+        }
+        collectionViewValue.delegate = self
+        collectionViewValue.dataSource = self
+        collectionViewValue.backgroundColor = .clear
+        collectionViewValue.showsVerticalScrollIndicator = false
+        collectionViewValue.contentInset.bottom = 20
+        collectionViewValue.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.className)
     }
 
     func subscribeToNotifications() {
@@ -68,7 +79,7 @@ private extension HighestValueCardListViewController {
 
     func reloadData_unique() {
         highestValueCards = cardsManager.highestValuedCards(count: 10)
-        tableView.reloadData()
+        collectionViewValue.reloadData()
     }
 
     func getCard(at indexPath: IndexPath) -> CardRepresentable? {
@@ -76,6 +87,28 @@ private extension HighestValueCardListViewController {
         return card
     }
 
+    func filterLayout() -> UICollectionViewCompositionalLayout {
+        let size = NSCollectionLayoutSize(
+            widthDimension: .estimated(162),
+            heightDimension: .absolute(297)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(297))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = .init(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 16
+        )
+
+        return UICollectionViewCompositionalLayout(section: section)
+    }
     // MARK: - Actions
 
     @objc func closeTapped_unique() {
@@ -93,36 +126,36 @@ private extension HighestValueCardListViewController {
 
 // MARK: - TableView DataSource
 
-extension HighestValueCardListViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        1
+extension HighestValueCardListViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        highestValueCards.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return highestValueCards.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: CardTableViewCell.className,
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionViewValue.dequeueReusableCell(
+            withReuseIdentifier: CardCollectionViewCell.className,
             for: indexPath
-        ) as? CardTableViewCell
+        ) as? CardCollectionViewCell
 
         if let card = getCard(at: indexPath) {
             cell?.setupCard(card)
         }
         cell?.setCardsNumber(indexPath.row + 1)
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: highestValueCards))
+//        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: highestValueCards))
 
-        return cell ?? UITableViewCell()
+        return cell ?? UICollectionViewCell()
     }
 }
 
 // MARK: - TableView Delegate
 
-extension HighestValueCardListViewController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+extension HighestValueCardListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionViewValue.deselectItem(at: indexPath, animated: true)
 
         guard let card = getCard(at: indexPath) else { return }
         delegate?.highestValueListViewControllerDidSelectCard(card, in: self)

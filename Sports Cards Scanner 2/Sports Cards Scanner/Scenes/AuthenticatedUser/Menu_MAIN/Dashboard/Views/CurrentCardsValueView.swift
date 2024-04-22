@@ -29,6 +29,12 @@ final class CurrentCardsValueView: UIView {
         return button
     }(UIButton(type: .system))
 
+    lazy var coverButton: UIImageView = { image in
+        image.layer.cornerRadius = 14
+        image.image = Images.disclose.image
+        return image
+    }(UIImageView())
+
     lazy var categoriesCollectionView: UICollectionView = { collectionView in
         collectionView.register(CategoryValueCollectionViewCell.self, forCellWithReuseIdentifier: CategoryValueCollectionViewCell.className)
         collectionView.dataSource = self
@@ -80,10 +86,15 @@ private extension CurrentCardsValueView {
 
         addSubview(discloseButton)
         discloseButton.snp.makeConstraints {
-            $0.size.equalTo(44)
-            $0.trailing.equalToSuperview().inset(6)
+            $0.size.equalTo(28)
+            $0.trailing.equalToSuperview()
             $0.centerY.equalTo(titleLabel)
             $0.leading.equalTo(priceLabel.snp.trailing).offset(8)
+        }
+
+        discloseButton.addSubview(coverButton)
+        coverButton.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
 
         let stackView = UIStackView(arrangedSubviews: [customViewOne, customViewTwo])

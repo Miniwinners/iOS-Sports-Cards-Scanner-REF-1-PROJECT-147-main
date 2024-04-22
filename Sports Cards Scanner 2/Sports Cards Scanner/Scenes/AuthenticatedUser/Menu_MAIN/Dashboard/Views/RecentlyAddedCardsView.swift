@@ -19,9 +19,14 @@ final class RecentlyAddedCardsView: UIView {
     }(UILabel())
 
     lazy var discloseButton: UIButton = { button in
-        button.setImage(Images.disclose.image, for: .normal)
         return button
     }(UIButton(type: .system))
+
+    lazy var coverButton: UIImageView = { image in
+        image.layer.cornerRadius = 14
+        image.image = Images.disclose.image
+        return image
+    }(UIImageView())
 
     lazy var cardsCollectionView: UICollectionView = { collectionView in
         collectionView.register(CardPhotoCollectionViewCell.self, forCellWithReuseIdentifier: CardPhotoCollectionViewCell.className)
@@ -86,11 +91,14 @@ private extension RecentlyAddedCardsView {
 
         addSubview(discloseButton)
         discloseButton.snp.makeConstraints {
-            $0.size.equalTo(44)
+            $0.size.equalTo(28)
             $0.centerY.equalTo(titleLabel)
-            $0.trailing.equalToSuperview().inset(6)
+            $0.trailing.equalToSuperview()
         }
-
+        discloseButton.addSubview(coverButton)
+        coverButton.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         addSubview(cardsCollectionView)
         cardsCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(20)

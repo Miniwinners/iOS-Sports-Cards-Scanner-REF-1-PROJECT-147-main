@@ -8,7 +8,7 @@ final class CardCategoriesViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var cardCategoriesView: CardCategoriesView = .init()
-
+    lazy var closeButton: CloseButton = .init(style: .close)
     init(cardCategoriesManager: CardCategoriesManager = .shared) {
         self.cardCategoriesManager = cardCategoriesManager
 
@@ -34,7 +34,7 @@ final class CardCategoriesViewController: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
     }
 
@@ -58,7 +58,11 @@ private extension CardCategoriesViewController {
         tableView.dataSource = self
         tableView.dragDelegate = self
         tableView.dropDelegate = self
+        tableView.delegate = self
         tableView.dragInteractionEnabled = true
+
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 
     func cardCategoryModel(for indexPath: IndexPath) -> CardCategoryModel? {
@@ -201,6 +205,7 @@ extension CardCategoriesViewController: UITableViewDragDelegate {
         preview.visiblePath = UIBezierPath(roundedRect: cell.bounds.insetBy(dx: 20, dy: 3), cornerRadius: 16)
         return preview
     }
+
 }
 
 // MARK: - Table View Drop Delegate
@@ -246,5 +251,16 @@ extension CardCategoriesViewController: UITableViewDropDelegate {
         let preview = UIDragPreviewParameters()
         preview.visiblePath = UIBezierPath(roundedRect: cell.bounds.insetBy(dx: 20, dy: 0), cornerRadius: 0)
         return preview
+    }
+}
+
+extension CardCategoriesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = .clear
+        return header
     }
 }

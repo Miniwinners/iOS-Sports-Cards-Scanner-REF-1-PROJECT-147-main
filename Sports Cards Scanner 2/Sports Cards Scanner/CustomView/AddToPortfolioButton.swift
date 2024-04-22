@@ -20,7 +20,7 @@ final class AddToPortfolioButton: UIButton {
     override func updateConfiguration() {
         switch state {
         case .highlighted:
-            backgroundColor = .red
+            backgroundColor = .highlightColor2
         default:
             backgroundColor = .blue
         }
@@ -42,6 +42,7 @@ private extension AddToPortfolioButton {
         }
         addSubview(titleLabelAdd)
         titleLabelAdd.text = L10n.CardDetails.Action.addCard
+        titleLabelAdd.textAlignment = .center
         titleLabelAdd.textColor = .white
         titleLabelAdd.font = .font(.ubuntuMedium500, size: 16)
         titleLabelAdd.setLineHeight(22)
@@ -52,7 +53,9 @@ private extension AddToPortfolioButton {
         }
         addSubview(subTitleLabelAdd)
         subTitleLabelAdd.text = L10n.CardDetails.Action.addCard
-        subTitleLabelAdd.textColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.35)
+        subTitleLabelAdd.textAlignment = .center
+        subTitleLabelAdd.textColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+        subTitleLabelAdd.alpha = 0.5
         subTitleLabelAdd.font = .font(.ubuntuMedium500, size: 12)
         subTitleLabelAdd.setLineHeight(22)
         subTitleLabelAdd.snp.makeConstraints {

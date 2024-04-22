@@ -3,10 +3,7 @@ import SnapKit
 
 final class CardCategoriesView: UIView {
 
-    lazy var backView: UIView = { view in
-        view.setupBackView()
-        return view
-    }(UIView())
+    lazy var backView: BackView = .init()
     let containerView = UIView()
     let containerImage = UIView()
 
@@ -48,7 +45,6 @@ final class CardCategoriesView: UIView {
         tableView.contentInset.bottom = 20
         tableView.sectionHeaderTopPadding = 0
         tableView.backgroundColor = .clear
-
         return tableView
     }(UITableView())
 
@@ -76,11 +72,7 @@ private extension CardCategoriesView {
         containerView.backgroundColor = .skyBlue
         containerView.cornerRadius = 16
 
-        addSubview(backView)
-        backView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(22)
-            make.horizontalEdges.bottom.equalToSuperview()
-        }
+        backView.setupView(in: self)
 
         backView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
@@ -108,13 +100,13 @@ private extension CardCategoriesView {
         backView.addSubview(tableView)
         backView.addSubview(checkSignView)
         tableView.snp.makeConstraints {
-            $0.top.equalTo(checkSignView.snp.bottom)
+            $0.top.equalTo(checkSignView.snp.bottom).offset(15)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
         checkSignView.snp.makeConstraints { make in
             make.height.equalTo(20)
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.top.equalTo(containerView.snp.bottom).offset(23)
+            make.top.equalTo(containerView.snp.bottom).offset(15)
         }
 
         checkSignView.addSubviews(checkSignImageView, minEnabledCategoriesLabel)

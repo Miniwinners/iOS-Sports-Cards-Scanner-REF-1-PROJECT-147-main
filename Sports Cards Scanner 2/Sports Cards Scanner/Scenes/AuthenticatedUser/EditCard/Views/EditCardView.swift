@@ -3,6 +3,9 @@ import SnapKit
 
 final class EditCardView: UIView {
 
+    lazy var backView: BackView = .init()
+    lazy var titleLabel: TitleLabel = .init()
+
     lazy var parallelDetailView: DetailView = { view in
         view.setDetailName(L10n.EditCard.parallel)
         view.isUserInteractionEnabled = false
@@ -25,16 +28,15 @@ final class EditCardView: UIView {
 
     lazy var setPriceLabel: UILabel = { label in
         label.text = L10n.EditCard.customPrice
-        label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 18)
-        label.setLineHeight(21.6)
+        label.textColor = .black
+        label.font = .font(.ubuntuMedium500, size: 16)
         return label
     }(UILabel())
 
     lazy var priceTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.interMedium, size: 16)
-        textField.backgroundColor = .white
+        textField.font = .font(.ubuntuRegular400, size: 16)
+        textField.backgroundColor = .skyBlue
         textField.cornerRadius = 12
         textField.rightViewMode = .always
         textField.trailingPadding = 48
@@ -45,8 +47,8 @@ final class EditCardView: UIView {
     }(CommonTextField())
 
     lazy var customPriceLabel: UILabel = { label in
-        label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 16)
+        label.textColor = .greenColor
+        label.font = .font(.ubuntuRegular400, size: 16)
         return label
     }(UILabel())
 
@@ -62,12 +64,14 @@ private extension EditCardView {
         var configuration: UIButton.Configuration = .filled()
         configuration.cornerStyle = .fixed
         configuration.background.cornerRadius = 12
-        return .init(configuration: configuration, backgroundColors: .init(primary: .white, highlighted: .highlightColor2))
+        return .init(configuration: configuration, backgroundColors: .init(primary: .skyBlue, highlighted: .highlightColor2))
     }
 
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
 
+        backView.setupView(in: self)
+        titleLabel.setupLabel(in: backView)
         parallelDetailButton.addSubview(parallelDetailView)
         parallelDetailView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -84,38 +88,45 @@ private extension EditCardView {
             $0.height.equalTo(64)
         }
 
-        let setPriceLabelContainer: UIView = .init()
-        setPriceLabelContainer.addSubview(setPriceLabel)
-        setPriceLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(8)
-            $0.horizontalEdges.bottom.equalToSuperview()
-        }
-
         priceTextField.snp.makeConstraints {
-            $0.height.equalTo(56)
+            $0.height.equalTo(65)
+        }
+        backView.addSubview(priceTextField)
+
+        let stackView = UIStackView(arrangedSubviews: [gradeDetailButton, parallelDetailButton])
+        stackView.axis = .horizontal
+        stackView.spacing = 12
+        stackView.distribution = .fillEqually
+        backView.addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(130)
         }
 
-        let stackView = UIStackView(arrangedSubviews: [parallelDetailButton, gradeDetailButton, setPriceLabelContainer, priceTextField])
-        stackView.axis = .vertical
-        stackView.spacing = 12
-        addSubview(stackView)
-        stackView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+        priceTextField.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
         }
 
         priceTextField.setRightImage_unique(
-            Images.edit.image,
+            Images.CollectionMenu.renameCollection.image,
             paddings: .init(top: 0, left: 8, bottom: 0, right: 16)
         )
 
         priceTextField.addSubview(customPriceLabel)
         customPriceLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(16)
-            $0.centerY.equalToSuperview()
+            $0.left.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(10)
+            $0.height.equalTo(18)
         }
-
-        addSubview(updateDetailsButton)
+        priceTextField.addSubview(setPriceLabel)
+        setPriceLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().inset(10)
+            $0.height.equalTo(18)
+        }
+        backView.addSubview(updateDetailsButton)
         updateDetailsButton.snp.makeConstraints {
             $0.height.equalTo(54)
             $0.horizontalEdges.equalToSuperview().inset(20)

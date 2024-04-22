@@ -4,9 +4,8 @@ import SnapKit
 extension PricingReportButton {
     final class CustomPriceView: UIView {
         lazy var editLabel: UILabel = .init()
-        lazy var dollarImageView: UIImageView = .init(image: Images.dollar.image)
         lazy var priceLabel: UILabel = .init()
-        lazy var editImageView: UIImageView = .init(image: Images.edit.image)
+        lazy var editImageView: UIImageView = .init(image: Images.CollectionMenu.renameCollection.image)
 
         convenience init() {
             self.init(frame: .zero)
@@ -29,13 +28,6 @@ extension PricingReportButton.CustomPriceView {
         editLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(12)
             $0.leading.equalToSuperview().inset(16)
-        }
-
-        addSubview(dollarImageView)
-        dollarImageView.snp.makeConstraints {
-            $0.size.equalTo(19)
-            $0.leading.equalTo(editLabel.snp.trailing).offset(10)
-            $0.centerY.equalTo(editLabel)
         }
 
         priceLabel.font = .font(.interMedium, size: 20)

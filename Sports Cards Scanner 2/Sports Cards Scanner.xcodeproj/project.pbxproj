@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410002372BD6AFA100CA643C /* CurrentValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410002362BD6AFA100CA643C /* CurrentValueTableViewCell.swift */; };
 		414470EF2BCD19AB000C262D /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414470EE2BCD19AB000C262D /* PresentationStyle.swift */; };
 		416295CE2BCE97B400588C0E /* AddToPortfolioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416295CD2BCE97B400588C0E /* AddToPortfolioButton.swift */; };
 		41A8C1262BC6ABB900611139 /* DeleteCustomPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */; };
@@ -396,6 +397,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		410002362BD6AFA100CA643C /* CurrentValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueTableViewCell.swift; sourceTree = "<group>"; };
 		414470EE2BCD19AB000C262D /* PresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		416295CD2BCE97B400588C0E /* AddToPortfolioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPortfolioButton.swift; sourceTree = "<group>"; };
 		41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCustomPresent.swift; sourceTree = "<group>"; };
@@ -800,6 +802,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410002352BD6AF7200CA643C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				410002362BD6AFA100CA643C /* CurrentValueTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		41A8C1272BC6B60300611139 /* Font_Color */ = {
 			isa = PBXGroup;
 			children = (
@@ -1236,6 +1246,7 @@
 		464F34D32AA3F1BA00025431 /* CurrentValue */ = {
 			isa = PBXGroup;
 			children = (
+				410002352BD6AF7200CA643C /* Cell */,
 				464F34DC2AA3FCAB00025431 /* Views */,
 				464F34D42AA3F20F00025431 /* CurrentValueDetailsViewController.swift */,
 				464F34D82AA3F26300025431 /* CurrentValueDetailsViewControllerDelegate.swift */,
@@ -2490,6 +2501,7 @@
 				4650DEF02AA105D100F6F13C /* CurrentCardsValueView.swift in Sources */,
 				4650DEEC2AA0EB7E00F6F13C /* PokemonCard.swift in Sources */,
 				4650DF162AA2302000F6F13C /* CardDetailsCoordinator.swift in Sources */,
+				410002372BD6AFA100CA643C /* CurrentValueTableViewCell.swift in Sources */,
 				468C832A2AB05F3E003DC91A /* AddCardsToDeckView.swift in Sources */,
 				461CBD142AA4CA2A0025FF41 /* ParallelSelectionView.swift in Sources */,
 				4650DF1F2AA26F1E00F6F13C /* PricingReportButton.GraderPriceView.swift in Sources */,

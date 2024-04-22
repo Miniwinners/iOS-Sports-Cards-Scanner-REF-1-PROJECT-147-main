@@ -8,7 +8,8 @@ final class GraderSelectionViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var graderSelectionView: GraderSelectionView = .init()
-
+    lazy var closeButton: CloseButton = .init(style: .back)
+    lazy var doneButton: DoneButton = .init()
     init(graders: [CardGrader]) {
         self.graders = graders
         super.init(nibName: nil, bundle: nil)
@@ -30,9 +31,14 @@ final class GraderSelectionViewController: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(pop), for: .touchUpInside)
+        doneButton.setInView(view)
+        doneButton.addTarget(self, action: #selector(done), for: .touchUpInside)
+
     }
 
     override var preferredContentSize: CGSize {
@@ -65,6 +71,12 @@ private extension GraderSelectionViewController {
 
     @objc func cancelTapped_unique() {
         delegate?.graderSelectionViewControllerCancelTapped(self)
+    }
+    @objc func pop() {
+        navigationController?.popViewController(animated: true)
+    }
+    @objc func done() {
+        dismiss(animated: true)
     }
 }
 
