@@ -25,7 +25,7 @@ extension CardDeckViewControllerDelegate where Self: SCSCoordinator {
     }
 
     func cardDeckViewControllerMenuTapped(for deck: CardDeck, in viewController: CardDeckViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: 0)
         let menuItems = deck.cardIDs.isEmpty ? DeckMenuItem.noCardsItems : DeckMenuItem.allCases
         let coordinator = DeckMenuCoordinator(router: router, menuItems: menuItems)
         coordinator.didSelectItem = { [weak self] item in
@@ -75,7 +75,7 @@ extension CardDeckViewControllerDelegate where Self: SCSCoordinator {
     }
 
     private func presentDeleteDeckConfirmation(in viewController: CardDeckViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.45)
         let coordinator = DeleteDeckPromptCoordinator(router: router)
         coordinator.delegate = self as? DeleteDeckPromptCoordinatorDelegate
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)

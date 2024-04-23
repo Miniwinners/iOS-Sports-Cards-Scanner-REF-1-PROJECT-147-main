@@ -17,22 +17,18 @@ final class PortfolioCardsView: UIView {
     }(UIStackView(arrangedSubviews: [collectionButton, deckButton]))
 
     lazy var collectionView: DeckCollectionView = { view in
-        view.previewImage.image = Images.createDeck.image
-        view.titleCreate.text = L10n.Portfolio.Collection.create
         view.subtitleCreate.text = L10n.Portfolio.Deck.description
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
         return view
-    }(DeckCollectionView())
+    }(DeckCollectionView(setType: .collection))
 
     lazy var deckView: DeckCollectionView = { view in
-        view.previewImage.image = Images.createCollection.image
-        view.titleCreate.text = L10n.Portfolio.Deck.create
         view.subtitleCreate.text = L10n.Portfolio.Collection.description
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
         return view
-    }(DeckCollectionView())
+    }(DeckCollectionView(setType: .deck))
 
     lazy var collectionButton: CommonButton = .init(style: .custom(buttonAppearance))
     lazy var deckButton: CommonButton = .init(style: .custom(buttonAppearance))
@@ -91,6 +87,7 @@ private extension PortfolioCardsView {
     }
 
     func setupCardSetsView() {
+
         collectionButton.addSubview(collectionView)
         deckButton.addSubview(deckView)
         collectionView.snp.makeConstraints { make in

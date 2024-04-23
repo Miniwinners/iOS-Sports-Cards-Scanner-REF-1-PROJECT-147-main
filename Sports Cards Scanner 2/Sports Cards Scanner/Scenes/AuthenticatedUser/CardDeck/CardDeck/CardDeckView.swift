@@ -35,14 +35,10 @@ final class CardDeckView: UIView {
         return label
     }(UILabel())
 
-    lazy var cardsTableView: UITableView = { tableView in
-        tableView.showsVerticalScrollIndicator = false
-        tableView.alwaysBounceVertical = false
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.contentInset.bottom = 20
-        return tableView
-    }(UITableView())
+    lazy var collectionCards: UICollectionView = { collection in
+        collection.backgroundColor = .clear
+        return collection
+    }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
 
     lazy var noCardsView: CommonMessageView = { view in
         view.setMessageTitle(L10n.CardDeck.noCards)
@@ -97,7 +93,7 @@ private extension CardDeckView {
 
         titleLabel.setupLabel(in: backView)
 
-        addSubviews(menuButton, cardsNumberLabel, nameSecondaryLabel, priceLabel, cardsTableView, noCardsView, addCardsButton)
+        addSubviews(menuButton, cardsNumberLabel, nameSecondaryLabel, priceLabel, collectionCards, noCardsView, addCardsButton)
 
         cardsNumberLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(14)
@@ -113,7 +109,7 @@ private extension CardDeckView {
             $0.leading.equalTo(cardsNumberLabel.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().inset(20)
         }
-        cardsTableView.snp.makeConstraints {
+        collectionCards.snp.makeConstraints {
             $0.top.equalTo(nameSecondaryLabel.snp.bottom).offset(20)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
@@ -132,5 +128,30 @@ private extension CardDeckView {
             $0.trailing.equalToSuperview().inset(30)
             $0.leading.equalTo(nameSecondaryLabel.snp.trailing).offset(8)
         }
+    }
+}
+
+extension CardDeckView {
+    func filterLayout() -> UICollectionViewCompositionalLayout {
+        let size = NSCollectionLayoutSize(
+            widthDimension: .estimated(162),
+            heightDimension: .absolute(297)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(297))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = .init(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 16
+        )
+
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }

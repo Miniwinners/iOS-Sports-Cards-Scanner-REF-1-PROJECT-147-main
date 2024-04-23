@@ -61,11 +61,9 @@ final class SwipeableCardButton: UIButton {
         }
 
         cardTitleLabel.text = card?.title
-        cardTitleLabel.setLineHeight(19)
         cardTitleLabel.textAlignment = .center
 
         cardSubtitleLabel.text = card?.subtitle
-        cardSubtitleLabel.setLineHeight(19)
         cardSubtitleLabel.textAlignment = .center
     }
 
@@ -93,10 +91,12 @@ private extension SwipeableCardButton {
         addSubviews(cardTitleLabel, cardSubtitleLabel, photoContainerView)
         cardTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(5)
+            $0.height.equalTo(24)
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
         cardSubtitleLabel.snp.makeConstraints {
             $0.top.equalTo(cardTitleLabel.snp.bottom).offset(5)
+            $0.height.equalTo(24)
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
         photoContainerView.snp.makeConstraints {

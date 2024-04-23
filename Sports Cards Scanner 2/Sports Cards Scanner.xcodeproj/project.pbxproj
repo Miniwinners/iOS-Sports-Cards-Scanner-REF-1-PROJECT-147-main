@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		410002372BD6AFA100CA643C /* CurrentValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410002362BD6AFA100CA643C /* CurrentValueTableViewCell.swift */; };
+		4110F1162BD7FAF800E288EF /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4110F1152BD7FAF800E288EF /* CardCollectionViewCell.swift */; };
 		414470EF2BCD19AB000C262D /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414470EE2BCD19AB000C262D /* PresentationStyle.swift */; };
 		416295CE2BCE97B400588C0E /* AddToPortfolioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416295CD2BCE97B400588C0E /* AddToPortfolioButton.swift */; };
+		4191D7562BD7CDDA00ABA874 /* UIDevice_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191D7552BD7CDDA00ABA874 /* UIDevice_Extension.swift */; };
 		41A8C1262BC6ABB900611139 /* DeleteCustomPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */; };
 		41C055B72BC552EA00F2B98D /* SignInWithFaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */; };
 		41F8F62D2BC425BF00ED1FD7 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */; };
@@ -398,8 +400,10 @@
 
 /* Begin PBXFileReference section */
 		410002362BD6AFA100CA643C /* CurrentValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueTableViewCell.swift; sourceTree = "<group>"; };
+		4110F1152BD7FAF800E288EF /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		414470EE2BCD19AB000C262D /* PresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		416295CD2BCE97B400588C0E /* AddToPortfolioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPortfolioButton.swift; sourceTree = "<group>"; };
+		4191D7552BD7CDDA00ABA874 /* UIDevice_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice_Extension.swift; sourceTree = "<group>"; };
 		41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCustomPresent.swift; sourceTree = "<group>"; };
 		41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithFaceBookHelper.swift; sourceTree = "<group>"; };
 		41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
@@ -822,6 +826,7 @@
 		41A8C1282BC6B62A00611139 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4191D7552BD7CDDA00ABA874 /* UIDevice_Extension.swift */,
 				4650DEBC2A9E991800F6F13C /* UIViewController_Extension.swift */,
 				4650DEC62A9F8DF900F6F13C /* UITableView_Extension.swift */,
 				4691EE7F2A8FB9A600FEC2C9 /* UILabel_Extension.swift */,
@@ -1415,6 +1420,7 @@
 			isa = PBXGroup;
 			children = (
 				468C83372AB07FB7003DC91A /* Menu */,
+				4110F1152BD7FAF800E288EF /* CardCollectionViewCell.swift */,
 				4650DF062AA201FA00F6F13C /* CardPhotoCollectionViewCell.swift */,
 				46BF05032A86708000034B72 /* SelectableTableViewCell.swift */,
 				46BF050B2A8674A200034B72 /* SwitchableTableViewCell.swift */,
@@ -2579,6 +2585,7 @@
 				468E3E722A8A71D20097C6EC /* UpdatePasswordVC.swift in Sources */,
 				4645D3C62AAE6948008AD896 /* RemoveCardsView.swift in Sources */,
 				46BF05042A86708000034B72 /* SelectableTableViewCell.swift in Sources */,
+				4191D7562BD7CDDA00ABA874 /* UIDevice_Extension.swift in Sources */,
 				4679D8822AACB74600656AC1 /* AddCardsToCollectionCategoriesView.swift in Sources */,
 				4679D88D2AACD57700656AC1 /* AddCardsToCollectionCardsVC.swift in Sources */,
 				4688A7742A824A0600882727 /* Error_Extension.swift in Sources */,
@@ -2668,6 +2675,7 @@
 				46C55C5E2A9A4C10001006E2 /* SCICardSale.swift in Sources */,
 				4650DEE12AA0B05300F6F13C /* CardWrapper.swift in Sources */,
 				467CCC672A978368000AFC8F /* SearchCardCoordinator.swift in Sources */,
+				4110F1162BD7FAF800E288EF /* CardCollectionViewCell.swift in Sources */,
 				467CCC1C2A9242C0000AFC8F /* ForgotPasswordViewControllerDelegate.swift in Sources */,
 				461CBD3C2AAA7CF30025FF41 /* CategoryCards.swift in Sources */,
 				467CCC562A974563000AFC8F /* IdentifyingCardViewControllerDelegate.swift in Sources */,

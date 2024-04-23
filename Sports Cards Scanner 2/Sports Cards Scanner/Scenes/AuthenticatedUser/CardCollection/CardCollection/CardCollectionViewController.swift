@@ -70,7 +70,7 @@ final class CardCollectionViewController: UIViewController {
 
 private extension CardCollectionViewController {
     func setupViews_unique() {
-//        setupNavigationItem()
+        //        setupNavigationItem()
 
         let cardsDisplayOption = CardsDisplayOption.list
         cardCollectionView.cardsView.cardsDisplayControl.selectedSegmentIndex = cardsDisplayOption.index
@@ -142,21 +142,8 @@ private extension CardCollectionViewController {
         )
     }
 
-    func setupNavigationItem() {
-        navigationItem.setHidesBackButton(true, animated: false)
-        navigationItem.leftBarButtonItem = nil
-
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
-    }
-
     func card(at indexPath: IndexPath) -> CardRepresentable? {
-        sortedCards[safe: indexPath.row]
+        sortedCards[safe: indexPath.section]
     }
 
     // MARK: - Actions
@@ -216,11 +203,13 @@ extension CardCollectionViewController: SwipableController {
 
 extension CardCollectionViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        return sortedCards.count
+
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sortedCards.count
+        return 1
+
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -229,9 +218,16 @@ extension CardCollectionViewController: UITableViewDataSource {
         if let card = card(at: indexPath) {
             cell?.setupCard(card)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: sortedCards))
 
         return cell ?? UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = .clear
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 { return 0 } else { return 8 }
     }
 }
 

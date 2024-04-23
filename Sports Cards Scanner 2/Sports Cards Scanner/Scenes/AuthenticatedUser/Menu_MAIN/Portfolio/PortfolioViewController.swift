@@ -198,10 +198,6 @@ extension PortfolioViewController: UITableViewDataSource {
         return header
     }
 
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 78
-//    }
-
 }
 
 // MARK: - TableView Delegate

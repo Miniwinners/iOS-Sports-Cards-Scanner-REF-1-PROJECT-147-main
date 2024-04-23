@@ -112,16 +112,16 @@ final class CreateEditDeckView: UIView {
 
     func setupForEditing() {
         let buttonsStackView = UIStackView(arrangedSubviews: [cancelButton, doneButton])
-        buttonsStackView.axis = .horizontal
+        buttonsStackView.axis = .vertical
         buttonsStackView.distribution = .fillEqually
-        buttonsStackView.spacing = 20
+        buttonsStackView.spacing = 10
 
         addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(descriptionTextView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.height.equalTo(128)
         }
     }
 

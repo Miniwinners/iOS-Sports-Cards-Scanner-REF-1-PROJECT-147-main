@@ -31,7 +31,8 @@ private extension MoreView {
         addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
         }
 
         let headerView = UIView()

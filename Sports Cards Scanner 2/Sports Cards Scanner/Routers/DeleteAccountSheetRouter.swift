@@ -8,11 +8,14 @@ enum SheetPresent {
 final class DeleteAccountSheetRouter: NSObject {
     unowned let parentViewController: UIViewController
 
+    private var heightRatio: CGFloat?
+
     private var onDismissForViewController: [UIViewController: Closure] = [:]
     private let presentStyle: SheetPresent
-    init(parentViewController: UIViewController, presentStyle: SheetPresent) {
+    init(parentViewController: UIViewController, presentStyle: SheetPresent, heightRatio: CGFloat) {
         self.parentViewController = parentViewController
         self.presentStyle = presentStyle
+        self.heightRatio = heightRatio
         super.init()
     }
 }
@@ -67,7 +70,7 @@ extension DeleteAccountSheetRouter: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         switch presentStyle {
         case .center:
-            return DeleteAccountPresentStyle(presentedViewController: presented, presenting: presenting)
+            return DeleteAccountPresentStyle(presentedViewController: presented, presentingViewController: presenting, heightRatio: heightRatio!)
         case .centerRect:
             return ShowFeatures(presentedViewController: presented, presenting: presenting)
         }

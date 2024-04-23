@@ -25,10 +25,6 @@ final class CardDetailsViewController: UIViewController {
 
     // MARK: - Subviews
 
-    lazy var closeButton: CloseButton = { button in
-        return button
-    }(CloseButton(style: .close, frame: .zero))
-
     lazy var scrollView: UIScrollView = { scrollView in
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .white
@@ -126,14 +122,28 @@ private extension CardDetailsViewController {
         }
 
         cardDetailsView.hidesNoNeededViews(for: cardType)
-        closeButton.setCenter(in: view)
-        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        setupButton()
         view.addSubview(overlayView)
         view.addSubview(indicatorImageView)
         overlayView.alpha = 0
         indicatorImageView.alpha = 0
     }
 
+    func setupButton() {
+        if isRootViewController() {
+            let closeButton = CloseButton(style: .close)
+            closeButton.setCenter(in: view)
+            closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        } else {
+            let closeButton = CloseButton(style: .back)
+            closeButton.setLeft(in: view)
+            closeButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
+        }
+    }
+
+    private func isRootViewController() -> Bool {
+           return navigationController?.viewControllers.first == self
+    }
     func setupViewsData_unique() {
         cardDetailsView.cardTitleLabel.text = "\(card.title)"
         cardDetailsView.cardSubTitleLabel.text = "\(card.subtitle)"

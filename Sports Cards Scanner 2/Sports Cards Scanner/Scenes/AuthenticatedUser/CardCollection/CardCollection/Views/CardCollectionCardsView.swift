@@ -27,6 +27,7 @@ final class CardCollectionCardsView: UIView {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.contentInset.bottom = 20
+        tableView.sectionHeaderTopPadding = 8
         return tableView
     }(UITableView())
     lazy var cardsCollectionView: UICollectionView = { collectionView in
@@ -71,7 +72,7 @@ final class CardCollectionCardsView: UIView {
         case .collection: setupCardsViewIfNeeded(cardsCollectionView)
         case .list: setupCardsViewIfNeeded(cardsTableView)
         }
-        cardsSwipeableView.backgroundColor = .red
+//        cardsSwipeableView.backgroundColor = .red
         cardsSwipeableView.isHidden = option != .swipable
         cardsCollectionView.isHidden = option != .collection
         cardsTableView.isHidden = option != .list

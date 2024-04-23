@@ -106,7 +106,18 @@ extension MoreViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 5 { return 120 } else { return 3 }
+        if section == 5 { return 100 } else { return 3 }
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView()
+        footer.backgroundColor = .clear
+        return footer
+
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 5 { return 20 } else { return 0 }
     }
 
     private func profileItem(for indexPath: IndexPath) -> ProfileItem? {

@@ -85,7 +85,7 @@ private extension DashboardView {
         addSubview(scanCardButton)
         scanCardButton.snp.makeConstraints {
             $0.height.equalTo(54)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(30)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
     }

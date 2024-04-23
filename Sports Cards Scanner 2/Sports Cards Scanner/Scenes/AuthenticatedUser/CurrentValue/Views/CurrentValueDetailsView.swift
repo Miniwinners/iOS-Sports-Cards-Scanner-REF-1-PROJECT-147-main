@@ -6,7 +6,7 @@ final class CurrentValueDetailsView: UIView {
     lazy var titleLabel: TitleLabel = .init()
 
     lazy var currentValueLabel: UILabel = { label in
-        label.font = .font(.interBold, size: 32)
+        label.font = .font(.ubuntuBold700, size: 40)
         label.textColor = .greenColor
         label.lineBreakMode = .byTruncatingMiddle
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -70,7 +70,7 @@ private extension CurrentValueDetailsView {
         addSubviews(currentValueLabel, diagramView, categoryValuesTable)
 
         diagramView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(240)
         }

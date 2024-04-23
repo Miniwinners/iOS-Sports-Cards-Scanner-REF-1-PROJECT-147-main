@@ -5,8 +5,10 @@ final class RemoveCardsView: UIView {
 
     private var cardsHeightConstraint: Constraint!
 
+    lazy var backView: BackView = .init()
+
     lazy var nameLabel: UILabel = { label in
-        label.font = .font(.interBold, size: 24)
+        label.font = .font(.ubuntuMedium500, size: 24)
         label.textColor = .labelColor
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -14,8 +16,8 @@ final class RemoveCardsView: UIView {
     }(UILabel())
 
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 14)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuRegular400, size: 14)
+        label.textColor = .black
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
@@ -93,14 +95,14 @@ final class RemoveCardsView: UIView {
 
 private extension RemoveCardsView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
-
+        backgroundColor = .clear
+        backView.setupView(in: self)
         let containerView = UIView()
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = .clear
         containerView.cornerRadius = 12
-        addSubview(containerView)
+        backView.addSubview(containerView)
         containerView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalToSuperview().inset(30)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
 
@@ -120,13 +122,13 @@ private extension RemoveCardsView {
             cardsHeightConstraint = $0.height.equalTo(0).priority(.medium).constraint
         }
 
-        addSubview(noCardsView)
+        backView.addSubview(noCardsView)
         noCardsView.snp.makeConstraints {
             $0.top.equalTo(containerView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
 
-        addSubview(doneButton)
+        backView.addSubview(doneButton)
         doneButton.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(containerView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)

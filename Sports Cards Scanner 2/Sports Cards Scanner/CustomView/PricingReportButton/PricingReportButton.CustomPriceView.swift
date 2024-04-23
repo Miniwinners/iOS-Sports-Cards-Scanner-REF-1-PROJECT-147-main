@@ -21,8 +21,8 @@ extension PricingReportButton.CustomPriceView {
     }
 
     private func setupSubviews_unique() {
-        editLabel.font = .font(.interMedium, size: 16)
-        editLabel.textColor = .labelColor
+        editLabel.font = .font(.ubuntuRegular400, size: 16)
+        editLabel.textColor = .black
 
         addSubview(editLabel)
         editLabel.snp.makeConstraints {
@@ -30,7 +30,7 @@ extension PricingReportButton.CustomPriceView {
             $0.leading.equalToSuperview().inset(16)
         }
 
-        priceLabel.font = .font(.interMedium, size: 20)
+        priceLabel.font = .font(.ubuntuRegular400, size: 16)
         priceLabel.textColor = .greenColor
 
         addSubview(priceLabel)

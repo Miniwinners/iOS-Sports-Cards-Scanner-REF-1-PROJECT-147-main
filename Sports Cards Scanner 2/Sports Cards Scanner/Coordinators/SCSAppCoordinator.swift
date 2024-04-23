@@ -222,7 +222,7 @@ private extension SCSAppCoordinator {
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers([dashboardViewController, portfolioViewController, moreViewController], animated: false)
         setupMainTabBar(tabBarController.tabBar)
-
+        tabBarController.setupCustomTabBarView()
         authenticatedUserController = tabBarController
 
         router.present_unique(tabBarController, animated: true)
@@ -258,13 +258,13 @@ private extension SCSAppCoordinator {
     }
 
     func presentLogoutPrompt(from viewController: UIViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.4)
         let coordinator = LogoutPromptCoordinator(router: router, authService: authService)
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }
 
     func presentDeleteAccountPrompt(from viewController: UIViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.4)
         let coordinator = DeleteAccountPromptCoordinator(router: router, authService: authService)
         coordinator.onDeletingFailed = { [weak self] error in
             guard error.asAuthError.code == .requiresRecentLogin else { return }
@@ -284,7 +284,6 @@ private extension SCSAppCoordinator {
 
     func setupMainTabBar(_ tabBar: UITabBar) {
         tabBar.applyDefaultAppearance()
-
         zip(tabBar.items ?? [], TabBarItem.allCases).forEach {
             $0.image = $1.image
             $0.selectedImage = $1.selectedImage

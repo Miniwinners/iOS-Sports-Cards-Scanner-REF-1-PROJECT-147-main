@@ -113,7 +113,7 @@ extension CurrentValueDetailsViewController: UITableViewDataSource {
 
         lazy var categoryValueLabel: UILabel = { label in
             label.text = L10n.CurrentValue.valueByCategory
-            label.font = .font(.interMedium, size: 20)
+            label.font = .font(.ubuntuRegular400, size: 21)
             label.textColor = .labelColor
             label.setLineHeight(32)
             label.setContentHuggingPriority(.required, for: .vertical)

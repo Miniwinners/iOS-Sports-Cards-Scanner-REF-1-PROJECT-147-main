@@ -15,7 +15,7 @@ final class RemoveCardsFromDeckVC: UIViewController {
     }
 
     // MARK: - Subviews
-
+    lazy var closeButton: CloseButton = .init(style: .back)
     lazy var removeCardsView: RemoveCardsView = .init()
 
     init(cardDeckManager: CardDeckManager = CardSetsManager.shared) {
@@ -44,6 +44,8 @@ final class RemoveCardsFromDeckVC: UIViewController {
 
         setupViews_unique()
         setupActions_unique()
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {

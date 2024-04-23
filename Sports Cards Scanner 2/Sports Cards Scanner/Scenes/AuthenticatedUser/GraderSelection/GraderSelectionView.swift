@@ -15,6 +15,7 @@ final class GraderSelectionView: UIView {
         tableView.rowHeight = 56
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = false
+        tableView.layer.cornerRadius = 20
         tableView.backgroundColor = .skyBlue
         return tableView
     }(UITableView())
@@ -34,6 +35,7 @@ final class GraderSelectionView: UIView {
 private extension GraderSelectionView {
     func setupSubviews_unique() {
         backgroundColor = .clear
+        layer.cornerRadius = 20
 
         addSubview(grabberView)
         grabberView.snp.makeConstraints {

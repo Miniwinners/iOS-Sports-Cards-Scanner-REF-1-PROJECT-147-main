@@ -1,16 +1,14 @@
 import UIKit
 import SnapKit
 
-final class CardTableViewCell: UITableViewCell {
+final class CardCollectionViewCell: UICollectionViewCell {
 
-    private static let containerHeight: CGFloat = 157
+    private static let containerHeight: CGFloat = 297
 
     lazy var cardView: CardView = .init()
 
-    lazy var separatorView: UIView = .init()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupSubviews_unique()
     }
 
@@ -50,57 +48,37 @@ final class CardTableViewCell: UITableViewCell {
     }
 
     func setSelectable(_ selectable: Bool) {
-        backgroundView?.subviews.first?.backgroundColor = selectable ? .skyBlue : .highlightColor2
+        backgroundView?.subviews.first?.backgroundColor = selectable ? .highlightColor2 : .skyBlue
     }
 
     func setCardsNumber(_ number: Int?) {
         cardView.setCardsNumber(number)
     }
 
+    func setCellPosition(_ cellPosition: CellPosition) {
+//        separatorView.isHidden = cellPosition.containsPosition(.atBottomPosition)
+    }
 }
 
-private extension CardTableViewCell {
+private extension CardCollectionViewCell {
     func setupSubviews_unique() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
 
         backgroundView = createBackgroundView()
         selectedBackgroundView = createHighlightedView()
+
         let containerView = UIView()
+        containerView.backgroundColor = .clear
         addSubview(containerView)
+
         containerView.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview()
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.edges.equalToSuperview()
         }
         containerView.addSubview(cardView)
         cardView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.height.equalTo(CardTableViewCell.containerHeight)
+            $0.edges.equalToSuperview().inset(10)
         }
-
-        cardView.cardImageView.snp.remakeConstraints { make in
-            make.left.top.bottom.equalToSuperview().inset(10)
-            make.width.equalTo(96)
-        }
-        cardView.titleLabel.snp.remakeConstraints { make in
-            make.top.equalToSuperview().inset(30)
-            make.left.equalTo(cardView.cardImageView.snp.right).offset(20)
-            make.right.equalToSuperview().inset(20)
-        }
-
-        cardView.subtitleLabel.snp.remakeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.left.equalTo(cardView.cardImageView.snp.right).offset(20)
-            make.right.equalToSuperview().inset(20)
-            make.height.equalTo(30)
-        }
-
-        cardView.pricesLabel.snp.remakeConstraints { make in
-            make.bottom.equalToSuperview().inset(30)
-            make.height.equalTo(20)
-            make.left.equalTo(cardView.cardImageView.snp.right).offset(20)
-        }
-
     }
 
     func createBackgroundView() -> UIView {
@@ -108,13 +86,13 @@ private extension CardTableViewCell {
 
         let backgroundView = UIView()
         backgroundView.backgroundColor = .skyBlue
-        backgroundView.cornerRadius = 12
+        backgroundView.cornerRadius = 16
         backgroundContainerView.addSubview(backgroundView)
 
         backgroundView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.height.equalTo(CardTableViewCell.containerHeight)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(CardCollectionViewCell.containerHeight)
+            $0.horizontalEdges.equalToSuperview().priority(.high)
         }
 
         return backgroundContainerView
@@ -125,13 +103,13 @@ private extension CardTableViewCell {
 
         let highlightedView = UIView()
         highlightedView.backgroundColor = .highlightColor2
-        highlightedView.cornerRadius = 12
+        highlightedView.cornerRadius = 16
         highlightedContainerView.addSubview(highlightedView)
 
         highlightedView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.height.equalTo(CardTableViewCell.containerHeight)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(CardCollectionViewCell.containerHeight + 1)
+            $0.horizontalEdges.equalToSuperview().priority(.high)
         }
 
         return highlightedContainerView

@@ -2,10 +2,17 @@ import UIKit
 
 final class DeleteAccountPresentStyle: UIPresentationController {
 
+    private var heightRatio: CGFloat = 0.4
+
+    init(presentedViewController: UIViewController, presentingViewController: UIViewController?, heightRatio: CGFloat) {
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+        self.heightRatio = heightRatio
+    }
+
     private var dimmingView: UIView!
 
     private let widthRatio: CGFloat = 0.8
-    private let heightRatio: CGFloat = 0.32
+//    private let heightRatio: CGFloat = 0.4
 
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return .zero }

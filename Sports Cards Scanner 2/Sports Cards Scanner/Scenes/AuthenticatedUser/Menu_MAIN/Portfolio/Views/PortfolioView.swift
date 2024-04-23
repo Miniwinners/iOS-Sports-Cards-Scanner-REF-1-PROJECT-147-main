@@ -48,11 +48,11 @@ final class PortfolioView: UIView {
     }
 
     func updateCardCollection(_ collection: CardCollectible?) {
-//        cardsView.collectionView.setCardSet(collection)
+        cardsView.collectionView.setCardSet(collection)
     }
 
     func updateCardDeck(_ deck: CardCollectible?) {
-//        cardsView.deckView.setCardSet(deck)
+        cardsView.deckView.setCardSet(deck)
     }
 
     func updateCardsTotalValue(_ cardsValue: Double) {
@@ -99,7 +99,7 @@ private extension PortfolioView {
         addSubview(scanCardButton)
         scanCardButton.snp.makeConstraints {
             $0.height.equalTo(54)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(30)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
     }

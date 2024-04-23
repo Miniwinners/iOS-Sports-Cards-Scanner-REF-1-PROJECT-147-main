@@ -30,7 +30,7 @@ final class ParallelSelectionView: UIView {
     lazy var allOptionsLabel: UILabel = { label in
         label.text = L10n.ParallelSelection.allOptions
         label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 18)
+        label.font = .font(.ubuntuMedium500, size: 22)
         label.setLineHeight(21.6)
         return label
     }(UILabel())
@@ -54,7 +54,7 @@ final class ParallelSelectionView: UIView {
     lazy var noneParallelButton: UIButton = { button in
         button.setTitle(L10n.ParallelSelection.Action.none, for: .normal)
         button.setTitleColor(.labelColor, for: .normal)
-        button.titleLabel?.font = .font(.interMedium, size: 16)
+        button.titleLabel?.font = .font(.ubuntuMedium500, size: 16)
         return button
     }(UIButton(type: .system))
 

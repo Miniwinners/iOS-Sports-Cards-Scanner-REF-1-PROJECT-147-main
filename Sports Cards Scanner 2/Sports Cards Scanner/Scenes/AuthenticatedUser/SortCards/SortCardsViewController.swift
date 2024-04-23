@@ -14,12 +14,18 @@ final class SortCardsViewController: UIViewController {
 
     // MARK: - Subviews
 
+    lazy var titleLabel: TitleLabel = .init()
+    lazy var backView: BackView = .init()
+    lazy var closeButton: CloseButton = .init(style: .back)
+
     lazy var sortOptionsTableView: UITableView = { tableView in
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         tableView.cornerRadius = 12
         tableView.isScrollEnabled = false
+        tableView.estimatedRowHeight = 58
         tableView.separatorStyle = .none
+        tableView.sectionHeaderTopPadding = 0
         return tableView
     }(UITableView())
 
@@ -35,7 +41,7 @@ final class SortCardsViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        title = L10n.SortCards.title
+        titleLabel.text = L10n.SortCards.title
     }
 
     required init?(coder: NSCoder) {
@@ -52,7 +58,7 @@ final class SortCardsViewController: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
     }
@@ -61,30 +67,31 @@ final class SortCardsViewController: UIViewController {
 
 private extension SortCardsViewController {
     func setupViews_unique() {
-        view.backgroundColor = .backColor
-
-        setupNavigationItem()
-
+        view.backgroundColor = .clear
+        backView.setupView(in: view)
+        titleLabel.setupLabel(in: backView)
         sortOptionsTableView.register(SortCardOptionCell.self, forCellReuseIdentifier: SortCardOptionCell.className)
         sortOptionsTableView.dataSource = self
         sortOptionsTableView.delegate = self
 
         let buttonsStackView = UIStackView(arrangedSubviews: [cancelButton, doneButton])
-        buttonsStackView.axis = .horizontal
-        buttonsStackView.spacing = 20
+        buttonsStackView.axis = .vertical
+        buttonsStackView.spacing = 10
         buttonsStackView.distribution = .fillEqually
 
-        view.addSubviews(sortOptionsTableView, buttonsStackView)
+        backView.addSubviews(sortOptionsTableView, buttonsStackView)
         sortOptionsTableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(calculateOptionsHeight())
         }
         buttonsStackView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.height.equalTo(128)
         }
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
     }
 
     func setupActions_unique() {
@@ -98,15 +105,15 @@ private extension SortCardsViewController {
     }
 
     func sortOption(at indexPath: IndexPath) -> CardSortOption? {
-        sortOptions[safe: indexPath.row]
+        sortOptions[safe: indexPath.section]
     }
 
     func indexPath(of sortOption: CardSortOption) -> IndexPath {
-        .init(row: sortOption.index, section: 0)
+        .init(row: 0, section: sortOption.index)
     }
 
     func calculateOptionsHeight() -> CGFloat {
-        46 * CGFloat(sortOptions.count) + 22
+        46 * CGFloat(sortOptions.count) + 46
     }
 
     // MARK: - Actions
@@ -131,7 +138,7 @@ extension SortCardsViewController: UITableViewDataSource {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        return 1
+        return sortOptions.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -141,7 +148,7 @@ extension SortCardsViewController: UITableViewDataSource {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        return sortOptions.count
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -151,9 +158,17 @@ extension SortCardsViewController: UITableViewDataSource {
             cell?.setSortOption(sortOption)
             cell?.setChecked(sortOption == newSelectedSortOption)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: sortOptions))
 
         return cell ?? UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = .clear
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 { return 0 } else { return 8 }
     }
 }
 

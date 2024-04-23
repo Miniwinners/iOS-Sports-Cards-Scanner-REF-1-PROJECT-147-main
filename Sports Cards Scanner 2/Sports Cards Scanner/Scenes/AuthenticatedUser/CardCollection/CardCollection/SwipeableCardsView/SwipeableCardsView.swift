@@ -111,8 +111,8 @@ private extension SwipeableCardsView {
     func boundsDidUpdate() {
         if bounds.width == oldBounds.width { return }
         oldBounds = bounds
-        topView.backgroundColor = .blue
-        bottomView.backgroundColor = .yellow
+//        topView.backgroundColor = .blue
+//        bottomView.backgroundColor = .yellow
         [topView, bottomView].forEach {
             $0.center = initialCenter
             $0.bounds.size = cardViewSize

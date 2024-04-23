@@ -30,7 +30,7 @@ final class CardDetailsListView: UIView {
 
 private extension CardDetailsListView {
     func setupSubviews_unique() {
-        backgroundColor = .fillColor
+        backgroundColor = .clear
         cornerRadius = 12
 
         addSubview(detailsView)

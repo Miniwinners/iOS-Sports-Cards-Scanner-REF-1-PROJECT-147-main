@@ -14,8 +14,8 @@ extension PricingReportButton {
 
 extension PricingReportButton.NoPriceView {
     func setupSubviews_unique() {
-        noPriceLabel.font = .font(.interMedium, size: 18)
-        noPriceLabel.textColor = .labelColor
+        noPriceLabel.font = .font(.ubuntuRegular400, size: 18)
+        noPriceLabel.textColor = .black
         noPriceLabel.text = L10n.PricingReport.valueEstimating
 
         addSubview(noPriceLabel)
