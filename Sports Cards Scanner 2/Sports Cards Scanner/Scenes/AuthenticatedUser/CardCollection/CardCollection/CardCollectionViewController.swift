@@ -89,7 +89,7 @@ private extension CardCollectionViewController {
         cardsTableView.delegate = self
 
         let cardsCollectionView = cardCollectionView.cardsView.cardsCollectionView
-        cardsCollectionView.register(CardPhotoInfoCollectionViewCell.self, forCellWithReuseIdentifier: CardPhotoInfoCollectionViewCell.className)
+        cardsCollectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.className)
         cardsCollectionView.dataSource = self
         cardsCollectionView.delegate = self
 
@@ -224,6 +224,13 @@ extension CardCollectionViewController: UITableViewDataSource {
 
         if let card = card(at: indexPath) {
             cell?.setupCard(card)
+            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: 28)
+            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: 32)
+            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: 28)
+
+            cell?.cardView.pricesLabel.setLineHeight(30)
+            cell?.cardView.titleLabel.setLineHeight(34)
+            cell?.cardView.subtitleLabel.setLineHeight(30)
         }
 
         return cell ?? UITableViewCell()
@@ -261,10 +268,16 @@ extension CardCollectionViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardPhotoInfoCollectionViewCell.className, for: indexPath) as? CardPhotoInfoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.className, for: indexPath) as? CardCollectionViewCell
 
         if let card = card(at: indexPath) {
-            cell?.setCard(card)
+            cell?.setupCard(card)
+            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: 20)
+            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: 24)
+            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: 20)
+            cell?.cardView.pricesLabel.setLineHeight(22)
+            cell?.cardView.titleLabel.setLineHeight(26)
+            cell?.cardView.subtitleLabel.setLineHeight(22)
         }
 
         return cell ?? UICollectionViewCell()
@@ -274,26 +287,26 @@ extension CardCollectionViewController: UICollectionViewDataSource {
 // MARK: - CollectionView FlowLayout Delegate
 
 extension CardCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewWidth = collectionView.bounds.width
-        let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
-        let horizontalSpacing = (flowLayout?.sectionInset.left ?? 0) + (flowLayout?.sectionInset.right ?? 0)
-        let itemsInRow: CGFloat = UIDevice.isIpad ? 3:2
-        let interitemSpacing = flowLayout?.minimumInteritemSpacing ?? 0
-        let itemWidth = (collectionViewWidth - horizontalSpacing - interitemSpacing * (itemsInRow - 1)) / itemsInRow
-        let itemHeight = CardPhotoInfoCollectionViewCell.calculateCellHeight(for: itemWidth)
-        return .init(width: itemWidth, height: itemHeight)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let collectionViewWidth = collectionView.bounds.width
+//        let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
+//        let horizontalSpacing = (flowLayout?.sectionInset.left ?? 0) + (flowLayout?.sectionInset.right ?? 0)
+//        let itemsInRow: CGFloat = UIDevice.isIpad ? 3:2
+//        let interitemSpacing = flowLayout?.minimumInteritemSpacing ?? 0
+//        let itemWidth = (collectionViewWidth - horizontalSpacing - interitemSpacing * (itemsInRow - 1)) / itemsInRow
+//        let itemHeight = CardPhotoInfoCollectionViewCell.calculateCellHeight(for: itemWidth)
+//        return .init(width: itemWidth, height: itemHeight)
+//    }
 
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? CardPhotoInfoCollectionViewCell
-        cell?.setCellHighlighted(true)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? CardPhotoInfoCollectionViewCell
-        cell?.setCellHighlighted(false)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
+//        cell?.setCellHighlighted(true)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
+//        cell?.setCellHighlighted(false)
+//    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let card = card(at: indexPath) else { return }

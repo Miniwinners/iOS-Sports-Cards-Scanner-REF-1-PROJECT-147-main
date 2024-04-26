@@ -3,25 +3,19 @@ import SnapKit
 
 final class PortfolioNoCardView: UIView {
 
-    lazy var illustrationView: UIView = { view in
-        view.backgroundColor = .white
-        view.cornerRadius = 12
+    lazy var welcomeView: UIView = { view in
         return view
     }(UIView())
 
-    lazy var scanImageView: UIImageView = .init(image: Images.scannerApp.image)
-
-    lazy var scanInstructionsView: UIView = { view in
-        view.backgroundColor = .white
-        view.cornerRadius = 12
+    lazy var welcomeTextView: UIView = { view in
         return view
     }(UIView())
 
-    lazy var scanInstructionsLabel: UILabel = { label in
-        label.text = L10n.Portfolio.scanInstructions
+    lazy var welcomeTitleLabel: UILabel = { label in
+        label.text = L10n.Dashboard.Welcome.title
         label.textColor = .black
-        label.font = .font(.interRegular, size: 20)
-        label.setLineHeight(22)
+        label.font = .font(.ubuntuBold700, size: UIDevice.isIpad ? 34 : 28)
+        label.setLineHeight(UIDevice.isIpad ?  36 : 32)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -29,48 +23,72 @@ final class PortfolioNoCardView: UIView {
         return label
     }(UILabel())
 
-    lazy var arrowImageView: UIImageView = .init(image: Images.bottomArrow.image)
+    lazy var scanImageView: UIImageView = .init(image: Images.scannerApp.image)
+
+    lazy var welcomeDescriptionLabel: UILabel = { label in
+        label.text = L10n.Dashboard.Welcome.description
+        label.textColor = .singINLabel
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22 : 16)
+        label.setLineHeight(UIDevice.isIpad ? 24: 22)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.setContentHuggingPriority(.required, for: .vertical)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        return label
+    }(UILabel())
+
+    lazy var scanInstructionsLabel: UILabel = { label in
+        label.text = L10n.Dashboard.scanInstructions
+        label.textColor = .singINLabel
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22 : 16)
+        label.setLineHeight(UIDevice.isIpad ? 24 : 22)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.setContentHuggingPriority(.required, for: .vertical)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        return label
+    }(UILabel())
 
     convenience init() {
         self.init(frame: .zero)
         setupSubviews_unique()
+        backgroundColor = .skyBlue
     }
 
 }
 
 private extension PortfolioNoCardView {
     func setupSubviews_unique() {
-        addSubview(illustrationView)
-        illustrationView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+
+        addSubview(welcomeView)
+        welcomeView.snp.makeConstraints {
+            $0.top.greaterThanOrEqualTo(UIDevice.isIpad ? 40 : 20)
+            $0.top.lessThanOrEqualTo(UIDevice.isIpad ? 52 : 32)
+//            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
         }
 
-        illustrationView.addSubview(scanImageView)
+        welcomeView.addSubviews(welcomeTitleLabel, scanImageView, welcomeDescriptionLabel, scanInstructionsLabel)
+        welcomeTitleLabel.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 100 : 40)
+            $0.top.equalTo(scanImageView.snp.bottom).offset(UIDevice.isIpad ? 80 : 50)
+        }
         scanImageView.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(60)
-            $0.centerX.equalToSuperview()
-            $0.size.equalTo(140)
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+//            $0.width.equalTo(581)
+            $0.height.equalTo(UIDevice.isIpad ? 500: 300)
+        }
+        welcomeDescriptionLabel.snp.makeConstraints {
+            $0.top.greaterThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 20)
+            $0.top.lessThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 80 : 40)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?  80:20)
+//            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 30 : 10)
         }
 
-        addSubview(scanInstructionsView)
-        scanInstructionsView.snp.makeConstraints {
-            $0.top.equalTo(illustrationView.snp.bottom).offset(30)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-        }
-
-        scanInstructionsView.addSubview(scanInstructionsLabel)
         scanInstructionsLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(43)
-            $0.horizontalEdges.equalToSuperview().inset(42)
-            $0.bottom.equalToSuperview().inset(35)
-        }
-
-        addSubview(arrowImageView)
-        arrowImageView.snp.makeConstraints {
-            $0.size.equalTo(61)
-            $0.top.equalTo(scanInstructionsView.snp.bottom).offset(10)
-            $0.bottom.centerX.equalToSuperview()
+            $0.top.equalTo(welcomeDescriptionLabel.snp.bottom).offset(UIDevice.isIpad ? 80 : 40)
+            $0.centerX.equalToSuperview()
         }
     }
 }

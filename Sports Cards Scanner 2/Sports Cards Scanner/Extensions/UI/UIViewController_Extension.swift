@@ -26,7 +26,6 @@ enum ButtonFunc {
 
 class CloseButton: UIButton {
 
-    // Инициализатор с enum для определения стиля кнопки
     init(style: ButtonFunc, frame: CGRect = .zero) {
         super.init(frame: frame)
         self.setupButton(style: style)
@@ -37,16 +36,15 @@ class CloseButton: UIButton {
     }
 
     private func setupButton(style: ButtonFunc) {
-        setImage(Images.close.image, for: .normal) // Default image
+        setImage(Images.close.image, for: .normal)
         backgroundColor = .white
-        layer.cornerRadius = UIDevice.isIpad ? 40 : 22
+        layer.cornerRadius = UIDevice.isIpad ? 30 : 22
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.7
         layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowRadius = 2
 
-        // Setting image based on the style
         switch style {
         case .back:
             setImage(Images.backArrow.image, for: .normal)
@@ -59,7 +57,7 @@ class CloseButton: UIButton {
         view.addSubview(self)
         self.snp.makeConstraints { make in
             make.top.centerX.equalToSuperview()
-            make.size.equalTo(UIDevice.isIpad ? 80 : 44)
+            make.size.equalTo(UIDevice.isIpad ? 60 : 44)
         }
     }
 
@@ -67,7 +65,7 @@ class CloseButton: UIButton {
         view.addSubview(self)
         self.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.size.equalTo(UIDevice.isIpad ? 80 : 44)
+            make.size.equalTo(UIDevice.isIpad ? 60 : 44)
             make.left.equalToSuperview().inset(UIDevice.isIpad ? 32 : 16)
         }
     }
@@ -93,9 +91,8 @@ class TitleLabel: UILabel {
     func setupLabel(in view: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
-//            make.horizontalEdges.equalToSuperview().inset(16)
             make.centerX.equalToSuperview()
-            make.height.equalTo(UIDevice.isIpad ? 30 : 28)
+            make.height.equalTo(UIDevice.isIpad ? 40 : 28)
             make.top.equalToSuperview().inset(UIDevice.isIpad ? 70 : 40)
         }
     }
@@ -120,7 +117,7 @@ class BackView: UIView {
     func setupView(in view: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(UIDevice.isIpad ? 40 : 22)
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 30 : 22)
             make.horizontalEdges.bottom.equalToSuperview()
         }
     }

@@ -14,7 +14,7 @@ final class CreateEditDeckView: UIView {
     lazy var nameView: TitledTextFieldView = { view in
         view.title = L10n.CreateDeck.DeckName.title
         view.titleLabel.textAlignment = .center
-        view.titleLabel.font = .font(.ubuntuLight300, size: 16)
+        view.titleLabel.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
         view.placeholder = L10n.CreateDeck.DeckName.placeholder
         view.textField.autocorrectionType = .no
         view.textField.returnKeyType = .done
@@ -23,11 +23,11 @@ final class CreateEditDeckView: UIView {
     }(TitledTextFieldView())
 
     lazy var deckTypeLabel: UILabel = { label in
-        label.font = .font(.ubuntuLight300, size: 16)
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
         label.text = L10n.CreateDeck.DeckType.title
         label.textColor = .black
         label.textAlignment = .center
-        label.setLineHeight(22)
+        label.setLineHeight(UIDevice.isIpad ? 28:22)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
@@ -39,14 +39,14 @@ final class CreateEditDeckView: UIView {
         view.discloseButton.layer.cornerRadius = 12
 
         return view
-    }(OptionsView(minHeight: 48, maxHeight: 150))
+    }(OptionsView(minHeight: UIDevice.isIpad ? 80:54, maxHeight: UIDevice.isIpad ? 300:150))
 
     lazy var descriptionLabel: UILabel = { label in
-        label.font = .font(.ubuntuLight300, size: 16)
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
         label.text = L10n.CreateDeck.Description.title
         label.textColor = .black
         label.textAlignment = .center
-        label.setLineHeight(22)
+        label.setLineHeight(UIDevice.isIpad ? 28:22)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
@@ -85,28 +85,26 @@ final class CreateEditDeckView: UIView {
 
         addSubviews(deckImage, deckTypeLabel, deckTypeView, createButton)
         deckImage.snp.makeConstraints {
-            $0.top.equalTo(nameView.snp.bottom).offset(20)
+            $0.top.equalTo(nameView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(33)
-            $0.width.equalTo(48)
+            $0.height.equalTo(UIDevice.isIpad ? 48:33)
+            $0.width.equalTo(UIDevice.isIpad ? 68:48)
         }
         deckTypeLabel.snp.makeConstraints {
-            $0.top.equalTo(deckImage.snp.bottom).offset(5)
+            $0.top.equalTo(deckImage.snp.bottom).offset(UIDevice.isIpad ? 15:5)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(descriptionLabel.snp.top).inset(-76)
+            $0.bottom.equalTo(descriptionLabel.snp.top).inset(UIDevice.isIpad ? -106:-76)
         }
         deckTypeView.snp.makeConstraints {
-            $0.top.equalTo(deckTypeLabel.snp.bottom).offset(8)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(deckTypeLabel.snp.bottom).offset(UIDevice.isIpad ? 18:8)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
-
         createButton.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(descriptionTextView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 40:20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:54)
         }
-
         bringSubviewToFront(deckTypeView)
     }
 
@@ -119,9 +117,9 @@ final class CreateEditDeckView: UIView {
         addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(descriptionTextView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(128)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 40:20)
+            $0.height.equalTo(UIDevice.isIpad ? 172:128)
         }
     }
 
@@ -131,19 +129,20 @@ private extension CreateEditDeckView {
     func setupSubviews_unique() {
         titleLabel.setupLabel(in: self)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(20)
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
         }
         addSubview(titleImage)
         titleImage.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
             make.centerX.equalToSuperview()
-            make.size.equalTo(32)
+            make.size.equalTo(UIDevice.isIpad ? 45:32)
         }
         // descriptionImage
         addSubviews(nameView, descriptionLabel, descriptionTextView)
         nameView.snp.makeConstraints {
-            $0.top.equalTo(titleImage.snp.bottom).offset(5)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(titleImage.snp.bottom).offset(UIDevice.isIpad ? 15:5)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:56)
         }
 
 //        descriptionImage.snp.makeConstraints { make in
@@ -153,13 +152,13 @@ private extension CreateEditDeckView {
 //        }
 
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(nameView.snp.bottom).offset(20).priority(.high)
+            $0.top.equalTo(nameView.snp.bottom).offset(UIDevice.isIpad ? 40:20).priority(.high)
             $0.centerX.equalToSuperview()
         }
         descriptionTextView.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(8)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(214).priority(.high)
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(UIDevice.isIpad ? 18:8)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.height.equalTo(UIDevice.isIpad ? 400:214).priority(.high)
         }
     }
 }

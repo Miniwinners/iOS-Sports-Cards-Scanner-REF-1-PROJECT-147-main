@@ -13,9 +13,7 @@ class SwitchableTableViewCell: UITableViewCell {
         return label
     }(UILabel())
 
-    lazy var switchView: UISwitch = { switchView in
-        return switchView
-    }(UISwitch())
+    lazy var switchView: UISwitch = .init()
 
     lazy var separatorView: UIView = { view in
         view.backgroundColor = .dividerColor
@@ -65,12 +63,6 @@ private extension SwitchableTableViewCell {
             $0.centerY.equalTo(titleLabel)
         }
 
-        containerView.addSubview(separatorView)
-        separatorView.snp.makeConstraints {
-            $0.height.equalTo(1)
-            $0.bottom.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(16)
-        }
     }
 
     func setupActions_unique() {
@@ -113,14 +105,12 @@ class SwitchableCollectionViewCell: UICollectionViewCell {
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .black
-        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ?21: 15)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ?24: 15)
         label.textAlignment = .center
         return label
     }(UILabel())
 
-    lazy var switchView: UISwitch = { switchView in
-        return switchView
-    }(UISwitch())
+    lazy var switchView: UISwitch = .init()
 
     private(set) var topConstraint: Constraint!
     private(set) var bottomConstraint: Constraint!
@@ -140,9 +130,9 @@ private extension SwitchableCollectionViewCell {
     func setupSubviews_unique() {
         backgroundColor = .clear
         contentView.backgroundColor = .skyBlue
-        layer.cornerRadius = 16
-        containerView.layer.cornerRadius = 16
-        contentView.layer.cornerRadius = 16
+        layer.cornerRadius = UIDevice.isIpad ? 24:16
+        containerView.layer.cornerRadius = UIDevice.isIpad ? 24:16
+        contentView.layer.cornerRadius = UIDevice.isIpad ? 24:16
 
         backgroundView = createBackgroundView()
 
@@ -157,7 +147,7 @@ private extension SwitchableCollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(UIDevice.isIpad ? 52:32)
             $0.width.equalTo(UIDevice.isIpad ? 81:48)
-            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 40:15)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 60:20)
         }
 
         containerView.addSubview(titleLabel)
@@ -178,12 +168,12 @@ private extension SwitchableCollectionViewCell {
 
         let backgroundView = UIView()
         backgroundView.backgroundColor = .skyBlue
-        backgroundView.layer.cornerRadius = 16
+        backgroundView.layer.cornerRadius = UIDevice.isIpad ? 24:16
         backgroundContainerView.addSubview(backgroundView)
 
         backgroundView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 0 : 20).priority(.high)
         }
 
         return backgroundContainerView

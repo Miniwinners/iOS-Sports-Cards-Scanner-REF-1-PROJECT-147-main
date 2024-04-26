@@ -71,7 +71,7 @@ private extension CurrentValueDetailsView {
         backgroundColor = .clear
         titleLabel.setupLabel(in: self)
         categoryValuesTable.backgroundColor = .skyBlue
-        categoryValuesTable.layer.cornerRadius = 16
+        categoryValuesTable.layer.cornerRadius = UIDevice.isIpad ? 26:16
 
         addSubviews(currentValueLabel, diagramView, categoryValuesTable)
 
@@ -104,7 +104,7 @@ private extension CurrentValueDetailsView {
             }
 
             categoryValuesTable.snp.makeConstraints {
-                $0.top.equalTo(diagramView.snp.bottom).offset(40)
+                $0.top.equalTo(diagramView.snp.bottom).offset(UIDevice.isIpad ? 80:40)
                 $0.horizontalEdges.equalToSuperview().inset(80)
                 $0.height.greaterThanOrEqualTo(135)
                 $0.bottom.equalTo(safeAreaLayoutGuide).inset(60)

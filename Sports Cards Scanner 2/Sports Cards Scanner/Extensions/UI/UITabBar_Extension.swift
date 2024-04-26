@@ -7,7 +7,7 @@ extension UITabBar {
         tabBarAppearance.backgroundColor = .clear
 
         let normalItemAppearance = UITabBarItemAppearance()
-        normalItemAppearance.normal.titleTextAttributes = [.font: UIFont.font(.ubuntuMedium500, size: 12)]
+        normalItemAppearance.normal.titleTextAttributes = [.font: UIFont.font(.ubuntuBold700, size: UIDevice.isIpad ? 18 : 12)]
         normalItemAppearance.normal.iconColor = .singINLabel
 
         let selectedItemAppearance = UITabBarItemAppearance()
@@ -23,14 +23,14 @@ extension UITabBar {
         tabBarAppearance.compactInlineLayoutAppearance = selectedItemAppearance
 
         let posX: CGFloat = 0
-        let posY: CGFloat = 20
+        let posY: CGFloat = UIDevice.isIpad ? 35 : 20
         let width = bounds.width
         let height = bounds.height + posY * 2.6
 
         let roundLayer = CAShapeLayer()
 
         let bezierPath = UIBezierPath(roundedRect: CGRect(x: posX, y: bounds.minY - posY, width: width, height: height),
-                                      cornerRadius: height/2)
+                                      cornerRadius: UIDevice.isIpad ? 40 : height/2)
         roundLayer.path = bezierPath.cgPath
 
         layer.insertSublayer(roundLayer, at: 0)
@@ -45,8 +45,21 @@ extension UITabBar {
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 0.2
         layer.shadowColor = UIColor.lightGray.cgColor
+        itemPositioning = .centered
 
         roundLayer.fillColor = UIColor.white.cgColor
+    }
+
+    open override var traitCollection: UITraitCollection {
+        if UIDevice.isIpad {
+//            if #available(iOS 17.0, *) {
+//                self.traitOverrides.horizontalSizeClass = .compact
+//                self.traitOverrides.verticalSizeClass = .compact
+//            } else {
+                return UITraitCollection(horizontalSizeClass: .compact)
+//            }
+        }
+        return super.traitCollection
     }
 }
 
@@ -57,10 +70,10 @@ extension UITabBarController {
         customView.backgroundColor = .white
         customView.layer.cornerRadius = 10
         customView.layer.masksToBounds = true
-                customView.frame = CGRect(x: 0, y: tabBar.frame.size.height - 20, width: tabBar.frame.size.width, height: 100)
-                customView.autoresizingMask = [.flexibleTopMargin, .flexibleWidth]
-                tabBar.addSubview(customView)
-                tabBar.sendSubviewToBack(customView)
+        customView.frame = CGRect(x: 0, y: tabBar.frame.size.height - 20, width: tabBar.frame.size.width, height: 100)
+        customView.autoresizingMask = [.flexibleTopMargin, .flexibleWidth]
+        tabBar.addSubview(customView)
+        tabBar.sendSubviewToBack(customView)
     }
 
 }

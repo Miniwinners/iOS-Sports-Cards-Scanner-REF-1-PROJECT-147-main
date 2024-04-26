@@ -283,10 +283,11 @@ private extension SCSAppCoordinator {
     // MARK: - Helpers
 
     func setupMainTabBar(_ tabBar: UITabBar) {
-        tabBar.applyDefaultAppearance()
-        zip(tabBar.items ?? [], TabBarItem.allCases).forEach {
-            $0.image = $1.image
-            $0.selectedImage = $1.selectedImage
+            tabBar.applyDefaultAppearance()
+            zip(tabBar.items ?? [], TabBarItem.allCases).forEach {
+                $0.image = $1.image
+                $0.selectedImage = $1.selectedImage
+                $0.imageInsets = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
+            }
         }
-    }
 }

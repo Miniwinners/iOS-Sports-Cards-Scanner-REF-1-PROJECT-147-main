@@ -9,14 +9,14 @@ class CurrentValuesDetailsTableViewCell: UITableViewCell {
 
     lazy var categoryLabel: UILabel = { label in
         label.textColor = .labelColor
-        label.font = .font(.ubuntuRegular400, size: 16)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }(UILabel())
 
     lazy var priceLabel: UILabel = { label in
         label.textColor = .black
-        label.font = .font(.ubuntuBold700, size: 16)
+        label.font = .font(.ubuntuBold700, size: UIDevice.isIpad ? 26:16)
         label.lineBreakMode = .byTruncatingMiddle
         label.textAlignment = .right
         return label
@@ -45,7 +45,7 @@ private extension CurrentValuesDetailsTableViewCell {
     func setupSubviews_unique() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        colorView.layer.cornerRadius = 7
+        colorView.layer.cornerRadius = UIDevice.isIpad ?12:7
         colorView.layer.masksToBounds = false
         colorView.clipsToBounds = true
 
@@ -59,20 +59,20 @@ private extension CurrentValuesDetailsTableViewCell {
 
         containerView.addSubview(colorView)
         colorView.snp.makeConstraints {
-            $0.size.equalTo(14)
-            $0.top.equalToSuperview().offset(22)
+            $0.size.equalTo(UIDevice.isIpad ? 24:14)
+            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
         }
 
         containerView.addSubview(categoryLabel)
         categoryLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
+            $0.centerY.equalToSuperview()
             $0.leading.equalTo(colorView.snp.trailing).offset(10)
         }
 
         containerView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
+            $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(20)
             $0.leading.greaterThanOrEqualTo(categoryLabel.snp.trailing).offset(8)
         }

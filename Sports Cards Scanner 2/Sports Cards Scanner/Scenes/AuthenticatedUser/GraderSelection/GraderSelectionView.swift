@@ -11,12 +11,13 @@ final class GraderSelectionView: UIView {
     lazy var gradersTableView: UITableView = { tableView in
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
-        tableView.estimatedRowHeight = 56
-        tableView.rowHeight = 56
+        tableView.estimatedRowHeight = UIDevice.isIpad ? 72:56
+        tableView.rowHeight = UIDevice.isIpad ? 72:56
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = false
         tableView.layer.cornerRadius = 20
         tableView.backgroundColor = .skyBlue
+        tableView.isScrollEnabled = false
         return tableView
     }(UITableView())
 

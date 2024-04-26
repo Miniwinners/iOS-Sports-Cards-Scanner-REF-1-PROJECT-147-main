@@ -59,7 +59,7 @@ private extension RemovableCardCollectionViewCell {
         }
         removeButton.snp.makeConstraints {
             $0.top.trailing.equalToSuperview().inset(-13)
-            $0.size.equalTo(44)
+            $0.size.equalTo(UIDevice.isIpad ? 80:44)
         }
     }
 

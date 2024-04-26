@@ -21,7 +21,7 @@ class TitledTextFieldView: UIView {
     }(UIImageView())
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 16)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         label.textColor = .logInLabel
         label.numberOfLines = 0
         return label
@@ -29,7 +29,7 @@ class TitledTextFieldView: UIView {
 
     lazy var textField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.ubuntuLight300, size: 16)
+        textField.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
         textField.backgroundColor = .skyBlue
         textField.textColor = .logInLabel
         textField.cornerRadius = 16
@@ -47,11 +47,11 @@ class TitledTextFieldView: UIView {
 private extension TitledTextFieldView {
     func setupSubviews_unique() {
         titleLabel.snp.makeConstraints {
-            $0.height.equalTo(24)
+            $0.height.equalTo(UIDevice.isIpad ? 30:24)
         }
 
         textField.snp.makeConstraints {
-            $0.height.equalTo(56)
+            $0.height.equalTo(UIDevice.isIpad ? 80:56)
         }
 
         let stackView = UIStackView(arrangedSubviews: [titleLabel, textField])
@@ -67,8 +67,8 @@ private extension TitledTextFieldView {
         textField.addSubview(validImage)
         validImage.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(28)
-            $0.right.equalToSuperview().inset(10)
+            $0.size.equalTo(UIDevice.isIpad ? 40:28)
+            $0.right.equalToSuperview().inset(UIDevice.isIpad ? 15:10)
         }
     }
 }

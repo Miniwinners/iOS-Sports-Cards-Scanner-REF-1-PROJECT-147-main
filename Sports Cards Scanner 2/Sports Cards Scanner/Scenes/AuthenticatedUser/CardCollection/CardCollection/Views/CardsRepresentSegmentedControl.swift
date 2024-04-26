@@ -14,7 +14,7 @@ final class CardsRepresentSegmentedControl: UISegmentedControl {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let inset = UIDevice.isIpad ? 45.5 : 31.5
+        let inset = UIDevice.isIpad ? 50.5 : 31.5
         let radius = UIDevice.isIpad ? 10.5 : 5.5
 //        layer.cornerRadius = 8
         let foregroundIndex = numberOfSegments

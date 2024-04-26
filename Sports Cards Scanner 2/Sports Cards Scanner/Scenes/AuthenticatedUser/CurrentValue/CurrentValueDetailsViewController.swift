@@ -111,7 +111,7 @@ extension CurrentValueDetailsViewController: UITableViewDataSource {
 
         lazy var categoryValueLabel: UILabel = { label in
             label.text = L10n.CurrentValue.valueByCategory
-            label.font = .font(.ubuntuRegular400, size: 21)
+            label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 27:21)
             label.textColor = .labelColor
             label.setLineHeight(32)
             label.setContentHuggingPriority(.required, for: .vertical)
@@ -123,7 +123,7 @@ extension CurrentValueDetailsViewController: UITableViewDataSource {
         headerView.textAlignment = .center
         headerView.font = categoryValueLabel.font
         if UIDevice.isIpad {
-            headerView.font = .font(.ubuntuRegular400, size: 24)
+            headerView.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 30:24)
         }
         return headerView
     }
@@ -132,7 +132,7 @@ extension CurrentValueDetailsViewController: UITableViewDataSource {
         if UIDevice.isIphone {
             return 25
         } else {
-            return 30
+            return 70
         }
     }
 }

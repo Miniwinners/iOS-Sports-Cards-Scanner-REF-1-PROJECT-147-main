@@ -160,7 +160,7 @@ private extension SelectableCollectionViewCell {
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 0 : 20)
         }
 
         containerView.addSubview(rightImageView)
@@ -172,9 +172,9 @@ private extension SelectableCollectionViewCell {
 
         containerView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 22 : 15)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
-            $0.height.equalTo(UIDevice.isIpad ? 60 : 40)
+            $0.bottom.equalToSuperview().inset(15)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 0:20)
+            $0.height.equalTo(UIDevice.isIpad ? 30 : 20)
         }
     }
 
@@ -188,7 +188,7 @@ private extension SelectableCollectionViewCell {
 
         backgroundView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20).priority(.high)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 0 : 20).priority(.high)
         }
 
         return backgroundContainerView

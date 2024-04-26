@@ -7,7 +7,7 @@ final class SortCardOptionCell: UITableViewCell {
     private var bottomConstraint: Constraint!
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.ubuntuRegular400, size: 16)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         label.textColor = .black
         return label
     }(UILabel())
@@ -49,24 +49,24 @@ private extension SortCardOptionCell {
 
         let backgroundView = UIView()
         backgroundView.backgroundColor = .skyBlue
-        backgroundView.layer.cornerRadius = 12
+        backgroundView.layer.cornerRadius = UIDevice.isIpad ? 22:12
         self.backgroundView = backgroundView
 
         let highlightedView = UIView()
-        highlightedView.layer.cornerRadius = 12
+        highlightedView.layer.cornerRadius = UIDevice.isIpad ? 22:12
         highlightedView.backgroundColor = .highlightColor2
         self.selectedBackgroundView = highlightedView
 
         contentView.addSubviews(titleLabel, checkImageView)
         titleLabel.snp.makeConstraints {
-            $0.height.equalTo(22)
+            $0.height.equalTo(UIDevice.isIpad ? 30:22)
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(16)
         }
         checkImageView.snp.makeConstraints {
             $0.centerY.equalTo(titleLabel)
             $0.trailing.equalToSuperview().inset(16)
-            $0.size.equalTo(24)
+            $0.size.equalTo(UIDevice.isIpad ? 40:24)
         }
     }
 }

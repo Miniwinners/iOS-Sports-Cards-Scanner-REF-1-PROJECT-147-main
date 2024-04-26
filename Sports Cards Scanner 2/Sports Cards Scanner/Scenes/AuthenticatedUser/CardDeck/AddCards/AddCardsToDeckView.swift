@@ -6,7 +6,7 @@ final class AddCardsToDeckView: UIView {
     lazy var backView: BackView = .init()
 
     lazy var selectedCardsLabel: UILabel = { label in
-        label.font = .font(.ubuntuBold700, size: 22)
+        label.font = .font(.ubuntuBold700, size: UIDevice.isIpad ? 28:22)
         label.textColor = .black
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -15,9 +15,9 @@ final class AddCardsToDeckView: UIView {
 
     lazy var searchTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.interRegular, size: 16)
+        textField.font = .font(.interRegular, size: UIDevice.isIpad ? 22:16)
         textField.backgroundColor = .skyBlue
-        textField.cornerRadius = 12
+        textField.cornerRadius = UIDevice.isIpad ? 20:12
         textField.placeholder = L10n.AddCards.Search.placeholder
         textField.rightViewMode = .always
         textField.trailingPadding = 48
@@ -35,7 +35,7 @@ final class AddCardsToDeckView: UIView {
     }(UIButton(type: .system))
 
     lazy var categoryLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 22)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 28:22)
         label.textColor = .black
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -71,7 +71,7 @@ final class AddCardsToDeckView: UIView {
 
     func setCategory(_ category: CardCategory?) {
         categoryLabel.text = category?.title
-        categoryLabel.setLineHeight(22)
+        categoryLabel.setLineHeight(UIDevice.isIpad ? 28:22)
     }
 
     func setSelectedCards(number: Int) {
@@ -81,7 +81,7 @@ final class AddCardsToDeckView: UIView {
         default:
             selectedCardsLabel.text = L10n.AddCards.numberOfCardsSelected(number)
         }
-        selectedCardsLabel.setLineHeight(22)
+        selectedCardsLabel.setLineHeight(UIDevice.isIpad ? 28:22)
     }
 
     func setNoResultsView(visible: Bool) {
@@ -103,31 +103,31 @@ private extension AddCardsToDeckView {
 
         backView.addSubviews(selectedCardsLabel, searchTextField, categoryLabel, cardsCollectionView, buttonsStackView, noResultsView)
         selectedCardsLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(32)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 52:32)
             $0.centerX.equalToSuperview()
         }
         searchTextField.snp.makeConstraints {
-            $0.top.equalTo(selectedCardsLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(48)
+            $0.top.equalTo(selectedCardsLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.height.equalTo(UIDevice.isIpad ? 100:48)
         }
         categoryLabel.snp.makeConstraints {
-            $0.top.equalTo(searchTextField.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(searchTextField.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
         cardsCollectionView.snp.makeConstraints {
-            $0.top.equalTo(categoryLabel.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview()
+            $0.top.equalTo(categoryLabel.snp.bottom).offset(UIDevice.isIpad ? 30:10)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:0)
         }
         noResultsView.snp.makeConstraints {
-            $0.top.equalTo(categoryLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(categoryLabel.snp.bottom).offset(UIDevice.isIpad ? 50:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
         buttonsStackView.snp.makeConstraints {
             $0.top.equalTo(cardsCollectionView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(128)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 40:20)
+            $0.height.equalTo(UIDevice.isIpad ? 172:128)
         }
 
         setNoResultsView(visible: false)
@@ -150,13 +150,13 @@ private extension AddCardsToDeckView {
 private extension AddCardsToDeckView {
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .estimated(162),
-            heightDimension: .absolute(297)
+            widthDimension: .estimated(UIDevice.isIpad ? 253:162),
+            heightDimension: .absolute(UIDevice.isIpad ? 464:297)
         )
 
         let item = NSCollectionLayoutItem(layoutSize: size)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(297))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:297))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)

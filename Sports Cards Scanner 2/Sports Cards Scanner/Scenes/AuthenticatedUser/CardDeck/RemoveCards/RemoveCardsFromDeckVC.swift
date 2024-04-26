@@ -17,7 +17,6 @@ final class RemoveCardsFromDeckVC: UIViewController {
     // MARK: - Subviews
     lazy var closeButton: CloseButton = .init(style: .back)
     lazy var removeCardsView: RemoveCardsView = .init()
-
     init(cardDeckManager: CardDeckManager = CardSetsManager.shared) {
         self.cardDeckManager = cardDeckManager
         super.init(nibName: nil, bundle: nil)
@@ -41,11 +40,10 @@ final class RemoveCardsFromDeckVC: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
-        closeButton.setLeft(in: view)
-        closeButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +68,7 @@ final class RemoveCardsFromDeckVC: UIViewController {
 
 private extension RemoveCardsFromDeckVC {
     func setupViews_unique() {
+
         let cardsCollectionView = removeCardsView.cardsCollectionView
         cardsCollectionView.register(RemovableCardCollectionViewCell.self, forCellWithReuseIdentifier: RemovableCardCollectionViewCell.className)
         cardsCollectionView.dataSource = self
@@ -77,6 +76,9 @@ private extension RemoveCardsFromDeckVC {
 
         removeCardsView.setCollectionName(cardDeck?.name)
         removeCardsView.setCards(count: sortedCards.count)
+
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
     }
 
     func setupActions_unique() {

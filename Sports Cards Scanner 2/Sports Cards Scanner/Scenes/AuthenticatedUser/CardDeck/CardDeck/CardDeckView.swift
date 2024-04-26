@@ -12,7 +12,7 @@ final class CardDeckView: UIView {
     }(UIButton(type: .system))
 
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 16)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22: 16)
         label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -20,7 +20,7 @@ final class CardDeckView: UIView {
     }(UILabel())
 
     lazy var nameSecondaryLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 22)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ?28:22)
         label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -28,7 +28,7 @@ final class CardDeckView: UIView {
     }(UILabel())
 
     lazy var priceLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 16)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         label.textColor = .greenColor
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .horizontal)
@@ -58,7 +58,7 @@ final class CardDeckView: UIView {
     func setDeck(name: String?) {
         titleLabel.text = name
         nameSecondaryLabel.text = name
-        nameSecondaryLabel.setLineHeight(22)
+        nameSecondaryLabel.setLineHeight(UIDevice.isIpad ? 28:22)
     }
 
     func setCards(count: Int) {
@@ -68,7 +68,7 @@ final class CardDeckView: UIView {
         default:
             cardsNumberLabel.text = L10n.Portfolio.numberOfCards(count)
         }
-        cardsNumberLabel.setLineHeight(22)
+        cardsNumberLabel.setLineHeight(UIDevice.isIpad ? 28:22)
 
         noCardsView.isHidden = count != 0
         addCardsButton.isHidden = count != 0
@@ -96,36 +96,37 @@ private extension CardDeckView {
         addSubviews(menuButton, cardsNumberLabel, nameSecondaryLabel, priceLabel, collectionCards, noCardsView, addCardsButton)
 
         cardsNumberLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(14)
-            $0.leading.equalToSuperview().inset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 34:14)
+            $0.leading.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
         nameSecondaryLabel.snp.makeConstraints {
-            $0.top.equalTo(cardsNumberLabel.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().inset(20)
+            $0.top.equalTo(cardsNumberLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            $0.leading.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
         priceLabel.snp.makeConstraints {
             $0.centerY.equalTo(cardsNumberLabel)
             $0.leading.equalTo(cardsNumberLabel.snp.trailing).offset(8)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
         collectionCards.snp.makeConstraints {
-            $0.top.equalTo(nameSecondaryLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.top.equalTo(nameSecondaryLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            $0.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:0)
         }
         noCardsView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
         addCardsButton.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70:20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:54)
         }
-
+        menuButton.backgroundColor = .red
         menuButton.snp.makeConstraints {
             $0.size.equalTo(44)
             $0.centerY.equalTo(nameSecondaryLabel)
-            $0.trailing.equalToSuperview().inset(30)
+            $0.trailing.equalToSuperview().inset(UIDevice.isIpad ? 80:30)
             $0.leading.equalTo(nameSecondaryLabel.snp.trailing).offset(8)
         }
     }
@@ -134,13 +135,13 @@ private extension CardDeckView {
 extension CardDeckView {
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .estimated(162),
-            heightDimension: .absolute(297)
+            widthDimension: .estimated(UIDevice.isIpad ? 253:162),
+            heightDimension: .absolute(UIDevice.isIpad ? 464:297)
         )
 
         let item = NSCollectionLayoutItem(layoutSize: size)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(297))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:297))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)

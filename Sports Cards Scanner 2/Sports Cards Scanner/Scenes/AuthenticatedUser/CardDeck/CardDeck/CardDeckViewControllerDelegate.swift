@@ -25,7 +25,9 @@ extension CardDeckViewControllerDelegate where Self: SCSCoordinator {
     }
 
     func cardDeckViewControllerMenuTapped(for deck: CardDeck, in viewController: CardDeckViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: 0, widthRatio: 0)
+        let height: CGFloat = 212 * 3 + 20 * 7 + 96
+        let width: CGFloat = 244 * 2 + 20 * 2 + 10
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: height, widthRatio: width)
         let menuItems = deck.cardIDs.isEmpty ? DeckMenuItem.noCardsItems : DeckMenuItem.allCases
         let coordinator = DeckMenuCoordinator(router: router, menuItems: menuItems)
         coordinator.didSelectItem = { [weak self] item in

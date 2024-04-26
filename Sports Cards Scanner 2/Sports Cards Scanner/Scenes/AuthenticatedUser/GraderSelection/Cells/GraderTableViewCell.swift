@@ -77,7 +77,7 @@ private extension GraderTableViewCell {
 
         backgroundView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+            $0.horizontalEdges.equalToSuperview()
         }
 
         return backgroundContainerView
@@ -92,7 +92,8 @@ private extension GraderTableViewCell {
 
         highlightedView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview()
+
         }
 
         return highlightedContainerView

@@ -44,8 +44,8 @@ private extension AddToPortfolioButton {
         titleLabelAdd.text = L10n.CardDetails.Action.addCard
         titleLabelAdd.textAlignment = .center
         titleLabelAdd.textColor = .white
-        titleLabelAdd.font = .font(.ubuntuMedium500, size: 16)
-        titleLabelAdd.setLineHeight(22)
+        titleLabelAdd.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
+        titleLabelAdd.setLineHeight(UIDevice.isIpad ? 26:22)
         titleLabelAdd.snp.makeConstraints {
             $0.top.lessThanOrEqualTo(addImageView.snp.bottom).offset(30)
             $0.horizontalEdges.equalToSuperview().inset(10)
@@ -56,8 +56,8 @@ private extension AddToPortfolioButton {
         subTitleLabelAdd.textAlignment = .center
         subTitleLabelAdd.textColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         subTitleLabelAdd.alpha = 0.5
-        subTitleLabelAdd.font = .font(.ubuntuMedium500, size: 12)
-        subTitleLabelAdd.setLineHeight(22)
+        subTitleLabelAdd.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 18:12)
+        subTitleLabelAdd.setLineHeight(UIDevice.isIpad ? 28:22)
         subTitleLabelAdd.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(10)
             $0.bottom.equalToSuperview().inset(5)

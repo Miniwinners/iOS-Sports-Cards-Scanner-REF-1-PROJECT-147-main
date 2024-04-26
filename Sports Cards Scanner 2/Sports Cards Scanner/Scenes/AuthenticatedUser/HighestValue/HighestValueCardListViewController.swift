@@ -64,13 +64,13 @@ private extension HighestValueCardListViewController {
         collectionViewValue.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 20)
             make.bottom.equalToSuperview()
-            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80: 0)
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 60: 0)
         }
         collectionViewValue.delegate = self
         collectionViewValue.dataSource = self
         collectionViewValue.backgroundColor = .clear
         collectionViewValue.showsVerticalScrollIndicator = false
-        collectionViewValue.contentInset.bottom = 20
+        collectionViewValue.contentInset.bottom = 25
         collectionViewValue.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.className)
     }
 
@@ -90,17 +90,18 @@ private extension HighestValueCardListViewController {
 
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .estimated(UIDevice.isIpad ? 253: 162),
-            heightDimension: .absolute(UIDevice.isIpad ? 464: 297)
+            widthDimension: .estimated(UIDevice.isIpad ? 270: 162),
+            heightDimension: .absolute(UIDevice.isIpad ? 425: 297)
+
         )
 
         let item = NSCollectionLayoutItem(layoutSize: size)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:297))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 425:297))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
-        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(20)
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 10
+        section.interGroupSpacing = 20
         section.contentInsets = .init(
             top: 0,
             leading: 16,

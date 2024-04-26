@@ -6,17 +6,10 @@ final class RemoveCardsView: UIView {
     private var cardsHeightConstraint: Constraint!
 
     lazy var backView: BackView = .init()
-
-    lazy var nameLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 24)
-        label.textColor = .labelColor
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
-        return label
-    }(UILabel())
+    lazy var titleLabel: TitleLabel = .init()
 
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.ubuntuRegular400, size: 14)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 20:14)
         label.textColor = .black
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -46,8 +39,8 @@ final class RemoveCardsView: UIView {
     }
 
     func setCollectionName(_ name: String?) {
-        nameLabel.text = name
-        nameLabel.setLineHeight(28)
+        titleLabel.text = name
+//        titleLabel.setLineHeight(UIDevice.isIpad ? 32:28)
     }
 
     func setCards(count: Int) {
@@ -57,7 +50,7 @@ final class RemoveCardsView: UIView {
         default:
             cardsNumberLabel.text = L10n.Portfolio.numberOfCards(count)
         }
-        cardsNumberLabel.setLineHeight(22)
+        cardsNumberLabel.setLineHeight(UIDevice.isIpad ? 28:22)
     }
 
     func updateCards(count: Int, animated: Bool) {
@@ -74,11 +67,6 @@ final class RemoveCardsView: UIView {
         let rowsCount = (CGFloat(count) / itemsInRow).rounded(.up)
         let cardsHeight = itemHeight * rowsCount + interitemSpacing * (rowsCount - 1) + verticalSpacing
         cardsHeightConstraint.update(offset: max(0, cardsHeight))
-
-        nameLabel.snp.remakeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(16).priority(cardsHeight <= 0 ? .required : .low)
-        }
 
         if animated {
             UIView.animate(withDuration: 0.25) {
@@ -97,26 +85,25 @@ private extension RemoveCardsView {
     func setupSubviews_unique() {
         backgroundColor = .clear
         backView.setupView(in: self)
+        titleLabel.setupLabel(in: backView)
         let containerView = UIView()
         containerView.backgroundColor = .clear
         containerView.cornerRadius = 12
         backView.addSubview(containerView)
         containerView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(30)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
-        containerView.addSubviews(nameLabel, cardsNumberLabel, cardsCollectionView)
-        nameLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(16).priority(.low)
-        }
+        containerView.addSubviews(cardsNumberLabel, cardsCollectionView)
+
         cardsNumberLabel.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(16)
-            $0.leading.equalTo(nameLabel.snp.trailing).offset(8)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 60: 30)
+            $0.trailing.equalToSuperview().inset(UIDevice.isIpad ? 80:16)
+            $0.leading.equalTo(titleLabel.snp.trailing).offset(8)
         }
         cardsCollectionView.snp.makeConstraints {
-            $0.top.equalTo(nameLabel.snp.bottom).offset(18)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 30:18)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16).priority(.high)
             cardsHeightConstraint = $0.height.equalTo(0).priority(.medium).constraint
@@ -124,16 +111,15 @@ private extension RemoveCardsView {
 
         backView.addSubview(noCardsView)
         noCardsView.snp.makeConstraints {
-            $0.top.equalTo(containerView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.center.equalToSuperview()
         }
 
         backView.addSubview(doneButton)
         doneButton.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(containerView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70:20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:54)
         }
     }
 

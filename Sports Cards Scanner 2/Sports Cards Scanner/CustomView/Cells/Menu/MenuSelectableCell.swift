@@ -39,7 +39,7 @@ private extension MenuSelectableCell {
         titleLabel.snp.remakeConstraints {
             $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(40)
+            $0.height.equalTo(UIDevice.isIpad ?30:20)
         }
         layoutIfNeeded()
 

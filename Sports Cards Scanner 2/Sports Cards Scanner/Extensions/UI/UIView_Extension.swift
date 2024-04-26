@@ -96,7 +96,7 @@ final class CustomContainerView: UIView {
         self.snp.makeConstraints { make in
             make.top.equalTo(viewTop.snp.bottom).offset(UIDevice.isIpad ? 40 : 10)
             make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 16)
-            make.height.equalTo(UIDevice.isIpad ? 216 : 110)
+            make.height.equalTo(UIDevice.isIpad ? 180 : 110)
         }
     }
 
@@ -115,12 +115,12 @@ final class CustomContainerView: UIView {
 
         priceLabel.snp.makeConstraints {
             $0.bottom.centerX.equalToSuperview()
-            $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(UIDevice.isIpad ? 20 :10)
+            $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(10)
         }
 
         menuButton.snp.makeConstraints {
             $0.top.trailing.equalToSuperview().inset(UIDevice.isIpad ?  25 :15)
-            $0.size.equalTo(UIDevice.isIpad ?  41 :24)
+            $0.size.equalTo(UIDevice.isIpad ?  42 : 24)
         }
     }
 

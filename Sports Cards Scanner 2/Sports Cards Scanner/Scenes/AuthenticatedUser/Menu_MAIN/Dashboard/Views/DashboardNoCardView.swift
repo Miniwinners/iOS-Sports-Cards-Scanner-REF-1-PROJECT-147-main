@@ -37,11 +37,6 @@ final class DashboardNoCardView: UIView {
         return label
     }(UILabel())
 
-    lazy var instructionsView: UIView = { view in
-        view.backgroundColor = .clear
-        return view
-    }(UIView())
-
     lazy var scanInstructionsLabel: UILabel = { label in
         label.text = L10n.Dashboard.scanInstructions
         label.textColor = .singINLabel
@@ -65,39 +60,35 @@ final class DashboardNoCardView: UIView {
 private extension DashboardNoCardView {
     func setupSubviews_unique() {
 
-        let innerView = UIView()
-        welcomeView.addSubviews(welcomeTitleLabel, scanImageView, welcomeDescriptionLabel)
-        welcomeTitleLabel.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 :20)
-            $0.top.equalTo(scanImageView.snp.bottom).offset(UIDevice.isIpad ? 30 :20)
-        }
-        scanImageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 :20)
-        }
-        welcomeDescriptionLabel.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 30 : 20)
-            $0.top.lessThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 50 : 40)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?  80 :20)
-            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 30 : 10)
-        }
-        welcomeView.addSubview(innerView)
-
-        addSubviews(welcomeView)
+        addSubview(welcomeView)
         welcomeView.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(UIDevice.isIpad ? 40 : 20)
             $0.top.lessThanOrEqualTo(UIDevice.isIpad ? 52 : 32)
+//            $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
         }
-        addSubview(instructionsView)
-        instructionsView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 1000 : 600)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 :20)
+
+        welcomeView.addSubviews(welcomeTitleLabel, scanImageView, welcomeDescriptionLabel, scanInstructionsLabel)
+        welcomeTitleLabel.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 100 : 40)
+            $0.top.equalTo(scanImageView.snp.bottom).offset(UIDevice.isIpad ? 80 : 50)
         }
-        instructionsView.addSubview(scanInstructionsLabel)
+        scanImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+//            $0.width.equalTo(581)
+            $0.height.equalTo(UIDevice.isIpad ? 500: 300)
+        }
+        welcomeDescriptionLabel.snp.makeConstraints {
+            $0.top.greaterThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 20)
+            $0.top.lessThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 80 : 40)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?  80:20)
+//            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 30 : 10)
+        }
 
         scanInstructionsLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(welcomeDescriptionLabel.snp.bottom).offset(UIDevice.isIpad ? 80 : 40)
+            $0.centerX.equalToSuperview()
         }
     }
 }

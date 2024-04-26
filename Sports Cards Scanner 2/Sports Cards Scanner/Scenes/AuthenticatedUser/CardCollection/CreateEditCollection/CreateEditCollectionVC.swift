@@ -20,9 +20,9 @@ final class CreateEditCollectionVC: UIViewController {
 
     lazy var nameTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.interRegular, size: 16)
+        textField.font = .font(.interRegular, size: UIDevice.isIpad ? 22:16)
         textField.backgroundColor = .skyBlue
-        textField.cornerRadius = 12
+        textField.cornerRadius = UIDevice.isIpad ? 20:12
         textField.placeholder = L10n.CreateCollection.CollectionName.placeholder
         textField.returnKeyType = .done
         textField.autocorrectionType = .no
@@ -136,7 +136,7 @@ private extension CreateEditCollectionVC {
         buttonsStackView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(UIDevice.isIpad ?70:20)
-            $0.height.equalTo(UIDevice.isIpad ?172:128)
+            $0.height.equalTo(UIDevice.isIpad ? 172:128)
         }
     }
 

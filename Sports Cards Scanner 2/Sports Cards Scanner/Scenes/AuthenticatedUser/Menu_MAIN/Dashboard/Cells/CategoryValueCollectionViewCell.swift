@@ -3,7 +3,7 @@ import SnapKit
 
 final class CategoryValueCollectionViewCell: UICollectionViewCell {
 
-    static let cellHeight: CGFloat = 36
+    static let cellHeight: CGFloat = UIDevice.isIpad ? 47 : 36
 
     lazy var categoryLabel: UILabel = { label in
         label.textColor = .labelColor
@@ -52,13 +52,13 @@ private extension CategoryValueCollectionViewCell {
         containerView.addSubview(categoryLabel)
         categoryLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(7)
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().inset(5)
         }
 
         containerView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(7)
-            $0.trailing.equalToSuperview().inset(4)
+            $0.trailing.equalToSuperview().inset(UIDevice.isIpad ? 65 : 10)
             $0.leading.greaterThanOrEqualTo(categoryLabel.snp.trailing).offset(8)
         }
 

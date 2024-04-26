@@ -91,6 +91,7 @@ private extension DashboardViewController {
     func reloadSubviews_unique() {
         if cardsManager.cards.isEmpty {
             dashboardView.showNoCardView()
+
         } else {
             dashboardView.showCardsView()
             dashboardView.updateCurrentValueView(currentValue: currentCardsValue, categoryValues: categoriesCardsValue)

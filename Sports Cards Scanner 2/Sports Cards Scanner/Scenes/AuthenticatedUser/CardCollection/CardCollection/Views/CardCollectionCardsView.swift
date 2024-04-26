@@ -35,7 +35,7 @@ final class CardCollectionCardsView: UIView {
         collectionView.alwaysBounceVertical = false
         collectionView.backgroundColor = .clear
         return collectionView
-    }(BaseCollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout()))
+    }(BaseCollectionView(frame: .zero, collectionViewLayout: filterLayout()))
     lazy var cardsSwipeableView: SwipeableCardsView = .init()
 
     lazy var cardsDisplayControl: UISegmentedControl = CardsRepresentSegmentedControl(
@@ -158,7 +158,7 @@ private extension CardCollectionCardsView {
 
         addSubview(cardsView)
         cardsView.snp.makeConstraints {
-            $0.top.equalTo(customContainer.snp.bottom).offset(UIDevice.isIpad ? 40:10)
+            $0.top.equalTo(customContainer.snp.bottom).offset(UIDevice.isIpad ? 20:10)
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?60:0)
             if cardsView === cardsSwipeableView {
                 $0.bottom.equalTo(safeAreaLayoutGuide)
@@ -167,12 +167,27 @@ private extension CardCollectionCardsView {
             }
         }
     }
+}
 
-    func createCollectionViewLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 12
-        layout.minimumLineSpacing = 12
-        layout.sectionInset = .init(top: 0, left: 20, bottom: 20, right: 20)
-        return layout
+extension CardCollectionCardsView {
+    func filterLayout() -> UICollectionViewCompositionalLayout {
+        let size = NSCollectionLayoutSize(
+            widthDimension: .estimated(UIDevice.isIpad ? 253: 162),
+            heightDimension: .absolute(UIDevice.isIpad ? 464: 297)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:297))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = .init(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 16
+        )
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }

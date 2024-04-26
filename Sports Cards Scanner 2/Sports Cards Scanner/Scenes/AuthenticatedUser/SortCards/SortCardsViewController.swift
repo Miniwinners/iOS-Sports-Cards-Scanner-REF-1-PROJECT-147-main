@@ -81,14 +81,14 @@ private extension SortCardsViewController {
 
         backView.addSubviews(sortOptionsTableView, buttonsStackView)
         sortOptionsTableView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40:30)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
             $0.height.equalTo(calculateOptionsHeight())
         }
         buttonsStackView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(128)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70:20)
+            $0.height.equalTo(UIDevice.isIpad ? 172:128)
         }
         closeButton.setLeft(in: view)
         closeButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
@@ -113,7 +113,8 @@ private extension SortCardsViewController {
     }
 
     func calculateOptionsHeight() -> CGFloat {
-        46 * CGFloat(sortOptions.count) + 46
+        let inset: CGFloat = UIDevice.isIpad ? 80:46
+        return inset * CGFloat(sortOptions.count) + inset
     }
 
     // MARK: - Actions
@@ -169,6 +170,10 @@ extension SortCardsViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 { return 0 } else { return 8 }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
 

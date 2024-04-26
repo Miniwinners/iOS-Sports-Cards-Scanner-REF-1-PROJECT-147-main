@@ -19,7 +19,7 @@ final class DashboardView: UIView {
     lazy var scanCardButton: CommonButton = { button in
         button.setButtonTitle(L10n.Dashboard.Action.scanCard)
         button.setImage(Images.scan.image, for: .normal)
-        button.configuration?.imagePadding = UIDevice.isIpad ? 30 : 20
+        button.configuration?.imagePadding =  20
         return button
     }(CommonButton(style: .default))
 
@@ -30,7 +30,7 @@ final class DashboardView: UIView {
 
     func showNoCardView() {
         cardsView.removeFromSuperview()
-
+        self.backgroundColor = .skyBlue
         contentView.addSubview(noCardView)
         noCardView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -39,7 +39,7 @@ final class DashboardView: UIView {
 
     func showCardsView() {
         noCardView.removeFromSuperview()
-
+        self.backgroundColor = .white
         contentView.addSubview(cardsView)
         cardsView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -68,7 +68,7 @@ final class DashboardView: UIView {
 
 private extension DashboardView {
     func setupSubviews_unique() {
-        backgroundColor = .white
+        backgroundColor = .skyBlue
 
         addSubview(scrollView)
         scrollView.snp.makeConstraints {
@@ -84,9 +84,9 @@ private extension DashboardView {
 
         addSubview(scanCardButton)
         scanCardButton.snp.makeConstraints {
-            $0.height.equalTo(UIDevice.isIpad ? 80 :54)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ?  50 : 30)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 :20)
+            $0.height.equalTo(UIDevice.isIpad ? 80 : 54)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ?  70 : 30)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
         }
     }
 }

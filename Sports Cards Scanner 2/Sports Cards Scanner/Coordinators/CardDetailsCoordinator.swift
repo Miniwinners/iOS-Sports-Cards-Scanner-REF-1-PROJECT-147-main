@@ -60,7 +60,7 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
     }
 
     func cardDetailsViewControllerSelectGraderTapped(_ viewController: CardDetailsViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.4, widthRatio: 0.5)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: 360, widthRatio: viewController.view.frame.width - 160)
         let coordinator = GraderSelectionCoordinator(router: router, card: viewController.card)
         coordinator.didSelectGrader = { [unowned viewController] grader in
             viewController.graderDidSelect(grader)
