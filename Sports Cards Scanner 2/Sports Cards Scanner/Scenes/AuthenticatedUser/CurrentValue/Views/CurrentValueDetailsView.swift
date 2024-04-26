@@ -43,11 +43,17 @@ final class CurrentValueDetailsView: UIView {
             .map { CategoryValueView(category: $0.0, value: $0.1) }
             .forEach { categoryValuesView.addArrangedSubview($0) }
 
+        var radiusValue: CGFloat = 120
+
+        if UIDevice.isIpad {
+            radiusValue = 160
+        }
+
         var startAngle: CGFloat = -.pi / 2
         categoryValues.forEach { category, value in
             let diffAngle: CGFloat = value / currentValue * .pi * 2
             let endAngle = startAngle + diffAngle
-            let path = UIBezierPath(arcCenter: .init(x: 120, y: 120), radius: 120, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            let path = UIBezierPath(arcCenter: .init(x: radiusValue, y: radiusValue), radius: radiusValue, startAngle: startAngle, endAngle: endAngle, clockwise: true)
             startAngle += diffAngle
             let layer = CAShapeLayer()
             layer.path = path.cgPath
@@ -69,21 +75,40 @@ private extension CurrentValueDetailsView {
 
         addSubviews(currentValueLabel, diagramView, categoryValuesTable)
 
-        diagramView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
-            $0.centerX.equalToSuperview()
-            $0.size.equalTo(240)
-        }
+        if UIDevice.isIphone {
+            diagramView.snp.makeConstraints {
+                $0.top.equalTo(titleLabel.snp.bottom).offset(40)
+                $0.centerX.equalToSuperview()
+                $0.size.equalTo(240)
+            }
 
-        currentValueLabel.snp.makeConstraints {
-            $0.center.equalTo(diagramView)
-        }
+            currentValueLabel.snp.makeConstraints {
+                $0.center.equalTo(diagramView)
+            }
 
-        categoryValuesTable.snp.makeConstraints {
-            $0.top.equalTo(diagramView.snp.bottom).offset(40)
-            $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.height.greaterThanOrEqualTo(300)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
+            categoryValuesTable.snp.makeConstraints {
+                $0.top.equalTo(diagramView.snp.bottom).offset(40)
+                $0.horizontalEdges.equalToSuperview().inset(16)
+                $0.height.greaterThanOrEqualTo(300)
+                $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
+            }
+        } else if UIDevice.isIpad {
+            diagramView.snp.makeConstraints {
+                $0.top.equalTo(titleLabel.snp.bottom).offset(50)
+                $0.centerX.equalToSuperview()
+                $0.size.equalTo(320)
+            }
+
+            currentValueLabel.snp.makeConstraints {
+                $0.center.equalTo(diagramView)
+            }
+
+            categoryValuesTable.snp.makeConstraints {
+                $0.top.equalTo(diagramView.snp.bottom).offset(40)
+                $0.horizontalEdges.equalToSuperview().inset(80)
+                $0.height.greaterThanOrEqualTo(135)
+                $0.bottom.equalTo(safeAreaLayoutGuide).inset(60)
+            }
         }
     }
 }

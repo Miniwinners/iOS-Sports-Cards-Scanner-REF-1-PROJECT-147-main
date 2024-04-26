@@ -46,13 +46,6 @@ extension UIView {
     }
 }
 
-extension UIView {
-    func setupBackView() {
-        layer.cornerRadius = 24
-        backgroundColor = .white
-    }
-}
-
 final class CustomContainerView: UIView {
 
     lazy var menuButton: UIButton = { button in
@@ -64,7 +57,7 @@ final class CustomContainerView: UIView {
     lazy var priceContainerView: UIView = .init()
 
     lazy var priceLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 22)
+        label.setSize(fontS: .ubuntuMedium500, phone: 22, iPad: 28)
         label.textColor = .greenColor
         label.text = Double.zero.formattedAsPrice
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -73,7 +66,7 @@ final class CustomContainerView: UIView {
     }(UILabel())
 
     lazy var estimatedValueLabel: UILabel = { label in
-        label.font = .font(.ubuntuLight300, size: 16)
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22 : 16)
         label.textColor = .black
         label.text = L10n.CardCollection.estimatedValue
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -93,7 +86,7 @@ final class CustomContainerView: UIView {
 
     func setupContainerView() {
         backgroundColor = .skyBlue
-        layer.cornerRadius = 16
+        layer.cornerRadius = UIDevice.isIpad ? 24:16
         layer.borderWidth = 1
         layer.borderColor = UIColor.blue.cgColor
     }
@@ -101,9 +94,9 @@ final class CustomContainerView: UIView {
     func setupLayout(in view: UIView, top viewTop: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
-            make.top.equalTo(viewTop.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(125)
+            make.top.equalTo(viewTop.snp.bottom).offset(UIDevice.isIpad ? 40 : 10)
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 16)
+            make.height.equalTo(UIDevice.isIpad ? 216 : 110)
         }
     }
 
@@ -112,22 +105,22 @@ final class CustomContainerView: UIView {
         priceContainerView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(60)
+            make.height.equalTo(UIDevice.isIpad ? 100 : 60)
         }
         priceContainerView.addSubviews(estimatedValueLabel, priceLabel)
         estimatedValueLabel.snp.makeConstraints {
             $0.top.centerX.equalToSuperview()
-            $0.height.equalTo(20)
+            $0.height.equalTo(UIDevice.isIpad ?  30 :20)
         }
 
         priceLabel.snp.makeConstraints {
             $0.bottom.centerX.equalToSuperview()
-            $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(10)
+            $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(UIDevice.isIpad ? 20 :10)
         }
 
         menuButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(15)
-            $0.size.equalTo(24)
+            $0.top.trailing.equalToSuperview().inset(UIDevice.isIpad ?  25 :15)
+            $0.size.equalTo(UIDevice.isIpad ?  41 :24)
         }
     }
 

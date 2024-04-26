@@ -94,7 +94,7 @@ private extension DashboardViewController {
         } else {
             dashboardView.showCardsView()
             dashboardView.updateCurrentValueView(currentValue: currentCardsValue, categoryValues: categoriesCardsValue)
-            dashboardView.updateHighestValueView(first: highestValuedCard, second: highestValueTwo)
+            dashboardView.updateHighestValueView(first: highestValuedCard, second: highestValueTwo, third: highestValueTwo)
             dashboardView.updateRecentlyAddedView(with: recentlyAddedCards)
             dashboardView.cardsView.recentlyAddedView.delegate = self
         }

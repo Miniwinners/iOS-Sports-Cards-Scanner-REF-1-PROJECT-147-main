@@ -7,7 +7,7 @@ class SelectableTableViewCell: UITableViewCell {
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .black
-        label.font = .font(.ubuntuLight300, size: 16)
+        label.setSize(fontS: .ubuntuLight300, phone: 16, iPad: 24)
         return label
     }(UILabel())
 
@@ -35,28 +35,50 @@ private extension SelectableTableViewCell {
         selectedBackgroundView = createHighlightedView()
 
         contentView.addSubview(containerView)
-        containerView.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20)
-        }
-
         containerView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(16)
-            $0.height.equalTo(22)
-            topConstraint = $0.top.equalToSuperview().inset(20).constraint
-            bottomConstraint = $0.bottom.equalToSuperview().inset(20).constraint
-        }
-
         containerView.addSubview(rightImageView)
-        rightImageView.snp.makeConstraints {
-            $0.height.equalTo(16)
-            $0.width.equalTo(9)
-            $0.leading.equalTo(titleLabel.snp.trailing).offset(8)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.centerY.equalTo(titleLabel)
-        }
 
+        if UIDevice.isIphone {
+            containerView.snp.makeConstraints {
+                $0.verticalEdges.equalToSuperview()
+                $0.horizontalEdges.equalToSuperview().inset(20)
+            }
+
+            titleLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().inset(16)
+                $0.height.equalTo(22)
+                topConstraint = $0.top.equalToSuperview().inset(20).constraint
+                bottomConstraint = $0.bottom.equalToSuperview().inset(20).constraint
+            }
+
+            rightImageView.snp.makeConstraints {
+                $0.height.equalTo(16)
+                $0.width.equalTo(9)
+                $0.leading.equalTo(titleLabel.snp.trailing).offset(8)
+                $0.trailing.equalToSuperview().inset(16)
+                $0.centerY.equalTo(titleLabel)
+            }
+        } else if UIDevice.isIpad {
+            containerView.snp.makeConstraints {
+                $0.verticalEdges.equalToSuperview()
+                $0.horizontalEdges.equalToSuperview().inset(40)
+            }
+
+            titleLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().inset(32)
+                $0.height.equalTo(44)
+                topConstraint = $0.top.equalToSuperview().inset(40).constraint
+                bottomConstraint = $0.bottom.equalToSuperview().inset(40).constraint
+            }
+
+            rightImageView.snp.makeConstraints {
+                $0.height.equalTo(16)
+                $0.width.equalTo(9)
+                $0.leading.equalTo(titleLabel.snp.trailing).offset(16)
+                $0.trailing.equalToSuperview().inset(32)
+                $0.centerY.equalTo(titleLabel)
+            }
+        }
     }
 
     func createBackgroundView() -> UIView {
@@ -64,12 +86,14 @@ private extension SelectableTableViewCell {
 
         let backgroundView = UIView()
         backgroundView.backgroundColor = .white
-        backgroundView.layer.cornerRadius = 16
+        let cornerRadius: CGFloat = UIDevice.isIpad ? 24 : 16
+        backgroundView.layer.cornerRadius = cornerRadius
         backgroundContainerView.addSubview(backgroundView)
 
+        let inset: CGFloat = UIDevice.isIpad ? 40 : 20
         backgroundView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+            $0.horizontalEdges.equalToSuperview().inset(inset).priority(.high)
         }
 
         return backgroundContainerView
@@ -79,18 +103,20 @@ private extension SelectableTableViewCell {
         let highlightedContainerView = UIView()
 
         let highlightedView = UIView()
-        highlightedView.layer.cornerRadius = 16
-
+        let cornerRadius: CGFloat = UIDevice.isIpad ? 24 : 16
+        highlightedView.layer.cornerRadius = cornerRadius
         highlightedView.backgroundColor = .highlightColor2
         highlightedContainerView.addSubview(highlightedView)
 
+        let inset: CGFloat = UIDevice.isIpad ? 40 : 20
         highlightedView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(inset)
         }
 
         return highlightedContainerView
     }
+
 }
 // MARK: - COLLECTIONVIEWCELL
 class SelectableCollectionViewCell: UICollectionViewCell {
@@ -98,7 +124,7 @@ class SelectableCollectionViewCell: UICollectionViewCell {
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .black
-        label.font = .font(.ubuntuMedium500, size: 15)
+        label.setSize(fontS: .ubuntuMedium500, phone: 15, iPad: 24)
         label.textAlignment = .center
 
         return label
@@ -124,31 +150,31 @@ private extension SelectableCollectionViewCell {
     func setupSubviews_unique() {
         backgroundColor = .clear
         contentView.backgroundColor = .skyBlue
-        layer.cornerRadius = 16
-        contentView.layer.cornerRadius = 16
+        layer.cornerRadius = UIDevice.isIpad ? 24 : 16
+        contentView.layer.cornerRadius = UIDevice.isIpad ? 24 : 16
 
-        containerView.layer.cornerRadius = 16
+        containerView.layer.cornerRadius = UIDevice.isIpad ? 24 : 16
         backgroundView = createBackgroundView()
         selectedBackgroundView = createHighlightedView()
 
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
         }
 
         containerView.addSubview(rightImageView)
         rightImageView.snp.makeConstraints {
-            $0.size.equalTo(31)
-            $0.top.equalToSuperview().inset(15)
+            $0.size.equalTo(UIDevice.isIpad ? 46 : 31)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 22 : 15)
             $0.centerX.equalToSuperview()
         }
 
         containerView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(15)
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(40)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 22 : 15)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
+            $0.height.equalTo(UIDevice.isIpad ? 60 : 40)
         }
     }
 
@@ -157,12 +183,12 @@ private extension SelectableCollectionViewCell {
 
         let backgroundView = UIView()
         backgroundView.backgroundColor = .skyBlue
-        backgroundView.layer.cornerRadius = 16
+        backgroundView.layer.cornerRadius = UIDevice.isIpad ? 24 : 16
         backgroundContainerView.addSubview(backgroundView)
 
         backgroundView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20).priority(.high)
         }
 
         return backgroundContainerView
@@ -172,14 +198,14 @@ private extension SelectableCollectionViewCell {
         let highlightedContainerView = UIView()
 
         let highlightedView = UIView()
-        highlightedView.layer.cornerRadius = 16
+        highlightedView.layer.cornerRadius = UIDevice.isIpad ? 24 : 16
 
         highlightedView.backgroundColor = .highlightColor2
         highlightedContainerView.addSubview(highlightedView)
 
         highlightedView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
         }
 
         return highlightedContainerView

@@ -31,42 +31,42 @@ extension EditCardView.DetailView {
         containerView.addSubview(nameLabel)
         containerViewTwo.addSubview(descriptionLabel)
         backgroundColor = .clear
-        layer.cornerRadius = 16
+        layer.cornerRadius = UIDevice.isIpad ? 32: 12
         layer.borderColor = UIColor.blue.cgColor
         layer.borderWidth = 1
         nameLabel.textColor = .black
         nameLabel.textAlignment = .center
-        nameLabel.font = .font(.ubuntuMedium500, size: 16)
+        nameLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 24:16)
 
         descriptionLabel.textColor = .singINLabel
-        descriptionLabel.font = .font(.ubuntuRegular400, size: 14)
+        descriptionLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 20:14)
         descriptionLabel.textAlignment = .center
         let stackView = UIStackView(arrangedSubviews: [containerView, containerViewTwo])
         stackView.axis = .vertical
         stackView.backgroundColor = .clear
-        stackView.spacing = 2
+        stackView.spacing = UIDevice.isIpad ? 4:2
         stackView.distribution = .fillEqually
         addSubviews(stackView, discloseImageView)
         nameLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.height.equalTo(18)
+            make.height.equalTo(UIDevice.isIpad ? 24:18)
             make.edges.equalToSuperview()
         }
         descriptionLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.edges.equalToSuperview()
-            make.height.equalTo(18)
+            make.height.equalTo(UIDevice.isIpad ? 24:18)
         }
         stackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(10)
-            $0.height.equalTo(42)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 20:10)
+            $0.height.equalTo(UIDevice.isIpad ? 80:42)
         }
         discloseImageView.snp.makeConstraints {
-            $0.size.equalTo(32)
+            $0.size.equalTo(UIDevice.isIpad ? 50:32)
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(20)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 30:20)
         }
     }
 }

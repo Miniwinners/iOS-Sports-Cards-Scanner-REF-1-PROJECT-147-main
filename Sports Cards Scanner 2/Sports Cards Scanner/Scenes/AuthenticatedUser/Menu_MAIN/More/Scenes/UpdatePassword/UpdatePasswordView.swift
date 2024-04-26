@@ -7,8 +7,8 @@ final class UpdatePasswordView: UIView {
 
     lazy var titleLabel: UILabel = { label in
         label.text = L10n.UpdatePassword.title
-        label.setLineHeight(24)
-        label.font = .font(.ubuntuBold700, size: 22)
+        label.setLineHeight(UIDevice.isIpad ? 24 : 32)
+        label.setSize(fontS: .ubuntuBold700, phone: 22, iPad: 30)
         label.textColor = .logInLabel
         label.textAlignment = .center
         return label
@@ -26,7 +26,7 @@ final class UpdatePasswordView: UIView {
     }(UIStackView(arrangedSubviews: [errorLabel, lockContainer, passwordView, unlockContainer, confirmPasswordView, passwordRequirementsLabel]))
 
     lazy var errorLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 14)
+        label.setSize(fontS: .ubuntuLight300, phone: 14, iPad: 20)
         label.textColor = .errorColor
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -46,7 +46,7 @@ final class UpdatePasswordView: UIView {
     lazy var passwordView: TitledTextFieldView = { view in
         view.title = L10n.UpdatePassword.NewPassword.title
         view.titleLabel.textAlignment = .center
-        view.titleLabel.font = .font(.ubuntuLight300, size: 16)
+        view.titleLabel.setSize(fontS: .ubuntuLight300, phone: 16, iPad: 24)
         view.titleLabel.textColor = .logInLabel
         view.placeholder = L10n.UpdatePassword.NewPassword.placeholder
         view.textField.isSecureTextEntry = true
@@ -58,7 +58,7 @@ final class UpdatePasswordView: UIView {
     lazy var confirmPasswordView: TitledTextFieldView = { view in
         view.title = L10n.UpdatePassword.ConfirmNewPassword.title
         view.titleLabel.textAlignment = .center
-        view.titleLabel.font = .font(.ubuntuLight300, size: 16)
+        view.titleLabel.setSize(fontS: .ubuntuLight300, phone: 16, iPad: 24)
         view.titleLabel.textColor = .logInLabel
         view.placeholder = L10n.UpdatePassword.ConfirmNewPassword.placeholder
         view.textField.isSecureTextEntry = true
@@ -68,11 +68,11 @@ final class UpdatePasswordView: UIView {
     }(TitledTextFieldView())
 
     lazy var passwordRequirementsLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 12)
+        label.setSize(fontS: .ubuntuLight300, phone: 12, iPad: 18)
         label.textColor = .labelColor
         label.numberOfLines = 0
         label.attributedText = makeTextBlue()
-        label.setLineHeight(22)
+        label.setLineHeight(UIDevice.isIpad ? 20 : 26)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }(UILabel())
@@ -94,9 +94,8 @@ private extension UpdatePasswordView {
         backView.setupView(in: self)
         backView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(65)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(UIDevice.isIpad ? 130 : 65)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
         }
         backView.addSubviews(contentView, saveButton)
 
@@ -104,30 +103,31 @@ private extension UpdatePasswordView {
         unlockContainer.addSubview(unlockImageView)
 
         lockContainer.snp.makeConstraints {
-            $0.height.equalTo(50)
+            $0.height.equalTo(UIDevice.isIpad ? 100 : 50)
         }
         unlockContainer.snp.makeConstraints {
-            $0.height.equalTo(50)
+            $0.height.equalTo(UIDevice.isIpad ? 100 : 50)
         }
         contentView.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
         }
         lockImageView.snp.makeConstraints {
-            $0.size.equalTo(40)
+            $0.size.equalTo(UIDevice.isIpad ? 80 : 40)
             $0.center.equalToSuperview()
         }
         unlockImageView.snp.makeConstraints {
-            $0.height.equalTo(40)
-            $0.width.equalTo(56)
+            $0.height.equalTo(UIDevice.isIpad ? 80 : 40)
+            $0.width.equalTo(UIDevice.isIpad ? 112 : 56)
             $0.center.equalToSuperview()
         }
         saveButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(54)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 40 : 20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
+            $0.height.equalTo(UIDevice.isIpad ? 108 : 54)
         }
     }
+
 }
 
 private extension UpdatePasswordView {

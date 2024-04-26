@@ -21,12 +21,12 @@ final class OptionsView: UIView {
 
     lazy var containerView: UIView = { view in
         view.backgroundColor = .clear
-        view.cornerRadius = 12
+        view.cornerRadius = UIDevice.isIpad ?20:12
         return view
     }(UIView())
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.ubuntuLight300, size: 16)
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ?22:16)
         label.textColor = .black
         return label
     }(UILabel())
@@ -43,8 +43,8 @@ final class OptionsView: UIView {
         tableView.isScrollEnabled = true
         tableView.backgroundColor = .clear
         tableView.alwaysBounceVertical = false
-        tableView.estimatedRowHeight = 50
-        tableView.layer.cornerRadius = 12
+        tableView.estimatedRowHeight = UIDevice.isIpad ?80:50
+        tableView.layer.cornerRadius = UIDevice.isIpad ?20:12
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = UIColor(red: 0, green: 0, blue: 255/255, alpha: 0.1)

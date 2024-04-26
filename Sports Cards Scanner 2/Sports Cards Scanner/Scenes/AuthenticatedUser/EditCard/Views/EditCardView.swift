@@ -14,6 +14,7 @@ final class EditCardView: UIView {
 
     lazy var gradeDetailView: DetailView = { view in
         view.setDetailName(L10n.EditCard.grade)
+        view.discloseImageView.image = Images.gradeStar.image
         view.isUserInteractionEnabled = false
         return view
     }(DetailView())
@@ -29,15 +30,15 @@ final class EditCardView: UIView {
     lazy var setPriceLabel: UILabel = { label in
         label.text = L10n.EditCard.customPrice
         label.textColor = .black
-        label.font = .font(.ubuntuMedium500, size: 16)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         return label
     }(UILabel())
 
     lazy var priceTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.ubuntuRegular400, size: 16)
+        textField.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22: 16)
         textField.backgroundColor = .skyBlue
-        textField.cornerRadius = 12
+        textField.cornerRadius = UIDevice.isIpad ? 28:12
         textField.rightViewMode = .always
         textField.trailingPadding = 48
         textField.autocorrectionType = .no
@@ -48,7 +49,7 @@ final class EditCardView: UIView {
 
     lazy var customPriceLabel: UILabel = { label in
         label.textColor = .greenColor
-        label.font = .font(.ubuntuRegular400, size: 16)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 24:18)
         return label
     }(UILabel())
 
@@ -63,7 +64,7 @@ private extension EditCardView {
     var buttonAppearance: CommonButton.SCSAppearance {
         var configuration: UIButton.Configuration = .filled()
         configuration.cornerStyle = .fixed
-        configuration.background.cornerRadius = 12
+        configuration.background.cornerRadius = UIDevice.isIpad ? 32:12
         return .init(configuration: configuration, backgroundColors: .init(primary: .skyBlue, highlighted: .highlightColor2))
     }
 
@@ -77,7 +78,7 @@ private extension EditCardView {
             $0.edges.equalToSuperview()
         }
         parallelDetailButton.snp.makeConstraints {
-            $0.height.equalTo(64)
+            $0.height.equalTo(UIDevice.isIpad ? 200:64)
         }
 
         gradeDetailButton.addSubview(gradeDetailView)
@@ -85,11 +86,11 @@ private extension EditCardView {
             $0.edges.equalToSuperview()
         }
         gradeDetailButton.snp.makeConstraints {
-            $0.height.equalTo(64)
+            $0.height.equalTo(UIDevice.isIpad ? 200:64)
         }
 
         priceTextField.snp.makeConstraints {
-            $0.height.equalTo(65)
+            $0.height.equalTo(UIDevice.isIpad ? 115:65)
         }
         backView.addSubview(priceTextField)
 
@@ -99,14 +100,14 @@ private extension EditCardView {
         stackView.distribution = .fillEqually
         backView.addSubview(stackView)
         stackView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(130)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 30:10)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.height.equalTo(UIDevice.isIpad ? 200:130)
         }
 
         priceTextField.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(20)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.top.equalTo(stackView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
         priceTextField.setRightImage_unique(
@@ -116,21 +117,21 @@ private extension EditCardView {
 
         priceTextField.addSubview(customPriceLabel)
         customPriceLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(10)
-            $0.height.equalTo(18)
+            $0.left.equalToSuperview().inset(UIDevice.isIpad ? 30:16)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 20:10)
+            $0.height.equalTo(UIDevice.isIpad ? 24:18)
         }
         priceTextField.addSubview(setPriceLabel)
         setPriceLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(16)
-            $0.top.equalToSuperview().inset(10)
-            $0.height.equalTo(18)
+            $0.left.equalToSuperview().inset(UIDevice.isIpad ? 22:16)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 20:10)
+            $0.height.equalTo(UIDevice.isIpad ? 24:18)
         }
         backView.addSubview(updateDetailsButton)
         updateDetailsButton.snp.makeConstraints {
-            $0.height.equalTo(54)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:54)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 60:20)
         }
     }
 }

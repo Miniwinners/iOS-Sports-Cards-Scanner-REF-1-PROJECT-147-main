@@ -4,6 +4,7 @@ final class PortfolioViewController: UIViewController {
 
     weak var delegate: PortfolioViewControllerDelegate?
 
+    private var previousHeight: CGFloat = 203.5
     private let profileManager: ProfileManager
     private let cardsManager: UserCardsManager
     private let cardSetsManager: CardCollectionManager & CardDeckManager
@@ -39,6 +40,10 @@ final class PortfolioViewController: UIViewController {
 
     override func loadView() {
         view = portfolioView
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
     }
 
     override func viewDidLoad() {
@@ -181,7 +186,7 @@ extension PortfolioViewController: UITableViewDataSource {
             cell?.setCardsNumber(categoryCards.cardsNumber)
             cell?.setCardImage(categoryCards.category.image)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: categoriesCardsInfo))
+//        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: categoriesCardsInfo))
 
         return cell ?? UITableViewCell()
     }
@@ -196,6 +201,10 @@ extension PortfolioViewController: UITableViewDataSource {
         let header = UIView()
         header.backgroundColor = .clear
         return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIDevice.isIpad ? 120 : 74
     }
 
 }

@@ -23,3 +23,13 @@ extension UILabel {
         self.attributedText = mutableAttributedText
     }
 }
+
+extension UILabel {
+    func setSize(fontS: CustomFont, phone: CGFloat, iPad: CGFloat ) {
+        if UIDevice.isIphone {
+            font = .font(fontS, size: phone)
+        } else if UIDevice.isIpad {
+            font = .font(fontS, size: iPad)
+        }
+    }
+}

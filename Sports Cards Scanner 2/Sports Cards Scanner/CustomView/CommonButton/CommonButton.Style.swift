@@ -41,21 +41,21 @@ extension CommonButton.SCSButtonStyle {
     // MARK: - Configurations
     private static let defaultAppearance: CommonButton.SCSAppearance = .init(
         configuration: defaultConfiguration,
-        tintColor: .white,
+        font: .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22: 16), tintColor: .white,
         backgroundColors: .init(primary: .blue, disabled: .actionInactiveColor, highlighted: .actionActiveColor),
         foregroundColors: .init(primary: .white, disabled: .white, highlighted: .highlightColor)
     )
 
     private static let cancelAppearance: CommonButton.SCSAppearance = .init(
         configuration: cancelConfiguration,
-        font: .font(.ubuntuRegular400, size: 16),
+        font: .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22 : 16),
         foregroundColors: .init(primary: .labelColor, highlighted: .highlightColor),
         strokeColors: .init(primary: .blue, disabled: .labelColor, highlighted: .highlightColor)
     )
 
     private static let destructiveAppearance: CommonButton.SCSAppearance = .init(
         configuration: destructiveConfiguration,
-        font: .font(.ubuntuRegular400, size: 17),
+        font: .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22 : 16),
         tintColor: .destructiveColor,
         backgroundColors: .init(primary: .white, highlighted: .highlightColor2),
         foregroundColors: .init(primary: .destructiveColor, highlighted: .destructiveColor)
@@ -63,7 +63,7 @@ extension CommonButton.SCSButtonStyle {
 
     private static let defaultConfiguration: UIButton.Configuration = {
         var configuration: UIButton.Configuration = .filled()
-        configuration.background.cornerRadius = 12
+        configuration.background.cornerRadius = UIDevice.isIpad ? 24 : 12
         configuration.cornerStyle = .fixed
         configuration.baseBackgroundColor = .actionActiveColor
         configuration.baseForegroundColor = .white
@@ -73,7 +73,7 @@ extension CommonButton.SCSButtonStyle {
 
     private static let cancelConfiguration: UIButton.Configuration = {
         var configuration: UIButton.Configuration = .bordered()
-        configuration.background.cornerRadius = 12
+        configuration.background.cornerRadius = UIDevice.isIpad ? 24 : 12
         configuration.cornerStyle = .fixed
         configuration.baseBackgroundColor = .clear
         configuration.baseForegroundColor = .labelColor
@@ -85,7 +85,7 @@ extension CommonButton.SCSButtonStyle {
 
     private static let destructiveConfiguration: UIButton.Configuration = {
         var configuration: UIButton.Configuration = .filled()
-        configuration.background.cornerRadius = 14
+        configuration.background.cornerRadius = UIDevice.isIpad ? 24 : 14
         configuration.cornerStyle = .fixed
         configuration.baseBackgroundColor = .white
         configuration.baseForegroundColor = .destructiveColor

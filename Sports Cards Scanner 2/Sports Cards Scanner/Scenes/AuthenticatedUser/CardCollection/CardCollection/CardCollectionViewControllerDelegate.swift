@@ -19,7 +19,12 @@ extension CardCollectionViewControllerDelegate where Self: SCSCoordinator {
     }
 
     func cardCollectionViewControllerMenuTapped(for collection: CardCollection, in viewController: CardCollectionViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: 0)
+        let height: CGFloat = 212 * 3 + 20 * 7 + 96
+        let width: CGFloat = 244 * 2 + 20 * 2 + 10
+        let router = DeleteAccountSheetRouter(parentViewController: viewController,
+                                              presentStyle: .centerRect,
+                                              heightRatio: height,
+                                              widthRatio: width)
         let menuItems = collection.cardIDs.isEmpty ? CollectionMenuItem.noCardsItems : CollectionMenuItem.allCases
         let coordinator = CollectionMenuCoordinator(router: router, menuItems: menuItems)
         coordinator.didSelectItem = { [weak self] item in
@@ -70,7 +75,7 @@ extension CardCollectionViewControllerDelegate where Self: SCSCoordinator {
     }
 
     private func presentDeleteCollectionConfirmation(in viewController: CardCollectionViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.45)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.45, widthRatio: 0.5)
         let coordinator = DeleteCollectionPromptCoordinator(router: router)
         coordinator.delegate = self as? DeleteCollectionPromptCoordinatorDelegate
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)

@@ -10,7 +10,7 @@ final class CurrentCardsValueView: UIView {
     lazy var titleLabel: UILabel = { label in
         label.text = L10n.Dashboard.currentValue
         label.textColor = .logInLabel
-        label.font = .font(.ubuntuMedium500, size: 24)
+        label.setSize(fontS: .ubuntuMedium500, phone: 24, iPad: 30)
         return label
     }(UILabel())
 
@@ -20,7 +20,7 @@ final class CurrentCardsValueView: UIView {
     lazy var priceLabel: UILabel = { label in
         label.textColor = .greenColor
         label.textAlignment = .left
-        label.font = .font(.ubuntuBold700, size: 24)
+        label.setSize(fontS: .ubuntuBold700, phone: 24, iPad: 30)
         return label
     }(UILabel())
 
@@ -72,8 +72,8 @@ private extension CurrentCardsValueView {
 
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
-            $0.width.equalTo(160)
+            $0.top.leading.equalToSuperview()
+            $0.width.equalTo(UIDevice.isIpad ? 200 : 160)
             $0.height.equalTo(30)
         }
 
@@ -86,7 +86,7 @@ private extension CurrentCardsValueView {
 
         addSubview(discloseButton)
         discloseButton.snp.makeConstraints {
-            $0.size.equalTo(28)
+            $0.size.equalTo(UIDevice.isIpad ? 40 : 28)
             $0.trailing.equalToSuperview()
             $0.centerY.equalTo(titleLabel)
             $0.leading.equalTo(priceLabel.snp.trailing).offset(8)
@@ -103,14 +103,14 @@ private extension CurrentCardsValueView {
 
         addSubview(categoriesCollectionView)
         categoriesCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.bottom.equalToSuperview().inset(24)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 50 : 20)
+            $0.horizontalEdges.bottom.equalToSuperview().inset(UIDevice.isIpad ? 20 : 10)
             categoriesViewHeightConstraint = $0.height.equalTo(0).constraint
         }
         stackView.spacing = self.spacing ?? 10
         stackView.distribution = .fillEqually
         stackView.snp.makeConstraints { make in
-            make.size.equalTo(categoriesCollectionView).offset(24)
+            make.size.equalTo(categoriesCollectionView).offset(UIDevice.isIpad ? 36: 14)
             make.center.equalTo(categoriesCollectionView)
         }
     }
@@ -128,7 +128,7 @@ private extension CurrentCardsValueView {
 
     func createCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 20
+        layout.minimumInteritemSpacing = UIDevice.isIpad ? 40 : 20
         layout.minimumLineSpacing = 0
         return layout
     }
@@ -157,7 +157,9 @@ extension CurrentCardsValueView: UICollectionViewDataSource, UICollectionViewDel
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = (collectionView.bounds.width - 20) / 2
+        let inset: CGFloat = UIDevice.isIpad ? 40 : 20
+        let itemWidth = (collectionView.bounds.width - inset) / 2
+
         spacing = collectionView.bounds.width - 2 * itemWidth
         let itemHeight = CategoryValueCollectionViewCell.cellHeight
         return .init(width: itemWidth, height: itemHeight)

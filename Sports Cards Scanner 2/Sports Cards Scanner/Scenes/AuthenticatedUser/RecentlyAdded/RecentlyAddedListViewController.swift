@@ -63,8 +63,9 @@ private extension RecentlyAddedListViewController {
         titleLabel.setupLabel(in: backView)
         backView.addSubview(collectionRecent)
         collectionRecent.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.horizontalEdges.bottom.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            make.bottom.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 60 :0)
         }
         collectionRecent.delegate = self
         collectionRecent.dataSource = self
@@ -82,13 +83,13 @@ private extension RecentlyAddedListViewController {
 
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .estimated(162),
-            heightDimension: .absolute(260)
+            widthDimension: .estimated(UIDevice.isIpad ?247 :162),
+            heightDimension: .absolute(UIDevice.isIpad ? 350:260)
         )
 
         let item = NSCollectionLayoutItem(layoutSize: size)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(260))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 350 :260))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3 :2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)

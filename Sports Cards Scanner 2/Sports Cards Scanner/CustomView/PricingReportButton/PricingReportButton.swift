@@ -11,7 +11,7 @@ final class PricingReportButton: UIButton {
     private var priceButtonType: ButtonTypeReport!
     lazy var graderPriceView: GraderPriceView = .init(type: priceButtonType)
     lazy var noPriceView: NoPriceView = .init()
-    lazy var customPriceView: CustomPriceView = .init()
+    lazy var customPriceView: CustomPriceView = .init(type: priceButtonType)
 
     enum ReportMode {
         case noPrice
@@ -44,7 +44,7 @@ private extension PricingReportButton {
     func setupSubviews_unique() {
         configuration = .plain()
         backgroundColor = .skyBlue
-        layer.cornerRadius = 12
+        layer.cornerRadius = UIDevice.isIpad ? 18:12
         clipsToBounds = true
         [noPriceView, customPriceView, graderPriceView].forEach { view in
             addSubview(view)

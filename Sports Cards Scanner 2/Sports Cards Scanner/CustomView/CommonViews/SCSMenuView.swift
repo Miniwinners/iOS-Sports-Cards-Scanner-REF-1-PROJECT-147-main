@@ -27,13 +27,14 @@ private extension MenuView {
         addSubviews(menuCollectionView, cancelButton)
         menuCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
-            $0.horizontalEdges.equalToSuperview().inset(10)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 130 : 0)
         }
         cancelButton.snp.makeConstraints {
             $0.top.equalTo(menuCollectionView.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(20).priority(.high)
-            $0.height.equalTo(56)
+            $0.height.equalTo(UIDevice.isIpad ? 96:56)
         }
     }
 }
@@ -41,22 +42,22 @@ private extension MenuView {
 private extension MenuView {
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .absolute(145),
-            heightDimension: .absolute(124)
+            widthDimension: .absolute(UIDevice.isIpad ? 243:145),
+            heightDimension: .absolute(UIDevice.isIpad ? 212:124)
         )
 
         let item = NSCollectionLayoutItem(layoutSize: size)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(124))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 212:124))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 10
+        section.interGroupSpacing = UIDevice.isIpad ? 30 : 20
         section.contentInsets = .init(
-            top: 10,
-            leading: 10,
+            top: 0,
+            leading: 0,
             bottom: 0,
-            trailing: 10
+            trailing: 0
         )
 
         return UICollectionViewCompositionalLayout(section: section)

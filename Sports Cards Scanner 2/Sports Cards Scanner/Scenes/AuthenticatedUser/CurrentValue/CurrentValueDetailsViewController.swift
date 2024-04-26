@@ -15,7 +15,6 @@ final class CurrentValueDetailsViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .clear
         scrollView.contentInset.bottom = 20
-
         return scrollView
     }(BaseScrollView())
 
@@ -104,12 +103,11 @@ extension CurrentValueDetailsViewController: UITableViewDataSource {
         if let categoryValue = categoryValue(at: indexPath) {
             cell.set(category: categoryValue.0, value: categoryValue.1)
         }
-
         return cell
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UILabel.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 25))
+        let headerView = UILabel.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: tableView.sectionHeaderHeight))
 
         lazy var categoryValueLabel: UILabel = { label in
             label.text = L10n.CurrentValue.valueByCategory
@@ -124,12 +122,18 @@ extension CurrentValueDetailsViewController: UITableViewDataSource {
         headerView.addSubview(categoryValueLabel)
         headerView.textAlignment = .center
         headerView.font = categoryValueLabel.font
-
+        if UIDevice.isIpad {
+            headerView.font = .font(.ubuntuRegular400, size: 24)
+        }
         return headerView
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 25
+        if UIDevice.isIphone {
+            return 25
+        } else {
+            return 30
+        }
     }
 }
 

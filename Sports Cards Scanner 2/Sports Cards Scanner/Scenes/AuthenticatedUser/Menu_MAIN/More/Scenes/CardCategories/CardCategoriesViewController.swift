@@ -95,8 +95,8 @@ private extension CardCategoriesViewController {
         let categoryCells = tableView.visibleCells.compactMap { $0 as? CardCategoryTableViewCell }
         let indexPaths = categoryCells.compactMap { tableView.indexPath(for: $0) }
 
-        zip(categoryCells, indexPaths).forEach { cell, indexPath in
-            cell.updateCellPosition(UITableView.cellPosition(for: indexPath, basedOn: cardCategoriesManager.allCardCategories))
+        zip(categoryCells, indexPaths).forEach { _, _ in
+//            cell.updateCellPosition(UITableView.cellPosition(for: indexPath, basedOn: cardCategoriesManager.allCardCategories))
         }
     }
 
@@ -114,8 +114,8 @@ private extension CardCategoriesViewController {
 
         categoryCells.moveElement(from: fromIndex, to: toIndex)
 
-        zip(categoryCells, indexPaths).forEach { cell, indexPath in
-            cell.updateCellPosition(UITableView.cellPosition(for: indexPath, basedOn: cardCategoriesManager.allCardCategories))
+        zip(categoryCells, indexPaths).forEach { _, _ in
+//            cell.updateCellPosition(UITableView.cellPosition(for: indexPath, basedOn: cardCategoriesManager.allCardCategories))
         }
     }
 
@@ -164,7 +164,7 @@ extension CardCategoriesViewController: UITableViewDataSource {
         cell?.setupCategoryCell(with: categoryModel, onCategoryDidSwitch: { [weak self] isEnabled in
             self?.setCategory(categoryModel.category, enabled: isEnabled)
         })
-        cell?.updateCellPosition(UITableView.cellPosition(for: indexPath, basedOn: cardCategoriesManager.allCardCategories))
+//        cell?.updateCellPosition(UITableView.cellPosition(for: indexPath, basedOn: cardCategoriesManager.allCardCategories))
         cell?.setSwitchOff(available: cardCategoriesManager.isAvailableToSwitchOff)
         return cell ?? UITableViewCell()
     }

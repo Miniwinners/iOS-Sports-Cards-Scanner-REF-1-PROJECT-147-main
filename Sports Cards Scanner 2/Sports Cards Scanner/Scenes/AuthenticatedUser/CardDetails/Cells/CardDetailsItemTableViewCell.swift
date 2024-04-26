@@ -3,10 +3,10 @@ import SnapKit
 
 final class CardDetailsItemTableViewCell: UITableViewCell {
 
-    static let cellHeight: CGFloat = 35
+    static let cellHeight: CGFloat = UIDevice.isIpad ? 55:35
 
     lazy var nameLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 14)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:14)
         label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .horizontal)
@@ -14,7 +14,7 @@ final class CardDetailsItemTableViewCell: UITableViewCell {
     }(UILabel())
 
     lazy var descriptionLabel: UILabel = { label in
-        label.font = .font(.ubuntuRegular400, size: 14)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:14)
         label.textColor = .singINLabel
         label.textAlignment = .right
         return label

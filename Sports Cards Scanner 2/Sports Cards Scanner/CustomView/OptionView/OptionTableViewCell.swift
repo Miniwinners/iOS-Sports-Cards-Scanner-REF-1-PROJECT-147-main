@@ -8,7 +8,7 @@ final class OptionTableViewCell: UITableViewCell {
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .black
-        label.font = .font(.ubuntuLight300, size: 16)
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ?22:16)
         return label
     }(UILabel())
 
@@ -31,10 +31,10 @@ final class OptionTableViewCell: UITableViewCell {
         titleLabel.text = title
     }
 
-    func setCellPosition(_ cellPosition: CellPosition) {
-        titleTopConstraint.update(inset: cellPosition.containsPosition(.onTopPosition) ? 12 : 6)
-        titleBottomConstraint.update(inset: cellPosition.containsPosition(.atBottomPosition) ? 12 : 6)
-    }
+//    func setCellPosition(_ cellPosition: CellPosition) {
+//        titleTopConstraint.update(inset: cellPosition.containsPosition(.onTopPosition) ? 12 : 6)
+//        titleBottomConstraint.update(inset: cellPosition.containsPosition(.atBottomPosition) ? 12 : 6)
+//    }
 
 }
 
@@ -49,7 +49,7 @@ private extension OptionTableViewCell {
 
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.height.equalTo(22)
+            $0.height.equalTo(UIDevice.isIpad ?26:22)
             $0.horizontalEdges.equalToSuperview().inset(16)
             titleTopConstraint = $0.top.equalToSuperview().inset(12).constraint
             titleBottomConstraint = $0.bottom.equalToSuperview().inset(12).constraint

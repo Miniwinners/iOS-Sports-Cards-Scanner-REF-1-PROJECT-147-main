@@ -11,7 +11,8 @@ final class ScanCardView: UIView {
     lazy var cardSideLabel: UILabel = { label in
         label.text = L10n.ScanCard.CardSide.front
         label.textColor = .white
-        label.font = .font(.ubuntuBold700, size: 24)
+        label.font = .font(.ubuntuBold700, size: UIDevice.isIpad ? 30 : 24)
+
         return label
     }(UILabel())
 
@@ -24,11 +25,11 @@ final class ScanCardView: UIView {
     lazy var gradeTypeButton: CommonButton = {
         var configuration: UIButton.Configuration = .filled()
         configuration.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
-        configuration.background.cornerRadius = 10
+        configuration.background.cornerRadius = UIDevice.isIpad ? 24 : 10
         configuration.cornerStyle = .fixed
         let appearance: CommonButton.SCSAppearance = .init(
             configuration: configuration,
-            font: .font(.ubuntuRegular400, size: 16),
+            font: .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22 : 16),
             backgroundColors: .init(primary: .blue, highlighted: .highlightColor2),
             foregroundColors: .init(primary: .white, highlighted: .labelColor)
         )
@@ -45,7 +46,7 @@ final class ScanCardView: UIView {
     }(UIImageView())
 
     lazy var captureFrameView: UIView = { view in
-        view.cornerRadius = 30
+        view.cornerRadius = UIDevice.isIpad ? 50 : 30
         view.borderColor = .white
         view.borderWidth = 2
         return view
@@ -159,7 +160,7 @@ final class ScanCardView: UIView {
 private extension ScanCardView {
     func setupSubviews_unique() {
         backgroundColor = .black
-
+        selectCategoryButton.layer.cornerRadius = 24
         addSubviews(cameraPreview, capturedImageView, shadowView, cardSideLabel, captureFrameView)
         cameraPreview.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -171,15 +172,15 @@ private extension ScanCardView {
             $0.edges.equalToSuperview()
         }
         cardSideLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(20)
-            $0.top.equalTo(safeAreaLayoutGuide).inset(40)
+            $0.left.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 40 : 40)
         }
         captureFrameView.snp.makeConstraints {
             $0.size.equalToSuperview().priority(.low)
-            $0.top.greaterThanOrEqualTo(safeAreaLayoutGuide).inset(160)
-            $0.bottom.lessThanOrEqualTo(safeAreaLayoutGuide).inset(140)
-            $0.left.greaterThanOrEqualToSuperview().inset(40)
-            $0.height.equalTo(captureFrameView.snp.width).multipliedBy(1.5)
+            $0.top.greaterThanOrEqualTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 270 : 160)
+            $0.bottom.lessThanOrEqualTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 270 : 140)
+            $0.left.equalToSuperview().inset(UIDevice.isIpad ? 180 : 60)
+            $0.height.equalTo(captureFrameView.snp.width).multipliedBy(UIDevice.isIpad ? 1.7:1.5)
             $0.centerX.equalToSuperview()
 //            $0.centerY.equalToSuperview().priority(.high)
         }
@@ -192,10 +193,10 @@ private extension ScanCardView {
     func setupCategoryViews() {
         addSubviews(selectCategoryButton, categoriesTableView)
         selectCategoryButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(90)
-            $0.left.equalToSuperview().inset(20)
-            $0.width.equalTo(189)
-            $0.height.equalTo(42)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 120 : 90)
+            $0.left.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.width.equalTo(UIDevice.isIpad ? 418 : 189)
+            $0.height.equalTo(UIDevice.isIpad ? 80 : 42)
         }
         categoriesTableView.snp.makeConstraints {
             cardCategoriesListHeightConstraint = $0.height.equalTo(0).constraint
@@ -207,20 +208,20 @@ private extension ScanCardView {
     func setupButtons_unique() {
         addSubviews(closeButton, captureButton, gradeTypeButton)
         closeButton.snp.makeConstraints {
-            $0.size.equalTo(20)
-            $0.top.equalTo(safeAreaLayoutGuide).inset(40)
-            $0.right.equalToSuperview().inset(20)
+            $0.size.equalTo(UIDevice.isIpad ? 44 : 20)
+            $0.centerY.equalTo(cardSideLabel)
+            $0.right.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
         }
         captureButton.snp.makeConstraints {
-            $0.size.equalTo(67)
+            $0.size.equalTo(UIDevice.isIpad ? 128 : 67)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70 : 20)
         }
         gradeTypeButton.snp.makeConstraints {
-            $0.left.equalTo(selectCategoryButton.snp.right).offset(10)
-            $0.right.equalToSuperview().inset(20)
-            $0.top.equalTo(safeAreaLayoutGuide).inset(90)
-            $0.height.equalTo(42)
+            $0.left.equalTo(selectCategoryButton.snp.right).offset(UIDevice.isIpad ? 40:10)
+            $0.right.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ?120 :90)
+            $0.height.equalTo(UIDevice.isIpad ? 80 : 42)
         }
     }
 
@@ -251,7 +252,7 @@ private extension ScanCardView {
         let frame = captureFrameView.frame
         let mutablePath = CGMutablePath()
         mutablePath.addRect(self.frame)
-        mutablePath.addRoundedRect(in: frame, cornerWidth: 30, cornerHeight: 30)
+        mutablePath.addRoundedRect(in: frame, cornerWidth: UIDevice.isIpad ? 50:30, cornerHeight: UIDevice.isIpad ?50: 30)
         let mask = CAShapeLayer()
         mask.path = mutablePath
         mask.fillRule = .evenOdd

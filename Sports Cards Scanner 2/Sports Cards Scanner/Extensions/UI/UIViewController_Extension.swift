@@ -39,7 +39,7 @@ class CloseButton: UIButton {
     private func setupButton(style: ButtonFunc) {
         setImage(Images.close.image, for: .normal) // Default image
         backgroundColor = .white
-        layer.cornerRadius = 22
+        layer.cornerRadius = UIDevice.isIpad ? 40 : 22
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.7
@@ -59,7 +59,7 @@ class CloseButton: UIButton {
         view.addSubview(self)
         self.snp.makeConstraints { make in
             make.top.centerX.equalToSuperview()
-            make.size.equalTo(44)
+            make.size.equalTo(UIDevice.isIpad ? 80 : 44)
         }
     }
 
@@ -67,8 +67,8 @@ class CloseButton: UIButton {
         view.addSubview(self)
         self.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.size.equalTo(44)
-            make.left.equalToSuperview().inset(16)
+            make.size.equalTo(UIDevice.isIpad ? 80 : 44)
+            make.left.equalToSuperview().inset(UIDevice.isIpad ? 32 : 16)
         }
     }
 }
@@ -86,7 +86,7 @@ class TitleLabel: UILabel {
 
     func setupAppearance() {
         textColor = .logInLabel
-        font = .font(.ubuntuBold700, size: 22)
+        setSize(fontS: .ubuntuBold700, phone: 22, iPad: 28)
         textAlignment = .center
     }
 
@@ -95,8 +95,8 @@ class TitleLabel: UILabel {
         self.snp.makeConstraints { make in
 //            make.horizontalEdges.equalToSuperview().inset(16)
             make.centerX.equalToSuperview()
-            make.height.equalTo(24)
-            make.top.equalToSuperview().inset(42)
+            make.height.equalTo(UIDevice.isIpad ? 30 : 28)
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 70 : 40)
         }
     }
 
@@ -114,13 +114,13 @@ class BackView: UIView {
 
     func setupViewAppearance() {
         backgroundColor = .white
-        layer.cornerRadius = 24
+        layer.cornerRadius = UIDevice.isIpad ? 30 : 24
     }
 
     func setupView(in view: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(22)
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 40 : 22)
             make.horizontalEdges.bottom.equalToSuperview()
         }
     }
@@ -140,7 +140,7 @@ class DoneButton: UIButton {
     func setupButton() {
         backgroundColor = .clear
         setTitle("Done", for: .normal)
-        titleLabel?.font = .font(.ubuntuMedium500, size: 16)
+        titleLabel?.setSize(fontS: .ubuntuMedium500, phone: 16, iPad: 22)
         titleLabel?.textColor = .black
         setTitleColor(.black, for: .normal)
 
@@ -149,10 +149,10 @@ class DoneButton: UIButton {
     func setInView(_ view: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(35)
-            make.right.equalToSuperview().inset(20)
-            make.height.equalTo(22)
-            make.width.equalTo(40)
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 65 : 35)
+            make.right.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
+            make.height.equalTo(UIDevice.isIpad ? 26 : 22)
+            make.width.equalTo(UIDevice.isIpad ? 70 : 40)
         }
     }
 

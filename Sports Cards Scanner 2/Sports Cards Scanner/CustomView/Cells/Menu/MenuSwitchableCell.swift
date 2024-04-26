@@ -22,17 +22,19 @@ final class MenuSwitchableCell: SwitchableCollectionViewCell {
 
 private extension MenuSwitchableCell {
     func setupSubviews_unique() {
+//        switchView.snp.removeConstraints()
+//        titleLabel.snp.removeConstraints()
         switchView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(31)
-            $0.width.equalTo(48)
-            $0.top.equalToSuperview().inset(20)
+            $0.height.equalTo(UIDevice.isIpad ? 52:32)
+            $0.width.equalTo(UIDevice.isIpad ? 81:48)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 60:20)
         }
         titleLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(20)
-            $0.height.equalTo(20)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
+            $0.height.equalTo(UIDevice.isIpad ? 40:20)
             $0.horizontalEdges.equalToSuperview()
         }
-
+        layoutIfNeeded()
     }
 }

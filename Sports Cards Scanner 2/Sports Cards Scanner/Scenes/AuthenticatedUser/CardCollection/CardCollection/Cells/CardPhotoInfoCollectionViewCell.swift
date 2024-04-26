@@ -12,24 +12,24 @@ final class CardPhotoInfoCollectionViewCell: UICollectionViewCell {
 
     lazy var photoView: UIImageView = { imageView in
         imageView.contentMode = .scaleAspectFill
-        imageView.cornerRadius = 10
+        imageView.cornerRadius = UIDevice.isIpad ? 20:10
         return imageView
     }(UIImageView())
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 10)
+        label.font = .font(.interRegular, size: UIDevice.isIpad ? 16:10)
         label.textColor = .white
         return label
     }(UILabel())
 
     lazy var subtitleLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 10)
+        label.font = .font(.interRegular, size: UIDevice.isIpad ? 16:10)
         label.textColor = .white
         return label
     }(UILabel())
 
     lazy var overlayView: UIView = { view in
-        view.cornerRadius = 10
+        view.cornerRadius = UIDevice.isIpad ? 20:10
         return view
     }(UIView())
 
@@ -52,11 +52,11 @@ final class CardPhotoInfoCollectionViewCell: UICollectionViewCell {
 
     func setCard(_ card: CardRepresentable) {
         titleLabel.text = card.title
-        titleLabel.setLineHeight(12.1)
+        titleLabel.setLineHeight(UIDevice.isIpad ? 17:12.1)
         titleLabel.textAlignment = .center
 
         subtitleLabel.text = card.subtitle
-        subtitleLabel.setLineHeight(12.1)
+        subtitleLabel.setLineHeight(UIDevice.isIpad ? 17:12.1)
         subtitleLabel.textAlignment = .center
 
         if let imageURL = card.imageURL {
@@ -77,7 +77,7 @@ private extension CardPhotoInfoCollectionViewCell {
 
         let photoBackView = UIView()
         photoBackView.backgroundColor = .backColor
-        photoBackView.cornerRadius = 10
+        photoBackView.cornerRadius = UIDevice.isIpad ? 20:10
         photoBackView.addSubviews(photoView, overlayView)
         photoView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -88,7 +88,7 @@ private extension CardPhotoInfoCollectionViewCell {
 
         let containerView = UIView()
         containerView.backgroundColor = .cardBackColor
-        containerView.cornerRadius = 10
+        containerView.cornerRadius = UIDevice.isIpad ? 20:10
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
             $0.edges.equalToSuperview()

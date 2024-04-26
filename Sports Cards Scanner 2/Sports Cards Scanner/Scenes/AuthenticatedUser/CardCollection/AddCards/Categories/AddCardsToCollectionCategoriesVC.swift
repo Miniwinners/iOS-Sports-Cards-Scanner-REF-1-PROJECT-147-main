@@ -139,7 +139,7 @@ extension AddCardsToCollectionCategoriesVC: UITableViewDataSource {
             cell?.setCardImage(categoryCards.category.image)
         }
         cell?.backgroundColor = .skyBlue
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: categoriesInfo))
+//        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: categoriesInfo))
 
         return cell ?? UITableViewCell()
 

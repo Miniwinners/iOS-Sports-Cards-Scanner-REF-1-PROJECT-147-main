@@ -22,6 +22,14 @@ final class CardCollectionViewController: UIViewController {
 
     lazy var closeButton: CloseButton = .init(style: .close)
 
+    lazy var scrollView: BaseScrollView = { scroll in
+        scroll.alwaysBounceVertical = false
+        scroll.showsVerticalScrollIndicator = false
+        scroll.backgroundColor = .clear
+        scroll.contentInset.bottom = 20
+        return scroll
+    }(BaseScrollView())
+
     init(cardCollectionManager: CardCollectionManager = CardSetsManager.shared) {
         self.cardCollectionManager = cardCollectionManager
 
@@ -70,7 +78,6 @@ final class CardCollectionViewController: UIViewController {
 
 private extension CardCollectionViewController {
     func setupViews_unique() {
-        //        setupNavigationItem()
 
         let cardsDisplayOption = CardsDisplayOption.list
         cardCollectionView.cardsView.cardsDisplayControl.selectedSegmentIndex = cardsDisplayOption.index
@@ -271,7 +278,7 @@ extension CardCollectionViewController: UICollectionViewDelegateFlowLayout {
         let collectionViewWidth = collectionView.bounds.width
         let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         let horizontalSpacing = (flowLayout?.sectionInset.left ?? 0) + (flowLayout?.sectionInset.right ?? 0)
-        let itemsInRow: CGFloat = 2
+        let itemsInRow: CGFloat = UIDevice.isIpad ? 3:2
         let interitemSpacing = flowLayout?.minimumInteritemSpacing ?? 0
         let itemWidth = (collectionViewWidth - horizontalSpacing - interitemSpacing * (itemsInRow - 1)) / itemsInRow
         let itemHeight = CardPhotoInfoCollectionViewCell.calculateCellHeight(for: itemWidth)

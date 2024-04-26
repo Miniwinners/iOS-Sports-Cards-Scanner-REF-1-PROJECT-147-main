@@ -3,16 +3,13 @@ import SnapKit
 
 final class SearchCardView: UIView {
 
-    lazy var backView: UIView = { view in
-        view.setupBackView()
-       return view
-    }(UIView())
-
+    lazy var backView: BackView = .init()
+    lazy var titleLabel: TitleLabel = .init()
     lazy var searchTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.interRegular, size: 16)
-        textField.backgroundColor = .backColor
-        textField.cornerRadius = 12
+        textField.font = .font(.interRegular, size: UIDevice.isIpad ? 24: 16)
+        textField.backgroundColor = .skyBlue
+        textField.cornerRadius = UIDevice.isIpad ? 30:12
         textField.placeholder = L10n.SearchCard.Search.placeholder
         textField.rightViewMode = .always
         textField.trailingPadding = 48
@@ -64,21 +61,18 @@ final class SearchCardView: UIView {
 private extension SearchCardView {
     func setupSubviews_unique() {
         backgroundColor = .clear
-        addSubview(backView)
-        backView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(22)
-            $0.horizontalEdges.bottom.equalToSuperview()
-        }
+        backView.setupView(in: self)
+        titleLabel.setupLabel(in: backView)
 
         backView.addSubviews(searchTextField, searchCollectionView, noResultsView)
         setupSearchTextField()
         searchTextField.snp.makeConstraints {
-            $0.height.equalTo(48)
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(62)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(UIDevice.isIpad ? 100 : 48)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 60 : 30)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
         searchCollectionView.snp.makeConstraints {
-            $0.top.equalTo(searchTextField.snp.bottom).offset(20)
+            $0.top.equalTo(searchTextField.snp.bottom).offset(UIDevice.isIpad ? 40:20)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
         noResultsView.snp.makeConstraints {
@@ -113,7 +107,7 @@ private extension SearchCardView {
 
         let item = NSCollectionLayoutItem(layoutSize: size)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(297))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)

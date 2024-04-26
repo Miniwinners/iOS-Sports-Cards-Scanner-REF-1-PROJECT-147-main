@@ -10,7 +10,7 @@ final class CardGraderButton: UIButton {
     lazy var graderLabel: UILabel = { label in
         label.text = cardGrader?.rawValue ?? ""
         label.textColor = .logInLabel
-        label.font = .font(.ubuntuMedium500, size: 16)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         return label
     }(UILabel())
 
@@ -52,8 +52,8 @@ private extension CardGraderButton {
         configuration = .plain()
 
         disclosureImageView.snp.makeConstraints {
-            $0.width.equalTo(16)
-            $0.height.equalTo(9)
+            $0.width.equalTo(UIDevice.isIpad ? 24:16)
+            $0.height.equalTo(UIDevice.isIpad ? 13:9)
         }
 
         let stackView = UIStackView(arrangedSubviews: [graderLabel, disclosureImageView])

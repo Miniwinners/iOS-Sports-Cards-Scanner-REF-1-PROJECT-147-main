@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 import Foundation
+
 final class CardDetailsViewController: UIViewController {
 
     private let searchCardService: CardSearchable
@@ -102,15 +103,15 @@ private extension CardDetailsViewController {
     func setupViews_unique() {
         view.backgroundColor = .clear
         view.addSubview(backGroundView)
-        backGroundView.layer.cornerRadius = 24
+        backGroundView.layer.cornerRadius = UIDevice.isIpad ? 34:24
         backGroundView.backgroundColor = .white
         backGroundView.snp.makeConstraints { make in
             make.bottom.horizontalEdges.equalToSuperview()
-            make.top.equalToSuperview().inset(22)
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 42:22)
         }
         backGroundView.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(32)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 42:32)
             $0.bottom.horizontalEdges.equalToSuperview()
         }
 

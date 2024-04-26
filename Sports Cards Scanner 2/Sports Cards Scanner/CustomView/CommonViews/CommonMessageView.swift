@@ -7,7 +7,7 @@ final class CommonMessageView: UIView {
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .singINLabel
-        label.font = .font(.ubuntuLight300, size: 16)
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
         label.numberOfLines = 0
         return label
     }(UILabel())
@@ -19,21 +19,20 @@ final class CommonMessageView: UIView {
 
     func setMessageTitle(_ title: String) {
         titleLabel.text = title
-        titleLabel.setLineHeight(24)
+        titleLabel.setLineHeight(UIDevice.isIpad ?30:24)
         titleLabel.textAlignment = .center
     }
 
     private func setupSubviews_unique() {
         backgroundColor = .clear
-//        cornerRadius = 12
         addSubview(cardImage)
         cardImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.size.equalTo(32)
+            make.size.equalTo(UIDevice.isIpad ? 55:32)
         }
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(cardImage.snp.bottom).offset(15)
+            $0.top.equalTo(cardImage.snp.bottom).offset(UIDevice.isIpad ? 20:15)
             $0.bottom.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(16)
         }

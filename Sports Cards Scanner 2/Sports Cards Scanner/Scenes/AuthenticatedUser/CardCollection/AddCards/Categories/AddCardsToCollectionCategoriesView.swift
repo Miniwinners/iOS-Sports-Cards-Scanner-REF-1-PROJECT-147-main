@@ -5,21 +5,18 @@ final class AddCardsToCollectionCategoriesView: UIView {
 
     private var categoriesTableHeightConstraint: Constraint!
 
-    lazy var backView: UIView = { view in
-        view.setupBackView()
-        return view
-    }(UIView())
+    lazy var backView: BackView = .init()
 
     lazy var titleLabel: TitleLabel = .init()
 
     lazy var categoriesContainerView: UIView = { view in
         view.backgroundColor = .white
-        view.cornerRadius = 12
+//        view.cornerRadius =  12
         return view
     }(UIView())
 
     lazy var selectedCardsLabel: UILabel = { label in
-        label.font = .font(.ubuntuRegular400, size: 14)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 20 : 14)
         label.textColor = .black
         label.textAlignment = .right
         return label
@@ -65,8 +62,8 @@ final class AddCardsToCollectionCategoriesView: UIView {
             showCategories()
         }
 
-        let tableViewHeight: CGFloat = CGFloat(count) * CGFloat(36) + 26
-        categoriesTableHeightConstraint.update(offset: tableViewHeight)
+//        let tableViewHeight: CGFloat = CGFloat(count) * CGFloat(36) + 26
+//        categoriesTableHeightConstraint.update(offset: tableViewHeight)
     }
 }
 
@@ -79,17 +76,12 @@ private extension AddCardsToCollectionCategoriesView {
     }
 
     func setupCardsView() {
-
-        addSubview(backView)
-        backView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(22)
-            make.bottom.horizontalEdges.equalToSuperview()
-        }
+        backView.setupView(in: self)
 
         titleLabel.setupLabel(in: backView)
 
         let allCardsLabel = UILabel()
-        allCardsLabel.font = .font(.ubuntuMedium500, size: 22)
+        allCardsLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 28:22)
         allCardsLabel.textColor = .black
         allCardsLabel.text = L10n.AddCards.allCards
         allCardsLabel.setContentHuggingPriority(.required, for: .vertical)
@@ -113,9 +105,9 @@ private extension AddCardsToCollectionCategoriesView {
         backView.addSubview(categoriesContainerView)
         categoriesContainerView.backgroundColor = .clear
         categoriesContainerView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(50)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 30:10)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.height.equalTo(UIDevice.isIpad ? 60:50)
         }
 
     }
@@ -128,9 +120,9 @@ private extension AddCardsToCollectionCategoriesView {
 
         backView.addSubview(stackView)
         stackView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(128)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70:20)
+            $0.height.equalTo(UIDevice.isIpad ? 172:128)
         }
     }
 
@@ -139,9 +131,9 @@ private extension AddCardsToCollectionCategoriesView {
 
         backView.addSubviews(categoriesTableView)
         categoriesTableView.snp.makeConstraints {
-            $0.top.equalTo(categoriesContainerView.snp.bottom).offset(10)
-            $0.horizontalEdges.bottom.equalToSuperview().inset(16)
-            categoriesTableHeightConstraint = $0.height.equalTo(0).constraint
+            $0.top.equalTo(categoriesContainerView.snp.bottom).offset(UIDevice.isIpad ? 30:10)
+            $0.bottom.equalToSuperview().inset(16)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80: 16)
         }
     }
 

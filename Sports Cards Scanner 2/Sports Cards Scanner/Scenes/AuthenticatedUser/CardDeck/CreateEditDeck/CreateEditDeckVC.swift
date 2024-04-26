@@ -27,10 +27,7 @@ final class CreateEditDeckVC: UIViewController {
 
     lazy var closeButton: CloseButton = .init(style: .close)
 
-    lazy var backView: UIView = { view in
-        view.setupBackView()
-        return view
-    }(UIView())
+    lazy var backView: BackView = .init()
 
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
@@ -87,15 +84,11 @@ private extension CreateEditDeckVC {
     }
 
     func setupViewConstraints_unique() {
-        view.addSubview(backView)
-        backView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalToSuperview()
-            make.top.equalToSuperview().inset(22)
-        }
+        backView.setupView(in: view)
         backView.addSubview(scrollView)
         scrollView.snp.makeConstraints {
             $0.horizontalEdges.bottom.equalToSuperview()
-            $0.top.equalToSuperview().inset(32)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 52:32)
         }
 
         scrollView.addSubview(deckView)

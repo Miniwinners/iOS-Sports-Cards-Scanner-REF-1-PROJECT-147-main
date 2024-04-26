@@ -24,6 +24,7 @@ final class SwipeableCardsView: UIView {
 
     private lazy var cardView1: SwipeableCardButton = { button in
         button.cornerRadius = 12
+
         return button
     }(SwipeableCardButton())
 
@@ -74,12 +75,10 @@ private extension SwipeableCardsView {
         if itemHeight <= maxHeight {
             return .init(width: itemWidth, height: itemHeight)
         }
-
         itemHeight = maxHeight
-        photoHeight = itemHeight - 78
+        photoHeight = itemHeight + 10// - 78
         photoWidth = photoHeight * SwipeableCardButton.photoRatio
-        itemWidth = photoWidth + 24
-
+        itemWidth = photoWidth - 30
         return .init(width: itemWidth, height: itemHeight)
     }
 
@@ -111,8 +110,8 @@ private extension SwipeableCardsView {
     func boundsDidUpdate() {
         if bounds.width == oldBounds.width { return }
         oldBounds = bounds
-//        topView.backgroundColor = .blue
-//        bottomView.backgroundColor = .yellow
+        topView.backgroundColor = .white
+        bottomView.backgroundColor = .white
         [topView, bottomView].forEach {
             $0.center = initialCenter
             $0.bounds.size = cardViewSize

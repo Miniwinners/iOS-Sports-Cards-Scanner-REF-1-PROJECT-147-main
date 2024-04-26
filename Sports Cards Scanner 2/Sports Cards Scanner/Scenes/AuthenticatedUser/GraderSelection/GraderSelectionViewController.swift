@@ -104,7 +104,7 @@ extension GraderSelectionViewController: UITableViewDataSource {
         if let grader = getGrader(at: indexPath) {
             cell?.setGrader(grader)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: graders))
+//        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: graders))
 
         return cell ?? UITableViewCell()
     }

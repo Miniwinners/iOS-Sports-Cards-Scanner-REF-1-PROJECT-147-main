@@ -28,7 +28,7 @@ class CommonTextField: UITextField {
                 string: newValue ?? "",
                 attributes: [
                     .foregroundColor: UIColor.singINLabel,
-                    .font: UIFont.font(.ubuntuLight300, size: 16)
+                    .font: UIFont.font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
                 ]
             )
         }
@@ -44,6 +44,7 @@ class CommonTextField: UITextField {
             $0.leading.equalToSuperview().inset(paddings.left)
             $0.trailing.equalToSuperview().inset(paddings.right)
             $0.bottom.equalToSuperview().inset(paddings.bottom)
+            $0.size.equalTo(UIDevice.isIpad ? 40 : 28)
         }
         rightView = containerView
 

@@ -27,17 +27,21 @@ final class MenuSelectableCell: SelectableCollectionViewCell {
 
 private extension MenuSelectableCell {
     func setupSubviews_unique() {
-        rightImageView.snp.makeConstraints {
-            $0.size.equalTo(31)
-            $0.top.equalToSuperview().inset(20)
+//        rightImageView.snp.removeConstraints()
+//        titleLabel.snp.removeConstraints()
+
+        rightImageView.snp.remakeConstraints {
+            $0.size.equalTo(UIDevice.isIpad ? 42: 32)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
             $0.centerX.equalToSuperview()
         }
 
-        titleLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(20)
+        titleLabel.snp.remakeConstraints {
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(40)
         }
+        layoutIfNeeded()
 
     }
 }

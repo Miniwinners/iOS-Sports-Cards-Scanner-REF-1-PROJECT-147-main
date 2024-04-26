@@ -14,7 +14,7 @@ final class RecentlyAddedCardsView: UIView {
     lazy var titleLabel: UILabel = { label in
         label.text = L10n.Dashboard.recentlyAdded
         label.textColor = .labelColor
-        label.font = .font(.ubuntuMedium500, size: 24)
+        label.setSize(fontS: .ubuntuMedium500, phone: 24, iPad: 30)
         return label
     }(UILabel())
 
@@ -74,7 +74,8 @@ private extension RecentlyAddedCardsView {
         let collectionViewWidth = cardsCollectionView.bounds.width
         let itemsWidth = collectionViewWidth - spacings
         let itemWidth = itemsWidth / CGFloat(Self.itemInRow)
-        let itemHeight = itemWidth * 1.388
+        let coef = UIDevice.isIpad ? 1.5 : 1.388
+        let itemHeight = itemWidth * coef
 
         return .init(width: itemWidth, height: itemHeight)
     }
@@ -86,12 +87,12 @@ private extension RecentlyAddedCardsView {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.height.equalTo(30)
-            $0.top.leading.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 24 : 16)
         }
 
         addSubview(discloseButton)
         discloseButton.snp.makeConstraints {
-            $0.size.equalTo(28)
+            $0.size.equalTo(UIDevice.isIpad ? 40 : 28)
             $0.centerY.equalTo(titleLabel)
             $0.trailing.equalToSuperview()
         }
@@ -101,8 +102,8 @@ private extension RecentlyAddedCardsView {
         }
         addSubview(cardsCollectionView)
         cardsCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.bottom.equalToSuperview().inset(16)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 30 : 20)
+            $0.horizontalEdges.bottom.equalToSuperview()
             cardsViewHeightConstraint = $0.height.equalTo(0).constraint
         }
     }
@@ -113,7 +114,7 @@ private extension RecentlyAddedCardsView {
 
     func createCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 12
+        layout.minimumInteritemSpacing = UIDevice.isIpad ? 20 : 12
         layout.minimumLineSpacing = 0
         return layout
     }

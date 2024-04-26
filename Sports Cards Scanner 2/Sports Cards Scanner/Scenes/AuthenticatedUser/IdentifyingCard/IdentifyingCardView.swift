@@ -101,3 +101,45 @@ private extension IdentifyingCardView {
         }
     }
 }
+
+import SwiftUI
+// struct Provider_ViewController: PreviewProvider {
+//    static var previews: some View {
+//        ContainterView().edgesIgnoringSafeArea(.all)
+//    }
+//
+//    struct ContainterView: UIViewControllerRepresentable {
+//        func makeUIViewController(context: Context) -> UIViewController {
+//            return viewController
+//        }
+//
+//        typealias UIViewControllerType = UIViewController
+//
+//        let viewController = IdentifyingCardViewController(scannedCard: ScannedCard(encodedCardImage: dummyData, cardCategory: .basketball))
+//        func makeUIViewController(context: UIViewControllerRepresentableContext<Provider_ViewController.ContainterView>) -> IdentifyingCardViewController {
+//            return viewController
+//        }
+//
+//        func updateUIViewController(_ uiViewController: Provider_ViewController.ContainterView.UIViewControllerType, context: UIViewControllerRepresentableContext<Provider_ViewController.ContainterView>) {
+//
+//        }
+//    }
+// }
+
+struct GreenViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> IdentifyingCardView {
+        return IdentifyingCardView()
+    }
+
+    func updateUIView(_ uiView: IdentifyingCardView, context: Context) {
+        // Здесь можно обновлять представление, если это необходимо
+    }
+}
+
+struct GreenViewPreview: PreviewProvider {
+    static var previews: some View {
+        GreenViewRepresentable()
+//            .frame(width: 100, height: 100, alignment: .center) // Вы можете настроить размеры
+//            .previewLayout(.sizeThatFits)
+    }
+}

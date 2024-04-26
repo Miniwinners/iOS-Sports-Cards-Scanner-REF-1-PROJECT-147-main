@@ -43,16 +43,25 @@ final class PortfolioView: UIView {
 
         contentView.addSubview(cardsView)
         cardsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?80:0)
         }
     }
 
     func updateCardCollection(_ collection: CardCollectible?) {
         cardsView.collectionView.setCardSet(collection)
+        DispatchQueue.main.async {
+            self.cardsView.layoutIfNeeded()
+            self.cardsView.configureContainer()
+        }
     }
 
     func updateCardDeck(_ deck: CardCollectible?) {
         cardsView.deckView.setCardSet(deck)
+        DispatchQueue.main.async {
+            self.cardsView.layoutIfNeeded()
+            self.cardsView.configureContainer()
+        }
     }
 
     func updateCardsTotalValue(_ cardsValue: Double) {
@@ -98,9 +107,9 @@ private extension PortfolioView {
 
         addSubview(scanCardButton)
         scanCardButton.snp.makeConstraints {
-            $0.height.equalTo(54)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(30)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(UIDevice.isIpad ?80:54)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ?70:30)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?80:20)
         }
     }
 }

@@ -92,7 +92,8 @@ internal enum Images {
     internal static let createCollection = ImageAsset(name: "createCollection")
     internal static let collectionCards = ImageAsset(name: "collectionCards")
     internal static let forwardArrowBlue = ImageAsset(name: "forwardArrowBlue")
-
+    internal static let gradeStar = ImageAsset(name: "gradeStar")
+    
     
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

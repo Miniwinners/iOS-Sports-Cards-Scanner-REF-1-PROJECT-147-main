@@ -63,7 +63,7 @@ private extension CategoryCardsViewController {
         titleLabel.setupLabel(in: backView)
         backView.addSubview(collectionCategory)
         collectionCategory.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
             make.horizontalEdges.bottom.equalToSuperview()
         }
         collectionCategory.backgroundColor = .clear
@@ -91,13 +91,13 @@ private extension CategoryCardsViewController {
 
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .estimated(162),
-            heightDimension: .absolute(297)
+            widthDimension: .estimated(UIDevice.isIpad ?252:162),
+            heightDimension: .absolute(UIDevice.isIpad ? 464:297)
         )
 
         let item = NSCollectionLayoutItem(layoutSize: size)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(297))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:297))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ?3:2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)

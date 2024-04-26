@@ -113,7 +113,7 @@ class SwitchableCollectionViewCell: UICollectionViewCell {
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .black
-        label.font = .font(.ubuntuMedium500, size: 15)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ?21: 15)
         label.textAlignment = .center
         return label
     }(UILabel())
@@ -155,15 +155,15 @@ private extension SwitchableCollectionViewCell {
         containerView.addSubview(switchView)
         switchView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(31)
-            $0.width.equalTo(48)
-            $0.top.equalToSuperview().inset(15)
+            $0.height.equalTo(UIDevice.isIpad ? 52:32)
+            $0.width.equalTo(UIDevice.isIpad ? 81:48)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 40:15)
         }
 
         containerView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(15)
-            $0.height.equalTo(20)
+            $0.height.equalTo(UIDevice.isIpad ? 30:20)
             $0.horizontalEdges.equalToSuperview()
         }
 

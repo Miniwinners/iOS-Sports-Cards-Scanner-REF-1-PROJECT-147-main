@@ -7,14 +7,14 @@ final class CategoryValueCollectionViewCell: UICollectionViewCell {
 
     lazy var categoryLabel: UILabel = { label in
         label.textColor = .labelColor
-        label.font = .font(.ubuntuRegular400, size: 14)
+        label.setSize(fontS: .ubuntuRegular400, phone: 14, iPad: 20)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }(UILabel())
 
     lazy var priceLabel: UILabel = { label in
         label.textColor = .greenColor
-        label.font = .font(.ubuntuRegular400, size: 14)
+        label.setSize(fontS: .ubuntuRegular400, phone: 14, iPad: 20)
         label.lineBreakMode = .byTruncatingMiddle
         label.textAlignment = .right
         return label

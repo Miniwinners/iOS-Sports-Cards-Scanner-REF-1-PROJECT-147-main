@@ -222,3 +222,27 @@ extension SearchCardViewController: UICollectionViewDelegate {
         delegate?.searchCardViewControllerDidSelect(card: card, in: self)
     }
 }
+
+import SwiftUI
+ struct Provider_ViewController: PreviewProvider {
+    static var previews: some View {
+        ContainterView().edgesIgnoringSafeArea(.all)
+    }
+
+    struct ContainterView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return viewController
+        }
+
+        typealias UIViewControllerType = UIViewController
+
+        let viewController = SearchCardViewController(searchCategory: .basketball)
+        func makeUIViewController(context: UIViewControllerRepresentableContext<Provider_ViewController.ContainterView>) -> SearchCardViewController {
+            return viewController
+        }
+
+        func updateUIViewController(_ uiViewController: Provider_ViewController.ContainterView.UIViewControllerType, context: UIViewControllerRepresentableContext<Provider_ViewController.ContainterView>) {
+
+        }
+    }
+ }

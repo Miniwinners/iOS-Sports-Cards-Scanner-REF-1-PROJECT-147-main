@@ -3,7 +3,7 @@ import SnapKit
 
 final class CardTableViewCell: UITableViewCell {
 
-    private static let containerHeight: CGFloat = 157
+    private static let containerHeight: CGFloat = UIDevice.isIpad ? 232 : 157
 
     lazy var cardView: CardView = .init()
 
@@ -80,7 +80,7 @@ private extension CardTableViewCell {
 
         cardView.cardImageView.snp.remakeConstraints { make in
             make.left.top.bottom.equalToSuperview().inset(10)
-            make.width.equalTo(96)
+            make.width.equalTo(UIDevice.isIpad ? 143 : 96)
         }
         cardView.titleLabel.snp.remakeConstraints { make in
             make.top.equalToSuperview().inset(30)
@@ -108,7 +108,7 @@ private extension CardTableViewCell {
 
         let backgroundView = UIView()
         backgroundView.backgroundColor = .skyBlue
-        backgroundView.cornerRadius = 12
+        backgroundView.cornerRadius = UIDevice.isIpad ? 20:12
         backgroundContainerView.addSubview(backgroundView)
 
         backgroundView.snp.makeConstraints {
@@ -125,7 +125,7 @@ private extension CardTableViewCell {
 
         let highlightedView = UIView()
         highlightedView.backgroundColor = .highlightColor2
-        highlightedView.cornerRadius = 12
+        highlightedView.cornerRadius = UIDevice.isIpad ? 20:12
         highlightedContainerView.addSubview(highlightedView)
 
         highlightedView.snp.makeConstraints {

@@ -106,7 +106,8 @@ extension MoreViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 5 { return 100 } else { return 3 }
+        if section == 5 {
+            if UIDevice.isIphone { return 100 } else { return 300 }} else { return 3 }
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -117,7 +118,12 @@ extension MoreViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 5 { return 20 } else { return 0 }
+        if section == 5 {
+            return 20
+        } else {
+            return 0
+        }
+
     }
 
     private func profileItem(for indexPath: IndexPath) -> ProfileItem? {

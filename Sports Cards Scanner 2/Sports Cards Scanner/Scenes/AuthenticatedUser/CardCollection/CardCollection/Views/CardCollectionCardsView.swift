@@ -9,12 +9,12 @@ final class CardCollectionCardsView: UIView {
 
     lazy var infoContainerView: UIView = { view in
         view.backgroundColor = .white
-        view.cornerRadius = 12
+//        view.cornerRadius = UIDevice.isIpad ? 22:12
         return view
     }(UIView())
 
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 22)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 28:22)
         label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -58,12 +58,12 @@ final class CardCollectionCardsView: UIView {
         default:
             cardsNumberLabel.text = L10n.Portfolio.numberOfCards(count)
         }
-        cardsNumberLabel.setLineHeight(22)
+        cardsNumberLabel.setLineHeight(UIDevice.isIpad ? 28:22)
     }
 
     func setCards(price: Double) {
         customContainer.priceLabel.text = price.formattedAsPrice
-        customContainer.priceLabel.setLineHeight(22)
+        customContainer.priceLabel.setLineHeight(UIDevice.isIpad ? 28:22)
     }
 
     func setCardsDisplay(option: CardsDisplayOption) {
@@ -72,7 +72,6 @@ final class CardCollectionCardsView: UIView {
         case .collection: setupCardsViewIfNeeded(cardsCollectionView)
         case .list: setupCardsViewIfNeeded(cardsTableView)
         }
-//        cardsSwipeableView.backgroundColor = .red
         cardsSwipeableView.isHidden = option != .swipable
         cardsCollectionView.isHidden = option != .collection
         cardsTableView.isHidden = option != .list
@@ -91,8 +90,14 @@ final class CardCollectionCardsView: UIView {
     }
 
     func showEstimatedValue() {
-        guard customContainer.priceContainerView.superview == nil else { return }
-
+//        guard customContainer.priceContainerView.superview == nil else { return }
+        customContainer.priceContainerView.isHidden = false
+//        customContainer.infoContainerView.addSubview(customContainer.priceContainerView)
+//        
+//        customContainer.priceContainerView.snp.makeConstraints {
+//            $0.top.horizontalEdges.equalToSuperview().inset(16)
+//            $0.bottom.equalTo(cardsNumberLabel.snp.top).inset(-12)
+//        }
     }
 
     func hideEstimatedValue() {
@@ -102,8 +107,11 @@ final class CardCollectionCardsView: UIView {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        customContainer.priceContainerView.removeFromSuperview()
+        customContainer.priceContainerView.isHidden = true
+//        customContainer.priceContainerView.removeFromSuperview()
+
     }
+
 }
 
 private extension CardCollectionCardsView {
@@ -114,13 +122,13 @@ private extension CardCollectionCardsView {
         setupPriceContainer()
 
         titleView.setupLabel(in: self)
-        titleView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(12)
-        }
+//        titleView.snp.makeConstraints { make in
+//            make.top.equalToSuperview().inset(12)
+//        }
         addSubview(infoContainerView)
         infoContainerView.snp.makeConstraints {
-            $0.top.equalTo(titleView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.top.equalTo(titleView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:16)
         }
         customContainer.setupLayout(in: self, top: infoContainerView)
 
@@ -136,14 +144,13 @@ private extension CardCollectionCardsView {
         cardsDisplayControl.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.width.equalTo(116)
-            $0.height.equalTo(36)
+            $0.width.equalTo(UIDevice.isIpad ? 195:116)
+            $0.height.equalTo(UIDevice.isIpad ? 60:36)
         }
     }
 
     func setupPriceContainer() {
         customContainer.estimatedValueLabel.text = L10n.CardCollection.estimatedValue
-
     }
 
     func setupCardsViewIfNeeded(_ cardsView: UIView) {
@@ -151,8 +158,8 @@ private extension CardCollectionCardsView {
 
         addSubview(cardsView)
         cardsView.snp.makeConstraints {
-            $0.top.equalTo(customContainer.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview()
+            $0.top.equalTo(customContainer.snp.bottom).offset(UIDevice.isIpad ? 40:10)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?60:0)
             if cardsView === cardsSwipeableView {
                 $0.bottom.equalTo(safeAreaLayoutGuide)
             } else {

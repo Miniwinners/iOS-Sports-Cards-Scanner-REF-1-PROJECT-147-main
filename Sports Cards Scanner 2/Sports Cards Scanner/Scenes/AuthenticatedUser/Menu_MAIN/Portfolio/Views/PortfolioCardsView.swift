@@ -1,20 +1,20 @@
 import UIKit
 import SnapKit
-
+import Foundation
 final class PortfolioCardsView: UIView {
+
+    private var previousHeight: CGFloat?
 
     lazy var stackView: UIStackView = { stackView in
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = UIDevice.isIpad ?30:20
         return stackView
-    }(UIStackView(arrangedSubviews: [infoView, cardStackView, categoriesCardsView]))
+    }(UIStackView(arrangedSubviews: [infoView, cardContainerView, categoriesCardsView]))
 
-    lazy var cardStackView: UIStackView = { stackView in
-        stackView.spacing = 10
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        return stackView
-    }(UIStackView(arrangedSubviews: [collectionButton, deckButton]))
+    lazy var cardContainerView: UIView = { view in
+        backgroundColor = .clear
+        return view
+    }(UIView())
 
     lazy var collectionView: DeckCollectionView = { view in
         view.subtitleCreate.text = L10n.Portfolio.Deck.description
@@ -37,7 +37,7 @@ final class PortfolioCardsView: UIView {
 
     lazy var categoriesCardsView: UIView = { view in
         view.backgroundColor = .clear
-        view.cornerRadius = 12
+        view.cornerRadius = UIDevice.isIpad ? 30:12
         return view
     }(UIView())
 
@@ -58,9 +58,10 @@ final class PortfolioCardsView: UIView {
     }
 
     func updateCategories(number: Int) {
-        let height = 74 * CGFloat(number) + 74
-        categoriesCardsHeightConstraint.update(offset: height)
-        categoriesTableView.reloadData()
+//        let inset: CGFloat = UIDevice.isIpad ? 120:74
+//        let height = UIDevice.isIpad ? 120:74 * CGFloat(number) + inset
+//        categoriesCardsHeightConstraint.update(offset: height)
+//        categoriesTableView.reloadData()
     }
 }
 
@@ -68,7 +69,7 @@ private extension PortfolioCardsView {
     var buttonAppearance: CommonButton.SCSAppearance {
         var configuration: UIButton.Configuration = .filled()
         configuration.cornerStyle = .fixed
-        configuration.background.cornerRadius = 16
+        configuration.background.cornerRadius = UIDevice.isIpad ? 20:16
         return .init(
             configuration: configuration,
             backgroundColors: .init(primary: .white, highlighted: .highlightColor2)
@@ -78,7 +79,7 @@ private extension PortfolioCardsView {
     func setupSubviews_unique() {
         setupCardSetsView()
         setupCategoriesCardsView()
-
+//        cardContainerView.backgroundColor = .red
         addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview().inset(20)
@@ -87,7 +88,21 @@ private extension PortfolioCardsView {
     }
 
     func setupCardSetsView() {
+        addSubview(cardContainerView)
+        cardContainerView.addSubviews(collectionButton, deckButton)
 
+        collectionButton.snp.makeConstraints { make in
+            make.top.left.equalToSuperview()
+            make.right.equalTo(deckButton.snp.left).offset(UIDevice.isIpad ? -20 : -10)
+            make.width.equalTo(deckButton.snp.width)
+        }
+
+        deckButton.snp.makeConstraints { make in
+            make.top.right.equalToSuperview()
+            make.left.equalTo(collectionButton.snp.right).offset(UIDevice.isIpad ?20:10)
+            make.width.equalTo(collectionButton.snp.width)
+
+        }
         collectionButton.addSubview(collectionView)
         deckButton.addSubview(deckView)
         collectionView.snp.makeConstraints { make in
@@ -96,19 +111,17 @@ private extension PortfolioCardsView {
         deckView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        cardStackView.snp.makeConstraints {
-            $0.height.equalTo(200)
-        }
+
     }
 
     func setupCategoriesCardsView() {
         let allCardsLabel = UILabel()
         allCardsLabel.text = L10n.Portfolio.allCards
-        allCardsLabel.font = .font(.ubuntuMedium500, size: 24)
+        allCardsLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ?30:24)
         allCardsLabel.textColor = .black
         allCardsLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         allCardsLabel.setContentHuggingPriority(.required, for: .vertical)
-        allCardsLabel.setLineHeight(25)
+        allCardsLabel.setLineHeight(UIDevice.isIpad ?31:25)
 
         categoriesCardsView.addSubviews(allCardsLabel, categoriesTableView)
         allCardsLabel.snp.makeConstraints {
@@ -119,7 +132,24 @@ private extension PortfolioCardsView {
         categoriesTableView.snp.makeConstraints {
             $0.top.equalTo(allCardsLabel.snp.bottom).offset(15)
             $0.horizontalEdges.bottom.equalToSuperview()
-            categoriesCardsHeightConstraint = $0.height.equalTo(0).constraint
+            $0.height.equalTo(UIDevice.isIpad ? 120 * 8 - 8 * 7 : 74 * 8 - 8 * 7)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 70 : 30)
+        }
+    }
+}
+
+extension PortfolioCardsView {
+    func configureContainer() {
+        cardContainerView.snp.updateConstraints { make in
+            let maxButtonHeight = max(collectionButton.frame.height, deckButton.frame.height)
+//            print("collectionButton - \(collectionButton.frame.height)")
+//            print("deckButton - \(deckButton.frame.height)")
+//            print("Current max height container: \(maxButtonHeight), Previous height: \(previousHeight)")
+
+            if maxButtonHeight != previousHeight {
+                previousHeight = maxButtonHeight
+                make.height.equalTo(previousHeight ?? 0)
+            }
         }
     }
 }

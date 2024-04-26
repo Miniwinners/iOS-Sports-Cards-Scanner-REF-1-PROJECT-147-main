@@ -92,16 +92,16 @@ private extension SwipeableCardButton {
         cardTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(5)
             $0.height.equalTo(24)
-            $0.horizontalEdges.equalToSuperview().inset(12)
+            $0.horizontalEdges.equalToSuperview()
         }
         cardSubtitleLabel.snp.makeConstraints {
             $0.top.equalTo(cardTitleLabel.snp.bottom).offset(5)
             $0.height.equalTo(24)
-            $0.horizontalEdges.equalToSuperview().inset(12)
+            $0.horizontalEdges.equalToSuperview()
         }
         photoContainerView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
-            $0.top.equalTo(cardSubtitleLabel.snp.bottom).offset(15)
+            $0.top.equalTo(cardSubtitleLabel.snp.bottom).offset(5)
             $0.width.equalTo(cardPhotoView.snp.height).multipliedBy(Self.photoRatio)
         }
 

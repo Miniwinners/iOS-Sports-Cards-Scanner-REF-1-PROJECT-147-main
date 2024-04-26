@@ -40,18 +40,6 @@ final class CollectionMenuViewController: UIViewController {
         setupActions_unique()
     }
 
-//    override var preferredContentSize: CGSize {
-//        get {
-//            let edgesButtonsHeightDiff: CGFloat = 8
-//            let menuBottomSpace: CGFloat = 122
-//            let height: CGFloat = (collectionMenuView.menuTableView.estimatedRowHeight * CGFloat(menuItems.count)) - edgesButtonsHeightDiff + menuBottomSpace
-//            view.layoutIfNeeded()
-//            return .init(width: view.frame.width, height: height)
-//        }
-//        set {
-//            super.preferredContentSize = newValue
-//        }
-//    }
 }
 
 private extension CollectionMenuViewController {
@@ -122,7 +110,6 @@ extension CollectionMenuViewController: UICollectionViewDataSource {
         default:
             let selectableCell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuSelectableCell.className, for: indexPath) as? MenuSelectableCell
             selectableCell?.setMenuItem(menuItem)
-//            selectableCell?.setCellPosition(UICollectionView.cellPosition(for: indexPath, basedOn: menuItems))
 
             cell = selectableCell
         }

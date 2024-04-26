@@ -83,7 +83,7 @@ private extension AddCardsToCollectionCardsVC {
         addCardsView.searchTextField.delegate = self
 
         addCardsView.setSelectedCards(number: helper.allSelectedCards.count)
-        addCardsView.setCategory(cardCategory)
+//        addCardsView.setCategory(cardCategory)
 
         closeButton.setLeft(in: view)
         closeButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)

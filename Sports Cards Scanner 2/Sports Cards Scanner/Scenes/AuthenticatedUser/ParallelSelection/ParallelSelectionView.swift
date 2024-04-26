@@ -8,9 +8,9 @@ final class ParallelSelectionView: UIView {
 
     lazy var searchTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.ubuntuRegular400, size: 16)
+        textField.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ?22:16)
         textField.backgroundColor = .skyBlue
-        textField.cornerRadius = 12
+        textField.cornerRadius = UIDevice.isIpad ?30:12
         textField.placeholder = L10n.ParallelSelection.Search.placeholder
         textField.rightViewMode = .always
         textField.trailingPadding = 48
@@ -30,15 +30,10 @@ final class ParallelSelectionView: UIView {
     lazy var allOptionsLabel: UILabel = { label in
         label.text = L10n.ParallelSelection.allOptions
         label.textColor = .labelColor
-        label.font = .font(.ubuntuMedium500, size: 22)
-        label.setLineHeight(21.6)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ?28:22)
+        label.setLineHeight(UIDevice.isIpad ?30:21.6)
         return label
     }(UILabel())
-
-    lazy var underlineView: UIView = { view in
-        view.backgroundColor = .dividerColor
-        return view
-    }(UIView())
 
     lazy var parallelsCollectionView: UICollectionView = { collectionView in
         collectionView.backgroundColor = .clear
@@ -54,7 +49,7 @@ final class ParallelSelectionView: UIView {
     lazy var noneParallelButton: UIButton = { button in
         button.setTitle(L10n.ParallelSelection.Action.none, for: .normal)
         button.setTitleColor(.labelColor, for: .normal)
-        button.titleLabel?.font = .font(.ubuntuMedium500, size: 16)
+        button.titleLabel?.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ?22:16)
         return button
     }(UIButton(type: .system))
 
@@ -76,29 +71,26 @@ private extension ParallelSelectionView {
         titleLabel.setupLabel(in: backView)
         setupSearchTextField()
 
-        backView.addSubviews(searchTextField, allOptionsLabel, noneParallelButton, underlineView, parallelsCollectionView, noResultsView)
+        backView.addSubviews(searchTextField, allOptionsLabel, noneParallelButton, parallelsCollectionView, noResultsView)
         searchTextField.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(48)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ?40:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?80:20)
+            $0.height.equalTo(UIDevice.isIpad ?100:48)
         }
         allOptionsLabel.snp.makeConstraints {
-            $0.top.equalTo(searchTextField.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().inset(20)
+            $0.top.equalTo(searchTextField.snp.bottom).offset(UIDevice.isIpad ?40:20)
+            $0.leading.equalToSuperview().inset(UIDevice.isIpad ?80:20)
         }
         noneParallelButton.snp.makeConstraints {
             $0.centerY.equalTo(allOptionsLabel)
             $0.leading.equalTo(allOptionsLabel.snp.trailing).offset(8)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview().inset(UIDevice.isIpad ?80:20)
         }
-        underlineView.snp.makeConstraints {
-            $0.top.equalTo(allOptionsLabel.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(1)
-        }
+
         parallelsCollectionView.snp.makeConstraints {
-            $0.top.equalTo(underlineView.snp.bottom)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.top.equalTo(allOptionsLabel.snp.bottom).offset(UIDevice.isIpad ?40:20)
+            $0.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?80:0)
         }
         noResultsView.snp.makeConstraints {
             $0.top.equalTo(parallelsCollectionView).offset(40)

@@ -12,10 +12,7 @@ final class CreateEditCollectionVC: UIViewController {
 
     // MARK: - Subviews
 
-    lazy var backView: UIView = { view in
-        view.setupBackView()
-        return view
-    }(UIView())
+    lazy var backView: BackView = .init()
 
     lazy var closeButton: CloseButton = .init(style: .close)
 
@@ -96,19 +93,15 @@ private extension CreateEditCollectionVC {
     func setupViews_unique() {
         view.backgroundColor = .clear
         view.addSubview(backView)
-        backView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalToSuperview()
-            make.top.equalToSuperview().inset(22)
-        }
-//        setupNavigationItem()
+        backView.setupView(in: view)
 
         titleLabel.setupLabel(in: backView)
         titleLabel.text = cardCollection.isNil ? L10n.CreateCollection.title : L10n.EditCollection.title
         backView.addSubview(nameTextField)
         nameTextField.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(46)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ?40:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:46)
         }
 
         if cardCollection.isNil {
@@ -127,23 +120,23 @@ private extension CreateEditCollectionVC {
     func setupForCreation() {
         backView.addSubview(createButton)
         createButton.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70:20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:54)
         }
     }
 
     func setupForEditing() {
         let buttonsStackView = UIStackView(arrangedSubviews: [cancelButton, doneButton])
-        buttonsStackView.axis = .horizontal
+        buttonsStackView.axis = .vertical
         buttonsStackView.distribution = .fillEqually
-        buttonsStackView.spacing = 20
+        buttonsStackView.spacing = UIDevice.isIpad ? 20 : 10
 
         backView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(UIDevice.isIpad ?70:20)
+            $0.height.equalTo(UIDevice.isIpad ?172:128)
         }
     }
 
@@ -157,21 +150,6 @@ private extension CreateEditCollectionVC {
             doneButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
         }
     }
-
-//    func setupNavigationItem() {
-//        if cardCollection.isNil {
-//            navigationItem.rightBarButtonItem = .init(
-//                image: Images.close.image,
-//                style: .plain,
-//                target: self,
-//                action: #selector(closeTapped_unique)
-//            )
-//            navigationItem.rightBarButtonItem?.tintColor = .black
-//        } else {
-//            navigationItem.setHidesBackButton(true, animated: false)
-//            navigationItem.leftBarButtonItem = nil
-//        }
-//    }
 
     func updateCreateButton_unique() {
         guard cardCollection.isNil else { return }

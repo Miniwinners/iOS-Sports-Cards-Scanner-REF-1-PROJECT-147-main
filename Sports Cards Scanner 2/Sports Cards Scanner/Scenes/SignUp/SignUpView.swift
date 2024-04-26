@@ -143,9 +143,9 @@ private extension SignUpView {
 
     func setupConstraints_unique() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(70).priority(.low)
-            $0.top.greaterThanOrEqualTo(safeAreaLayoutGuide).inset(20)
-            $0.top.lessThanOrEqualTo(safeAreaLayoutGuide).inset(70)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(90).priority(.low)
+            $0.top.greaterThanOrEqualTo(safeAreaLayoutGuide).inset(60)
+            $0.top.lessThanOrEqualTo(safeAreaLayoutGuide).inset(90)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(42)
         }
@@ -153,11 +153,11 @@ private extension SignUpView {
             $0.top.equalTo(titleLabel.snp.bottom).offset(60).priority(.medium)
             $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(20)
             $0.top.lessThanOrEqualTo(titleLabel.snp.bottom).offset(60)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(80)
         }
         signUpButton.snp.makeConstraints {
             $0.top.equalTo(fieldsView.snp.bottom).offset(40)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(80)
             $0.height.equalTo(54)
         }
         signInMethodsLabel.snp.makeConstraints {
@@ -175,7 +175,7 @@ private extension SignUpView {
         }
         haveAccountView.snp.makeConstraints {
             $0.top.equalTo(signInMethodsView.snp.bottom).offset(32)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(30)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(60)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(23)
         }

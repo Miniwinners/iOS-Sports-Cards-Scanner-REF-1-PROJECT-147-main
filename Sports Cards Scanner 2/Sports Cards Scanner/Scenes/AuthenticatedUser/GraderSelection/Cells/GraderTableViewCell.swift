@@ -5,8 +5,8 @@ final class GraderTableViewCell: UITableViewCell {
 
     lazy var graderLabel: UILabel = { label in
         label.textColor = .logInLabel
-        label.font = .font(.ubuntuRegular400, size: 16)
-        label.setLineHeight(22)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
+        label.setLineHeight(UIDevice.isIpad ?24:22)
         return label
     }(UILabel())
 
@@ -34,15 +34,15 @@ final class GraderTableViewCell: UITableViewCell {
         graderLabel.text = grader.rawValue
     }
 
-    func setCellPosition(_ position: CellPosition) {
-        separatorView.isHidden = position.containsPosition(.atBottomPosition)
-
-        var corners = UIRectCorner()
-        if position.containsPosition(.onTopPosition) { corners.insert([.topLeft, .topRight]) }
-        if position.containsPosition(.atBottomPosition) { corners.insert([.bottomLeft, .bottomRight]) }
-        backgroundView?.subviews.first?.roundCorners(corners, radius: 14)
-        selectedBackgroundView?.subviews.first?.roundCorners(corners, radius: 14)
-    }
+//    func setCellPosition(_ position: CellPosition) {
+//        separatorView.isHidden = position.containsPosition(.atBottomPosition)
+//
+//        var corners = UIRectCorner()
+//        if position.containsPosition(.onTopPosition) { corners.insert([.topLeft, .topRight]) }
+//        if position.containsPosition(.atBottomPosition) { corners.insert([.bottomLeft, .bottomRight]) }
+//        backgroundView?.subviews.first?.roundCorners(corners, radius: 14)
+//        selectedBackgroundView?.subviews.first?.roundCorners(corners, radius: 14)
+//    }
 
 }
 

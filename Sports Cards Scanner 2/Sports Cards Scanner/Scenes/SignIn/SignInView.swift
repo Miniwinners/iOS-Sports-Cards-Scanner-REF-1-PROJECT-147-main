@@ -38,7 +38,7 @@ final class SignInView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
-        stackView.spacing = 15
+        stackView.spacing = 20
         return stackView
     }(UIStackView(arrangedSubviews: [errorLabel, emailView, passwordView]))
 
@@ -161,42 +161,46 @@ private extension SignInView {
     }
 
     func setupConstraints_unique() {
+        let isIpad = UIDevice.current.userInterfaceIdiom == .pad
+        let topInset = isIpad ? 120 : 20
+        let horizontalInset = isIpad ? 80 : 20
+        let buttonTopOffset = isIpad ? 40 : 20
+        let afterTitleOffset = isIpad ? 70 : 20
+        let logInWithTopOffset = isIpad ? 30 : 20
+        let bottomSafeAreaInset = isIpad ? 60 : 10
+
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(20).priority(.low)
-            $0.top.greaterThanOrEqualTo(safeAreaLayoutGuide).inset(30)
-            $0.top.lessThanOrEqualTo(safeAreaLayoutGuide).inset(20)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(topInset).priority(.low)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(22)
             $0.width.equalTo(61)
         }
         welcomeLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(afterTitleOffset)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(32)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
         }
         enterDetails.snp.makeConstraints {
             $0.top.equalTo(welcomeLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
             $0.height.equalTo(22)
         }
         logInWith.snp.makeConstraints {
-            $0.top.equalTo(otherSignInMethodsView.snp.bottom).offset(20)
+            $0.top.equalTo(otherSignInMethodsView.snp.bottom).offset(logInWithTopOffset)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(30)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
         }
-        fieldsView.snp.makeConstraints {
-            $0.top.equalTo(logInWith.snp.bottom).offset(20).priority(.medium)
-            $0.top.greaterThanOrEqualTo(logInWith.snp.bottom).offset(20)
-            $0.top.lessThanOrEqualTo(logInWith.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
 
+        fieldsView.snp.makeConstraints {
+            $0.top.equalTo(logInWith.snp.bottom).offset(buttonTopOffset).priority(.medium)
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
         }
         signInButton.snp.makeConstraints {
-            $0.top.equalTo(fieldsView.snp.bottom).offset(80)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalTo(noAccountView.snp.top)
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
             $0.height.equalTo(58)
         }
 
@@ -204,25 +208,26 @@ private extension SignInView {
         forgotPasswordButton.snp.makeConstraints {
             $0.width.equalTo(130)
             $0.height.equalTo(22)
-            $0.right.equalToSuperview().inset(20)
+            $0.right.equalToSuperview().inset(horizontalInset)
             $0.top.equalTo(fieldsView.snp.bottom).offset(10)
         }
-        [appleButton, facebookButton, googleButton]
-            .map { $0.snp }
-            .forEach { $0.makeConstraints({
+        [appleButton, facebookButton, googleButton].map { $0.snp }.forEach {
+            $0.makeConstraints({
                 $0.height.equalTo(58)
                 $0.width.equalTo(99)
-            }) }
+            })
+        }
         otherSignInMethodsView.snp.makeConstraints {
             $0.top.equalTo(enterDetails.snp.bottom).offset(30)
             $0.height.equalTo(58)
             $0.centerX.equalToSuperview()
         }
         noAccountView.snp.makeConstraints {
-            $0.top.equalTo(signInButton.snp.bottom).offset(10)
+            $0.top.equalTo(signInButton.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(30)
+            $0.height.equalTo(57)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(bottomSafeAreaInset)
         }
     }
+
 }

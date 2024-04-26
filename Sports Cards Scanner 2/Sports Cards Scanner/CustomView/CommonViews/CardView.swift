@@ -4,18 +4,18 @@ import Kingfisher
 
 final class CardView: UIView {
 
-    static let viewHeight: CGFloat = 297
+    static let viewHeight: CGFloat = UIDevice.isIpad ? 420 : 297
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .black
-        label.font = .font(.ubuntuMedium500, size: 16)
-        label.numberOfLines = 1
+        label.setSize(fontS: .ubuntuMedium500, phone: 16, iPad: 22)
+        label.numberOfLines = 0
         return label
     }(UILabel())
 
     lazy var subtitleLabel: UILabel = { label in
         label.textColor = .singINLabel
-        label.font = .font(.ubuntuMedium500, size: 12)
+        label.setSize(fontS: .ubuntuMedium500, phone: 12, iPad: 18)
         label.numberOfLines = 2
         return label
     }(UILabel())
@@ -30,7 +30,7 @@ final class CardView: UIView {
         label.text = L10n.Card.missingImage
         label.setLineHeight(19)
         label.textColor = .labelColor3
-        label.font = .font(.interRegular, size: 12)
+        label.font = .font(.ubuntuRegular400, size: 12)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -50,7 +50,7 @@ final class CardView: UIView {
     }(UIView())
 
     lazy var numberLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 14)
+        label.font = .font(.ubuntuMedium500, size: 14)
         label.textColor = .white
         return label
     }(UILabel())
@@ -62,7 +62,7 @@ final class CardView: UIView {
     }(UIView())
 
     lazy var pricesLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: 16)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         label.textColor = .greenColor
         return label
     }(UILabel())
@@ -86,15 +86,15 @@ final class CardView: UIView {
 
     func setCard(_ card: CardRepresentable) {
         titleLabel.text = card.title
-        titleLabel.setLineHeight(22)
+        titleLabel.setLineHeight(UIDevice.isIpad ? 26 : 22)
         subtitleLabel.text = card.subtitle
-        subtitleLabel.setLineHeight(22)
+        subtitleLabel.setLineHeight(UIDevice.isIpad ? 26 : 22)
         if let price = card.customPrice {
             pricesLabel.text = price.formattedAsPrice
         } else {
             pricesLabel.text = card.priceRange(of: card.selectedGrader)
         }
-        pricesLabel.setLineHeight(22)
+        pricesLabel.setLineHeight(UIDevice.isIpad ? 26 : 22)
         pricesLabel.lineBreakMode = .byTruncatingMiddle
         pricesLabel.textAlignment = .left
 
@@ -141,20 +141,20 @@ private extension CardView {
         }
         cardImageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
-            $0.height.equalTo(195)
-            $0.width.equalTo(138)
+            $0.height.equalTo(UIDevice.isIpad ? 304 :195)
+            $0.width.equalTo(UIDevice.isIpad ? 215 : 138)
             $0.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalTo(cardImageView.snp.bottom).offset(5)
+            $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
         }
         subtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
             $0.leading.equalToSuperview()
         }
         pricesLabel.snp.makeConstraints {
-            $0.top.equalTo(subtitleLabel.snp.bottom).offset(5)
+            $0.top.equalTo(subtitleLabel.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
         }

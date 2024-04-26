@@ -11,21 +11,21 @@ final class CardSetView: UIView {
     // MARK: - Subviews
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
+        label.font = .font(.interMedium, size: UIDevice.isIpad ? 22:16)
         label.textColor = .labelColor
         return label
     }(UILabel())
 
     lazy var descriptionLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 12)
+        label.font = .font(.interMedium, size: UIDevice.isIpad ?18:12)
         label.textColor = .labelColor
         label.text = setType == .collection ? L10n.Portfolio.Collection.description : L10n.Portfolio.Deck.description
-        label.setLineHeight(22)
+        label.setLineHeight(UIDevice.isIpad ?26:22)
         return label
     }(UILabel())
 
     lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 12)
+        label.font = .font(.interRegular, size: UIDevice.isIpad ?18:12)
         label.textColor = .labelColor
         return label
     }(UILabel())
@@ -121,13 +121,13 @@ final class DeckCollectionView: UIView {
 
     lazy var titleCreate: UILabel = { label in
         label.textColor = .black
-        label.font = .font(.ubuntuMedium500, size: 16)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         return label
     }(UILabel())
 
     lazy var subtitleCreate: UILabel = { label in
         label.textColor = .singINLabel
-        label.font = .font(.ubuntuRegular400, size: 12)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ?18:12)
         return label
     }(UILabel())
     private lazy var containerView: UIView = .init()
@@ -155,34 +155,34 @@ final class DeckCollectionView: UIView {
     func setupButton() {
 
         backgroundColor = .white
-        layer.cornerRadius = 16
+        layer.cornerRadius = UIDevice.isIpad ? 30:16
         addSubview(stackView)
         stackView.backgroundColor = .clear
-        stackView.spacing = 10
+        stackView.spacing = UIDevice.isIpad ?16:8
         stackView.axis = .vertical
         stackView.distribution = .fill
         previewImage.contentMode = .scaleAspectFill
         previewImage.snp.makeConstraints { make in
-            make.height.lessThanOrEqualTo(80)
+            make.height.equalTo(UIDevice.isIpad ? 150:80)
         }
         plusImageView.backgroundColor = .clear
 
         containerView.addSubview(plusImageView)
         containerView.snp.makeConstraints { make in
-            make.height.lessThanOrEqualTo(33)
+            make.height.equalTo(UIDevice.isIpad ?63:30)
         }
         plusImageView.snp.makeConstraints { make in
-            make.size.equalTo(10)
+            make.size.equalTo(UIDevice.isIpad ? 19:10)
             make.center.equalToSuperview()
         }
-        titleCreate.setLineHeight(22)
+        titleCreate.setLineHeight(26)
         subtitleCreate.setLineHeight(22)
         containerView.backgroundColor = .skyBlue
         containerView.layer.cornerRadius = 8
 
         stackView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(10)
-            make.verticalEdges.equalToSuperview().inset(15)
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?20:10)
+            make.verticalEdges.equalToSuperview().inset(UIDevice.isIpad ?20:15)
         }
     }
 
@@ -197,8 +197,8 @@ final class DeckCollectionView: UIView {
     func setupForCreationSet() {
         previewImage.image = setType == .collection ? Images.createDeck.image : Images.createCollection.image
         titleCreate.text = setType == .collection ? L10n.Portfolio.Collection.create : L10n.Portfolio.Deck.create
-        titleCreate.numberOfLines = 2
-        titleCreate.setLineHeight(22)
+        titleCreate.numberOfLines = 1
+//        titleCreate.setLineHeight(26)
         containerView.isHidden = false
         plusImageView.isHidden = false
     }

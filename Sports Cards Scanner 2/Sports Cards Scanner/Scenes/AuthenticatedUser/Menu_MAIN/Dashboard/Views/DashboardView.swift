@@ -19,7 +19,7 @@ final class DashboardView: UIView {
     lazy var scanCardButton: CommonButton = { button in
         button.setButtonTitle(L10n.Dashboard.Action.scanCard)
         button.setImage(Images.scan.image, for: .normal)
-        button.configuration?.imagePadding = 20
+        button.configuration?.imagePadding = UIDevice.isIpad ? 30 : 20
         return button
     }(CommonButton(style: .default))
 
@@ -52,11 +52,11 @@ final class DashboardView: UIView {
         currentValueView.setCategoryValues(categoryValues)
     }
 
-    func updateHighestValueView(first highestValuedCard: CardRepresentable?, second highestTwo: CardRepresentable?) {
+    func updateHighestValueView(first highestValuedCard: CardRepresentable?, second highestTwo: CardRepresentable?, third highestThree: CardRepresentable?) {
         let highestValueView = cardsView.highestValueView
         highestValueView.isHidden = highestValuedCard.isNil
         if let card = highestValuedCard {
-            highestValueView.setCard(card, highestTwo ?? card)
+            highestValueView.setCard(card, highestTwo ?? card, highestThree ?? card)
         }
     }
 
@@ -84,9 +84,9 @@ private extension DashboardView {
 
         addSubview(scanCardButton)
         scanCardButton.snp.makeConstraints {
-            $0.height.equalTo(54)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(30)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(UIDevice.isIpad ? 80 :54)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ?  50 : 30)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 :20)
         }
     }
 }

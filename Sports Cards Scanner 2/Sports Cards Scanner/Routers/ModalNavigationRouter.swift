@@ -13,8 +13,8 @@ final class SCSModalNavigationRouter: NSObject {
         self.parentViewController = parentViewController
         super.init()
 
-        navigationController.delegate = self
-        navigationController.presentationController?.delegate = self
+//        navigationController.delegate = self
+//        navigationController.presentationController?.delegate = self
     }
 }
 
@@ -31,6 +31,9 @@ extension SCSModalNavigationRouter: SCSRouter {
 
     private func presentVCModally(_ viewController: UIViewController, animated: Bool) {
         navigationController.setViewControllers([viewController], animated: false)
+        navigationController.modalPresentationStyle = .custom
+        navigationController.presentationController?.delegate = self
+        navigationController.transitioningDelegate = self
         parentViewController.present(navigationController, animated: animated)
     }
 
@@ -89,5 +92,12 @@ extension SCSModalNavigationRouter: UIAdaptivePresentationControllerDelegate {
             return
         }
         performOnDismiss(for: rootViewController)
+    }
+}
+
+extension SCSModalNavigationRouter: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CustomNavPresentation(presentedViewController: presented, presenting: presenting)
+
     }
 }
