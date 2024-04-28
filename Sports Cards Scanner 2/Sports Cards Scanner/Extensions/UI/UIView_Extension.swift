@@ -88,7 +88,7 @@ final class CustomContainerView: UIView {
         backgroundColor = .skyBlue
         layer.cornerRadius = UIDevice.isIpad ? 24:16
         layer.borderWidth = 1
-        layer.borderColor = UIColor.blue.cgColor
+        layer.borderColor = UIColor.green.cgColor
     }
 
     func setupLayout(in view: UIView, top viewTop: UIView) {

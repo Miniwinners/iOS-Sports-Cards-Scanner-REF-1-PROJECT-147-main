@@ -42,7 +42,7 @@ extension CommonButton.SCSButtonStyle {
     private static let defaultAppearance: CommonButton.SCSAppearance = .init(
         configuration: defaultConfiguration,
         font: .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22: 16), tintColor: .white,
-        backgroundColors: .init(primary: .blue, disabled: .actionInactiveColor, highlighted: .actionActiveColor),
+        backgroundColors: .init(primary: UIColor(red: 0, green: 89/255, blue: 231/255, alpha: 1), disabled: .actionInactiveColor, highlighted: .actionActiveColor),
         foregroundColors: .init(primary: .white, disabled: .white, highlighted: .highlightColor)
     )
 

@@ -8,6 +8,7 @@ final class CardDeckView: UIView {
 
     lazy var menuButton: UIButton = { button in
         button.setImage(Images.menuDots.image, for: .normal)
+        button.tintColor = .black
         return button
     }(UIButton(type: .system))
 
@@ -112,7 +113,7 @@ private extension CardDeckView {
         collectionCards.snp.makeConstraints {
             $0.top.equalTo(nameSecondaryLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
             $0.bottom.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:0)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 60:0)
         }
         noCardsView.snp.makeConstraints {
             $0.center.equalToSuperview()
@@ -122,11 +123,10 @@ private extension CardDeckView {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70:20)
             $0.height.equalTo(UIDevice.isIpad ? 80:54)
         }
-        menuButton.backgroundColor = .red
         menuButton.snp.makeConstraints {
-            $0.size.equalTo(44)
+            $0.size.equalTo(UIDevice.isIpad ? 60:44)
             $0.centerY.equalTo(nameSecondaryLabel)
-            $0.trailing.equalToSuperview().inset(UIDevice.isIpad ? 80:30)
+            $0.trailing.equalToSuperview().inset(UIDevice.isIpad ? 65:30)
             $0.leading.equalTo(nameSecondaryLabel.snp.trailing).offset(8)
         }
     }

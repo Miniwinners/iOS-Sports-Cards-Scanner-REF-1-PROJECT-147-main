@@ -14,13 +14,11 @@ final class CreateEditCollectionVC: UIViewController {
 
     lazy var backView: BackView = .init()
 
-    lazy var closeButton: CloseButton = .init(style: .close)
-
     lazy var titleLabel: TitleLabel = .init()
 
     lazy var nameTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.interRegular, size: UIDevice.isIpad ? 22:16)
+        textField.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         textField.backgroundColor = .skyBlue
         textField.cornerRadius = UIDevice.isIpad ? 20:12
         textField.placeholder = L10n.CreateCollection.CollectionName.placeholder
@@ -81,6 +79,7 @@ final class CreateEditCollectionVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
+        setupButton()
     }
 
 }
@@ -113,8 +112,22 @@ private extension CreateEditCollectionVC {
         }
 
         nameTextField.text = cardCollection?.name
-        closeButton.setCenter(in: view)
-        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+    }
+
+    func setupButton() {
+        if isRootViewController() {
+            let closeButton = CloseButton(style: .close)
+            closeButton.setCenter(in: view)
+            closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
+        } else {
+            let closeButton = CloseButton(style: .back)
+            closeButton.setLeft(in: view)
+            closeButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
+        }
+    }
+
+    private func isRootViewController() -> Bool {
+           return navigationController?.viewControllers.first == self
     }
 
     func setupForCreation() {
@@ -162,10 +175,6 @@ private extension CreateEditCollectionVC {
     }
 
     // MARK: - Actions
-
-    @objc func close() {
-        dismiss(animated: true)
-    }
 
     @objc func closeTapped_unique() {
         delegate?.createCollectionVCCloseTapped(self)

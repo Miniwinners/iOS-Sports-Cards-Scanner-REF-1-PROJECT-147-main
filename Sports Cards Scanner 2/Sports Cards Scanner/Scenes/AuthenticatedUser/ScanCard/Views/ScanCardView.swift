@@ -6,7 +6,7 @@ final class ScanCardView: UIView {
 
     private var cardCategoriesListHeightConstraint: Constraint!
 
-    let tableViewCellExtraSpace: CGFloat = 2
+    let tableViewCellExtraSpace: CGFloat = UIDevice.isIpad ? 6:2
 
     lazy var cardSideLabel: UILabel = { label in
         label.text = L10n.ScanCard.CardSide.front
@@ -76,7 +76,7 @@ final class ScanCardView: UIView {
         tableView.backgroundColor = .clear
         tableView.estimatedRowHeight = 34
         tableView.isScrollEnabled = false
-        tableView.cornerRadius = 6
+        tableView.cornerRadius = UIDevice.isIpad ? 12:6
         tableView.separatorStyle = .none
         tableView.backgroundColor = .tableViewBack
         return tableView
@@ -110,12 +110,12 @@ final class ScanCardView: UIView {
 
     func showCardCategories(count: Int, animated: Bool) {
         guard categoriesTableView.isHidden else { return }
-
-        let finalTableViewHeight: CGFloat = (categoriesTableView.estimatedRowHeight * CGFloat(count)) + (tableViewCellExtraSpace * 2)
+        let multiplier = UIDevice.isIpad ? 3 : 1.5
+        let finalTableViewHeight: CGFloat = (categoriesTableView.estimatedRowHeight * CGFloat(count)) + (tableViewCellExtraSpace * multiplier)
 
         categoriesTableView.isHidden = false
         categoriesTableView.layer.opacity = 0
-        cardCategoriesListHeightConstraint.update(offset: finalTableViewHeight)
+        cardCategoriesListHeightConstraint.update(offset: UIDevice.isIpad ? finalTableViewHeight + 200:finalTableViewHeight)
 
         if animated {
             UIView.animate(withDuration: 0.3) {
@@ -160,7 +160,6 @@ final class ScanCardView: UIView {
 private extension ScanCardView {
     func setupSubviews_unique() {
         backgroundColor = .black
-        selectCategoryButton.layer.cornerRadius = 24
         addSubviews(cameraPreview, capturedImageView, shadowView, cardSideLabel, captureFrameView)
         cameraPreview.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -195,20 +194,21 @@ private extension ScanCardView {
         selectCategoryButton.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 120 : 90)
             $0.left.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
-            $0.width.equalTo(UIDevice.isIpad ? 418 : 189)
+            $0.width.equalTo(UIDevice.isIpad ? 400 : 189)
             $0.height.equalTo(UIDevice.isIpad ? 80 : 42)
         }
         categoriesTableView.snp.makeConstraints {
             cardCategoriesListHeightConstraint = $0.height.equalTo(0).constraint
-            $0.horizontalEdges.equalTo(selectCategoryButton)
-            $0.top.equalTo(selectCategoryButton.snp.bottom).offset(5)
+            $0.left.equalTo(selectCategoryButton)
+            $0.right.equalTo(selectCategoryButton).inset(UIDevice.isIpad ? 80:0)
+            $0.top.equalTo(selectCategoryButton.snp.bottom).offset(UIDevice.isIpad ? 15:5)
         }
     }
 
     func setupButtons_unique() {
         addSubviews(closeButton, captureButton, gradeTypeButton)
         closeButton.snp.makeConstraints {
-            $0.size.equalTo(UIDevice.isIpad ? 44 : 20)
+            $0.size.equalTo(UIDevice.isIpad ? 40 : 20)
             $0.centerY.equalTo(cardSideLabel)
             $0.right.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
         }
@@ -218,7 +218,7 @@ private extension ScanCardView {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70 : 20)
         }
         gradeTypeButton.snp.makeConstraints {
-            $0.left.equalTo(selectCategoryButton.snp.right).offset(UIDevice.isIpad ? 40:10)
+            $0.left.equalTo(selectCategoryButton.snp.right).offset(UIDevice.isIpad ? 60:20)
             $0.right.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
             $0.top.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ?120 :90)
             $0.height.equalTo(UIDevice.isIpad ? 80 : 42)

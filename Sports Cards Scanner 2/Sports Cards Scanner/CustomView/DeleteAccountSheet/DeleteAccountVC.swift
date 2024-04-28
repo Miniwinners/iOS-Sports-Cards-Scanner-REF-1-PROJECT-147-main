@@ -16,9 +16,9 @@ final class DeleteAccountVC: UIViewController {
 
     lazy var titleLabel: UILabel = { label in
         label.text = promptTitle
-        label.font = .font(.ubuntuBold700, size: 24)
+        label.font = .font(.ubuntuBold700, size: UIDevice.isIpad ? 30:24)
         label.textColor = .black
-        label.setLineHeight(28)
+        label.setLineHeight(UIDevice.isIpad ? 32:28)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -28,9 +28,9 @@ final class DeleteAccountVC: UIViewController {
 
     lazy var descriptionLabel: UILabel = { label in
         label.text = promptDescription
-        label.font = .font(.ubuntuRegular400, size: 14)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 20:14)
         label.textColor = .tableViewTitleLabel
-        label.setLineHeight(22)
+        label.setLineHeight(UIDevice.isIpad ? 24:22)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -41,12 +41,12 @@ final class DeleteAccountVC: UIViewController {
     lazy var cancelButton: CommonButton = { button in
         button.borderColor = .blue
         button.borderWidth = 1
-        button.layer.cornerRadius = 16
+        button.layer.cornerRadius = UIDevice.isIpad ? 22:16
         return button
     }(CommonButton(style: .destructive))
 
     lazy var confirmButton: CommonButton = { button in
-        button.cornerRadius = 16
+        button.cornerRadius = UIDevice.isIpad ? 22:16
         return button
     }(CommonButton(style: .default))
 
@@ -93,7 +93,7 @@ private extension DeleteAccountVC {
 
         let labelsStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         labelsStackView.axis = .vertical
-        labelsStackView.spacing = 12
+        labelsStackView.spacing = UIDevice.isIpad ? 30:12
 
         labelsContainerView.addSubview(labelsStackView)
         labelsStackView.snp.makeConstraints {
@@ -104,7 +104,7 @@ private extension DeleteAccountVC {
         let buttonsStackView = UIStackView(arrangedSubviews: [cancelButton, confirmButton])
         buttonsStackView.axis = .vertical
         buttonsStackView.distribution = .fillEqually
-        buttonsStackView.spacing = 12
+        buttonsStackView.spacing = UIDevice.isIpad ? 20:12
 
         view.addSubviews(labelsContainerView, buttonsStackView)
         labelsContainerView.snp.makeConstraints {
@@ -116,7 +116,7 @@ private extension DeleteAccountVC {
             $0.top.greaterThanOrEqualTo(labelsContainerView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(128)
+            $0.height.equalTo(UIDevice.isIpad ? 180:128)
         }
     }
 

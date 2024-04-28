@@ -211,12 +211,10 @@ extension CardCollectionViewController: SwipableController {
 extension CardCollectionViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sortedCards.count
-
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -224,13 +222,13 @@ extension CardCollectionViewController: UITableViewDataSource {
 
         if let card = card(at: indexPath) {
             cell?.setupCard(card)
-            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: 28)
-            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: 32)
-            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: 28)
+            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: 24)
+            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: 28)
+            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: 24)
 
-            cell?.cardView.pricesLabel.setLineHeight(30)
-            cell?.cardView.titleLabel.setLineHeight(34)
-            cell?.cardView.subtitleLabel.setLineHeight(30)
+            cell?.cardView.pricesLabel.setLineHeight(26)
+            cell?.cardView.titleLabel.setLineHeight(30)
+            cell?.cardView.subtitleLabel.setLineHeight(26)
         }
 
         return cell ?? UITableViewCell()
@@ -287,27 +285,6 @@ extension CardCollectionViewController: UICollectionViewDataSource {
 // MARK: - CollectionView FlowLayout Delegate
 
 extension CardCollectionViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let collectionViewWidth = collectionView.bounds.width
-//        let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
-//        let horizontalSpacing = (flowLayout?.sectionInset.left ?? 0) + (flowLayout?.sectionInset.right ?? 0)
-//        let itemsInRow: CGFloat = UIDevice.isIpad ? 3:2
-//        let interitemSpacing = flowLayout?.minimumInteritemSpacing ?? 0
-//        let itemWidth = (collectionViewWidth - horizontalSpacing - interitemSpacing * (itemsInRow - 1)) / itemsInRow
-//        let itemHeight = CardPhotoInfoCollectionViewCell.calculateCellHeight(for: itemWidth)
-//        return .init(width: itemWidth, height: itemHeight)
-//    }
-
-//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
-//        cell?.setCellHighlighted(true)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
-//        cell?.setCellHighlighted(false)
-//    }
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let card = card(at: indexPath) else { return }
         delegate?.cardCollectionViewControllerCardDidSelect(card, in: self)

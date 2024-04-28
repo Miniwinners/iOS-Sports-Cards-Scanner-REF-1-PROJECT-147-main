@@ -56,7 +56,7 @@ private extension TitledTextFieldView {
 
         let stackView = UIStackView(arrangedSubviews: [titleLabel, textField])
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = UIDevice.isIpad ? 20:8
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
 

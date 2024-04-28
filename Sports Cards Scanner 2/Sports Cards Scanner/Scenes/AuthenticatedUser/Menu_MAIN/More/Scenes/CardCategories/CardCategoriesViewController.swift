@@ -13,7 +13,7 @@ final class CardCategoriesViewController: UIViewController {
         self.cardCategoriesManager = cardCategoriesManager
 
         super.init(nibName: nil, bundle: nil)
-        title = L10n.CardCategories.title
+        cardCategoriesView.titleLabel.text = L10n.CardCategories.title
     }
 
     required init?(coder: NSCoder) {

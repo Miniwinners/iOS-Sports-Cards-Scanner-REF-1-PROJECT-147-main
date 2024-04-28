@@ -4,7 +4,7 @@ import Kingfisher
 
 final class CardView: UIView {
 
-    static let viewHeight: CGFloat = UIDevice.isIpad ? 420 : 297
+    static let viewHeight: CGFloat = UIDevice.isIpad ? 440 : 297
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .black
@@ -86,15 +86,12 @@ final class CardView: UIView {
 
     func setCard(_ card: CardRepresentable) {
         titleLabel.text = card.title
-        titleLabel.setLineHeight(UIDevice.isIpad ? 26 : 22)
         subtitleLabel.text = card.subtitle
-        subtitleLabel.setLineHeight(UIDevice.isIpad ? 26 : 22)
         if let price = card.customPrice {
             pricesLabel.text = price.formattedAsPrice
         } else {
             pricesLabel.text = card.priceRange(of: card.selectedGrader)
         }
-        pricesLabel.setLineHeight(UIDevice.isIpad ? 26 : 22)
         pricesLabel.lineBreakMode = .byTruncatingMiddle
         pricesLabel.textAlignment = .left
 
@@ -146,17 +143,19 @@ private extension CardView {
             $0.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
+            $0.height.equalTo(UIDevice.isIpad ? 30:20)
             $0.leading.equalToSuperview()
             $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
         }
         subtitleLabel.snp.makeConstraints {
+            $0.height.equalTo(UIDevice.isIpad ? 30:20)
             $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
             $0.leading.equalToSuperview()
         }
         pricesLabel.snp.makeConstraints {
+            $0.height.equalTo(UIDevice.isIpad ? 30:20)
             $0.top.equalTo(subtitleLabel.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
             $0.leading.equalToSuperview()
-            $0.bottom.equalToSuperview()
         }
 
         missingImageView.snp.makeConstraints {

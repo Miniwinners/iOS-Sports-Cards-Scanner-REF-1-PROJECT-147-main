@@ -11,7 +11,7 @@ final class CardCategoryTableViewCell: UITableViewCell {
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .logInLabel
-        label.font = .font(.ubuntuMedium500, size: 16)
+        label.setSize(fontS: .ubuntuMedium500, phone: 16, iPad: 22)
         return label
     }(UILabel())
 
@@ -64,15 +64,17 @@ private extension CardCategoryTableViewCell {
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview().inset(3)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 90 : 20)
         }
 
         containerView.addSubview(reorderImageView)
         reorderImageView.snp.makeConstraints {
-            $0.size.equalTo(22)
+            $0.size.equalTo(UIDevice.isIpad ? 30:22 )
             $0.leading.equalToSuperview().inset(16)
-            topConstraint = $0.top.equalToSuperview().inset(17).constraint
-            bottomConstraint = $0.bottom.equalToSuperview().inset(17).priority(.high).constraint
+            $0.centerY.equalToSuperview()
+
+//            topConstraint = $0.top.equalToSuperview().inset(17).constraint
+//            bottomConstraint = $0.bottom.equalToSuperview().inset(17).priority(.high).constraint
         }
 
         containerView.addSubview(titleLabel)

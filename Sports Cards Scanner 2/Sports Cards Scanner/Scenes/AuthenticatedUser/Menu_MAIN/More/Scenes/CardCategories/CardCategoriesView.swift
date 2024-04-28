@@ -4,6 +4,7 @@ import SnapKit
 final class CardCategoriesView: UIView {
 
     lazy var backView: BackView = .init()
+    lazy var titleLabel: TitleLabel = .init()
     let containerView = UIView()
     let containerImage = UIView()
 
@@ -17,13 +18,13 @@ final class CardCategoriesView: UIView {
         label.setSize(fontS: .ubuntuLight300, phone: 16, iPad: 24)
         label.textColor = .logInLabel
         label.numberOfLines = 0
-        label.setLineHeight(UIDevice.isIpad ? 20 : 28)
+        label.setLineHeight(UIDevice.isIpad ? 24 : 28)
         label.textAlignment = .center
         return label
     }(UILabel())
 
     lazy var imageLabelStack: UIStackView = { stackView in
-        stackView.spacing = 10
+        stackView.spacing = UIDevice.isIpad ? 20:5
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .equalCentering
@@ -36,8 +37,8 @@ final class CardCategoriesView: UIView {
     }(UIImageView())
 
     lazy var tableView: UITableView = { tableView in
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 74
+        tableView.rowHeight = UIDevice.isIpad ? 80 : UITableView.automaticDimension
+        tableView.estimatedRowHeight = UIDevice.isIpad ? 85 : 74
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = false
         tableView.showsVerticalScrollIndicator = false
@@ -50,11 +51,11 @@ final class CardCategoriesView: UIView {
 
     lazy var minEnabledCategoriesLabel: UILabel = { label in
         label.text = L10n.CardCategories.minEnabledCategories
-        label.setSize(fontS: .ubuntuLight300, phone: 14, iPad: 18)
+        label.setSize(fontS: .ubuntuLight300, phone: 14, iPad: 20)
         label.textColor = .singINLabel
         label.numberOfLines = 0
-        label.setLineHeight(UIDevice.isIpad ? 15 : 20)
-        label.textAlignment = .left
+        label.setLineHeight(UIDevice.isIpad ? 22 : 20)
+        label.textAlignment = .center
         return label
     }(UILabel())
 
@@ -70,15 +71,15 @@ private extension CardCategoriesView {
         let checkSignView = UIView()
 
         containerView.backgroundColor = .skyBlue
-        containerView.cornerRadius = 16
+        containerView.cornerRadius = UIDevice.isIpad ? 24:16
 
         backView.setupView(in: self)
-
+        titleLabel.setupLabel(in: backView)
         backView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(UIDevice.isIpad ? 100 : 50)
-            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
-            make.height.greaterThanOrEqualTo(UIDevice.isIpad ? 240 : 120)
+            make.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 20)
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 90 : 20)
+            make.height.greaterThanOrEqualTo(UIDevice.isIpad ? 190 : 120)
         }
 
         containerView.addSubview(imageLabelStack)
@@ -92,34 +93,35 @@ private extension CardCategoriesView {
         containerImage.addSubview(descriptionImage)
 
         descriptionImage.snp.makeConstraints { make in
-            make.height.equalTo(UIDevice.isIpad ? 60 : 30)
-            make.width.equalTo(UIDevice.isIpad ? 88 : 44)
             make.center.equalToSuperview()
+            make.height.equalTo(UIDevice.isIpad ? 40 : 30)
+            make.width.equalTo(UIDevice.isIpad ? 58 : 44)
         }
 
         backView.addSubview(tableView)
         backView.addSubview(checkSignView)
         tableView.snp.makeConstraints {
-            $0.top.equalTo(checkSignView.snp.bottom).offset(UIDevice.isIpad ? 30 : 15)
+            $0.top.equalTo(checkSignView.snp.bottom).offset(UIDevice.isIpad ? 25:5)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
         checkSignView.snp.makeConstraints { make in
-            make.height.equalTo(UIDevice.isIpad ? 40 : 20)
-            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
-            make.top.equalTo(containerView.snp.bottom).offset(UIDevice.isIpad ? 30 : 15)
+            make.top.equalTo(containerView.snp.bottom).offset(UIDevice.isIpad ? 30:20)
+            make.height.equalTo(UIDevice.isIpad ? 36 : 20)
+            make.horizontalEdges.equalTo(tableView).inset(UIDevice.isIpad ? 140 : 80)
+            make.centerX.equalToSuperview()
+//            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
         }
 
-        checkSignView.addSubviews(checkSignImageView, minEnabledCategoriesLabel)
-        checkSignImageView.snp.makeConstraints { make in
-            make.size.equalTo(UIDevice.isIpad ? 40 : 20)
-            make.centerY.equalToSuperview()
-            make.left.equalToSuperview().inset(UIDevice.isIpad ? 30 : 15)
-        }
+        checkSignView.addSubviews(minEnabledCategoriesLabel, checkSignImageView)
 
         minEnabledCategoriesLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+
+        checkSignImageView.snp.makeConstraints { make in
+            make.size.equalTo(UIDevice.isIpad ? 34 : 20)
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview()
-            make.left.equalTo(checkSignImageView.snp.right).offset(UIDevice.isIpad ? 20 : 10)
+            make.left.equalToSuperview().inset(5)
         }
 
     }

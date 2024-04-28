@@ -131,6 +131,7 @@ private extension SwitchableCollectionViewCell {
         backgroundColor = .clear
         contentView.backgroundColor = .skyBlue
         layer.cornerRadius = UIDevice.isIpad ? 24:16
+
         containerView.layer.cornerRadius = UIDevice.isIpad ? 24:16
         contentView.layer.cornerRadius = UIDevice.isIpad ? 24:16
 
@@ -143,11 +144,11 @@ private extension SwitchableCollectionViewCell {
         }
 
         containerView.addSubview(switchView)
-        switchView.snp.makeConstraints {
+        switchView.snp.updateConstraints {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(UIDevice.isIpad ? 52:32)
             $0.width.equalTo(UIDevice.isIpad ? 81:48)
-            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 60:20)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
         }
 
         containerView.addSubview(titleLabel)
@@ -173,7 +174,7 @@ private extension SwitchableCollectionViewCell {
 
         backgroundView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 0 : 20).priority(.high)
+            $0.horizontalEdges.equalToSuperview().priority(.high)
         }
 
         return backgroundContainerView

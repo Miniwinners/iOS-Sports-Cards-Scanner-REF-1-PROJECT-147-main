@@ -88,7 +88,7 @@ extension MoreViewController: UITableViewDataSource {
             let selectableCell = tableView.dequeueReusableCell(withIdentifier: ProfileSelectableCell.className, for: indexPath) as? ProfileSelectableCell
             selectableCell?.setProfileItem(item)
             selectableCell?.titleLabel.textColor = item == .deleteAccount ? .destructiveColor : .tableViewTitleLabel
-            if indexPath.section == 5 { selectableCell?.titleLabel.font = .font(.ubuntuRegular400, size: 16) }
+            if indexPath.section == 5 { selectableCell?.titleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 20:16) }
             cell = selectableCell
         case .switchable:
             let switchableCell = tableView.dequeueReusableCell(withIdentifier: ProfileSwitchableCell.className, for: indexPath) as? ProfileSwitchableCell
@@ -107,7 +107,7 @@ extension MoreViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 5 {
-            if UIDevice.isIphone { return 100 } else { return 300 }} else { return 3 }
+            if UIDevice.isIphone { return 100 } else { return 250 }} else { return 3 }
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

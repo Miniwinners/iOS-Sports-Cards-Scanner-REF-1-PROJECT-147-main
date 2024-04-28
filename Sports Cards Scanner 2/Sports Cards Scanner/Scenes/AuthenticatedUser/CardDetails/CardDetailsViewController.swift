@@ -107,11 +107,11 @@ private extension CardDetailsViewController {
         backGroundView.backgroundColor = .white
         backGroundView.snp.makeConstraints { make in
             make.bottom.horizontalEdges.equalToSuperview()
-            make.top.equalToSuperview().inset(UIDevice.isIpad ? 42:22)
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 30:22)
         }
         backGroundView.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 42:32)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 30:22)
             $0.bottom.horizontalEdges.equalToSuperview()
         }
 

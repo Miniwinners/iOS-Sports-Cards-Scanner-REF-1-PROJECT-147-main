@@ -10,7 +10,7 @@ final class CardCategoryButton: UIButton {
     lazy var categoryLabel: UILabel = { label in
         label.text = cardCategory?.title ?? ""
         label.textColor = .black
-        label.font = .font(.ubuntuRegular400, size: 16)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         return label
     }(UILabel())
 
@@ -19,7 +19,7 @@ final class CardCategoryButton: UIButton {
     init() {
         super.init(frame: .zero)
         self.backgroundColor = .white
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = UIDevice.isIpad ? 24:10
         setupSubviews_unique()
     }
 
@@ -47,8 +47,8 @@ private extension CardCategoryButton {
 
         configuration = .plain()
         disclosureImageView.snp.makeConstraints {
-            $0.width.equalTo(16)
-            $0.height.equalTo(9)
+            $0.width.equalTo(UIDevice.isIpad ? 32:16)
+            $0.height.equalTo(UIDevice.isIpad ? 18:9)
         }
         leftSpacer.snp.makeConstraints { $0.width.equalTo(10) }
         rightSpacer.snp.makeConstraints { $0.width.equalTo(5) }

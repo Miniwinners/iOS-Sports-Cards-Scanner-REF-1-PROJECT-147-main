@@ -5,14 +5,7 @@ final class UpdatePasswordView: UIView {
 
     lazy var backView: BackView = .init()
 
-    lazy var titleLabel: UILabel = { label in
-        label.text = L10n.UpdatePassword.title
-        label.setLineHeight(UIDevice.isIpad ? 24 : 32)
-        label.setSize(fontS: .ubuntuBold700, phone: 22, iPad: 30)
-        label.textColor = .logInLabel
-        label.textAlignment = .center
-        return label
-    }(UILabel())
+    lazy var titleLabel: TitleLabel = .init()
 
     let lockContainer = UIView()
     let unlockContainer = UIView()
@@ -93,10 +86,7 @@ private extension UpdatePasswordView {
     func setupSubviews_unique() {
         backView.setupView(in: self)
         backView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(UIDevice.isIpad ? 130 : 65)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
-        }
+        titleLabel.setupLabel(in: backView)
         backView.addSubviews(contentView, saveButton)
 
         lockContainer.addSubview(lockImageView)
@@ -109,22 +99,22 @@ private extension UpdatePasswordView {
             $0.height.equalTo(UIDevice.isIpad ? 100 : 50)
         }
         contentView.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 20)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
         }
         lockImageView.snp.makeConstraints {
-            $0.size.equalTo(UIDevice.isIpad ? 80 : 40)
+            $0.size.equalTo(UIDevice.isIpad ? 50 : 40)
             $0.center.equalToSuperview()
         }
         unlockImageView.snp.makeConstraints {
-            $0.height.equalTo(UIDevice.isIpad ? 80 : 40)
-            $0.width.equalTo(UIDevice.isIpad ? 112 : 56)
+            $0.height.equalTo(UIDevice.isIpad ? 50 : 40)
+            $0.width.equalTo(UIDevice.isIpad ? 66 : 56)
             $0.center.equalToSuperview()
         }
         saveButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 40 : 20)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
-            $0.height.equalTo(UIDevice.isIpad ? 108 : 54)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 50 : 20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
+            $0.height.equalTo(UIDevice.isIpad ? 80 : 54)
         }
     }
 

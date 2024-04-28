@@ -13,6 +13,8 @@
 		416295CE2BCE97B400588C0E /* AddToPortfolioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416295CD2BCE97B400588C0E /* AddToPortfolioButton.swift */; };
 		4191D7562BD7CDDA00ABA874 /* UIDevice_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191D7552BD7CDDA00ABA874 /* UIDevice_Extension.swift */; };
 		41A8C1262BC6ABB900611139 /* DeleteCustomPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */; };
+		41B8E23C2BDD59B000A0D6CF /* CheckConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8E23B2BDD59B000A0D6CF /* CheckConnectionVC.swift */; };
+		41B8E23E2BDD59F400A0D6CF /* CheckConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8E23D2BDD59F400A0D6CF /* CheckConnectionView.swift */; };
 		41C055B72BC552EA00F2B98D /* SignInWithFaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */; };
 		41F8F62D2BC425BF00ED1FD7 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */; };
 		41F8F6312BC4290700ED1FD7 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F6302BC4281500ED1FD7 /* Ubuntu-Regular.ttf */; };
@@ -405,6 +407,8 @@
 		416295CD2BCE97B400588C0E /* AddToPortfolioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPortfolioButton.swift; sourceTree = "<group>"; };
 		4191D7552BD7CDDA00ABA874 /* UIDevice_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice_Extension.swift; sourceTree = "<group>"; };
 		41A8C1252BC6ABB900611139 /* DeleteCustomPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCustomPresent.swift; sourceTree = "<group>"; };
+		41B8E23B2BDD59B000A0D6CF /* CheckConnectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConnectionVC.swift; sourceTree = "<group>"; };
+		41B8E23D2BDD59F400A0D6CF /* CheckConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConnectionView.swift; sourceTree = "<group>"; };
 		41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithFaceBookHelper.swift; sourceTree = "<group>"; };
 		41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		41F8F62E2BC427C900ED1FD7 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
@@ -925,6 +929,39 @@
 			path = CommonViews;
 			sourceTree = "<group>";
 		};
+		41B8E23A2BDD591800A0D6CF /* CheckConnection */ = {
+			isa = PBXGroup;
+			children = (
+				41B8E23B2BDD59B000A0D6CF /* CheckConnectionVC.swift */,
+				41B8E23D2BDD59F400A0D6CF /* CheckConnectionView.swift */,
+			);
+			path = CheckConnection;
+			sourceTree = "<group>";
+		};
+		41CA77842BDD4C8500F28172 /* All Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				4660BFD02A79239200FB80AF /* SCSCoordinator.swift */,
+				4660BFF62A7B9B5D00FB80AF /* SCSAppCoordinator.swift */,
+				468E3E5A2A880AB50097C6EC /* CardCategoriesCoordinator.swift */,
+				468E3E752A8A73900097C6EC /* UpdatePasswordCoordinator.swift */,
+				467CCC0D2A91F65F000AFC8F /* ForgotPasswordCoordinator.swift */,
+				467CCC322A9386C3000AFC8F /* ScanCardCoordinator.swift */,
+				467CCC492A94E73E000AFC8F /* LogoutPromptCoordinator.swift */,
+				467CCC4B2A94EF2A000AFC8F /* DeleteAccountCoordinator.swift */,
+				467CCC532A973F90000AFC8F /* IdentifyingCardCoordinator.swift */,
+				467CCC662A978368000AFC8F /* SearchCardCoordinator.swift */,
+				4650DEB32A9E0DB700F6F13C /* GraderSelectionCoordinator.swift */,
+				4650DF152AA2302000F6F13C /* CardDetailsCoordinator.swift */,
+				464F34C82AA32F7A00025431 /* RecentlyAddedListCoordinator.swift */,
+				464F34CF2AA3E1DD00025431 /* HighestValueListCoordinator.swift */,
+				464F34DA2AA3F70400025431 /* CurrentValueDetailsCoordinator.swift */,
+				461CBD392AAA79CC0025FF41 /* CategoryCardsCoordinator.swift */,
+				468A5CE22AB8B84300D29443 /* RemoveCardPromptCoordinator.swift */,
+			);
+			path = "All Coordinators";
+			sourceTree = "<group>";
+		};
 		4619AE4E2A77965700753891 = {
 			isa = PBXGroup;
 			children = (
@@ -986,6 +1023,7 @@
 		4619AE902A7902C300753891 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				41B8E23A2BDD591800A0D6CF /* CheckConnection */,
 				464D26B02A85220100C7F4D4 /* AuthenticatedUser */,
 				4660BFD22A79254100FB80AF /* SignIn */,
 				4660BFEB2A7A747300FB80AF /* SignUp */,
@@ -1505,25 +1543,9 @@
 		4660BFF52A7B9B4E00FB80AF /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				41CA77842BDD4C8500F28172 /* All Coordinators */,
 				468C83182AAFBFBD003DC91A /* CardDeck */,
 				468C83172AAFBF9E003DC91A /* CardCollection */,
-				4660BFD02A79239200FB80AF /* SCSCoordinator.swift */,
-				4660BFF62A7B9B5D00FB80AF /* SCSAppCoordinator.swift */,
-				468E3E5A2A880AB50097C6EC /* CardCategoriesCoordinator.swift */,
-				468E3E752A8A73900097C6EC /* UpdatePasswordCoordinator.swift */,
-				467CCC0D2A91F65F000AFC8F /* ForgotPasswordCoordinator.swift */,
-				467CCC322A9386C3000AFC8F /* ScanCardCoordinator.swift */,
-				467CCC492A94E73E000AFC8F /* LogoutPromptCoordinator.swift */,
-				467CCC4B2A94EF2A000AFC8F /* DeleteAccountCoordinator.swift */,
-				467CCC532A973F90000AFC8F /* IdentifyingCardCoordinator.swift */,
-				467CCC662A978368000AFC8F /* SearchCardCoordinator.swift */,
-				4650DEB32A9E0DB700F6F13C /* GraderSelectionCoordinator.swift */,
-				4650DF152AA2302000F6F13C /* CardDetailsCoordinator.swift */,
-				464F34C82AA32F7A00025431 /* RecentlyAddedListCoordinator.swift */,
-				464F34CF2AA3E1DD00025431 /* HighestValueListCoordinator.swift */,
-				464F34DA2AA3F70400025431 /* CurrentValueDetailsCoordinator.swift */,
-				461CBD392AAA79CC0025FF41 /* CategoryCardsCoordinator.swift */,
-				468A5CE22AB8B84300D29443 /* RemoveCardPromptCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -2490,6 +2512,7 @@
 				464F34C72AA32BD500025431 /* RecentlyAddedListViewControllerDelegate.swift in Sources */,
 				46D107B92A791FCD006C19D4 /* LocalizableStrings.swift in Sources */,
 				4650DE9A2A9BAA6900F6F13C /* CardDetailsView.swift in Sources */,
+				41B8E23E2BDD59F400A0D6CF /* CheckConnectionView.swift in Sources */,
 				4660C00C2A7CF74900FB80AF /* TitledTextFieldView.swift in Sources */,
 				46DC51AB2ABC8BE3000BE122 /* AppTrackingService.swift in Sources */,
 				467CCC292A924D98000AFC8F /* ScanCardViewController.swift in Sources */,
@@ -2565,6 +2588,7 @@
 				467CCC152A921E6F000AFC8F /* CommonButton.Style.swift in Sources */,
 				464D26B72A85227600C7F4D4 /* PortfolioViewController.swift in Sources */,
 				464F34D72AA3F25500025431 /* CurrentValueDetailsView.swift in Sources */,
+				41B8E23C2BDD59B000A0D6CF /* CheckConnectionVC.swift in Sources */,
 				467CCC2F2A938515000AFC8F /* PortfolioViewControllerDelegate.swift in Sources */,
 				4645D3B02AAE309C008AD896 /* CollectionMenuViewController.swift in Sources */,
 				467CCC4A2A94E73E000AFC8F /* LogoutPromptCoordinator.swift in Sources */,

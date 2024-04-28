@@ -90,9 +90,7 @@ final class OptionsView: UIView {
     func open() {
         guard !isOpened else { return }
         isOpened = true
-
         selfHeightConstraint.update(offset: maxHeight)
-
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveLinear) {
             if self.showsShadow {
                 self.layer.shadowOpacity = 1
@@ -241,12 +239,14 @@ extension OptionsView: UITableViewDataSource {
         return cell ?? UITableViewCell()
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            // Последняя ячейка в секции
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         } else {
-            // Для всех других ячеек можно восстановить стандартные инсеты, если они были изменены
             cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         }
     }

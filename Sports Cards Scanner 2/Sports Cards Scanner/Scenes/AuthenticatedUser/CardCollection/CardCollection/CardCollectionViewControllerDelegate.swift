@@ -1,5 +1,5 @@
 import Foundation
-
+import UIKit
 protocol CardCollectionViewControllerDelegate: AnyObject {
     func cardCollectionViewControllerCloseTapped(_ viewController: CardCollectionViewController)
     func cardCollectionViewControllerAddCardsTapped(_ viewController: CardCollectionViewController)
@@ -75,7 +75,13 @@ extension CardCollectionViewControllerDelegate where Self: SCSCoordinator {
     }
 
     private func presentDeleteCollectionConfirmation(in viewController: CardCollectionViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.45, widthRatio: 0.5)
+        let ipadWidth: CGFloat = viewController.view.frame.width - 240
+        let iPhoneWidth: CGFloat = viewController.view.frame.width - 60
+        let iPadHeight: CGFloat = 380
+        let iPhoneHeight: CGFloat = 300
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center,
+                                              heightRatio: UIDevice.isIpad ? iPadHeight:iPhoneHeight,
+                                              widthRatio: UIDevice.isIpad ? ipadWidth: iPhoneWidth)
         let coordinator = DeleteCollectionPromptCoordinator(router: router)
         coordinator.delegate = self as? DeleteCollectionPromptCoordinatorDelegate
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)

@@ -17,7 +17,7 @@ final class DeleteAccountPresentStyle: UIPresentationController {
         guard let containerView = containerView else { return .zero }
 
         // Рассчитываем размер на основе процентного соотношения
-        let size = CGSize(width: containerView.bounds.width * widthRatio, height: containerView.bounds.height * heightRatio)
+        let size = CGSize(width: widthRatio, height: heightRatio)
         let origin = CGPoint(x: (containerView.bounds.width - size.width) / 2,
                              y: (containerView.bounds.height - size.height) / 2)
 

@@ -101,12 +101,12 @@ private extension SearchCardView {
 private extension SearchCardView {
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .estimated(162),
-            heightDimension: .absolute(297)
+            widthDimension: .estimated(UIDevice.isIpad ? 253:162),
+            heightDimension: .absolute(UIDevice.isIpad ? 464:297)
         )
 
         let item = NSCollectionLayoutItem(layoutSize: size)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(297))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:297))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 

@@ -56,7 +56,7 @@ final class UpdatePasswordVC: UIViewController {
     init(authService: AuthService) {
         self.authService = authService
         super.init(nibName: nil, bundle: nil)
-        title = L10n.UpdatePassword.title
+        updatePasswordView.titleLabel.text = L10n.UpdatePassword.title
     }
 
     required init?(coder: NSCoder) {
