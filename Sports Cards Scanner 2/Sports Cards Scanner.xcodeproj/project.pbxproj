@@ -16,6 +16,11 @@
 		41B8E23C2BDD59B000A0D6CF /* CheckConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8E23B2BDD59B000A0D6CF /* CheckConnectionVC.swift */; };
 		41B8E23E2BDD59F400A0D6CF /* CheckConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8E23D2BDD59F400A0D6CF /* CheckConnectionView.swift */; };
 		41C055B72BC552EA00F2B98D /* SignInWithFaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */; };
+		41D1815D2BDE75F100C3F9E7 /* Adjust in Frameworks */ = {isa = PBXBuildFile; productRef = 41D1815C2BDE75F100C3F9E7 /* Adjust */; };
+		41D1815F2BDE763F00C3F9E7 /* Adjust+PushWhoosh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D1815E2BDE763F00C3F9E7 /* Adjust+PushWhoosh.swift */; };
+		41D181622BDE769500C3F9E7 /* Pushwoosh in Frameworks */ = {isa = PBXBuildFile; productRef = 41D181612BDE769500C3F9E7 /* Pushwoosh */; };
+		41D1816A2BDE780E00C3F9E7 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D181692BDE780E00C3F9E7 /* NotificationService.swift */; };
+		41D1816E2BDE780F00C3F9E7 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 41D181672BDE780E00C3F9E7 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		41F8F62D2BC425BF00ED1FD7 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */; };
 		41F8F6312BC4290700ED1FD7 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F6302BC4281500ED1FD7 /* Ubuntu-Regular.ttf */; };
 		41F8F6322BC4290700ED1FD7 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F8F62F2BC4280A00ED1FD7 /* Ubuntu-Medium.ttf */; };
@@ -384,6 +389,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		41D1816C2BDE780F00C3F9E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4619AE4F2A77965700753891 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41D181662BDE780E00C3F9E7;
+			remoteInfo = NotificationService;
+		};
 		4619AE6E2A77965A00753891 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4619AE4F2A77965700753891 /* Project object */;
@@ -400,6 +412,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		41D181722BDE780F00C3F9E7 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				41D1816E2BDE780F00C3F9E7 /* NotificationService.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		410002362BD6AFA100CA643C /* CurrentValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueTableViewCell.swift; sourceTree = "<group>"; };
 		4110F1152BD7FAF800E288EF /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -410,6 +436,11 @@
 		41B8E23B2BDD59B000A0D6CF /* CheckConnectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConnectionVC.swift; sourceTree = "<group>"; };
 		41B8E23D2BDD59F400A0D6CF /* CheckConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConnectionView.swift; sourceTree = "<group>"; };
 		41C055B62BC552EA00F2B98D /* SignInWithFaceBookHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithFaceBookHelper.swift; sourceTree = "<group>"; };
+		41D1815E2BDE763F00C3F9E7 /* Adjust+PushWhoosh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+PushWhoosh.swift"; sourceTree = "<group>"; };
+		41D181672BDE780E00C3F9E7 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		41D181692BDE780E00C3F9E7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		41D1816B2BDE780E00C3F9E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41D181732BDE784A00C3F9E7 /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
 		41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		41F8F62E2BC427C900ED1FD7 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		41F8F62F2BC4280A00ED1FD7 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
@@ -774,16 +805,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		41D181642BDE780E00C3F9E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4619AE542A77965700753891 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41D1815D2BDE75F100C3F9E7 /* Adjust in Frameworks */,
 				4660BFEA2A7A663700FB80AF /* FirebaseAnalyticsSwift in Frameworks */,
 				4660BFE52A7A631900FB80AF /* FirebaseAnalytics in Frameworks */,
 				464D269C2A83844F00C7F4D4 /* GoogleSignInSwift in Frameworks */,
 				4660BFE72A7A631900FB80AF /* FirebaseAuth in Frameworks */,
 				4650DE922A9B576F00F6F13C /* Kingfisher in Frameworks */,
 				4619AE952A79032400753891 /* SnapKit in Frameworks */,
+				41D181622BDE769500C3F9E7 /* Pushwoosh in Frameworks */,
 				467CCC6E2A97E51E000AFC8F /* FirebaseFirestore in Frameworks */,
 				46A01D9D2A7FA153006AFB5E /* KeychainAccess in Frameworks */,
 				4650DF012AA1DC6700F6F13C /* FirebaseStorage in Frameworks */,
@@ -962,12 +1002,23 @@
 			path = "All Coordinators";
 			sourceTree = "<group>";
 		};
+		41D181682BDE780E00C3F9E7 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				41D181732BDE784A00C3F9E7 /* NotificationService.entitlements */,
+				41D181692BDE780E00C3F9E7 /* NotificationService.swift */,
+				41D1816B2BDE780E00C3F9E7 /* Info.plist */,
+			);
+			path = NotificationService;
+			sourceTree = "<group>";
+		};
 		4619AE4E2A77965700753891 = {
 			isa = PBXGroup;
 			children = (
 				4619AE592A77965700753891 /* Sports Cards Scanner */,
 				4619AE702A77965A00753891 /* Sports Cards ScannerTests */,
 				4619AE7A2A77965A00753891 /* Sports Cards ScannerUITests */,
+				41D181682BDE780E00C3F9E7 /* NotificationService */,
 				4619AE582A77965700753891 /* Products */,
 				4660BFE82A7A663700FB80AF /* Frameworks */,
 			);
@@ -979,6 +1030,7 @@
 				4619AE572A77965700753891 /* Sports Cards Scanner.app */,
 				4619AE6D2A77965A00753891 /* Sports Cards ScannerTests.xctest */,
 				4619AE772A77965A00753891 /* Sports Cards ScannerUITests.xctest */,
+				41D181672BDE780E00C3F9E7 /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2218,6 +2270,7 @@
 				46DC51AA2ABC8BE3000BE122 /* AppTrackingService.swift */,
 				46DC51AC2ABC8C4F000BE122 /* PushNotificationService.swift */,
 				4643F2052ACC227700B05FE5 /* DetectCardService.swift */,
+				41D1815E2BDE763F00C3F9E7 /* Adjust+PushWhoosh.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2269,6 +2322,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		41D181662BDE780E00C3F9E7 /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41D1816F2BDE780F00C3F9E7 /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				41D181632BDE780E00C3F9E7 /* Sources */,
+				41D181642BDE780E00C3F9E7 /* Frameworks */,
+				41D181652BDE780E00C3F9E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = 41D181672BDE780E00C3F9E7 /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4619AE562A77965700753891 /* Sports Cards Scanner */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4619AE812A77965A00753891 /* Build configuration list for PBXNativeTarget "Sports Cards Scanner" */;
@@ -2278,10 +2348,12 @@
 				4619AE552A77965700753891 /* Resources */,
 				4619AE992A790FC900753891 /* SwiftLint */,
 				46D1079B2A7915CE006C19D4 /* SwiftGen */,
+				41D181722BDE780F00C3F9E7 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				41D1816D2BDE780F00C3F9E7 /* PBXTargetDependency */,
 			);
 			name = "Sports Cards Scanner";
 			packageProductDependencies = (
@@ -2297,6 +2369,8 @@
 				4650DE912A9B576F00F6F13C /* Kingfisher */,
 				4650DF002AA1DC6700F6F13C /* FirebaseStorage */,
 				468C834B2AB1F7BE003DC91A /* MTGSDKSwift */,
+				41D1815C2BDE75F100C3F9E7 /* Adjust */,
+				41D181612BDE769500C3F9E7 /* Pushwoosh */,
 			);
 			productName = "Sports Cards Scanner";
 			productReference = 4619AE572A77965700753891 /* Sports Cards Scanner.app */;
@@ -2348,6 +2422,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					41D181662BDE780E00C3F9E7 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					4619AE562A77965700753891 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -2378,6 +2455,8 @@
 				464D26982A83844F00C7F4D4 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				4650DE902A9B576F00F6F13C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				468C834A2AB1F7BE003DC91A /* XCRemoteSwiftPackageReference "mtg-sdk-swift" */,
+				41D1815B2BDE75F100C3F9E7 /* XCRemoteSwiftPackageReference "ios_sdk" */,
+				41D181602BDE769500C3F9E7 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */,
 			);
 			productRefGroup = 4619AE582A77965700753891 /* Products */;
 			projectDirPath = "";
@@ -2386,11 +2465,19 @@
 				4619AE562A77965700753891 /* Sports Cards Scanner */,
 				4619AE6C2A77965A00753891 /* Sports Cards ScannerTests */,
 				4619AE762A77965A00753891 /* Sports Cards ScannerUITests */,
+				41D181662BDE780E00C3F9E7 /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		41D181652BDE780E00C3F9E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4619AE552A77965700753891 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2470,6 +2557,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		41D181632BDE780E00C3F9E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41D1816A2BDE780E00C3F9E7 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4619AE532A77965700753891 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2650,6 +2745,7 @@
 				46B387BF2A878FDF00F35D96 /* CardCategoryTableViewCell.swift in Sources */,
 				4650DE982A9BAA0600F6F13C /* CardDetailsViewController.swift in Sources */,
 				46A6FF522AC4C90B0010141E /* GradeType.swift in Sources */,
+				41D1815F2BDE763F00C3F9E7 /* Adjust+PushWhoosh.swift in Sources */,
 				4679D8952AADE7A200656AC1 /* CardsRepresentSegmentedControl.swift in Sources */,
 				467CCC172A923F41000AFC8F /* ResetPasswordViewController.swift in Sources */,
 				4650DE7C2A9A721C00F6F13C /* SearchedCard.swift in Sources */,
@@ -2840,6 +2936,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		41D1816D2BDE780F00C3F9E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41D181662BDE780E00C3F9E7 /* NotificationService */;
+			targetProxy = 41D1816C2BDE780F00C3F9E7 /* PBXContainerItemProxy */;
+		};
 		4619AE6F2A77965A00753891 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4619AE562A77965700753891 /* Sports Cards Scanner */;
@@ -2872,6 +2973,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		41D181702BDE780F00C3F9E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9D33WP8366;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kuzminov.a-techspaceapp.com.NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		41D181712BDE780F00C3F9E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9D33WP8366;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kuzminov.a-techspaceapp.com.NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4619AE7F2A77965A00753891 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2991,6 +3146,7 @@
 		4619AE822A77965A00753891 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sports Cards Scanner/Sports Cards Scanner.entitlements";
@@ -3027,6 +3183,7 @@
 		4619AE832A77965A00753891 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sports Cards Scanner/Sports Cards Scanner.entitlements";
@@ -3139,6 +3296,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		41D1816F2BDE780F00C3F9E7 /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41D181702BDE780F00C3F9E7 /* Debug */,
+				41D181712BDE780F00C3F9E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4619AE522A77965700753891 /* Build configuration list for PBXProject "Sports Cards Scanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3178,6 +3344,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		41D1815B2BDE75F100C3F9E7 /* XCRemoteSwiftPackageReference "ios_sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adjust/ios_sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		41D181602BDE769500C3F9E7 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Pushwoosh/Pushwoosh-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		4619AE932A79032400753891 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -3237,6 +3419,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		41D1815C2BDE75F100C3F9E7 /* Adjust */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41D1815B2BDE75F100C3F9E7 /* XCRemoteSwiftPackageReference "ios_sdk" */;
+			productName = Adjust;
+		};
+		41D181612BDE769500C3F9E7 /* Pushwoosh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41D181602BDE769500C3F9E7 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */;
+			productName = Pushwoosh;
+		};
 		4619AE942A79032400753891 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4619AE932A79032400753891 /* XCRemoteSwiftPackageReference "SnapKit" */;

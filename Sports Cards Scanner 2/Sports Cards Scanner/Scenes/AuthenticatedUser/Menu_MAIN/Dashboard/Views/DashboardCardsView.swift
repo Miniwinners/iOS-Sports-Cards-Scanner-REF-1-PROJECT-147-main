@@ -17,9 +17,7 @@ final class DashboardCardsView: UIView {
         self.init(frame: .zero)
         backgroundColor = .white
         setupSubviews_unique()
-//        currentValueView.backgroundColor = .red
-//        highestValueView.backgroundColor = .yellow
-//        recentlyAddedView.backgroundColor = .blue
+
     }
 
 }

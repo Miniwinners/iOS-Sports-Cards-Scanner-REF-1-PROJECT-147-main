@@ -29,6 +29,7 @@ class CommonTextField: UITextField {
                 attributes: [
                     .foregroundColor: UIColor.singINLabel,
                     .font: UIFont.font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
+
                 ]
             )
         }

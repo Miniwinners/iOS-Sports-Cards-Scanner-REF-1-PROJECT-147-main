@@ -28,12 +28,12 @@ private extension MenuView {
         menuCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 130 : 0)
+            $0.bottom.equalToSuperview().inset(110)
         }
         cancelButton.snp.makeConstraints {
-            $0.top.equalTo(menuCollectionView.snp.bottom).offset(10)
+            $0.top.equalTo(menuCollectionView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20).priority(.high)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 20:10).priority(.high)
             $0.height.equalTo(UIDevice.isIpad ? 96:56)
         }
     }
@@ -42,7 +42,7 @@ private extension MenuView {
 private extension MenuView {
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .absolute(UIDevice.isIpad ? 243:145),
+            widthDimension: .estimated(UIDevice.isIpad ? 243:145),
             heightDimension: .absolute(UIDevice.isIpad ? 212:124)
         )
 

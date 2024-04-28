@@ -22,6 +22,10 @@ final class OptionsView: UIView {
     lazy var containerView: UIView = { view in
         view.backgroundColor = .clear
         view.cornerRadius = UIDevice.isIpad ?20:12
+        view.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+        view.layer.shadowOpacity = 1
+        view.layer.shadowRadius = 4
+        view.layer.shadowOffset = .init(width: 0, height: 4)
         return view
     }(UIView())
 
@@ -138,10 +142,11 @@ private extension OptionsView {
 
     func setupSubviews_unique() {
         cornerRadius = 12
-        layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.25)
-        layer.shadowOpacity = 0
-        layer.shadowRadius = 1
-        layer.shadowOffset = .init(width: 0, height: 4)
+//        layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+//        layer.shadowOpacity = 1
+//        layer.shadowRadius = 4
+//        layer.shadowOffset = .init(width: 0, height: 4)
+
         snp.makeConstraints {
             selfHeightConstraint = $0.height.equalTo(0).offset(minHeight).constraint
         }
@@ -240,7 +245,7 @@ extension OptionsView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return UIDevice.isIpad ? 80:50
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

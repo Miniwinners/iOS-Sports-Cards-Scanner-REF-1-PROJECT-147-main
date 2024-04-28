@@ -36,17 +36,6 @@ final class GraderSelectionViewController: UIViewController {
 
     }
 
-//    override var preferredContentSize: CGSize {
-//        get {
-//            let height: CGFloat = (graderSelectionView.gradersTableView.estimatedRowHeight * CGFloat(graders.count)) + 122
-//            view.layoutIfNeeded()
-//            return .init(width: view.frame.width, height: height)
-//        }
-//        set {
-//            super.preferredContentSize = newValue
-//        }
-//    }
-
 }
 
 private extension GraderSelectionViewController {

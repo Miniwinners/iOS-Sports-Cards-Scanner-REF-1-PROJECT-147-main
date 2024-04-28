@@ -18,7 +18,7 @@ final class CardCategoriesView: UIView {
         label.setSize(fontS: .ubuntuLight300, phone: 16, iPad: 24)
         label.textColor = .logInLabel
         label.numberOfLines = 0
-        label.setLineHeight(UIDevice.isIpad ? 24 : 28)
+        label.setLineHeight(UIDevice.isIpad ? 30 : 20)
         label.textAlignment = .center
         return label
     }(UILabel())
@@ -37,7 +37,7 @@ final class CardCategoriesView: UIView {
     }(UIImageView())
 
     lazy var tableView: UITableView = { tableView in
-        tableView.rowHeight = UIDevice.isIpad ? 80 : UITableView.automaticDimension
+        tableView.rowHeight = UIDevice.isIpad ? 80 : 68
         tableView.estimatedRowHeight = UIDevice.isIpad ? 85 : 74
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = false
@@ -54,7 +54,7 @@ final class CardCategoriesView: UIView {
         label.setSize(fontS: .ubuntuLight300, phone: 14, iPad: 20)
         label.textColor = .singINLabel
         label.numberOfLines = 0
-        label.setLineHeight(UIDevice.isIpad ? 22 : 20)
+        label.setLineHeight(UIDevice.isIpad ? 22 : 16)
         label.textAlignment = .center
         return label
     }(UILabel())
@@ -106,8 +106,8 @@ private extension CardCategoriesView {
         }
         checkSignView.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.bottom).offset(UIDevice.isIpad ? 30:20)
-            make.height.equalTo(UIDevice.isIpad ? 36 : 20)
-            make.horizontalEdges.equalTo(tableView).inset(UIDevice.isIpad ? 140 : 80)
+            make.height.equalTo(UIDevice.isIpad ? 46 : 36)
+            make.horizontalEdges.equalTo(tableView).inset(UIDevice.isIpad ? 140 : 40)
             make.centerX.equalToSuperview()
 //            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
         }
@@ -116,6 +116,7 @@ private extension CardCategoriesView {
 
         minEnabledCategoriesLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
+            make.left.equalTo(checkSignImageView.snp.right).offset(5)
         }
 
         checkSignImageView.snp.makeConstraints { make in

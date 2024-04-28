@@ -19,12 +19,15 @@ extension CardCollectionViewControllerDelegate where Self: SCSCoordinator {
     }
 
     func cardCollectionViewControllerMenuTapped(for collection: CardCollection, in viewController: CardCollectionViewController) {
-        let height: CGFloat = 212 * 3 + 20 * 7 + 96
-        let width: CGFloat = 244 * 2 + 20 * 2 + 10
+        let iPhoneHeight: CGFloat = 124 * 3 + 20 * 7 + 28
+        let iPhoneWidth: CGFloat = 145 * 2 + 20 * 2 + 10
+        let iPadHeight: CGFloat = 212 * 3 + 20 * 7 + 96
+        let iPadWidth: CGFloat = 244 * 2 + 20 * 2 + 10
+
         let router = DeleteAccountSheetRouter(parentViewController: viewController,
                                               presentStyle: .centerRect,
-                                              heightRatio: height,
-                                              widthRatio: width)
+                                              heightRatio: UIDevice.isIpad ? iPadHeight:iPhoneHeight,
+                                              widthRatio: UIDevice.isIpad ? iPadWidth:iPhoneWidth)
         let menuItems = collection.cardIDs.isEmpty ? CollectionMenuItem.noCardsItems : CollectionMenuItem.allCases
         let coordinator = CollectionMenuCoordinator(router: router, menuItems: menuItems)
         coordinator.didSelectItem = { [weak self] item in

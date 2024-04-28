@@ -3,8 +3,8 @@ import SnapKit
 
 final class BaseTextView: UITextView {
     private lazy var placeholderLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 16)
-        label.textColor = .secondaryColor
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
+        label.textColor = .singINLabel
         return label
     }(UILabel())
 
@@ -34,7 +34,7 @@ final class BaseTextView: UITextView {
 
 private extension BaseTextView {
     func setupViews_unique() {
-        let font: UIFont = .font(.interRegular, size: 16)
+        let font: UIFont = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
 
         self.font = font
 
@@ -59,7 +59,8 @@ private extension BaseTextView {
         self.showsVerticalScrollIndicator = false
         self.textAlignment = .left
 
-        self.backgroundColor = .white
+        self.backgroundColor = .skyBlue
+        self.tintColor = .black
         self.cornerRadius = 12
 
         addSubview(placeholderLabel)

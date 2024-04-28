@@ -4,7 +4,7 @@ import UIKit
 class CheckConnectionVC: UIViewController {
 
     lazy var connectionView: CheckConnectionView = .init()
-    
+
     var timer: Timer!
     var progress = 0
     var callBack: (() -> Void)?
@@ -48,6 +48,7 @@ class CheckConnectionVC: UIViewController {
 
     func checkConnection() -> Bool {
         return NetworkMonitoringService.shared.isNetworkAvailable
+//        return false
     }
 
 }

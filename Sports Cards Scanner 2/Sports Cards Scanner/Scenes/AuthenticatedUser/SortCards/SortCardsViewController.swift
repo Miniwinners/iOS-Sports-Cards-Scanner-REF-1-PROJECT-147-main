@@ -22,8 +22,9 @@ final class SortCardsViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         tableView.cornerRadius = 12
-        tableView.isScrollEnabled = false
-        tableView.estimatedRowHeight = 58
+        tableView.isScrollEnabled = true
+        tableView.estimatedRowHeight = UIDevice.isIpad ? 80:50
+
         tableView.separatorStyle = .none
         tableView.sectionHeaderTopPadding = 0
         return tableView
@@ -173,7 +174,7 @@ extension SortCardsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return UIDevice.isIpad ? 80:50
     }
 }
 

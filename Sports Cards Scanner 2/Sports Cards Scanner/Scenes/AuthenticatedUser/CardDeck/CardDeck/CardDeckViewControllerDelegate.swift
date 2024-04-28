@@ -1,5 +1,5 @@
 import Foundation
-
+import UIKit
 protocol CardDeckViewControllerDelegate: AnyObject {
     func cardDeckViewControllerCloseTapped(_ viewController: CardDeckViewController)
     func cardDeckViewControllerAddCardsTapped(_ viewController: CardDeckViewController)
@@ -25,9 +25,13 @@ extension CardDeckViewControllerDelegate where Self: SCSCoordinator {
     }
 
     func cardDeckViewControllerMenuTapped(for deck: CardDeck, in viewController: CardDeckViewController) {
-        let height: CGFloat = 212 * 3 + 20 * 7 + 96
-        let width: CGFloat = 244 * 2 + 20 * 2 + 10
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: height, widthRatio: width)
+        let iPhoneHeight: CGFloat = 124 * 3 + 20 * 7 + 28
+        let iPhoneWidth: CGFloat = 145 * 2 + 20 * 2 + 10
+        let iPadHeight: CGFloat = 212 * 3 + 20 * 7 + 96
+        let iPadWidth: CGFloat = 244 * 2 + 20 * 2 + 10
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect,
+                                              heightRatio: UIDevice.isIpad ? iPadHeight:iPhoneHeight,
+                                              widthRatio: UIDevice.isIpad ? iPadWidth:iPhoneWidth)
         let menuItems = deck.cardIDs.isEmpty ? DeckMenuItem.noCardsItems : DeckMenuItem.allCases
         let coordinator = DeckMenuCoordinator(router: router, menuItems: menuItems)
         coordinator.didSelectItem = { [weak self] item in
@@ -77,7 +81,13 @@ extension CardDeckViewControllerDelegate where Self: SCSCoordinator {
     }
 
     private func presentDeleteDeckConfirmation(in viewController: CardDeckViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.45, widthRatio: 0.5)
+        let ipadWidth: CGFloat = viewController.view.frame.width - 240
+        let iPhoneWidth: CGFloat = viewController.view.frame.width - 60
+        let iPadHeight: CGFloat = 380
+        let iPhoneHeight: CGFloat = 300
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center,
+                                              heightRatio: UIDevice.isIpad ? iPadHeight:iPhoneHeight,
+                                              widthRatio: UIDevice.isIpad ? ipadWidth: iPhoneWidth)
         let coordinator = DeleteDeckPromptCoordinator(router: router)
         coordinator.delegate = self as? DeleteDeckPromptCoordinatorDelegate
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)

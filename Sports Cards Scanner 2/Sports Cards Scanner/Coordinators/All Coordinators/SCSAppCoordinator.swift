@@ -24,11 +24,11 @@ extension SCSAppCoordinator: SCSCoordinator {
             ProfileManager.shared.setUserID(user?.uid)
             self?.children.removeAll()
 
-                if user == nil {
-                    self?.presentSignIn()
-                } else {
-                    self?.presentAuthenticated()
-                }
+            if user == nil {
+                self?.presentSignIn()
+            } else {
+                self?.presentAuthenticated()
+            }
         }
     }
 
@@ -213,12 +213,24 @@ private extension SCSAppCoordinator {
     }
 
     func presentSignIn() {
+        let connectionVC = CheckConnectionVC()
+        connectionVC.modalPresentationStyle = .fullScreen
+
         let signInViewController = SCSSignInVC(authService: authService)
         signInViewController.delegate = self
-        router.present_unique(signInViewController, animated: true)
+
+        router.present_unique(connectionVC, animated: true)
+        connectionVC.callBack = { [weak self] in
+            UIView.animate(withDuration: 0.5) {
+                self?.router.present_unique(signInViewController, animated: true)
+            }
+        }
     }
 
     func presentAuthenticated() {
+        let loadingScreen = CheckConnectionVC()
+        loadingScreen.modalPresentationStyle = .fullScreen
+
         let dashboardViewController = DashboardViewController()
         dashboardViewController.delegate = self
 
@@ -234,7 +246,13 @@ private extension SCSAppCoordinator {
         tabBarController.setupCustomTabBarView()
         authenticatedUserController = tabBarController
 
-        router.present_unique(tabBarController, animated: true)
+        router.present_unique(loadingScreen, animated: false)
+        loadingScreen.callBack = { [weak self] in
+            UIView.animate(withDuration: 0.5) {
+                self?.router.present_unique(tabBarController, animated: true)
+            }
+        }
+
     }
 
     func presentSignUp() {
@@ -267,13 +285,13 @@ private extension SCSAppCoordinator {
     }
 
     func presentLogoutPrompt(from viewController: UIViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 360, widthRatio: 580)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: UIDevice.isIphone ? 260:360, widthRatio: UIDevice.isIphone ? 335:580)
         let coordinator = LogoutPromptCoordinator(router: router, authService: authService)
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }
 
     func presentDeleteAccountPrompt(from viewController: UIViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 380, widthRatio: 580)
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: UIDevice.isIphone ? 280:380, widthRatio: UIDevice.isIphone ? 335:580)
         let coordinator = DeleteAccountPromptCoordinator(router: router, authService: authService)
         coordinator.onDeletingFailed = { [weak self] error in
             guard error.asAuthError.code == .requiresRecentLogin else { return }
@@ -292,11 +310,11 @@ private extension SCSAppCoordinator {
     // MARK: - Helpers
 
     func setupMainTabBar(_ tabBar: UITabBar) {
-            tabBar.applyDefaultAppearance()
-            zip(tabBar.items ?? [], TabBarItem.allCases).forEach {
-                $0.image = $1.image
-                $0.selectedImage = $1.selectedImage
-                $0.imageInsets = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
-            }
+        tabBar.applyDefaultAppearance()
+        zip(tabBar.items ?? [], TabBarItem.allCases).forEach {
+            $0.image = $1.image
+            $0.selectedImage = $1.selectedImage
+            $0.imageInsets = UIEdgeInsets(top: UIDevice.isIpad ? -30: -5, left: 0, bottom: 0, right: 0)
         }
+    }
 }

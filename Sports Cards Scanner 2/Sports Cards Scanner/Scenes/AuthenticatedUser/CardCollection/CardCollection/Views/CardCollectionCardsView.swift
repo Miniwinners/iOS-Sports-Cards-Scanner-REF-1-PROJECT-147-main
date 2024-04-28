@@ -128,7 +128,7 @@ private extension CardCollectionCardsView {
         addSubview(infoContainerView)
         infoContainerView.snp.makeConstraints {
             $0.top.equalTo(titleView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:16)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
         customContainer.setupLayout(in: self, top: infoContainerView)
 
@@ -184,9 +184,9 @@ extension CardCollectionCardsView {
         section.interGroupSpacing = 10
         section.contentInsets = .init(
             top: 0,
-            leading: 16,
+            leading: 20,
             bottom: 0,
-            trailing: 16
+            trailing: 20
         )
         return UICollectionViewCompositionalLayout(section: section)
     }

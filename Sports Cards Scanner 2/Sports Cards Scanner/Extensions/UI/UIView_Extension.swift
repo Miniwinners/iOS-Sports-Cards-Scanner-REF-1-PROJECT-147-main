@@ -26,7 +26,7 @@ extension UIView {
         }
     }
 
-    func roundCorners(_ corners: UIRectCorner, radius: CGFloat = 10) {
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat = 0) {
         let cornerMask = convertCornersToMask(corners)
 
         layer.cornerRadius = radius
@@ -88,14 +88,14 @@ final class CustomContainerView: UIView {
         backgroundColor = .skyBlue
         layer.cornerRadius = UIDevice.isIpad ? 24:16
         layer.borderWidth = 1
-        layer.borderColor = UIColor.green.cgColor
+        layer.borderColor = UIColor.blue.cgColor
     }
 
     func setupLayout(in view: UIView, top viewTop: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
             make.top.equalTo(viewTop.snp.bottom).offset(UIDevice.isIpad ? 40 : 10)
-            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 16)
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
             make.height.equalTo(UIDevice.isIpad ? 180 : 110)
         }
     }

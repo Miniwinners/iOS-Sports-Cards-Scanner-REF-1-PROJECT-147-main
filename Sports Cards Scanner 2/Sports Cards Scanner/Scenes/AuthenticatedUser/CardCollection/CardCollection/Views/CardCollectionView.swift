@@ -18,8 +18,7 @@ final class CardCollectionView: UIView {
 
         backView.addSubview(noCardsView)
         noCardsView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(30)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 
@@ -28,9 +27,7 @@ final class CardCollectionView: UIView {
 
         backView.addSubview(cardsView)
         cardsView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(40)
-            $0.horizontalEdges.bottom.equalToSuperview()
-
+            $0.edges.equalToSuperview()
         }
     }
 }

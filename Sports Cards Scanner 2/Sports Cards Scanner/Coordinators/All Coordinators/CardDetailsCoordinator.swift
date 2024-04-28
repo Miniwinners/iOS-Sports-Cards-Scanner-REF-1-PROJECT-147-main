@@ -60,7 +60,8 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
     }
 
     func cardDetailsViewControllerSelectGraderTapped(_ viewController: CardDetailsViewController) {
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: 360, widthRatio: viewController.view.frame.width - 160)
+        let inset: CGFloat = UIDevice.isIpad ? 160:40
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: UIDevice.isIpad ?360:250, widthRatio: viewController.view.frame.width - inset)
         let coordinator = GraderSelectionCoordinator(router: router, card: viewController.card)
         coordinator.didSelectGrader = { [unowned viewController] grader in
             viewController.graderDidSelect(grader)
@@ -112,8 +113,8 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
 
     func cardDetailsViewControllerRemoveCardTapped(_ card: CardRepresentable, in viewController: CardDetailsViewController) {
         cardDetailsViewController = viewController
-
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: 0.45, widthRatio: 0.5)
+        let inset: CGFloat = UIDevice.isIpad ? 140:40
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .center, heightRatio: UIDevice.isIpad ? 260: 330, widthRatio: viewController.view.frame.width - inset)
         let coordinator = RemoveCardPromptCoordinator(router: router, card: card)
         coordinator.delegate = self
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)

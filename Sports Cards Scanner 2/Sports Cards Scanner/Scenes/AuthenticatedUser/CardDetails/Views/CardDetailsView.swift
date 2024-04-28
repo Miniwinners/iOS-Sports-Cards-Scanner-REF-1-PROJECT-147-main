@@ -31,7 +31,7 @@ final class CardDetailsView: UIView {
 
     lazy var cardTitleLabel: UILabel = { label in
         label.textColor = .logInLabel
-        label.setSize(fontS: .ubuntuBold700, phone: 22, iPad: 30)
+        label.setSize(fontS: .ubuntuBold700, phone: 24, iPad: 30)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.setLineHeight(UIDevice.isIpad ? 32:24)
@@ -42,7 +42,7 @@ final class CardDetailsView: UIView {
 
     lazy var cardSubTitleLabel: UILabel = { label in
         label.textColor = .logInLabel
-        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 28:24)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 28:22)
         label.setLineHeight(UIDevice.isIpad ? 30:24)
         label.textAlignment = .center
         label.numberOfLines = 0

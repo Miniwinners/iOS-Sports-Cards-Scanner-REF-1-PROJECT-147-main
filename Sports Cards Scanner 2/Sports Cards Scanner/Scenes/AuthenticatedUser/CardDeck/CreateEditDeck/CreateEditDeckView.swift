@@ -36,6 +36,7 @@ final class CreateEditDeckView: UIView {
     lazy var deckTypeView: OptionsView = { view in
         view.setOptionTitle(L10n.CreateDeck.DeckType.select)
         view.showsShadow = true
+        view.titleLabel.textColor = .singINLabel
         view.discloseButton.layer.cornerRadius = 12
 
         return view
@@ -142,7 +143,7 @@ private extension CreateEditDeckView {
         nameView.snp.makeConstraints {
             $0.top.equalTo(titleImage.snp.bottom).offset(UIDevice.isIpad ? 15:5)
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
-            $0.height.equalTo(UIDevice.isIpad ? 80:56)
+            $0.height.equalTo(UIDevice.isIpad ? 120:80)
         }
 
 //        descriptionImage.snp.makeConstraints { make in

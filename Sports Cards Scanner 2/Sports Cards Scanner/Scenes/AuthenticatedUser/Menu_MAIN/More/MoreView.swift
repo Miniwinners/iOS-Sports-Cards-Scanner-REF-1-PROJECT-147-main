@@ -43,7 +43,7 @@ private extension MoreView {
 
             profileLogoView.snp.makeConstraints {
                 $0.size.equalTo(UIDevice.isIpad ? 197:109)
-                $0.top.equalToSuperview().inset(7)
+                $0.top.equalToSuperview().inset(20)
                 $0.centerX.equalToSuperview()
             }
 

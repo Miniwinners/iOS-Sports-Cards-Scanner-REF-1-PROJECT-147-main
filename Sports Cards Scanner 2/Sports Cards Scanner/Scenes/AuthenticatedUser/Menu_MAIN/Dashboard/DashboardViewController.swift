@@ -1,6 +1,10 @@
 import UIKit
+import SnapKit
 
 final class DashboardViewController: UIViewController {
+
+    private var timer: Timer!
+    private var progress = 0
 
     private let profileManager: ProfileManager
     private let cardsManager: UserCardsManager
@@ -13,6 +17,7 @@ final class DashboardViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var dashboardView = DashboardView()
+    lazy var connectionView: CheckConnectionView = .init()
 
     init(
         profileManager: ProfileManager = .shared,
@@ -47,6 +52,7 @@ final class DashboardViewController: UIViewController {
         setupViews_unique()
         setupActions_unique()
         subscribeToNotifications()
+
     }
 }
 

@@ -82,7 +82,8 @@ private extension PortfolioCardsView {
 //        cardContainerView.backgroundColor = .red
         addSubview(stackView)
         stackView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 50:40)
             $0.bottom.equalToSuperview()
         }
     }
@@ -132,7 +133,7 @@ private extension PortfolioCardsView {
         categoriesTableView.snp.makeConstraints {
             $0.top.equalTo(allCardsLabel.snp.bottom).offset(15)
             $0.horizontalEdges.bottom.equalToSuperview()
-            $0.height.equalTo(UIDevice.isIpad ? 120 * 8 - 8 * 7 : 74 * 8 - 8 * 7)
+            $0.height.equalTo(UIDevice.isIpad ? 120 * 8 - 8 * 7 : 74 * 8 - 8 * 7 + 60)
             $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 70 : 30)
         }
     }

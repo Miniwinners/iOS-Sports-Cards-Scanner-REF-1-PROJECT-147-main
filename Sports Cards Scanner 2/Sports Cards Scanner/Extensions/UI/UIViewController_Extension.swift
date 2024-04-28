@@ -111,7 +111,8 @@ class BackView: UIView {
 
     func setupViewAppearance() {
         backgroundColor = .white
-        layer.cornerRadius = UIDevice.isIpad ? 30 : 24
+        self.roundCorners([.topRight, .topLeft], radius: UIDevice.isIpad ? 30 : 24)
+//        layer.cornerRadius = UIDevice.isIpad ? 30 : 24
     }
 
     func setupView(in view: UIView) {

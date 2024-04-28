@@ -40,8 +40,8 @@ final class OptionTableViewCell: UITableViewCell {
 
 private extension OptionTableViewCell {
     func setupSubviews_unique() {
-        backgroundColor = .clear
-        contentView.backgroundColor = .skyBlue
+        backgroundColor = .skyBlue
+        contentView.backgroundColor = .clear
 
         let highlightedView = UIView()
         highlightedView.backgroundColor = .highlightColor2

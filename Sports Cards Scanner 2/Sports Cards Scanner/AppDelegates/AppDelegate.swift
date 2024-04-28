@@ -1,6 +1,7 @@
 import UIKit
 import FirebaseCore
-
+import Adjust
+import Pushwoosh
  @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -8,7 +9,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         configureManagers()
         NetworkMonitoringService.shared.startNetworkMonitoring()
-
+        ServicesManager.shared.initializeAdjust()
+        ServicesManager.shared.initializePushwoosh(delegate: self)
         return true
     }
 
@@ -30,5 +32,35 @@ private extension AppDelegate {
 
         CardSetsManager.setCardsManager(.shared)
         CardSetsManager.setProfileManager(.shared)
+    }
+}
+
+extension AppDelegate: PWMessagingDelegate {
+
+    // handle token received from APNS
+    func application(_ application: UIApplication, DidRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Adjust.setDeviceToken(deviceToken)
+        Pushwoosh.sharedInstance().handlePushRegistration(deviceToken)
+    }
+
+    // обработка ошибки получения токена
+    func application(_ application: UIApplication, DidFailToRegisterForRemoteNotificationsWithError error: Error) {
+        Pushwoosh.sharedInstance().handlePushRegistrationFailure(error)
+    }
+
+    // for iOS < 10 and quiet push-notification
+    func application(_ application: UIApplication, DidReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        Pushwoosh.sharedInstance().handlePushReceived(userInfo)
+        completionHandler(.noData)
+    }
+
+// this event is fired when the push gets received
+    func pushwoosh(_ pushwoosh: Pushwoosh, onMessageReceived message: PWMessage) {
+        print("onMessageReceived: ", message.payload?.description ?? "error")
+    }
+
+    // this event is fired when a user taps the notification
+    func pushwoosh(_ pushwoosh: Pushwoosh, onMessageOpened message: PWMessage) {
+        print("onMessageOpened: ", message.payload?.description ?? "error")
     }
 }

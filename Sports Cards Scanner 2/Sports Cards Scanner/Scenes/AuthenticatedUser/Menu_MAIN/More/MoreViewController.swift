@@ -126,6 +126,10 @@ extension MoreViewController: UITableViewDataSource {
 
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIDevice.isIpad ? 100:56
+    }
+
     private func profileItem(for indexPath: IndexPath) -> ProfileItem? {
         profileItems[safe: indexPath.section]
     }

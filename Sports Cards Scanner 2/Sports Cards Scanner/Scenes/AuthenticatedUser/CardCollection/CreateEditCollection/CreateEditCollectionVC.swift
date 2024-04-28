@@ -26,6 +26,7 @@ final class CreateEditCollectionVC: UIViewController {
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .sentences
         textField.delegate = self
+        textField.tintColor = .black
         return textField
     }(CommonTextField())
 

@@ -27,4 +27,3 @@ extension CardCategoriesCoordinator: CardCategoriesViewControllerDelegate {
         router.dismissFully(animated: true)
     }
 }
-
