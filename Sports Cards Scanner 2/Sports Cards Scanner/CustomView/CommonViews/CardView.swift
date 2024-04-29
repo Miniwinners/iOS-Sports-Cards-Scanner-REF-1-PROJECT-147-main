@@ -10,6 +10,7 @@ final class CardView: UIView {
         label.textColor = .black
         label.setSize(fontS: .ubuntuMedium500, phone: 16, iPad: 22)
         label.numberOfLines = 0
+        label.setLineHeight(UIDevice.isIpad ? 24:18)
         return label
     }(UILabel())
 
@@ -143,7 +144,8 @@ private extension CardView {
             $0.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
-            $0.height.equalTo(UIDevice.isIpad ? 30:20)
+            $0.height.equalTo(UIDevice.isIpad ? 40:30)
+
             $0.leading.equalToSuperview()
             $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
         }

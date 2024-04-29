@@ -16,6 +16,7 @@ final class ParallelSelectionView: UIView {
         textField.trailingPadding = 48
         textField.returnKeyType = .search
         textField.autocorrectionType = .no
+        textField.tintColor = .black
         textField.autocapitalizationType = .none
         return textField
     }(CommonTextField())

@@ -56,7 +56,7 @@ extension SCSAppCoordinator: SignInViewControllerDelegate {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        presentAuthenticated()
+        presentAuthWithOutload()
     }
 
     func signInViewControllerDidPressForgotPassword(_ viewController: SCSSignInVC) {
@@ -88,7 +88,7 @@ extension SCSAppCoordinator: SignUpViewControllerDelegate {
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
 
-        presentAuthenticated()
+        presentAuthWithOutload()
     }
 }
 
@@ -213,23 +213,23 @@ private extension SCSAppCoordinator {
     }
 
     func presentSignIn() {
-        let connectionVC = CheckConnectionVC()
-        connectionVC.modalPresentationStyle = .fullScreen
+//        let connectionVC = CheckConnectionVC()
+//        connectionVC.modalPresentationStyle = .fullScreen
 
         let signInViewController = SCSSignInVC(authService: authService)
         signInViewController.delegate = self
 
-        router.present_unique(connectionVC, animated: true)
-        connectionVC.callBack = { [weak self] in
-            UIView.animate(withDuration: 0.5) {
-                self?.router.present_unique(signInViewController, animated: true)
-            }
-        }
+//        router.present_unique(connectionVC, animated: true)
+//        connectionVC.callBack = { [weak self] in
+//            UIView.animate(withDuration: 0.5) {
+                self.router.present_unique(signInViewController, animated: true)
+//            }
+//        }
     }
 
     func presentAuthenticated() {
-        let loadingScreen = CheckConnectionVC()
-        loadingScreen.modalPresentationStyle = .fullScreen
+//        let loadingScreen = CheckConnectionVC()
+//        loadingScreen.modalPresentationStyle = .fullScreen
 
         let dashboardViewController = DashboardViewController()
         dashboardViewController.delegate = self
@@ -246,13 +246,31 @@ private extension SCSAppCoordinator {
         tabBarController.setupCustomTabBarView()
         authenticatedUserController = tabBarController
 
-        router.present_unique(loadingScreen, animated: false)
-        loadingScreen.callBack = { [weak self] in
-            UIView.animate(withDuration: 0.5) {
-                self?.router.present_unique(tabBarController, animated: true)
-            }
-        }
+//        router.present_unique(loadingScreen, animated: false)
+//        loadingScreen.callBack = { [weak self] in
+//            UIView.animate(withDuration: 0.5) {
+                self.router.present_unique(tabBarController, animated: true)
+//            }
+//        }
+    }
 
+    func presentAuthWithOutload() {
+        let dashboardViewController = DashboardViewController()
+        dashboardViewController.delegate = self
+
+        let portfolioViewController = PortfolioViewController()
+        portfolioViewController.delegate = self
+
+        let moreViewController = MoreViewController(authService: authService)
+        moreViewController.delegate = self
+
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers([dashboardViewController, portfolioViewController, moreViewController], animated: false)
+        setupMainTabBar(tabBarController.tabBar)
+        tabBarController.setupCustomTabBarView()
+        authenticatedUserController = tabBarController
+
+        router.present_unique(tabBarController, animated: true)
     }
 
     func presentSignUp() {

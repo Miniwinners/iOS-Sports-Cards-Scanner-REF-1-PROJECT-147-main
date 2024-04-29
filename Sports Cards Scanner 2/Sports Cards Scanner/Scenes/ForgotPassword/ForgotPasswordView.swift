@@ -3,6 +3,9 @@ import SnapKit
 
 final class ForgotPasswordView: UIView {
 
+    lazy var backView: BackView = .init()
+    lazy var titleLabel: TitleLabel = .init()
+
     lazy var descriptionView: UIView = { view in
         view.backgroundColor = .white
         view.cornerRadius = 12
@@ -12,7 +15,7 @@ final class ForgotPasswordView: UIView {
     lazy var descriptionLabel: UILabel = { label in
         label.text = L10n.ForgotPassword.description
         label.textColor = .labelColor
-        label.font = .font(.interRegular, size: 16)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -37,7 +40,7 @@ final class ForgotPasswordView: UIView {
     }(TitledTextFieldView())
 
     lazy var errorLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 14)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 18:14)
         label.textColor = .errorColor
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -58,12 +61,14 @@ final class ForgotPasswordView: UIView {
 
 private extension ForgotPasswordView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
+        backView.setupView(in: self)
+        titleLabel.setupLabel(in: backView)
 
         addSubview(descriptionView)
         descriptionView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 30:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
         descriptionView.addSubview(descriptionLabel)
@@ -74,13 +79,13 @@ private extension ForgotPasswordView {
         addSubview(contentView)
         contentView.snp.makeConstraints {
             $0.top.equalTo(descriptionView.snp.bottom).offset(30)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
         addSubview(sendButton)
         sendButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 50:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
             $0.height.equalTo(54)
         }
     }

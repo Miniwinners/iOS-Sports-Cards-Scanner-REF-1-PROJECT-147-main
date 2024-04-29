@@ -21,9 +21,10 @@ final class OptionsView: UIView {
 
     lazy var containerView: UIView = { view in
         view.backgroundColor = .clear
-        view.cornerRadius = UIDevice.isIpad ?20:12
+
+        view.cornerRadius = UIDevice.isIpad ? 20:12
         view.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
-        view.layer.shadowOpacity = 1
+//        view.layer.shadowOpacity = 1
         view.layer.shadowRadius = 4
         view.layer.shadowOffset = .init(width: 0, height: 4)
         return view
@@ -52,7 +53,10 @@ final class OptionsView: UIView {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = UIColor(red: 0, green: 0, blue: 255/255, alpha: 0.1)
-
+//        tableView.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+//        tableView.layer.shadowOpacity = 1
+//        tableView.layer.shadowRadius = 4
+//        tableView.layer.shadowOffset = .init(width: 0, height: 4)
         return tableView
     }(UITableView())
 
@@ -97,7 +101,11 @@ final class OptionsView: UIView {
         selfHeightConstraint.update(offset: maxHeight)
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveLinear) {
             if self.showsShadow {
-                self.layer.shadowOpacity = 1
+                self.containerView.layer.shadowOpacity = 0.3
+                self.layer.masksToBounds = false
+                self.clipsToBounds = false
+                self.containerView.layer.masksToBounds = false
+                self.containerView.clipsToBounds = false
             }
             self.disclosureImageView.transform = .init(rotationAngle: .pi)
 
@@ -120,7 +128,7 @@ final class OptionsView: UIView {
         }
 
         UIView.animate(withDuration: animationDuration) {
-            self.layer.shadowOpacity = 0
+            self.containerView.layer.shadowOpacity = 0
             self.superview?.layoutIfNeeded()
         } completion: { _ in
             if self.options.isEmpty { return }
@@ -133,7 +141,7 @@ private extension OptionsView {
     var buttonAppearance: CommonButton.SCSAppearance {
         var configuration: UIButton.Configuration = .filled()
         configuration.cornerStyle = .fixed
-        configuration.background.cornerRadius = 0
+        configuration.background.cornerRadius = 12
         return .init(
             configuration: configuration,
             backgroundColors: .init(primary: .skyBlue, disabled: .secondaryColor, highlighted: .highlightColor2)
@@ -142,7 +150,6 @@ private extension OptionsView {
 
     func setupSubviews_unique() {
         cornerRadius = 12
-//        layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
 //        layer.shadowOpacity = 1
 //        layer.shadowRadius = 4
 //        layer.shadowOffset = .init(width: 0, height: 4)

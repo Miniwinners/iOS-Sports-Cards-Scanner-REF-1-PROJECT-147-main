@@ -28,7 +28,7 @@ private extension DashboardCardsView {
         stackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(UIDevice.isIpad ? 50 : 40)
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
-            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 140 : 84)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 140 : 90)
         }
         highestValueView.snp.makeConstraints { make in
             make.height.greaterThanOrEqualTo(UIDevice.isIpad ? 530 : 400)

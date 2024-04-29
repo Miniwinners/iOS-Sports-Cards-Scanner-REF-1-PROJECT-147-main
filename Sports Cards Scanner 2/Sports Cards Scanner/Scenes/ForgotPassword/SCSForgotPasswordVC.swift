@@ -11,6 +11,8 @@ final class SCSForgotPasswordVC: UIViewController {
         return toolbar
     }(CommonToolbar.createToolbar(in: view))
 
+    lazy var closeButton: CloseButton = .init(style: .close)
+
     private let authService: AuthService
     weak var delegate: ForgotPasswordViewControllerDelegate?
 
@@ -37,7 +39,7 @@ final class SCSForgotPasswordVC: UIViewController {
     init(authService: AuthService) {
         self.authService = authService
         super.init(nibName: nil, bundle: nil)
-        title = L10n.ForgotPassword.title
+        forgotPasswordView.titleLabel.text = L10n.ForgotPassword.title
     }
 
     required init?(coder: NSCoder) {
@@ -52,7 +54,7 @@ final class SCSForgotPasswordVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
         updateSendButton()
@@ -62,15 +64,9 @@ final class SCSForgotPasswordVC: UIViewController {
 
 private extension SCSForgotPasswordVC {
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
-
         forgotPasswordView.emailView.textField.delegate = self
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 
     func setupActions_unique() {

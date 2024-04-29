@@ -6,7 +6,7 @@ final class SignUpView: UIView {
     lazy var titleLabel: UILabel = { label in
         label.text = L10n.SignUp.title
         label.textColor = .labelColor
-        label.font = .font(.interSemibold, size: 32)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 32:26)
         return label
     }(UILabel())
 
@@ -47,7 +47,7 @@ final class SignUpView: UIView {
     }(TitledTextFieldView())
 
     lazy var errorLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 14)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 18:14)
         label.textColor = .errorColor
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -55,9 +55,10 @@ final class SignUpView: UIView {
     }(UILabel())
 
     lazy var passwordRequirementsLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 12)
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 16:12)
         label.textColor = .labelColor
         label.numberOfLines = 0
+        label.attributedText = makeTextBlue()
         let attributedText = NSMutableAttributedString(
             string: L10n.SignUp.Password.requirements(8)
         )
@@ -85,7 +86,7 @@ final class SignUpView: UIView {
     }(UIButton(type: .system))
 
     lazy var signInMethodsLabel: UILabel = { label in
-        label.font = .font(.poppinsMedium, size: 19.25)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22: 19.25)
         label.text = L10n.SignUp.signInWith
         label.textColor = .labelColor2
         return label
@@ -99,7 +100,7 @@ final class SignUpView: UIView {
     }(UIStackView(arrangedSubviews: [appleButton, googleButton]))
 
     lazy var haveAccountLabel: UILabel = { label in
-        label.font = .font(.opensansRegular, size: 13.47)
+        label.font = .font(.opensansRegular, size: UIDevice.isIpad ? 18:13.47)
         label.text = L10n.SignUp.haveAccount
         label.textColor = .labelColor3
         return label
@@ -118,7 +119,7 @@ final class SignUpView: UIView {
             string: L10n.SignUp.Action.signIn,
             attributes: [
                 .underlineStyle: NSUnderlineStyle.single.rawValue,
-                .font: UIFont.font(.poppinsMedium, size: 13.47)
+                .font: UIFont.font(.ubuntuMedium500, size: UIDevice.isIpad ? 18:13.47)
             ]
         )
         button.setAttributedTitle(attributedTitle, for: .normal)
@@ -153,11 +154,11 @@ private extension SignUpView {
             $0.top.equalTo(titleLabel.snp.bottom).offset(60).priority(.medium)
             $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(20)
             $0.top.lessThanOrEqualTo(titleLabel.snp.bottom).offset(60)
-            $0.horizontalEdges.equalToSuperview().inset(80)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?80:20)
         }
         signUpButton.snp.makeConstraints {
             $0.top.equalTo(fieldsView.snp.bottom).offset(40)
-            $0.horizontalEdges.equalToSuperview().inset(80)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?80:20)
             $0.height.equalTo(54)
         }
         signInMethodsLabel.snp.makeConstraints {
@@ -179,5 +180,25 @@ private extension SignUpView {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(23)
         }
+    }
+}
+
+private extension SignUpView {
+    func makeTextBlue() -> NSMutableAttributedString {
+        let fullText = L10n.UpdatePassword.NewPassword.requirements(8)
+        let words = [L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut1,
+                     L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut2,
+                     L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut3,
+                     L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut4,
+                     L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut5
+        ]
+        let atributeString = NSMutableAttributedString(string: fullText)
+        for word in words {
+            let range = (fullText as NSString).range(of: word)
+            if range.location != NSNotFound {
+                atributeString.addAttribute(.foregroundColor, value: UIColor.blue, range: range)
+            }
+        }
+        return atributeString
     }
 }

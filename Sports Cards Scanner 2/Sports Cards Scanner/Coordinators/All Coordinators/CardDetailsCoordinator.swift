@@ -61,7 +61,10 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
 
     func cardDetailsViewControllerSelectGraderTapped(_ viewController: CardDetailsViewController) {
         let inset: CGFloat = UIDevice.isIpad ? 160:40
-        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect, heightRatio: UIDevice.isIpad ?360:250, widthRatio: viewController.view.frame.width - inset)
+
+        let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect,
+                                              heightRatio: UIDevice.isIpad ? 360:250,
+                                              widthRatio: viewController.view.frame.width - inset)
         let coordinator = GraderSelectionCoordinator(router: router, card: viewController.card)
         coordinator.didSelectGrader = { [unowned viewController] grader in
             viewController.graderDidSelect(grader)

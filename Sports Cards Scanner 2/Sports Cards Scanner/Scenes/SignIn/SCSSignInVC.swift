@@ -75,7 +75,7 @@ private extension SCSSignInVC {
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.edges.top.equalTo(view.safeAreaLayoutGuide)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
         let statusBarView = UIView()
@@ -191,9 +191,9 @@ private extension SCSSignInVC {
             }
         }()
 
-        scrollView.snp.updateConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(bottomInset)
-        }
+//        scrollView.snp.updateConstraints {
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(bottomInset)
+//        }
 
         UIView.animate(withDuration: info.animationDuration) {
             self.view.layoutIfNeeded()

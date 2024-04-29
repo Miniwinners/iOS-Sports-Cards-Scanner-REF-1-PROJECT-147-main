@@ -177,30 +177,6 @@ private extension CardDetailsViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(searchedCardDidUpdate), name: .searchedCardDidUpdate, object: nil)
     }
 
-    func addBackButton() {
-        let backButton = UIButton(type: .system)
-        backButton.tintColor = .black
-        backButton.setImage(Images.backArrow.image, for: .normal)
-        backButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
-        view.addSubview(backButton)
-        backButton.snp.makeConstraints {
-            $0.size.equalTo(44)
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(5)
-            $0.leading.equalToSuperview().inset(6)
-        }
-    }
-
-    func addCloseButton() {
-        let closeButton = UIButton(type: .system)
-        closeButton.setImage(Images.close.image, for: .normal)
-        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
-        view.addSubview(closeButton)
-        closeButton.snp.makeConstraints {
-            $0.size.equalTo(44)
-            $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-        }
-    }
-
     func getPricingReportMode() -> PricingReportButton.ReportMode {
         if selectedGrader == .CUSTOM {
             let customPrice = card.priceRange(of: .CUSTOM)

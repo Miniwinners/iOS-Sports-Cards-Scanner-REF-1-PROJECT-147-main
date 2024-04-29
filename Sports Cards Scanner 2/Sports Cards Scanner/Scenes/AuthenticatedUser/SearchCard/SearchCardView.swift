@@ -16,6 +16,7 @@ final class SearchCardView: UIView {
         textField.returnKeyType = .search
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
+        textField.tintColor = .black
         return textField
     }(CommonTextField())
 
@@ -68,7 +69,7 @@ private extension SearchCardView {
         setupSearchTextField()
         searchTextField.snp.makeConstraints {
             $0.height.equalTo(UIDevice.isIpad ? 100 : 48)
-            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 60 : 30)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 30)
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
         searchCollectionView.snp.makeConstraints {

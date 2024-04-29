@@ -33,7 +33,7 @@ final class SearchCardViewController: UIViewController {
         self.searchCategory = searchCategory
 
         super.init(nibName: nil, bundle: nil)
-        title = L10n.SearchCard.title
+        searchCardView.titleLabel.text = L10n.SearchCard.title
     }
 
     required init?(coder: NSCoder) {

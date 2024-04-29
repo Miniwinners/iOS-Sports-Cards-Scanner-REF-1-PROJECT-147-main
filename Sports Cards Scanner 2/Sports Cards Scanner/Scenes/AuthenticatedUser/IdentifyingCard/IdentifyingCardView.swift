@@ -70,21 +70,21 @@ private extension IdentifyingCardView {
         addSubview(cancelButton)
         cancelButton.snp.makeConstraints {
             $0.height.equalTo(UIDevice.isIpad ? 66:42)
-            $0.top.equalTo(processLabel.snp.bottom).offset(40)
+            $0.top.equalTo(processLabel.snp.bottom).offset(UIDevice.isIpad ? 60:40)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(UIDevice.isIpad ? 240: 120)
+            $0.width.equalTo(UIDevice.isIpad ? 240:120)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 50:30)
         }
 
         let containerView = UIView()
         containerView.addSubviews(cardImageView, indicatorImageView)
         cardImageView.snp.makeConstraints {
-            $0.width.equalTo(UIDevice.isIpad ? 376:142)
-            $0.height.equalTo(UIDevice.isIpad ? 539:200)
+            $0.width.equalTo(UIDevice.isIpad ? 284:142)
+            $0.height.equalTo(UIDevice.isIpad ? 420:200)
             $0.top.horizontalEdges.equalToSuperview()
         }
         indicatorImageView.snp.makeConstraints {
-            $0.top.equalTo(cardImageView.snp.bottom).offset(20)
+            $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
             $0.centerX.bottom.equalToSuperview()
         }
 

@@ -28,7 +28,7 @@ private extension MenuView {
         menuCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(110)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 130:110)
         }
         cancelButton.snp.makeConstraints {
             $0.top.equalTo(menuCollectionView.snp.bottom).offset(20)

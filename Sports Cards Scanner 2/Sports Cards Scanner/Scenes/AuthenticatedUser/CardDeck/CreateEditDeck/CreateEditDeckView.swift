@@ -40,7 +40,7 @@ final class CreateEditDeckView: UIView {
         view.discloseButton.layer.cornerRadius = 12
 
         return view
-    }(OptionsView(minHeight: UIDevice.isIpad ? 80:54, maxHeight: UIDevice.isIpad ? 300:150))
+    }(OptionsView(minHeight: UIDevice.isIpad ? 80:54, maxHeight: UIDevice.isIpad ? 300:170))
 
     lazy var descriptionLabel: UILabel = { label in
         label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)

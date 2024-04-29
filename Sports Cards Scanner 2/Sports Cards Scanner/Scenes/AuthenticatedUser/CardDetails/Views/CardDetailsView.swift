@@ -53,7 +53,7 @@ final class CardDetailsView: UIView {
 
     lazy var cardGraderButton: CardGraderButton = .init()
 
-    lazy var pricingReportButton: PricingReportButton = .init(priceButtonType: .main)
+    lazy var pricingReportButton: PricingReportButton = .init(priceButtonType: .add)
 
     lazy var detailsListView: CardDetailsListView = .init()
 
@@ -157,7 +157,7 @@ private extension CardDetailsView {
             containerStackPriceAdd, detailsListView, containerStackEditRemove
         ])
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = UIDevice.isIpad ? 20:10
         backView.addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.top.equalTo(cardGraderButton.snp.bottom).offset(UIDevice.isIpad ? 30:20)
@@ -171,6 +171,9 @@ private extension CardDetailsView {
         findCardButton.snp.makeConstraints {
             $0.height.equalTo(42)
         }
+        containerStackPriceAdd.snp.makeConstraints { make in
+            make.height.equalTo(UIDevice.isIpad ? 200:130)
+        }
     }
 
     func getButtonContainer(for cancelTypedButton: UIButton) -> UIView {
@@ -182,4 +185,30 @@ private extension CardDetailsView {
         return containerView
     }
 
+}
+
+import SwiftUI
+
+struct CardDetailsViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> CardDetailsView {
+        // Create and return an instance of your custom UIView here
+        return CardDetailsView()
+    }
+
+    func updateUIView(_ uiView: CardDetailsView, context: Context) {
+        // Update the view when your app's state changes
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        CardDetailsViewRepresentable()
+    }
+}
+
+@available(iOS 13.0, *)
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
