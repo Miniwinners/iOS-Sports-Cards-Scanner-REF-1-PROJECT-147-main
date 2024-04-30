@@ -28,12 +28,4 @@ enum TabBarItem: CaseIterable {
         case .more: return L10n.More.title
         }
     }
-
-    var selectedText: String {
-        switch self {
-        case .dashboard: return ""
-        case .portfolio: return ""
-        case .more: return ""
-        }
-    }
 }

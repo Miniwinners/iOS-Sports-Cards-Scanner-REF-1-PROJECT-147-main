@@ -29,6 +29,7 @@ enum CardCategory: String, CaseIterable, Codable {
         case .hockey: return Images.CardsLogo.hockey.image
         case .basketball: return Images.CardsLogo.basketBall.image
         default: return Images.CardsLogo.soccer.image
+
         }
     }
 
@@ -48,6 +49,7 @@ enum CardCategory: String, CaseIterable, Codable {
         case .magic: return .magicColor
         case .hockey: return .hockeyColor
         case .soccer: return .soccerColor
+
         }
     }
 

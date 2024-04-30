@@ -69,6 +69,8 @@ internal enum Images {
     internal static let googleLogo = ImageAsset(name: "googleLogo")
     internal static let highValue1 = ImageAsset(name: "highValue1")
     internal static let highValue2 = ImageAsset(name: "highValue2")
+    internal static let highValue3 = ImageAsset(name: "highValue3")
+
     internal static let loadingIndicator = ImageAsset(name: "loadingIndicator")
     internal static let menuDots = ImageAsset(name: "menuDots")
     internal static let more = ImageAsset(name: "more")

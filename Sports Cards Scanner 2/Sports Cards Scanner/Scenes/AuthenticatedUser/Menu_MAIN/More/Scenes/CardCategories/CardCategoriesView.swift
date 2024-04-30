@@ -42,7 +42,6 @@ final class CardCategoriesView: UIView {
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = false
         tableView.showsVerticalScrollIndicator = false
-        tableView.contentInset.top = 20
         tableView.contentInset.bottom = 20
         tableView.sectionHeaderTopPadding = 0
         tableView.backgroundColor = .clear
@@ -51,10 +50,10 @@ final class CardCategoriesView: UIView {
 
     lazy var minEnabledCategoriesLabel: UILabel = { label in
         label.text = L10n.CardCategories.minEnabledCategories
-        label.setSize(fontS: .ubuntuLight300, phone: 14, iPad: 20)
+        label.setSize(fontS: .ubuntuLight300, phone: 12, iPad: 18)
         label.textColor = .singINLabel
-        label.numberOfLines = 0
-        label.setLineHeight(UIDevice.isIpad ? 22 : 16)
+        label.numberOfLines = 1
+        label.setLineHeight(UIDevice.isIpad ? 20 : 14)
         label.textAlignment = .center
         return label
     }(UILabel())
@@ -105,24 +104,23 @@ private extension CardCategoriesView {
             $0.horizontalEdges.bottom.equalToSuperview()
         }
         checkSignView.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.bottom).offset(UIDevice.isIpad ? 30:20)
+            make.top.equalTo(containerView.snp.bottom).offset(UIDevice.isIpad ? 20:10)
             make.height.equalTo(UIDevice.isIpad ? 46 : 36)
-            make.horizontalEdges.equalTo(tableView).inset(UIDevice.isIpad ? 140 : 40)
+            make.horizontalEdges.equalTo(tableView).inset(UIDevice.isIpad ? 120 : 40)
             make.centerX.equalToSuperview()
-//            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 40 : 20)
         }
 
         checkSignView.addSubviews(minEnabledCategoriesLabel, checkSignImageView)
 
         minEnabledCategoriesLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.left.equalTo(checkSignImageView.snp.right).offset(5)
+            make.centerY.equalToSuperview()
+            make.left.equalTo(checkSignImageView.snp.right).offset(10)
         }
 
         checkSignImageView.snp.makeConstraints { make in
             make.size.equalTo(UIDevice.isIpad ? 34 : 20)
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().inset(5)
+            make.left.equalToSuperview()
         }
 
     }

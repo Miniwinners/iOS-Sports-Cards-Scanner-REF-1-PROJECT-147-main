@@ -79,7 +79,6 @@ private extension PortfolioCardsView {
     func setupSubviews_unique() {
         setupCardSetsView()
         setupCategoriesCardsView()
-//        cardContainerView.backgroundColor = .red
         addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)

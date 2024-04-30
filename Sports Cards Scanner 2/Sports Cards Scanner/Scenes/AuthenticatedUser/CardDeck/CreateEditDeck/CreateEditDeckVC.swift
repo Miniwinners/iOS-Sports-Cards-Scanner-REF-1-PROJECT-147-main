@@ -9,7 +9,7 @@ final class CreateEditDeckVC: UIViewController {
 
     private let cardDeckManager: CardDeckManager
 
-    private let categories: [CardCategory] = [.basketball, .magic, .pokemon]
+    private let categories: [CardCategory] = [.basketball, .baseball, .football, .hockey, .soccer]
     private var deckType: CardCategory?
 
     private let minLengthValidator: LengthValidator = .init(minLength: 1)

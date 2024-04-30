@@ -32,7 +32,6 @@ extension ScanCardCoordinator: ScanCardViewControllerDelegate {
             print("\(rkjyOdUzcU)")
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
-
         router.dismissFully(animated: true)
     }
 
@@ -67,7 +66,7 @@ extension ScanCardCoordinator: IdentifyingCardCoordinatorDelegate {
             router: router,
             card: identifiedCard,
             cardType: .identifiedCard,
-            encodedCardImage: coordinator.scannedCard.encodedCardImage
+            encodedCardImage: coordinator.scannedCard.encodedCardImage, previousVC: .search, sample: scanCardViewController
         )
         presentChildCoordinator(coordinator, animated: true) { [weak self] in
             self?.scanCardViewController.restartScanning()
@@ -76,7 +75,7 @@ extension ScanCardCoordinator: IdentifyingCardCoordinatorDelegate {
 
     func identifyingCardCoordinatorDidFinish(withError error: Error, coordinator: IdentifyingCardCoordinator) {
         let router = SCSModalNavigationRouter(parentViewController: scanCardViewController)
-        let coordinator = SearchCardCoordinator(router: router, card: scannedCard)
+        let coordinator = SearchCardCoordinator(router: router, card: scannedCard, sample: scanCardViewController)
         presentChildCoordinator(coordinator, animated: true) { [weak self] in
             self?.scanCardViewController.restartScanning()
         }

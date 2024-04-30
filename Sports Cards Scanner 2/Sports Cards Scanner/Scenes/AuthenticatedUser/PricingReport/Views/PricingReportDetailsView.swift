@@ -5,16 +5,16 @@ import Kingfisher
 final class PricingReportDetailsView: UIView {
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .labelColor4
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
+        label.textColor = .black
         label.numberOfLines = 2
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }(UILabel())
 
     lazy var subtitleLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 18)
-        label.textColor = .labelColor4
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 24:18)
+        label.textColor = .black
         label.numberOfLines = 2
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
@@ -41,8 +41,8 @@ extension PricingReportDetailsView {
     func set(card: CardRepresentable, grader: CardGrader) {
         titleLabel.text = card.title
         subtitleLabel.text = card.subtitle
-        titleLabel.setLineHeight(22)
-        subtitleLabel.setLineHeight(21.6)
+        titleLabel.setLineHeight(UIDevice.isIpad ? 26:22)
+        subtitleLabel.setLineHeight(UIDevice.isIpad ? 24:21.6)
 
         if let priceRange = card.priceRange(of: grader) {
             let firstPartTitle = "\(L10n.PricingReport.Details.priceReport) - "
@@ -180,8 +180,8 @@ extension PricingReportDetailsView.DetailView {
 
     private func setupSubviews_unique() {
         titleLabel = .init()
-        titleLabel.font = .font(.interMedium, size: 16)
-        titleLabel.textColor = .labelColor4
+        titleLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
+        titleLabel.textColor = .black
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
@@ -189,7 +189,7 @@ extension PricingReportDetailsView.DetailView {
         }
 
         infoLabel = .init()
-        infoLabel.font = .font(.interMedium, size: 16)
+        infoLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         infoLabel.textColor = .greenColor
         infoLabel.setContentHuggingPriority(.required, for: .vertical)
         addSubview(infoLabel)

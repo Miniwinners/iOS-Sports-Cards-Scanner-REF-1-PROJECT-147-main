@@ -45,7 +45,7 @@ final class SearchCardViewController: UIViewController {
     override func loadView() {
         view = searchCardView
         closeButton.setCenter(in: view)
-        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 
     override func viewDidLoad() {
@@ -135,10 +135,6 @@ private extension SearchCardViewController {
     }
 
     // MARK: - Actions
-
-    @objc func close() {
-        dismiss(animated: true)
-    }
 
     @objc func closeTapped_unique() {
         delegate?.searchCardViewControllerCloseTapped(self)

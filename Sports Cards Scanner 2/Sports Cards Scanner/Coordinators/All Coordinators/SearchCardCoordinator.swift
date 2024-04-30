@@ -7,10 +7,11 @@ final class SearchCardCoordinator {
     weak var delegate: SearchCardCoordinatorDelegate?
 
     private let scannedCard: ScannedCard
-
-    init(router: SCSRouter, card: ScannedCard) {
+    private var scanCardViewController: ScanCardViewController?
+    init(router: SCSRouter, card: ScannedCard, sample: ScanCardViewController? = nil) {
         self.router = router
         self.scannedCard = card
+        self.scanCardViewController = sample
     }
 }
 
@@ -34,7 +35,7 @@ extension SearchCardCoordinator: SearchCardViewControllerDelegate {
     }
 
     func searchCardViewControllerDidSelect(card: CardRepresentable, in viewController: SearchCardViewController) {
-        let coordinator = CardDetailsCoordinator(router: router, card: card, cardType: .searchedCard, encodedCardImage: scannedCard.encodedCardImage)
+        let coordinator = CardDetailsCoordinator(router: router, card: card, cardType: .searchedCard, encodedCardImage: scannedCard.encodedCardImage, previousVC: .search, sample: scanCardViewController)
         coordinator.delegate = self
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }

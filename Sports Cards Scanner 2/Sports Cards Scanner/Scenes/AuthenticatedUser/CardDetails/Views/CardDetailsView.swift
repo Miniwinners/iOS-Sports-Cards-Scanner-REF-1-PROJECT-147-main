@@ -53,7 +53,7 @@ final class CardDetailsView: UIView {
 
     lazy var cardGraderButton: CardGraderButton = .init()
 
-    lazy var pricingReportButton: PricingReportButton = .init(priceButtonType: .add)
+    lazy var pricingReportButton: PricingReportButton = .init(priceButtonType: .main)
 
     lazy var detailsListView: CardDetailsListView = .init()
 
@@ -186,29 +186,28 @@ private extension CardDetailsView {
     }
 
 }
-
-import SwiftUI
-
-struct CardDetailsViewRepresentable: UIViewRepresentable {
-    func makeUIView(context: Context) -> CardDetailsView {
-        // Create and return an instance of your custom UIView here
-        return CardDetailsView()
-    }
-
-    func updateUIView(_ uiView: CardDetailsView, context: Context) {
-        // Update the view when your app's state changes
-    }
-}
-
-struct ContentView: View {
-    var body: some View {
-        CardDetailsViewRepresentable()
-    }
-}
-
-@available(iOS 13.0, *)
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+// import SwiftUI
+//
+// struct CardDetailsViewRepresentable: UIViewRepresentable {
+//    func makeUIView(context: Context) -> CardDetailsView {
+//        // Create and return an instance of your custom UIView here
+//        return CardDetailsView()
+//    }
+//
+//    func updateUIView(_ uiView: CardDetailsView, context: Context) {
+//        // Update the view when your app's state changes
+//    }
+// }
+//
+// struct ContentView: View {
+//    var body: some View {
+//        CardDetailsViewRepresentable()
+//    }
+// }
+//
+// @available(iOS 13.0, *)
+// struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+// }

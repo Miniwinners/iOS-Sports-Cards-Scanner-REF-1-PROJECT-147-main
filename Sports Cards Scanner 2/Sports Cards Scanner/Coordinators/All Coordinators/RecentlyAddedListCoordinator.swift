@@ -32,7 +32,7 @@ extension RecentlyAddedListCoordinator: RecentlyAddedListViewControllerDelegate 
     }
 
     func recentlyAddedListViewControllerDidSelectCard(_ card: CardRepresentable, in viewController: RecentlyAddedListViewController) {
-        let coordinator = CardDetailsCoordinator(router: router, card: card)
+        let coordinator = CardDetailsCoordinator(router: router, card: card, previousVC: .common)
         coordinator.delegate = self
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }

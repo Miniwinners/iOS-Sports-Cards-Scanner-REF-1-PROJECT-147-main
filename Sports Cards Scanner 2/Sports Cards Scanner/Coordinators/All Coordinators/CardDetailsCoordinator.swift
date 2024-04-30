@@ -6,27 +6,33 @@ final class CardDetailsCoordinator {
     let card: CardRepresentable
     let cardType: CardType
     let encodedCardImage: Data?
-
+    private var previousVC: PreviousVC
     weak var delegate: CardDetailsCoordinatorDelegate?
 
     private weak var cardDetailsViewController: CardDetailsViewController?
+    private var scanCardViewController: ScanCardViewController?
 
     init(
         router: SCSRouter,
         card: CardRepresentable,
         cardType: CardType = .addedCard,
-        encodedCardImage: Data? = nil
+        encodedCardImage: Data? = nil,
+        previousVC: PreviousVC,
+        sample: ScanCardViewController? = nil
+
     ) {
         self.router = router
         self.card = card
         self.cardType = cardType
         self.encodedCardImage = encodedCardImage
+        self.previousVC = previousVC
+        self.scanCardViewController = sample
     }
 }
 
 extension CardDetailsCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = CardDetailsViewController(card: card, cardType: cardType, encodedCardImage: encodedCardImage)
+        let viewController = CardDetailsViewController(card: card, cardType: cardType, encodedCardImage: encodedCardImage, previousVC: previousVC)
         viewController.delegate = self
         router.present_unique(viewController, animated: animated, onDismissed: onDismissed)
     }
@@ -53,6 +59,17 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
         }
 
         router.dismissFully(animated: true)
+    }
+
+    func cardDetaisCloseAfterSearch(_ viewController: CardDetailsViewController) {
+        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
+            print(qFvvUwywod)
+            print("\(rkjyOdUzcU)")
+            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        }
+
+        router.dismissFully(animated: true)
+        scanCardViewController?.restartScanning()
     }
 
     func cardDetailsViewControllerBackTapped(_ viewController: CardDetailsViewController) {
@@ -101,7 +118,7 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
         let scannedCard = ScannedCard(encodedCardImage: encodedCardImage, cardCategory: cardCategory)
 
         let router = SCSModalNavigationRouter(parentViewController: viewController)
-        let coordinator = SearchCardCoordinator(router: router, card: scannedCard)
+        let coordinator = SearchCardCoordinator(router: router, card: scannedCard, sample: nil)
         coordinator.delegate = self
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }

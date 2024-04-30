@@ -3,13 +3,18 @@ import SnapKit
 import Kingfisher
 import Foundation
 
+enum PreviousVC {
+    case search
+    case common
+}
+
 final class CardDetailsViewController: UIViewController {
 
     private let searchCardService: CardSearchable
     private let cardPhotoService: CardPhotoService
     private let cardsManager: UserCardsManager
     weak var delegate: CardDetailsViewControllerDelegate?
-
+    private var previousVC: PreviousVC
     private(set) lazy var searchedCardsManager: CardsUpdater = SearchedCardsManager(card: card)
 
     private(set) lazy var selectedGrader: CardGrader = .RAW
@@ -46,7 +51,8 @@ final class CardDetailsViewController: UIViewController {
         encodedCardImage: Data? = nil,
         searchCardService: CardSearchable = SearchCardService(),
         cardPhotoService: CardPhotoService = .init(),
-        cardsManager: UserCardsManager = .shared
+        cardsManager: UserCardsManager = .shared,
+        previousVC: PreviousVC
     ) {
         self.card = card
         self.cardType = cardType
@@ -54,6 +60,7 @@ final class CardDetailsViewController: UIViewController {
         self.searchCardService = searchCardService
         self.cardPhotoService = cardPhotoService
         self.cardsManager = cardsManager
+        self.previousVC = previousVC
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -132,17 +139,25 @@ private extension CardDetailsViewController {
 
     func setupButton() {
         if isRootViewController() {
-            let closeButton = CloseButton(style: .close)
-            closeButton.setCenter(in: view)
-            closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+            closeStyle(style: previousVC)
         } else {
-            let closeButton = CloseButton(style: .back)
-            closeButton.setLeft(in: view)
-            closeButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
+            if previousVC == .search { closeStyle(style: previousVC) } else {
+                let closeButton = CloseButton(style: .back)
+                closeButton.setLeft(in: view)
+                closeButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
+            }
         }
     }
 
-    private func isRootViewController() -> Bool {
+    func closeStyle(style: PreviousVC) {
+        let closeButton = CloseButton(style: .close)
+        closeButton.setCenter(in: view)
+        if style == .search { closeButton.addTarget(self, action: #selector(closeAfterSearch), for: .touchUpInside) } else {
+            closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
+        }
+    }
+
+    func isRootViewController() -> Bool {
            return navigationController?.viewControllers.first == self
     }
     func setupViewsData_unique() {
@@ -192,16 +207,16 @@ private extension CardDetailsViewController {
 
     // MARK: - Actions
 
-    @objc func close() {
-        dismiss(animated: true)
-    }
-
     @objc func closeTapped_unique() {
         delegate?.cardDetailsViewControllerCloseTapped(self)
     }
 
     @objc func backTapped_unique() {
         delegate?.cardDetailsViewControllerBackTapped(self)
+    }
+
+    @objc func closeAfterSearch() {
+        delegate?.cardDetaisCloseAfterSearch(self)
     }
 
     @objc func selectGraderTapped() {

@@ -32,7 +32,7 @@ extension HighestValueListCoordinator: HighestValueListViewControllerDelegate {
     }
 
     func highestValueListViewControllerDidSelectCard(_ card: CardRepresentable, in viewController: HighestValueCardListViewController) {
-        let coordinator = CardDetailsCoordinator(router: router, card: card)
+        let coordinator = CardDetailsCoordinator(router: router, card: card, previousVC: .common, sample: nil)
         coordinator.delegate = self
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }

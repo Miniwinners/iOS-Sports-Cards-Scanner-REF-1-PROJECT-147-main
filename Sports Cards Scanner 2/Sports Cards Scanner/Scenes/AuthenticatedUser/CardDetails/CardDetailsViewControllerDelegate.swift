@@ -3,6 +3,7 @@ import Foundation
 protocol CardDetailsViewControllerDelegate: AnyObject {
     func cardDetailsViewControllerCloseTapped(_ viewController: CardDetailsViewController)
     func cardDetailsViewControllerBackTapped(_ viewController: CardDetailsViewController)
+    func cardDetaisCloseAfterSearch(_ viewController: CardDetailsViewController)
 
     func cardDetailsViewControllerSelectGraderTapped(_ viewController: CardDetailsViewController)
     func cardDetailsViewControllerPricingReportTapped(_ viewController: CardDetailsViewController)

@@ -40,6 +40,7 @@ final class PortfolioViewController: UIViewController {
 
     override func loadView() {
         view = portfolioView
+        portfolioView.cardsView.configureContainer()
     }
 
     override func viewWillAppear(_ animated: Bool) {

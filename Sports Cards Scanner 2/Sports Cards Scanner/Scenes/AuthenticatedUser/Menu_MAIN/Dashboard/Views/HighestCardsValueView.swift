@@ -13,7 +13,7 @@ final class HighestCardsValueView: UIView {
 
     lazy var numOneImage: UIImageView = .init(image: Images.highValue1.image)
     lazy var numTwoImage: UIImageView = .init(image: Images.highValue2.image)
-    lazy var numThreeImage: UIImageView = .init(image: Images.highValue1.image)
+    lazy var numThreeImage: UIImageView = .init(image: Images.highValue3.image)
 
     lazy var stackView: UIStackView = { stackView in
         stackView.axis = .horizontal

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		410002372BD6AFA100CA643C /* CurrentValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410002362BD6AFA100CA643C /* CurrentValueTableViewCell.swift */; };
+		41020DB92BE14EA600636478 /* AddToPortfolioDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41020DB82BE14EA600636478 /* AddToPortfolioDetails.swift */; };
+		41020DBB2BE14EC800636478 /* AddToPortfolioDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41020DBA2BE14EC800636478 /* AddToPortfolioDetailsView.swift */; };
 		4110F1162BD7FAF800E288EF /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4110F1152BD7FAF800E288EF /* CardCollectionViewCell.swift */; };
 		414470EF2BCD19AB000C262D /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414470EE2BCD19AB000C262D /* PresentationStyle.swift */; };
 		416295CE2BCE97B400588C0E /* AddToPortfolioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416295CD2BCE97B400588C0E /* AddToPortfolioButton.swift */; };
@@ -428,6 +430,8 @@
 
 /* Begin PBXFileReference section */
 		410002362BD6AFA100CA643C /* CurrentValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueTableViewCell.swift; sourceTree = "<group>"; };
+		41020DB82BE14EA600636478 /* AddToPortfolioDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPortfolioDetails.swift; sourceTree = "<group>"; };
+		41020DBA2BE14EC800636478 /* AddToPortfolioDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPortfolioDetailsView.swift; sourceTree = "<group>"; };
 		4110F1152BD7FAF800E288EF /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		414470EE2BCD19AB000C262D /* PresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		416295CD2BCE97B400588C0E /* AddToPortfolioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPortfolioButton.swift; sourceTree = "<group>"; };
@@ -858,6 +862,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		41020DB72BE14AE700636478 /* AddToPortfolioDetails */ = {
+			isa = PBXGroup;
+			children = (
+				41020DB82BE14EA600636478 /* AddToPortfolioDetails.swift */,
+				41020DBA2BE14EC800636478 /* AddToPortfolioDetailsView.swift */,
+			);
+			path = AddToPortfolioDetails;
+			sourceTree = "<group>";
+		};
 		41A8C1272BC6B60300611139 /* Font_Color */ = {
 			isa = PBXGroup;
 			children = (
@@ -1264,6 +1277,7 @@
 		464D26B02A85220100C7F4D4 /* AuthenticatedUser */ = {
 			isa = PBXGroup;
 			children = (
+				41020DB72BE14AE700636478 /* AddToPortfolioDetails */,
 				467CCC4D2A950D64000AFC8F /* Menu_MAIN */,
 				461CBD3D2AAB80D30025FF41 /* CardCollection */,
 				468C830D2AAFAEA2003DC91A /* CardDeck */,
@@ -2588,6 +2602,7 @@
 				461CBD1B2AA4E1260025FF41 /* BaseCollectionView.swift in Sources */,
 				467CCC462A94DABD000AFC8F /* DeleteAccountVCdelegate.swift in Sources */,
 				464F34CC2AA3DDD800025431 /* HighestValueCardListViewController.swift in Sources */,
+				41020DBB2BE14EC800636478 /* AddToPortfolioDetailsView.swift in Sources */,
 				468A5CDA2AB724C300D29443 /* PCIdentificationError.swift in Sources */,
 				46C7BE4B2AC7534000FAD645 /* MagicCardParams.swift in Sources */,
 				4660BFDF2A79334D00FB80AF /* Images.swift in Sources */,
@@ -2722,6 +2737,7 @@
 				4650DEC12A9EABFC00F6F13C /* SwipableController.swift in Sources */,
 				461CBD122AA4C8BE0025FF41 /* ParallelSelectionViewController.swift in Sources */,
 				4650DEF42AA10E1100F6F13C /* Notification.Name_Extension.swift in Sources */,
+				41020DB92BE14EA600636478 /* AddToPortfolioDetails.swift in Sources */,
 				4650DEF22AA10AB500F6F13C /* DashboardCardsView.swift in Sources */,
 				461CBD082AA488180025FF41 /* EditCardViewControllerDelegate.swift in Sources */,
 				468C831A2AAFBFCD003DC91A /* CreateCardDeckCoordinator.swift in Sources */,

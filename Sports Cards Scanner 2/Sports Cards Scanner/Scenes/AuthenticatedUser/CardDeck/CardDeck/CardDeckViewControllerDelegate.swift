@@ -41,7 +41,7 @@ extension CardDeckViewControllerDelegate where Self: SCSCoordinator {
     }
 
     func cardDeckViewControllerCardDidSelect(_ card: CardRepresentable, in viewController: CardDeckViewController) {
-        let coordinator = CardDetailsCoordinator(router: router, card: card)
+        let coordinator = CardDetailsCoordinator(router: router, card: card, previousVC: .common, sample: nil)
         coordinator.delegate = self as? CardDetailsCoordinatorDelegate
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }

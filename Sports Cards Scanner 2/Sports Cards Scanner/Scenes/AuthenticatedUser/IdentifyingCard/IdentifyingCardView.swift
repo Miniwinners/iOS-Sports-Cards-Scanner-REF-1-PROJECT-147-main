@@ -62,9 +62,29 @@ private extension IdentifyingCardView {
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
+        let containerView = UIView()
+        containerView.addSubviews(cardImageView, indicatorImageView)
+        cardImageView.snp.makeConstraints {
+            $0.width.equalTo(UIDevice.isIpad ? 284:200)
+            $0.height.equalTo(UIDevice.isIpad ? 420:294)
+            $0.top.horizontalEdges.equalToSuperview()
+        }
+        indicatorImageView.snp.makeConstraints {
+            $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 50:30)
+            $0.size.equalTo(UIDevice.isIpad ? 75:48)
+            $0.centerX.bottom.equalToSuperview()
+        }
+
+        addSubview(containerView)
+        containerView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 60:30)
+            $0.centerX.equalToSuperview()
+        }
+
         addSubview(processLabel)
         processLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
+            $0.top.equalTo(containerView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
         }
 
         addSubview(cancelButton)
@@ -72,26 +92,10 @@ private extension IdentifyingCardView {
             $0.height.equalTo(UIDevice.isIpad ? 66:42)
             $0.top.equalTo(processLabel.snp.bottom).offset(UIDevice.isIpad ? 60:40)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(UIDevice.isIpad ? 240:120)
+            $0.width.equalTo(UIDevice.isIpad ? 240:150)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 50:30)
         }
 
-        let containerView = UIView()
-        containerView.addSubviews(cardImageView, indicatorImageView)
-        cardImageView.snp.makeConstraints {
-            $0.width.equalTo(UIDevice.isIpad ? 284:142)
-            $0.height.equalTo(UIDevice.isIpad ? 420:200)
-            $0.top.horizontalEdges.equalToSuperview()
-        }
-        indicatorImageView.snp.makeConstraints {
-            $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
-            $0.centerX.bottom.equalToSuperview()
-        }
-
-        addSubview(containerView)
-        containerView.snp.makeConstraints {
-            $0.center.equalTo(safeAreaLayoutGuide)
-        }
     }
 
     func animateIndicator() {
@@ -102,3 +106,29 @@ private extension IdentifyingCardView {
         }
     }
 }
+
+ import SwiftUI
+
+ struct CardDetailsViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> IdentifyingCardView {
+        // Create and return an instance of your custom UIView here
+        return IdentifyingCardView()
+    }
+
+    func updateUIView(_ uiView: IdentifyingCardView, context: Context) {
+        // Update the view when your app's state changes
+    }
+ }
+
+ struct ContentView: View {
+    var body: some View {
+        CardDetailsViewRepresentable()
+    }
+ }
+
+ @available(iOS 13.0, *)
+ struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+ }

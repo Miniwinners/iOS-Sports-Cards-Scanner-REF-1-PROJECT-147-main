@@ -38,7 +38,7 @@ extension CategoryCardsCoordinator: CategoryCardsViewControllerDelegate {
     }
 
     func categoryCardsViewControllerDidSelectCard(_ card: CardRepresentable, in viewController: CategoryCardsViewController) {
-        let coordinator = CardDetailsCoordinator(router: router, card: card)
+        let coordinator = CardDetailsCoordinator(router: router, card: card, previousVC: .common, sample: nil)
         coordinator.delegate = self
         presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
     }
