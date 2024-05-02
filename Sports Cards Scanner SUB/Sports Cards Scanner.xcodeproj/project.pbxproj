@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		417258032BE40DBA002FD12A /* Gilroy-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 417258022BE40D55002FD12A /* Gilroy-ExtraBold.ttf */; };
+		4198FD6C2BE4344800E788C9 /* TransactionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4198FD6B2BE4344800E788C9 /* TransactionView.xib */; };
 		41D6447A2BE3D75100642D21 /* UIScreen_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644562BE3D75100642D21 /* UIScreen_Extension.swift */; };
 		41D6447B2BE3D75100642D21 /* UITabBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644572BE3D75100642D21 /* UITabBar_Extension.swift */; };
 		41D6447C2BE3D75100642D21 /* UINavigationBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644582BE3D75100642D21 /* UINavigationBar_Extension.swift */; };
@@ -389,7 +391,6 @@
 		46DC11942ABCEAD4003BDB79 /* FontsFree-Net-SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46DC118D2ABCEAD4003BDB79 /* FontsFree-Net-SFProDisplay-Regular.ttf */; };
 		46DC11952ABCEAD4003BDB79 /* SFProText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46DC118E2ABCEAD4003BDB79 /* SFProText-Bold.ttf */; };
 		46DC11E02ABCEAE8003BDB79 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC11982ABCEAE8003BDB79 /* TransactionView.swift */; };
-		46DC11E12ABCEAE8003BDB79 /* TransactionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46DC11992ABCEAE8003BDB79 /* TransactionView.xib */; };
 		46DC11E22ABCEAE8003BDB79 /* scsextensions-freeform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC119B2ABCEAE8003BDB79 /* scsextensions-freeform.swift */; };
 		46DC11E32ABCEAE8003BDB79 /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC119D2ABCEAE8003BDB79 /* IAPHandler.swift */; };
 		46DC11E42ABCEAE8003BDB79 /* NetworkStatusMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC119E2ABCEAE8003BDB79 /* NetworkStatusMonitor.swift */; };
@@ -465,6 +466,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		417258022BE40D55002FD12A /* Gilroy-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4198FD6B2BE4344800E788C9 /* TransactionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionView.xib; sourceTree = "<group>"; };
 		41D644562BE3D75100642D21 /* UIScreen_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen_Extension.swift; sourceTree = "<group>"; };
 		41D644572BE3D75100642D21 /* UITabBar_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBar_Extension.swift; sourceTree = "<group>"; };
 		41D644582BE3D75100642D21 /* UINavigationBar_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extension.swift; sourceTree = "<group>"; };
@@ -841,7 +844,6 @@
 		46DC118D2ABCEAD4003BDB79 /* FontsFree-Net-SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		46DC118E2ABCEAD4003BDB79 /* SFProText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.ttf"; sourceTree = "<group>"; };
 		46DC11982ABCEAE8003BDB79 /* TransactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
-		46DC11992ABCEAE8003BDB79 /* TransactionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionView.xib; sourceTree = "<group>"; };
 		46DC119B2ABCEAE8003BDB79 /* scsextensions-freeform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "scsextensions-freeform.swift"; sourceTree = "<group>"; };
 		46DC119D2ABCEAE8003BDB79 /* IAPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
 		46DC119E2ABCEAE8003BDB79 /* NetworkStatusMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStatusMonitor.swift; sourceTree = "<group>"; };
@@ -1981,7 +1983,6 @@
 				41D644542BE3D75100642D21 /* Extensions */,
 				4688A76C2A823AE500882727 /* Common */,
 				46A01DB42A813999006AFB5E /* Sports Cards Scanner.entitlements */,
-				46DC11812ABCE928003BDB79 /* sub.ttf */,
 				46E720BE2AB9AFFA00D15ABB /* Configurations */,
 				46E7203F2AB9AFFA00D15ABB /* Subscription */,
 				46A01D7D2A7D13C0006AFB5E /* AppDelegates */,
@@ -2456,6 +2457,8 @@
 		46DC11872ABCEAD4003BDB79 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				46DC11812ABCE928003BDB79 /* sub.ttf */,
+				417258022BE40D55002FD12A /* Gilroy-ExtraBold.ttf */,
 				46DC11882ABCEAD4003BDB79 /* Media.xcassets */,
 				46DC118A2ABCEAD4003BDB79 /* phone.mp4 */,
 				46DC118B2ABCEAD4003BDB79 /* pad.mp4 */,
@@ -2482,8 +2485,8 @@
 		46DC11972ABCEAE8003BDB79 /* transaction */ = {
 			isa = PBXGroup;
 			children = (
+				4198FD6B2BE4344800E788C9 /* TransactionView.xib */,
 				46DC11982ABCEAE8003BDB79 /* TransactionView.swift */,
-				46DC11992ABCEAE8003BDB79 /* TransactionView.xib */,
 			);
 			path = transaction;
 			sourceTree = "<group>";
@@ -2844,11 +2847,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417258032BE40DBA002FD12A /* Gilroy-ExtraBold.ttf in Resources */,
 				41D9236A2BE3DDE100311A1B /* OpenSans-Regular.ttf in Resources */,
 				41D923652BE3DDE100311A1B /* Poppins-Medium.ttf in Resources */,
 				46E722232AB9EAD100D15ABB /* LocalizableSubscription.strings in Resources */,
 				46DC11E82ABCEAE8003BDB79 /* AnimatedButton.xib in Resources */,
-				46DC11E12ABCEAE8003BDB79 /* TransactionView.xib in Resources */,
+				4198FD6C2BE4344800E788C9 /* TransactionView.xib in Resources */,
 				46DC12182ABCEAE8003BDB79 /* ReusableCell.xib in Resources */,
 				46E721E32AB9B52F00D15ABB /* Localizable.strings in Resources */,
 				41D923662BE3DDE100311A1B /* Inter-Bold.ttf in Resources */,

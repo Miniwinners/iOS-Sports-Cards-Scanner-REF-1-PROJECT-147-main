@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,7 +38,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rb5-MV-Mgb">
-                            <rect key="frame" x="118" y="100" width="157" height="20.333333333333329"/>
+                            <rect key="frame" x="20" y="100" width="353.66666666666669" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="530"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="n4S-FE-iyw">
-                                            <rect key="frame" x="16" y="163" width="361" height="367"/>
+                                            <rect key="frame" x="16" y="149" width="361" height="381"/>
                                             <string key="text">This trial aoutomatically renews into a paid subscription and will continue to automatically renew until you cancel. 
 * Subscription payments will be charged to your iTunes account at confirmation of your purchase.
 * Subscriptions will automatically renew and payment will be charged to your iTunes account unless auto-renew is turned off at least 24 hours prior to the end of the current period. The cost of the renewal depends on your Subscription Plan. Our standard Subscription Plans are:
@@ -69,29 +69,27 @@ Please, for more information see our Privacy Policy and Terms of Use.</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="g2I-TI-eIm">
-                                            <rect key="frame" x="102.33333333333333" y="17.666666666666657" width="14" height="13"/>
+                                            <rect key="frame" x="127.66666666666669" y="10.666666666666657" width="14" height="13"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="13" id="CeL-p1-vJ7"/>
                                                 <constraint firstAttribute="width" constant="14" id="td6-tr-P27"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQR-FD-q5b">
-                                            <rect key="frame" x="125.33333333333333" y="10" width="142.66666666666669" height="28"/>
-                                            <string key="text">START 3-DAYS FOR FREE
-THEN $4.99/WEEK</string>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="1000" text="No payment now" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQR-FD-q5b">
+                                            <rect key="frame" x="150.66666666666666" y="10" width="91.666666666666657" height="14"/>
                                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l8J-gz-TlO" customClass="AnimatedButton" customModule="Sports_Cards_Scanner" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="46" width="353" height="60"/>
+                                            <rect key="frame" x="20" y="32" width="353" height="60"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="9Sw-OF-gJ6"/>
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fF5-DA-vii">
-                                            <rect key="frame" x="20" y="108" width="46" height="30"/>
+                                            <rect key="frame" x="20" y="94" width="46" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="L6Q-we-mg9"/>
                                             </constraints>
@@ -102,7 +100,7 @@ THEN $4.99/WEEK</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gc4-hX-H0q">
-                                            <rect key="frame" x="327" y="108" width="46" height="30"/>
+                                            <rect key="frame" x="327" y="94" width="46" height="30"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
@@ -152,13 +150,14 @@ THEN $4.99/WEEK</string>
                         <constraint firstAttribute="trailing" secondItem="6yy-5i-hRD" secondAttribute="trailing" id="0oT-Cq-YCv"/>
                         <constraint firstItem="6yy-5i-hRD" firstAttribute="top" secondItem="AX4-xw-e7n" secondAttribute="bottom" constant="5" id="25q-Oo-woH"/>
                         <constraint firstItem="AX4-xw-e7n" firstAttribute="leading" secondItem="CfK-QA-lXg" secondAttribute="leading" constant="20" id="Cv3-5F-Vr3"/>
+                        <constraint firstItem="rb5-MV-Mgb" firstAttribute="leading" secondItem="CfK-QA-lXg" secondAttribute="leading" constant="20" id="Z13-HU-Cca"/>
                         <constraint firstItem="rb5-MV-Mgb" firstAttribute="bottom" secondItem="AX4-xw-e7n" secondAttribute="top" constant="-10" id="mZR-Es-ddp"/>
-                        <constraint firstItem="rb5-MV-Mgb" firstAttribute="centerX" secondItem="CfK-QA-lXg" secondAttribute="centerX" id="oYJ-mL-MpK"/>
                         <constraint firstItem="6yy-5i-hRD" firstAttribute="leading" secondItem="CfK-QA-lXg" secondAttribute="leading" id="rdg-XW-RpO"/>
-                        <constraint firstItem="rb5-MV-Mgb" firstAttribute="width" secondItem="CfK-QA-lXg" secondAttribute="width" multiplier="0.4" id="tNk-Sq-w1h"/>
+                        <constraint firstItem="rb5-MV-Mgb" firstAttribute="width" secondItem="CfK-QA-lXg" secondAttribute="width" multiplier="0.9" id="tNk-Sq-w1h"/>
                         <constraint firstItem="AX4-xw-e7n" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CfK-QA-lXg" secondAttribute="top" constant="20" id="w18-5g-JIe"/>
                         <constraint firstAttribute="bottom" secondItem="6yy-5i-hRD" secondAttribute="bottom" id="wPD-Ng-MbJ"/>
                         <constraint firstAttribute="trailing" secondItem="AX4-xw-e7n" secondAttribute="trailing" constant="20" id="ycq-xB-Tzb"/>
+                        <constraint firstAttribute="trailing" secondItem="rb5-MV-Mgb" secondAttribute="trailing" constant="10" id="zAv-iI-K7K"/>
                     </constraints>
                 </view>
             </subviews>
@@ -177,10 +176,10 @@ THEN $4.99/WEEK</string>
     <resources>
         <image name="star" width="15" height="14"/>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

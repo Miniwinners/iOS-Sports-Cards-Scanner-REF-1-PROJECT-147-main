@@ -11,7 +11,7 @@
 /**/
 "iOSButtonID" = "CONTINUE";
 /**/
-"iOSStart3daysTitleID" = "START 3-DAYS FOR FREE\nTHEN $4.99/WEEK";
+"iOSStart3daysTitleID" = "No payment now";
 
 /**/
 "LoadingID" = "LOADING";
@@ -26,11 +26,12 @@
 "TermsID" = "Terms of Use";
 
 /**/
-"SliderID1" = "TEXT TEXT TEXT TEXT TEXT TEXT TEXT";
+"SliderID1" = "Tap CONTINUE to text text text text text text text text text text";
 /**/
 "SliderID2" = "TEXT TEXT TEXT TEXT TEXT TEXT";
 /**/
-"SliderID3" = "TEXT TEXT TEXT TEXT TEXT TEXT";
+"SliderID3" = "START 3-DAYS FOR FREE THEN $4.99/WEEK";
+"SliderID3SubTitle" = "Cancel at any time";
 /**/
 "SliderID4" = "TEXT TEXT TEXT TEXT TEXT TEXT";
 /**/

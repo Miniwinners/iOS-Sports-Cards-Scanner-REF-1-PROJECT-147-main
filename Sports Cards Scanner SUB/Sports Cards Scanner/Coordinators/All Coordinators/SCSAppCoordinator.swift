@@ -27,9 +27,9 @@ extension SCSAppCoordinator: SCSCoordinator {
 //                self?.presentUnsubscribed()
 
             case false:
-                self?.presentSubscribed()
+//                self?.presentSubscribed()
 
-//                self?.presentUnsubscribed()
+                self?.presentUnsubscribed()
             }
         }
     }

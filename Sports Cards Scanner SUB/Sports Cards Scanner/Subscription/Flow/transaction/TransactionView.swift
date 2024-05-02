@@ -28,7 +28,7 @@ class TransactionView: UIView, SCSAnimatedButtonEvent, SCSIAPManagerProtocol, SC
     @IBOutlet private weak var conteinerWidth: NSLayoutConstraint!
     @IBOutlet private weak var heightView: NSLayoutConstraint!
     
-    private let currentFont = SCSConfigurations.fontName
+    private let currentFont = SCSConfigurations.buttonFont
     public let inapp = IAPManager.shared
     private let locale = NSLocale.current.languageCode
     public weak var delegate : SCSTransactionViewEvents?
@@ -78,21 +78,37 @@ class TransactionView: UIView, SCSAnimatedButtonEvent, SCSIAPManagerProtocol, SC
         }
         
         configScreen_TOC_unique()
-        setSlider_TOC_unique()
         setConfigLabels_TOC_unique()
+        setSlider_TOC_unique()
         setConfigButtons_TOC_unique()
         setLocalization_TOC_unique()
         configsInApp_TOC_unique()
     }
     
+    private func lightBlueText(str: String) -> NSMutableAttributedString {
+        let text = localizedString(forKey: "SliderID1")
+        let atributeString = NSMutableAttributedString(string: text)
+        let range = (text as NSString).range(of: str)
+        if range.location != NSNotFound {
+            atributeString.addAttribute(.foregroundColor, value: UIColor.lightBlue, range: range)
+        }
+        return atributeString
+    }
+    
     private func setSlider_TOC_unique(){
-        title.text = (localizedString(forKey: "SliderID1").uppercased())
+        title.attributedText = lightBlueText(str: "CONTINUE")
         let texts: [String] = ["\(localizedString(forKey: "SliderID2"))",
                                "\(localizedString(forKey: "SliderID3"))",
                                "\(localizedString(forKey: "SliderID4"))",
         ]
-        for t in texts {
-            sliderStack.addArrangedSubview(SliderCellView(title: t, subTitle: t.lowercased()))
+        for (index,element) in texts.enumerated() {
+            if index == 1 {
+                sliderStack.addArrangedSubview(SliderCellView(title: element,
+                                                              subTitle: (localizedString(forKey: "SliderID3SubTitle").lowercased())))
+            } else {
+                sliderStack.addArrangedSubview(SliderCellView(title: element,
+                                                              subTitle: element.lowercased()))
+            }
         }
     }
     
@@ -111,7 +127,8 @@ class TransactionView: UIView, SCSAnimatedButtonEvent, SCSIAPManagerProtocol, SC
         //        title.adjustsFontSizeToFitWidth = true
         title.numberOfLines = 4
         title.setShadow_unique()
-        title.lineBreakMode = .byClipping
+        title.lineBreakMode = .byWordWrapping
+        title.textAlignment = .left
         if UIDevice.current.userInterfaceIdiom == .pad {
             title.font = UIFont(name: currentFont, size: 24)
         }
@@ -171,9 +188,12 @@ class TransactionView: UIView, SCSAnimatedButtonEvent, SCSIAPManagerProtocol, SC
         descriptLb.text = String(format: description, localizedPrice)
         
         if locale == "en" {
-            trialLb.text = "Start 3-days for FREE\nThen \(localizedPrice)/week".uppercased()
+//            trialLb.text = "Start 3-days for FREE\nThen \(localizedPrice)/week".uppercased()
+            trialLb.text = localizedString(forKey: "iOSStart3daysTitleID")
         } else {
-            trialLb.text = ""
+            trialLb.text = localizedString(forKey: "iOSStart3daysTitleID")
+
+//            trialLb.text = ""
         }
         privacyBtn.titleLabel?.lineBreakMode = .byWordWrapping
         privacyBtn.setAttributedTitle(localizedString(forKey: "TermsID").underLined, for: .normal)

@@ -15,7 +15,7 @@ class AnimatedButton: UIView {
     @IBOutlet private weak var titleSelf: UILabel!
     
     weak var delegate: SCSAnimatedButtonEvent?
-    private let currentFont = SCSConfigurations.fontName
+    private let currentFont = SCSConfigurations.buttonFont
     private var persistentAnimations: [String: CAAnimation] = [:]
     private var persistentSpeed: Float = 0.0
     private let xib = "AnimatedButton"
@@ -93,7 +93,7 @@ class AnimatedButton: UIView {
             print("\(rkjyOdUzcU)")
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
-        
+//        self.contentSelf.backgroundColor = .red
         self.persistentSpeed = self.layer.speed
         
         self.layer.speed = 1.0 //in case layer was paused from outside, set speed to 1.0 to get all animations
@@ -109,7 +109,7 @@ class AnimatedButton: UIView {
             print("\(rkjyOdUzcU)")
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
-        
+//        self.contentSelf.backgroundColor = .green
         self.restoreAnimations_unique(withKeys: Array(self.persistentAnimations.keys))
         self.persistentAnimations.removeAll()
         if self.persistentSpeed == 1.0 { //if layer was plaiyng before backgorund, resume it
@@ -169,8 +169,9 @@ class AnimatedButton: UIView {
         
         titleSelf.text = localizedString(forKey: "iOSButtonID")
         titleSelf.font = UIFont(name: currentFont, size: 29)
-        titleSelf.textColor = .skyBlue
+        titleSelf.textColor = .lightBlue
         titleSelf.minimumScaleFactor = 11/22
+        
         if style == .native {
             setPulseAnimation_unique()
         }else {

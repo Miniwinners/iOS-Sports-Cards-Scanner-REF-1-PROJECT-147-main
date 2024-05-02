@@ -3,7 +3,7 @@ import SnapKit
 
 class SliderCellView: UIView {
     
-    private var fontName: String = SCSConfigurations.fontName
+    private var fontName: String = SCSConfigurations.buttonFont
     private var textColot: UIColor = UIColor.white
     
     lazy var titleLabel: UILabel = {

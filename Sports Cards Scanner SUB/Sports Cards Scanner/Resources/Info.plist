@@ -17,6 +17,11 @@
 	<string>22192-19DD0</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Gilroy-ExtraBold.ttf</string>
+		<string>Ubuntu-Bold.ttf</string>
+		<string>Ubuntu-Light.ttf</string>
+		<string>Ubuntu-Regular.ttf</string>
+		<string>Ubuntu-Medium.ttf</string>
 		<string>Inter-Regular.ttf</string>
 		<string>Inter-Medium.ttf</string>
 		<string>Inter-SemiBold.ttf</string>

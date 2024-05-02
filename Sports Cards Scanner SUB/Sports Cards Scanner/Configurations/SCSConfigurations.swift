@@ -3,7 +3,7 @@ import Foundation
 enum SCSConfigurations {
     static let fontName = "PollerOne-Regular"
     static let adjustToken = "hfg1t85ufqbk"
-
+    static let buttonFont = "Gilroy-ExtraBold"
     static let pushwooshToken = "22192-19DD0"
     static let pushwooshAppName = "App.SoftInter"
 

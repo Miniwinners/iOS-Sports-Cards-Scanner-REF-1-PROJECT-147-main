@@ -109,7 +109,7 @@ class ReusableView: UIView, SCSAnimatedButtonEvent {
         titleLb.setShadow_unique()
         
         titleLb.textColor = .white
-        titleLb.font = UIFont(name: SCSConfigurations.fontName, size: 24)
+        titleLb.font = UIFont(name: SCSConfigurations.buttonFont, size: 24)
         titleLb.adjustsFontSizeToFitWidth = true
     }
     
