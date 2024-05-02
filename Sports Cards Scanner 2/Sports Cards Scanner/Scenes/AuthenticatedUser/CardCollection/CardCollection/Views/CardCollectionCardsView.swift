@@ -1,15 +1,20 @@
 import UIKit
 import SnapKit
-
+enum ShowHide {
+    case show
+    case hide
+}
 final class CardCollectionCardsView: UIView {
 
+    private var topConstraint: CGFloat?
+    var index: Int = 2
+    var isShown: ShowHide?
     lazy var titleView: TitleLabel = .init()
 
     lazy var customContainer: CustomContainerView = .init()
 
     lazy var infoContainerView: UIView = { view in
         view.backgroundColor = .white
-//        view.cornerRadius = UIDevice.isIpad ? 22:12
         return view
     }(UIView())
 
@@ -20,6 +25,12 @@ final class CardCollectionCardsView: UIView {
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }(UILabel())
+
+    lazy var menuButton: UIButton = { button in
+        button.setImage(Images.menuDots.image, for: .normal)
+        button.tintColor = .black
+        return button
+    }(UIButton(type: .system))
 
     lazy var cardsTableView: UITableView = { tableView in
         tableView.showsVerticalScrollIndicator = false
@@ -67,6 +78,8 @@ final class CardCollectionCardsView: UIView {
     }
 
     func setCardsDisplay(option: CardsDisplayOption) {
+        print("Текущий индекс: \(index)")
+
         switch option {
         case .swipable: setupCardsViewIfNeeded(cardsSwipeableView)
         case .collection: setupCardsViewIfNeeded(cardsCollectionView)
@@ -90,26 +103,27 @@ final class CardCollectionCardsView: UIView {
     }
 
     func showEstimatedValue() {
-//        guard customContainer.priceContainerView.superview == nil else { return }
-        customContainer.priceContainerView.isHidden = false
-//        customContainer.infoContainerView.addSubview(customContainer.priceContainerView)
-//        
-//        customContainer.priceContainerView.snp.makeConstraints {
-//            $0.top.horizontalEdges.equalToSuperview().inset(16)
-//            $0.bottom.equalTo(cardsNumberLabel.snp.top).inset(-12)
-//        }
+        isShown = .show
+        topConstraint = UIDevice.isIpad ? 200 : 160
+        customContainer.setupLayout(in: self, top: infoContainerView)
+        bringSubviewToFront(menuButton)
+        reloadMaket()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 
     func hideEstimatedValue() {
-        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
-            print(qFvvUwywod)
-            print("\(rkjyOdUzcU)")
-            return "\(qFvvUwywod) \(rkjyOdUzcU)"
-        }
+        isShown = .hide
+        topConstraint = UIDevice.isIpad ? 40 : 20
+        customContainer.removeFromSuperview()
+        reloadMaket()
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
 
-        customContainer.priceContainerView.isHidden = true
-//        customContainer.priceContainerView.removeFromSuperview()
-
+    func reloadMaket() {
+        let displayOption = CardsDisplayOption(by: index)!
+        setCardsDisplay(option: displayOption)
     }
 
 }
@@ -122,14 +136,19 @@ private extension CardCollectionCardsView {
         setupPriceContainer()
 
         titleView.setupLabel(in: self)
-//        titleView.snp.makeConstraints { make in
-//            make.top.equalToSuperview().inset(12)
-//        }
+
         addSubview(infoContainerView)
         infoContainerView.snp.makeConstraints {
             $0.top.equalTo(titleView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
+        addSubview(menuButton)
+        menuButton.snp.makeConstraints { make in
+            make.top.equalTo(infoContainerView.snp.bottom).offset(UIDevice.isIpad ? 50 : 30)
+            make.size.equalTo(UIDevice.isIpad ? 40:24)
+            make.right.equalToSuperview().inset(UIDevice.isIpad ? 90:30)
+        }
+
         customContainer.setupLayout(in: self, top: infoContainerView)
 
     }
@@ -154,12 +173,20 @@ private extension CardCollectionCardsView {
     }
 
     func setupCardsViewIfNeeded(_ cardsView: UIView) {
-        guard cardsView.superview == nil else { return }
-
+//        guard cardsView.superview == nil else { return }
         addSubview(cardsView)
-        cardsView.snp.makeConstraints {
-            $0.top.equalTo(customContainer.snp.bottom).offset(UIDevice.isIpad ? 20:10)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?60:0)
+        let insetShow: CGFloat = UIDevice.isIpad ? 180:160
+        let insetHide: CGFloat = UIDevice.isIpad ? 40:20
+        cardsView.snp.remakeConstraints {
+
+            switch isShown {
+            case .show:
+                $0.top.equalTo(menuButton.snp.bottom).offset(topConstraint ?? insetShow)
+            case .hide:
+                $0.top.equalTo(menuButton.snp.bottom).offset(topConstraint ?? insetHide)
+            default: break
+            }
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 60:0)
             if cardsView === cardsSwipeableView {
                 $0.bottom.equalTo(safeAreaLayoutGuide)
             } else {
@@ -168,7 +195,6 @@ private extension CardCollectionCardsView {
         }
     }
 }
-
 extension CardCollectionCardsView {
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(

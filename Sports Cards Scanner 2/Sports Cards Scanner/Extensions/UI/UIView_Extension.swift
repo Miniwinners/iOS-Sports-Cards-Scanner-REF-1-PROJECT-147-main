@@ -48,12 +48,6 @@ extension UIView {
 
 final class CustomContainerView: UIView {
 
-    lazy var menuButton: UIButton = { button in
-        button.setImage(Images.menuDots.image, for: .normal)
-        button.tintColor = .black
-        return button
-    }(UIButton(type: .system))
-
     lazy var priceContainerView: UIView = .init()
 
     lazy var priceLabel: UILabel = { label in
@@ -94,14 +88,14 @@ final class CustomContainerView: UIView {
     func setupLayout(in view: UIView, top viewTop: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
-            make.top.equalTo(viewTop.snp.bottom).offset(UIDevice.isIpad ? 40 : 10)
+            make.top.equalTo(viewTop.snp.bottom).offset(UIDevice.isIpad ? 40 : 20)
             make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80 : 20)
             make.height.equalTo(UIDevice.isIpad ? 180 : 110)
         }
     }
 
     func setupViews() {
-        addSubviews(priceContainerView, menuButton)
+        addSubview(priceContainerView)
         priceContainerView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
@@ -118,10 +112,6 @@ final class CustomContainerView: UIView {
             $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(10)
         }
 
-        menuButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(UIDevice.isIpad ?  25 :15)
-            $0.size.equalTo(UIDevice.isIpad ?  42 : 24)
-        }
     }
 
 }

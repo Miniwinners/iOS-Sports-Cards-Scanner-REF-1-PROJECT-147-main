@@ -6,6 +6,7 @@ final class CardCollectionViewController: UIViewController {
     private var isTotalPriceVisible: Bool
 
     @UserDefaultCodable(UserDefaults.KeyOption.selectedCardSortOption, defaultValue: CardSortOption.default)
+
     private var selectedSortOption: CardSortOption
 
     weak var delegate: CardCollectionViewControllerDelegate?
@@ -43,6 +44,7 @@ final class CardCollectionViewController: UIViewController {
     // MARK: - Lifecycle
 
     override func loadView() {
+        cardCollectionView.cardsView.isShown = isTotalPriceVisible ? .show:.hide
         view = cardCollectionView
     }
 
@@ -103,7 +105,7 @@ private extension CardCollectionViewController {
         cardCollectionView.noCardsView.addCardsButton.addTarget(self, action: #selector(addCardsTapped), for: .touchUpInside)
         cardCollectionView.noCardsView.menuButton.addTarget(self, action: #selector(menuTapped_unique), for: .touchUpInside)
 
-        cardCollectionView.cardsView.customContainer.menuButton.addTarget(self, action: #selector(menuTapped_unique), for: .touchUpInside)
+        cardCollectionView.cardsView.menuButton.addTarget(self, action: #selector(menuTapped_unique), for: .touchUpInside)
         cardCollectionView.cardsView.cardsDisplayControl.addTarget(self, action: #selector(cardsDisplayOptionChanged(_:)), for: .valueChanged)
     }
 
@@ -174,8 +176,8 @@ private extension CardCollectionViewController {
 
     @objc func cardsDisplayOptionChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
+        cardCollectionView.cardsView.index = selectedIndex
         guard let displayOption = CardsDisplayOption(by: selectedIndex) else { return }
-
         cardCollectionView.cardsView.setCardsDisplay(option: displayOption)
     }
 

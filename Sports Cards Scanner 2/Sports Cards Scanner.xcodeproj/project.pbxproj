@@ -445,8 +445,6 @@
 		41D181692BDE780E00C3F9E7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		41D1816B2BDE780E00C3F9E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41D181732BDE784A00C3F9E7 /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
-		41E3953D2BE2650300701B94 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		41E3953E2BE2650400701B94 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41F8F62C2BC421AE00ED1FD7 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		41F8F62E2BC427C900ED1FD7 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		41F8F62F2BC4280A00ED1FD7 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
@@ -2461,7 +2459,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
 			mainGroup = 4619AE4E2A77965700753891;
 			packageReferences = (
@@ -2977,7 +2974,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4619AE662A77965A00753891 /* Base */,
-				41E3953D2BE2650300701B94 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2986,7 +2982,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				46D107B62A791F02006C19D4 /* en */,
-				41E3953E2BE2650400701B94 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

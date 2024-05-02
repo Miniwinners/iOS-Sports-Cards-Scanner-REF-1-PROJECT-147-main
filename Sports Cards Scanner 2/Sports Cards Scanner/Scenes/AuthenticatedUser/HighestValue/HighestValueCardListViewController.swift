@@ -91,12 +91,12 @@ private extension HighestValueCardListViewController {
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
             widthDimension: .estimated(UIDevice.isIpad ? 270: 162),
-            heightDimension: .absolute(UIDevice.isIpad ? 425: 297)
+            heightDimension: .absolute(UIDevice.isIpad ? 425: 317)
 
         )
 
         let item = NSCollectionLayoutItem(layoutSize: size)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 425:297))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 425:317))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(20)
 

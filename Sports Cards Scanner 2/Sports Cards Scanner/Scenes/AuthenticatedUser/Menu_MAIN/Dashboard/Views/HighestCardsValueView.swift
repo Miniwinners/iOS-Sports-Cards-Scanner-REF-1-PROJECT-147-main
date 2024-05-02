@@ -211,27 +211,4 @@ private extension HighestCardsValueView {
         return .init(configuration: configuration, backgroundColors: .init(primary: .skyBlue, highlighted: .highlightColor2))
     }
 
-//    private func filterLayout() -> UICollectionViewCompositionalLayout {
-//        let size = NSCollectionLayoutSize(
-//            widthDimension: .estimated(UIDevice.isIpad ? 252 : 162),
-//            heightDimension: .absolute(UIDevice.isIpad ? 464 : 297)
-//        )
-//
-//        let item = NSCollectionLayoutItem(layoutSize: size)
-//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464 : 297))
-//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3 : 2)
-//        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
-//
-//        let section = NSCollectionLayoutSection(group: group)
-//        section.interGroupSpacing = 10
-//        section.contentInsets = .init(
-//            top: 0,
-//            leading: 16,
-//            bottom: 0,
-//            trailing: 16
-//        )
-//
-//        return UICollectionViewCompositionalLayout(section: section)
-//    }
-
 }
