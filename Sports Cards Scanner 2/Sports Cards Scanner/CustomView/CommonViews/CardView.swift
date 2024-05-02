@@ -139,24 +139,24 @@ private extension CardView {
         }
         cardImageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
-            $0.height.equalTo(UIDevice.isIpad ? 304 :195)
-            $0.width.equalTo(UIDevice.isIpad ? 215 : 138)
+            $0.height.equalTo(UIDevice.isIpad ? 304:195)
+            $0.width.equalTo(UIDevice.isIpad ? 215:138)
             $0.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
             $0.height.equalTo(UIDevice.isIpad ? 40:30)
 
             $0.leading.equalToSuperview()
-            $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
+            $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 15:10)
         }
         subtitleLabel.snp.makeConstraints {
-            $0.height.equalTo(UIDevice.isIpad ? 30:20)
-            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
+            $0.height.equalTo(UIDevice.isIpad ? 40:30)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 5:0)
             $0.leading.equalToSuperview()
         }
         pricesLabel.snp.makeConstraints {
-            $0.height.equalTo(UIDevice.isIpad ? 30:20)
-            $0.top.equalTo(subtitleLabel.snp.bottom).offset(UIDevice.isIpad ? 10 : 5)
+            $0.height.equalTo(UIDevice.isIpad ? 40:30)
+            $0.top.equalTo(subtitleLabel.snp.bottom).offset(UIDevice.isIpad ? 5:0)
             $0.leading.equalToSuperview()
         }
 

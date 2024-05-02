@@ -30,7 +30,7 @@ private extension MenuSwitchableCell {
         }
         titleLabel.snp.updateConstraints {
             $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(5)
             $0.height.equalTo(UIDevice.isIpad ?30:20)
         }
         layoutIfNeeded()

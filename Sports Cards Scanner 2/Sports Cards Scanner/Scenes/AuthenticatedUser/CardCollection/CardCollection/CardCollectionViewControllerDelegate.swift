@@ -19,7 +19,7 @@ extension CardCollectionViewControllerDelegate where Self: SCSCoordinator {
     }
 
     func cardCollectionViewControllerMenuTapped(for collection: CardCollection, in viewController: CardCollectionViewController) {
-        let iPhoneHeight: CGFloat = 124 * 3 + 20 * 7 + 28
+        let iPhoneHeight: CGFloat = 124 * 3 + 20 * 7 + 26
         let iPhoneWidth: CGFloat = 145 * 2 + 20 * 2 + 10
         let iPadHeight: CGFloat = 212 * 3 + 20 * 7 + 96
         let iPadWidth: CGFloat = 244 * 2 + 20 * 2 + 10

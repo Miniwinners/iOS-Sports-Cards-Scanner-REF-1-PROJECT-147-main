@@ -169,7 +169,7 @@ class AnimatedButton: UIView {
         
         titleSelf.text = localizedString(forKey: "iOSButtonID")
         titleSelf.font = UIFont(name: currentFont, size: 29)
-        titleSelf.textColor = .white
+        titleSelf.textColor = .skyBlue
         titleSelf.minimumScaleFactor = 11/22
         if style == .native {
             setPulseAnimation_unique()

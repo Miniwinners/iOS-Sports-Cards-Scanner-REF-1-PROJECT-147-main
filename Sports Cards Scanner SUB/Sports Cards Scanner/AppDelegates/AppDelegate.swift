@@ -8,13 +8,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetworkStatusMonitor.shared.startMonitoring()
-        ThirdPartyServicesManager.shared.initializeAdjust_unique()
-        ThirdPartyServicesManager.shared.initializePushwoosh_unique(delegate: self)
-        ThirdPartyServicesManager.shared.initializeInApps_unique()
+//        ThirdPartyServicesManager.shared.initializeAdjust_unique()
+//        ThirdPartyServicesManager.shared.initializePushwoosh_unique(delegate: self)
+//        ThirdPartyServicesManager.shared.initializeInApps_unique()
 
         FirebaseApp.configure()
         configureManagers()
-        configurePushwoosh()
+//        configurePushwoosh()
         return true
     }
 

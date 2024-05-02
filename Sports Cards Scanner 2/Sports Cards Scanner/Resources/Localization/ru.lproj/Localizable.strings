@@ -1,0 +1,283 @@
+"common_close" = "Закрыть";
+"common_cancel" = "Отмена";
+"common_done" = "Готово";
+"common_reset" = "Заново";
+"common_error" = "Упс что то пошло не так";
+"common_ok" = "Ок";
+
+"splash_loading" = "Загрузка";
+
+"signIn_title" = "Вход";
+"signIn_email_title" = "Почта";
+"signIn_email_placeholder" = "Введите почту";
+"signIn_password_title" = "Введите пароль";
+"signIn_password_placeholder" = "Введите пароль";
+"signIn_password_forgot" = "Зыбыли пароль?";
+"signIn_action_signIn" = "Вход";
+"signIn_action_signUp" = "Регистрация";
+"signIn_signInWith" = "Вход с помощью";
+"signIn_noAccount" = "Нет аккаунта?";
+"signIn_action_signUp" = "Регистрация";
+"signIn_error_invalidEmail" = "Пожалуйста, введите действительный адрес электронной почты";
+"signIn_error_userNotFound" = "Пожалуйста, введите действительную почту и пароль";
+"signIn_error_wrongPassword" = "Пожалуйста, введите правильный пароль";
+
+"signUp_title" = "Регистрация";
+"signUp_email_title" = "Почта";
+"signUp_email_placeholder" = "Введите почту";
+"signUp_password_title" = "Пароль";
+"signUp_password_placeholder" = "Введите пароль";
+"signUp_password_requirements" = "Пароль должен содержать минимум %d символов и включать как минимум одну заглавную букву (A-Z), одну строчную букву (a-z), одну цифру (0-9) и один спецсимвол (например, ! %% @ или #)";
+"signUp_confirmPassword_placeholder" = "Подтверждение пароля";
+"signUp_action_signUp" = "Регистрация";
+"signUp_action_signIn" = "Вход";
+"signUp_signInWith" = "Вход с помощью";
+"signUp_haveAccount" = "Уже есть аккаунт?";
+"signUp_error_invalidEmail" = "Пожалуйста, введите действительный адрес электронной почты";
+"signUp_error_existUser" = "Аккаунт с такой почтой уже существует";
+"signUp_error_noPasswordRequirements" = "Пароль должен соответствовать требованиям";
+"signUp_error_passwordsMismatch" = "Пароли должны совпадать";
+
+"dashboard_title" = "Dashboard";
+"dashboard_welcome_title" = "Шаг в будущее коллекции карточек";
+"dashboard_welcome_description" = "Отсканируйте карту, чтобы расширить свою коллекцию";
+"dashboard_scanInstructions" = "Нажмите, чтобы начать сканирование карты.";
+"dashboard_currentValue" = "Текущая стоимость";
+"dashboard_highestValue" = "Высшая ценность";
+"dashboard_recentlyAdded" = "Недавно добавленные";
+"dashboard_action_scanCard" = "Сканировать карту";
+
+"portfolio_title" = "Портфолио";
+"portfolio_scanInstructions" = "Нажмите, чтобы открыть сканер и свою первую карту.";
+"portfolio_collection_create" = "Создать коллекцию";
+"portfolio_deck_create" = "Создать колоду";
+"portfolio_deck_description" = "Колода коллекционной карточной игры";
+"portfolio_collection_description" = "Пользовательская коллекция";
+"portfolio_cards" = "Карты";
+"portfolio_oneCard" = "1 Карта";
+"portfolio_numberOfCards" = "%d Карт";
+"portfolio_allCards" = "Все карты";
+"portfolio_estimatedValue" = "Общая оценочная стоимость";
+"portfolio_scanToAdd" = "Отсканируйте карту, чтобы добавить ее в свою коллекцию.";
+
+"more_title" = "Ещё";
+"more_item_cardCategories" = "Категории карт";
+"more_item_updatePassword" = "Обновить пароль";
+"more_item_privacyPolicy" = "политика конфиденциальности";
+"more_item_termsAndConditions" = "Условия использования";
+"more_item_pushNotifications" = "Включить push-уведомления";
+"more_item_logout" = "Выйти";
+"more_item_deleteAccount" = "Удалить аккаунт";
+
+"cardCategories_title" = "Категории карт";
+"cardCategories_description" = "Пожалуйста, выберите типы карт, которые вы хотите включить в свое портфолио, и сканер.";
+"cardCategories_minEnabledCategories" = "Вам необходимо сохранить хотя бы одну активную категорию..";
+
+"updatePassword_title" = "Обновить пароль";
+"updatePassword_newPassword_title" = "Создать новый пароль";
+"updatePassword_newPassword_placeholder" = "Введите новый пароль";
+"updatePassword_confirmNewPassword_title" = "Подтвердите пароль";
+"updatePassword_confirmNewPassword_placeholder" = "Повторно введите новый пароль";
+"updatePassword_newPassword_requirements" = "Пароли должны состоять не менее чем из %d символов и содержать хотя бы одну заглавную букву (A–Z), одну строчную букву (a–z), одну цифру (0–9) и один специальный символ (например, ! %% @ или #).";
+"updatePassword_newPassword_cut1" = "%d символы";
+"updatePassword_newPassword_cut2" = "одна прописная буква";
+"updatePassword_newPassword_cut3" = "одна строчная";
+"updatePassword_newPassword_cut4" = "одно число";
+"updatePassword_newPassword_cut5" = "один специальный символ";
+"updatePassword_action_save" = "Сохранить";
+"updatePassword_error_noPasswordRequirements" = "Пароль должен соответствовать требованиям к паролю";
+"updatePassword_error_passwordsMismatch" = "Пароли должны совпадать";
+"updatePassword_error_needReauthenticate" = "Пожалуйста, пройдите повторную аутентификацию, чтобы изменить свой пароль";
+
+"cardCategory_baseball" = "Бейсбол";
+"cardCategory_pokemon" = "Покемон";
+"cardCategory_basketball" = "Баскетбол";
+"cardCategory_football" = "Футбол";
+"cardCategory_magic" = "Магия: Сбор";
+"cardCategory_magic_short" = "МТГ";
+"cardCategory_hockey" = "Хоккей";
+"cardCategory_soccer" = "Футбольный";
+
+"forgotPassword_title" = "Забыли пароль";
+"forgotPassword_description" = "Введите адрес электронной почты для своей учетной записи, и мы вышлем вам инструкции по сбросу пароля.";
+"forgotPassword_email_title" = "Почта";
+"forgotPassword_email_placeholder" = "Введите почту";
+"forgotPassword_action_send" = "Отправить";
+"forgotPassword_error_userNotFound" = "Нет пользователей с этим адресом электронной почты";
+"forgotPassword_error_invalidEmail" = "Пожалуйста, введите действительный адрес электронной почты";
+
+"resetPassword_title" = "Сбросить пароль";
+"resetPassword_emailSent" = "Инструкции по сбросу пароля отправлены на адрес электронной почты.: %@";
+
+"scanCard_cardSide_front" = "Лицевая сторона карты";
+"scanCard_noAuthorization_title" = "Разершить %@ доступ к камере";
+"scanCard_noAuthorization_description" = "Это позволяет сканировать карты";
+"scanCard_action_openSettings" = "Открыть настройки";
+"scanCard_gradeType_graded" = "Оцененный";
+"scanCard_gradeType_raw" = "Без цены";
+
+"prompt_action_cancel" = "Отмена";
+"prompt_title" = "Вы уверены?";
+"prompt_logout_description" = "Вы уверены, что хотите удалить свою учетную запись?";
+"prompt_logout_confirmAction" = "Выйти";
+"prompt_deleteAccount_description" = "Удаление коллекции не приведет к удалению карточек; они останутся в вашем портфолио.";
+"prompt_deleteAccount_keepAction" = "Оставить";
+"prompt_deleteAccount_sure" = "Вы уверены, что хотите удалить свою учетную запись?";
+"prompt_deleteAccount_confirmAction" = "Удалить";
+"prompt_deleteCollection_description" = "Удаление коллекции не приведет к удалению карточек в коллекции. Карты останутся в вашем портфолио.";
+"prompt_deleteCollection_keepAction" = "Оставить";
+"prompt_deleteCollection_confirmAction" = "Удалить";
+"prompt_deleteDeck_description" = "Удаление колоды не приведет к удалению карт в колоде. Карты останутся в вашем портфолио..";
+"prompt_deleteDeck_keepAction" = "Оставить";
+"prompt_deleteDeck_confirmAction" = "Удалить";
+"prompt_removeCard_description" = "Вы собираетесь удалить эту карту из своего портфолио. Эту карту необходимо будет отсканировать еще раз, чтобы снова добавить в свое портфолио.";
+"prompt_removeCard_keepAction" = "Осавить";
+"prompt_removeCard_confirmAction" = "Убарть";
+
+"identifyingCard_title" = "%@ Карта захвачена";
+"identifyingCard_processTitle" = "Удостоверяющая карта...";
+"identifyingCard_action_cancel" = "Отменить сканирование";
+
+"searchCard_title" = "Поиск карты";
+"searchCard_search_placeholder" = "Поиск карты";
+"searchCard_error_tryAgain" = "Попробуйте еще раз! Продолжай искать!";
+
+"card_missingImage" = "Отсутствует\nImage";
+
+"cardDetails_action_addCard" = "Добавить в портфолио";
+"cardDetails_action_findCard" = "Найти карту";
+"cardDetails_action_editCard" = "Изменить карточку и оценку";
+"cardDetails_action_removeCard" = "Удалить из портфолио";
+
+"pricingReport_setCustomPrice" = "Установить свою цену";
+"pricingReport_editCustomPrice" = "Изменить свою цену";
+"pricingReport_viewReport" = "Посмотреть отчет о ценах";
+"pricingReport_valueEstimating" = "Ожидается оценка стоимости";
+
+"pricingReport_details_priceReport" = "Отчет о ценах";
+"pricingReport_details_lastSoldPrice" = "Цена последней продажи";
+"pricingReport_details_lastSoldDate" = "Дата последней продажи";
+"pricingReport_details_recentSales" = "Недавние продажи";
+"pricingReport_details_noSales" = "Нет недавних продаж";
+
+"cardDetail_year" = "Год карты";
+"cardDetail_cardNumber" = "Карта #";
+"cardDetail_set" = "Набор";
+"cardDetail_series" = "Серия";
+"cardDetail_parallel" = "Параллель";
+"cardDetail_grade" = "Оценка";
+"cardDetail_ungraded" = "Без оценки";
+"cardDetail_color" = "Цвет";
+"cardDetail_colors" = "Цвета";
+"cardDetail_type" = "Тип";
+"cardDetail_manaValue" = "Стоимость маны";
+"cardDetail_power" = "Сила";
+"cardDetail_toughness" = "Прочность";
+"cardDetail_rarity" = "Редкость";
+
+"recentlyAdded_title" = "Недавно добавленные карты";
+
+"highestValue_title" = "Карты наивысшего достоинства";
+
+"currentValue_title" = "Текущая цена";
+"currentValue_valueByCategory" = "Значение по категории";
+
+"editCard_title" = "Редактировать детали";
+"editCard_parallel" = "Параллель";
+"editCard_grade" = "Оценка";
+"editCard_customPrice" = "Уставноить свою цену";
+"editCard_action_updateDetails" = "Обновить детали";
+"editCard_valueEstimating" = "Ожидается оценка стоимости";
+
+"parallelSelection_title" = "Параллель";
+"parallelSelection_search_placeholder" = "Поиск";
+"parallelSelection_allOptions" = "Все варианты";
+"parallelSelection_missingSample" = "Отсутствует образец";
+"parallelSelection_noResult" = "Результатов не найдено";
+"parallelSelection_action_none" = "Нету";
+
+"gradeSelection_title" = "Оценка";
+"gradeSelection_selectGrader" = "Выберите грейдер";
+"gradeSelection_selectGrade" = "Выберите оценку";
+
+"createCollection_title" = "Создать новую коллекцию";
+"createCollection_collectionName_placeholder" = "Назовите коллекцию";
+"createCollection_action_create" = "Создать";
+
+"cardCollection_estimatedValue" = "Расчетная стоимость";
+"cardCollection_noCards" = "В этой коллекции нет карточек";
+"cardCollection_action_addCards" = "Добавить карты";
+
+"addCards_title" = "Добавить карты в \"%@\"";
+"addCards_titleNoName_collection" = "Добавить карточки в коллкцию";
+"addCards_titleNoName_deck" = "Добавить карточки в колоду";
+"addCards_oneCardSelected" = "Выбрана 1 карточка";
+"addCards_numberOfCardsSelected" = "Выбрано %d карточек";
+"addCards_action_selectAll" = "Выбрать все";
+"addCards_allCards" = "Все карточки";
+"addCards_search_placeholder" = "Поиск карточки";
+"addCards_noResult" = "Ничего не найдено";
+
+"sortCards_title" = "Сортировать по";
+"sortCards_option_dateRecent" = "Дата сохранения: недавние-самые старые";
+"sortCards_option_dateOldest" = "Дата сохранения: самая ранняя-последняя";
+"sortCards_option_nameDirect" = "Имя карты: A-Z";
+"sortCards_option_nameReverse" = "Имя карты: Z-A";
+"sortCards_option_yearRecent" = "Год карты: последний-самый старый";
+"sortCards_option_yearOldest" = "Год карты: Самый старый-последний";
+
+"editCollection_title" = "Обновить коллекцию";
+"editCollection_collectionName_placeholder" = "Переименовать коллекцию";
+
+"createDeck_title" = "Создать новую колоду";
+"createDeck_deckName_title" = "Назовите колоду";
+"createDeck_deckName_placeholder" = "Введите имя";
+"createDeck_deckType_title" = "Тип колоды";
+"createDeck_deckType_select" = "Выберите категорию краточки";
+"createDeck_description_title" = "Описание (необязательно)";
+"createDeck_description_placeholder" = "Введите описание колоды";
+"createDeck_action_create" = "Создать";
+
+"cardDeck_noCards" = "В этой колоде нет карт";
+"cardDeck_action_addCards" = "Добавить карточки";
+
+"editCardSet_menu_addCards" = "Добавить карточки";
+"editCardSet_menu_removeCards" = "Удалить карточки";
+"editCardSet_menu_sortCards" = "Сортировать карточки";
+"editCardSet_menu_totalPrice" = "Общая оценка стоимости";
+"editCardSet_menu_renameCollection" = "Переименовать коллекцию";
+"editCardSet_menu_deleteCollection" = "Удалить коллекцию";
+"editCardSet_menu_editDeck" = "Изменить колоду";
+"editCardSet_menu_deleteDeck" = "Удалить колоду";
+
+"editDeck_title" = "Обновить колоду";
+
+"legalityOption_standard" = "Стандарт";
+"legalityOption_pioneer" = "Пионер";
+"legalityOption_modern" = "Современный";
+"legalityOption_legacy" = "Наследие";
+"legalityOption_vintage" = "Винтаж";
+"legalityOption_commander" = "Командир";
+"legalityOption_oathbreaker" = "Клятвопреступник";
+"legalityOption_alchemy" = "Алхимия";
+"legalityOption_explorer" = "Исследователь";
+"legalityOption_brawl" = "Драка";
+"legalityOption_historic" = "Исторический";
+"legalityOption_pauper" = "Нищий";
+"legalityOption_penny" = "Пенни";
+
+"cardLegality_legal" = "Законный";
+"cardLegality_notLegal" = "Не законный";
+
+"magicCard_color_white" = "Белый";
+"magicCard_color_blue" = "Синий";
+"magicCard_color_black" = "Черный";
+"magicCard_color_red" = "Красный";
+"magicCard_color_green" = "Зеленый";
+"magicCard_color_colorless" = "Бесцветный";
+
+"alert_noInternetConnection_title" = "Проблема с подключением";
+"alert_noInternetConnection_message" = "Подключение к Интернету отсутствует ☹️";
+"alert_needRecentLogin_title" = "Повторная аутентификация";
+"alert_needRecentLogin_message" = "Для удаления учетной записи требуется недавний вход в систему.";
+"alert_needRecentLogin_action_logOut" = "Выйти";

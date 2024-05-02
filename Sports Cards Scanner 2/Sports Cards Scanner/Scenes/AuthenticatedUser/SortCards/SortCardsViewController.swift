@@ -114,7 +114,7 @@ private extension SortCardsViewController {
     }
 
     func calculateOptionsHeight() -> CGFloat {
-        let inset: CGFloat = UIDevice.isIpad ? 80:46
+        let inset: CGFloat = UIDevice.isIpad ? 80:56
         return inset * CGFloat(sortOptions.count) + inset
     }
 

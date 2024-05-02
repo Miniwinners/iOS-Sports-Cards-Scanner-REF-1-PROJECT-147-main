@@ -3,7 +3,7 @@ import SnapKit
 
 final class CardCollectionViewCell: UICollectionViewCell {
 
-    private static let containerHeight: CGFloat = UIDevice.isIpad ? 464 :297
+    private static let containerHeight: CGFloat = UIDevice.isIpad ? 464 : 317
 
     lazy var cardView: CardView = .init()
 

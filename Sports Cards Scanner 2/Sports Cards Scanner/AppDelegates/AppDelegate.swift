@@ -9,8 +9,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         configureManagers()
         NetworkMonitoringService.shared.startNetworkMonitoring()
-        ServicesManager.shared.initializeAdjust()
-        ServicesManager.shared.initializePushwoosh(delegate: self)
+//        ServicesManager.shared.initializeAdjust()
+//        ServicesManager.shared.initializePushwoosh(delegate: self)
         return true
     }
 

@@ -58,6 +58,7 @@ final class CurrentValueDetailsView: UIView {
             let layer = CAShapeLayer()
             layer.path = path.cgPath
             layer.lineWidth = 21
+            layer.cornerRadius = 11
             layer.strokeColor = category.color.cgColor
             layer.fillColor = UIColor.clear.cgColor
             diagramView.layer.addSublayer(layer)

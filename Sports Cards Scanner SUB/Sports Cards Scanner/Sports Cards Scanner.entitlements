@@ -14,7 +14,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.app.softinter</string>
+		<string>group.com.newbundle.newwebgeek</string>
 	</array>
 </dict>
 </plist>

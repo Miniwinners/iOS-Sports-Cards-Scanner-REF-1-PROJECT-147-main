@@ -270,12 +270,12 @@ extension CardCollectionViewController: UICollectionViewDataSource {
 
         if let card = card(at: indexPath) {
             cell?.setupCard(card)
-            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 14 : 20)
-            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 18 : 24)
-            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIphone ? 16 : 20)
-            cell?.cardView.pricesLabel.setLineHeight(UIDevice.isIphone ? 18:22)
-            cell?.cardView.titleLabel.setLineHeight(UIDevice.isIphone ? 22:26)
-            cell?.cardView.subtitleLabel.setLineHeight(UIDevice.isIphone ? 18:22)
+//            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 14 : 20)
+//            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 18 : 24)
+//            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIphone ? 16 : 20)
+//            cell?.cardView.pricesLabel.setLineHeight(UIDevice.isIphone ? 18:22)
+//            cell?.cardView.titleLabel.setLineHeight(UIDevice.isIphone ? 22:26)
+//            cell?.cardView.subtitleLabel.setLineHeight(UIDevice.isIphone ? 18:22)
         }
 
         return cell ?? UICollectionViewCell()

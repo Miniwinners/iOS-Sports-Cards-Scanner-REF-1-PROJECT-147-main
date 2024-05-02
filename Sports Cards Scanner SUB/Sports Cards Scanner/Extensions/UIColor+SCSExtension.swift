@@ -29,4 +29,7 @@ extension UIColor {
     static var  magicColor: UIColor { Colors.magic.color }
     static var  hockeyColor: UIColor { Colors.hockey.color }
     static var  soccerColor: UIColor { Colors.soccer.color }
+    
+    
+    static var skyBlue: UIColor = UIColor(red: 158/255, green: 226/255, blue: 255/255, alpha: 1)
 }

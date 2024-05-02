@@ -42,7 +42,7 @@ private extension MenuView {
 private extension MenuView {
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
-            widthDimension: .estimated(UIDevice.isIpad ? 243:145),
+            widthDimension: .estimated(UIDevice.isIpad ? 243:142),
             heightDimension: .absolute(UIDevice.isIpad ? 212:124)
         )
 
@@ -52,7 +52,7 @@ private extension MenuView {
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = UIDevice.isIpad ? 30 : 20
+        section.interGroupSpacing = UIDevice.isIpad ? 20 : 15
         section.contentInsets = .init(
             top: 0,
             leading: 0,
