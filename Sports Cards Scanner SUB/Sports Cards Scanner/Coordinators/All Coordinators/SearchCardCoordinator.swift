@@ -1,0 +1,64 @@
+import UIKit
+
+final class SearchCardCoordinator {
+    var children: [SCSCoordinator] = []
+    let router: SCSRouter
+
+    weak var delegate: SearchCardCoordinatorDelegate?
+
+    private let scannedCard: ScannedCard
+    private var scanCardViewController: ScanCardViewController?
+    init(router: SCSRouter, card: ScannedCard, sample: ScanCardViewController? = nil) {
+        self.router = router
+        self.scannedCard = card
+        self.scanCardViewController = sample
+    }
+}
+
+extension SearchCardCoordinator: SCSCoordinator {
+    func presentInitialState(animated: Bool, onDismissed: Closure?) {
+        let viewController = SearchCardViewController(searchCategory: scannedCard.cardCategory)
+        viewController.delegate = self
+        router.present_unique(viewController, animated: true, onDismissed: onDismissed)
+    }
+}
+
+extension SearchCardCoordinator: SearchCardViewControllerDelegate {
+    func searchCardViewControllerCloseTapped(_ viewController: SearchCardViewController) {
+        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
+            print(qFvvUwywod)
+            print("\(rkjyOdUzcU)")
+            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        }
+
+        router.dismissFully(animated: true)
+    }
+
+    func searchCardViewControllerDidSelect(card: CardRepresentable, in viewController: SearchCardViewController) {
+        let coordinator = CardDetailsCoordinator(router: router, card: card, cardType: .searchedCard, encodedCardImage: scannedCard.encodedCardImage, previousVC: .search, sample: scanCardViewController)
+        coordinator.delegate = self
+        presentChildCoordinator(coordinator, animated: true, onDismissed: nil)
+    }
+}
+
+extension SearchCardCoordinator: CardDetailsCoordinatorDelegate {
+    func cardDetailsCoordinatorCardDidAdd(_ coordinator: CardDetailsCoordinator, from viewController: CardDetailsViewController) {
+        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
+            print(qFvvUwywod)
+            print("\(rkjyOdUzcU)")
+            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        }
+
+        if let delegate {
+            delegate.searchCardCoordinatorCardDidAdd(self)
+        } else {
+            router.dismissFully(animated: true)
+        }
+    }
+}
+
+// MARK: - Search Card Delegate
+
+protocol SearchCardCoordinatorDelegate: AnyObject {
+    func searchCardCoordinatorCardDidAdd(_ coordinator: SearchCardCoordinator)
+}

@@ -4,19 +4,19 @@ import Kingfisher
 
 final class CardSaleTableViewCell: UITableViewCell {
 
-    private static let containerHeight: CGFloat = 146
+    private static let containerHeight: CGFloat = UIDevice.isIpad ? 200:146
 
     lazy var containerView: UIView = .init()
 
     lazy var dateLabel: UILabel = { label in
-        label.textColor = .labelColor3
-        label.font = .font(.interSemibold, size: 13)
+        label.textColor = .black
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 19:13)
         return label
     }(UILabel())
 
     lazy var titleLabel: UILabel = { label in
         label.textColor = .labelColor4
-        label.font = .font(.interMedium, size: 16)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         label.numberOfLines = 3
         return label
     }(UILabel())
@@ -29,9 +29,9 @@ final class CardSaleTableViewCell: UITableViewCell {
 
     lazy var missingImageLabel: UILabel = { label in
         label.text = L10n.Card.missingImage
-        label.setLineHeight(19)
-        label.textColor = .labelColor3
-        label.font = .font(.interRegular, size: 12)
+        label.setLineHeight(UIDevice.isIpad ? 22:19)
+        label.textColor = .black
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 18:12)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -44,7 +44,7 @@ final class CardSaleTableViewCell: UITableViewCell {
     }(UIView())
 
     lazy var priceLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         label.textColor = .greenColor
         return label
     }(UILabel())
@@ -70,11 +70,11 @@ final class CardSaleTableViewCell: UITableViewCell {
 
     func setSale(_ sale: CardSale) {
         dateLabel.text = sale.formattedDate
-        dateLabel.setLineHeight(22)
+        dateLabel.setLineHeight(UIDevice.isIpad ? 26:22)
         titleLabel.text = sale.title
-        titleLabel.setLineHeight(22)
+        titleLabel.setLineHeight(UIDevice.isIpad ? 26:22)
         priceLabel.text = sale.formattedPrice
-        priceLabel.setLineHeight(22)
+        priceLabel.setLineHeight(UIDevice.isIpad ? 26:22)
         if let imageURL = sale.thumbnailURL {
             missingImageLabel.isHidden = true
             cardImageView.kf.setImage(with: imageURL)
@@ -107,7 +107,7 @@ private extension CardSaleTableViewCell {
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
         containerView.addSubviews(dateLabel, titleLabel, priceLabel, missingImageView, cardImageView)
@@ -155,7 +155,7 @@ private extension CardSaleTableViewCell {
         backgroundView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.height.equalTo(Self.containerHeight)
-            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20).priority(.high)
         }
 
         return backgroundContainerView
@@ -172,7 +172,7 @@ private extension CardSaleTableViewCell {
         highlightedView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.height.equalTo(Self.containerHeight + 1)
-            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20).priority(.high)
         }
 
         return highlightedContainerView

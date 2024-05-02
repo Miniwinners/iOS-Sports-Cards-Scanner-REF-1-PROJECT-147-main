@@ -1,11 +1,26 @@
 import UIKit
 import SnapKit
-
+enum ShowHide {
+    case show
+    case hide
+}
 final class CardCollectionCardsView: UIView {
 
-    lazy var nameLabel: UILabel = { label in
-        label.font = .font(.interBold, size: 24)
-        label.textColor = .labelColor
+    private var topConstraint: CGFloat?
+    var index: Int = 2
+    var isShown: ShowHide?
+    lazy var titleView: TitleLabel = .init()
+
+    lazy var customContainer: CustomContainerView = .init()
+
+    lazy var infoContainerView: UIView = { view in
+        view.backgroundColor = .white
+        return view
+    }(UIView())
+
+    lazy var cardsNumberLabel: UILabel = { label in
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 28:22)
+        label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
@@ -13,32 +28,9 @@ final class CardCollectionCardsView: UIView {
 
     lazy var menuButton: UIButton = { button in
         button.setImage(Images.menuDots.image, for: .normal)
+        button.tintColor = .black
         return button
     }(UIButton(type: .system))
-
-    lazy var infoContainerView: UIView = { view in
-        view.backgroundColor = .white
-        view.cornerRadius = 12
-        return view
-    }(UIView())
-
-    lazy var priceContainerView: UIView = .init()
-
-    lazy var priceLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .greenColor
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
-        return label
-    }(UILabel())
-
-    lazy var cardsNumberLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .labelColor4
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
-        return label
-    }(UILabel())
 
     lazy var cardsTableView: UITableView = { tableView in
         tableView.showsVerticalScrollIndicator = false
@@ -46,6 +38,7 @@ final class CardCollectionCardsView: UIView {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.contentInset.bottom = 20
+        tableView.sectionHeaderTopPadding = 8
         return tableView
     }(UITableView())
     lazy var cardsCollectionView: UICollectionView = { collectionView in
@@ -53,7 +46,7 @@ final class CardCollectionCardsView: UIView {
         collectionView.alwaysBounceVertical = false
         collectionView.backgroundColor = .clear
         return collectionView
-    }(BaseCollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout()))
+    }(BaseCollectionView(frame: .zero, collectionViewLayout: filterLayout()))
     lazy var cardsSwipeableView: SwipeableCardsView = .init()
 
     lazy var cardsDisplayControl: UISegmentedControl = CardsRepresentSegmentedControl(
@@ -66,8 +59,7 @@ final class CardCollectionCardsView: UIView {
     }
 
     func setCollectionName(_ name: String?) {
-        nameLabel.text = name
-        nameLabel.setLineHeight(28)
+        titleView.text = name
     }
 
     func setCards(count: Int) {
@@ -77,21 +69,22 @@ final class CardCollectionCardsView: UIView {
         default:
             cardsNumberLabel.text = L10n.Portfolio.numberOfCards(count)
         }
-        cardsNumberLabel.setLineHeight(22)
+        cardsNumberLabel.setLineHeight(UIDevice.isIpad ? 28:22)
     }
 
     func setCards(price: Double) {
-        priceLabel.text = price.formattedAsPrice
-        priceLabel.setLineHeight(22)
+        customContainer.priceLabel.text = price.formattedAsPrice
+        customContainer.priceLabel.setLineHeight(UIDevice.isIpad ? 28:22)
     }
 
     func setCardsDisplay(option: CardsDisplayOption) {
+        print("Текущий индекс: \(index)")
+
         switch option {
         case .swipable: setupCardsViewIfNeeded(cardsSwipeableView)
         case .collection: setupCardsViewIfNeeded(cardsCollectionView)
         case .list: setupCardsViewIfNeeded(cardsTableView)
         }
-
         cardsSwipeableView.isHidden = option != .swipable
         cardsCollectionView.isHidden = option != .collection
         cardsTableView.isHidden = option != .list
@@ -110,100 +103,90 @@ final class CardCollectionCardsView: UIView {
     }
 
     func showEstimatedValue() {
-        guard priceContainerView.superview == nil else { return }
-
-        infoContainerView.addSubview(priceContainerView)
-
-        priceContainerView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview().inset(16)
-            $0.bottom.equalTo(cardsNumberLabel.snp.top).inset(-12)
-        }
+        isShown = .show
+        topConstraint = UIDevice.isIpad ? 200 : 160
+        customContainer.setupLayout(in: self, top: infoContainerView)
+        bringSubviewToFront(menuButton)
+        reloadMaket()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 
     func hideEstimatedValue() {
-        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
-            print(qFvvUwywod)
-            print("\(rkjyOdUzcU)")
-            return "\(qFvvUwywod) \(rkjyOdUzcU)"
-        }
-
-        priceContainerView.removeFromSuperview()
+        isShown = .hide
+        topConstraint = UIDevice.isIpad ? 40 : 20
+        customContainer.removeFromSuperview()
+        reloadMaket()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
+
+    func reloadMaket() {
+        let displayOption = CardsDisplayOption(by: index)!
+        setCardsDisplay(option: displayOption)
+    }
+
 }
 
 private extension CardCollectionCardsView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
 
         setupInfoContainer()
         setupPriceContainer()
 
-        addSubviews(nameLabel, menuButton, infoContainerView)
-        nameLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.leading.equalToSuperview().inset(20)
-        }
-        menuButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(-10)
-            $0.leading.equalTo(nameLabel.snp.trailing).offset(8)
-            $0.trailing.equalToSuperview().inset(10)
-            $0.size.equalTo(44)
-        }
+        titleView.setupLabel(in: self)
+
+        addSubview(infoContainerView)
         infoContainerView.snp.makeConstraints {
-            $0.top.equalTo(nameLabel.snp.bottom).offset(14)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(titleView.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
+        addSubview(menuButton)
+        menuButton.snp.makeConstraints { make in
+            make.top.equalTo(infoContainerView.snp.bottom).offset(UIDevice.isIpad ? 50 : 30)
+            make.size.equalTo(UIDevice.isIpad ? 40:24)
+            make.right.equalToSuperview().inset(UIDevice.isIpad ? 90:30)
+        }
+
+        customContainer.setupLayout(in: self, top: infoContainerView)
+
     }
 
     func setupInfoContainer() {
         infoContainerView.addSubviews(cardsNumberLabel, cardsDisplayControl)
         cardsNumberLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16).priority(.high)
-            $0.leading.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(30)
+            $0.top.bottom.equalToSuperview().inset(10)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
         }
         cardsDisplayControl.snp.makeConstraints {
-            $0.top.equalTo(cardsNumberLabel)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.width.equalTo(116)
-            $0.height.equalTo(36)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.width.equalTo(UIDevice.isIpad ? 195:116)
+            $0.height.equalTo(UIDevice.isIpad ? 60:36)
         }
     }
 
     func setupPriceContainer() {
-        let estimatedValueLabel = UILabel()
-        estimatedValueLabel.font = .font(.interMedium, size: 16)
-        estimatedValueLabel.text = L10n.CardCollection.estimatedValue
-        estimatedValueLabel.textColor = .labelColor4
-        estimatedValueLabel.setLineHeight(22)
-        estimatedValueLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        estimatedValueLabel.setContentHuggingPriority(.required, for: .vertical)
-
-        let underlineView = UIView()
-        underlineView.backgroundColor = .dividerColor
-
-        priceContainerView.addSubviews(estimatedValueLabel, priceLabel, underlineView)
-        estimatedValueLabel.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
-        }
-        priceLabel.snp.makeConstraints {
-            $0.top.equalTo(estimatedValueLabel.snp.bottom).offset(4)
-            $0.leading.equalToSuperview()
-        }
-        underlineView.snp.makeConstraints {
-            $0.top.equalTo(priceLabel.snp.bottom).offset(9)
-            $0.horizontalEdges.bottom.equalToSuperview()
-            $0.height.equalTo(1)
-        }
+        customContainer.estimatedValueLabel.text = L10n.CardCollection.estimatedValue
     }
 
     func setupCardsViewIfNeeded(_ cardsView: UIView) {
-        guard cardsView.superview == nil else { return }
-
+//        guard cardsView.superview == nil else { return }
         addSubview(cardsView)
-        cardsView.snp.makeConstraints {
-            $0.top.equalTo(infoContainerView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview()
+        let insetShow: CGFloat = UIDevice.isIpad ? 180:160
+        let insetHide: CGFloat = UIDevice.isIpad ? 40:20
+        cardsView.snp.remakeConstraints {
+
+            switch isShown {
+            case .show:
+                $0.top.equalTo(menuButton.snp.bottom).offset(topConstraint ?? insetShow)
+            case .hide:
+                $0.top.equalTo(menuButton.snp.bottom).offset(topConstraint ?? insetHide)
+            default: break
+            }
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 60:0)
             if cardsView === cardsSwipeableView {
                 $0.bottom.equalTo(safeAreaLayoutGuide)
             } else {
@@ -211,12 +194,26 @@ private extension CardCollectionCardsView {
             }
         }
     }
+}
+extension CardCollectionCardsView {
+    func filterLayout() -> UICollectionViewCompositionalLayout {
+        let size = NSCollectionLayoutSize(
+            widthDimension: .estimated(UIDevice.isIpad ? 253: 162),
+            heightDimension: .absolute(UIDevice.isIpad ? 464: 317)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:317))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
 
-    func createCollectionViewLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 12
-        layout.minimumLineSpacing = 12
-        layout.sectionInset = .init(top: 0, left: 20, bottom: 20, right: 20)
-        return layout
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = .init(
+            top: 0,
+            leading: 20,
+            bottom: 0,
+            trailing: 20
+        )
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }

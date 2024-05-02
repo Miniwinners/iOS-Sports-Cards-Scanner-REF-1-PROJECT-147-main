@@ -21,6 +21,18 @@ enum CardCategory: String, CaseIterable, Codable {
         }
     }
 
+    var image: UIImage {
+        switch self {
+        case .baseball: return Images.CardsLogo.baseBall.image
+        case .football: return Images.CardsLogo.footBall.image
+        case .soccer: return Images.CardsLogo.soccer.image
+        case .hockey: return Images.CardsLogo.hockey.image
+        case .basketball: return Images.CardsLogo.basketBall.image
+        default: return Images.CardsLogo.soccer.image
+
+        }
+    }
+
     var shortTitle: String {
         switch self {
         case .magic: return L10n.CardCategory.Magic.short
@@ -37,6 +49,7 @@ enum CardCategory: String, CaseIterable, Codable {
         case .magic: return .magicColor
         case .hockey: return .hockeyColor
         case .soccer: return .soccerColor
+
         }
     }
 

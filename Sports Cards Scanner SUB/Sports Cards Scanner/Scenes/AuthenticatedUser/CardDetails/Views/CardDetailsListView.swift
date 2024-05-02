@@ -30,8 +30,8 @@ final class CardDetailsListView: UIView {
 
 private extension CardDetailsListView {
     func setupSubviews_unique() {
-        backgroundColor = .fillColor
-        cornerRadius = 12
+        backgroundColor = .clear
+//        cornerRadius = 12
 
         addSubview(detailsView)
         detailsView.snp.makeConstraints {
@@ -78,7 +78,7 @@ extension CardDetailsListView: UITableViewDataSource {
         if let item = detailItem(at: indexPath) {
             cell?.setCardDetails(item)
         }
-        cell?.set(cellPosition: UITableView.cellPosition(for: indexPath, basedOn: detailItems))
+//        cell?.set(cellPosition: UITableView.cellPosition(for: indexPath, basedOn: detailItems))
 
         return cell ?? UITableViewCell()
     }

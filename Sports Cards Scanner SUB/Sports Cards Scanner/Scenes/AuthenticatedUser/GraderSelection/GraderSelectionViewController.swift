@@ -30,20 +30,10 @@ final class GraderSelectionViewController: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
-    }
 
-    override var preferredContentSize: CGSize {
-        get {
-            let height: CGFloat = (graderSelectionView.gradersTableView.estimatedRowHeight * CGFloat(graders.count)) + 122
-            view.layoutIfNeeded()
-            return .init(width: view.frame.width, height: height)
-        }
-        set {
-            super.preferredContentSize = newValue
-        }
     }
 
 }
@@ -65,6 +55,12 @@ private extension GraderSelectionViewController {
 
     @objc func cancelTapped_unique() {
         delegate?.graderSelectionViewControllerCancelTapped(self)
+    }
+    @objc func pop() {
+        navigationController?.popViewController(animated: true)
+    }
+    @objc func done() {
+        dismiss(animated: true)
     }
 }
 
@@ -97,7 +93,7 @@ extension GraderSelectionViewController: UITableViewDataSource {
         if let grader = getGrader(at: indexPath) {
             cell?.setGrader(grader)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: graders))
+//        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: graders))
 
         return cell ?? UITableViewCell()
     }

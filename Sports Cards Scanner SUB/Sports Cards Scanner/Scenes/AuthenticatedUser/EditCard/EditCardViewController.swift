@@ -43,6 +43,7 @@ final class EditCardViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var editCardView: EditCardView = .init()
+    lazy var closeButton: CloseButton = .init(style: .back)
 
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
@@ -53,7 +54,7 @@ final class EditCardViewController: UIViewController {
         self.card = card
         self.cardsManager = cardsManager
         super.init(nibName: nil, bundle: nil)
-        title = L10n.EditCard.title
+        editCardView.titleLabel.text = L10n.EditCard.title
     }
 
     required init?(coder: NSCoder) {
@@ -78,6 +79,8 @@ final class EditCardViewController: UIViewController {
         setupViews_unique()
         setupActions_unique()
         reloadData_unique()
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(updateDetailsTapped), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +91,7 @@ final class EditCardViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     func updateSelectedParallelIndex(_ index: Int?) {
@@ -121,7 +124,7 @@ private extension EditCardViewController {
         editCardView.gradeDetailView.setDetailDescription(cardGrade)
 
         editCardView.customPriceLabel.isHidden = customPrice.isNotNil
-
+        editCardView.setPriceLabel.isHidden = customPrice.isNotNil
         if let price = customPrice {
             editCardView.priceTextField.text = price.formattedAsPrice
         }
@@ -198,6 +201,7 @@ extension EditCardViewController: UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        editCardView.setPriceLabel.isHidden = true
         editCardView.customPriceLabel.isHidden = true
         if customPrice.isNil {
             textField.text = "$"
@@ -216,6 +220,7 @@ extension EditCardViewController: UITextFieldDelegate {
 
         editCardView.priceTextField.text = customPrice?.formattedAsPrice
         editCardView.customPriceLabel.isHidden = customPrice.isNotNil
+        editCardView.setPriceLabel.isHidden = customPrice.isNotNil
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

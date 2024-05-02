@@ -24,7 +24,7 @@ final class AddCardToCollectionHelper {
             .map {
                 CategoryCards(
                     category: $0,
-                    cardsValue: 0,
+                    cardsValue: cardsManager.cardsValue(of: $0),
                     cardsNumber: cardsManager.cardsNumber(of: $0)
                 )
             }

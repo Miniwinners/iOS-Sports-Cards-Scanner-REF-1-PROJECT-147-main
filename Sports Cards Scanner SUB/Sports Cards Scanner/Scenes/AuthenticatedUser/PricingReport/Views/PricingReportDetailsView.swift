@@ -5,16 +5,16 @@ import Kingfisher
 final class PricingReportDetailsView: UIView {
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 16)
-        label.textColor = .labelColor4
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 24:22)
+        label.textColor = .black
         label.numberOfLines = 2
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }(UILabel())
 
     lazy var subtitleLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 18)
-        label.textColor = .labelColor4
+        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 24:14)
+        label.textColor = .black
         label.numberOfLines = 2
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
@@ -23,6 +23,7 @@ final class PricingReportDetailsView: UIView {
     private lazy var priceReportView: DetailView = .init()
     private lazy var lastSoldPriceView: DetailView = .init()
     private lazy var lastSoldDateView: DetailView = .init()
+    private lazy var priceView: DetailView = .init()
 
     lazy var photoView: UIImageView = { imageView in
         imageView.contentMode = .scaleAspectFill
@@ -41,8 +42,8 @@ extension PricingReportDetailsView {
     func set(card: CardRepresentable, grader: CardGrader) {
         titleLabel.text = card.title
         subtitleLabel.text = card.subtitle
-        titleLabel.setLineHeight(22)
-        subtitleLabel.setLineHeight(21.6)
+        titleLabel.setLineHeight(UIDevice.isIpad ? 26:24)
+        subtitleLabel.setLineHeight(UIDevice.isIpad ? 24:18)
 
         if let priceRange = card.priceRange(of: grader) {
             let firstPartTitle = "\(L10n.PricingReport.Details.priceReport) - "
@@ -88,44 +89,64 @@ extension PricingReportDetailsView {
 
     private func setupSubviews_unique() {
         backgroundColor = .white
-        cornerRadius = 12
 
-        let stackView = UIStackView(arrangedSubviews: [priceReportView, lastSoldPriceView, lastSoldDateView])
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 9
+        let priceContainer = UIView()
+        priceContainer.backgroundColor = .skyBlue
+        priceContainer.cornerRadius = 12
+        priceContainer.borderColor = .blue
+        priceContainer.borderWidth = 1
 
         let detailsContainerView = UIView()
-        detailsContainerView.addSubviews(titleLabel, subtitleLabel, stackView)
+        detailsContainerView.addSubviews(titleLabel, subtitleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
+            $0.top.centerX.equalToSuperview()
         }
         subtitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(4)
-            $0.horizontalEdges.equalToSuperview()
-        }
-        stackView.snp.makeConstraints {
-            $0.top.equalTo(subtitleLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.centerX.equalToSuperview()
         }
 
         let containerView = UIView()
         containerView.addSubviews(detailsContainerView, photoView)
         detailsContainerView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview()
-            $0.bottom.equalToSuperview().priority(.high)
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(60)
         }
         photoView.snp.makeConstraints {
-            $0.width.equalTo(119)
-            $0.height.equalTo(165)
-            $0.top.trailing.equalToSuperview()
-            $0.leading.equalTo(detailsContainerView.snp.trailing).offset(8)
-            $0.bottom.lessThanOrEqualToSuperview()
+            $0.width.equalTo(168)
+            $0.height.equalTo(242)
+            $0.top.equalTo(detailsContainerView.snp.bottom)
+            $0.centerX.equalToSuperview()
+        }
+
+        priceContainer.addSubviews(priceReportView, lastSoldPriceView, lastSoldDateView)
+        priceReportView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(15)
+            $0.leading.equalToSuperview().inset(15)
+        }
+
+        lastSoldPriceView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(15)
+        }
+
+        lastSoldDateView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(15)
         }
 
         addSubview(containerView)
         containerView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(16)
+            $0.edges.equalToSuperview()
+        }
+
+        containerView.addSubview(priceContainer)
+        priceContainer.snp.makeConstraints {
+            $0.top.equalTo(photoView.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(130)
         }
     }
 }
@@ -180,7 +201,7 @@ extension PricingReportDetailsView.DetailView {
 
     private func setupSubviews_unique() {
         titleLabel = .init()
-        titleLabel.font = .font(.interMedium, size: 16)
+        titleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         titleLabel.textColor = .labelColor4
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         addSubview(titleLabel)
@@ -189,7 +210,7 @@ extension PricingReportDetailsView.DetailView {
         }
 
         infoLabel = .init()
-        infoLabel.font = .font(.interMedium, size: 16)
+        infoLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         infoLabel.textColor = .greenColor
         infoLabel.setContentHuggingPriority(.required, for: .vertical)
         addSubview(infoLabel)

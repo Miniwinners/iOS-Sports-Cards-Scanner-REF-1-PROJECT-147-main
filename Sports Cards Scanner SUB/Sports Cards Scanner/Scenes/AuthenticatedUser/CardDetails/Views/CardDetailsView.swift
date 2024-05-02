@@ -3,21 +3,47 @@ import SnapKit
 
 final class CardDetailsView: UIView {
 
+    lazy var backView: BackView = .init()
+
     lazy var cardContainerView: UIView = { view in
-        view.backgroundColor = .cardBackColor
-        view.cornerRadius = 24
+        view.backgroundColor = .clear
+        view.cornerRadius = UIDevice.isIpad ? 34:24
         return view
     }(UIView())
 
+    lazy var containerStackPriceAdd: UIStackView = { stackView in
+        stackView.axis = .horizontal
+        stackView.spacing = UIDevice.isIpad ? 20:10
+        stackView.distribution = .fillEqually
+        return stackView
+    }(UIStackView(arrangedSubviews: [pricingReportButton, addCardButton]))
+
     lazy var cardImageView: UIImageView = { imageView in
         imageView.contentMode = .scaleAspectFill
-        imageView.cornerRadius = 20
+        imageView.cornerRadius = UIDevice.isIpad ? 30:20
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOpacity = 0.5
+
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        imageView.layer.shadowRadius = 5
         return imageView
     }(UIImageView())
 
     lazy var cardTitleLabel: UILabel = { label in
-        label.textColor = .white
-        label.font = .font(.interMedium, size: 16)
+        label.textColor = .logInLabel
+        label.setSize(fontS: .ubuntuBold700, phone: 24, iPad: 30)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.setLineHeight(UIDevice.isIpad ? 32:24)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.required, for: .vertical)
+        return label
+    }(UILabel())
+
+    lazy var cardSubTitleLabel: UILabel = { label in
+        label.textColor = .logInLabel
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 28:22)
+        label.setLineHeight(UIDevice.isIpad ? 30:24)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -27,14 +53,13 @@ final class CardDetailsView: UIView {
 
     lazy var cardGraderButton: CardGraderButton = .init()
 
-    lazy var pricingReportButton: PricingReportButton = .init()
+    lazy var pricingReportButton: PricingReportButton = .init(priceButtonType: .main)
 
     lazy var detailsListView: CardDetailsListView = .init()
 
-    lazy var addCardButton: CommonButton = { button in
-        button.setButtonTitle(L10n.CardDetails.Action.addCard)
+    lazy var addCardButton: AddToPortfolioButton = { button in
         return button
-    }(CommonButton(style: .default))
+    }(AddToPortfolioButton())
 
     lazy var editCardButton: CommonButton = { button in
         button.setButtonTitle(L10n.CardDetails.Action.editCard)
@@ -68,60 +93,86 @@ final class CardDetailsView: UIView {
         editCardButton.isHidden = cardType != .addedCard
         findCardButtonContainer.isHidden = cardType != .identifiedCard
         removeCardButtonContainer.isHidden = cardType != .addedCard
+
+        pricingReportButton.graderPriceView.type = cardType == .addedCard ? .main: .add
+        pricingReportButton.graderPriceView.updateConstraints()
+        pricingReportButton.customPriceView.type = cardType == .addedCard ? .main: .add
+        pricingReportButton.customPriceView.updateConstraints()
+        containerStackPriceAdd.snp.remakeConstraints { make in
+            make.height.equalTo(cardType == .addedCard ? UIDevice.isIpad ? 115:65 : UIDevice.isIpad ? 180:130)
+        }
+        containerStackPriceAdd.superview?.layoutIfNeeded()
     }
 }
-
 private extension CardDetailsView {
     func setupSubviews_unique() {
-        backgroundColor = .white
+        backgroundColor = .clear
+        backView.setupView(in: self)
 
-        cardContainerView.addSubviews(cardImageView, cardTitleLabel)
-        cardImageView.snp.makeConstraints {
-            $0.width.equalTo(235)
-            $0.height.equalTo(330)
-            $0.top.horizontalEdges.equalToSuperview().inset(12)
-        }
+        let isIpad = UIDevice.isIpad
+        let horizontalInset = isIpad ? 80 : 20
+        let cardImageWidth = isIpad ? 382 : 235
+        let cardImageHeight = isIpad ? 551 : 330
+        let cardImageBottomOffset = isIpad ? 20 : 10
+        let cardGraderButtonTopOffset = isIpad ? 20 : 10
+        let cardGraderButtonHeight = isIpad ? 45 : 39
+
+        cardContainerView.addSubviews(cardImageView, cardTitleLabel, cardSubTitleLabel)
         cardTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(cardImageView.snp.bottom).offset(16)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(12)
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
+        }
+        cardSubTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(cardTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 10:5)
+            make.horizontalEdges.equalToSuperview().inset(horizontalInset)
+        }
+        cardImageView.snp.makeConstraints {
+            $0.width.equalTo(cardImageWidth)
+            $0.height.equalTo(cardImageHeight)
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(cardSubTitleLabel.snp.bottom).offset(cardImageBottomOffset)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 10:5)
         }
 
-        addSubview(cardContainerView)
+        backView.addSubview(cardContainerView)
         cardContainerView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(48)
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(48)
             $0.centerX.equalToSuperview()
         }
 
-        let stackView = UIStackView(arrangedSubviews: [
-            cardGraderButton, pricingReportButton, detailsListView, addCardButton,
-            editCardButton, findCardButtonContainer, removeCardButtonContainer
-        ])
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        addSubview(stackView)
-        stackView.snp.makeConstraints {
-            $0.top.equalTo(cardContainerView.snp.bottom).offset(50)
-            $0.horizontalEdges.bottom.equalToSuperview().inset(20)
+        backView.addSubview(cardGraderButton)
+        cardGraderButton.snp.makeConstraints { make in
+            make.top.equalTo(cardContainerView.snp.bottom).offset(cardGraderButtonTopOffset)
+            make.horizontalEdges.equalToSuperview().inset(horizontalInset)
+            make.height.equalTo(cardGraderButtonHeight)
         }
 
-        cardGraderButton.snp.makeConstraints {
-            $0.height.equalTo(39)
+        let containerStackEditRemove = UIStackView(arrangedSubviews: [editCardButton, removeCardButtonContainer])
+        containerStackEditRemove.axis = .vertical
+        containerStackEditRemove.spacing = UIDevice.isIpad ? 20:10
+        containerStackEditRemove.distribution = .fillEqually
+
+        let stackView = UIStackView(arrangedSubviews: [
+            containerStackPriceAdd, detailsListView, containerStackEditRemove
+        ])
+        stackView.axis = .vertical
+        stackView.spacing = UIDevice.isIpad ? 20:10
+        backView.addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.top.equalTo(cardGraderButton.snp.bottom).offset(UIDevice.isIpad ? 30:20)
+            $0.horizontalEdges.bottom.equalToSuperview().inset(horizontalInset)
         }
-        pricingReportButton.snp.makeConstraints {
-            $0.height.equalTo(75)
+
+        containerStackEditRemove.snp.makeConstraints { make in
+            make.height.equalTo(UIDevice.isIpad ? 180:130)
         }
-        addCardButton.snp.makeConstraints {
-            $0.height.equalTo(54)
-        }
-        editCardButton.snp.makeConstraints {
-            $0.height.equalTo(54)
-        }
+
         findCardButton.snp.makeConstraints {
             $0.height.equalTo(42)
         }
-        removeCardButton.snp.makeConstraints {
-            $0.height.equalTo(42)
+        containerStackPriceAdd.snp.makeConstraints { make in
+            make.height.equalTo(UIDevice.isIpad ? 200:130)
         }
     }
 
@@ -129,8 +180,34 @@ private extension CardDetailsView {
         let containerView = UIView()
         containerView.addSubview(cancelTypedButton)
         cancelTypedButton.snp.makeConstraints {
-            $0.centerX.verticalEdges.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         return containerView
     }
+
 }
+// import SwiftUI
+//
+// struct CardDetailsViewRepresentable: UIViewRepresentable {
+//    func makeUIView(context: Context) -> CardDetailsView {
+//        // Create and return an instance of your custom UIView here
+//        return CardDetailsView()
+//    }
+//
+//    func updateUIView(_ uiView: CardDetailsView, context: Context) {
+//        // Update the view when your app's state changes
+//    }
+// }
+//
+// struct ContentView: View {
+//    var body: some View {
+//        CardDetailsViewRepresentable()
+//    }
+// }
+//
+// @available(iOS 13.0, *)
+// struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+// }

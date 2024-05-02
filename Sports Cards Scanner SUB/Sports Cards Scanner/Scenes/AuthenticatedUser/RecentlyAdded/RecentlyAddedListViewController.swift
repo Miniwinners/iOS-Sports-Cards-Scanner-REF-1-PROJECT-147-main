@@ -1,21 +1,23 @@
 import UIKit
+import SnapKit
 
-final class RecentlyAddedListViewController: UICollectionViewController {
+final class RecentlyAddedListViewController: UIViewController {
     weak var delegate: RecentlyAddedListViewControllerDelegate?
 
     private let cardsManager: UserCardsManager
     private var recentlyAddedCards: [CardRepresentable] = []
 
+    lazy var titleLabel: TitleLabel = .init()
+    lazy var backView: BackView = .init()
+    lazy var closeButton: CloseButton = .init(style: .close)
+    lazy var collectionRecent: BaseCollectionView = { collection in
+        return collection
+    }(BaseCollectionView())
+
     init(cardsManager: UserCardsManager = .shared) {
         self.cardsManager = cardsManager
-
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 12
-        layout.minimumLineSpacing = 12
-        layout.sectionInset = .init(top: 0, left: 20, bottom: 20, right: 20)
-        super.init(collectionViewLayout: layout)
-
-        title = L10n.RecentlyAdded.title
+        super.init(nibName: nil, bundle: nil)
+        titleLabel.text = L10n.RecentlyAdded.title
     }
 
     required init?(coder: NSCoder) {
@@ -26,7 +28,7 @@ final class RecentlyAddedListViewController: UICollectionViewController {
 
     override func loadView() {
         super.loadView()
-        collectionView = BaseCollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionRecent = BaseCollectionView(frame: .zero, collectionViewLayout: filterLayout())
     }
 
     override func viewDidLoad() {
@@ -37,6 +39,7 @@ final class RecentlyAddedListViewController: UICollectionViewController {
         }
 
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         subscribeToNotifications()
         reloadData_unique()
@@ -50,32 +53,60 @@ final class RecentlyAddedListViewController: UICollectionViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
 private extension RecentlyAddedListViewController {
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        view.backgroundColor = .clear
+        backView.setupView(in: view)
+        titleLabel.setupLabel(in: backView)
+        backView.addSubview(collectionRecent)
+        collectionRecent.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            make.bottom.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 60 :0)
+        }
+        collectionRecent.delegate = self
+        collectionRecent.dataSource = self
+        collectionRecent.backgroundColor = .white
+        collectionRecent.showsVerticalScrollIndicator = false
+        collectionRecent.register(CardPhotoCollectionViewCell.self, forCellWithReuseIdentifier: CardPhotoCollectionViewCell.className)
 
-        collectionView.backgroundColor = .backColor
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(CardPhotoCollectionViewCell.self, forCellWithReuseIdentifier: CardPhotoCollectionViewCell.className)
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 
     func subscribeToNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(profileInfoDidUpdate(_:)), name: .profileInfoDidUpdate, object: nil)
     }
 
+    func filterLayout() -> UICollectionViewCompositionalLayout {
+        let size = NSCollectionLayoutSize(
+            widthDimension: .estimated(UIDevice.isIpad ?247 :162),
+            heightDimension: .absolute(UIDevice.isIpad ? 350:260)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 350 :260))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3 :2)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = .init(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 16
+        )
+
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+
     func reloadData_unique() {
         recentlyAddedCards = cardsManager.recentlyAddedCards()
-        collectionView.reloadData()
+        collectionRecent.reloadData()
     }
 
     func card(at indexPath: IndexPath) -> CardRepresentable? {
@@ -99,16 +130,16 @@ private extension RecentlyAddedListViewController {
 
 // MARK: - CollectionView DataSource
 
-extension RecentlyAddedListViewController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension RecentlyAddedListViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         recentlyAddedCards.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardPhotoCollectionViewCell.className, for: indexPath) as? CardPhotoCollectionViewCell
 
         if let card = card(at: indexPath) {
@@ -120,7 +151,7 @@ extension RecentlyAddedListViewController {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
-        let inRowItems: CGFloat = 3
+        let inRowItems: CGFloat = 2
         let interitemSpace = flowLayout?.minimumInteritemSpacing ?? 0
         let interitemSpaces = interitemSpace * (inRowItems - 1)
         let horizontalSpaces = (flowLayout?.sectionInset.left ?? 0) + (flowLayout?.sectionInset.right ?? 0)
@@ -134,18 +165,21 @@ extension RecentlyAddedListViewController {
 // MARK: - CollectionView Layout Delegate
 
 extension RecentlyAddedListViewController: UICollectionViewDelegateFlowLayout {
-    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? CardPhotoCollectionViewCell
         cell?.setCellHighlighted(true)
     }
 
-    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? CardPhotoCollectionViewCell
         cell?.setCellHighlighted(false)
     }
 
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let card = card(at: indexPath) else { return }
         delegate?.recentlyAddedListViewControllerDidSelectCard(card, in: self)
     }
+}
+extension RecentlyAddedListViewController: UICollectionViewDelegate {
+
 }

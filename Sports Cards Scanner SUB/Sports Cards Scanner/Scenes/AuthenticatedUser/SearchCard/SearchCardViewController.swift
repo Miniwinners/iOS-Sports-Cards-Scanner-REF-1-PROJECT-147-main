@@ -16,6 +16,9 @@ final class SearchCardViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var searchCardView: SearchCardView = .init()
+    lazy var closeButton: CloseButton = { button in
+        return button
+    }(CloseButton(style: .close, frame: .zero))
 
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
@@ -30,7 +33,7 @@ final class SearchCardViewController: UIViewController {
         self.searchCategory = searchCategory
 
         super.init(nibName: nil, bundle: nil)
-        title = L10n.SearchCard.title
+        searchCardView.titleLabel.text = L10n.SearchCard.title
     }
 
     required init?(coder: NSCoder) {
@@ -41,6 +44,8 @@ final class SearchCardViewController: UIViewController {
 
     override func loadView() {
         view = searchCardView
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 
     override func viewDidLoad() {
@@ -63,7 +68,7 @@ final class SearchCardViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -90,19 +95,12 @@ final class SearchCardViewController: UIViewController {
 
 private extension SearchCardViewController {
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
 
         searchCardView.searchTextField.delegate = self
 
-        searchCardView.searchTableView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.className)
-        searchCardView.searchTableView.dataSource = self
-        searchCardView.searchTableView.delegate = self
+        searchCardView.searchCollectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.className)
+        searchCardView.searchCollectionView.dataSource = self
+        searchCardView.searchCollectionView.delegate = self
     }
 
     func performSearch() {
@@ -126,11 +124,11 @@ private extension SearchCardViewController {
                 let searchedCards = try await searchCardService.searchUnique(query: query, category: searchCategory)
                 if Task.isCancelled { return }
                 searchResult = searchedCards
-                searchCardView.searchTableView.reloadData()
+                searchCardView.searchCollectionView.reloadData()
                 searchCardView.setNoResultsView(visible: searchedCards.isEmpty)
             } catch {
                 searchResult = []
-                searchCardView.searchTableView.reloadData()
+                searchCardView.searchCollectionView.reloadData()
                 searchCardView.setNoResultsView(visible: true)
             }
         }
@@ -185,35 +183,36 @@ extension SearchCardViewController: UITextFieldDelegate {
 
 // MARK: - TableView DataSource
 
-extension SearchCardViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
+extension SearchCardViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        searchResult.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return  searchResult.count
+
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: CardTableViewCell.className,
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CardCollectionViewCell.className,
             for: indexPath
-        ) as? CardTableViewCell
+        ) as? CardCollectionViewCell
 
         if let card = getCard(at: indexPath) {
             cell?.setupCard(card)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: searchResult))
+//        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: searchResult))
 
-        return cell ?? UITableViewCell()
+        return cell ?? UICollectionViewCell()
     }
 }
 
 // MARK: - TableView Delegate
 
-extension SearchCardViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+extension SearchCardViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
 
         guard let card = getCard(at: indexPath) else { return }
         delegate?.searchCardViewControllerDidSelect(card: card, in: self)

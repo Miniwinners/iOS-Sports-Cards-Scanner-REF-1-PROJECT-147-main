@@ -25,6 +25,8 @@ final class AddCardsToDeckVC: UIViewController {
 
     lazy var addCardsView: AddCardsToDeckView = .init()
 
+    lazy var closeButton: CloseButton = .init(style: .back)
+
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
         return toolbar
@@ -54,7 +56,7 @@ final class AddCardsToDeckVC: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
     }
@@ -63,10 +65,10 @@ final class AddCardsToDeckVC: UIViewController {
 
 private extension AddCardsToDeckVC {
     func setupViews_unique() {
-        setupNavigationItem()
+//        setupNavigationItem()
 
-        let cardsView = addCardsView.cardsTableView
-        cardsView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.className)
+        let cardsView = addCardsView.cardsCollectionView
+        cardsView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.className)
         cardsView.dataSource = self
         cardsView.delegate = self
 
@@ -74,9 +76,12 @@ private extension AddCardsToDeckVC {
 
         addCardsView.setSelectedCards(number: helper.selectedCards.count)
         addCardsView.setCategory(helper.cardCategory)
+
+        closeButton.setLeft(in: view)
     }
 
     func setupActions_unique() {
+        closeButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
         addCardsView.clearSearchButton.addTarget(self, action: #selector(clearSearchTapped), for: .touchUpInside)
         addCardsView.cancelButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
         addCardsView.doneButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
@@ -109,7 +114,7 @@ private extension AddCardsToDeckVC {
     @objc func clearSearchTapped() {
         addCardsView.searchTextField.text = ""
         searchText = ""
-        addCardsView.cardsTableView.reloadData()
+        addCardsView.cardsCollectionView.reloadData()
         addCardsView.clearSearchButton.isHidden = true
         addCardsView.searchImageView.isHidden = false
         addCardsView.searchTextField.becomeFirstResponder()
@@ -152,7 +157,7 @@ extension AddCardsToDeckVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchText = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         textField.text = searchText
-        addCardsView.cardsTableView.reloadData()
+        addCardsView.cardsCollectionView.reloadData()
         addCardsView.clearSearchButton.isHidden = searchText.isEmpty
         addCardsView.searchImageView.isHidden = !searchText.isEmpty
         addCardsView.setNoResultsView(visible: searchCards.isEmpty)
@@ -163,8 +168,8 @@ extension AddCardsToDeckVC: UITextFieldDelegate {
 
 // MARK: - TableView DataSource
 
-extension AddCardsToDeckVC: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension AddCardsToDeckVC: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
@@ -172,9 +177,10 @@ extension AddCardsToDeckVC: UITableViewDataSource {
         }
 
         return 1
+
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
             print("\(rkjyOdUzcU)")
@@ -184,8 +190,8 @@ extension AddCardsToDeckVC: UITableViewDataSource {
         return searchCards.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CardTableViewCell.className, for: indexPath) as? CardTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.className, for: indexPath) as? CardCollectionViewCell
 
         if let card = card(at: indexPath) {
             cell?.setupCard(card)
@@ -194,41 +200,41 @@ extension AddCardsToDeckVC: UITableViewDataSource {
             cell?.setSelectable(!isAlreadySelected)
             cell?.setChecked(isSelected || isAlreadySelected)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: searchCards))
+//        cell?.setCellPosition(UICollectionViewCell.cellPosition(for: indexPath, basedOn: searchCards))
 
-        return cell ?? UITableViewCell()
+        return cell ?? UICollectionViewCell()
     }
 
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let card = card(at: indexPath) else { return }
 
         let isSelected = helper.isSelected(card: card)
-        let cardCell = cell as? CardTableViewCell
-        cardCell?.setSelected(isSelected, animated: false)
+        let cardCell = cell as? CardCollectionViewCell
+//        cardCell?.setSelected(isSelected, animated: false)
+        cardCell?.setSelectable(isSelected)
     }
 }
 
 // MARK: - TableView Delegate
 
-extension AddCardsToDeckVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+extension AddCardsToDeckVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let card = card(at: indexPath),
               !helper.isAlreadySelected(card: card)
         else { return }
 
-        let cell = tableView.cellForRow(at: indexPath) as? CardTableViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
         cell?.setChecked(true)
 
         helper.selectCard(card)
         addCardsView.setSelectedCards(number: helper.selectedCards.count)
     }
-
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let card = card(at: indexPath),
               !helper.isAlreadySelected(card: card)
         else { return }
 
-        let cell = tableView.cellForRow(at: indexPath) as? CardTableViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
         cell?.setChecked(false)
 
         helper.deselectCard(card)

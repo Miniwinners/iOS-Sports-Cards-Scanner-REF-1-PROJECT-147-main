@@ -222,8 +222,8 @@ extension ScanCardViewController: UITableViewDataSource {
             categoryCell?.setSelected(category == selectedCategory)
 
             let extraSpace = scanCardView.tableViewCellExtraSpace
-            categoryCell?.setExtraSpace(category == categories.first ? extraSpace : 0, to: .top)
-            categoryCell?.setExtraSpace(category == categories.last ? extraSpace : 0, to: .bottom)
+            categoryCell?.setExtraSpace(category == categories.first ? extraSpace :0, to: .top)
+            categoryCell?.setExtraSpace(category == categories.last ? extraSpace :0, to: .bottom)
         }
 
         return categoryCell ?? UITableViewCell()

@@ -12,16 +12,21 @@ final class CreateEditCollectionVC: UIViewController {
 
     // MARK: - Subviews
 
+    lazy var backView: BackView = .init()
+
+    lazy var titleLabel: TitleLabel = .init()
+
     lazy var nameTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.interRegular, size: 16)
-        textField.backgroundColor = .white
-        textField.cornerRadius = 12
+        textField.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
+        textField.backgroundColor = .skyBlue
+        textField.cornerRadius = UIDevice.isIpad ? 20:12
         textField.placeholder = L10n.CreateCollection.CollectionName.placeholder
         textField.returnKeyType = .done
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .sentences
         textField.delegate = self
+        textField.tintColor = .black
         return textField
     }(CommonTextField())
 
@@ -32,6 +37,8 @@ final class CreateEditCollectionVC: UIViewController {
 
     lazy var createButton: CommonButton = { button in
         button.setButtonTitle(L10n.CreateCollection.Action.create)
+        button.setImage(Images.collectionCards.image, for: .normal)
+        button.configuration?.imagePadding = 10
         button.isEnabled = false
         return button
     }(CommonButton(style: .default))
@@ -70,9 +77,10 @@ final class CreateEditCollectionVC: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
+        setupButton()
     }
 
 }
@@ -83,15 +91,17 @@ private extension CreateEditCollectionVC {
     }
 
     func setupViews_unique() {
-        view.backgroundColor = .backColor
+        view.backgroundColor = .clear
+        view.addSubview(backView)
+        backView.setupView(in: view)
 
-        setupNavigationItem()
-
-        view.addSubviews(nameTextField)
+        titleLabel.setupLabel(in: backView)
+        titleLabel.text = cardCollection.isNil ? L10n.CreateCollection.title : L10n.EditCollection.title
+        backView.addSubview(nameTextField)
         nameTextField.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(46)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ?40:20)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:46)
         }
 
         if cardCollection.isNil {
@@ -103,29 +113,44 @@ private extension CreateEditCollectionVC {
         }
 
         nameTextField.text = cardCollection?.name
+    }
 
+    func setupButton() {
+        if isRootViewController() {
+            let closeButton = CloseButton(style: .close)
+            closeButton.setCenter(in: view)
+            closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
+        } else {
+            let closeButton = CloseButton(style: .back)
+            closeButton.setLeft(in: view)
+            closeButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
+        }
+    }
+
+    private func isRootViewController() -> Bool {
+           return navigationController?.viewControllers.first == self
     }
 
     func setupForCreation() {
-        view.addSubview(createButton)
+        backView.addSubview(createButton)
         createButton.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70:20)
+            $0.height.equalTo(UIDevice.isIpad ? 80:54)
         }
     }
 
     func setupForEditing() {
         let buttonsStackView = UIStackView(arrangedSubviews: [cancelButton, doneButton])
-        buttonsStackView.axis = .horizontal
+        buttonsStackView.axis = .vertical
         buttonsStackView.distribution = .fillEqually
-        buttonsStackView.spacing = 20
+        buttonsStackView.spacing = UIDevice.isIpad ? 20 : 10
 
-        view.addSubview(buttonsStackView)
+        backView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.height.equalTo(54)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(UIDevice.isIpad ?70:20)
+            $0.height.equalTo(UIDevice.isIpad ? 172:128)
         }
     }
 
@@ -137,21 +162,6 @@ private extension CreateEditCollectionVC {
         } else {
             cancelButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
             doneButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
-        }
-    }
-
-    func setupNavigationItem() {
-        if cardCollection.isNil {
-            navigationItem.rightBarButtonItem = .init(
-                image: Images.close.image,
-                style: .plain,
-                target: self,
-                action: #selector(closeTapped_unique)
-            )
-            navigationItem.rightBarButtonItem?.tintColor = .black
-        } else {
-            navigationItem.setHidesBackButton(true, animated: false)
-            navigationItem.leftBarButtonItem = nil
         }
     }
 

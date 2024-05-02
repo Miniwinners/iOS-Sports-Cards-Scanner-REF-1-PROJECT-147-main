@@ -10,11 +10,11 @@ final class SelectableCardCategoryTableViewCell: UITableViewCell {
     private var topConstraint: Constraint!
     private var bottomConstraint: Constraint!
 
-    private let verticalSpace: CGFloat = 6
+    private let verticalSpace: CGFloat = UIDevice.isIpad ? 12:6
 
     lazy var categoryLabel: UILabel = { label in
         label.textColor = .labelColor
-        label.font = .font(.interRegular, size: 14)
+        label.font = .font(.interRegular, size: UIDevice.isIpad ? 18:14)
         return label
     }(UILabel())
 
@@ -66,7 +66,7 @@ private extension SelectableCardCategoryTableViewCell {
         contentView.backgroundColor = .clear
 
         checkImageView.snp.makeConstraints {
-            $0.size.equalTo(18)
+            $0.size.equalTo(UIDevice.isIpad ? 36:18)
         }
 
         let stackView = UIStackView(arrangedSubviews: [categoryLabel, checkImageView])
@@ -78,7 +78,7 @@ private extension SelectableCardCategoryTableViewCell {
             topConstraint = $0.top.equalToSuperview().inset(verticalSpace).constraint
             bottomConstraint = $0.bottom.equalToSuperview().inset(verticalSpace).constraint
             $0.horizontalEdges.equalToSuperview().inset(8)
-            $0.height.equalTo(22)
+            $0.height.equalTo(UIDevice.isIpad ? 40:22)
         }
     }
 }

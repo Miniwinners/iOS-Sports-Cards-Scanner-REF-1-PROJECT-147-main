@@ -4,8 +4,9 @@ import SnapKit
 final class GraderTableViewCell: UITableViewCell {
 
     lazy var graderLabel: UILabel = { label in
-        label.textColor = .labelColor
-        label.font = .font(.interMedium, size: 16)
+        label.textColor = .logInLabel
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
+        label.setLineHeight(UIDevice.isIpad ?24:22)
         return label
     }(UILabel())
 
@@ -33,15 +34,15 @@ final class GraderTableViewCell: UITableViewCell {
         graderLabel.text = grader.rawValue
     }
 
-    func setCellPosition(_ position: CellPosition) {
-        separatorView.isHidden = position.containsPosition(.atBottomPosition)
-
-        var corners = UIRectCorner()
-        if position.containsPosition(.onTopPosition) { corners.insert([.topLeft, .topRight]) }
-        if position.containsPosition(.atBottomPosition) { corners.insert([.bottomLeft, .bottomRight]) }
-        backgroundView?.subviews.first?.roundCorners(corners, radius: 14)
-        selectedBackgroundView?.subviews.first?.roundCorners(corners, radius: 14)
-    }
+//    func setCellPosition(_ position: CellPosition) {
+//        separatorView.isHidden = position.containsPosition(.atBottomPosition)
+//
+//        var corners = UIRectCorner()
+//        if position.containsPosition(.onTopPosition) { corners.insert([.topLeft, .topRight]) }
+//        if position.containsPosition(.atBottomPosition) { corners.insert([.bottomLeft, .bottomRight]) }
+//        backgroundView?.subviews.first?.roundCorners(corners, radius: 14)
+//        selectedBackgroundView?.subviews.first?.roundCorners(corners, radius: 14)
+//    }
 
 }
 
@@ -55,7 +56,8 @@ private extension GraderTableViewCell {
 
         contentView.addSubview(graderLabel)
         graderLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(10)
         }
 
         contentView.addSubview(separatorView)
@@ -70,12 +72,12 @@ private extension GraderTableViewCell {
         let backgroundContainerView = UIView()
 
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .white
+        backgroundView.backgroundColor = .clear
         backgroundContainerView.addSubview(backgroundView)
 
         backgroundView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20).priority(.high)
+            $0.horizontalEdges.equalToSuperview()
         }
 
         return backgroundContainerView
@@ -90,7 +92,8 @@ private extension GraderTableViewCell {
 
         highlightedView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview()
+
         }
 
         return highlightedContainerView

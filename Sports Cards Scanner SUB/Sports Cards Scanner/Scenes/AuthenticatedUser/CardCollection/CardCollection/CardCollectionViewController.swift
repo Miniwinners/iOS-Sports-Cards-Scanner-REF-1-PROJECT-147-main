@@ -1,11 +1,12 @@
 import UIKit
-
+import SnapKit
 final class CardCollectionViewController: UIViewController {
 
     @UserDefault(UserDefaults.KeyOption.isTotalPriceVisible, defaultValue: true)
     private var isTotalPriceVisible: Bool
 
     @UserDefaultCodable(UserDefaults.KeyOption.selectedCardSortOption, defaultValue: CardSortOption.default)
+
     private var selectedSortOption: CardSortOption
 
     weak var delegate: CardCollectionViewControllerDelegate?
@@ -20,6 +21,16 @@ final class CardCollectionViewController: UIViewController {
 
     lazy var cardCollectionView: CardCollectionView = .init()
 
+    lazy var closeButton: CloseButton = .init(style: .close)
+
+    lazy var scrollView: BaseScrollView = { scroll in
+        scroll.alwaysBounceVertical = false
+        scroll.showsVerticalScrollIndicator = false
+        scroll.backgroundColor = .clear
+        scroll.contentInset.bottom = 20
+        return scroll
+    }(BaseScrollView())
+
     init(cardCollectionManager: CardCollectionManager = CardSetsManager.shared) {
         self.cardCollectionManager = cardCollectionManager
 
@@ -33,6 +44,7 @@ final class CardCollectionViewController: UIViewController {
     // MARK: - Lifecycle
 
     override func loadView() {
+        cardCollectionView.cardsView.isShown = isTotalPriceVisible ? .show:.hide
         view = cardCollectionView
     }
 
@@ -49,6 +61,9 @@ final class CardCollectionViewController: UIViewController {
         setupActions_unique()
         reloadData()
         subscribeToNotifications()
+
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,13 +74,12 @@ final class CardCollectionViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 
 private extension CardCollectionViewController {
     func setupViews_unique() {
-        setupNavigationItem()
 
         let cardsDisplayOption = CardsDisplayOption.list
         cardCollectionView.cardsView.cardsDisplayControl.selectedSegmentIndex = cardsDisplayOption.index
@@ -77,7 +91,7 @@ private extension CardCollectionViewController {
         cardsTableView.delegate = self
 
         let cardsCollectionView = cardCollectionView.cardsView.cardsCollectionView
-        cardsCollectionView.register(CardPhotoInfoCollectionViewCell.self, forCellWithReuseIdentifier: CardPhotoInfoCollectionViewCell.className)
+        cardsCollectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.className)
         cardsCollectionView.dataSource = self
         cardsCollectionView.delegate = self
 
@@ -137,24 +151,15 @@ private extension CardCollectionViewController {
         )
     }
 
-    func setupNavigationItem() {
-        navigationItem.setHidesBackButton(true, animated: false)
-        navigationItem.leftBarButtonItem = nil
-
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
-    }
-
     func card(at indexPath: IndexPath) -> CardRepresentable? {
-        sortedCards[safe: indexPath.row]
+        sortedCards[safe: indexPath.section]
     }
 
     // MARK: - Actions
+
+    @objc func close() {
+        dismiss(animated: true)
+    }
 
     @objc func closeTapped_unique() {
         delegate?.cardCollectionViewControllerCloseTapped(self)
@@ -171,8 +176,8 @@ private extension CardCollectionViewController {
 
     @objc func cardsDisplayOptionChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
+        cardCollectionView.cardsView.index = selectedIndex
         guard let displayOption = CardsDisplayOption(by: selectedIndex) else { return }
-
         cardCollectionView.cardsView.setCardsDisplay(option: displayOption)
     }
 
@@ -207,11 +212,11 @@ extension CardCollectionViewController: SwipableController {
 
 extension CardCollectionViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        return sortedCards.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sortedCards.count
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -219,10 +224,24 @@ extension CardCollectionViewController: UITableViewDataSource {
 
         if let card = card(at: indexPath) {
             cell?.setupCard(card)
+            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 16:22)
+            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 20:26)
+            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIphone ? 14:20)
+
+            cell?.cardView.pricesLabel.setLineHeight(UIDevice.isIphone ? 22:24)
+            cell?.cardView.titleLabel.setLineHeight(UIDevice.isIphone ? 26:28)
+            cell?.cardView.subtitleLabel.setLineHeight(UIDevice.isIphone ? 22:24)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: sortedCards))
 
         return cell ?? UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = .clear
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 { return 0 } else { return 8 }
     }
 }
 
@@ -249,10 +268,16 @@ extension CardCollectionViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardPhotoInfoCollectionViewCell.className, for: indexPath) as? CardPhotoInfoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.className, for: indexPath) as? CardCollectionViewCell
 
         if let card = card(at: indexPath) {
-            cell?.setCard(card)
+            cell?.setupCard(card)
+//            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 14 : 20)
+//            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 18 : 24)
+//            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIphone ? 16 : 20)
+//            cell?.cardView.pricesLabel.setLineHeight(UIDevice.isIphone ? 18:22)
+//            cell?.cardView.titleLabel.setLineHeight(UIDevice.isIphone ? 22:26)
+//            cell?.cardView.subtitleLabel.setLineHeight(UIDevice.isIphone ? 18:22)
         }
 
         return cell ?? UICollectionViewCell()
@@ -262,27 +287,6 @@ extension CardCollectionViewController: UICollectionViewDataSource {
 // MARK: - CollectionView FlowLayout Delegate
 
 extension CardCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewWidth = collectionView.bounds.width
-        let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
-        let horizontalSpacing = (flowLayout?.sectionInset.left ?? 0) + (flowLayout?.sectionInset.right ?? 0)
-        let itemsInRow: CGFloat = 3
-        let interitemSpacing = flowLayout?.minimumInteritemSpacing ?? 0
-        let itemWidth = (collectionViewWidth - horizontalSpacing - interitemSpacing * (itemsInRow - 1)) / itemsInRow
-        let itemHeight = CardPhotoInfoCollectionViewCell.calculateCellHeight(for: itemWidth)
-        return .init(width: itemWidth, height: itemHeight)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? CardPhotoInfoCollectionViewCell
-        cell?.setCellHighlighted(true)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? CardPhotoInfoCollectionViewCell
-        cell?.setCellHighlighted(false)
-    }
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let card = card(at: indexPath) else { return }
         delegate?.cardCollectionViewControllerCardDidSelect(card, in: self)

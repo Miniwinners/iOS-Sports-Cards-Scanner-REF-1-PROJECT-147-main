@@ -23,6 +23,7 @@ final class ParallelSelectionViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var parallelSelectionView: ParallelSelectionView = .init()
+    lazy var closeButton: CloseButton = .init(style: .back)
 
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
@@ -33,7 +34,7 @@ final class ParallelSelectionViewController: UIViewController {
         self.parallels = parallels
         self.selectedParallelIndex = selected
         super.init(nibName: nil, bundle: nil)
-        title = L10n.ParallelSelection.title
+        parallelSelectionView.titleLabel.text = L10n.ParallelSelection.title
     }
 
     required init?(coder: NSCoder) {
@@ -54,9 +55,11 @@ final class ParallelSelectionViewController: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(pop), for: .touchUpInside)
     }
 
 }
@@ -110,6 +113,9 @@ private extension ParallelSelectionViewController {
         }
 
         parallelDidSelect?(nil)
+    }
+    @objc func pop() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

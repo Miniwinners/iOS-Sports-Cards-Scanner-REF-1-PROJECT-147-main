@@ -9,7 +9,7 @@ final class CreateEditDeckVC: UIViewController {
 
     private let cardDeckManager: CardDeckManager
 
-    private let categories: [CardCategory] = [.pokemon, .magic]
+    private let categories: [CardCategory] = [.basketball, .baseball, .football, .hockey, .soccer]
     private var deckType: CardCategory?
 
     private let minLengthValidator: LengthValidator = .init(minLength: 1)
@@ -25,6 +25,10 @@ final class CreateEditDeckVC: UIViewController {
 
     lazy var deckView: CreateEditDeckView = .init()
 
+    lazy var closeButton: CloseButton = .init(style: .close)
+
+    lazy var backView: BackView = .init()
+
     lazy var keyboardToolbar: CommonToolbar = { toolbar in
         toolbar.sizeToFit()
         return toolbar
@@ -37,7 +41,7 @@ final class CreateEditDeckVC: UIViewController {
         self.cardDeck = cardDeck
         self.cardDeckManager = cardDeckManager
         super.init(nibName: nil, bundle: nil)
-        title = cardDeck.isNil ? L10n.CreateDeck.title : L10n.EditDeck.title
+        deckView.titleLabel.text = cardDeck.isNil ? L10n.CreateDeck.title : L10n.EditDeck.title
     }
 
     required init?(coder: NSCoder) {
@@ -54,7 +58,7 @@ final class CreateEditDeckVC: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViewConstraints_unique()
         setupViews_unique()
         setupActions_unique()
@@ -80,9 +84,11 @@ private extension CreateEditDeckVC {
     }
 
     func setupViewConstraints_unique() {
-        view.addSubview(scrollView)
+        backView.setupView(in: view)
+        backView.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 52:32)
         }
 
         scrollView.addSubview(deckView)
@@ -92,12 +98,12 @@ private extension CreateEditDeckVC {
             $0.height.equalTo(scrollView.frameLayoutGuide).priority(.low)
             $0.height.lessThanOrEqualTo(scrollView.safeAreaLayoutGuide).priority(.medium)
         }
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 
     func setupViews_unique() {
-        view.backgroundColor = .backColor
-
-        setupNavigationItem()
+        view.backgroundColor = .clear
 
         let nameTextField = deckView.nameView.textField
         nameTextField.delegate = self
@@ -140,21 +146,6 @@ private extension CreateEditDeckVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    func setupNavigationItem() {
-        if cardDeck.isNil {
-            navigationItem.rightBarButtonItem = .init(
-                image: Images.close.image,
-                style: .plain,
-                target: self,
-                action: #selector(closeTapped_unique)
-            )
-            navigationItem.rightBarButtonItem?.tintColor = .black
-        } else {
-            navigationItem.setHidesBackButton(true, animated: false)
-            navigationItem.leftBarButtonItem = nil
-        }
-    }
-
     func deckTypeDidUpdate(index: Int) {
         guard let category = category(at: index) else { return }
         deckType = category
@@ -177,6 +168,10 @@ private extension CreateEditDeckVC {
     }
 
     // MARK: - Actions
+
+    @objc func close() {
+        dismiss(animated: true)
+    }
 
     @objc func closeTapped_unique() {
         view.endEditing(true)

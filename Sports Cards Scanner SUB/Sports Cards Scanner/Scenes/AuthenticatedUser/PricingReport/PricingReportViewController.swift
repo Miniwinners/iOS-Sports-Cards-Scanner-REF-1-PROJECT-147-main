@@ -11,6 +11,7 @@ final class PricingReportViewController: UIViewController {
     // MARK: - Subviews
 
     lazy var pricingReportView: PricingReportView = .init()
+    lazy var closeButton: CloseButton = .init(style: .back, frame: .zero)
 
     init(card: CardRepresentable, grader: CardGrader, encodedCardImage: Data?) {
         self.card = card
@@ -27,6 +28,8 @@ final class PricingReportViewController: UIViewController {
 
     override func loadView() {
         view = pricingReportView
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 
     override func viewDidLoad() {
@@ -49,7 +52,7 @@ final class PricingReportViewController: UIViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func viewDidLayoutSubviews() {
@@ -61,6 +64,11 @@ final class PricingReportViewController: UIViewController {
 }
 
 private extension PricingReportViewController {
+
+    @objc func close() {
+        navigationController?.popViewController(animated: true)
+    }
+
     func setupViews_unique() {
         let detailsView = pricingReportView.detailsView
         detailsView.set(card: card, grader: grader)

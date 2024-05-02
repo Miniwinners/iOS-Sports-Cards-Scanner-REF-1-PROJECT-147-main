@@ -17,6 +17,7 @@ final class RemoveCardsFromCollectionVC: UIViewController {
     // MARK: - Subviews
 
     lazy var removeCardsView: RemoveCardsView = .init()
+    lazy var closeButton: CloseButton = .init(style: .back)
 
     init(cardCollectionManager: CardCollectionManager = CardSetsManager.shared) {
         self.cardCollectionManager = cardCollectionManager
@@ -41,7 +42,7 @@ final class RemoveCardsFromCollectionVC: UIViewController {
         }
 
         super.viewDidLoad()
-
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupViews_unique()
         setupActions_unique()
     }
@@ -75,6 +76,8 @@ private extension RemoveCardsFromCollectionVC {
 
         removeCardsView.setCollectionName(cardCollection?.name)
         removeCardsView.setCards(count: sortedCards.count)
+        closeButton.setLeft(in: view)
+        closeButton.addTarget(self, action: #selector(doneTapped_unique), for: .touchUpInside)
     }
 
     func setupActions_unique() {

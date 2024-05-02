@@ -1,6 +1,12 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import Foundation
+
+enum PreviousVC {
+    case search
+    case common
+}
 
 final class CardDetailsViewController: UIViewController {
 
@@ -8,7 +14,7 @@ final class CardDetailsViewController: UIViewController {
     private let cardPhotoService: CardPhotoService
     private let cardsManager: UserCardsManager
     weak var delegate: CardDetailsViewControllerDelegate?
-
+    private var previousVC: PreviousVC
     private(set) lazy var searchedCardsManager: CardsUpdater = SearchedCardsManager(card: card)
 
     private(set) lazy var selectedGrader: CardGrader = .RAW
@@ -19,8 +25,7 @@ final class CardDetailsViewController: UIViewController {
 
     private var isLoading = false {
         didSet {
-            cardDetailsView.addCardButton.isLoading = isLoading
-            cardDetailsView.removeCardButton.isLoading = isLoading
+             cardDetailsView.removeCardButton.isLoading = isLoading
         }
     }
 
@@ -35,13 +40,19 @@ final class CardDetailsViewController: UIViewController {
 
     lazy var cardDetailsView: CardDetailsView = .init()
 
+    lazy var backGroundView: UIView = .init()
+    lazy var indicatorImageView: UIImageView = .init(image: Images.loading.image)
+
+    lazy var overlayView: UIView = .init()
+
     init(
         card: CardRepresentable,
         cardType: CardType = .addedCard,
         encodedCardImage: Data? = nil,
         searchCardService: CardSearchable = SearchCardService(),
         cardPhotoService: CardPhotoService = .init(),
-        cardsManager: UserCardsManager = .shared
+        cardsManager: UserCardsManager = .shared,
+        previousVC: PreviousVC
     ) {
         self.card = card
         self.cardType = cardType
@@ -49,6 +60,7 @@ final class CardDetailsViewController: UIViewController {
         self.searchCardService = searchCardService
         self.cardPhotoService = cardPhotoService
         self.cardsManager = cardsManager
+        self.previousVC = previousVC
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -71,6 +83,7 @@ final class CardDetailsViewController: UIViewController {
         setupViewsData_unique()
         setupActions_unique()
         subscribeToNotifications()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -95,9 +108,18 @@ final class CardDetailsViewController: UIViewController {
 
 private extension CardDetailsViewController {
     func setupViews_unique() {
-        view.addSubview(scrollView)
+        view.backgroundColor = .clear
+        view.addSubview(backGroundView)
+        backGroundView.layer.cornerRadius = UIDevice.isIpad ? 34:24
+        backGroundView.backgroundColor = .white
+        backGroundView.snp.makeConstraints { make in
+            make.bottom.horizontalEdges.equalToSuperview()
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 30:22)
+        }
+        backGroundView.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 30:22)
+            $0.bottom.horizontalEdges.equalToSuperview()
         }
 
         scrollView.addSubview(cardDetailsView)
@@ -108,17 +130,39 @@ private extension CardDetailsViewController {
         }
 
         cardDetailsView.hidesNoNeededViews(for: cardType)
+        setupButton()
+        view.addSubview(overlayView)
+        view.addSubview(indicatorImageView)
+        overlayView.alpha = 0
+        indicatorImageView.alpha = 0
+    }
 
-        if let navController = navigationController, navController.viewControllers.first != self {
-            addBackButton()
+    func setupButton() {
+        if isRootViewController() {
+            closeStyle(style: previousVC)
         } else {
-            addCloseButton()
+            if previousVC == .search { closeStyle(style: previousVC) } else {
+                let closeButton = CloseButton(style: .back)
+                closeButton.setLeft(in: view)
+                closeButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
+            }
         }
     }
 
-    func setupViewsData_unique() {
-        cardDetailsView.cardTitleLabel.text = "\(card.title)\n\(card.subtitle)"
+    func closeStyle(style: PreviousVC) {
+        let closeButton = CloseButton(style: .close)
+        closeButton.setCenter(in: view)
+        if style == .search { closeButton.addTarget(self, action: #selector(closeAfterSearch), for: .touchUpInside) } else {
+            closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
+        }
+    }
 
+    func isRootViewController() -> Bool {
+           return navigationController?.viewControllers.first == self
+    }
+    func setupViewsData_unique() {
+        cardDetailsView.cardTitleLabel.text = "\(card.title)"
+        cardDetailsView.cardSubTitleLabel.text = "\(card.subtitle)"
         selectedGrader = card.customPrice.isNil ? card.selectedGrader : .CUSTOM
 
         cardDetailsView.cardGraderButton.cardGrader = selectedGrader
@@ -148,30 +192,6 @@ private extension CardDetailsViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(searchedCardDidUpdate), name: .searchedCardDidUpdate, object: nil)
     }
 
-    func addBackButton() {
-        let backButton = UIButton(type: .system)
-        backButton.tintColor = .black
-        backButton.setImage(Images.backArrow.image, for: .normal)
-        backButton.addTarget(self, action: #selector(backTapped_unique), for: .touchUpInside)
-        view.addSubview(backButton)
-        backButton.snp.makeConstraints {
-            $0.size.equalTo(44)
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(5)
-            $0.leading.equalToSuperview().inset(6)
-        }
-    }
-
-    func addCloseButton() {
-        let closeButton = UIButton(type: .system)
-        closeButton.setImage(Images.close.image, for: .normal)
-        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
-        view.addSubview(closeButton)
-        closeButton.snp.makeConstraints {
-            $0.size.equalTo(44)
-            $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-        }
-    }
-
     func getPricingReportMode() -> PricingReportButton.ReportMode {
         if selectedGrader == .CUSTOM {
             let customPrice = card.priceRange(of: .CUSTOM)
@@ -195,6 +215,10 @@ private extension CardDetailsViewController {
         delegate?.cardDetailsViewControllerBackTapped(self)
     }
 
+    @objc func closeAfterSearch() {
+        delegate?.cardDetaisCloseAfterSearch(self)
+    }
+
     @objc func selectGraderTapped() {
         delegate?.cardDetailsViewControllerSelectGraderTapped(self)
     }
@@ -214,7 +238,38 @@ private extension CardDetailsViewController {
         }
     }
 
+    func setupLoadingScreen() {
+
+        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+
+        overlayView = UIView(frame: window.bounds)
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+
+        overlayView.addSubview(indicatorImageView)
+        indicatorImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(95)
+        }
+        window.addSubview(overlayView)
+
+        UIView.animate(withDuration: 0.3) {
+            self.overlayView.alpha = 1
+            self.indicatorImageView.alpha = 1
+            self.animateIndicator()
+
+        }
+    }
+
+    func animateIndicator() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.indicatorImageView.transform = self.indicatorImageView.transform.rotated(by: .pi)
+        } completion: { _ in
+            self.animateIndicator()
+        }
+    }
+
     @objc func addCardTapped() {
+        setupLoadingScreen()
         guard NetworkMonitoringService.shared.isNetworkAvailable else {
             let alertType: SCSAlertType = .noInternetConnection(okAction: nil)
             AlertService.shared.presentAC(type: alertType, in: self)
@@ -236,7 +291,16 @@ private extension CardDetailsViewController {
             detailedCard.imageSource = imageURL.absoluteString
             cardsManager.addNewCard(detailedCard)
             cardsManager.saveCardsIfNeeded()
-            delegate?.cardDetailsViewControllerCardDidAdd(self)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.overlayView.alpha = 0
+                }) { _ in
+                    self.overlayView.removeFromSuperview()
+
+                    self.delegate?.cardDetailsViewControllerCardDidAdd(self)
+
+                }
+            }
         }
     }
 

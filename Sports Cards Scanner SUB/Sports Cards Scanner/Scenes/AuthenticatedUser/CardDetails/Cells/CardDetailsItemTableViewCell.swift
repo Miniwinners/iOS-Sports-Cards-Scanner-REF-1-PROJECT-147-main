@@ -3,19 +3,19 @@ import SnapKit
 
 final class CardDetailsItemTableViewCell: UITableViewCell {
 
-    static let cellHeight: CGFloat = 36
+    static let cellHeight: CGFloat = UIDevice.isIpad ? 55:35
 
     lazy var nameLabel: UILabel = { label in
-        label.font = .font(.interMedium, size: 14)
-        label.textColor = .labelColor
+        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:14)
+        label.textColor = .black
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }(UILabel())
 
     lazy var descriptionLabel: UILabel = { label in
-        label.font = .font(.interRegular, size: 14)
-        label.textColor = .labelColor4
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:14)
+        label.textColor = .singINLabel
         label.textAlignment = .right
         return label
     }(UILabel())
@@ -67,13 +67,13 @@ private extension CardDetailsItemTableViewCell {
 
         containerView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(7)
+            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview()
         }
 
         containerView.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(7)
+            $0.centerY.equalToSuperview()
             $0.leading.equalTo(nameLabel.snp.trailing).offset(16)
             $0.trailing.equalToSuperview()
         }

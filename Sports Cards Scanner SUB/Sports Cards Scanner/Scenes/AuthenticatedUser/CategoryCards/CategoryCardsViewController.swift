@@ -1,6 +1,6 @@
 import UIKit
 
-final class CategoryCardsViewController: UITableViewController {
+final class CategoryCardsViewController: UIViewController {
 
     private let cardsManager: UserCardsManager
 
@@ -9,11 +9,19 @@ final class CategoryCardsViewController: UITableViewController {
 
     weak var delegate: CategoryCardsViewControllerDelegate?
 
+    lazy var backView: BackView = .init()
+    lazy var closeButton: CloseButton = .init(style: .close)
+    lazy var titleLabel: TitleLabel = .init()
+
+    lazy var collectionCategory: UICollectionView = { collection in
+        return collection
+    }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
+
     init(category: CardCategory, cardsManager: UserCardsManager = .shared) {
         self.category = category
         self.cardsManager = cardsManager
-        super.init(style: .plain)
-        title = category.shortTitle
+        super.init(nibName: nil, bundle: nil)
+        titleLabel.text = category.shortTitle
     }
 
     required init?(coder: NSCoder) {
@@ -43,26 +51,28 @@ final class CategoryCardsViewController: UITableViewController {
         }
 
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
 }
 
 private extension CategoryCardsViewController {
     func setupViews_unique() {
-        navigationItem.rightBarButtonItem = .init(
-            image: Images.close.image,
-            style: .plain,
-            target: self,
-            action: #selector(closeTapped_unique)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        view.backgroundColor = .clear
+        backView.setupView(in: view)
+        titleLabel.setupLabel(in: backView)
+        backView.addSubview(collectionCategory)
+        collectionCategory.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40:20)
+            make.horizontalEdges.bottom.equalToSuperview()
+        }
+        collectionCategory.backgroundColor = .clear
+        collectionCategory.delegate = self
+        collectionCategory.dataSource = self
+        collectionCategory.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.className)
 
-        tableView.backgroundColor = .backColor
-        tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = .none
-        tableView.contentInset.bottom = 20
-        tableView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.className)
+        closeButton.setCenter(in: view)
+        closeButton.addTarget(self, action: #selector(closeTapped_unique), for: .touchUpInside)
     }
 
     func subscribeToNotifications() {
@@ -71,12 +81,35 @@ private extension CategoryCardsViewController {
 
     func reloadData_unique() {
         categoryCards = cardsManager.cards(of: category)
-        tableView.reloadData()
+        collectionCategory.reloadData()
     }
 
     func getCard(at indexPath: IndexPath) -> CardRepresentable? {
         guard let card = categoryCards[safe: indexPath.row] else { return nil }
         return card
+    }
+
+    func filterLayout() -> UICollectionViewCompositionalLayout {
+        let size = NSCollectionLayoutSize(
+            widthDimension: .estimated(UIDevice.isIpad ?252:162),
+            heightDimension: .absolute(UIDevice.isIpad ? 464:317)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:317))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ?3:2)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = .init(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 16
+        )
+
+        return UICollectionViewCompositionalLayout(section: section)
     }
 
     // MARK: - Actions
@@ -96,35 +129,32 @@ private extension CategoryCardsViewController {
 
 // MARK: - TableView DataSource
 
-extension CategoryCardsViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        1
+extension CategoryCardsViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categoryCards.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoryCards.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: CardTableViewCell.className,
-            for: indexPath
-        ) as? CardTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionCategory.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.className, for: indexPath) as? CardCollectionViewCell
 
         if let card = getCard(at: indexPath) {
             cell?.setupCard(card)
         }
-        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: categoryCards))
+//        cell?.setCellPosition(UITableView.cellPosition(for: indexPath, basedOn: categoryCards))
 
-        return cell ?? UITableViewCell()
+        return cell ?? UICollectionViewCell()
     }
 }
 
 // MARK: - TableView Delegate
 
-extension CategoryCardsViewController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+extension CategoryCardsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionCategory.deselectItem(at: indexPath, animated: true)
 
         guard let card = getCard(at: indexPath) else { return }
         delegate?.categoryCardsViewControllerDidSelectCard(card, in: self)

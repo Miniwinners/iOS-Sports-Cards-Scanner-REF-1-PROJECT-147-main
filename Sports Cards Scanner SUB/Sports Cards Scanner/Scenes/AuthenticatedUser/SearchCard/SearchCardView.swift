@@ -3,17 +3,20 @@ import SnapKit
 
 final class SearchCardView: UIView {
 
+    lazy var backView: BackView = .init()
+    lazy var titleLabel: TitleLabel = .init()
     lazy var searchTextField: CommonTextField = { textField in
         textField.borderStyle = .none
-        textField.font = .font(.interRegular, size: 16)
-        textField.backgroundColor = .white
-        textField.cornerRadius = 12
+        textField.font = .font(.interRegular, size: UIDevice.isIpad ? 24: 16)
+        textField.backgroundColor = .skyBlue
+        textField.cornerRadius = UIDevice.isIpad ? 30:12
         textField.placeholder = L10n.SearchCard.Search.placeholder
         textField.rightViewMode = .always
         textField.trailingPadding = 48
         textField.returnKeyType = .search
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
+        textField.tintColor = .black
         return textField
     }(CommonTextField())
 
@@ -30,13 +33,10 @@ final class SearchCardView: UIView {
         return view
     }(CommonMessageView())
 
-    lazy var searchTableView: UITableView = { tableView in
-        tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
-        tableView.contentInset.bottom = 20
-        return tableView
-    }(UITableView())
+    lazy var searchCollectionView: UICollectionView = { collectionView in
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
 
     convenience init() {
         self.init(frame: .zero)
@@ -44,7 +44,7 @@ final class SearchCardView: UIView {
     }
 
     func setNoResultsView(visible: Bool) {
-        searchTableView.isUserInteractionEnabled = !visible
+        searchCollectionView.isUserInteractionEnabled = !visible
         noResultsView.isHidden = !visible
     }
 
@@ -61,27 +61,28 @@ final class SearchCardView: UIView {
 
 private extension SearchCardView {
     func setupSubviews_unique() {
-        backgroundColor = .backColor
+        backgroundColor = .clear
+        backView.setupView(in: self)
+        titleLabel.setupLabel(in: backView)
 
-        addSubviews(searchTextField, searchTableView, noResultsView)
+        backView.addSubviews(searchTextField, searchCollectionView, noResultsView)
         setupSearchTextField()
         searchTextField.snp.makeConstraints {
-            $0.height.equalTo(48)
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(UIDevice.isIpad ? 100 : 48)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 30)
+            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
-        searchTableView.snp.makeConstraints {
-            $0.top.equalTo(searchTextField.snp.bottom).offset(20)
+        searchCollectionView.snp.makeConstraints {
+            $0.top.equalTo(searchTextField.snp.bottom).offset(UIDevice.isIpad ? 40:20)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
         noResultsView.snp.makeConstraints {
-            $0.top.equalTo(searchTextField.snp.bottom).offset(40)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.center.equalToSuperview()
         }
 
         setNoResultsView(visible: false)
 
-        searchTableView.isUserInteractionEnabled = false
+        searchCollectionView.isUserInteractionEnabled = false
     }
 
     func setupSearchTextField() {
@@ -95,5 +96,30 @@ private extension SearchCardView {
         }
 
         searchImageView = imageView
+    }
+}
+
+private extension SearchCardView {
+    func filterLayout() -> UICollectionViewCompositionalLayout {
+        let size = NSCollectionLayoutSize(
+            widthDimension: .estimated(UIDevice.isIpad ? 253:162),
+            heightDimension: .absolute(UIDevice.isIpad ? 464:317)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isIpad ? 464:317))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: UIDevice.isIpad ? 3:2)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = .init(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 16
+        )
+
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }
