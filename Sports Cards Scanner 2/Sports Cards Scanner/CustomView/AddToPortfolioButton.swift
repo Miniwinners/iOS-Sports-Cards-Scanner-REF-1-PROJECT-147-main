@@ -22,7 +22,7 @@ final class AddToPortfolioButton: UIButton {
         case .highlighted:
             backgroundColor = .highlightColor2
         default:
-            backgroundColor = .blue
+            backgroundColor = .skyBlue
         }
     }
 
@@ -30,9 +30,8 @@ final class AddToPortfolioButton: UIButton {
 
 private extension AddToPortfolioButton {
     func setup_subviews() {
-        configuration = .plain()
-
-        backgroundColor = .blue
+//        configuration = .plain()
+        backgroundColor = .darkBlue
         layer.cornerRadius = 12
         addSubview(addImageView)
         addImageView.snp.makeConstraints {
@@ -54,7 +53,7 @@ private extension AddToPortfolioButton {
         addSubview(subTitleLabelAdd)
         subTitleLabelAdd.text = L10n.CardDetails.Action.addCard
         subTitleLabelAdd.textAlignment = .center
-        subTitleLabelAdd.textColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.5)
+        subTitleLabelAdd.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.35)
         subTitleLabelAdd.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 18:12)
         subTitleLabelAdd.setLineHeight(UIDevice.isIpad ? 28:22)
         subTitleLabelAdd.snp.makeConstraints {

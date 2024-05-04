@@ -70,7 +70,7 @@ private extension PortfolioNoCardView {
 
         welcomeView.addSubviews(welcomeTitleLabel, scanImageView, welcomeDescriptionLabel, scanInstructionsLabel)
         welcomeTitleLabel.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 100 : 40)
+            $0.horizontalEdges.equalToSuperview()
             $0.top.equalTo(scanImageView.snp.bottom).offset(UIDevice.isIpad ? 80 : 50)
         }
         scanImageView.snp.makeConstraints {
@@ -82,12 +82,12 @@ private extension PortfolioNoCardView {
         welcomeDescriptionLabel.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 40 : 20)
             $0.top.lessThanOrEqualTo(welcomeTitleLabel.snp.bottom).offset(UIDevice.isIpad ? 80 : 40)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ?  80:20)
+            $0.horizontalEdges.equalToSuperview()
 //            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 30 : 10)
         }
 
         scanInstructionsLabel.snp.makeConstraints {
-            $0.top.equalTo(welcomeDescriptionLabel.snp.bottom).offset(UIDevice.isIpad ? 80 : 40)
+            $0.top.equalTo(welcomeDescriptionLabel.snp.bottom).offset(UIDevice.isIpad ? 180 : 110)
             $0.centerX.equalToSuperview()
         }
     }

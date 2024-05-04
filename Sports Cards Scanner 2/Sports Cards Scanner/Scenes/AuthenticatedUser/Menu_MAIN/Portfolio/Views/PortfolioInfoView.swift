@@ -13,9 +13,7 @@ final class PortfolioInfoView: UIView {
 
     lazy var containerView: UIView = { view in
         view.backgroundColor = .white
-        view.layer.cornerRadius = UIDevice.isIpad ?30:24
-        view.layer.borderColor = UIColor.blue.cgColor
-        view.layer.borderWidth = 1
+        view.layer.cornerRadius = UIDevice.isIpad ? 30 : 24
         return view
     }(UIView())
 
@@ -55,6 +53,11 @@ final class PortfolioInfoView: UIView {
         self.init(frame: .zero)
         setupSubviews_unique()
     }
+
+    override func layoutSubviews() {
+           super.layoutSubviews()
+        containerView.makeBorder()
+       }
 
     func setCardsValue(_ cardsValue: Double) {
         cardsValueLabel.text = cardsValue.formattedAsPrice
@@ -109,5 +112,24 @@ private extension PortfolioInfoView {
             $0.top.equalTo(cardsNumberLabel.snp.bottom).offset(5)
             $0.height.equalTo(UIDevice.isIpad ?26:20)
         }
+
     }
+
+//    func makeBorder(view: UIView) {
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = view.bounds.insetBy(dx: -0.5, dy: -0.5)
+//        gradientLayer.colors = [UIColor.blue.cgColor, UIColor.green.cgColor]
+//        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+//        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+//
+//        let shapeLayer = CAShapeLayer()
+//        shapeLayer.lineWidth = 1
+//        shapeLayer.path = UIBezierPath(roundedRect: view.bounds.insetBy(dx: 0.5, dy: 0.5), cornerRadius: view.layer.cornerRadius).cgPath
+//        shapeLayer.strokeColor = UIColor.black.cgColor
+//        shapeLayer.fillColor = nil
+//
+//        gradientLayer.mask = shapeLayer
+//
+//        view.layer.addSublayer(gradientLayer)
+//    }
 }

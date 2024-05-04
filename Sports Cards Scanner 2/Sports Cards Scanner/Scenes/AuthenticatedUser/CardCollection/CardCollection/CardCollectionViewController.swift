@@ -151,10 +151,13 @@ private extension CardCollectionViewController {
         )
     }
 
-    func card(at indexPath: IndexPath) -> CardRepresentable? {
+    func cardTable(at indexPath: IndexPath) -> CardRepresentable? {
         sortedCards[safe: indexPath.section]
     }
 
+    func cardCollection(at indexPath: IndexPath) -> CardRepresentable? {
+        sortedCards[safe: indexPath.row]
+    }
     // MARK: - Actions
 
     @objc func close() {
@@ -222,15 +225,15 @@ extension CardCollectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CardTableViewCell.className, for: indexPath) as? CardTableViewCell
 
-        if let card = card(at: indexPath) {
+        if let card = cardTable(at: indexPath) {
             cell?.setupCard(card)
-            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 16:22)
+            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 18:22)
             cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 20:26)
-            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIphone ? 14:20)
+            cell?.cardView.subtitleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIphone ? 16:20)
 
-            cell?.cardView.pricesLabel.setLineHeight(UIDevice.isIphone ? 22:24)
-            cell?.cardView.titleLabel.setLineHeight(UIDevice.isIphone ? 26:28)
-            cell?.cardView.subtitleLabel.setLineHeight(UIDevice.isIphone ? 22:24)
+//            cell?.cardView.pricesLabel.setLineHeight(UIDevice.isIphone ? 22:24)
+//            cell?.cardView.titleLabel.setLineHeight(UIDevice.isIphone ? 26:28)
+//            cell?.cardView.subtitleLabel.setLineHeight(UIDevice.isIphone ? 22:24)
         }
 
         return cell ?? UITableViewCell()
@@ -251,7 +254,7 @@ extension CardCollectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let card = card(at: indexPath) else { return }
+        guard let card = cardTable(at: indexPath) else { return }
         delegate?.cardCollectionViewControllerCardDidSelect(card, in: self)
     }
 }
@@ -270,7 +273,7 @@ extension CardCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.className, for: indexPath) as? CardCollectionViewCell
 
-        if let card = card(at: indexPath) {
+        if let card = cardCollection(at: indexPath) {
             cell?.setupCard(card)
 //            cell?.cardView.pricesLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 14 : 20)
 //            cell?.cardView.titleLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIphone ? 18 : 24)
@@ -288,7 +291,7 @@ extension CardCollectionViewController: UICollectionViewDataSource {
 
 extension CardCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let card = card(at: indexPath) else { return }
+        guard let card = cardCollection(at: indexPath) else { return }
         delegate?.cardCollectionViewControllerCardDidSelect(card, in: self)
     }
 }

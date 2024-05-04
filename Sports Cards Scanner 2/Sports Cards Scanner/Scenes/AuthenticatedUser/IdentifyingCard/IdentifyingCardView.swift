@@ -58,7 +58,7 @@ private extension IdentifyingCardView {
 
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(UIDevice.isIpad ? 70:52)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 60:40)
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 

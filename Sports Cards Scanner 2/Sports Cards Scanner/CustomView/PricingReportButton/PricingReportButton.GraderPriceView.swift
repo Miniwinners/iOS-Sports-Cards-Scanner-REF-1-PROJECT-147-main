@@ -18,6 +18,12 @@ extension PricingReportButton {
             self.type = type
             setupSubviews_unique()
         }
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            if type == .add {
+                self.makeBorder()
+            }
+        }
     }
 }
 
@@ -90,13 +96,13 @@ extension PricingReportButton.GraderPriceView {
             $0.size.equalTo(UIDevice.isIpad ? 40:32)
             switch type {
             case .add:
-                layer.borderColor = UIColor.blue.cgColor
-                layer.borderWidth = 1
+//                layer.borderColor = UIColor.blue.cgColor
+//                layer.borderWidth = 1
                 $0.centerX.equalToSuperview()
                 $0.top.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
             case .main:
-                layer.borderColor = UIColor.clear.cgColor
-                layer.borderWidth = 0
+//                layer.borderColor = UIColor.clear.cgColor
+//                layer.borderWidth = 0
                 $0.centerY.equalToSuperview()
                 $0.trailing.equalToSuperview().inset(UIDevice.isIpad ? 25:15)
             default: break

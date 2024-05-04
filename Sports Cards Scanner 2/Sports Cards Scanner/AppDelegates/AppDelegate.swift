@@ -2,16 +2,18 @@ import UIKit
 import FirebaseCore
 import Adjust
 import Pushwoosh
- @main
+import FacebookCore
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         configureManagers()
         NetworkMonitoringService.shared.startNetworkMonitoring()
-//        ServicesManager.shared.initializeAdjust()
-//        ServicesManager.shared.initializePushwoosh(delegate: self)
+        ServicesManager.shared.initializeAdjust()
+        ServicesManager.shared.initializePushwoosh(delegate: self)
         return true
+
     }
 
     // MARK: UISceneSession Lifecycle

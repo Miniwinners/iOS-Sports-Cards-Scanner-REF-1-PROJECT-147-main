@@ -26,4 +26,5 @@ final class ProfileSelectableCell: SelectableTableViewCell {
         titleLabel.text = item.title
 
     }
+
 }

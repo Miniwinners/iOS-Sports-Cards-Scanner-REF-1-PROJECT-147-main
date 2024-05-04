@@ -5,7 +5,7 @@ import Kingfisher
 final class PricingReportDetailsView: UIView {
 
     lazy var titleLabel: UILabel = { label in
-        label.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 24:22)
+        label.font = .font(.ubuntuBold700, size: UIDevice.isIpad ? 24:22)
         label.textColor = .black
         label.numberOfLines = 2
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -13,7 +13,7 @@ final class PricingReportDetailsView: UIView {
     }(UILabel())
 
     lazy var subtitleLabel: UILabel = { label in
-        label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 24:14)
+        label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 20:16)
         label.textColor = .black
         label.numberOfLines = 2
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -24,7 +24,7 @@ final class PricingReportDetailsView: UIView {
     private lazy var lastSoldPriceView: DetailView = .init()
     private lazy var lastSoldDateView: DetailView = .init()
     private lazy var priceView: DetailView = .init()
-
+    lazy var priceContainer: UIView = .init()
     lazy var photoView: UIImageView = { imageView in
         imageView.contentMode = .scaleAspectFill
         imageView.cornerRadius = 9
@@ -41,42 +41,48 @@ final class PricingReportDetailsView: UIView {
 extension PricingReportDetailsView {
     func set(card: CardRepresentable, grader: CardGrader) {
         titleLabel.text = card.title
+        titleLabel.textAlignment = .center
+
         subtitleLabel.text = card.subtitle
+        subtitleLabel.textAlignment = .center
         titleLabel.setLineHeight(UIDevice.isIpad ? 26:24)
         subtitleLabel.setLineHeight(UIDevice.isIpad ? 24:18)
 
         if let priceRange = card.priceRange(of: grader) {
-            let firstPartTitle = "\(L10n.PricingReport.Details.priceReport) - "
-            let secondPartTitle = grader.rawValue
-            let fullTitle = firstPartTitle + secondPartTitle
-            let attributedTitle = NSMutableAttributedString(string: fullTitle)
-            attributedTitle.addAttributes(
-                [.foregroundColor: UIColor.labelColor4],
-                range: .init(location: 0, length: firstPartTitle.count)
-            )
-            attributedTitle.addAttributes(
-                [.foregroundColor: UIColor.cardBackColor],
-                range: .init(location: firstPartTitle.count, length: secondPartTitle.count)
-            )
-            priceReportView.setReportTitle(attributedTitle)
+
+            priceReportView.setReportTitle("Price") // L10n.PricingReport.Details.priceReport
             priceReportView.setDetailsInfo(priceRange)
         } else {
             priceReportView.isHidden = true
         }
 
         if let formattedPrice = card.lastSoldPrice(of: grader) {
-            lastSoldPriceView.setReportTitle(L10n.PricingReport.Details.lastSoldPrice)
+            lastSoldPriceView.setReportTitle(setAtrString(text: L10n.PricingReport.Details.lastSoldPrice, textToCut: grader.rawValue))
             lastSoldPriceView.setDetailsInfo(formattedPrice)
+
+            priceView.setReportTitle("Price")
+            priceView.setDetailsInfo(formattedPrice)
         } else {
             lastSoldPriceView.isHidden = true
         }
 
         if let formattedDate = card.lastSoldDate(of: grader) {
-            lastSoldDateView.setReportTitle(L10n.PricingReport.Details.lastSoldDate)
+            lastSoldDateView.setReportTitle(setAtrString(text: L10n.PricingReport.Details.lastSoldDate, textToCut: grader.rawValue))
             lastSoldDateView.setDetailsInfo(formattedDate)
         } else {
             lastSoldDateView.isHidden = true
         }
+
+    }
+
+    func setAtrString(text: String, textToCut: String) -> NSMutableAttributedString {
+        let fulltext = "\(text) - \(textToCut)"
+        let atributeString = NSMutableAttributedString(string: fulltext)
+        let range = (fulltext as NSString).range(of: textToCut)
+        if range.location != NSNotFound {
+            atributeString.addAttribute(.foregroundColor, value: UIColor.black, range: range)
+        }
+        return atributeString
     }
 
     func set(encodedCardImage: Data) {
@@ -90,11 +96,10 @@ extension PricingReportDetailsView {
     private func setupSubviews_unique() {
         backgroundColor = .white
 
-        let priceContainer = UIView()
         priceContainer.backgroundColor = .skyBlue
         priceContainer.cornerRadius = 12
-        priceContainer.borderColor = .blue
-        priceContainer.borderWidth = 1
+//        priceContainer.borderColor = .blue
+//        priceContainer.borderWidth = 1
 
         let detailsContainerView = UIView()
         detailsContainerView.addSubviews(titleLabel, subtitleLabel)
@@ -120,9 +125,13 @@ extension PricingReportDetailsView {
             $0.centerX.equalToSuperview()
         }
 
-        priceContainer.addSubviews(priceReportView, lastSoldPriceView, lastSoldDateView)
-        priceReportView.snp.makeConstraints {
+        priceContainer.addSubviews(priceView, priceReportView, lastSoldPriceView, lastSoldDateView)
+        priceView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(15)
+            $0.leading.equalToSuperview().inset(15)
+        }
+        priceReportView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(15)
             $0.leading.equalToSuperview().inset(15)
         }
 
@@ -201,7 +210,7 @@ extension PricingReportDetailsView.DetailView {
 
     private func setupSubviews_unique() {
         titleLabel = .init()
-        titleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
+        titleLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 22:16)
         titleLabel.textColor = .labelColor4
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         addSubview(titleLabel)

@@ -1,6 +1,6 @@
 import UIKit
 import SnapKit
-
+import FacebookLogin
 final class SCSSignInVC: UIViewController {
 
     // MARK: - Subviews
@@ -60,6 +60,10 @@ final class SCSSignInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+//        let token = AccessToken.current,if !token.isExpired {
+//        // User is logged in, do work such as go to next view controller.
+//        } 
 
         setupViews_unique()
         setupActions_unique()
@@ -171,7 +175,8 @@ private extension SCSSignInVC {
 
     func handleSignInWithAppleError(_ error: Error) {
         switch error {
-        case AppleAuthError.noCredentials:
+        case FirebaseError.notConfigured,
+         AppleAuthError.noCredentials:
             self.error = L10n.Common.error
         default:
             break

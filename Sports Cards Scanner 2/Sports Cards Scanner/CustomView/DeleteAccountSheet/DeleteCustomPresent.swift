@@ -116,7 +116,7 @@ final class CustomNavPresentation: UIPresentationController {
 
     private var dimmingView: UIView!
 
-    private let heightRatio: CGFloat = 0.9
+    private let heightRatio: CGFloat = 0.95
 
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return .zero }

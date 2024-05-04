@@ -35,6 +35,7 @@ final class SearchCardView: UIView {
 
     lazy var searchCollectionView: UICollectionView = { collectionView in
         collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
 

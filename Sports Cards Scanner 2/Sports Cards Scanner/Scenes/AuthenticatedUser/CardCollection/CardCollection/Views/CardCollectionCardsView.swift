@@ -58,6 +58,11 @@ final class CardCollectionCardsView: UIView {
         setupSubviews_unique()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        customContainer.makeBorder()
+    }
+
     func setCollectionName(_ name: String?) {
         titleView.text = name
     }
@@ -104,7 +109,7 @@ final class CardCollectionCardsView: UIView {
 
     func showEstimatedValue() {
         isShown = .show
-        topConstraint = UIDevice.isIpad ? 200 : 160
+        topConstraint = UIDevice.isIpad ? 130 : 90
         customContainer.setupLayout(in: self, top: infoContainerView)
         bringSubviewToFront(menuButton)
         reloadMaket()
@@ -144,7 +149,7 @@ private extension CardCollectionCardsView {
         }
         addSubview(menuButton)
         menuButton.snp.makeConstraints { make in
-            make.top.equalTo(infoContainerView.snp.bottom).offset(UIDevice.isIpad ? 50 : 30)
+            make.top.equalTo(infoContainerView.snp.bottom).offset(UIDevice.isIpad ? 60 : 40)
             make.size.equalTo(UIDevice.isIpad ? 40:24)
             make.right.equalToSuperview().inset(UIDevice.isIpad ? 90:30)
         }
@@ -175,7 +180,7 @@ private extension CardCollectionCardsView {
     func setupCardsViewIfNeeded(_ cardsView: UIView) {
 //        guard cardsView.superview == nil else { return }
         addSubview(cardsView)
-        let insetShow: CGFloat = UIDevice.isIpad ? 180:160
+        let insetShow: CGFloat = UIDevice.isIpad ? 130:90
         let insetHide: CGFloat = UIDevice.isIpad ? 40:20
         cardsView.snp.remakeConstraints {
 

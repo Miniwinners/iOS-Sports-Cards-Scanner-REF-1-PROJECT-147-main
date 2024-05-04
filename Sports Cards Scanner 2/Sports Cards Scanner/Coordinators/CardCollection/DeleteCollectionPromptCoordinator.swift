@@ -19,7 +19,7 @@ final class DeleteCollectionPromptCoordinator {
 
 extension DeleteCollectionPromptCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = DeleteAccountVC(description: L10n.Prompt.DeleteCollection.description)
+        let viewController = DeleteAccountVC(description: L10n.Prompt.DeleteCollection.description, styleButton: .delete)
         viewController.delegate = self
         viewController.cancelButton.setButtonTitle(L10n.Prompt.DeleteCollection.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteCollection.keepAction)

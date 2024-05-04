@@ -20,18 +20,7 @@ extension SCSAppCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
         presentInitialView()
 
-        IAPManager.shared.validateSubscriptionWithCompletionHandler(productIdentifier: SCSConfigurations.mainSubscriptionID) { [weak self] userHaveSub in
-            switch userHaveSub {
-            case true:
-                self?.presentSubscribed()
-//                self?.presentUnsubscribed()
-
-            case false:
-//                self?.presentSubscribed()
-
-                self?.presentUnsubscribed()
-            }
-        }
+        checkConnection()
     }
 
     func dismissFully(animated: Bool) {
@@ -43,6 +32,21 @@ extension SCSAppCoordinator: SCSCoordinator {
 extension SCSAppCoordinator: PremiumMainControllerDelegate {
     func premiumMainControllerUserDidSubscribe(_ viewController: PremiumMainController) {
         presentSubscribed()
+    }
+}
+
+extension SCSAppCoordinator: CheckConnectionDelegate {
+    func checkConnectionDidLoad(_ viewController: CheckConnectionVC) {
+        IAPManager.shared.validateSubscriptionWithCompletionHandler(productIdentifier: SCSConfigurations.mainSubscriptionID) { [weak self] userHaveSub in
+            switch userHaveSub {
+            case true:
+                self?.presentSubscribed()
+//                self?.presentUnsubscribed()
+            case false:
+//                self?.presentSubscribed()
+                self?.presentUnsubscribed()
+            }
+        }
     }
 }
 
@@ -211,6 +215,13 @@ private extension SCSAppCoordinator {
         router.present_unique(viewController, animated: false)
     }
 
+    func checkConnection() {
+        AuthStateManager.shared.unsubscribeForAuthState(self)
+        let connectionVC = CheckConnectionVC()
+        connectionVC.delegate = self
+        router.present_unique(connectionVC, animated: true)
+    }
+    
     func presentSubscribed() {
         presentInitialView()
 
@@ -258,25 +269,6 @@ private extension SCSAppCoordinator {
 
         router.present_unique(tabBarController, animated: true)
     }
-
-    func presentAuthWithOutload() {
-            let dashboardViewController = DashboardViewController()
-            dashboardViewController.delegate = self
-
-            let portfolioViewController = PortfolioViewController()
-            portfolioViewController.delegate = self
-
-            let moreViewController = MoreViewController(authService: authService)
-            moreViewController.delegate = self
-
-            let tabBarController = UITabBarController()
-            tabBarController.setViewControllers([dashboardViewController, portfolioViewController, moreViewController], animated: false)
-            setupMainTabBar(tabBarController.tabBar)
-            tabBarController.setupCustomTabBarView()
-            authenticatedUserController = tabBarController
-
-            router.present_unique(tabBarController, animated: true)
-        }
 
     func presentSignUp() {
         let signUpViewController = SCSSignUpVC(authService: authService)

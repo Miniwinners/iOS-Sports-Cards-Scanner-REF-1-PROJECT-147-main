@@ -46,7 +46,7 @@ final class AddCardsToCollectionCategoriesVC: UIViewController {
         setupActions_unique()
         setupNavigationItem()
         closeButton.setLeft(in: view)
-        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(cancelTapped_unique), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {

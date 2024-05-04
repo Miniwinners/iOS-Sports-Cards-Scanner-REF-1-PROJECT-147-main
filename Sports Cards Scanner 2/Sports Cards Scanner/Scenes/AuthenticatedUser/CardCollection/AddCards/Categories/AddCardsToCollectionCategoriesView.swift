@@ -132,7 +132,7 @@ private extension AddCardsToCollectionCategoriesView {
         backView.addSubviews(categoriesTableView)
         categoriesTableView.snp.makeConstraints {
             $0.top.equalTo(categoriesContainerView.snp.bottom).offset(UIDevice.isIpad ? 30:10)
-            $0.bottom.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(UIDevice.isIpad ? 240: 150)
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80: 16)
         }
     }

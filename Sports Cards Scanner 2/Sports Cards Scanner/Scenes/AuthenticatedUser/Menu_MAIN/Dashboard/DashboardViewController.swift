@@ -1,6 +1,6 @@
 import UIKit
 import SnapKit
-
+import FacebookLogin
 final class DashboardViewController: UIViewController {
 
     private var timer: Timer!
@@ -46,8 +46,11 @@ final class DashboardViewController: UIViewController {
             print("\(rkjyOdUzcU)")
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
-
         super.viewDidLoad()
+
+//        let token = AccessToken.current,if !token.isExpired {
+//        // User is logged in, do work such as go to next view controller.
+//        }
 
         setupViews_unique()
         setupActions_unique()

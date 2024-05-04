@@ -9,6 +9,140 @@
 /* Begin PBXBuildFile section */
 		417258032BE40DBA002FD12A /* Gilroy-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 417258022BE40D55002FD12A /* Gilroy-ExtraBold.ttf */; };
 		4198FD6C2BE4344800E788C9 /* TransactionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4198FD6B2BE4344800E788C9 /* TransactionView.xib */; };
+		419989F92BE6A7EF00E62B80 /* CategoryCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989332BE6A7EF00E62B80 /* CategoryCardsViewController.swift */; };
+		419989FA2BE6A7EF00E62B80 /* CategoryCardsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989342BE6A7EF00E62B80 /* CategoryCardsViewControllerDelegate.swift */; };
+		419989FB2BE6A7EF00E62B80 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989362BE6A7EF00E62B80 /* SearchCardView.swift */; };
+		419989FC2BE6A7EF00E62B80 /* SearchCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989372BE6A7EF00E62B80 /* SearchCardViewControllerDelegate.swift */; };
+		419989FD2BE6A7EF00E62B80 /* SearchCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989382BE6A7EF00E62B80 /* SearchCardViewController.swift */; };
+		419989FE2BE6A7EF00E62B80 /* CardSaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199893B2BE6A7EF00E62B80 /* CardSaleTableViewCell.swift */; };
+		419989FF2BE6A7EF00E62B80 /* PricingReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199893C2BE6A7EF00E62B80 /* PricingReportViewController.swift */; };
+		41998A002BE6A7EF00E62B80 /* PricingReportDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199893E2BE6A7EF00E62B80 /* PricingReportDetailsView.swift */; };
+		41998A012BE6A7EF00E62B80 /* PricingReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199893F2BE6A7EF00E62B80 /* PricingReportView.swift */; };
+		41998A022BE6A7EF00E62B80 /* CurrentValueDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989412BE6A7EF00E62B80 /* CurrentValueDetailsViewController.swift */; };
+		41998A032BE6A7EF00E62B80 /* CurrentValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989432BE6A7EF00E62B80 /* CurrentValueTableViewCell.swift */; };
+		41998A042BE6A7EF00E62B80 /* CurrentValueDetailsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989442BE6A7EF00E62B80 /* CurrentValueDetailsViewControllerDelegate.swift */; };
+		41998A052BE6A7EF00E62B80 /* CurrentValueDetailsView.CategoryValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989462BE6A7EF00E62B80 /* CurrentValueDetailsView.CategoryValueView.swift */; };
+		41998A062BE6A7EF00E62B80 /* CurrentValueDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989472BE6A7EF00E62B80 /* CurrentValueDetailsView.swift */; };
+		41998A072BE6A7EF00E62B80 /* RemoveCardsFromCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199894A2BE6A7EF00E62B80 /* RemoveCardsFromCollectionVC.swift */; };
+		41998A082BE6A7EF00E62B80 /* RemoveCardsFromCollectionVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199894B2BE6A7EF00E62B80 /* RemoveCardsFromCollectionVCDelegate.swift */; };
+		41998A092BE6A7EF00E62B80 /* AddCardsToCollectionCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199894E2BE6A7EF00E62B80 /* AddCardsToCollectionCardsVC.swift */; };
+		41998A0A2BE6A7EF00E62B80 /* AddCardsToCollectionCardsVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199894F2BE6A7EF00E62B80 /* AddCardsToCollectionCardsVCDelegate.swift */; };
+		41998A0B2BE6A7EF00E62B80 /* AddCardsToCollectionCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989502BE6A7EF00E62B80 /* AddCardsToCollectionCardsView.swift */; };
+		41998A0C2BE6A7EF00E62B80 /* AddCardsToCollectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989512BE6A7EF00E62B80 /* AddCardsToCollectionHelper.swift */; };
+		41998A0D2BE6A7EF00E62B80 /* CategoryCardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989542BE6A7EF00E62B80 /* CategoryCardsTableViewCell.swift */; };
+		41998A0E2BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989552BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesView.swift */; };
+		41998A0F2BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989562BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVC.swift */; };
+		41998A102BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989572BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVCDelegate.swift */; };
+		41998A112BE6A7EF00E62B80 /* CreateEditCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989592BE6A7EF00E62B80 /* CreateEditCollectionVC.swift */; };
+		41998A122BE6A7EF00E62B80 /* CreateEditCollectionVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199895A2BE6A7EF00E62B80 /* CreateEditCollectionVCDelegate.swift */; };
+		41998A132BE6A7EF00E62B80 /* CardPhotoInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199895D2BE6A7EF00E62B80 /* CardPhotoInfoCollectionViewCell.swift */; };
+		41998A142BE6A7EF00E62B80 /* CardCollectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199895E2BE6A7EF00E62B80 /* CardCollectionViewControllerDelegate.swift */; };
+		41998A152BE6A7EF00E62B80 /* SwipeableCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989602BE6A7EF00E62B80 /* SwipeableCardsView.swift */; };
+		41998A162BE6A7EF00E62B80 /* SwipeableCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989612BE6A7EF00E62B80 /* SwipeableCardButton.swift */; };
+		41998A172BE6A7EF00E62B80 /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989622BE6A7EF00E62B80 /* CardCollectionViewController.swift */; };
+		41998A182BE6A7EF00E62B80 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989642BE6A7EF00E62B80 /* CardCollectionView.swift */; };
+		41998A192BE6A7EF00E62B80 /* CardsRepresentSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989652BE6A7EF00E62B80 /* CardsRepresentSegmentedControl.swift */; };
+		41998A1A2BE6A7EF00E62B80 /* CardCollectionCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989662BE6A7EF00E62B80 /* CardCollectionCardsView.swift */; };
+		41998A1B2BE6A7EF00E62B80 /* CardCollectionNoCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989672BE6A7EF00E62B80 /* CardCollectionNoCardsView.swift */; };
+		41998A1C2BE6A7EF00E62B80 /* CollectionMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989692BE6A7EF00E62B80 /* CollectionMenuViewControllerDelegate.swift */; };
+		41998A1D2BE6A7EF00E62B80 /* CollectionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199896A2BE6A7EF00E62B80 /* CollectionMenuViewController.swift */; };
+		41998A1E2BE6A7EF00E62B80 /* GraderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199896D2BE6A7EF00E62B80 /* GraderTableViewCell.swift */; };
+		41998A1F2BE6A7EF00E62B80 /* GraderSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199896E2BE6A7EF00E62B80 /* GraderSelectionViewController.swift */; };
+		41998A202BE6A7EF00E62B80 /* GraderSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199896F2BE6A7EF00E62B80 /* GraderSelectionView.swift */; };
+		41998A212BE6A7EF00E62B80 /* GraderSelectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989702BE6A7EF00E62B80 /* GraderSelectionViewControllerDelegate.swift */; };
+		41998A222BE6A7EF00E62B80 /* RecentlyAddedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989722BE6A7EF00E62B80 /* RecentlyAddedListViewController.swift */; };
+		41998A232BE6A7EF00E62B80 /* RecentlyAddedListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989732BE6A7EF00E62B80 /* RecentlyAddedListViewControllerDelegate.swift */; };
+		41998A242BE6A7EF00E62B80 /* GradeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989752BE6A7EF00E62B80 /* GradeSelectionView.swift */; };
+		41998A252BE6A7EF00E62B80 /* GradeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989762BE6A7EF00E62B80 /* GradeSelectionViewController.swift */; };
+		41998A262BE6A7EF00E62B80 /* SortCardOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989792BE6A7EF00E62B80 /* SortCardOptionCell.swift */; };
+		41998A272BE6A7EF00E62B80 /* SortCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199897A2BE6A7EF00E62B80 /* SortCardsViewController.swift */; };
+		41998A282BE6A7EF00E62B80 /* SortCardsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199897B2BE6A7EF00E62B80 /* SortCardsViewControllerDelegate.swift */; };
+		41998A292BE6A7EF00E62B80 /* AddToPortfolioDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199897D2BE6A7EF00E62B80 /* AddToPortfolioDetailsView.swift */; };
+		41998A2A2BE6A7EF00E62B80 /* AddToPortfolioDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199897E2BE6A7EF00E62B80 /* AddToPortfolioDetails.swift */; };
+		41998A2B2BE6A7EF00E62B80 /* ParallelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989812BE6A7EF00E62B80 /* ParallelCollectionViewCell.swift */; };
+		41998A2C2BE6A7EF00E62B80 /* ParallelSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989822BE6A7EF00E62B80 /* ParallelSelectionView.swift */; };
+		41998A2D2BE6A7EF00E62B80 /* ParallelSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989832BE6A7EF00E62B80 /* ParallelSelectionViewController.swift */; };
+		41998A2E2BE6A7EF00E62B80 /* SelectableCardCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989862BE6A7EF00E62B80 /* SelectableCardCategoryTableViewCell.swift */; };
+		41998A2F2BE6A7EF00E62B80 /* GradeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989882BE6A7EF00E62B80 /* GradeType.swift */; };
+		41998A302BE6A7F000E62B80 /* ScanCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199898A2BE6A7EF00E62B80 /* ScanCardView.swift */; };
+		41998A312BE6A7F000E62B80 /* CardCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199898B2BE6A7EF00E62B80 /* CardCategoryButton.swift */; };
+		41998A322BE6A7F000E62B80 /* NoCaptureAuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199898C2BE6A7EF00E62B80 /* NoCaptureAuthorizationView.swift */; };
+		41998A332BE6A7F000E62B80 /* ScanCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199898D2BE6A7EF00E62B80 /* ScanCardViewControllerDelegate.swift */; };
+		41998A342BE6A7F000E62B80 /* ScanCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199898E2BE6A7EF00E62B80 /* ScanCardViewController.swift */; };
+		41998A352BE6A7F000E62B80 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989902BE6A7EF00E62B80 /* TabBarItem.swift */; };
+		41998A362BE6A7F000E62B80 /* ProfileSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989932BE6A7EF00E62B80 /* ProfileSelectableCell.swift */; };
+		41998A372BE6A7F000E62B80 /* ProfileSwitchableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989942BE6A7EF00E62B80 /* ProfileSwitchableCell.swift */; };
+		41998A382BE6A7F000E62B80 /* UpdatePasswordViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989972BE6A7EF00E62B80 /* UpdatePasswordViewControllerDelegate.swift */; };
+		41998A392BE6A7F000E62B80 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989982BE6A7EF00E62B80 /* UpdatePasswordView.swift */; };
+		41998A3A2BE6A7F000E62B80 /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989992BE6A7EF00E62B80 /* UpdatePasswordVC.swift */; };
+		41998A3B2BE6A7F000E62B80 /* CardCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199899C2BE6A7EF00E62B80 /* CardCategoryTableViewCell.swift */; };
+		41998A3C2BE6A7F000E62B80 /* CardCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199899D2BE6A7EF00E62B80 /* CardCategoriesViewController.swift */; };
+		41998A3D2BE6A7F000E62B80 /* CardCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199899E2BE6A7EF00E62B80 /* CardCategoriesView.swift */; };
+		41998A3E2BE6A7F000E62B80 /* CardCategoriesViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199899F2BE6A7EF00E62B80 /* CardCategoriesViewControllerDelegate.swift */; };
+		41998A3F2BE6A7F000E62B80 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989A02BE6A7EF00E62B80 /* MoreView.swift */; };
+		41998A402BE6A7F000E62B80 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989A12BE6A7EF00E62B80 /* MoreViewController.swift */; };
+		41998A412BE6A7F000E62B80 /* MoreViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989A22BE6A7EF00E62B80 /* MoreViewControllerDelegate.swift */; };
+		41998A422BE6A7F000E62B80 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989A42BE6A7EF00E62B80 /* ProfileItem.swift */; };
+		41998A432BE6A7F000E62B80 /* CategoryValueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989A72BE6A7EF00E62B80 /* CategoryValueCollectionViewCell.swift */; };
+		41998A442BE6A7F000E62B80 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989A82BE6A7EF00E62B80 /* DashboardViewController.swift */; };
+		41998A452BE6A7F000E62B80 /* DashboardNoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989AA2BE6A7EF00E62B80 /* DashboardNoCardView.swift */; };
+		41998A462BE6A7F000E62B80 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989AB2BE6A7EF00E62B80 /* DashboardView.swift */; };
+		41998A472BE6A7F000E62B80 /* DashboardCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989AC2BE6A7EF00E62B80 /* DashboardCardsView.swift */; };
+		41998A482BE6A7F000E62B80 /* HighestCardsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989AD2BE6A7EF00E62B80 /* HighestCardsValueView.swift */; };
+		41998A492BE6A7F000E62B80 /* RecentlyAddedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989AE2BE6A7EF00E62B80 /* RecentlyAddedCardsView.swift */; };
+		41998A4A2BE6A7F000E62B80 /* CurrentCardsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989AF2BE6A7EF00E62B80 /* CurrentCardsValueView.swift */; };
+		41998A4B2BE6A7F000E62B80 /* DashboardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989B02BE6A7EF00E62B80 /* DashboardViewControllerDelegate.swift */; };
+		41998A4C2BE6A7F000E62B80 /* CategoryValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989B32BE6A7EF00E62B80 /* CategoryValueTableViewCell.swift */; };
+		41998A4D2BE6A7F000E62B80 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989B42BE6A7EF00E62B80 /* PortfolioViewController.swift */; };
+		41998A4E2BE6A7F000E62B80 /* PortfolioViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989B52BE6A7EF00E62B80 /* PortfolioViewControllerDelegate.swift */; };
+		41998A4F2BE6A7F000E62B80 /* PortfolioInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989B72BE6A7EF00E62B80 /* PortfolioInfoView.swift */; };
+		41998A502BE6A7F000E62B80 /* CardSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989B82BE6A7EF00E62B80 /* CardSetView.swift */; };
+		41998A512BE6A7F000E62B80 /* PortfolioCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989B92BE6A7EF00E62B80 /* PortfolioCardsView.swift */; };
+		41998A522BE6A7F000E62B80 /* PortfolioNoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989BA2BE6A7EF00E62B80 /* PortfolioNoCardView.swift */; };
+		41998A532BE6A7F000E62B80 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989BB2BE6A7EF00E62B80 /* PortfolioView.swift */; };
+		41998A542BE6A7F000E62B80 /* IdentifyingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989BD2BE6A7EF00E62B80 /* IdentifyingCardViewController.swift */; };
+		41998A552BE6A7F000E62B80 /* IdentifyingCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989BE2BE6A7EF00E62B80 /* IdentifyingCardViewControllerDelegate.swift */; };
+		41998A562BE6A7F000E62B80 /* IdentifyingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989BF2BE6A7EF00E62B80 /* IdentifyingCardView.swift */; };
+		41998A572BE6A7F000E62B80 /* RemoveCardsFromDeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989C22BE6A7EF00E62B80 /* RemoveCardsFromDeckVC.swift */; };
+		41998A582BE6A7F000E62B80 /* RemoveCardsFromDeckVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989C32BE6A7EF00E62B80 /* RemoveCardsFromDeckVCDelegate.swift */; };
+		41998A592BE6A7F000E62B80 /* AddCardsToDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989C52BE6A7EF00E62B80 /* AddCardsToDeckView.swift */; };
+		41998A5A2BE6A7F000E62B80 /* AddCardsToDeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989C62BE6A7EF00E62B80 /* AddCardsToDeckVC.swift */; };
+		41998A5B2BE6A7F000E62B80 /* AddCardsToDeckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989C72BE6A7EF00E62B80 /* AddCardsToDeckHelper.swift */; };
+		41998A5C2BE6A7F000E62B80 /* AddCardsToDeckVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989C82BE6A7EF00E62B80 /* AddCardsToDeckVCDelegate.swift */; };
+		41998A5D2BE6A7F000E62B80 /* DeckMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989CA2BE6A7EF00E62B80 /* DeckMenuViewControllerDelegate.swift */; };
+		41998A5E2BE6A7F000E62B80 /* DeckMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989CB2BE6A7EF00E62B80 /* DeckMenuViewController.swift */; };
+		41998A5F2BE6A7F000E62B80 /* CreateEditDeckVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989CD2BE6A7EF00E62B80 /* CreateEditDeckVCDelegate.swift */; };
+		41998A602BE6A7F000E62B80 /* CreateEditDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989CE2BE6A7EF00E62B80 /* CreateEditDeckView.swift */; };
+		41998A612BE6A7F000E62B80 /* CreateEditDeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989CF2BE6A7EF00E62B80 /* CreateEditDeckVC.swift */; };
+		41998A622BE6A7F000E62B80 /* CardDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989D12BE6A7EF00E62B80 /* CardDeckView.swift */; };
+		41998A632BE6A7F000E62B80 /* CardDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989D22BE6A7EF00E62B80 /* CardDeckViewController.swift */; };
+		41998A642BE6A7F000E62B80 /* CardDeckViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989D32BE6A7EF00E62B80 /* CardDeckViewControllerDelegate.swift */; };
+		41998A652BE6A7F000E62B80 /* EditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989D52BE6A7EF00E62B80 /* EditCardViewController.swift */; };
+		41998A662BE6A7F000E62B80 /* EditCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989D62BE6A7EF00E62B80 /* EditCardViewControllerDelegate.swift */; };
+		41998A672BE6A7F000E62B80 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989D82BE6A7EF00E62B80 /* EditCardView.swift */; };
+		41998A682BE6A7F000E62B80 /* EditCardView.DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989D92BE6A7EF00E62B80 /* EditCardView.DetailView.swift */; };
+		41998A692BE6A7F000E62B80 /* HighestValueListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989DB2BE6A7EF00E62B80 /* HighestValueListViewControllerDelegate.swift */; };
+		41998A6A2BE6A7F000E62B80 /* HighestValueCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989DC2BE6A7EF00E62B80 /* HighestValueCardListViewController.swift */; };
+		41998A6B2BE6A7F000E62B80 /* CardDetailsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989DF2BE6A7EF00E62B80 /* CardDetailsItemTableViewCell.swift */; };
+		41998A6C2BE6A7F000E62B80 /* CardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989E02BE6A7EF00E62B80 /* CardDetailsViewController.swift */; };
+		41998A6D2BE6A7F000E62B80 /* CardDetailsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989E12BE6A7EF00E62B80 /* CardDetailsViewControllerDelegate.swift */; };
+		41998A6E2BE6A7F000E62B80 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989E32BE6A7EF00E62B80 /* CardDetailsView.swift */; };
+		41998A6F2BE6A7F000E62B80 /* CardDetailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989E42BE6A7EF00E62B80 /* CardDetailsListView.swift */; };
+		41998A702BE6A7F000E62B80 /* ForgotPasswordViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989E62BE6A7EF00E62B80 /* ForgotPasswordViewControllerDelegate.swift */; };
+		41998A712BE6A7F000E62B80 /* SCSForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989E72BE6A7EF00E62B80 /* SCSForgotPasswordVC.swift */; };
+		41998A722BE6A7F000E62B80 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989E82BE6A7EF00E62B80 /* ForgotPasswordView.swift */; };
+		41998A732BE6A7F000E62B80 /* SignUpViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989EA2BE6A7EF00E62B80 /* SignUpViewControllerDelegate.swift */; };
+		41998A742BE6A7F000E62B80 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989EB2BE6A7EF00E62B80 /* SignUpView.swift */; };
+		41998A752BE6A7F000E62B80 /* SCSSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989EC2BE6A7EF00E62B80 /* SCSSignUpVC.swift */; };
+		41998A762BE6A7F000E62B80 /* SCSSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989EE2BE6A7EF00E62B80 /* SCSSignInVC.swift */; };
+		41998A772BE6A7F000E62B80 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989EF2BE6A7EF00E62B80 /* SignInView.swift */; };
+		41998A782BE6A7F000E62B80 /* SignInViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989F02BE6A7EF00E62B80 /* SignInViewControllerDelegate.swift */; };
+		41998A792BE6A7F000E62B80 /* CheckConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989F22BE6A7EF00E62B80 /* CheckConnectionVC.swift */; };
+		41998A7A2BE6A7F000E62B80 /* CheckConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989F32BE6A7EF00E62B80 /* CheckConnectionView.swift */; };
+		41998A7B2BE6A7F000E62B80 /* CheckConnectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989F42BE6A7EF00E62B80 /* CheckConnectionDelegate.swift */; };
+		41998A7C2BE6A7F000E62B80 /* ResetPasswordViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989F62BE6A7EF00E62B80 /* ResetPasswordViewControllerDelegate.swift */; };
+		41998A7D2BE6A7F000E62B80 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989F72BE6A7EF00E62B80 /* ResetPasswordView.swift */; };
+		41998A7E2BE6A7F000E62B80 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419989F82BE6A7EF00E62B80 /* ResetPasswordViewController.swift */; };
 		41D6447A2BE3D75100642D21 /* UIScreen_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644562BE3D75100642D21 /* UIScreen_Extension.swift */; };
 		41D6447B2BE3D75100642D21 /* UITabBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644572BE3D75100642D21 /* UITabBar_Extension.swift */; };
 		41D6447C2BE3D75100642D21 /* UINavigationBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644582BE3D75100642D21 /* UINavigationBar_Extension.swift */; };
@@ -119,139 +253,6 @@
 		41D923FA2BE3E1D500311A1B /* CardDeckCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D923F22BE3E1D400311A1B /* CardDeckCoordinator.swift */; };
 		41D923FB2BE3E1D500311A1B /* DeckMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D923F32BE3E1D400311A1B /* DeckMenuCoordinator.swift */; };
 		41D923FC2BE3E1D500311A1B /* DeleteDeckPromptCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D923F42BE3E1D400311A1B /* DeleteDeckPromptCoordinator.swift */; };
-		41D926162BE3E59C00311A1B /* CategoryCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925502BE3E59C00311A1B /* CategoryCardsViewController.swift */; };
-		41D926172BE3E59C00311A1B /* CategoryCardsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925512BE3E59C00311A1B /* CategoryCardsViewControllerDelegate.swift */; };
-		41D926182BE3E59C00311A1B /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925532BE3E59C00311A1B /* SearchCardView.swift */; };
-		41D926192BE3E59C00311A1B /* SearchCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925542BE3E59C00311A1B /* SearchCardViewControllerDelegate.swift */; };
-		41D9261A2BE3E59C00311A1B /* SearchCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925552BE3E59C00311A1B /* SearchCardViewController.swift */; };
-		41D9261B2BE3E59C00311A1B /* CardSaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925582BE3E59C00311A1B /* CardSaleTableViewCell.swift */; };
-		41D9261C2BE3E59C00311A1B /* PricingReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925592BE3E59C00311A1B /* PricingReportViewController.swift */; };
-		41D9261D2BE3E59C00311A1B /* PricingReportDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9255B2BE3E59C00311A1B /* PricingReportDetailsView.swift */; };
-		41D9261E2BE3E59C00311A1B /* PricingReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9255C2BE3E59C00311A1B /* PricingReportView.swift */; };
-		41D9261F2BE3E59C00311A1B /* CurrentValueDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9255E2BE3E59C00311A1B /* CurrentValueDetailsViewController.swift */; };
-		41D926202BE3E59C00311A1B /* CurrentValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925602BE3E59C00311A1B /* CurrentValueTableViewCell.swift */; };
-		41D926212BE3E59C00311A1B /* CurrentValueDetailsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925612BE3E59C00311A1B /* CurrentValueDetailsViewControllerDelegate.swift */; };
-		41D926222BE3E59C00311A1B /* CurrentValueDetailsView.CategoryValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925632BE3E59C00311A1B /* CurrentValueDetailsView.CategoryValueView.swift */; };
-		41D926232BE3E59C00311A1B /* CurrentValueDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925642BE3E59C00311A1B /* CurrentValueDetailsView.swift */; };
-		41D926242BE3E59C00311A1B /* RemoveCardsFromCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925672BE3E59C00311A1B /* RemoveCardsFromCollectionVC.swift */; };
-		41D926252BE3E59C00311A1B /* RemoveCardsFromCollectionVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925682BE3E59C00311A1B /* RemoveCardsFromCollectionVCDelegate.swift */; };
-		41D926262BE3E59C00311A1B /* AddCardsToCollectionCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9256B2BE3E59C00311A1B /* AddCardsToCollectionCardsVC.swift */; };
-		41D926272BE3E59C00311A1B /* AddCardsToCollectionCardsVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9256C2BE3E59C00311A1B /* AddCardsToCollectionCardsVCDelegate.swift */; };
-		41D926282BE3E59C00311A1B /* AddCardsToCollectionCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9256D2BE3E59C00311A1B /* AddCardsToCollectionCardsView.swift */; };
-		41D926292BE3E59C00311A1B /* AddCardsToCollectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9256E2BE3E59C00311A1B /* AddCardsToCollectionHelper.swift */; };
-		41D9262A2BE3E59C00311A1B /* CategoryCardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925712BE3E59C00311A1B /* CategoryCardsTableViewCell.swift */; };
-		41D9262B2BE3E59C00311A1B /* AddCardsToCollectionCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925722BE3E59C00311A1B /* AddCardsToCollectionCategoriesView.swift */; };
-		41D9262C2BE3E59C00311A1B /* AddCardsToCollectionCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925732BE3E59C00311A1B /* AddCardsToCollectionCategoriesVC.swift */; };
-		41D9262D2BE3E59C00311A1B /* AddCardsToCollectionCategoriesVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925742BE3E59C00311A1B /* AddCardsToCollectionCategoriesVCDelegate.swift */; };
-		41D9262E2BE3E59C00311A1B /* CreateEditCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925762BE3E59C00311A1B /* CreateEditCollectionVC.swift */; };
-		41D9262F2BE3E59C00311A1B /* CreateEditCollectionVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925772BE3E59C00311A1B /* CreateEditCollectionVCDelegate.swift */; };
-		41D926302BE3E59C00311A1B /* CardPhotoInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9257A2BE3E59C00311A1B /* CardPhotoInfoCollectionViewCell.swift */; };
-		41D926312BE3E59C00311A1B /* CardCollectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9257B2BE3E59C00311A1B /* CardCollectionViewControllerDelegate.swift */; };
-		41D926322BE3E59C00311A1B /* SwipeableCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9257D2BE3E59C00311A1B /* SwipeableCardsView.swift */; };
-		41D926332BE3E59C00311A1B /* SwipeableCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9257E2BE3E59C00311A1B /* SwipeableCardButton.swift */; };
-		41D926342BE3E59C00311A1B /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9257F2BE3E59C00311A1B /* CardCollectionViewController.swift */; };
-		41D926352BE3E59C00311A1B /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925812BE3E59C00311A1B /* CardCollectionView.swift */; };
-		41D926362BE3E59C00311A1B /* CardsRepresentSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925822BE3E59C00311A1B /* CardsRepresentSegmentedControl.swift */; };
-		41D926372BE3E59C00311A1B /* CardCollectionCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925832BE3E59C00311A1B /* CardCollectionCardsView.swift */; };
-		41D926382BE3E59C00311A1B /* CardCollectionNoCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925842BE3E59C00311A1B /* CardCollectionNoCardsView.swift */; };
-		41D926392BE3E59C00311A1B /* CollectionMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925862BE3E59C00311A1B /* CollectionMenuViewControllerDelegate.swift */; };
-		41D9263A2BE3E59C00311A1B /* CollectionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925872BE3E59C00311A1B /* CollectionMenuViewController.swift */; };
-		41D9263B2BE3E59C00311A1B /* GraderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9258A2BE3E59C00311A1B /* GraderTableViewCell.swift */; };
-		41D9263C2BE3E59C00311A1B /* GraderSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9258B2BE3E59C00311A1B /* GraderSelectionViewController.swift */; };
-		41D9263D2BE3E59C00311A1B /* GraderSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9258C2BE3E59C00311A1B /* GraderSelectionView.swift */; };
-		41D9263E2BE3E59C00311A1B /* GraderSelectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9258D2BE3E59C00311A1B /* GraderSelectionViewControllerDelegate.swift */; };
-		41D9263F2BE3E59C00311A1B /* RecentlyAddedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9258F2BE3E59C00311A1B /* RecentlyAddedListViewController.swift */; };
-		41D926402BE3E59C00311A1B /* RecentlyAddedListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925902BE3E59C00311A1B /* RecentlyAddedListViewControllerDelegate.swift */; };
-		41D926412BE3E59C00311A1B /* GradeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925922BE3E59C00311A1B /* GradeSelectionView.swift */; };
-		41D926422BE3E59C00311A1B /* GradeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925932BE3E59C00311A1B /* GradeSelectionViewController.swift */; };
-		41D926432BE3E59C00311A1B /* SortCardOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925962BE3E59C00311A1B /* SortCardOptionCell.swift */; };
-		41D926442BE3E59C00311A1B /* SortCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925972BE3E59C00311A1B /* SortCardsViewController.swift */; };
-		41D926452BE3E59C00311A1B /* SortCardsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925982BE3E59C00311A1B /* SortCardsViewControllerDelegate.swift */; };
-		41D926462BE3E59C00311A1B /* AddToPortfolioDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9259A2BE3E59C00311A1B /* AddToPortfolioDetailsView.swift */; };
-		41D926472BE3E59C00311A1B /* AddToPortfolioDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9259B2BE3E59C00311A1B /* AddToPortfolioDetails.swift */; };
-		41D926482BE3E59C00311A1B /* ParallelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9259E2BE3E59C00311A1B /* ParallelCollectionViewCell.swift */; };
-		41D926492BE3E59C00311A1B /* ParallelSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9259F2BE3E59C00311A1B /* ParallelSelectionView.swift */; };
-		41D9264A2BE3E59D00311A1B /* ParallelSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925A02BE3E59C00311A1B /* ParallelSelectionViewController.swift */; };
-		41D9264B2BE3E59D00311A1B /* SelectableCardCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925A32BE3E59C00311A1B /* SelectableCardCategoryTableViewCell.swift */; };
-		41D9264C2BE3E59D00311A1B /* GradeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925A52BE3E59C00311A1B /* GradeType.swift */; };
-		41D9264D2BE3E59D00311A1B /* ScanCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925A72BE3E59C00311A1B /* ScanCardView.swift */; };
-		41D9264E2BE3E59D00311A1B /* CardCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925A82BE3E59C00311A1B /* CardCategoryButton.swift */; };
-		41D9264F2BE3E59D00311A1B /* NoCaptureAuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925A92BE3E59C00311A1B /* NoCaptureAuthorizationView.swift */; };
-		41D926502BE3E59D00311A1B /* ScanCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925AA2BE3E59C00311A1B /* ScanCardViewControllerDelegate.swift */; };
-		41D926512BE3E59D00311A1B /* ScanCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925AB2BE3E59C00311A1B /* ScanCardViewController.swift */; };
-		41D926522BE3E59D00311A1B /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925AD2BE3E59C00311A1B /* TabBarItem.swift */; };
-		41D926532BE3E59D00311A1B /* ProfileSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925B02BE3E59C00311A1B /* ProfileSelectableCell.swift */; };
-		41D926542BE3E59D00311A1B /* ProfileSwitchableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925B12BE3E59C00311A1B /* ProfileSwitchableCell.swift */; };
-		41D926552BE3E59D00311A1B /* UpdatePasswordViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925B42BE3E59C00311A1B /* UpdatePasswordViewControllerDelegate.swift */; };
-		41D926562BE3E59D00311A1B /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925B52BE3E59C00311A1B /* UpdatePasswordView.swift */; };
-		41D926572BE3E59D00311A1B /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925B62BE3E59C00311A1B /* UpdatePasswordVC.swift */; };
-		41D926582BE3E59D00311A1B /* CardCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925B92BE3E59C00311A1B /* CardCategoryTableViewCell.swift */; };
-		41D926592BE3E59D00311A1B /* CardCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925BA2BE3E59C00311A1B /* CardCategoriesViewController.swift */; };
-		41D9265A2BE3E59D00311A1B /* CardCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925BB2BE3E59C00311A1B /* CardCategoriesView.swift */; };
-		41D9265B2BE3E59D00311A1B /* CardCategoriesViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925BC2BE3E59C00311A1B /* CardCategoriesViewControllerDelegate.swift */; };
-		41D9265C2BE3E59D00311A1B /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925BD2BE3E59C00311A1B /* MoreView.swift */; };
-		41D9265D2BE3E59D00311A1B /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925BE2BE3E59C00311A1B /* MoreViewController.swift */; };
-		41D9265E2BE3E59D00311A1B /* MoreViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925BF2BE3E59C00311A1B /* MoreViewControllerDelegate.swift */; };
-		41D9265F2BE3E59D00311A1B /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925C12BE3E59C00311A1B /* ProfileItem.swift */; };
-		41D926602BE3E59D00311A1B /* CategoryValueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925C42BE3E59C00311A1B /* CategoryValueCollectionViewCell.swift */; };
-		41D926612BE3E59D00311A1B /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925C52BE3E59C00311A1B /* DashboardViewController.swift */; };
-		41D926622BE3E59D00311A1B /* DashboardNoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925C72BE3E59C00311A1B /* DashboardNoCardView.swift */; };
-		41D926632BE3E59D00311A1B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925C82BE3E59C00311A1B /* DashboardView.swift */; };
-		41D926642BE3E59D00311A1B /* DashboardCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925C92BE3E59C00311A1B /* DashboardCardsView.swift */; };
-		41D926652BE3E59D00311A1B /* HighestCardsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925CA2BE3E59C00311A1B /* HighestCardsValueView.swift */; };
-		41D926672BE3E59D00311A1B /* RecentlyAddedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925CC2BE3E59C00311A1B /* RecentlyAddedCardsView.swift */; };
-		41D926682BE3E59D00311A1B /* CurrentCardsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925CD2BE3E59C00311A1B /* CurrentCardsValueView.swift */; };
-		41D926692BE3E59D00311A1B /* DashboardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925CE2BE3E59C00311A1B /* DashboardViewControllerDelegate.swift */; };
-		41D9266A2BE3E59D00311A1B /* CategoryValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925D12BE3E59C00311A1B /* CategoryValueTableViewCell.swift */; };
-		41D9266B2BE3E59D00311A1B /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925D22BE3E59C00311A1B /* PortfolioViewController.swift */; };
-		41D9266C2BE3E59D00311A1B /* PortfolioViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925D32BE3E59C00311A1B /* PortfolioViewControllerDelegate.swift */; };
-		41D9266D2BE3E59D00311A1B /* PortfolioInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925D52BE3E59C00311A1B /* PortfolioInfoView.swift */; };
-		41D9266E2BE3E59D00311A1B /* CardSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925D62BE3E59C00311A1B /* CardSetView.swift */; };
-		41D9266F2BE3E59D00311A1B /* PortfolioCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925D72BE3E59C00311A1B /* PortfolioCardsView.swift */; };
-		41D926702BE3E59D00311A1B /* PortfolioNoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925D82BE3E59C00311A1B /* PortfolioNoCardView.swift */; };
-		41D926712BE3E59D00311A1B /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925D92BE3E59C00311A1B /* PortfolioView.swift */; };
-		41D926722BE3E59D00311A1B /* IdentifyingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925DB2BE3E59C00311A1B /* IdentifyingCardViewController.swift */; };
-		41D926732BE3E59D00311A1B /* IdentifyingCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925DC2BE3E59C00311A1B /* IdentifyingCardViewControllerDelegate.swift */; };
-		41D926742BE3E59D00311A1B /* IdentifyingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925DD2BE3E59C00311A1B /* IdentifyingCardView.swift */; };
-		41D926752BE3E59D00311A1B /* RemoveCardsFromDeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925E02BE3E59C00311A1B /* RemoveCardsFromDeckVC.swift */; };
-		41D926762BE3E59D00311A1B /* RemoveCardsFromDeckVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925E12BE3E59C00311A1B /* RemoveCardsFromDeckVCDelegate.swift */; };
-		41D926772BE3E59D00311A1B /* AddCardsToDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925E32BE3E59C00311A1B /* AddCardsToDeckView.swift */; };
-		41D926782BE3E59D00311A1B /* AddCardsToDeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925E42BE3E59C00311A1B /* AddCardsToDeckVC.swift */; };
-		41D926792BE3E59D00311A1B /* AddCardsToDeckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925E52BE3E59C00311A1B /* AddCardsToDeckHelper.swift */; };
-		41D9267A2BE3E59D00311A1B /* AddCardsToDeckVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925E62BE3E59C00311A1B /* AddCardsToDeckVCDelegate.swift */; };
-		41D9267B2BE3E59D00311A1B /* DeckMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925E82BE3E59C00311A1B /* DeckMenuViewControllerDelegate.swift */; };
-		41D9267C2BE3E59D00311A1B /* DeckMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925E92BE3E59C00311A1B /* DeckMenuViewController.swift */; };
-		41D9267D2BE3E59D00311A1B /* CreateEditDeckVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925EB2BE3E59C00311A1B /* CreateEditDeckVCDelegate.swift */; };
-		41D9267E2BE3E59D00311A1B /* CreateEditDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925EC2BE3E59C00311A1B /* CreateEditDeckView.swift */; };
-		41D9267F2BE3E59D00311A1B /* CreateEditDeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925ED2BE3E59C00311A1B /* CreateEditDeckVC.swift */; };
-		41D926802BE3E59D00311A1B /* CardDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925EF2BE3E59C00311A1B /* CardDeckView.swift */; };
-		41D926812BE3E59D00311A1B /* CardDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925F02BE3E59C00311A1B /* CardDeckViewController.swift */; };
-		41D926822BE3E59D00311A1B /* CardDeckViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925F12BE3E59C00311A1B /* CardDeckViewControllerDelegate.swift */; };
-		41D926832BE3E59D00311A1B /* EditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925F32BE3E59C00311A1B /* EditCardViewController.swift */; };
-		41D926842BE3E59D00311A1B /* EditCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925F42BE3E59C00311A1B /* EditCardViewControllerDelegate.swift */; };
-		41D926852BE3E59D00311A1B /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925F62BE3E59C00311A1B /* EditCardView.swift */; };
-		41D926862BE3E59D00311A1B /* EditCardView.DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925F72BE3E59C00311A1B /* EditCardView.DetailView.swift */; };
-		41D926872BE3E59D00311A1B /* HighestValueListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925F92BE3E59C00311A1B /* HighestValueListViewControllerDelegate.swift */; };
-		41D926882BE3E59D00311A1B /* HighestValueCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925FA2BE3E59C00311A1B /* HighestValueCardListViewController.swift */; };
-		41D926892BE3E59D00311A1B /* CardDetailsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925FD2BE3E59C00311A1B /* CardDetailsItemTableViewCell.swift */; };
-		41D9268A2BE3E59D00311A1B /* CardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925FE2BE3E59C00311A1B /* CardDetailsViewController.swift */; };
-		41D9268B2BE3E59D00311A1B /* CardDetailsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D925FF2BE3E59C00311A1B /* CardDetailsViewControllerDelegate.swift */; };
-		41D9268C2BE3E59D00311A1B /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926012BE3E59C00311A1B /* CardDetailsView.swift */; };
-		41D9268D2BE3E59D00311A1B /* CardDetailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926022BE3E59C00311A1B /* CardDetailsListView.swift */; };
-		41D9268E2BE3E59D00311A1B /* ForgotPasswordViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926042BE3E59C00311A1B /* ForgotPasswordViewControllerDelegate.swift */; };
-		41D9268F2BE3E59D00311A1B /* SCSForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926052BE3E59C00311A1B /* SCSForgotPasswordVC.swift */; };
-		41D926902BE3E59D00311A1B /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926062BE3E59C00311A1B /* ForgotPasswordView.swift */; };
-		41D926912BE3E59D00311A1B /* SignUpViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926082BE3E59C00311A1B /* SignUpViewControllerDelegate.swift */; };
-		41D926922BE3E59D00311A1B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926092BE3E59C00311A1B /* SignUpView.swift */; };
-		41D926932BE3E59D00311A1B /* SCSSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9260A2BE3E59C00311A1B /* SCSSignUpVC.swift */; };
-		41D926942BE3E59D00311A1B /* SCSSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9260C2BE3E59C00311A1B /* SCSSignInVC.swift */; };
-		41D926952BE3E59D00311A1B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9260D2BE3E59C00311A1B /* SignInView.swift */; };
-		41D926962BE3E59D00311A1B /* SignInViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9260E2BE3E59C00311A1B /* SignInViewControllerDelegate.swift */; };
-		41D926972BE3E59D00311A1B /* CheckConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926102BE3E59C00311A1B /* CheckConnectionVC.swift */; };
-		41D926982BE3E59D00311A1B /* CheckConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926112BE3E59C00311A1B /* CheckConnectionView.swift */; };
-		41D926992BE3E59D00311A1B /* ResetPasswordViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926132BE3E59C00311A1B /* ResetPasswordViewControllerDelegate.swift */; };
-		41D9269A2BE3E59D00311A1B /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926142BE3E59C00311A1B /* ResetPasswordView.swift */; };
-		41D9269B2BE3E59D00311A1B /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D926152BE3E59C00311A1B /* ResetPasswordViewController.swift */; };
 		4619AE5B2A77965700753891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4619AE5A2A77965700753891 /* AppDelegate.swift */; };
 		4619AE5D2A77965700753891 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4619AE5C2A77965700753891 /* SceneDelegate.swift */; };
 		4619AE672A77965A00753891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4619AE652A77965A00753891 /* LaunchScreen.storyboard */; };
@@ -468,6 +469,140 @@
 /* Begin PBXFileReference section */
 		417258022BE40D55002FD12A /* Gilroy-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.ttf"; sourceTree = "<group>"; };
 		4198FD6B2BE4344800E788C9 /* TransactionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionView.xib; sourceTree = "<group>"; };
+		419989332BE6A7EF00E62B80 /* CategoryCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCardsViewController.swift; sourceTree = "<group>"; };
+		419989342BE6A7EF00E62B80 /* CategoryCardsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCardsViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989362BE6A7EF00E62B80 /* SearchCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
+		419989372BE6A7EF00E62B80 /* SearchCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989382BE6A7EF00E62B80 /* SearchCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewController.swift; sourceTree = "<group>"; };
+		4199893B2BE6A7EF00E62B80 /* CardSaleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSaleTableViewCell.swift; sourceTree = "<group>"; };
+		4199893C2BE6A7EF00E62B80 /* PricingReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingReportViewController.swift; sourceTree = "<group>"; };
+		4199893E2BE6A7EF00E62B80 /* PricingReportDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingReportDetailsView.swift; sourceTree = "<group>"; };
+		4199893F2BE6A7EF00E62B80 /* PricingReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingReportView.swift; sourceTree = "<group>"; };
+		419989412BE6A7EF00E62B80 /* CurrentValueDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueDetailsViewController.swift; sourceTree = "<group>"; };
+		419989432BE6A7EF00E62B80 /* CurrentValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueTableViewCell.swift; sourceTree = "<group>"; };
+		419989442BE6A7EF00E62B80 /* CurrentValueDetailsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueDetailsViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989462BE6A7EF00E62B80 /* CurrentValueDetailsView.CategoryValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueDetailsView.CategoryValueView.swift; sourceTree = "<group>"; };
+		419989472BE6A7EF00E62B80 /* CurrentValueDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueDetailsView.swift; sourceTree = "<group>"; };
+		4199894A2BE6A7EF00E62B80 /* RemoveCardsFromCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCardsFromCollectionVC.swift; sourceTree = "<group>"; };
+		4199894B2BE6A7EF00E62B80 /* RemoveCardsFromCollectionVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCardsFromCollectionVCDelegate.swift; sourceTree = "<group>"; };
+		4199894E2BE6A7EF00E62B80 /* AddCardsToCollectionCardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCardsVC.swift; sourceTree = "<group>"; };
+		4199894F2BE6A7EF00E62B80 /* AddCardsToCollectionCardsVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCardsVCDelegate.swift; sourceTree = "<group>"; };
+		419989502BE6A7EF00E62B80 /* AddCardsToCollectionCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCardsView.swift; sourceTree = "<group>"; };
+		419989512BE6A7EF00E62B80 /* AddCardsToCollectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionHelper.swift; sourceTree = "<group>"; };
+		419989542BE6A7EF00E62B80 /* CategoryCardsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCardsTableViewCell.swift; sourceTree = "<group>"; };
+		419989552BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCategoriesView.swift; sourceTree = "<group>"; };
+		419989562BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCategoriesVC.swift; sourceTree = "<group>"; };
+		419989572BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCategoriesVCDelegate.swift; sourceTree = "<group>"; };
+		419989592BE6A7EF00E62B80 /* CreateEditCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditCollectionVC.swift; sourceTree = "<group>"; };
+		4199895A2BE6A7EF00E62B80 /* CreateEditCollectionVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditCollectionVCDelegate.swift; sourceTree = "<group>"; };
+		4199895D2BE6A7EF00E62B80 /* CardPhotoInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPhotoInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		4199895E2BE6A7EF00E62B80 /* CardCollectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989602BE6A7EF00E62B80 /* SwipeableCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableCardsView.swift; sourceTree = "<group>"; };
+		419989612BE6A7EF00E62B80 /* SwipeableCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableCardButton.swift; sourceTree = "<group>"; };
+		419989622BE6A7EF00E62B80 /* CardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
+		419989642BE6A7EF00E62B80 /* CardCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
+		419989652BE6A7EF00E62B80 /* CardsRepresentSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsRepresentSegmentedControl.swift; sourceTree = "<group>"; };
+		419989662BE6A7EF00E62B80 /* CardCollectionCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionCardsView.swift; sourceTree = "<group>"; };
+		419989672BE6A7EF00E62B80 /* CardCollectionNoCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionNoCardsView.swift; sourceTree = "<group>"; };
+		419989692BE6A7EF00E62B80 /* CollectionMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
+		4199896A2BE6A7EF00E62B80 /* CollectionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionMenuViewController.swift; sourceTree = "<group>"; };
+		4199896D2BE6A7EF00E62B80 /* GraderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraderTableViewCell.swift; sourceTree = "<group>"; };
+		4199896E2BE6A7EF00E62B80 /* GraderSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraderSelectionViewController.swift; sourceTree = "<group>"; };
+		4199896F2BE6A7EF00E62B80 /* GraderSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraderSelectionView.swift; sourceTree = "<group>"; };
+		419989702BE6A7EF00E62B80 /* GraderSelectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraderSelectionViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989722BE6A7EF00E62B80 /* RecentlyAddedListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedListViewController.swift; sourceTree = "<group>"; };
+		419989732BE6A7EF00E62B80 /* RecentlyAddedListViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedListViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989752BE6A7EF00E62B80 /* GradeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSelectionView.swift; sourceTree = "<group>"; };
+		419989762BE6A7EF00E62B80 /* GradeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSelectionViewController.swift; sourceTree = "<group>"; };
+		419989792BE6A7EF00E62B80 /* SortCardOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCardOptionCell.swift; sourceTree = "<group>"; };
+		4199897A2BE6A7EF00E62B80 /* SortCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCardsViewController.swift; sourceTree = "<group>"; };
+		4199897B2BE6A7EF00E62B80 /* SortCardsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCardsViewControllerDelegate.swift; sourceTree = "<group>"; };
+		4199897D2BE6A7EF00E62B80 /* AddToPortfolioDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToPortfolioDetailsView.swift; sourceTree = "<group>"; };
+		4199897E2BE6A7EF00E62B80 /* AddToPortfolioDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToPortfolioDetails.swift; sourceTree = "<group>"; };
+		419989812BE6A7EF00E62B80 /* ParallelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelCollectionViewCell.swift; sourceTree = "<group>"; };
+		419989822BE6A7EF00E62B80 /* ParallelSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelSelectionView.swift; sourceTree = "<group>"; };
+		419989832BE6A7EF00E62B80 /* ParallelSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelSelectionViewController.swift; sourceTree = "<group>"; };
+		419989862BE6A7EF00E62B80 /* SelectableCardCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableCardCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		419989882BE6A7EF00E62B80 /* GradeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeType.swift; sourceTree = "<group>"; };
+		4199898A2BE6A7EF00E62B80 /* ScanCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCardView.swift; sourceTree = "<group>"; };
+		4199898B2BE6A7EF00E62B80 /* CardCategoryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoryButton.swift; sourceTree = "<group>"; };
+		4199898C2BE6A7EF00E62B80 /* NoCaptureAuthorizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoCaptureAuthorizationView.swift; sourceTree = "<group>"; };
+		4199898D2BE6A7EF00E62B80 /* ScanCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCardViewControllerDelegate.swift; sourceTree = "<group>"; };
+		4199898E2BE6A7EF00E62B80 /* ScanCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCardViewController.swift; sourceTree = "<group>"; };
+		419989902BE6A7EF00E62B80 /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		419989932BE6A7EF00E62B80 /* ProfileSelectableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSelectableCell.swift; sourceTree = "<group>"; };
+		419989942BE6A7EF00E62B80 /* ProfileSwitchableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSwitchableCell.swift; sourceTree = "<group>"; };
+		419989972BE6A7EF00E62B80 /* UpdatePasswordViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989982BE6A7EF00E62B80 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
+		419989992BE6A7EF00E62B80 /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
+		4199899C2BE6A7EF00E62B80 /* CardCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		4199899D2BE6A7EF00E62B80 /* CardCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoriesViewController.swift; sourceTree = "<group>"; };
+		4199899E2BE6A7EF00E62B80 /* CardCategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoriesView.swift; sourceTree = "<group>"; };
+		4199899F2BE6A7EF00E62B80 /* CardCategoriesViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoriesViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989A02BE6A7EF00E62B80 /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		419989A12BE6A7EF00E62B80 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		419989A22BE6A7EF00E62B80 /* MoreViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989A42BE6A7EF00E62B80 /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
+		419989A72BE6A7EF00E62B80 /* CategoryValueCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryValueCollectionViewCell.swift; sourceTree = "<group>"; };
+		419989A82BE6A7EF00E62B80 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		419989AA2BE6A7EF00E62B80 /* DashboardNoCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardNoCardView.swift; sourceTree = "<group>"; };
+		419989AB2BE6A7EF00E62B80 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		419989AC2BE6A7EF00E62B80 /* DashboardCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCardsView.swift; sourceTree = "<group>"; };
+		419989AD2BE6A7EF00E62B80 /* HighestCardsValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighestCardsValueView.swift; sourceTree = "<group>"; };
+		419989AE2BE6A7EF00E62B80 /* RecentlyAddedCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedCardsView.swift; sourceTree = "<group>"; };
+		419989AF2BE6A7EF00E62B80 /* CurrentCardsValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCardsValueView.swift; sourceTree = "<group>"; };
+		419989B02BE6A7EF00E62B80 /* DashboardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989B32BE6A7EF00E62B80 /* CategoryValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryValueTableViewCell.swift; sourceTree = "<group>"; };
+		419989B42BE6A7EF00E62B80 /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		419989B52BE6A7EF00E62B80 /* PortfolioViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989B72BE6A7EF00E62B80 /* PortfolioInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioInfoView.swift; sourceTree = "<group>"; };
+		419989B82BE6A7EF00E62B80 /* CardSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSetView.swift; sourceTree = "<group>"; };
+		419989B92BE6A7EF00E62B80 /* PortfolioCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioCardsView.swift; sourceTree = "<group>"; };
+		419989BA2BE6A7EF00E62B80 /* PortfolioNoCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioNoCardView.swift; sourceTree = "<group>"; };
+		419989BB2BE6A7EF00E62B80 /* PortfolioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
+		419989BD2BE6A7EF00E62B80 /* IdentifyingCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyingCardViewController.swift; sourceTree = "<group>"; };
+		419989BE2BE6A7EF00E62B80 /* IdentifyingCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyingCardViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989BF2BE6A7EF00E62B80 /* IdentifyingCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyingCardView.swift; sourceTree = "<group>"; };
+		419989C22BE6A7EF00E62B80 /* RemoveCardsFromDeckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCardsFromDeckVC.swift; sourceTree = "<group>"; };
+		419989C32BE6A7EF00E62B80 /* RemoveCardsFromDeckVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCardsFromDeckVCDelegate.swift; sourceTree = "<group>"; };
+		419989C52BE6A7EF00E62B80 /* AddCardsToDeckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToDeckView.swift; sourceTree = "<group>"; };
+		419989C62BE6A7EF00E62B80 /* AddCardsToDeckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToDeckVC.swift; sourceTree = "<group>"; };
+		419989C72BE6A7EF00E62B80 /* AddCardsToDeckHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToDeckHelper.swift; sourceTree = "<group>"; };
+		419989C82BE6A7EF00E62B80 /* AddCardsToDeckVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToDeckVCDelegate.swift; sourceTree = "<group>"; };
+		419989CA2BE6A7EF00E62B80 /* DeckMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989CB2BE6A7EF00E62B80 /* DeckMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckMenuViewController.swift; sourceTree = "<group>"; };
+		419989CD2BE6A7EF00E62B80 /* CreateEditDeckVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditDeckVCDelegate.swift; sourceTree = "<group>"; };
+		419989CE2BE6A7EF00E62B80 /* CreateEditDeckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditDeckView.swift; sourceTree = "<group>"; };
+		419989CF2BE6A7EF00E62B80 /* CreateEditDeckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditDeckVC.swift; sourceTree = "<group>"; };
+		419989D12BE6A7EF00E62B80 /* CardDeckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDeckView.swift; sourceTree = "<group>"; };
+		419989D22BE6A7EF00E62B80 /* CardDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDeckViewController.swift; sourceTree = "<group>"; };
+		419989D32BE6A7EF00E62B80 /* CardDeckViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDeckViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989D52BE6A7EF00E62B80 /* EditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardViewController.swift; sourceTree = "<group>"; };
+		419989D62BE6A7EF00E62B80 /* EditCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989D82BE6A7EF00E62B80 /* EditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
+		419989D92BE6A7EF00E62B80 /* EditCardView.DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardView.DetailView.swift; sourceTree = "<group>"; };
+		419989DB2BE6A7EF00E62B80 /* HighestValueListViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighestValueListViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989DC2BE6A7EF00E62B80 /* HighestValueCardListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighestValueCardListViewController.swift; sourceTree = "<group>"; };
+		419989DF2BE6A7EF00E62B80 /* CardDetailsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsItemTableViewCell.swift; sourceTree = "<group>"; };
+		419989E02BE6A7EF00E62B80 /* CardDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsViewController.swift; sourceTree = "<group>"; };
+		419989E12BE6A7EF00E62B80 /* CardDetailsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989E32BE6A7EF00E62B80 /* CardDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
+		419989E42BE6A7EF00E62B80 /* CardDetailsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsListView.swift; sourceTree = "<group>"; };
+		419989E62BE6A7EF00E62B80 /* ForgotPasswordViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989E72BE6A7EF00E62B80 /* SCSForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSForgotPasswordVC.swift; sourceTree = "<group>"; };
+		419989E82BE6A7EF00E62B80 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		419989EA2BE6A7EF00E62B80 /* SignUpViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989EB2BE6A7EF00E62B80 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		419989EC2BE6A7EF00E62B80 /* SCSSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSSignUpVC.swift; sourceTree = "<group>"; };
+		419989EE2BE6A7EF00E62B80 /* SCSSignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSSignInVC.swift; sourceTree = "<group>"; };
+		419989EF2BE6A7EF00E62B80 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		419989F02BE6A7EF00E62B80 /* SignInViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989F22BE6A7EF00E62B80 /* CheckConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckConnectionVC.swift; sourceTree = "<group>"; };
+		419989F32BE6A7EF00E62B80 /* CheckConnectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckConnectionView.swift; sourceTree = "<group>"; };
+		419989F42BE6A7EF00E62B80 /* CheckConnectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckConnectionDelegate.swift; sourceTree = "<group>"; };
+		419989F62BE6A7EF00E62B80 /* ResetPasswordViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewControllerDelegate.swift; sourceTree = "<group>"; };
+		419989F72BE6A7EF00E62B80 /* ResetPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		419989F82BE6A7EF00E62B80 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		41D644562BE3D75100642D21 /* UIScreen_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen_Extension.swift; sourceTree = "<group>"; };
 		41D644572BE3D75100642D21 /* UITabBar_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBar_Extension.swift; sourceTree = "<group>"; };
 		41D644582BE3D75100642D21 /* UINavigationBar_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extension.swift; sourceTree = "<group>"; };
@@ -578,139 +713,6 @@
 		41D923F22BE3E1D400311A1B /* CardDeckCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDeckCoordinator.swift; sourceTree = "<group>"; };
 		41D923F32BE3E1D400311A1B /* DeckMenuCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckMenuCoordinator.swift; sourceTree = "<group>"; };
 		41D923F42BE3E1D400311A1B /* DeleteDeckPromptCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteDeckPromptCoordinator.swift; sourceTree = "<group>"; };
-		41D925502BE3E59C00311A1B /* CategoryCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCardsViewController.swift; sourceTree = "<group>"; };
-		41D925512BE3E59C00311A1B /* CategoryCardsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCardsViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925532BE3E59C00311A1B /* SearchCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
-		41D925542BE3E59C00311A1B /* SearchCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925552BE3E59C00311A1B /* SearchCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewController.swift; sourceTree = "<group>"; };
-		41D925582BE3E59C00311A1B /* CardSaleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSaleTableViewCell.swift; sourceTree = "<group>"; };
-		41D925592BE3E59C00311A1B /* PricingReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingReportViewController.swift; sourceTree = "<group>"; };
-		41D9255B2BE3E59C00311A1B /* PricingReportDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingReportDetailsView.swift; sourceTree = "<group>"; };
-		41D9255C2BE3E59C00311A1B /* PricingReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingReportView.swift; sourceTree = "<group>"; };
-		41D9255E2BE3E59C00311A1B /* CurrentValueDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueDetailsViewController.swift; sourceTree = "<group>"; };
-		41D925602BE3E59C00311A1B /* CurrentValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueTableViewCell.swift; sourceTree = "<group>"; };
-		41D925612BE3E59C00311A1B /* CurrentValueDetailsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueDetailsViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925632BE3E59C00311A1B /* CurrentValueDetailsView.CategoryValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueDetailsView.CategoryValueView.swift; sourceTree = "<group>"; };
-		41D925642BE3E59C00311A1B /* CurrentValueDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentValueDetailsView.swift; sourceTree = "<group>"; };
-		41D925672BE3E59C00311A1B /* RemoveCardsFromCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCardsFromCollectionVC.swift; sourceTree = "<group>"; };
-		41D925682BE3E59C00311A1B /* RemoveCardsFromCollectionVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCardsFromCollectionVCDelegate.swift; sourceTree = "<group>"; };
-		41D9256B2BE3E59C00311A1B /* AddCardsToCollectionCardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCardsVC.swift; sourceTree = "<group>"; };
-		41D9256C2BE3E59C00311A1B /* AddCardsToCollectionCardsVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCardsVCDelegate.swift; sourceTree = "<group>"; };
-		41D9256D2BE3E59C00311A1B /* AddCardsToCollectionCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCardsView.swift; sourceTree = "<group>"; };
-		41D9256E2BE3E59C00311A1B /* AddCardsToCollectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionHelper.swift; sourceTree = "<group>"; };
-		41D925712BE3E59C00311A1B /* CategoryCardsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCardsTableViewCell.swift; sourceTree = "<group>"; };
-		41D925722BE3E59C00311A1B /* AddCardsToCollectionCategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCategoriesView.swift; sourceTree = "<group>"; };
-		41D925732BE3E59C00311A1B /* AddCardsToCollectionCategoriesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCategoriesVC.swift; sourceTree = "<group>"; };
-		41D925742BE3E59C00311A1B /* AddCardsToCollectionCategoriesVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToCollectionCategoriesVCDelegate.swift; sourceTree = "<group>"; };
-		41D925762BE3E59C00311A1B /* CreateEditCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditCollectionVC.swift; sourceTree = "<group>"; };
-		41D925772BE3E59C00311A1B /* CreateEditCollectionVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditCollectionVCDelegate.swift; sourceTree = "<group>"; };
-		41D9257A2BE3E59C00311A1B /* CardPhotoInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPhotoInfoCollectionViewCell.swift; sourceTree = "<group>"; };
-		41D9257B2BE3E59C00311A1B /* CardCollectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D9257D2BE3E59C00311A1B /* SwipeableCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableCardsView.swift; sourceTree = "<group>"; };
-		41D9257E2BE3E59C00311A1B /* SwipeableCardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableCardButton.swift; sourceTree = "<group>"; };
-		41D9257F2BE3E59C00311A1B /* CardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
-		41D925812BE3E59C00311A1B /* CardCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
-		41D925822BE3E59C00311A1B /* CardsRepresentSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsRepresentSegmentedControl.swift; sourceTree = "<group>"; };
-		41D925832BE3E59C00311A1B /* CardCollectionCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionCardsView.swift; sourceTree = "<group>"; };
-		41D925842BE3E59C00311A1B /* CardCollectionNoCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionNoCardsView.swift; sourceTree = "<group>"; };
-		41D925862BE3E59C00311A1B /* CollectionMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925872BE3E59C00311A1B /* CollectionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionMenuViewController.swift; sourceTree = "<group>"; };
-		41D9258A2BE3E59C00311A1B /* GraderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraderTableViewCell.swift; sourceTree = "<group>"; };
-		41D9258B2BE3E59C00311A1B /* GraderSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraderSelectionViewController.swift; sourceTree = "<group>"; };
-		41D9258C2BE3E59C00311A1B /* GraderSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraderSelectionView.swift; sourceTree = "<group>"; };
-		41D9258D2BE3E59C00311A1B /* GraderSelectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraderSelectionViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D9258F2BE3E59C00311A1B /* RecentlyAddedListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedListViewController.swift; sourceTree = "<group>"; };
-		41D925902BE3E59C00311A1B /* RecentlyAddedListViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedListViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925922BE3E59C00311A1B /* GradeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSelectionView.swift; sourceTree = "<group>"; };
-		41D925932BE3E59C00311A1B /* GradeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSelectionViewController.swift; sourceTree = "<group>"; };
-		41D925962BE3E59C00311A1B /* SortCardOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCardOptionCell.swift; sourceTree = "<group>"; };
-		41D925972BE3E59C00311A1B /* SortCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCardsViewController.swift; sourceTree = "<group>"; };
-		41D925982BE3E59C00311A1B /* SortCardsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCardsViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D9259A2BE3E59C00311A1B /* AddToPortfolioDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToPortfolioDetailsView.swift; sourceTree = "<group>"; };
-		41D9259B2BE3E59C00311A1B /* AddToPortfolioDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToPortfolioDetails.swift; sourceTree = "<group>"; };
-		41D9259E2BE3E59C00311A1B /* ParallelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelCollectionViewCell.swift; sourceTree = "<group>"; };
-		41D9259F2BE3E59C00311A1B /* ParallelSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelSelectionView.swift; sourceTree = "<group>"; };
-		41D925A02BE3E59C00311A1B /* ParallelSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelSelectionViewController.swift; sourceTree = "<group>"; };
-		41D925A32BE3E59C00311A1B /* SelectableCardCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableCardCategoryTableViewCell.swift; sourceTree = "<group>"; };
-		41D925A52BE3E59C00311A1B /* GradeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeType.swift; sourceTree = "<group>"; };
-		41D925A72BE3E59C00311A1B /* ScanCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCardView.swift; sourceTree = "<group>"; };
-		41D925A82BE3E59C00311A1B /* CardCategoryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoryButton.swift; sourceTree = "<group>"; };
-		41D925A92BE3E59C00311A1B /* NoCaptureAuthorizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoCaptureAuthorizationView.swift; sourceTree = "<group>"; };
-		41D925AA2BE3E59C00311A1B /* ScanCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCardViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925AB2BE3E59C00311A1B /* ScanCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCardViewController.swift; sourceTree = "<group>"; };
-		41D925AD2BE3E59C00311A1B /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
-		41D925B02BE3E59C00311A1B /* ProfileSelectableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSelectableCell.swift; sourceTree = "<group>"; };
-		41D925B12BE3E59C00311A1B /* ProfileSwitchableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSwitchableCell.swift; sourceTree = "<group>"; };
-		41D925B42BE3E59C00311A1B /* UpdatePasswordViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925B52BE3E59C00311A1B /* UpdatePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
-		41D925B62BE3E59C00311A1B /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
-		41D925B92BE3E59C00311A1B /* CardCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoryTableViewCell.swift; sourceTree = "<group>"; };
-		41D925BA2BE3E59C00311A1B /* CardCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoriesViewController.swift; sourceTree = "<group>"; };
-		41D925BB2BE3E59C00311A1B /* CardCategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoriesView.swift; sourceTree = "<group>"; };
-		41D925BC2BE3E59C00311A1B /* CardCategoriesViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCategoriesViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925BD2BE3E59C00311A1B /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
-		41D925BE2BE3E59C00311A1B /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
-		41D925BF2BE3E59C00311A1B /* MoreViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925C12BE3E59C00311A1B /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
-		41D925C42BE3E59C00311A1B /* CategoryValueCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryValueCollectionViewCell.swift; sourceTree = "<group>"; };
-		41D925C52BE3E59C00311A1B /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		41D925C72BE3E59C00311A1B /* DashboardNoCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardNoCardView.swift; sourceTree = "<group>"; };
-		41D925C82BE3E59C00311A1B /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		41D925C92BE3E59C00311A1B /* DashboardCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCardsView.swift; sourceTree = "<group>"; };
-		41D925CA2BE3E59C00311A1B /* HighestCardsValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighestCardsValueView.swift; sourceTree = "<group>"; };
-		41D925CC2BE3E59C00311A1B /* RecentlyAddedCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedCardsView.swift; sourceTree = "<group>"; };
-		41D925CD2BE3E59C00311A1B /* CurrentCardsValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCardsValueView.swift; sourceTree = "<group>"; };
-		41D925CE2BE3E59C00311A1B /* DashboardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925D12BE3E59C00311A1B /* CategoryValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryValueTableViewCell.swift; sourceTree = "<group>"; };
-		41D925D22BE3E59C00311A1B /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
-		41D925D32BE3E59C00311A1B /* PortfolioViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925D52BE3E59C00311A1B /* PortfolioInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioInfoView.swift; sourceTree = "<group>"; };
-		41D925D62BE3E59C00311A1B /* CardSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSetView.swift; sourceTree = "<group>"; };
-		41D925D72BE3E59C00311A1B /* PortfolioCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioCardsView.swift; sourceTree = "<group>"; };
-		41D925D82BE3E59C00311A1B /* PortfolioNoCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioNoCardView.swift; sourceTree = "<group>"; };
-		41D925D92BE3E59C00311A1B /* PortfolioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
-		41D925DB2BE3E59C00311A1B /* IdentifyingCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyingCardViewController.swift; sourceTree = "<group>"; };
-		41D925DC2BE3E59C00311A1B /* IdentifyingCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyingCardViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925DD2BE3E59C00311A1B /* IdentifyingCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyingCardView.swift; sourceTree = "<group>"; };
-		41D925E02BE3E59C00311A1B /* RemoveCardsFromDeckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCardsFromDeckVC.swift; sourceTree = "<group>"; };
-		41D925E12BE3E59C00311A1B /* RemoveCardsFromDeckVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCardsFromDeckVCDelegate.swift; sourceTree = "<group>"; };
-		41D925E32BE3E59C00311A1B /* AddCardsToDeckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToDeckView.swift; sourceTree = "<group>"; };
-		41D925E42BE3E59C00311A1B /* AddCardsToDeckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToDeckVC.swift; sourceTree = "<group>"; };
-		41D925E52BE3E59C00311A1B /* AddCardsToDeckHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToDeckHelper.swift; sourceTree = "<group>"; };
-		41D925E62BE3E59C00311A1B /* AddCardsToDeckVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardsToDeckVCDelegate.swift; sourceTree = "<group>"; };
-		41D925E82BE3E59C00311A1B /* DeckMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925E92BE3E59C00311A1B /* DeckMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckMenuViewController.swift; sourceTree = "<group>"; };
-		41D925EB2BE3E59C00311A1B /* CreateEditDeckVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditDeckVCDelegate.swift; sourceTree = "<group>"; };
-		41D925EC2BE3E59C00311A1B /* CreateEditDeckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditDeckView.swift; sourceTree = "<group>"; };
-		41D925ED2BE3E59C00311A1B /* CreateEditDeckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditDeckVC.swift; sourceTree = "<group>"; };
-		41D925EF2BE3E59C00311A1B /* CardDeckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDeckView.swift; sourceTree = "<group>"; };
-		41D925F02BE3E59C00311A1B /* CardDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDeckViewController.swift; sourceTree = "<group>"; };
-		41D925F12BE3E59C00311A1B /* CardDeckViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDeckViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925F32BE3E59C00311A1B /* EditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardViewController.swift; sourceTree = "<group>"; };
-		41D925F42BE3E59C00311A1B /* EditCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925F62BE3E59C00311A1B /* EditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
-		41D925F72BE3E59C00311A1B /* EditCardView.DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardView.DetailView.swift; sourceTree = "<group>"; };
-		41D925F92BE3E59C00311A1B /* HighestValueListViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighestValueListViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D925FA2BE3E59C00311A1B /* HighestValueCardListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighestValueCardListViewController.swift; sourceTree = "<group>"; };
-		41D925FD2BE3E59C00311A1B /* CardDetailsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsItemTableViewCell.swift; sourceTree = "<group>"; };
-		41D925FE2BE3E59C00311A1B /* CardDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsViewController.swift; sourceTree = "<group>"; };
-		41D925FF2BE3E59C00311A1B /* CardDetailsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D926012BE3E59C00311A1B /* CardDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
-		41D926022BE3E59C00311A1B /* CardDetailsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailsListView.swift; sourceTree = "<group>"; };
-		41D926042BE3E59C00311A1B /* ForgotPasswordViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D926052BE3E59C00311A1B /* SCSForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSForgotPasswordVC.swift; sourceTree = "<group>"; };
-		41D926062BE3E59C00311A1B /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		41D926082BE3E59C00311A1B /* SignUpViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D926092BE3E59C00311A1B /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		41D9260A2BE3E59C00311A1B /* SCSSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSSignUpVC.swift; sourceTree = "<group>"; };
-		41D9260C2BE3E59C00311A1B /* SCSSignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSSignInVC.swift; sourceTree = "<group>"; };
-		41D9260D2BE3E59C00311A1B /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		41D9260E2BE3E59C00311A1B /* SignInViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D926102BE3E59C00311A1B /* CheckConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckConnectionVC.swift; sourceTree = "<group>"; };
-		41D926112BE3E59C00311A1B /* CheckConnectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckConnectionView.swift; sourceTree = "<group>"; };
-		41D926132BE3E59C00311A1B /* ResetPasswordViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewControllerDelegate.swift; sourceTree = "<group>"; };
-		41D926142BE3E59C00311A1B /* ResetPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
-		41D926152BE3E59C00311A1B /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		4619AE572A77965700753891 /* Sports Cards Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sports Cards Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4619AE5A2A77965700753891 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4619AE5C2A77965700753891 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -976,6 +978,676 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		419989302BE6A7EF00E62B80 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				419989312BE6A7EF00E62B80 /* AuthenticatedUser */,
+				419989E52BE6A7EF00E62B80 /* ForgotPassword */,
+				419989E92BE6A7EF00E62B80 /* SignUp */,
+				419989ED2BE6A7EF00E62B80 /* SignIn */,
+				419989F12BE6A7EF00E62B80 /* CheckConnection */,
+				419989F52BE6A7EF00E62B80 /* ResetPassword */,
+			);
+			name = Scenes;
+			path = "../../Sports Cards Scanner 2/Sports Cards Scanner/Scenes";
+			sourceTree = "<group>";
+		};
+		419989312BE6A7EF00E62B80 /* AuthenticatedUser */ = {
+			isa = PBXGroup;
+			children = (
+				419989322BE6A7EF00E62B80 /* CategoryCards */,
+				419989352BE6A7EF00E62B80 /* SearchCard */,
+				419989392BE6A7EF00E62B80 /* PricingReport */,
+				419989402BE6A7EF00E62B80 /* CurrentValue */,
+				419989482BE6A7EF00E62B80 /* CardCollection */,
+				4199896B2BE6A7EF00E62B80 /* GraderSelection */,
+				419989712BE6A7EF00E62B80 /* RecentlyAdded */,
+				419989742BE6A7EF00E62B80 /* GradeSelection */,
+				419989772BE6A7EF00E62B80 /* SortCards */,
+				4199897C2BE6A7EF00E62B80 /* AddToPortfolioDetails */,
+				4199897F2BE6A7EF00E62B80 /* ParallelSelection */,
+				419989842BE6A7EF00E62B80 /* ScanCard */,
+				4199898F2BE6A7EF00E62B80 /* Menu_MAIN */,
+				419989BC2BE6A7EF00E62B80 /* IdentifyingCard */,
+				419989C02BE6A7EF00E62B80 /* CardDeck */,
+				419989D42BE6A7EF00E62B80 /* EditCard */,
+				419989DA2BE6A7EF00E62B80 /* HighestValue */,
+				419989DD2BE6A7EF00E62B80 /* CardDetails */,
+			);
+			path = AuthenticatedUser;
+			sourceTree = "<group>";
+		};
+		419989322BE6A7EF00E62B80 /* CategoryCards */ = {
+			isa = PBXGroup;
+			children = (
+				419989332BE6A7EF00E62B80 /* CategoryCardsViewController.swift */,
+				419989342BE6A7EF00E62B80 /* CategoryCardsViewControllerDelegate.swift */,
+			);
+			path = CategoryCards;
+			sourceTree = "<group>";
+		};
+		419989352BE6A7EF00E62B80 /* SearchCard */ = {
+			isa = PBXGroup;
+			children = (
+				419989362BE6A7EF00E62B80 /* SearchCardView.swift */,
+				419989372BE6A7EF00E62B80 /* SearchCardViewControllerDelegate.swift */,
+				419989382BE6A7EF00E62B80 /* SearchCardViewController.swift */,
+			);
+			path = SearchCard;
+			sourceTree = "<group>";
+		};
+		419989392BE6A7EF00E62B80 /* PricingReport */ = {
+			isa = PBXGroup;
+			children = (
+				4199893A2BE6A7EF00E62B80 /* Cells */,
+				4199893C2BE6A7EF00E62B80 /* PricingReportViewController.swift */,
+				4199893D2BE6A7EF00E62B80 /* Views */,
+			);
+			path = PricingReport;
+			sourceTree = "<group>";
+		};
+		4199893A2BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4199893B2BE6A7EF00E62B80 /* CardSaleTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4199893D2BE6A7EF00E62B80 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4199893E2BE6A7EF00E62B80 /* PricingReportDetailsView.swift */,
+				4199893F2BE6A7EF00E62B80 /* PricingReportView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		419989402BE6A7EF00E62B80 /* CurrentValue */ = {
+			isa = PBXGroup;
+			children = (
+				419989412BE6A7EF00E62B80 /* CurrentValueDetailsViewController.swift */,
+				419989422BE6A7EF00E62B80 /* Cell */,
+				419989442BE6A7EF00E62B80 /* CurrentValueDetailsViewControllerDelegate.swift */,
+				419989452BE6A7EF00E62B80 /* Views */,
+			);
+			path = CurrentValue;
+			sourceTree = "<group>";
+		};
+		419989422BE6A7EF00E62B80 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				419989432BE6A7EF00E62B80 /* CurrentValueTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		419989452BE6A7EF00E62B80 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				419989462BE6A7EF00E62B80 /* CurrentValueDetailsView.CategoryValueView.swift */,
+				419989472BE6A7EF00E62B80 /* CurrentValueDetailsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		419989482BE6A7EF00E62B80 /* CardCollection */ = {
+			isa = PBXGroup;
+			children = (
+				419989492BE6A7EF00E62B80 /* RemoveCards */,
+				4199894C2BE6A7EF00E62B80 /* AddCards */,
+				419989582BE6A7EF00E62B80 /* CreateEditCollection */,
+				4199895B2BE6A7EF00E62B80 /* CardCollection */,
+				419989682BE6A7EF00E62B80 /* CollectionMenu */,
+			);
+			path = CardCollection;
+			sourceTree = "<group>";
+		};
+		419989492BE6A7EF00E62B80 /* RemoveCards */ = {
+			isa = PBXGroup;
+			children = (
+				4199894A2BE6A7EF00E62B80 /* RemoveCardsFromCollectionVC.swift */,
+				4199894B2BE6A7EF00E62B80 /* RemoveCardsFromCollectionVCDelegate.swift */,
+			);
+			path = RemoveCards;
+			sourceTree = "<group>";
+		};
+		4199894C2BE6A7EF00E62B80 /* AddCards */ = {
+			isa = PBXGroup;
+			children = (
+				4199894D2BE6A7EF00E62B80 /* Cards */,
+				419989512BE6A7EF00E62B80 /* AddCardsToCollectionHelper.swift */,
+				419989522BE6A7EF00E62B80 /* Categories */,
+			);
+			path = AddCards;
+			sourceTree = "<group>";
+		};
+		4199894D2BE6A7EF00E62B80 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				4199894E2BE6A7EF00E62B80 /* AddCardsToCollectionCardsVC.swift */,
+				4199894F2BE6A7EF00E62B80 /* AddCardsToCollectionCardsVCDelegate.swift */,
+				419989502BE6A7EF00E62B80 /* AddCardsToCollectionCardsView.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		419989522BE6A7EF00E62B80 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				419989532BE6A7EF00E62B80 /* Cells */,
+				419989552BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesView.swift */,
+				419989562BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVC.swift */,
+				419989572BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVCDelegate.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		419989532BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				419989542BE6A7EF00E62B80 /* CategoryCardsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989582BE6A7EF00E62B80 /* CreateEditCollection */ = {
+			isa = PBXGroup;
+			children = (
+				419989592BE6A7EF00E62B80 /* CreateEditCollectionVC.swift */,
+				4199895A2BE6A7EF00E62B80 /* CreateEditCollectionVCDelegate.swift */,
+			);
+			path = CreateEditCollection;
+			sourceTree = "<group>";
+		};
+		4199895B2BE6A7EF00E62B80 /* CardCollection */ = {
+			isa = PBXGroup;
+			children = (
+				4199895C2BE6A7EF00E62B80 /* Cells */,
+				4199895E2BE6A7EF00E62B80 /* CardCollectionViewControllerDelegate.swift */,
+				4199895F2BE6A7EF00E62B80 /* SwipeableCardsView */,
+				419989622BE6A7EF00E62B80 /* CardCollectionViewController.swift */,
+				419989632BE6A7EF00E62B80 /* Views */,
+			);
+			path = CardCollection;
+			sourceTree = "<group>";
+		};
+		4199895C2BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4199895D2BE6A7EF00E62B80 /* CardPhotoInfoCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4199895F2BE6A7EF00E62B80 /* SwipeableCardsView */ = {
+			isa = PBXGroup;
+			children = (
+				419989602BE6A7EF00E62B80 /* SwipeableCardsView.swift */,
+				419989612BE6A7EF00E62B80 /* SwipeableCardButton.swift */,
+			);
+			path = SwipeableCardsView;
+			sourceTree = "<group>";
+		};
+		419989632BE6A7EF00E62B80 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				419989642BE6A7EF00E62B80 /* CardCollectionView.swift */,
+				419989652BE6A7EF00E62B80 /* CardsRepresentSegmentedControl.swift */,
+				419989662BE6A7EF00E62B80 /* CardCollectionCardsView.swift */,
+				419989672BE6A7EF00E62B80 /* CardCollectionNoCardsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		419989682BE6A7EF00E62B80 /* CollectionMenu */ = {
+			isa = PBXGroup;
+			children = (
+				419989692BE6A7EF00E62B80 /* CollectionMenuViewControllerDelegate.swift */,
+				4199896A2BE6A7EF00E62B80 /* CollectionMenuViewController.swift */,
+			);
+			path = CollectionMenu;
+			sourceTree = "<group>";
+		};
+		4199896B2BE6A7EF00E62B80 /* GraderSelection */ = {
+			isa = PBXGroup;
+			children = (
+				4199896C2BE6A7EF00E62B80 /* Cells */,
+				4199896E2BE6A7EF00E62B80 /* GraderSelectionViewController.swift */,
+				4199896F2BE6A7EF00E62B80 /* GraderSelectionView.swift */,
+				419989702BE6A7EF00E62B80 /* GraderSelectionViewControllerDelegate.swift */,
+			);
+			path = GraderSelection;
+			sourceTree = "<group>";
+		};
+		4199896C2BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4199896D2BE6A7EF00E62B80 /* GraderTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989712BE6A7EF00E62B80 /* RecentlyAdded */ = {
+			isa = PBXGroup;
+			children = (
+				419989722BE6A7EF00E62B80 /* RecentlyAddedListViewController.swift */,
+				419989732BE6A7EF00E62B80 /* RecentlyAddedListViewControllerDelegate.swift */,
+			);
+			path = RecentlyAdded;
+			sourceTree = "<group>";
+		};
+		419989742BE6A7EF00E62B80 /* GradeSelection */ = {
+			isa = PBXGroup;
+			children = (
+				419989752BE6A7EF00E62B80 /* GradeSelectionView.swift */,
+				419989762BE6A7EF00E62B80 /* GradeSelectionViewController.swift */,
+			);
+			path = GradeSelection;
+			sourceTree = "<group>";
+		};
+		419989772BE6A7EF00E62B80 /* SortCards */ = {
+			isa = PBXGroup;
+			children = (
+				419989782BE6A7EF00E62B80 /* Cells */,
+				4199897A2BE6A7EF00E62B80 /* SortCardsViewController.swift */,
+				4199897B2BE6A7EF00E62B80 /* SortCardsViewControllerDelegate.swift */,
+			);
+			path = SortCards;
+			sourceTree = "<group>";
+		};
+		419989782BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				419989792BE6A7EF00E62B80 /* SortCardOptionCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4199897C2BE6A7EF00E62B80 /* AddToPortfolioDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4199897D2BE6A7EF00E62B80 /* AddToPortfolioDetailsView.swift */,
+				4199897E2BE6A7EF00E62B80 /* AddToPortfolioDetails.swift */,
+			);
+			path = AddToPortfolioDetails;
+			sourceTree = "<group>";
+		};
+		4199897F2BE6A7EF00E62B80 /* ParallelSelection */ = {
+			isa = PBXGroup;
+			children = (
+				419989802BE6A7EF00E62B80 /* Cells */,
+				419989822BE6A7EF00E62B80 /* ParallelSelectionView.swift */,
+				419989832BE6A7EF00E62B80 /* ParallelSelectionViewController.swift */,
+			);
+			path = ParallelSelection;
+			sourceTree = "<group>";
+		};
+		419989802BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				419989812BE6A7EF00E62B80 /* ParallelCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989842BE6A7EF00E62B80 /* ScanCard */ = {
+			isa = PBXGroup;
+			children = (
+				419989852BE6A7EF00E62B80 /* Cells */,
+				419989872BE6A7EF00E62B80 /* Models */,
+				419989892BE6A7EF00E62B80 /* Views */,
+				4199898D2BE6A7EF00E62B80 /* ScanCardViewControllerDelegate.swift */,
+				4199898E2BE6A7EF00E62B80 /* ScanCardViewController.swift */,
+			);
+			path = ScanCard;
+			sourceTree = "<group>";
+		};
+		419989852BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				419989862BE6A7EF00E62B80 /* SelectableCardCategoryTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989872BE6A7EF00E62B80 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				419989882BE6A7EF00E62B80 /* GradeType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		419989892BE6A7EF00E62B80 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4199898A2BE6A7EF00E62B80 /* ScanCardView.swift */,
+				4199898B2BE6A7EF00E62B80 /* CardCategoryButton.swift */,
+				4199898C2BE6A7EF00E62B80 /* NoCaptureAuthorizationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4199898F2BE6A7EF00E62B80 /* Menu_MAIN */ = {
+			isa = PBXGroup;
+			children = (
+				419989902BE6A7EF00E62B80 /* TabBarItem.swift */,
+				419989912BE6A7EF00E62B80 /* More */,
+				419989A52BE6A7EF00E62B80 /* Dashboard */,
+				419989B12BE6A7EF00E62B80 /* Portfolio */,
+			);
+			path = Menu_MAIN;
+			sourceTree = "<group>";
+		};
+		419989912BE6A7EF00E62B80 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				419989922BE6A7EF00E62B80 /* Cells */,
+				419989952BE6A7EF00E62B80 /* Scenes */,
+				419989A02BE6A7EF00E62B80 /* MoreView.swift */,
+				419989A12BE6A7EF00E62B80 /* MoreViewController.swift */,
+				419989A22BE6A7EF00E62B80 /* MoreViewControllerDelegate.swift */,
+				419989A32BE6A7EF00E62B80 /* Models */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		419989922BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				419989932BE6A7EF00E62B80 /* ProfileSelectableCell.swift */,
+				419989942BE6A7EF00E62B80 /* ProfileSwitchableCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989952BE6A7EF00E62B80 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				419989962BE6A7EF00E62B80 /* UpdatePassword */,
+				4199899A2BE6A7EF00E62B80 /* CardCategories */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		419989962BE6A7EF00E62B80 /* UpdatePassword */ = {
+			isa = PBXGroup;
+			children = (
+				419989972BE6A7EF00E62B80 /* UpdatePasswordViewControllerDelegate.swift */,
+				419989982BE6A7EF00E62B80 /* UpdatePasswordView.swift */,
+				419989992BE6A7EF00E62B80 /* UpdatePasswordVC.swift */,
+			);
+			path = UpdatePassword;
+			sourceTree = "<group>";
+		};
+		4199899A2BE6A7EF00E62B80 /* CardCategories */ = {
+			isa = PBXGroup;
+			children = (
+				4199899B2BE6A7EF00E62B80 /* Cells */,
+				4199899D2BE6A7EF00E62B80 /* CardCategoriesViewController.swift */,
+				4199899E2BE6A7EF00E62B80 /* CardCategoriesView.swift */,
+				4199899F2BE6A7EF00E62B80 /* CardCategoriesViewControllerDelegate.swift */,
+			);
+			path = CardCategories;
+			sourceTree = "<group>";
+		};
+		4199899B2BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4199899C2BE6A7EF00E62B80 /* CardCategoryTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989A32BE6A7EF00E62B80 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				419989A42BE6A7EF00E62B80 /* ProfileItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		419989A52BE6A7EF00E62B80 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				419989A62BE6A7EF00E62B80 /* Cells */,
+				419989A82BE6A7EF00E62B80 /* DashboardViewController.swift */,
+				419989A92BE6A7EF00E62B80 /* Views */,
+				419989B02BE6A7EF00E62B80 /* DashboardViewControllerDelegate.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		419989A62BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				419989A72BE6A7EF00E62B80 /* CategoryValueCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989A92BE6A7EF00E62B80 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				419989AA2BE6A7EF00E62B80 /* DashboardNoCardView.swift */,
+				419989AB2BE6A7EF00E62B80 /* DashboardView.swift */,
+				419989AC2BE6A7EF00E62B80 /* DashboardCardsView.swift */,
+				419989AD2BE6A7EF00E62B80 /* HighestCardsValueView.swift */,
+				419989AE2BE6A7EF00E62B80 /* RecentlyAddedCardsView.swift */,
+				419989AF2BE6A7EF00E62B80 /* CurrentCardsValueView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		419989B12BE6A7EF00E62B80 /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				419989B22BE6A7EF00E62B80 /* Cells */,
+				419989B42BE6A7EF00E62B80 /* PortfolioViewController.swift */,
+				419989B52BE6A7EF00E62B80 /* PortfolioViewControllerDelegate.swift */,
+				419989B62BE6A7EF00E62B80 /* Views */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		419989B22BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				419989B32BE6A7EF00E62B80 /* CategoryValueTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989B62BE6A7EF00E62B80 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				419989B72BE6A7EF00E62B80 /* PortfolioInfoView.swift */,
+				419989B82BE6A7EF00E62B80 /* CardSetView.swift */,
+				419989B92BE6A7EF00E62B80 /* PortfolioCardsView.swift */,
+				419989BA2BE6A7EF00E62B80 /* PortfolioNoCardView.swift */,
+				419989BB2BE6A7EF00E62B80 /* PortfolioView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		419989BC2BE6A7EF00E62B80 /* IdentifyingCard */ = {
+			isa = PBXGroup;
+			children = (
+				419989BD2BE6A7EF00E62B80 /* IdentifyingCardViewController.swift */,
+				419989BE2BE6A7EF00E62B80 /* IdentifyingCardViewControllerDelegate.swift */,
+				419989BF2BE6A7EF00E62B80 /* IdentifyingCardView.swift */,
+			);
+			path = IdentifyingCard;
+			sourceTree = "<group>";
+		};
+		419989C02BE6A7EF00E62B80 /* CardDeck */ = {
+			isa = PBXGroup;
+			children = (
+				419989C12BE6A7EF00E62B80 /* RemoveCards */,
+				419989C42BE6A7EF00E62B80 /* AddCards */,
+				419989C92BE6A7EF00E62B80 /* DeckMenu */,
+				419989CC2BE6A7EF00E62B80 /* CreateEditDeck */,
+				419989D02BE6A7EF00E62B80 /* CardDeck */,
+			);
+			path = CardDeck;
+			sourceTree = "<group>";
+		};
+		419989C12BE6A7EF00E62B80 /* RemoveCards */ = {
+			isa = PBXGroup;
+			children = (
+				419989C22BE6A7EF00E62B80 /* RemoveCardsFromDeckVC.swift */,
+				419989C32BE6A7EF00E62B80 /* RemoveCardsFromDeckVCDelegate.swift */,
+			);
+			path = RemoveCards;
+			sourceTree = "<group>";
+		};
+		419989C42BE6A7EF00E62B80 /* AddCards */ = {
+			isa = PBXGroup;
+			children = (
+				419989C52BE6A7EF00E62B80 /* AddCardsToDeckView.swift */,
+				419989C62BE6A7EF00E62B80 /* AddCardsToDeckVC.swift */,
+				419989C72BE6A7EF00E62B80 /* AddCardsToDeckHelper.swift */,
+				419989C82BE6A7EF00E62B80 /* AddCardsToDeckVCDelegate.swift */,
+			);
+			path = AddCards;
+			sourceTree = "<group>";
+		};
+		419989C92BE6A7EF00E62B80 /* DeckMenu */ = {
+			isa = PBXGroup;
+			children = (
+				419989CA2BE6A7EF00E62B80 /* DeckMenuViewControllerDelegate.swift */,
+				419989CB2BE6A7EF00E62B80 /* DeckMenuViewController.swift */,
+			);
+			path = DeckMenu;
+			sourceTree = "<group>";
+		};
+		419989CC2BE6A7EF00E62B80 /* CreateEditDeck */ = {
+			isa = PBXGroup;
+			children = (
+				419989CD2BE6A7EF00E62B80 /* CreateEditDeckVCDelegate.swift */,
+				419989CE2BE6A7EF00E62B80 /* CreateEditDeckView.swift */,
+				419989CF2BE6A7EF00E62B80 /* CreateEditDeckVC.swift */,
+			);
+			path = CreateEditDeck;
+			sourceTree = "<group>";
+		};
+		419989D02BE6A7EF00E62B80 /* CardDeck */ = {
+			isa = PBXGroup;
+			children = (
+				419989D12BE6A7EF00E62B80 /* CardDeckView.swift */,
+				419989D22BE6A7EF00E62B80 /* CardDeckViewController.swift */,
+				419989D32BE6A7EF00E62B80 /* CardDeckViewControllerDelegate.swift */,
+			);
+			path = CardDeck;
+			sourceTree = "<group>";
+		};
+		419989D42BE6A7EF00E62B80 /* EditCard */ = {
+			isa = PBXGroup;
+			children = (
+				419989D52BE6A7EF00E62B80 /* EditCardViewController.swift */,
+				419989D62BE6A7EF00E62B80 /* EditCardViewControllerDelegate.swift */,
+				419989D72BE6A7EF00E62B80 /* Views */,
+			);
+			path = EditCard;
+			sourceTree = "<group>";
+		};
+		419989D72BE6A7EF00E62B80 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				419989D82BE6A7EF00E62B80 /* EditCardView.swift */,
+				419989D92BE6A7EF00E62B80 /* EditCardView.DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		419989DA2BE6A7EF00E62B80 /* HighestValue */ = {
+			isa = PBXGroup;
+			children = (
+				419989DB2BE6A7EF00E62B80 /* HighestValueListViewControllerDelegate.swift */,
+				419989DC2BE6A7EF00E62B80 /* HighestValueCardListViewController.swift */,
+			);
+			path = HighestValue;
+			sourceTree = "<group>";
+		};
+		419989DD2BE6A7EF00E62B80 /* CardDetails */ = {
+			isa = PBXGroup;
+			children = (
+				419989DE2BE6A7EF00E62B80 /* Cells */,
+				419989E02BE6A7EF00E62B80 /* CardDetailsViewController.swift */,
+				419989E12BE6A7EF00E62B80 /* CardDetailsViewControllerDelegate.swift */,
+				419989E22BE6A7EF00E62B80 /* Views */,
+			);
+			path = CardDetails;
+			sourceTree = "<group>";
+		};
+		419989DE2BE6A7EF00E62B80 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				419989DF2BE6A7EF00E62B80 /* CardDetailsItemTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		419989E22BE6A7EF00E62B80 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				419989E32BE6A7EF00E62B80 /* CardDetailsView.swift */,
+				419989E42BE6A7EF00E62B80 /* CardDetailsListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		419989E52BE6A7EF00E62B80 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				419989E62BE6A7EF00E62B80 /* ForgotPasswordViewControllerDelegate.swift */,
+				419989E72BE6A7EF00E62B80 /* SCSForgotPasswordVC.swift */,
+				419989E82BE6A7EF00E62B80 /* ForgotPasswordView.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		419989E92BE6A7EF00E62B80 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				419989EA2BE6A7EF00E62B80 /* SignUpViewControllerDelegate.swift */,
+				419989EB2BE6A7EF00E62B80 /* SignUpView.swift */,
+				419989EC2BE6A7EF00E62B80 /* SCSSignUpVC.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		419989ED2BE6A7EF00E62B80 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				419989EE2BE6A7EF00E62B80 /* SCSSignInVC.swift */,
+				419989EF2BE6A7EF00E62B80 /* SignInView.swift */,
+				419989F02BE6A7EF00E62B80 /* SignInViewControllerDelegate.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		419989F12BE6A7EF00E62B80 /* CheckConnection */ = {
+			isa = PBXGroup;
+			children = (
+				419989F22BE6A7EF00E62B80 /* CheckConnectionVC.swift */,
+				419989F32BE6A7EF00E62B80 /* CheckConnectionView.swift */,
+				419989F42BE6A7EF00E62B80 /* CheckConnectionDelegate.swift */,
+			);
+			path = CheckConnection;
+			sourceTree = "<group>";
+		};
+		419989F52BE6A7EF00E62B80 /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				419989F62BE6A7EF00E62B80 /* ResetPasswordViewControllerDelegate.swift */,
+				419989F72BE6A7EF00E62B80 /* ResetPasswordView.swift */,
+				419989F82BE6A7EF00E62B80 /* ResetPasswordViewController.swift */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
 		41D644542BE3D75100642D21 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1282,675 +1954,6 @@
 			path = "../../../Sports Cards Scanner 2/Sports Cards Scanner/Coordinators/CardDeck";
 			sourceTree = "<group>";
 		};
-		41D9254D2BE3E59C00311A1B /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				41D9254E2BE3E59C00311A1B /* AuthenticatedUser */,
-				41D926032BE3E59C00311A1B /* ForgotPassword */,
-				41D926072BE3E59C00311A1B /* SignUp */,
-				41D9260B2BE3E59C00311A1B /* SignIn */,
-				41D9260F2BE3E59C00311A1B /* CheckConnection */,
-				41D926122BE3E59C00311A1B /* ResetPassword */,
-			);
-			name = Scenes;
-			path = "../../../../../Downloads/iOS-Sports-Cards-Scanner-REF-1-PROJECT-147-main-unsubs-2/Sports Cards Scanner 2/Sports Cards Scanner/Scenes";
-			sourceTree = "<group>";
-		};
-		41D9254E2BE3E59C00311A1B /* AuthenticatedUser */ = {
-			isa = PBXGroup;
-			children = (
-				41D9254F2BE3E59C00311A1B /* CategoryCards */,
-				41D925522BE3E59C00311A1B /* SearchCard */,
-				41D925562BE3E59C00311A1B /* PricingReport */,
-				41D9255D2BE3E59C00311A1B /* CurrentValue */,
-				41D925652BE3E59C00311A1B /* CardCollection */,
-				41D925882BE3E59C00311A1B /* GraderSelection */,
-				41D9258E2BE3E59C00311A1B /* RecentlyAdded */,
-				41D925912BE3E59C00311A1B /* GradeSelection */,
-				41D925942BE3E59C00311A1B /* SortCards */,
-				41D925992BE3E59C00311A1B /* AddToPortfolioDetails */,
-				41D9259C2BE3E59C00311A1B /* ParallelSelection */,
-				41D925A12BE3E59C00311A1B /* ScanCard */,
-				41D925AC2BE3E59C00311A1B /* Menu_MAIN */,
-				41D925DA2BE3E59C00311A1B /* IdentifyingCard */,
-				41D925DE2BE3E59C00311A1B /* CardDeck */,
-				41D925F22BE3E59C00311A1B /* EditCard */,
-				41D925F82BE3E59C00311A1B /* HighestValue */,
-				41D925FB2BE3E59C00311A1B /* CardDetails */,
-			);
-			path = AuthenticatedUser;
-			sourceTree = "<group>";
-		};
-		41D9254F2BE3E59C00311A1B /* CategoryCards */ = {
-			isa = PBXGroup;
-			children = (
-				41D925502BE3E59C00311A1B /* CategoryCardsViewController.swift */,
-				41D925512BE3E59C00311A1B /* CategoryCardsViewControllerDelegate.swift */,
-			);
-			path = CategoryCards;
-			sourceTree = "<group>";
-		};
-		41D925522BE3E59C00311A1B /* SearchCard */ = {
-			isa = PBXGroup;
-			children = (
-				41D925532BE3E59C00311A1B /* SearchCardView.swift */,
-				41D925542BE3E59C00311A1B /* SearchCardViewControllerDelegate.swift */,
-				41D925552BE3E59C00311A1B /* SearchCardViewController.swift */,
-			);
-			path = SearchCard;
-			sourceTree = "<group>";
-		};
-		41D925562BE3E59C00311A1B /* PricingReport */ = {
-			isa = PBXGroup;
-			children = (
-				41D925572BE3E59C00311A1B /* Cells */,
-				41D925592BE3E59C00311A1B /* PricingReportViewController.swift */,
-				41D9255A2BE3E59C00311A1B /* Views */,
-			);
-			path = PricingReport;
-			sourceTree = "<group>";
-		};
-		41D925572BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925582BE3E59C00311A1B /* CardSaleTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D9255A2BE3E59C00311A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41D9255B2BE3E59C00311A1B /* PricingReportDetailsView.swift */,
-				41D9255C2BE3E59C00311A1B /* PricingReportView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41D9255D2BE3E59C00311A1B /* CurrentValue */ = {
-			isa = PBXGroup;
-			children = (
-				41D9255E2BE3E59C00311A1B /* CurrentValueDetailsViewController.swift */,
-				41D9255F2BE3E59C00311A1B /* Cell */,
-				41D925612BE3E59C00311A1B /* CurrentValueDetailsViewControllerDelegate.swift */,
-				41D925622BE3E59C00311A1B /* Views */,
-			);
-			path = CurrentValue;
-			sourceTree = "<group>";
-		};
-		41D9255F2BE3E59C00311A1B /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				41D925602BE3E59C00311A1B /* CurrentValueTableViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		41D925622BE3E59C00311A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41D925632BE3E59C00311A1B /* CurrentValueDetailsView.CategoryValueView.swift */,
-				41D925642BE3E59C00311A1B /* CurrentValueDetailsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41D925652BE3E59C00311A1B /* CardCollection */ = {
-			isa = PBXGroup;
-			children = (
-				41D925662BE3E59C00311A1B /* RemoveCards */,
-				41D925692BE3E59C00311A1B /* AddCards */,
-				41D925752BE3E59C00311A1B /* CreateEditCollection */,
-				41D925782BE3E59C00311A1B /* CardCollection */,
-				41D925852BE3E59C00311A1B /* CollectionMenu */,
-			);
-			path = CardCollection;
-			sourceTree = "<group>";
-		};
-		41D925662BE3E59C00311A1B /* RemoveCards */ = {
-			isa = PBXGroup;
-			children = (
-				41D925672BE3E59C00311A1B /* RemoveCardsFromCollectionVC.swift */,
-				41D925682BE3E59C00311A1B /* RemoveCardsFromCollectionVCDelegate.swift */,
-			);
-			path = RemoveCards;
-			sourceTree = "<group>";
-		};
-		41D925692BE3E59C00311A1B /* AddCards */ = {
-			isa = PBXGroup;
-			children = (
-				41D9256A2BE3E59C00311A1B /* Cards */,
-				41D9256E2BE3E59C00311A1B /* AddCardsToCollectionHelper.swift */,
-				41D9256F2BE3E59C00311A1B /* Categories */,
-			);
-			path = AddCards;
-			sourceTree = "<group>";
-		};
-		41D9256A2BE3E59C00311A1B /* Cards */ = {
-			isa = PBXGroup;
-			children = (
-				41D9256B2BE3E59C00311A1B /* AddCardsToCollectionCardsVC.swift */,
-				41D9256C2BE3E59C00311A1B /* AddCardsToCollectionCardsVCDelegate.swift */,
-				41D9256D2BE3E59C00311A1B /* AddCardsToCollectionCardsView.swift */,
-			);
-			path = Cards;
-			sourceTree = "<group>";
-		};
-		41D9256F2BE3E59C00311A1B /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				41D925702BE3E59C00311A1B /* Cells */,
-				41D925722BE3E59C00311A1B /* AddCardsToCollectionCategoriesView.swift */,
-				41D925732BE3E59C00311A1B /* AddCardsToCollectionCategoriesVC.swift */,
-				41D925742BE3E59C00311A1B /* AddCardsToCollectionCategoriesVCDelegate.swift */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		41D925702BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925712BE3E59C00311A1B /* CategoryCardsTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D925752BE3E59C00311A1B /* CreateEditCollection */ = {
-			isa = PBXGroup;
-			children = (
-				41D925762BE3E59C00311A1B /* CreateEditCollectionVC.swift */,
-				41D925772BE3E59C00311A1B /* CreateEditCollectionVCDelegate.swift */,
-			);
-			path = CreateEditCollection;
-			sourceTree = "<group>";
-		};
-		41D925782BE3E59C00311A1B /* CardCollection */ = {
-			isa = PBXGroup;
-			children = (
-				41D925792BE3E59C00311A1B /* Cells */,
-				41D9257B2BE3E59C00311A1B /* CardCollectionViewControllerDelegate.swift */,
-				41D9257C2BE3E59C00311A1B /* SwipeableCardsView */,
-				41D9257F2BE3E59C00311A1B /* CardCollectionViewController.swift */,
-				41D925802BE3E59C00311A1B /* Views */,
-			);
-			path = CardCollection;
-			sourceTree = "<group>";
-		};
-		41D925792BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D9257A2BE3E59C00311A1B /* CardPhotoInfoCollectionViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D9257C2BE3E59C00311A1B /* SwipeableCardsView */ = {
-			isa = PBXGroup;
-			children = (
-				41D9257D2BE3E59C00311A1B /* SwipeableCardsView.swift */,
-				41D9257E2BE3E59C00311A1B /* SwipeableCardButton.swift */,
-			);
-			path = SwipeableCardsView;
-			sourceTree = "<group>";
-		};
-		41D925802BE3E59C00311A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41D925812BE3E59C00311A1B /* CardCollectionView.swift */,
-				41D925822BE3E59C00311A1B /* CardsRepresentSegmentedControl.swift */,
-				41D925832BE3E59C00311A1B /* CardCollectionCardsView.swift */,
-				41D925842BE3E59C00311A1B /* CardCollectionNoCardsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41D925852BE3E59C00311A1B /* CollectionMenu */ = {
-			isa = PBXGroup;
-			children = (
-				41D925862BE3E59C00311A1B /* CollectionMenuViewControllerDelegate.swift */,
-				41D925872BE3E59C00311A1B /* CollectionMenuViewController.swift */,
-			);
-			path = CollectionMenu;
-			sourceTree = "<group>";
-		};
-		41D925882BE3E59C00311A1B /* GraderSelection */ = {
-			isa = PBXGroup;
-			children = (
-				41D925892BE3E59C00311A1B /* Cells */,
-				41D9258B2BE3E59C00311A1B /* GraderSelectionViewController.swift */,
-				41D9258C2BE3E59C00311A1B /* GraderSelectionView.swift */,
-				41D9258D2BE3E59C00311A1B /* GraderSelectionViewControllerDelegate.swift */,
-			);
-			path = GraderSelection;
-			sourceTree = "<group>";
-		};
-		41D925892BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D9258A2BE3E59C00311A1B /* GraderTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D9258E2BE3E59C00311A1B /* RecentlyAdded */ = {
-			isa = PBXGroup;
-			children = (
-				41D9258F2BE3E59C00311A1B /* RecentlyAddedListViewController.swift */,
-				41D925902BE3E59C00311A1B /* RecentlyAddedListViewControllerDelegate.swift */,
-			);
-			path = RecentlyAdded;
-			sourceTree = "<group>";
-		};
-		41D925912BE3E59C00311A1B /* GradeSelection */ = {
-			isa = PBXGroup;
-			children = (
-				41D925922BE3E59C00311A1B /* GradeSelectionView.swift */,
-				41D925932BE3E59C00311A1B /* GradeSelectionViewController.swift */,
-			);
-			path = GradeSelection;
-			sourceTree = "<group>";
-		};
-		41D925942BE3E59C00311A1B /* SortCards */ = {
-			isa = PBXGroup;
-			children = (
-				41D925952BE3E59C00311A1B /* Cells */,
-				41D925972BE3E59C00311A1B /* SortCardsViewController.swift */,
-				41D925982BE3E59C00311A1B /* SortCardsViewControllerDelegate.swift */,
-			);
-			path = SortCards;
-			sourceTree = "<group>";
-		};
-		41D925952BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925962BE3E59C00311A1B /* SortCardOptionCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D925992BE3E59C00311A1B /* AddToPortfolioDetails */ = {
-			isa = PBXGroup;
-			children = (
-				41D9259A2BE3E59C00311A1B /* AddToPortfolioDetailsView.swift */,
-				41D9259B2BE3E59C00311A1B /* AddToPortfolioDetails.swift */,
-			);
-			path = AddToPortfolioDetails;
-			sourceTree = "<group>";
-		};
-		41D9259C2BE3E59C00311A1B /* ParallelSelection */ = {
-			isa = PBXGroup;
-			children = (
-				41D9259D2BE3E59C00311A1B /* Cells */,
-				41D9259F2BE3E59C00311A1B /* ParallelSelectionView.swift */,
-				41D925A02BE3E59C00311A1B /* ParallelSelectionViewController.swift */,
-			);
-			path = ParallelSelection;
-			sourceTree = "<group>";
-		};
-		41D9259D2BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D9259E2BE3E59C00311A1B /* ParallelCollectionViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D925A12BE3E59C00311A1B /* ScanCard */ = {
-			isa = PBXGroup;
-			children = (
-				41D925A22BE3E59C00311A1B /* Cells */,
-				41D925A42BE3E59C00311A1B /* Models */,
-				41D925A62BE3E59C00311A1B /* Views */,
-				41D925AA2BE3E59C00311A1B /* ScanCardViewControllerDelegate.swift */,
-				41D925AB2BE3E59C00311A1B /* ScanCardViewController.swift */,
-			);
-			path = ScanCard;
-			sourceTree = "<group>";
-		};
-		41D925A22BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925A32BE3E59C00311A1B /* SelectableCardCategoryTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D925A42BE3E59C00311A1B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				41D925A52BE3E59C00311A1B /* GradeType.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		41D925A62BE3E59C00311A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41D925A72BE3E59C00311A1B /* ScanCardView.swift */,
-				41D925A82BE3E59C00311A1B /* CardCategoryButton.swift */,
-				41D925A92BE3E59C00311A1B /* NoCaptureAuthorizationView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41D925AC2BE3E59C00311A1B /* Menu_MAIN */ = {
-			isa = PBXGroup;
-			children = (
-				41D925AD2BE3E59C00311A1B /* TabBarItem.swift */,
-				41D925AE2BE3E59C00311A1B /* More */,
-				41D925C22BE3E59C00311A1B /* Dashboard */,
-				41D925CF2BE3E59C00311A1B /* Portfolio */,
-			);
-			path = Menu_MAIN;
-			sourceTree = "<group>";
-		};
-		41D925AE2BE3E59C00311A1B /* More */ = {
-			isa = PBXGroup;
-			children = (
-				41D925AF2BE3E59C00311A1B /* Cells */,
-				41D925B22BE3E59C00311A1B /* Scenes */,
-				41D925BD2BE3E59C00311A1B /* MoreView.swift */,
-				41D925BE2BE3E59C00311A1B /* MoreViewController.swift */,
-				41D925BF2BE3E59C00311A1B /* MoreViewControllerDelegate.swift */,
-				41D925C02BE3E59C00311A1B /* Models */,
-			);
-			path = More;
-			sourceTree = "<group>";
-		};
-		41D925AF2BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925B02BE3E59C00311A1B /* ProfileSelectableCell.swift */,
-				41D925B12BE3E59C00311A1B /* ProfileSwitchableCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D925B22BE3E59C00311A1B /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				41D925B32BE3E59C00311A1B /* UpdatePassword */,
-				41D925B72BE3E59C00311A1B /* CardCategories */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
-		41D925B32BE3E59C00311A1B /* UpdatePassword */ = {
-			isa = PBXGroup;
-			children = (
-				41D925B42BE3E59C00311A1B /* UpdatePasswordViewControllerDelegate.swift */,
-				41D925B52BE3E59C00311A1B /* UpdatePasswordView.swift */,
-				41D925B62BE3E59C00311A1B /* UpdatePasswordVC.swift */,
-			);
-			path = UpdatePassword;
-			sourceTree = "<group>";
-		};
-		41D925B72BE3E59C00311A1B /* CardCategories */ = {
-			isa = PBXGroup;
-			children = (
-				41D925B82BE3E59C00311A1B /* Cells */,
-				41D925BA2BE3E59C00311A1B /* CardCategoriesViewController.swift */,
-				41D925BB2BE3E59C00311A1B /* CardCategoriesView.swift */,
-				41D925BC2BE3E59C00311A1B /* CardCategoriesViewControllerDelegate.swift */,
-			);
-			path = CardCategories;
-			sourceTree = "<group>";
-		};
-		41D925B82BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925B92BE3E59C00311A1B /* CardCategoryTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D925C02BE3E59C00311A1B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				41D925C12BE3E59C00311A1B /* ProfileItem.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		41D925C22BE3E59C00311A1B /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				41D925C32BE3E59C00311A1B /* Cells */,
-				41D925C52BE3E59C00311A1B /* DashboardViewController.swift */,
-				41D925C62BE3E59C00311A1B /* Views */,
-				41D925CE2BE3E59C00311A1B /* DashboardViewControllerDelegate.swift */,
-			);
-			path = Dashboard;
-			sourceTree = "<group>";
-		};
-		41D925C32BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925C42BE3E59C00311A1B /* CategoryValueCollectionViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D925C62BE3E59C00311A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41D925C72BE3E59C00311A1B /* DashboardNoCardView.swift */,
-				41D925C82BE3E59C00311A1B /* DashboardView.swift */,
-				41D925C92BE3E59C00311A1B /* DashboardCardsView.swift */,
-				41D925CA2BE3E59C00311A1B /* HighestCardsValueView.swift */,
-				41D925CC2BE3E59C00311A1B /* RecentlyAddedCardsView.swift */,
-				41D925CD2BE3E59C00311A1B /* CurrentCardsValueView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41D925CF2BE3E59C00311A1B /* Portfolio */ = {
-			isa = PBXGroup;
-			children = (
-				41D925D02BE3E59C00311A1B /* Cells */,
-				41D925D22BE3E59C00311A1B /* PortfolioViewController.swift */,
-				41D925D32BE3E59C00311A1B /* PortfolioViewControllerDelegate.swift */,
-				41D925D42BE3E59C00311A1B /* Views */,
-			);
-			path = Portfolio;
-			sourceTree = "<group>";
-		};
-		41D925D02BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925D12BE3E59C00311A1B /* CategoryValueTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D925D42BE3E59C00311A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41D925D52BE3E59C00311A1B /* PortfolioInfoView.swift */,
-				41D925D62BE3E59C00311A1B /* CardSetView.swift */,
-				41D925D72BE3E59C00311A1B /* PortfolioCardsView.swift */,
-				41D925D82BE3E59C00311A1B /* PortfolioNoCardView.swift */,
-				41D925D92BE3E59C00311A1B /* PortfolioView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41D925DA2BE3E59C00311A1B /* IdentifyingCard */ = {
-			isa = PBXGroup;
-			children = (
-				41D925DB2BE3E59C00311A1B /* IdentifyingCardViewController.swift */,
-				41D925DC2BE3E59C00311A1B /* IdentifyingCardViewControllerDelegate.swift */,
-				41D925DD2BE3E59C00311A1B /* IdentifyingCardView.swift */,
-			);
-			path = IdentifyingCard;
-			sourceTree = "<group>";
-		};
-		41D925DE2BE3E59C00311A1B /* CardDeck */ = {
-			isa = PBXGroup;
-			children = (
-				41D925DF2BE3E59C00311A1B /* RemoveCards */,
-				41D925E22BE3E59C00311A1B /* AddCards */,
-				41D925E72BE3E59C00311A1B /* DeckMenu */,
-				41D925EA2BE3E59C00311A1B /* CreateEditDeck */,
-				41D925EE2BE3E59C00311A1B /* CardDeck */,
-			);
-			path = CardDeck;
-			sourceTree = "<group>";
-		};
-		41D925DF2BE3E59C00311A1B /* RemoveCards */ = {
-			isa = PBXGroup;
-			children = (
-				41D925E02BE3E59C00311A1B /* RemoveCardsFromDeckVC.swift */,
-				41D925E12BE3E59C00311A1B /* RemoveCardsFromDeckVCDelegate.swift */,
-			);
-			path = RemoveCards;
-			sourceTree = "<group>";
-		};
-		41D925E22BE3E59C00311A1B /* AddCards */ = {
-			isa = PBXGroup;
-			children = (
-				41D925E32BE3E59C00311A1B /* AddCardsToDeckView.swift */,
-				41D925E42BE3E59C00311A1B /* AddCardsToDeckVC.swift */,
-				41D925E52BE3E59C00311A1B /* AddCardsToDeckHelper.swift */,
-				41D925E62BE3E59C00311A1B /* AddCardsToDeckVCDelegate.swift */,
-			);
-			path = AddCards;
-			sourceTree = "<group>";
-		};
-		41D925E72BE3E59C00311A1B /* DeckMenu */ = {
-			isa = PBXGroup;
-			children = (
-				41D925E82BE3E59C00311A1B /* DeckMenuViewControllerDelegate.swift */,
-				41D925E92BE3E59C00311A1B /* DeckMenuViewController.swift */,
-			);
-			path = DeckMenu;
-			sourceTree = "<group>";
-		};
-		41D925EA2BE3E59C00311A1B /* CreateEditDeck */ = {
-			isa = PBXGroup;
-			children = (
-				41D925EB2BE3E59C00311A1B /* CreateEditDeckVCDelegate.swift */,
-				41D925EC2BE3E59C00311A1B /* CreateEditDeckView.swift */,
-				41D925ED2BE3E59C00311A1B /* CreateEditDeckVC.swift */,
-			);
-			path = CreateEditDeck;
-			sourceTree = "<group>";
-		};
-		41D925EE2BE3E59C00311A1B /* CardDeck */ = {
-			isa = PBXGroup;
-			children = (
-				41D925EF2BE3E59C00311A1B /* CardDeckView.swift */,
-				41D925F02BE3E59C00311A1B /* CardDeckViewController.swift */,
-				41D925F12BE3E59C00311A1B /* CardDeckViewControllerDelegate.swift */,
-			);
-			path = CardDeck;
-			sourceTree = "<group>";
-		};
-		41D925F22BE3E59C00311A1B /* EditCard */ = {
-			isa = PBXGroup;
-			children = (
-				41D925F32BE3E59C00311A1B /* EditCardViewController.swift */,
-				41D925F42BE3E59C00311A1B /* EditCardViewControllerDelegate.swift */,
-				41D925F52BE3E59C00311A1B /* Views */,
-			);
-			path = EditCard;
-			sourceTree = "<group>";
-		};
-		41D925F52BE3E59C00311A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41D925F62BE3E59C00311A1B /* EditCardView.swift */,
-				41D925F72BE3E59C00311A1B /* EditCardView.DetailView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41D925F82BE3E59C00311A1B /* HighestValue */ = {
-			isa = PBXGroup;
-			children = (
-				41D925F92BE3E59C00311A1B /* HighestValueListViewControllerDelegate.swift */,
-				41D925FA2BE3E59C00311A1B /* HighestValueCardListViewController.swift */,
-			);
-			path = HighestValue;
-			sourceTree = "<group>";
-		};
-		41D925FB2BE3E59C00311A1B /* CardDetails */ = {
-			isa = PBXGroup;
-			children = (
-				41D925FC2BE3E59C00311A1B /* Cells */,
-				41D925FE2BE3E59C00311A1B /* CardDetailsViewController.swift */,
-				41D925FF2BE3E59C00311A1B /* CardDetailsViewControllerDelegate.swift */,
-				41D926002BE3E59C00311A1B /* Views */,
-			);
-			path = CardDetails;
-			sourceTree = "<group>";
-		};
-		41D925FC2BE3E59C00311A1B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				41D925FD2BE3E59C00311A1B /* CardDetailsItemTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		41D926002BE3E59C00311A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				41D926012BE3E59C00311A1B /* CardDetailsView.swift */,
-				41D926022BE3E59C00311A1B /* CardDetailsListView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		41D926032BE3E59C00311A1B /* ForgotPassword */ = {
-			isa = PBXGroup;
-			children = (
-				41D926042BE3E59C00311A1B /* ForgotPasswordViewControllerDelegate.swift */,
-				41D926052BE3E59C00311A1B /* SCSForgotPasswordVC.swift */,
-				41D926062BE3E59C00311A1B /* ForgotPasswordView.swift */,
-			);
-			path = ForgotPassword;
-			sourceTree = "<group>";
-		};
-		41D926072BE3E59C00311A1B /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				41D926082BE3E59C00311A1B /* SignUpViewControllerDelegate.swift */,
-				41D926092BE3E59C00311A1B /* SignUpView.swift */,
-				41D9260A2BE3E59C00311A1B /* SCSSignUpVC.swift */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		41D9260B2BE3E59C00311A1B /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-				41D9260C2BE3E59C00311A1B /* SCSSignInVC.swift */,
-				41D9260D2BE3E59C00311A1B /* SignInView.swift */,
-				41D9260E2BE3E59C00311A1B /* SignInViewControllerDelegate.swift */,
-			);
-			path = SignIn;
-			sourceTree = "<group>";
-		};
-		41D9260F2BE3E59C00311A1B /* CheckConnection */ = {
-			isa = PBXGroup;
-			children = (
-				41D926102BE3E59C00311A1B /* CheckConnectionVC.swift */,
-				41D926112BE3E59C00311A1B /* CheckConnectionView.swift */,
-			);
-			path = CheckConnection;
-			sourceTree = "<group>";
-		};
-		41D926122BE3E59C00311A1B /* ResetPassword */ = {
-			isa = PBXGroup;
-			children = (
-				41D926132BE3E59C00311A1B /* ResetPasswordViewControllerDelegate.swift */,
-				41D926142BE3E59C00311A1B /* ResetPasswordView.swift */,
-				41D926152BE3E59C00311A1B /* ResetPasswordViewController.swift */,
-			);
-			path = ResetPassword;
-			sourceTree = "<group>";
-		};
 		4619AE4E2A77965700753891 = {
 			isa = PBXGroup;
 			children = (
@@ -1977,7 +1980,7 @@
 		4619AE592A77965700753891 /* Sports Cards Scanner */ = {
 			isa = PBXGroup;
 			children = (
-				41D9254D2BE3E59C00311A1B /* Scenes */,
+				419989302BE6A7EF00E62B80 /* Scenes */,
 				41D923482BE3DD4700311A1B /* Routers */,
 				41D922FA2BE3DAB700311A1B /* CustomView */,
 				41D644542BE3D75100642D21 /* Extensions */,
@@ -2947,31 +2950,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41D926932BE3E59D00311A1B /* SCSSignUpVC.swift in Sources */,
-				41D926292BE3E59C00311A1B /* AddCardsToCollectionHelper.swift in Sources */,
+				41998A0C2BE6A7EF00E62B80 /* AddCardsToCollectionHelper.swift in Sources */,
 				46C55C592A9A4AFA001006E2 /* SCIDecoder.swift in Sources */,
-				41D926702BE3E59D00311A1B /* PortfolioNoCardView.swift in Sources */,
 				468E3E792A8A9F150097C6EC /* AuthProviderOption.swift in Sources */,
 				4679D87B2AAC94B100656AC1 /* CardSetsManager.swift in Sources */,
 				468A5CDF2AB7405600D29443 /* SearchedCardsManager.swift in Sources */,
 				41D9232F2BE3DAB700311A1B /* PricingReportButton.GraderPriceView.swift in Sources */,
-				41D926802BE3E59D00311A1B /* CardDeckView.swift in Sources */,
 				41D9239A2BE3DEB600311A1B /* GraderSelectionCoordinator.swift in Sources */,
 				41D923512BE3DD4700311A1B /* DeleteAccountSheetRouter.swift in Sources */,
 				41D923762BE3DE0C00311A1B /* Colors.swift in Sources */,
 				41D923262BE3DAB700311A1B /* RemovableCardCollectionViewCell.swift in Sources */,
-				41D926902BE3E59D00311A1B /* ForgotPasswordView.swift in Sources */,
 				46DC12172ABCEAE8003BDB79 /* ReusableCell.swift in Sources */,
-				41D9262C2BE3E59C00311A1B /* AddCardsToCollectionCategoriesVC.swift in Sources */,
-				41D9266C2BE3E59D00311A1B /* PortfolioViewControllerDelegate.swift in Sources */,
+				41998A0F2BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVC.swift in Sources */,
 				41D9232D2BE3DAB700311A1B /* AddToPortfolioButton.swift in Sources */,
+				41998A612BE6A7F000E62B80 /* CreateEditDeckVC.swift in Sources */,
 				41D923F72BE3E1D500311A1B /* CardCollectionCoordinator.swift in Sources */,
-				41D926182BE3E59C00311A1B /* SearchCardView.swift in Sources */,
-				41D926952BE3E59D00311A1B /* SignInView.swift in Sources */,
+				419989FB2BE6A7EF00E62B80 /* SearchCardView.swift in Sources */,
 				41D9239B2BE3DEB600311A1B /* CurrentValueDetailsCoordinator.swift in Sources */,
 				4660BFF72A7B9B5D00FB80AF /* SCSAppCoordinator.swift in Sources */,
-				41D926632BE3E59D00311A1B /* DashboardView.swift in Sources */,
+				41998A462BE6A7F000E62B80 /* DashboardView.swift in Sources */,
 				46DC11EA2ABCEAE8003BDB79 /* SCSNSImage+SwiftyGif.swift in Sources */,
+				41998A602BE6A7F000E62B80 /* CreateEditDeckView.swift in Sources */,
 				41D923992BE3DEB600311A1B /* ForgotPasswordCoordinator.swift in Sources */,
 				468A5CDA2AB724C300D29443 /* PCIdentificationError.swift in Sources */,
 				46C7BE4B2AC7534000FAD645 /* MagicCardParams.swift in Sources */,
@@ -2979,81 +2978,85 @@
 				4688A7762A82978500882727 /* PasswordValidator.swift in Sources */,
 				41D9233C2BE3DAB800311A1B /* CommonMessageView.swift in Sources */,
 				41D923352BE3DAB800311A1B /* BaseTextView.swift in Sources */,
+				41998A672BE6A7F000E62B80 /* EditCardView.swift in Sources */,
 				41D9233B2BE3DAB800311A1B /* CommonToolbar.swift in Sources */,
 				41D6447B2BE3D75100642D21 /* UITabBar_Extension.swift in Sources */,
-				41D9265B2BE3E59D00311A1B /* CardCategoriesViewControllerDelegate.swift in Sources */,
+				41998A3E2BE6A7F000E62B80 /* CardCategoriesViewControllerDelegate.swift in Sources */,
 				46A01D982A7E6E91006AFB5E /* CommonTypealiases.swift in Sources */,
-				41D9261D2BE3E59C00311A1B /* PricingReportDetailsView.swift in Sources */,
+				41998A002BE6A7EF00E62B80 /* PricingReportDetailsView.swift in Sources */,
 				41D923342BE3DAB800311A1B /* BaseCollectionView.swift in Sources */,
-				41D9261C2BE3E59C00311A1B /* PricingReportViewController.swift in Sources */,
+				419989FF2BE6A7EF00E62B80 /* PricingReportViewController.swift in Sources */,
+				41998A692BE6A7F000E62B80 /* HighestValueListViewControllerDelegate.swift in Sources */,
 				468C83332AB07C0C003DC91A /* DeckMenuItem.swift in Sources */,
+				41998A5D2BE6A7F000E62B80 /* DeckMenuViewControllerDelegate.swift in Sources */,
 				468E3E652A897CDD0097C6EC /* SCSUserDefault.swift in Sources */,
-				41D9264E2BE3E59D00311A1B /* CardCategoryButton.swift in Sources */,
+				41998A312BE6A7F000E62B80 /* CardCategoryButton.swift in Sources */,
 				46DC11E72ABCEAE8003BDB79 /* AnimatedButton.swift in Sources */,
+				41998A5B2BE6A7F000E62B80 /* AddCardsToDeckHelper.swift in Sources */,
+				41998A782BE6A7F000E62B80 /* SignInViewControllerDelegate.swift in Sources */,
 				41D923362BE3DAB800311A1B /* CardView.swift in Sources */,
 				4650DEDB2AA0957900F6F13C /* SportCard+initSCI.swift in Sources */,
 				41D6448D2BE3D75100642D21 /* Error_Extension.swift in Sources */,
 				41D644872BE3D75100642D21 /* Optional_Extension.swift in Sources */,
-				41D926332BE3E59C00311A1B /* SwipeableCardButton.swift in Sources */,
+				41998A162BE6A7EF00E62B80 /* SwipeableCardButton.swift in Sources */,
 				4650DEEA2AA0E7A200F6F13C /* CardSearchable.swift in Sources */,
-				41D9263A2BE3E59C00311A1B /* CollectionMenuViewController.swift in Sources */,
+				41998A1D2BE6A7EF00E62B80 /* CollectionMenuViewController.swift in Sources */,
 				41D923432BE3DAB800311A1B /* OptionsView.swift in Sources */,
+				41998A6B2BE6A7F000E62B80 /* CardDetailsItemTableViewCell.swift in Sources */,
+				41998A512BE6A7F000E62B80 /* PortfolioCardsView.swift in Sources */,
 				468C83672AB6045E003DC91A /* SCPIdentificationError.swift in Sources */,
 				468E3E7E2A8AA43E0097C6EC /* SignInWithAppleHelper.swift in Sources */,
-				41D926302BE3E59C00311A1B /* CardPhotoInfoCollectionViewCell.swift in Sources */,
+				41998A132BE6A7EF00E62B80 /* CardPhotoInfoCollectionViewCell.swift in Sources */,
 				46DC11EE2ABCEAE8003BDB79 /* SCSNSImageView+SwiftyGif.swift in Sources */,
+				41998A772BE6A7F000E62B80 /* SignInView.swift in Sources */,
 				4650DE812A9A771A00F6F13C /* MinMaxPrices.swift in Sources */,
-				41D926312BE3E59C00311A1B /* CardCollectionViewControllerDelegate.swift in Sources */,
-				41D926872BE3E59D00311A1B /* HighestValueListViewControllerDelegate.swift in Sources */,
-				41D9267A2BE3E59D00311A1B /* AddCardsToDeckVCDelegate.swift in Sources */,
-				41D9261B2BE3E59C00311A1B /* CardSaleTableViewCell.swift in Sources */,
+				41998A142BE6A7EF00E62B80 /* CardCollectionViewControllerDelegate.swift in Sources */,
+				419989FE2BE6A7EF00E62B80 /* CardSaleTableViewCell.swift in Sources */,
 				464D26A22A840C2300C7F4D4 /* FirebaseError.swift in Sources */,
-				41D9268F2BE3E59D00311A1B /* SCSForgotPasswordVC.swift in Sources */,
 				4650DEEC2AA0EB7E00F6F13C /* PokemonCard.swift in Sources */,
-				41D9263F2BE3E59C00311A1B /* RecentlyAddedListViewController.swift in Sources */,
-				41D9262A2BE3E59C00311A1B /* CategoryCardsTableViewCell.swift in Sources */,
+				41998A222BE6A7EF00E62B80 /* RecentlyAddedListViewController.swift in Sources */,
+				41998A0D2BE6A7EF00E62B80 /* CategoryCardsTableViewCell.swift in Sources */,
 				467CCC372A93C21B000AFC8F /* ScanCardService.swift in Sources */,
 				468C83362AB07D46003DC91A /* MenuItem.swift in Sources */,
-				41D926222BE3E59C00311A1B /* CurrentValueDetailsView.CategoryValueView.swift in Sources */,
-				41D9268B2BE3E59D00311A1B /* CardDetailsViewControllerDelegate.swift in Sources */,
-				41D9265A2BE3E59D00311A1B /* CardCategoriesView.swift in Sources */,
-				41D926362BE3E59C00311A1B /* CardsRepresentSegmentedControl.swift in Sources */,
-				41D926342BE3E59C00311A1B /* CardCollectionViewController.swift in Sources */,
-				41D926442BE3E59C00311A1B /* SortCardsViewController.swift in Sources */,
+				41998A052BE6A7EF00E62B80 /* CurrentValueDetailsView.CategoryValueView.swift in Sources */,
+				41998A3D2BE6A7F000E62B80 /* CardCategoriesView.swift in Sources */,
+				41998A192BE6A7EF00E62B80 /* CardsRepresentSegmentedControl.swift in Sources */,
+				41998A5C2BE6A7F000E62B80 /* AddCardsToDeckVCDelegate.swift in Sources */,
+				41998A172BE6A7EF00E62B80 /* CardCollectionViewController.swift in Sources */,
+				41998A272BE6A7EF00E62B80 /* SortCardsViewController.swift in Sources */,
 				468E3E7C2A8AA13D0097C6EC /* SignInWithGoogleHelper.swift in Sources */,
 				46B387B62A878B5400F35D96 /* CardCategory.swift in Sources */,
 				46DC11ED2ABCEAE8003BDB79 /* SCSSwiftyGifManager.swift in Sources */,
 				464D26AB2A84EA2900C7F4D4 /* AppleAuthResult.swift in Sources */,
 				46B451C72ABC76DF007C2208 /* AlertBuilder.swift in Sources */,
-				41D926782BE3E59D00311A1B /* AddCardsToDeckVC.swift in Sources */,
 				46DC121D2ABCEAF0003BDB79 /* SCSServicesManager.swift in Sources */,
-				41D926172BE3E59C00311A1B /* CategoryCardsViewControllerDelegate.swift in Sources */,
+				419989FA2BE6A7EF00E62B80 /* CategoryCardsViewControllerDelegate.swift in Sources */,
 				4650DE852A9A79F400F6F13C /* CardSale.swift in Sources */,
 				468A5CD42AB7249E00D29443 /* PriceChartingAPI.swift in Sources */,
 				46DC11E52ABCEAE8003BDB79 /* SCSPageControll.swift in Sources */,
 				4650DF032AA1E18900F6F13C /* CardPhotoService.swift in Sources */,
-				41D9266E2BE3E59D00311A1B /* CardSetView.swift in Sources */,
 				464D26A42A840D1F00C7F4D4 /* GoogleAuthError.swift in Sources */,
 				4688A7702A823B0400882727 /* SCSEmailValidator.swift in Sources */,
-				41D926352BE3E59C00311A1B /* CardCollectionView.swift in Sources */,
-				41D926372BE3E59C00311A1B /* CardCollectionCardsView.swift in Sources */,
+				41998A182BE6A7EF00E62B80 /* CardCollectionView.swift in Sources */,
+				41998A1A2BE6A7EF00E62B80 /* CardCollectionCardsView.swift in Sources */,
 				46B451CE2ABC7FB5007C2208 /* NetworkMonitoringService.swift in Sources */,
 				4645D3B62AAE345B008AD896 /* CollectionMenuItem.swift in Sources */,
-				41D9267D2BE3E59D00311A1B /* CreateEditDeckVCDelegate.swift in Sources */,
 				468A5CDD2AB73FD800D29443 /* CardsUpdater.swift in Sources */,
 				4650DE872A9A871600F6F13C /* CardGrade.swift in Sources */,
-				41D926382BE3E59C00311A1B /* CardCollectionNoCardsView.swift in Sources */,
-				41D9264F2BE3E59D00311A1B /* NoCaptureAuthorizationView.swift in Sources */,
+				41998A712BE6A7F000E62B80 /* SCSForgotPasswordVC.swift in Sources */,
+				41998A702BE6A7F000E62B80 /* ForgotPasswordViewControllerDelegate.swift in Sources */,
+				41998A1B2BE6A7EF00E62B80 /* CardCollectionNoCardsView.swift in Sources */,
+				41998A322BE6A7F000E62B80 /* NoCaptureAuthorizationView.swift in Sources */,
 				41D923952BE3DEB600311A1B /* RemoveCardPromptCoordinator.swift in Sources */,
-				41D926722BE3E59D00311A1B /* IdentifyingCardViewController.swift in Sources */,
-				41D926412BE3E59C00311A1B /* GradeSelectionView.swift in Sources */,
-				41D9267B2BE3E59D00311A1B /* DeckMenuViewControllerDelegate.swift in Sources */,
+				41998A242BE6A7EF00E62B80 /* GradeSelectionView.swift in Sources */,
 				46DC11E42ABCEAE8003BDB79 /* NetworkStatusMonitor.swift in Sources */,
 				41D923F62BE3E1D500311A1B /* DeleteCollectionPromptCoordinator.swift in Sources */,
+				41998A592BE6A7F000E62B80 /* AddCardsToDeckView.swift in Sources */,
 				41D923522BE3DD4700311A1B /* PresentationStyle.swift in Sources */,
 				468C830A2AAF30D6003DC91A /* CardDeckManager.swift in Sources */,
-				41D926522BE3E59D00311A1B /* TabBarItem.swift in Sources */,
-				41D926262BE3E59C00311A1B /* AddCardsToCollectionCardsVC.swift in Sources */,
+				41998A662BE6A7F000E62B80 /* EditCardViewControllerDelegate.swift in Sources */,
+				41998A352BE6A7F000E62B80 /* TabBarItem.swift in Sources */,
+				41998A092BE6A7EF00E62B80 /* AddCardsToCollectionCardsVC.swift in Sources */,
 				4650DED62AA0819C00F6F13C /* LegalityOption.swift in Sources */,
 				41D923F92BE3E1D500311A1B /* CreateCardDeckCoordinator.swift in Sources */,
 				468C834E2AB1FCBD003DC91A /* MagicCard+init.swift in Sources */,
@@ -3062,6 +3065,8 @@
 				4650DE8F2A9B4EC900F6F13C /* SearchCardService.swift in Sources */,
 				41D923322BE3DAB700311A1B /* SwipeNavigationController.swift in Sources */,
 				468C83082AAF30CE003DC91A /* CardCollectionManager.swift in Sources */,
+				41998A7B2BE6A7F000E62B80 /* CheckConnectionDelegate.swift in Sources */,
+				41998A682BE6A7F000E62B80 /* EditCardView.DetailView.swift in Sources */,
 				41D923372BE3DAB800311A1B /* TitledTextFieldView.swift in Sources */,
 				41D923562BE3DD4700311A1B /* ModalNavigationRouter.swift in Sources */,
 				467CCC782A9813CC000AFC8F /* ProfileManager.swift in Sources */,
@@ -3072,156 +3077,160 @@
 				46C55C632A9A61D2001006E2 /* APIRouteProtocol.swift in Sources */,
 				41D923272BE3DAB700311A1B /* SwitchableTableViewCell.swift in Sources */,
 				41D923FB2BE3E1D500311A1B /* DeckMenuCoordinator.swift in Sources */,
-				41D9261F2BE3E59C00311A1B /* CurrentValueDetailsViewController.swift in Sources */,
+				41998A022BE6A7EF00E62B80 /* CurrentValueDetailsViewController.swift in Sources */,
 				4650DF122AA227F300F6F13C /* CardType.swift in Sources */,
-				41D926832BE3E59D00311A1B /* EditCardViewController.swift in Sources */,
 				41D9232A2BE3DAB700311A1B /* SelectableTableViewCell.swift in Sources */,
 				46E721342AB9B46100D15ABB /* validateLocalizable.swift in Sources */,
 				41D923F52BE3E1D500311A1B /* CreateCardCollectionCoordinator.swift in Sources */,
 				4619AE5B2A77965700753891 /* AppDelegate.swift in Sources */,
+				41998A4F2BE6A7F000E62B80 /* PortfolioInfoView.swift in Sources */,
+				41998A532BE6A7F000E62B80 /* PortfolioView.swift in Sources */,
 				468A5CD02AB7243900D29443 /* PCIdentificationResponse.swift in Sources */,
-				41D926882BE3E59D00311A1B /* HighestValueCardListViewController.swift in Sources */,
 				41D6448E2BE3D75100642D21 /* Firestore_Extension.swift in Sources */,
-				41D926672BE3E59D00311A1B /* RecentlyAddedCardsView.swift in Sources */,
-				41D926682BE3E59D00311A1B /* CurrentCardsValueView.swift in Sources */,
 				468A5CE12AB7AF8A00D29443 /* CardsActualizer.swift in Sources */,
-				41D9269B2BE3E59D00311A1B /* ResetPasswordViewController.swift in Sources */,
-				41D926322BE3E59C00311A1B /* SwipeableCardsView.swift in Sources */,
-				41D9268E2BE3E59D00311A1B /* ForgotPasswordViewControllerDelegate.swift in Sources */,
-				41D926212BE3E59C00311A1B /* CurrentValueDetailsViewControllerDelegate.swift in Sources */,
+				41998A152BE6A7EF00E62B80 /* SwipeableCardsView.swift in Sources */,
+				41998A7E2BE6A7F000E62B80 /* ResetPasswordViewController.swift in Sources */,
+				41998A042BE6A7EF00E62B80 /* CurrentValueDetailsViewControllerDelegate.swift in Sources */,
 				4650DE7F2A9A743700F6F13C /* SCIRoute.swift in Sources */,
-				41D926532BE3E59D00311A1B /* ProfileSelectableCell.swift in Sources */,
+				41998A362BE6A7F000E62B80 /* ProfileSelectableCell.swift in Sources */,
 				41D644852BE3D75100642D21 /* Array_Extension.swift in Sources */,
 				4650DEC12A9EABFC00F6F13C /* SwipableController.swift in Sources */,
+				41998A6D2BE6A7F000E62B80 /* CardDetailsViewControllerDelegate.swift in Sources */,
 				469668112A99513400F669E4 /* CardGrader.swift in Sources */,
 				461CBD2E2AA9DE880025FF41 /* CardCollection.swift in Sources */,
 				468E3E612A897C490097C6EC /* CardCategoriesManager.swift in Sources */,
+				41998A622BE6A7F000E62B80 /* CardDeckView.swift in Sources */,
 				467CCC602A978050000AFC8F /* IdentifyCardError.swift in Sources */,
 				461E2EE92A8F75DF009422E0 /* AuthCredentialManager.swift in Sources */,
-				41D9263B2BE3E59C00311A1B /* GraderTableViewCell.swift in Sources */,
+				41998A1E2BE6A7EF00E62B80 /* GraderTableViewCell.swift in Sources */,
+				41998A6A2BE6A7F000E62B80 /* HighestValueCardListViewController.swift in Sources */,
 				41D644902BE3D75100642D21 /* CGRect_Extension.swift in Sources */,
 				41D923932BE3DEB600311A1B /* RecentlyAddedListCoordinator.swift in Sources */,
 				46DC11E32ABCEAE8003BDB79 /* IAPHandler.swift in Sources */,
 				4650DED12AA0801E00F6F13C /* MagicCard.swift in Sources */,
-				41D9262B2BE3E59C00311A1B /* AddCardsToCollectionCategoriesView.swift in Sources */,
-				41D9268A2BE3E59D00311A1B /* CardDetailsViewController.swift in Sources */,
+				41998A0E2BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesView.swift in Sources */,
 				46C55C572A9A4A92001006E2 /* SportsCardInvestorAPI.swift in Sources */,
-				41D926962BE3E59D00311A1B /* SignInViewControllerDelegate.swift in Sources */,
 				41D923302BE3DAB700311A1B /* PricingReportButton.swift in Sources */,
 				4660C0052A7BFFD300FB80AF /* SCSUser.swift in Sources */,
 				468C83622AB5FADE003DC91A /* SCPDecoder.swift in Sources */,
-				41D9265D2BE3E59D00311A1B /* MoreViewController.swift in Sources */,
+				41998A402BE6A7F000E62B80 /* MoreViewController.swift in Sources */,
 				41D923422BE3DAB800311A1B /* CommonButton.Colors.swift in Sources */,
 				4650DE7C2A9A721C00F6F13C /* SearchedCard.swift in Sources */,
-				41D926772BE3E59D00311A1B /* AddCardsToDeckView.swift in Sources */,
+				41998A6C2BE6A7F000E62B80 /* CardDetailsViewController.swift in Sources */,
+				41998A6F2BE6A7F000E62B80 /* CardDetailsListView.swift in Sources */,
 				46A01D922A7E5CE4006AFB5E /* KeyboardInfo.swift in Sources */,
-				41D926232BE3E59C00311A1B /* CurrentValueDetailsView.swift in Sources */,
+				41998A062BE6A7EF00E62B80 /* CurrentValueDetailsView.swift in Sources */,
+				41998A762BE6A7F000E62B80 /* SCSSignInVC.swift in Sources */,
+				41998A582BE6A7F000E62B80 /* RemoveCardsFromDeckVCDelegate.swift in Sources */,
 				467CCC622A9780BA000AFC8F /* IdentifiedCard.swift in Sources */,
-				41D926812BE3E59D00311A1B /* CardDeckViewController.swift in Sources */,
 				467CCC582A974E5C000AFC8F /* ScannedCard.swift in Sources */,
 				41D923502BE3DD4700311A1B /* SCSRouter.swift in Sources */,
+				41998A7A2BE6A7F000E62B80 /* CheckConnectionView.swift in Sources */,
 				46DC12162ABCEAE8003BDB79 /* PremiumMainController.swift in Sources */,
-				41D9265C2BE3E59D00311A1B /* MoreView.swift in Sources */,
+				41998A3F2BE6A7F000E62B80 /* MoreView.swift in Sources */,
 				41D923922BE3DEB600311A1B /* SCSCoordinator.swift in Sources */,
-				41D926862BE3E59D00311A1B /* EditCardView.DetailView.swift in Sources */,
 				41D9238F2BE3DEB600311A1B /* DeleteAccountCoordinator.swift in Sources */,
-				41D926622BE3E59D00311A1B /* DashboardNoCardView.swift in Sources */,
-				41D926392BE3E59C00311A1B /* CollectionMenuViewControllerDelegate.swift in Sources */,
+				41998A792BE6A7F000E62B80 /* CheckConnectionVC.swift in Sources */,
+				41998A452BE6A7F000E62B80 /* DashboardNoCardView.swift in Sources */,
+				41998A1C2BE6A7EF00E62B80 /* CollectionMenuViewControllerDelegate.swift in Sources */,
 				41D644802BE3D75100642D21 /* UIDevice_Extension.swift in Sources */,
 				41D923472BE3DAB800311A1B /* DeleteAccountVCdelegate.swift in Sources */,
 				41D923902BE3DEB600311A1B /* LogoutPromptCoordinator.swift in Sources */,
-				41D926242BE3E59C00311A1B /* RemoveCardsFromCollectionVC.swift in Sources */,
+				41998A5A2BE6A7F000E62B80 /* AddCardsToDeckVC.swift in Sources */,
+				41998A072BE6A7EF00E62B80 /* RemoveCardsFromCollectionVC.swift in Sources */,
 				41D923942BE3DEB600311A1B /* UpdatePasswordCoordinator.swift in Sources */,
-				41D9267C2BE3E59D00311A1B /* DeckMenuViewController.swift in Sources */,
-				41D926542BE3E59D00311A1B /* ProfileSwitchableCell.swift in Sources */,
+				41998A372BE6A7F000E62B80 /* ProfileSwitchableCell.swift in Sources */,
 				468C83552AB26B14003DC91A /* PokemonCard+init.swift in Sources */,
-				41D926942BE3E59D00311A1B /* SCSSignInVC.swift in Sources */,
-				41D9262E2BE3E59C00311A1B /* CreateEditCollectionVC.swift in Sources */,
-				41D9264B2BE3E59D00311A1B /* SelectableCardCategoryTableViewCell.swift in Sources */,
+				41998A112BE6A7EF00E62B80 /* CreateEditCollectionVC.swift in Sources */,
+				41998A2E2BE6A7EF00E62B80 /* SelectableCardCategoryTableViewCell.swift in Sources */,
 				4643F2062ACC227700B05FE5 /* DetectCardService.swift in Sources */,
-				41D9261E2BE3E59C00311A1B /* PricingReportView.swift in Sources */,
-				41D926552BE3E59D00311A1B /* UpdatePasswordViewControllerDelegate.swift in Sources */,
-				41D926592BE3E59D00311A1B /* CardCategoriesViewController.swift in Sources */,
+				41998A012BE6A7EF00E62B80 /* PricingReportView.swift in Sources */,
+				41998A5E2BE6A7F000E62B80 /* DeckMenuViewController.swift in Sources */,
+				41998A382BE6A7F000E62B80 /* UpdatePasswordViewControllerDelegate.swift in Sources */,
+				41998A3C2BE6A7F000E62B80 /* CardCategoriesViewController.swift in Sources */,
 				468C835E2AB5F988003DC91A /* SCPIdentificationResponse.swift in Sources */,
 				468A5CD82AB724B900D29443 /* PCRoute.swift in Sources */,
-				41D926502BE3E59D00311A1B /* ScanCardViewControllerDelegate.swift in Sources */,
+				41998A332BE6A7F000E62B80 /* ScanCardViewControllerDelegate.swift in Sources */,
 				468C836A2AB606A0003DC91A /* CardIdentifiable.swift in Sources */,
-				41D926712BE3E59D00311A1B /* PortfolioView.swift in Sources */,
 				41D923FA2BE3E1D500311A1B /* CardDeckCoordinator.swift in Sources */,
 				41D923F82BE3E1D500311A1B /* CollectionMenuCoordinator.swift in Sources */,
-				41D926792BE3E59D00311A1B /* AddCardsToDeckHelper.swift in Sources */,
 				468A5CD22AB7244C00D29443 /* PCCard.swift in Sources */,
 				46DC11E62ABCEAE8003BDB79 /* scsslider.swift in Sources */,
 				4650DE8D2A9B4B7900F6F13C /* CardRepresentable.swift in Sources */,
-				41D9264A2BE3E59D00311A1B /* ParallelSelectionViewController.swift in Sources */,
-				41D926482BE3E59C00311A1B /* ParallelCollectionViewCell.swift in Sources */,
+				41998A2D2BE6A7EF00E62B80 /* ParallelSelectionViewController.swift in Sources */,
+				41998A2B2BE6A7EF00E62B80 /* ParallelCollectionViewCell.swift in Sources */,
 				467CCC742A98086F000AFC8F /* ProfileInfo.swift in Sources */,
-				41D926562BE3E59D00311A1B /* UpdatePasswordView.swift in Sources */,
+				41998A392BE6A7F000E62B80 /* UpdatePasswordView.swift in Sources */,
 				46C55C5E2A9A4C10001006E2 /* SCICardSale.swift in Sources */,
 				41D9233A2BE3DAB800311A1B /* SCSMenuView.swift in Sources */,
 				4650DEE12AA0B05300F6F13C /* CardWrapper.swift in Sources */,
 				41D923912BE3DEB600311A1B /* IdentifyingCardCoordinator.swift in Sources */,
-				41D926272BE3E59C00311A1B /* AddCardsToCollectionCardsVCDelegate.swift in Sources */,
+				41998A0A2BE6A7EF00E62B80 /* AddCardsToCollectionCardsVCDelegate.swift in Sources */,
 				41D6447F2BE3D75100642D21 /* UILabel_Extension.swift in Sources */,
+				41998A722BE6A7F000E62B80 /* ForgotPasswordView.swift in Sources */,
 				41D923282BE3DAB700311A1B /* MenuSelectableCell.swift in Sources */,
 				41D923382BE3DAB800311A1B /* CardGraderButton.swift in Sources */,
+				41998A4E2BE6A7F000E62B80 /* PortfolioViewControllerDelegate.swift in Sources */,
 				41D923972BE3DEB600311A1B /* ScanCardCoordinator.swift in Sources */,
 				461CBD3C2AAA7CF30025FF41 /* CategoryCards.swift in Sources */,
-				41D9266A2BE3E59D00311A1B /* CategoryValueTableViewCell.swift in Sources */,
 				46DC121A2ABCEAE8003BDB79 /* ReusableView.swift in Sources */,
 				46E721022AB9AFFB00D15ABB /* SCSConfigurations.swift in Sources */,
 				41D6448B2BE3D75100642D21 /* Notification.Name_Extension.swift in Sources */,
+				41998A522BE6A7F000E62B80 /* PortfolioNoCardView.swift in Sources */,
 				4650DED32AA0813100F6F13C /* CardLegality.swift in Sources */,
 				41D6448F2BE3D75100642D21 /* CGPoint_Extension.swift in Sources */,
+				41998A652BE6A7F000E62B80 /* EditCardViewController.swift in Sources */,
 				4650DECF2AA07C3A00F6F13C /* CardParallel.swift in Sources */,
 				41D9238D2BE3DEB600311A1B /* HighestValueListCoordinator.swift in Sources */,
-				41D9268C2BE3E59D00311A1B /* CardDetailsView.swift in Sources */,
+				41998A572BE6A7F000E62B80 /* RemoveCardsFromDeckVC.swift in Sources */,
 				41D923442BE3DAB800311A1B /* OptionTableViewCell.swift in Sources */,
+				41998A4A2BE6A7F000E62B80 /* CurrentCardsValueView.swift in Sources */,
 				461E2EED2A8F781F009422E0 /* EmailAuthResult.swift in Sources */,
-				41D926572BE3E59D00311A1B /* UpdatePasswordVC.swift in Sources */,
+				41998A4C2BE6A7F000E62B80 /* CategoryValueTableViewCell.swift in Sources */,
+				41998A3A2BE6A7F000E62B80 /* UpdatePasswordVC.swift in Sources */,
 				41D923402BE3DAB800311A1B /* CommonButton.Appearance.swift in Sources */,
+				41998A492BE6A7F000E62B80 /* RecentlyAddedCardsView.swift in Sources */,
 				41D644952BE3D75100642D21 /* NumberFormatter_Extension.swift in Sources */,
 				41D644832BE3D75100642D21 /* UIView_Extension.swift in Sources */,
-				41D926912BE3E59D00311A1B /* SignUpViewControllerDelegate.swift in Sources */,
-				41D9267F2BE3E59D00311A1B /* CreateEditDeckVC.swift in Sources */,
-				41D9262F2BE3E59C00311A1B /* CreateEditCollectionVCDelegate.swift in Sources */,
-				41D926602BE3E59D00311A1B /* CategoryValueCollectionViewCell.swift in Sources */,
+				41998A122BE6A7EF00E62B80 /* CreateEditCollectionVCDelegate.swift in Sources */,
+				41998A432BE6A7F000E62B80 /* CategoryValueCollectionViewCell.swift in Sources */,
 				4619AE5D2A77965700753891 /* SceneDelegate.swift in Sources */,
-				41D926462BE3E59C00311A1B /* AddToPortfolioDetailsView.swift in Sources */,
+				41998A292BE6A7EF00E62B80 /* AddToPortfolioDetailsView.swift in Sources */,
 				41D923412BE3DAB800311A1B /* CommonButton.Style.swift in Sources */,
 				41D9233F2BE3DAB800311A1B /* CommonButton.swift in Sources */,
 				4650DECD2AA07C2A00F6F13C /* SportCard.swift in Sources */,
-				41D926192BE3E59C00311A1B /* SearchCardViewControllerDelegate.swift in Sources */,
+				419989FC2BE6A7EF00E62B80 /* SearchCardViewControllerDelegate.swift in Sources */,
+				41998A542BE6A7F000E62B80 /* IdentifyingCardViewController.swift in Sources */,
 				468C83582AB5F8B2003DC91A /* SportsCardsProAPI.swift in Sources */,
+				41998A632BE6A7F000E62B80 /* CardDeckViewController.swift in Sources */,
 				464D26A92A84E9E800C7F4D4 /* AppleAuthError.swift in Sources */,
 				4650DEDE2AA0AC5800F6F13C /* UserCardsManager.swift in Sources */,
-				41D9262D2BE3E59C00311A1B /* AddCardsToCollectionCategoriesVCDelegate.swift in Sources */,
+				41998A102BE6A7EF00E62B80 /* AddCardsToCollectionCategoriesVCDelegate.swift in Sources */,
 				4643F2082ACC26D100B05FE5 /* DetectCardError.swift in Sources */,
-				41D9265E2BE3E59D00311A1B /* MoreViewControllerDelegate.swift in Sources */,
-				41D9263D2BE3E59C00311A1B /* GraderSelectionView.swift in Sources */,
+				41998A412BE6A7F000E62B80 /* MoreViewControllerDelegate.swift in Sources */,
+				41998A202BE6A7EF00E62B80 /* GraderSelectionView.swift in Sources */,
 				4688A76B2A823A7100882727 /* TextValidator.swift in Sources */,
+				41998A4B2BE6A7F000E62B80 /* DashboardViewControllerDelegate.swift in Sources */,
 				41D923532BE3DD4700311A1B /* AppDelegateRouter.swift in Sources */,
 				461CBD472AAC8A5E0025FF41 /* CardCollectible.swift in Sources */,
-				41D926922BE3E59D00311A1B /* SignUpView.swift in Sources */,
 				4688A7722A823C8100882727 /* LengthValidator.swift in Sources */,
-				41D926512BE3E59D00311A1B /* ScanCardViewController.swift in Sources */,
+				41998A342BE6A7F000E62B80 /* ScanCardViewController.swift in Sources */,
 				41D6448C2BE3D75100642D21 /* SCICard+SCSExtension???.swift in Sources */,
 				41D9232B2BE3DAB700311A1B /* CardPhotoCollectionViewCell.swift in Sources */,
 				468E3E6D2A8A081A0097C6EC /* CellPosition.swift in Sources */,
-				41D926852BE3E59D00311A1B /* EditCardView.swift in Sources */,
 				461E2EEF2A8F816C009422E0 /* CommonAuthError.swift in Sources */,
 				467CCC5C2A977ECE000AFC8F /* IdentifyCardService.swift in Sources */,
 				46DC11E92ABCEAE8003BDB79 /* SCSUIImageView+SwiftyGif.swift in Sources */,
 				41D923FC2BE3E1D500311A1B /* DeleteDeckPromptCoordinator.swift in Sources */,
 				41D644942BE3D75100642D21 /* JSONEncoder+SCSExtension.swift in Sources */,
-				41D926252BE3E59C00311A1B /* RemoveCardsFromCollectionVCDelegate.swift in Sources */,
+				41998A082BE6A7EF00E62B80 /* RemoveCardsFromCollectionVCDelegate.swift in Sources */,
 				41D923392BE3DAB800311A1B /* CommonTextField.swift in Sources */,
-				41D926762BE3E59D00311A1B /* RemoveCardsFromDeckVCDelegate.swift in Sources */,
 				41D923772BE3DE0C00311A1B /* LocalizableStrings.swift in Sources */,
 				467CCC3B2A94180C000AFC8F /* AppInfo.swift in Sources */,
-				41D9261A2BE3E59C00311A1B /* SearchCardViewController.swift in Sources */,
+				419989FD2BE6A7EF00E62B80 /* SearchCardViewController.swift in Sources */,
 				461CBD0F2AA4A60E0025FF41 /* PriceValidator.swift in Sources */,
 				41D644822BE3D75100642D21 /* UIImage_Extension.swift in Sources */,
+				41998A752BE6A7F000E62B80 /* SCSSignUpVC.swift in Sources */,
 				467CCC5E2A97802B000AFC8F /* ScanCardError.swift in Sources */,
 				41D923292BE3DAB700311A1B /* MenuSwitchableCell.swift in Sources */,
 				468C836D2AB60CA4003DC91A /* MultipartFormDataRequest.swift in Sources */,
@@ -3230,7 +3239,7 @@
 				41D644892BE3D75100642D21 /* Double_Extension.swift in Sources */,
 				41D9239C2BE3DEB600311A1B /* CardDetailsCoordinator.swift in Sources */,
 				468C83602AB5FA00003DC91A /* SCPRoute.swift in Sources */,
-				41D926642BE3E59D00311A1B /* DashboardCardsView.swift in Sources */,
+				41998A472BE6A7F000E62B80 /* DashboardCardsView.swift in Sources */,
 				4650DE7A2A9A6B6900F6F13C /* SCICardPrices.swift in Sources */,
 				41D923462BE3DAB800311A1B /* DeleteAccountVC.swift in Sources */,
 				41D9233D2BE3DAB800311A1B /* BaseScrollView.swift in Sources */,
@@ -3238,78 +3247,73 @@
 				41D923252BE3DAB700311A1B /* CardTableViewCell.swift in Sources */,
 				461E2EF92A8F9FF8009422E0 /* AuthStateManager.swift in Sources */,
 				41D6447C2BE3D75100642D21 /* UINavigationBar_Extension.swift in Sources */,
-				41D926402BE3E59C00311A1B /* RecentlyAddedListViewControllerDelegate.swift in Sources */,
-				41D9263C2BE3E59C00311A1B /* GraderSelectionViewController.swift in Sources */,
+				41998A232BE6A7EF00E62B80 /* RecentlyAddedListViewControllerDelegate.swift in Sources */,
+				41998A1F2BE6A7EF00E62B80 /* GraderSelectionViewController.swift in Sources */,
 				41D644842BE3D75100642D21 /* String_Extension.swift in Sources */,
-				41D926742BE3E59D00311A1B /* IdentifyingCardView.swift in Sources */,
+				41998A562BE6A7F000E62B80 /* IdentifyingCardView.swift in Sources */,
 				46C55C652A9A61EE001006E2 /* SCSHTTPMethod.swift in Sources */,
 				46DC11EC2ABCEAE8003BDB79 /* SCSUIImage+SwiftyGif.swift in Sources */,
 				468E3E672A897E000097C6EC /* UserDefaultCodable.swift in Sources */,
-				41D926982BE3E59D00311A1B /* CheckConnectionView.swift in Sources */,
 				46B451CC2ABC7A89007C2208 /* SCSAlertType.swift in Sources */,
-				41D926472BE3E59C00311A1B /* AddToPortfolioDetails.swift in Sources */,
-				41D9263E2BE3E59C00311A1B /* GraderSelectionViewControllerDelegate.swift in Sources */,
+				41998A2A2BE6A7EF00E62B80 /* AddToPortfolioDetails.swift in Sources */,
+				41998A212BE6A7EF00E62B80 /* GraderSelectionViewControllerDelegate.swift in Sources */,
 				41D923752BE3DE0C00311A1B /* Images.swift in Sources */,
 				46DC11E02ABCEAE8003BDB79 /* TransactionView.swift in Sources */,
-				41D926282BE3E59C00311A1B /* AddCardsToCollectionCardsView.swift in Sources */,
+				41998A0B2BE6A7EF00E62B80 /* AddCardsToCollectionCardsView.swift in Sources */,
 				41D6448A2BE3D75100642D21 /* UserDefaults_Extension.swift in Sources */,
+				41998A7C2BE6A7F000E62B80 /* ResetPasswordViewControllerDelegate.swift in Sources */,
+				41998A4D2BE6A7F000E62B80 /* PortfolioViewController.swift in Sources */,
 				4650DE832A9A79BE00F6F13C /* GraderInfo.swift in Sources */,
-				41D926202BE3E59C00311A1B /* CurrentValueTableViewCell.swift in Sources */,
+				41998A032BE6A7EF00E62B80 /* CurrentValueTableViewCell.swift in Sources */,
 				4679D8982AAE140E00656AC1 /* CardsDisplayOption.swift in Sources */,
-				41D926582BE3E59D00311A1B /* CardCategoryTableViewCell.swift in Sources */,
-				41D926992BE3E59D00311A1B /* ResetPasswordViewControllerDelegate.swift in Sources */,
+				41998A7D2BE6A7F000E62B80 /* ResetPasswordView.swift in Sources */,
+				41998A3B2BE6A7F000E62B80 /* CardCategoryTableViewCell.swift in Sources */,
 				46B451C92ABC7A4A007C2208 /* SCSAlertService.swift in Sources */,
 				41D923552BE3DD4700311A1B /* ModalPresentationRouter.swift in Sources */,
 				46DC12142ABCEAE8003BDB79 /* SCSPlayer.swift in Sources */,
-				41D926612BE3E59D00311A1B /* DashboardViewController.swift in Sources */,
-				41D9269A2BE3E59D00311A1B /* ResetPasswordView.swift in Sources */,
-				41D926972BE3E59D00311A1B /* CheckConnectionVC.swift in Sources */,
+				41998A6E2BE6A7F000E62B80 /* CardDetailsView.swift in Sources */,
+				41998A502BE6A7F000E62B80 /* CardSetView.swift in Sources */,
+				41998A442BE6A7F000E62B80 /* DashboardViewController.swift in Sources */,
 				468A5CD62AB724B100D29443 /* PCDecoder.swift in Sources */,
 				41D923962BE3DEB600311A1B /* CategoryCardsCoordinator.swift in Sources */,
+				41998A742BE6A7F000E62B80 /* SignUpView.swift in Sources */,
 				468C83532AB26098003DC91A /* MagicCardColor.swift in Sources */,
-				41D926162BE3E59C00311A1B /* CategoryCardsViewController.swift in Sources */,
+				419989F92BE6A7EF00E62B80 /* CategoryCardsViewController.swift in Sources */,
 				464D26A02A8409C600C7F4D4 /* GoogleAuthResult.swift in Sources */,
 				41D923312BE3DAB700311A1B /* PricingReportButton.NoPriceView.swift in Sources */,
 				41D9232C2BE3DAB700311A1B /* CardCollectionViewCell.swift in Sources */,
-				41D926842BE3E59D00311A1B /* EditCardViewControllerDelegate.swift in Sources */,
 				4650DF142AA22E4900F6F13C /* CardDetailName.swift in Sources */,
-				41D926752BE3E59D00311A1B /* RemoveCardsFromDeckVC.swift in Sources */,
-				41D926892BE3E59D00311A1B /* CardDetailsItemTableViewCell.swift in Sources */,
 				41D923982BE3DEB600311A1B /* SearchCardCoordinator.swift in Sources */,
 				468C835B2AB5F8FF003DC91A /* SCPCard.swift in Sources */,
 				4645D3CD2AAF02FF008AD896 /* CardSortOption.swift in Sources */,
-				41D926452BE3E59C00311A1B /* SortCardsViewControllerDelegate.swift in Sources */,
-				41D926822BE3E59D00311A1B /* CardDeckViewControllerDelegate.swift in Sources */,
-				41D926732BE3E59D00311A1B /* IdentifyingCardViewControllerDelegate.swift in Sources */,
-				41D926652BE3E59D00311A1B /* HighestCardsValueView.swift in Sources */,
+				41998A282BE6A7EF00E62B80 /* SortCardsViewControllerDelegate.swift in Sources */,
+				41998A482BE6A7F000E62B80 /* HighestCardsValueView.swift in Sources */,
 				46C55C5C2A9A4BCC001006E2 /* SCICard.swift in Sources */,
-				41D9266B2BE3E59D00311A1B /* PortfolioViewController.swift in Sources */,
 				41D644862BE3D75100642D21 /* Collection_Extension.swift in Sources */,
-				41D9265F2BE3E59D00311A1B /* ProfileItem.swift in Sources */,
-				41D926422BE3E59C00311A1B /* GradeSelectionViewController.swift in Sources */,
+				41998A422BE6A7F000E62B80 /* ProfileItem.swift in Sources */,
+				41998A252BE6A7EF00E62B80 /* GradeSelectionViewController.swift in Sources */,
 				41D644882BE3D75100642D21 /* NSObject_Extension.swift in Sources */,
-				41D926692BE3E59D00311A1B /* DashboardViewControllerDelegate.swift in Sources */,
 				41D644922BE3D75100642D21 /* UIColor_Extension.swift in Sources */,
 				46C7BE492AC752E200FAD645 /* MagicCardIdentifier.swift in Sources */,
 				4660C0022A7BFF2B00FB80AF /* SCSAuthService.swift in Sources */,
 				46DC11E22ABCEAE8003BDB79 /* scsextensions-freeform.swift in Sources */,
-				41D9264D2BE3E59D00311A1B /* ScanCardView.swift in Sources */,
-				41D9266D2BE3E59D00311A1B /* PortfolioInfoView.swift in Sources */,
-				41D926432BE3E59C00311A1B /* SortCardOptionCell.swift in Sources */,
-				41D926492BE3E59C00311A1B /* ParallelSelectionView.swift in Sources */,
+				41998A302BE6A7F000E62B80 /* ScanCardView.swift in Sources */,
+				41998A262BE6A7EF00E62B80 /* SortCardOptionCell.swift in Sources */,
+				41998A642BE6A7F000E62B80 /* CardDeckViewControllerDelegate.swift in Sources */,
+				41998A2C2BE6A7EF00E62B80 /* ParallelSelectionView.swift in Sources */,
 				41D9232E2BE3DAB700311A1B /* PricingReportButton.CustomPriceView.swift in Sources */,
 				461CBD442AAC89B70025FF41 /* CardDeck.swift in Sources */,
 				46DC121F2ABCEDDA003BDB79 /* PremiumMainControllerDelegate.swift in Sources */,
-				41D9267E2BE3E59D00311A1B /* CreateEditDeckView.swift in Sources */,
+				41998A5F2BE6A7F000E62B80 /* CreateEditDeckVCDelegate.swift in Sources */,
 				41D923332BE3DAB700311A1B /* SCSGrabberView.swift in Sources */,
-				41D9266F2BE3E59D00311A1B /* PortfolioCardsView.swift in Sources */,
-				41D9268D2BE3E59D00311A1B /* CardDetailsListView.swift in Sources */,
-				41D9264C2BE3E59D00311A1B /* GradeType.swift in Sources */,
+				41998A2F2BE6A7EF00E62B80 /* GradeType.swift in Sources */,
 				41D6447D2BE3D75100642D21 /* UITableView_Extension.swift in Sources */,
 				41D923452BE3DAB800311A1B /* DeleteCustomPresent.swift in Sources */,
 				46DC11EB2ABCEAE8003BDB79 /* SCSObjcAssociatedWeakObject.swift in Sources */,
 				41D6447A2BE3D75100642D21 /* UIScreen_Extension.swift in Sources */,
+				41998A732BE6A7F000E62B80 /* SignUpViewControllerDelegate.swift in Sources */,
 				46C55C612A9A4C98001006E2 /* SCISearchResponse.swift in Sources */,
+				41998A552BE6A7F000E62B80 /* IdentifyingCardViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

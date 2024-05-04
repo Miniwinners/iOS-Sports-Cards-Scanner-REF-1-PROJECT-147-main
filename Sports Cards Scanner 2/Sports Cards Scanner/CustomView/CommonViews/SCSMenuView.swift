@@ -11,8 +11,9 @@ final class MenuView: UIView {
 
     lazy var cancelButton: CommonButton = { button in
         button.setButtonTitle(L10n.Common.cancel)
+
         return button
-    }(CommonButton(style: .cancel))
+    }(CommonButton(style: .cancel2))
 
     convenience init() {
         self.init(frame: .zero)
@@ -40,6 +41,7 @@ private extension MenuView {
 }
 
 private extension MenuView {
+
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
             widthDimension: .estimated(UIDevice.isIpad ? 243:142),

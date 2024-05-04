@@ -59,15 +59,16 @@ final class PortfolioViewController: UIViewController {
         setupViews_unique()
         setupActions_unique()
         subscribeToNotifications()
+
     }
 }
 
 private extension PortfolioViewController {
+
     func setupViews_unique() {
         portfolioView.cardsView.categoriesTableView.register(CategoryValueTableViewCell.self, forCellReuseIdentifier: CategoryValueTableViewCell.className)
         portfolioView.cardsView.categoriesTableView.dataSource = self
         portfolioView.cardsView.categoriesTableView.delegate = self
-
         reloadSubviews_unique()
     }
 

@@ -9,7 +9,7 @@ final class CardView: UIView {
     lazy var titleLabel: UILabel = { label in
         label.textColor = .black
         label.setSize(fontS: .ubuntuMedium500, phone: 16, iPad: 22)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.setLineHeight(UIDevice.isIpad ? 24:18)
         return label
     }(UILabel())
@@ -144,19 +144,18 @@ private extension CardView {
             $0.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
-            $0.height.equalTo(UIDevice.isIpad ? 40:30)
-
-            $0.leading.equalToSuperview()
+            $0.height.lessThanOrEqualTo(UIDevice.isIpad ? 70:60)
+            $0.left.right.equalToSuperview()
             $0.top.equalTo(cardImageView.snp.bottom).offset(UIDevice.isIpad ? 15:10)
         }
         subtitleLabel.snp.makeConstraints {
-            $0.height.equalTo(UIDevice.isIpad ? 40:30)
-            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 5:0)
-            $0.leading.equalToSuperview()
+            $0.height.equalTo(UIDevice.isIpad ? 30:20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(UIDevice.isIpad ? 10:5)
+            $0.left.right.equalToSuperview()
         }
         pricesLabel.snp.makeConstraints {
-            $0.height.equalTo(UIDevice.isIpad ? 40:30)
-            $0.top.equalTo(subtitleLabel.snp.bottom).offset(UIDevice.isIpad ? 5:0)
+            $0.height.equalTo(UIDevice.isIpad ? 30:20)
+            $0.top.equalTo(subtitleLabel.snp.bottom).offset(UIDevice.isIpad ? 10:5)
             $0.leading.equalToSuperview()
         }
 

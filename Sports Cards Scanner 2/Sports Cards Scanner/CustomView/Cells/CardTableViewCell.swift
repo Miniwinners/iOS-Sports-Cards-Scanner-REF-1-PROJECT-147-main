@@ -83,16 +83,17 @@ private extension CardTableViewCell {
             make.width.equalTo(UIDevice.isIpad ? 143 : 96)
         }
         cardView.titleLabel.snp.remakeConstraints { make in
-            make.top.equalToSuperview().inset(UIDevice.isIpad ? 50:30)
+            make.top.equalToSuperview().inset(UIDevice.isIpad ? 40:20)
             make.left.equalTo(cardView.cardImageView.snp.right).offset(20)
-            make.right.equalToSuperview().inset(20)
+            make.right.equalToSuperview().inset(5)
         }
 
         cardView.subtitleLabel.snp.remakeConstraints { make in
             make.centerY.equalToSuperview()
+            make.top.equalTo(cardView.titleLabel.snp.bottom).offset(UIDevice.isIpad ? 10:5).priority(.medium)
             make.left.equalTo(cardView.cardImageView.snp.right).offset(20)
-            make.right.equalToSuperview().inset(20)
-            make.height.equalTo(UIDevice.isIpad ?30:20)
+            make.right.equalToSuperview().inset(5)
+            make.height.equalTo(UIDevice.isIpad ? 30:20)
         }
 
         cardView.pricesLabel.snp.remakeConstraints { make in

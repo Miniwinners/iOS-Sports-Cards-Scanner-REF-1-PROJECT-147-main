@@ -4,7 +4,7 @@ import UIKit
 class CheckConnectionVC: UIViewController {
 
     lazy var connectionView: CheckConnectionView = .init()
-
+    weak var delegate: CheckConnectionDelegate?
     var timer: Timer!
     var progress = 0
     var callBack: (() -> Void)?
@@ -34,21 +34,26 @@ class CheckConnectionVC: UIViewController {
                     self.connectionView.progressLabel.text = "\(self.progress) %"
                 }
         } else {
-            if checkConnection() {
-                callBack?()
-            } else {
-                connectionView.progressBarContainer.isHidden = true
-                connectionView.progressLabel.isHidden = true
-                connectionView.stackView.isHidden = false
-                timer.invalidate()
-                print("Progress complete!")
-            }
+            timer?.invalidate()
+            timer = nil
+
+            handleConnectionCheck()
         }
     }
 
+    func handleConnectionCheck() {
+           if checkConnection() {
+               delegate?.checkConnectionDidLoad(self)
+           } else {
+               connectionView.progressBarContainer.isHidden = true
+               connectionView.progressLabel.isHidden = true
+               connectionView.stackView.isHidden = false
+               print("Progress complete!")
+           }
+       }
+
     func checkConnection() -> Bool {
         return NetworkMonitoringService.shared.isNetworkAvailable
-//        return false
     }
 
 }

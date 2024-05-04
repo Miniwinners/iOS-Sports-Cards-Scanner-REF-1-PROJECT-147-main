@@ -20,10 +20,23 @@ extension SCSAppCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
         presentInitialView()
 
+        presentCheckConnection()
+    }
+
+    func dismissFully(animated: Bool) {
+        AuthStateManager.shared.unsubscribeForAuthState(self)
+        router.dismissFully(animated: animated)
+    }
+
+}
+
+extension SCSAppCoordinator: CheckConnectionDelegate {
+    func checkConnectionDidLoad(_ viewController: CheckConnectionVC) {
+        presentInitialView()
         AuthStateManager.shared.subscribeForAuthState(self) { [weak self] _, user in
             ProfileManager.shared.setUserID(user?.uid)
-            self?.children.removeAll()
 
+            self?.children.removeAll()
             if user == nil {
                 self?.presentSignIn()
             } else {
@@ -31,13 +44,7 @@ extension SCSAppCoordinator: SCSCoordinator {
             }
         }
     }
-
-    func dismissFully(animated: Bool) {
-        AuthStateManager.shared.unsubscribeForAuthState(self)
-        router.dismissFully(animated: animated)
-    }
 }
-
 extension SCSAppCoordinator: SignInViewControllerDelegate {
     func signInViewControllerDidPressSignUp(_ viewController: SCSSignInVC) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
@@ -198,39 +205,26 @@ extension SCSAppCoordinator: PortfolioViewControllerDelegate {
 
 private extension SCSAppCoordinator {
 
-    func presentCheckConnection(completion: @escaping () -> Void) {
-        let checkConnectionVC = CheckConnectionVC()
-        router.present_unique(checkConnectionVC, animated: true)
-        checkConnectionVC.callBack = {
-            completion()
-        }
-    }
-
     func presentInitialView() {
         let viewController = UIViewController()
         viewController.view.backgroundColor = .backColor
         router.present_unique(viewController, animated: false)
     }
 
-    func presentSignIn() {
-//        let connectionVC = CheckConnectionVC()
-//        connectionVC.modalPresentationStyle = .fullScreen
+    func presentCheckConnection() {
+        AuthStateManager.shared.unsubscribeForAuthState(self)
+        let checkConnectionVC = CheckConnectionVC()
+        checkConnectionVC.delegate = self
+        router.present_unique(checkConnectionVC, animated: true)
+    }
 
+    func presentSignIn() {
         let signInViewController = SCSSignInVC(authService: authService)
         signInViewController.delegate = self
-
-//        router.present_unique(connectionVC, animated: true)
-//        connectionVC.callBack = { [weak self] in
-//            UIView.animate(withDuration: 0.5) {
-                self.router.present_unique(signInViewController, animated: true)
-//            }
-//        }
+        router.present_unique(signInViewController, animated: true)
     }
 
     func presentAuthenticated() {
-//        let loadingScreen = CheckConnectionVC()
-//        loadingScreen.modalPresentationStyle = .fullScreen
-
         let dashboardViewController = DashboardViewController()
         dashboardViewController.delegate = self
 
@@ -246,12 +240,8 @@ private extension SCSAppCoordinator {
         tabBarController.setupCustomTabBarView()
         authenticatedUserController = tabBarController
 
-//        router.present_unique(loadingScreen, animated: false)
-//        loadingScreen.callBack = { [weak self] in
-//            UIView.animate(withDuration: 0.5) {
-                self.router.present_unique(tabBarController, animated: true)
-//            }
-//        }
+        self.router.present_unique(tabBarController, animated: true)
+
     }
 
     func presentAuthWithOutload() {

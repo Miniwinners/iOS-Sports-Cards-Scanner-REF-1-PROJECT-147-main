@@ -25,12 +25,15 @@ final class SwipeableCardButton: UIButton {
     }(UIView())
 
     lazy var cardTitleLabel: UILabel = { label in
-        label.font = .font(.ubuntuBold700, size: UIDevice.isIpad ? 30:24)
+        label.font = .font(.ubuntuBold700, size: UIDevice.isIpad ? 30:22)
+        label.numberOfLines = 2
+
         label.textColor = .black
         return label
     }(UILabel())
 
     lazy var cardSubtitleLabel: UILabel = { label in
+        label.numberOfLines = 2
         label.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         label.textColor = .black
         return label
@@ -62,9 +65,10 @@ final class SwipeableCardButton: UIButton {
 
         cardTitleLabel.text = card?.title
         cardTitleLabel.textAlignment = .center
-
+        cardTitleLabel.numberOfLines = 2
         cardSubtitleLabel.text = card?.subtitle
         cardSubtitleLabel.textAlignment = .center
+        cardSubtitleLabel.numberOfLines = 2
     }
 
 }
@@ -90,13 +94,13 @@ private extension SwipeableCardButton {
 
         addSubviews(cardTitleLabel, cardSubtitleLabel, photoContainerView)
         cardTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(5)
-            $0.height.equalTo(UIDevice.isIpad ? 30:24)
+            $0.top.equalToSuperview()
+            $0.height.lessThanOrEqualTo(UIDevice.isIpad ? 60:50)
             $0.horizontalEdges.equalToSuperview()
         }
         cardSubtitleLabel.snp.makeConstraints {
             $0.top.equalTo(cardTitleLabel.snp.bottom).offset(5)
-            $0.height.equalTo(UIDevice.isIpad ? 30:24)
+            $0.height.lessThanOrEqualTo(UIDevice.isIpad ? 50:40)
             $0.horizontalEdges.equalToSuperview()
         }
         photoContainerView.snp.makeConstraints {

@@ -7,6 +7,11 @@ final class PricingReportView: UIView {
 
     lazy var backView: BackView = .init()
 
+    lazy var detailsButton: CommonButton = { button in
+        button.setButtonTitle(L10n.EditCard.Action.updateDetails)
+        return button
+    }(CommonButton(style: .default))
+
     lazy var noSalesView: CommonMessageView = { view in
         view.setMessageTitle(L10n.PricingReport.Details.noSales)
         return view
@@ -27,6 +32,11 @@ final class PricingReportView: UIView {
     convenience init() {
         self.init(frame: .zero)
         setupSubviews_unique()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        detailsView.priceContainer.makeBorder()
     }
 
     func showNoSales() {
@@ -50,7 +60,7 @@ private extension PricingReportView {
 
         backView.addSubview(detailsView)
         detailsView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
+            $0.top.equalToSuperview().inset(UIDevice.isIpad ? 50:40)
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
@@ -66,60 +76,34 @@ private extension PricingReportView {
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
 
-        let blockedLabel = UILabel()
-        blockedLabel.text = "Blocked"
-        blockedLabel.textColor = .labelColor2
-        blockedLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
-        blockedLabel.setLineHeight(18)
-        backView.addSubview(blockedLabel)
-        blockedLabel.snp.makeConstraints {
-            $0.top.equalTo(recentSalesLabel.snp.bottom).offset(5)
-            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
-//            $0.bottom.equalToSuperview().inset(12)
-        }
-
-        backView.addSubview(salesTableView)
-        salesTableView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalToSuperview()
-            make.top.equalTo(blockedLabel.snp.bottom).offset(20)
-        }
-//                salesTableView.isHidden = false
-
-//        salesTableView.tableHeaderView = tableHeaderView
-    }
-
-    func setupHeaderView() -> UIView {
-        let headerView = UIView()
-
-//        headerView.addSubview(detailsView)
-//        detailsView.snp.makeConstraints {
-//            $0.top.equalToSuperview()
-//            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
-//        }
-//
-//        let recentSalesLabel = UILabel()
-//        recentSalesLabel.text = L10n.PricingReport.Details.recentSales
-//        recentSalesLabel.textColor = .labelColor
-//        recentSalesLabel.font = .font(.ubuntuMedium500, size: UIDevice.isIpad ? 26:20)
-//        recentSalesLabel.setLineHeight(22)
-//        recentSalesLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-//        headerView.addSubview(recentSalesLabel)
-//        recentSalesLabel.snp.makeConstraints {
-//            $0.top.equalTo(detailsView.snp.bottom).offset(20)
-//            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
-//        }
-//
 //        let blockedLabel = UILabel()
 //        blockedLabel.text = "Blocked"
 //        blockedLabel.textColor = .labelColor2
 //        blockedLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
 //        blockedLabel.setLineHeight(18)
-//        headerView.addSubview(blockedLabel)
+//        backView.addSubview(blockedLabel)
 //        blockedLabel.snp.makeConstraints {
 //            $0.top.equalTo(recentSalesLabel.snp.bottom).offset(5)
 //            $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
-//            $0.bottom.equalToSuperview().inset(12)
+////            $0.bottom.equalToSuperview().inset(12)
 //        }
+
+        backView.addSubview(salesTableView)
+        salesTableView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalToSuperview()
+            make.top.equalTo(recentSalesLabel.snp.bottom).offset(UIDevice.isIpad ? 15:5)
+        }
+        addSubview(detailsButton)
+        detailsButton.snp.makeConstraints { make in
+            make.height.equalTo(UIDevice.isIpad ? 80:56)
+            make.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
+            make.bottom.equalToSuperview().inset(UIDevice.isIpad ? 70:50)
+        }
+
+    }
+
+    func setupHeaderView() -> UIView {
+        let headerView = UIView()
 
         return headerView
     }

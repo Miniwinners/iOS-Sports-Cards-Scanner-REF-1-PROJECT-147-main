@@ -36,8 +36,9 @@ final class SwipeableCardsView: UIView {
     private lazy var resetButton: UIButton = { button in
         button.setTitle(L10n.Common.reset, for: .normal)
         button.titleLabel?.font = .font(.interMedium, size: UIDevice.isIpad ? 26:20)
+        button.setTitleColor(.blue, for: .normal)
         return button
-    }(UIButton(type: .system))
+    }(UIButton())
 
     convenience init() {
         self.init(frame: .zero)
@@ -76,9 +77,9 @@ private extension SwipeableCardsView {
             return .init(width: itemWidth, height: itemHeight)
         }
         itemHeight = maxHeight
-        photoHeight = itemHeight + 10// - 78
+        photoHeight = itemHeight + 20// - 78
         photoWidth = photoHeight * SwipeableCardButton.photoRatio
-        itemWidth = photoWidth - 70
+        itemWidth = photoWidth - 75
         return .init(width: itemWidth, height: itemHeight)
     }
 

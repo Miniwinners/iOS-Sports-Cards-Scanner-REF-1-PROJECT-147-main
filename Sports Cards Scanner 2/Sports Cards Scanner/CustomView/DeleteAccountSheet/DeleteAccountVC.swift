@@ -1,12 +1,17 @@
 import UIKit
 import SnapKit
 
+enum ButtonStyleDeleteLogout {
+   case delete
+    case logOut
+}
+
 final class DeleteAccountVC: UIViewController {
 
     private let promptTitle: String
     private let promptDescription: String
     weak var delegate: DeleteAccountVCdelegate?
-
+    private var styleButton: ButtonStyleDeleteLogout
     // MARK: - Subviews
 
     private lazy var labelsContainerView: UIView = { view in
@@ -38,21 +43,27 @@ final class DeleteAccountVC: UIViewController {
         return label
     }(UILabel())
 
-    lazy var cancelButton: CommonButton = { button in
-        button.borderColor = .blue
-        button.borderWidth = 1
-        button.layer.cornerRadius = UIDevice.isIpad ? 22:16
+    lazy var cancelButton: CommonButton = {
+        var button = CommonButton(style: .destructive)
+        switch styleButton {
+        case .delete: button = CommonButton(style: .cancel2)
+        case .logOut: button = CommonButton(style: .cancel)
+        }
+//        button.borderColor = .blue
+//        button.borderWidth = 1
+//        button.layer.cornerRadius = UIDevice.isIpad ? 22 : 16
         return button
-    }(CommonButton(style: .destructive))
+    }()
 
     lazy var confirmButton: CommonButton = { button in
         button.cornerRadius = UIDevice.isIpad ? 22:16
         return button
     }(CommonButton(style: .default))
 
-    init(title: String = L10n.Prompt.title, description: String) {
+    init(title: String = L10n.Prompt.title, description: String, styleButton: ButtonStyleDeleteLogout) {
         self.promptTitle = title
         self.promptDescription = description
+        self.styleButton = styleButton
         super.init(nibName: nil, bundle: nil)
     }
 

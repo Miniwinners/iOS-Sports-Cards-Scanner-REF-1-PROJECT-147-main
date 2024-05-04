@@ -10,7 +10,7 @@ final class PricingReportButton: UIButton {
 
     private var priceButtonType: ButtonTypeReport!
     lazy var graderPriceView: GraderPriceView = .init(type: priceButtonType)
-    lazy var noPriceView: NoPriceView = .init()
+    lazy var noPriceView: NoPriceView = .init(type: priceButtonType)
     lazy var customPriceView: CustomPriceView = .init(type: priceButtonType)
 
     enum ReportMode {
@@ -27,6 +27,13 @@ final class PricingReportButton: UIButton {
         self.init(frame: .zero)
         self.priceButtonType = priceButtonType
         setupSubviews_unique()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if priceButtonType == .add {
+            self.makeBorder()
+        }
     }
 
     override func updateConfiguration() {

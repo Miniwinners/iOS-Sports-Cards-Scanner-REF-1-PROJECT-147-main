@@ -80,7 +80,7 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
         let inset: CGFloat = UIDevice.isIpad ? 160:40
 
         let router = DeleteAccountSheetRouter(parentViewController: viewController, presentStyle: .centerRect,
-                                              heightRatio: UIDevice.isIpad ? 360:250,
+                                              heightRatio: UIDevice.isIpad ? 360:260,
                                               widthRatio: viewController.view.frame.width - inset)
         let coordinator = GraderSelectionCoordinator(router: router, card: viewController.card)
         coordinator.didSelectGrader = { [unowned viewController] grader in

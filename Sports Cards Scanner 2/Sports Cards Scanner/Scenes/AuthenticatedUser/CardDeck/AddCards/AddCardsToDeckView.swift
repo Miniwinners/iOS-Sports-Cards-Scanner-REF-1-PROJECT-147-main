@@ -120,7 +120,7 @@ private extension AddCardsToDeckView {
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:0)
         }
         noResultsView.snp.makeConstraints {
-            $0.top.equalTo(categoryLabel.snp.bottom).offset(UIDevice.isIpad ? 50:20)
+            $0.centerY.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(UIDevice.isIpad ? 80:20)
         }
         buttonsStackView.snp.makeConstraints {

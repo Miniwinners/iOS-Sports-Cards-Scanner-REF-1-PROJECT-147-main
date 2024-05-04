@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator = .init(router: router, authService: .init())
 
         coordinator.presentInitialState(animated: true, onDismissed: nil)
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

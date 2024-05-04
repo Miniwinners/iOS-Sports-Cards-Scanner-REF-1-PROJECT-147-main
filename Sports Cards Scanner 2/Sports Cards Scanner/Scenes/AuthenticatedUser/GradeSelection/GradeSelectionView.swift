@@ -6,8 +6,8 @@ final class GradeSelectionView: UIView {
     lazy var backView: BackView = .init()
     lazy var titleLabel: TitleLabel = .init()
 
-    lazy var graderOptionsView: OptionsView = .init(minHeight: UIDevice.isIpad ?80:46, maxHeight: UIDevice.isIpad ?400:228)
-    lazy var gradeOptionsView: OptionsView = .init(minHeight: UIDevice.isIpad ?80:46, maxHeight: UIDevice.isIpad ?400:228)
+    lazy var graderOptionsView: OptionsView = .init(minHeight: UIDevice.isIpad ?80:46, maxHeight: UIDevice.isIpad ?400:254)
+    lazy var gradeOptionsView: OptionsView = .init(minHeight: UIDevice.isIpad ?80:46, maxHeight: UIDevice.isIpad ?400:254)
 
     lazy var updateDetailsButton: CommonButton = { button in
         button.setButtonTitle(L10n.EditCard.Action.updateDetails)
