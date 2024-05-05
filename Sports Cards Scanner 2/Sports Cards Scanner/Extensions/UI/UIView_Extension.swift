@@ -81,6 +81,8 @@ final class CustomContainerView: UIView {
     func setupContainerView() {
         backgroundColor = .skyBlue
         layer.cornerRadius = UIDevice.isIpad ? 24:16
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.blue.cgColor
     }
 
     func setupLayout(in view: UIView, top viewTop: UIView) {
@@ -112,32 +114,4 @@ final class CustomContainerView: UIView {
 
     }
 
-}
-
-extension UIView {
-    func makeBorder() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bounds.insetBy(dx: -0.5, dy: -0.5)
-        gradientLayer.colors = [UIColor.blue.cgColor, UIColor.green.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 1)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        gradientLayer.contentsScale = UIScreen.main.scale
-
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.lineWidth = 1
-        let adjustedBounds = self.bounds.insetBy(dx: 0.5, dy: 0.5)
-        shapeLayer.path = UIBezierPath(roundedRect: adjustedBounds, cornerRadius: self.layer.cornerRadius).cgPath
-        shapeLayer.strokeColor = UIColor.black.cgColor
-        shapeLayer.fillColor = nil
-        shapeLayer.contentsScale = UIScreen.main.scale
-        shapeLayer.lineJoin = .round
-        shapeLayer.lineCap = .round
-
-        gradientLayer.mask = shapeLayer
-
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
-
-        self.layer.addSublayer(gradientLayer)
-    }
 }

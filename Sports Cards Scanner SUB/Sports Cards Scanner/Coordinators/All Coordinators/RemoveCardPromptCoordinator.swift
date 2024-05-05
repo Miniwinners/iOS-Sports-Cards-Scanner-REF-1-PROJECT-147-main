@@ -28,7 +28,7 @@ final class RemoveCardPromptCoordinator {
 
 extension RemoveCardPromptCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = DeleteAccountVC(description: L10n.Prompt.RemoveCard.description)
+        let viewController = DeleteAccountVC(description: L10n.Prompt.RemoveCard.description, styleButton: .delete)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.RemoveCard.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.RemoveCard.keepAction)
         viewController.delegate = self

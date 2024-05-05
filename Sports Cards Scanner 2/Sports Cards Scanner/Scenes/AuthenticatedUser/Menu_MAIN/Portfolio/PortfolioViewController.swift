@@ -4,11 +4,10 @@ final class PortfolioViewController: UIViewController {
 
     weak var delegate: PortfolioViewControllerDelegate?
 
-    private var previousHeight: CGFloat = 203.5
     private let profileManager: ProfileManager
     private let cardsManager: UserCardsManager
     private let cardSetsManager: CardCollectionManager & CardDeckManager
-
+    private var cardDeckSubscribe: Bool?
     private var categoriesCardsInfo: [CategoryCards] = []
 
     private var isLoading: Bool = false {
@@ -17,16 +16,18 @@ final class PortfolioViewController: UIViewController {
 
     // MARK: - Subviews
 
-    lazy var portfolioView = PortfolioView()
+    lazy var portfolioView = PortfolioView(unlock: cardDeckSubscribe!)
 
     init(
         profileManager: ProfileManager = .shared,
         cardsManager: UserCardsManager = .shared,
-        cardSetsManager: CardCollectionManager & CardDeckManager = CardSetsManager.shared
+        cardSetsManager: CardCollectionManager & CardDeckManager = CardSetsManager.shared,
+        cardDeckSubscribe: Bool
     ) {
         self.profileManager = profileManager
         self.cardsManager = cardsManager
         self.cardSetsManager = cardSetsManager
+        self.cardDeckSubscribe = cardDeckSubscribe
         super.init(nibName: nil, bundle: nil)
 
         title = L10n.Portfolio.title
@@ -146,10 +147,14 @@ private extension PortfolioViewController {
     }
 
     @objc func cardDeckTapped() {
-        if cardSetsManager.cardDeck.isNil {
-            delegate?.portfolioViewControllerCreateDeckTapped(self)
+        if cardDeckSubscribe == false {
+            delegate?.portfolioDeckSubscribe(self)
         } else {
-            delegate?.portfolioViewControllerShowDeckTapped(self)
+            if cardSetsManager.cardDeck.isNil {
+                delegate?.portfolioViewControllerCreateDeckTapped(self)
+            } else {
+                delegate?.portfolioViewControllerShowDeckTapped(self)
+            }
         }
     }
 

@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 final class PortfolioView: UIView {
-
+    private var unlock: Bool
     lazy var scrollView: UIScrollView = { scrollView in
         scrollView.showsVerticalScrollIndicator = false
         scrollView.alwaysBounceVertical = false
@@ -15,7 +15,7 @@ final class PortfolioView: UIView {
     }(UIView())
 
     lazy var noCardView: PortfolioNoCardView = .init()
-    lazy var cardsView: PortfolioCardsView = .init()
+    lazy var cardsView: PortfolioCardsView = .init(unlock: unlock)
 
     lazy var scanCardButton: CommonButton = { button in
         button.setButtonTitle(L10n.Dashboard.Action.scanCard)
@@ -24,11 +24,16 @@ final class PortfolioView: UIView {
         return button
     }(CommonButton(style: .default))
 
-    convenience init() {
-        self.init(frame: .zero)
-        setupSubviews_unique()
+    init(unlock: Bool) {
+           self.unlock = unlock
+           super.init(frame: .zero)
+           setupSubviews_unique()
+       }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
     func showNoCardView() {
         cardsView.removeFromSuperview()
 
@@ -57,7 +62,9 @@ final class PortfolioView: UIView {
     }
 
     func updateCardDeck(_ deck: CardCollectible?) {
+
         cardsView.deckView.setCardSet(deck)
+        cardsView.deckView.lockImageView.isHidden = unlock ? true:false
         DispatchQueue.main.async {
             self.cardsView.layoutIfNeeded()
             self.cardsView.configureContainer()

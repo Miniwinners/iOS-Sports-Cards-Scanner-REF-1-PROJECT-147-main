@@ -31,7 +31,7 @@ final class AddToPortfolioButton: UIButton {
 private extension AddToPortfolioButton {
     func setup_subviews() {
 //        configuration = .plain()
-        backgroundColor = .darkBlue
+        backgroundColor = .blue
         layer.cornerRadius = 12
         addSubview(addImageView)
         addImageView.snp.makeConstraints {

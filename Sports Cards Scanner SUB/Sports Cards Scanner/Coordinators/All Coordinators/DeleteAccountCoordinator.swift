@@ -27,7 +27,7 @@ final class DeleteAccountPromptCoordinator {
 
 extension DeleteAccountPromptCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = DeleteAccountVC(description: L10n.Prompt.DeleteAccount.description)
+        let viewController = DeleteAccountVC(description: L10n.Prompt.DeleteAccount.description, styleButton: .logOut)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.DeleteAccount.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteAccount.keepAction)
         viewController.delegate = self

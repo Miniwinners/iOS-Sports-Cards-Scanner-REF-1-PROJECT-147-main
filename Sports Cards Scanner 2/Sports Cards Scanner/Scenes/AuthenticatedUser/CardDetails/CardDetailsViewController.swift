@@ -15,6 +15,7 @@ final class CardDetailsViewController: UIViewController {
     private let cardsManager: UserCardsManager
     weak var delegate: CardDetailsViewControllerDelegate?
     private var previousVC: PreviousVC
+    private var locked: Bool
     private(set) lazy var searchedCardsManager: CardsUpdater = SearchedCardsManager(card: card)
 
     private(set) lazy var selectedGrader: CardGrader = .RAW
@@ -38,7 +39,7 @@ final class CardDetailsViewController: UIViewController {
         return scrollView
     }(BaseScrollView())
 
-    lazy var cardDetailsView: CardDetailsView = .init()
+    lazy var cardDetailsView: CardDetailsView = .init(locked: locked)
 
     lazy var backGroundView: UIView = .init()
     lazy var indicatorImageView: UIImageView = .init(image: Images.loading.image)
@@ -52,7 +53,8 @@ final class CardDetailsViewController: UIViewController {
         searchCardService: CardSearchable = SearchCardService(),
         cardPhotoService: CardPhotoService = .init(),
         cardsManager: UserCardsManager = .shared,
-        previousVC: PreviousVC
+        previousVC: PreviousVC,
+        locked: Bool
     ) {
         self.card = card
         self.cardType = cardType
@@ -61,6 +63,7 @@ final class CardDetailsViewController: UIViewController {
         self.cardPhotoService = cardPhotoService
         self.cardsManager = cardsManager
         self.previousVC = previousVC
+        self.locked = locked
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -305,7 +308,11 @@ private extension CardDetailsViewController {
     }
 
     @objc func editCardTapped() {
-        delegate?.cardDetailsViewControllerEditCardTapped(self)
+        if locked == false {
+            delegate?.editCardDelegateSubscribe(self)
+        } else {
+            delegate?.cardDetailsViewControllerEditCardTapped(self)
+        }
     }
 
     @objc func findCardTapped() {

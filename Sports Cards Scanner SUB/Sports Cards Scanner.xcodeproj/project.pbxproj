@@ -253,6 +253,8 @@
 		41D923FA2BE3E1D500311A1B /* CardDeckCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D923F22BE3E1D400311A1B /* CardDeckCoordinator.swift */; };
 		41D923FB2BE3E1D500311A1B /* DeckMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D923F32BE3E1D400311A1B /* DeckMenuCoordinator.swift */; };
 		41D923FC2BE3E1D500311A1B /* DeleteDeckPromptCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D923F42BE3E1D400311A1B /* DeleteDeckPromptCoordinator.swift */; };
+		41F45C5F2BE7A83B0059669D /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F45C5E2BE7A83B0059669D /* SubscribeViewController.swift */; };
+		41F45C612BE7A90F0059669D /* SubscribeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F45C602BE7A90F0059669D /* SubscribeDelegate.swift */; };
 		4619AE5B2A77965700753891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4619AE5A2A77965700753891 /* AppDelegate.swift */; };
 		4619AE5D2A77965700753891 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4619AE5C2A77965700753891 /* SceneDelegate.swift */; };
 		4619AE672A77965A00753891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4619AE652A77965A00753891 /* LaunchScreen.storyboard */; };
@@ -713,6 +715,8 @@
 		41D923F22BE3E1D400311A1B /* CardDeckCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDeckCoordinator.swift; sourceTree = "<group>"; };
 		41D923F32BE3E1D400311A1B /* DeckMenuCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckMenuCoordinator.swift; sourceTree = "<group>"; };
 		41D923F42BE3E1D400311A1B /* DeleteDeckPromptCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteDeckPromptCoordinator.swift; sourceTree = "<group>"; };
+		41F45C5E2BE7A83B0059669D /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
+		41F45C602BE7A90F0059669D /* SubscribeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeDelegate.swift; sourceTree = "<group>"; };
 		4619AE572A77965700753891 /* Sports Cards Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sports Cards Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4619AE5A2A77965700753891 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4619AE5C2A77965700753891 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1447,6 +1451,8 @@
 				419989B42BE6A7EF00E62B80 /* PortfolioViewController.swift */,
 				419989B52BE6A7EF00E62B80 /* PortfolioViewControllerDelegate.swift */,
 				419989B62BE6A7EF00E62B80 /* Views */,
+				41F45C5E2BE7A83B0059669D /* SubscribeViewController.swift */,
+				41F45C602BE7A90F0059669D /* SubscribeDelegate.swift */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -3013,6 +3019,7 @@
 				41998A142BE6A7EF00E62B80 /* CardCollectionViewControllerDelegate.swift in Sources */,
 				419989FE2BE6A7EF00E62B80 /* CardSaleTableViewCell.swift in Sources */,
 				464D26A22A840C2300C7F4D4 /* FirebaseError.swift in Sources */,
+				41F45C5F2BE7A83B0059669D /* SubscribeViewController.swift in Sources */,
 				4650DEEC2AA0EB7E00F6F13C /* PokemonCard.swift in Sources */,
 				41998A222BE6A7EF00E62B80 /* RecentlyAddedListViewController.swift in Sources */,
 				41998A0D2BE6A7EF00E62B80 /* CategoryCardsTableViewCell.swift in Sources */,
@@ -3090,6 +3097,7 @@
 				468A5CE12AB7AF8A00D29443 /* CardsActualizer.swift in Sources */,
 				41998A152BE6A7EF00E62B80 /* SwipeableCardsView.swift in Sources */,
 				41998A7E2BE6A7F000E62B80 /* ResetPasswordViewController.swift in Sources */,
+				41F45C612BE7A90F0059669D /* SubscribeDelegate.swift in Sources */,
 				41998A042BE6A7EF00E62B80 /* CurrentValueDetailsViewControllerDelegate.swift in Sources */,
 				4650DE7F2A9A743700F6F13C /* SCIRoute.swift in Sources */,
 				41998A362BE6A7F000E62B80 /* ProfileSelectableCell.swift in Sources */,

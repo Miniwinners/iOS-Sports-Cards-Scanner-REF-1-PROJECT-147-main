@@ -1,6 +1,6 @@
 import UIKit
 import SnapKit
-import FacebookLogin
+//import FacebookLogin
 final class SignInView: UIView {
 
     lazy var titleLabel: UILabel = { label in
@@ -83,7 +83,7 @@ final class SignInView: UIView {
         return button
     }(UIButton())
 
-    let loginButton = FBLoginButton()
+//    let loginButton = FBLoginButton()
 
     lazy var appleButton: UIButton = { button in
         button.setImage(Images.appleLogo.image, for: .normal)
@@ -221,12 +221,12 @@ private extension SignInView {
             })
         }
 
-        facebookButton.addSubview(loginButton)
-        loginButton.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-
-        loginButton.permissions = ["public_profile", "email"]
+//        facebookButton.addSubview(loginButton)
+//        loginButton.snp.makeConstraints {
+//            $0.edges.equalToSuperview()
+//        }
+//
+//        loginButton.permissions = ["public_profile", "email"]
 
         otherSignInMethodsView.snp.makeConstraints {
             $0.top.equalTo(enterDetails.snp.bottom).offset(30)

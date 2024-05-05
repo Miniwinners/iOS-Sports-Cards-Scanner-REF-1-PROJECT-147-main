@@ -3,6 +3,8 @@ import SnapKit
 
 final class CardDetailsView: UIView {
 
+    private var locked: Bool
+    
     lazy var backView: BackView = .init()
 
     lazy var cardContainerView: UIView = { view in
@@ -65,7 +67,9 @@ final class CardDetailsView: UIView {
         button.setButtonTitle(L10n.CardDetails.Action.editCard)
         return button
     }(CommonButton(style: .default))
-
+    
+    lazy var lockImageView: UIImageView = .init(image: Images.lock.image)
+    
     lazy var removeCardButtonContainer: UIView = getButtonContainer(for: removeCardButton)
     lazy var removeCardButton: CommonButton = { button in
         button.setButtonTitle(L10n.CardDetails.Action.removeCard)
@@ -78,7 +82,8 @@ final class CardDetailsView: UIView {
         return button
     }(CommonButton(style: .cancel))
 
-    init() {
+    init(locked: Bool) {
+        self.locked = locked
         super.init(frame: .zero)
         setupSubviews_unique()
     }
@@ -174,6 +179,16 @@ private extension CardDetailsView {
         containerStackPriceAdd.snp.makeConstraints { make in
             make.height.equalTo(UIDevice.isIpad ? 200:130)
         }
+        
+        
+        editCardButton.addSubview(lockImageView)
+        lockImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.right.equalToSuperview().inset(UIDevice.isIpad ? 20:15)
+            $0.size.equalTo(UIDevice.isIpad ? 40:24)
+        }
+        lockImageView.isHidden = locked ? true:false
+        
     }
 
     func getButtonContainer(for cancelTypedButton: UIButton) -> UIView {
@@ -184,30 +199,5 @@ private extension CardDetailsView {
         }
         return containerView
     }
-
 }
-// import SwiftUI
-//
-// struct CardDetailsViewRepresentable: UIViewRepresentable {
-//    func makeUIView(context: Context) -> CardDetailsView {
-//        // Create and return an instance of your custom UIView here
-//        return CardDetailsView()
-//    }
-//
-//    func updateUIView(_ uiView: CardDetailsView, context: Context) {
-//        // Update the view when your app's state changes
-//    }
-// }
-//
-// struct ContentView: View {
-//    var body: some View {
-//        CardDetailsViewRepresentable()
-//    }
-// }
-//
-// @available(iOS 13.0, *)
-// struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-// }
+

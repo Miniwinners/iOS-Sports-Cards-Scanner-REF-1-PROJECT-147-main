@@ -8,7 +8,7 @@ final class CardDetailsCoordinator {
     let encodedCardImage: Data?
     private var previousVC: PreviousVC
     weak var delegate: CardDetailsCoordinatorDelegate?
-
+    private var locked: Bool = true
     private weak var cardDetailsViewController: CardDetailsViewController?
     private var scanCardViewController: ScanCardViewController?
 
@@ -32,7 +32,7 @@ final class CardDetailsCoordinator {
 
 extension CardDetailsCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = CardDetailsViewController(card: card, cardType: cardType, encodedCardImage: encodedCardImage, previousVC: previousVC)
+        let viewController = CardDetailsViewController(card: card, cardType: cardType, encodedCardImage: encodedCardImage, previousVC: previousVC, locked: locked)
         viewController.delegate = self
         router.present_unique(viewController, animated: animated, onDismissed: onDismissed)
     }
@@ -51,6 +51,15 @@ extension CardDetailsCoordinator: SearchCardCoordinatorDelegate {
 }
 
 extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
+    func editCardDelegateSubscribe(_ viewController: CardDetailsViewController) {
+        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
+            print(qFvvUwywod)
+            print("\(rkjyOdUzcU)")
+            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        }
+        presentUnsubscribed()
+    }
+
     func cardDetailsViewControllerCloseTapped(_ viewController: CardDetailsViewController) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
@@ -100,16 +109,17 @@ extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
     }
 
     func cardDetailsViewControllerEditCardTapped(_ viewController: CardDetailsViewController) {
-        let cardsUpdater: CardsUpdater
-        if viewController.card is SearchedCard {
-            cardsUpdater = viewController.searchedCardsManager
-        } else {
-            cardsUpdater = UserCardsManager.shared
-        }
+            let cardsUpdater: CardsUpdater
+            if viewController.card is SearchedCard {
+                cardsUpdater = viewController.searchedCardsManager
+            } else {
+                cardsUpdater = UserCardsManager.shared
+            }
 
-        let viewController = EditCardViewController(card: viewController.card, cardsManager: cardsUpdater)
-        viewController.delegate = self
-        router.present_unique(viewController, animated: true)
+            let viewController = EditCardViewController(card: viewController.card, cardsManager: cardsUpdater)
+            viewController.delegate = self
+            router.present_unique(viewController, animated: true)
+
     }
 
     func cardDetailsViewControllerFindCardTapped(_ viewController: CardDetailsViewController) {
@@ -185,6 +195,19 @@ extension CardDetailsCoordinator: RemoveCardPromptCoordinatorDelegate {
         guard let viewController = cardDetailsViewController else { return }
         let alertType: SCSAlertType = .noInternetConnection(okAction: nil)
         AlertService.shared.presentAC(type: alertType, in: viewController)
+    }
+
+    func presentUnsubscribed() {
+        let premiumVC = PremiumMainController(productBuy: .unlockContentProduct)
+        premiumVC.delegate = self
+        router.present_unique(premiumVC, animated: true)
+    }
+}
+
+extension CardDetailsCoordinator: PremiumMainControllerDelegate {
+
+    func premiumMainControllerUserDidSubscribe(_ viewController: PremiumMainController) {
+        router.dismiss_unique(viewController, animated: true)
     }
 }
 

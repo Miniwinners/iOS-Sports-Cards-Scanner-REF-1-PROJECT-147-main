@@ -24,6 +24,15 @@ class PremiumMainController: UIViewController {
     
     private var intScreenStatus = 0
     
+    init(productBuy: SCSPremiumMainControllerStyle) {
+        self.productBuy = productBuy
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override  func viewDidLoad() {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
@@ -258,9 +267,9 @@ class PremiumMainController: UIViewController {
             print("\(rkjyOdUzcU)")
             return "\(qFvvUwywod) \(rkjyOdUzcU)"
         }
-        
         openApp_unique()
     }
+    
 }
 
 extension PremiumMainController : SCSReusableViewEvent {

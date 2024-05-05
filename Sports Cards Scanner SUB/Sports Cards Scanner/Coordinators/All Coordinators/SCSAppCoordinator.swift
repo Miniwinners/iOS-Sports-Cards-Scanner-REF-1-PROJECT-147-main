@@ -43,8 +43,8 @@ extension SCSAppCoordinator: CheckConnectionDelegate {
                 self?.presentSubscribed()
 //                self?.presentUnsubscribed()
             case false:
-//                self?.presentSubscribed()
-                self?.presentUnsubscribed()
+                self?.presentSubscribed()
+//                self?.presentUnsubscribed(style: .mainProduct)
             }
         }
     }
@@ -167,6 +167,10 @@ extension SCSAppCoordinator: DashboardViewControllerDelegate {
 }
 
 extension SCSAppCoordinator: PortfolioViewControllerDelegate {
+    func portfolioDeckSubscribe(_ viewController: PortfolioViewController) {
+        self.presentUnsubscribed(style: .unlockContentProduct)
+    }
+
     func portfolioViewControllerScanCardTapped(_ viewController: PortfolioViewController) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)
@@ -221,7 +225,7 @@ private extension SCSAppCoordinator {
         connectionVC.delegate = self
         router.present_unique(connectionVC, animated: true)
     }
-    
+
     func presentSubscribed() {
         presentInitialView()
 
@@ -237,10 +241,10 @@ private extension SCSAppCoordinator {
         }
     }
 
-    func presentUnsubscribed() {
+    func presentUnsubscribed(style: SCSPremiumMainControllerStyle) {
         AuthStateManager.shared.unsubscribeForAuthState(self)
 
-        let unsubscribedVC = PremiumMainController()
+        let unsubscribedVC = PremiumMainController(productBuy: style)
         unsubscribedVC.delegate = self
         router.present_unique(unsubscribedVC, animated: true)
     }
@@ -255,7 +259,7 @@ private extension SCSAppCoordinator {
         let dashboardViewController = DashboardViewController()
         dashboardViewController.delegate = self
 
-        let portfolioViewController = PortfolioViewController()
+        let portfolioViewController = PortfolioViewController(cardDeckSubscribe: false)
         portfolioViewController.delegate = self
 
         let moreViewController = MoreViewController(authService: authService)

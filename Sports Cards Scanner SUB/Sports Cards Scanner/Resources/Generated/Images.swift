@@ -96,6 +96,9 @@ internal enum Images {
     internal static let forwardArrowBlue = ImageAsset(name: "forwardArrowBlue")
     internal static let gradeStar = ImageAsset(name: "gradeStar")
     internal static let noConnection = ImageAsset(name: "noConnection")
+    internal static let lock = ImageAsset(name: "lock")
+
+    
     
     
 }

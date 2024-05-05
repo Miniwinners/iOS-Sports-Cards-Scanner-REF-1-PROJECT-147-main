@@ -2,12 +2,12 @@ import UIKit
 import SnapKit
 import Foundation
 final class PortfolioCardsView: UIView {
-
+    private var unlock: Bool
     private var previousHeight: CGFloat?
 
     lazy var stackView: UIStackView = { stackView in
         stackView.axis = .vertical
-        stackView.spacing = UIDevice.isIpad ?30:20
+        stackView.spacing = UIDevice.isIpad ? 30:20
         return stackView
     }(UIStackView(arrangedSubviews: [infoView, cardContainerView, categoriesCardsView]))
 
@@ -27,6 +27,7 @@ final class PortfolioCardsView: UIView {
         view.subtitleCreate.text = L10n.Portfolio.Collection.description
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
+//        view.lockImageView.isHidden = true
         return view
     }(DeckCollectionView(setType: .deck))
 
@@ -52,11 +53,17 @@ final class PortfolioCardsView: UIView {
 
     private var categoriesCardsHeightConstraint: Constraint!
 
-    convenience init() {
-        self.init(frame: .zero)
+    init(unlock: Bool) {
+        self.unlock = unlock
+        print("unlock status - \(unlock)")
+        super.init(frame: .zero)
         setupSubviews_unique()
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func updateCategories(number: Int) {
 //        let inset: CGFloat = UIDevice.isIpad ? 120:74
 //        let height = UIDevice.isIpad ? 120:74 * CGFloat(number) + inset
@@ -105,6 +112,7 @@ private extension PortfolioCardsView {
         }
         collectionButton.addSubview(collectionView)
         deckButton.addSubview(deckView)
+
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

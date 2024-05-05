@@ -1,6 +1,6 @@
 import UIKit
 import SnapKit
-import FacebookLogin
+//import FacebookLogin
 final class DashboardViewController: UIViewController {
 
     private var timer: Timer!
