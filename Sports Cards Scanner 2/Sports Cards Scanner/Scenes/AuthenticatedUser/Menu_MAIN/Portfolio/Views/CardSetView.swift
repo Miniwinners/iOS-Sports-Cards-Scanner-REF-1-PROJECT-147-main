@@ -9,7 +9,7 @@ final class DeckCollectionView: UIView {
     }
 
     let setType: SetType
-    lazy var lockImageView: UIImageView = .init(image: Images.lock.image)
+//    lazy var lockImageView: UIImageView = .init(image: Images.lock.image)
     lazy var previewImage: UIImageView = .init()
 
     lazy var titleCreate: UILabel = { label in
@@ -68,14 +68,13 @@ final class DeckCollectionView: UIView {
             make.size.equalTo(UIDevice.isIpad ? 19:10)
             make.center.equalToSuperview()
         }
-        containerView.addSubview(lockImageView)
-        lockImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview().inset(UIDevice.isIpad ? 15:10)
-            $0.size.equalTo(UIDevice.isIpad ? 32:16)
-        }
-        
-        
+//        containerView.addSubview(lockImageView)
+//        lockImageView.snp.makeConstraints {
+//            $0.centerY.equalToSuperview()
+//            $0.right.equalToSuperview().inset(UIDevice.isIpad ? 15:10)
+//            $0.size.equalTo(UIDevice.isIpad ? 32:16)
+//        }
+
         titleCreate.setLineHeight(26)
         subtitleCreate.setLineHeight(22)
         containerView.backgroundColor = .skyBlue
@@ -103,7 +102,7 @@ final class DeckCollectionView: UIView {
 //        titleCreate.setLineHeight(26)
         containerView.isHidden = false
 //        plusImageView.isHidden = false
-        lockImageView.isHidden = setType == .collection ? true: false
+//        lockImageView.isHidden = setType == .collection ? true: false
     }
 
 }

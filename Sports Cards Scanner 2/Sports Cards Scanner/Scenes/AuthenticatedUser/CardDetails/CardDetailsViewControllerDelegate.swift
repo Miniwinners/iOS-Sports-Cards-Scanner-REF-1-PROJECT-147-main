@@ -13,6 +13,6 @@ protocol CardDetailsViewControllerDelegate: AnyObject {
     func cardDetailsViewControllerRemoveCardTapped(_ card: CardRepresentable, in viewController: CardDetailsViewController)
 
     func cardDetailsViewControllerCardDidAdd(_ viewController: CardDetailsViewController)
-    
+
     func editCardDelegateSubscribe(_ viewController: CardDetailsViewController)
 }

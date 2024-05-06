@@ -2,7 +2,7 @@ import UIKit
 import FirebaseCore
 import Adjust
 import Pushwoosh
-import FacebookCore
+// import FacebookCore
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -162,6 +162,10 @@ extension SCSAppCoordinator: DashboardViewControllerDelegate {
 }
 
 extension SCSAppCoordinator: PortfolioViewControllerDelegate {
+    func portfolioDeckSubscribe(_ viewController: PortfolioViewController) {
+
+    }
+
     func portfolioViewControllerScanCardTapped(_ viewController: PortfolioViewController) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)

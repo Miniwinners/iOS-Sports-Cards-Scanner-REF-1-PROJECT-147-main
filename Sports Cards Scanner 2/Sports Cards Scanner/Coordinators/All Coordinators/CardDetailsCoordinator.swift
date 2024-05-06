@@ -32,7 +32,7 @@ final class CardDetailsCoordinator {
 
 extension CardDetailsCoordinator: SCSCoordinator {
     func presentInitialState(animated: Bool, onDismissed: Closure?) {
-        let viewController = CardDetailsViewController(card: card, cardType: cardType, encodedCardImage: encodedCardImage, previousVC: previousVC)
+        let viewController = CardDetailsViewController(card: card, cardType: cardType, encodedCardImage: encodedCardImage, previousVC: previousVC, locked: true)
         viewController.delegate = self
         router.present_unique(viewController, animated: animated, onDismissed: onDismissed)
     }
@@ -51,6 +51,10 @@ extension CardDetailsCoordinator: SearchCardCoordinatorDelegate {
 }
 
 extension CardDetailsCoordinator: CardDetailsViewControllerDelegate {
+    func editCardDelegateSubscribe(_ viewController: CardDetailsViewController) {
+
+    }
+
     func cardDetailsViewControllerCloseTapped(_ viewController: CardDetailsViewController) {
         func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
             print(qFvvUwywod)

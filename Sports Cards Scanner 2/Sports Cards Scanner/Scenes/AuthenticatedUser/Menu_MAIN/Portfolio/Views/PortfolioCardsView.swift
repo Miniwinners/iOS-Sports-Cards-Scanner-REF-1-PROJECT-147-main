@@ -59,11 +59,11 @@ final class PortfolioCardsView: UIView {
         super.init(frame: .zero)
         setupSubviews_unique()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func updateCategories(number: Int) {
 //        let inset: CGFloat = UIDevice.isIpad ? 120:74
 //        let height = UIDevice.isIpad ? 120:74 * CGFloat(number) + inset

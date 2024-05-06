@@ -29,11 +29,11 @@ final class PortfolioView: UIView {
            super.init(frame: .zero)
            setupSubviews_unique()
        }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func showNoCardView() {
         cardsView.removeFromSuperview()
 
@@ -64,7 +64,7 @@ final class PortfolioView: UIView {
     func updateCardDeck(_ deck: CardCollectible?) {
 
         cardsView.deckView.setCardSet(deck)
-        cardsView.deckView.lockImageView.isHidden = unlock ? true:false
+//        cardsView.deckView.lockImageView.isHidden = unlock ? true:false
         DispatchQueue.main.async {
             self.cardsView.layoutIfNeeded()
             self.cardsView.configureContainer()

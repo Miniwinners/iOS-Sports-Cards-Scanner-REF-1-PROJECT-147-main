@@ -20,12 +20,12 @@ final class IdentifyCardService: CardIdentifiable {
         let query: String
 
         switch scannedCard.cardCategory {
-//        case .magic:
-//            let magicCard = try await magicCardIdentifier.identifyCard(data: scannedCard.encodedCardImage)
-//            query = "\(magicCard.name)"
-//        case .pokemon:
-//            let pcCard = try await pcAPI.identifyCard(data: scannedCard.encodedCardImage)
-//            query = "\(pcCard.name)"
+        case .magic:
+            let magicCard = try await magicCardIdentifier.identifyCard(data: scannedCard.encodedCardImage)
+            query = "\(magicCard.name)"
+        case .pokemon:
+            let pcCard = try await pcAPI.identifyCard(data: scannedCard.encodedCardImage)
+            query = "\(pcCard.name)"
         default:
             let scpCard = try await scpAPI.identifyCard(data: scannedCard.encodedCardImage)
             query = "\(scpCard.name)"
