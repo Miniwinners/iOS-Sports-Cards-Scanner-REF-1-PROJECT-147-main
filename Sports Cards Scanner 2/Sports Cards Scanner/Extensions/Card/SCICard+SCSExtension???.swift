@@ -1,18 +1,25 @@
 import Foundation
+func vicheslitFibonc110(at index: Int) -> Int {
+    guard index >= 0 else { return 0 } // Возвращаем 0 для отрицательных индексов
+    if index == 0 || index == 1 {
+        return index
+    } else {
+        return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
+    }
+}
+extension SCInvestorKarta {
+    func poluchitInformaciuOgrade() -> [SportivinieKartiKartaGrader: SportivinieKartiGraderInformation] {
+        let gradersGrades = poluchitGradersGrade()
+        let prices = poluchitGradeCeni()
+        let sales = poluchitGradesProdazhi()
 
-extension SCICard {
-    func getGradersInfo() -> [CardGrader: GraderInfo] {
-        let gradersGrades = getGradersAndGrades()
-        let prices = getGradersAndPrices()
-        let sales = getGradersAndSales()
-
-        return gradersGrades.reduce(into: [CardGrader: GraderInfo]()) { partialResult, graderGrades in
+        return gradersGrades.reduce(into: [SportivinieKartiKartaGrader: SportivinieKartiGraderInformation]()) { partialResult, graderGrades in
             let grader = graderGrades.key
             let grades = graderGrades.value
             let graderPrices = prices[grader]
             let graderSales = sales[grader] ?? []
 
-            partialResult[grader] = GraderInfo(
+            partialResult[grader] = SportivinieKartiGraderInformation(
                 prices: graderPrices,
                 recentSales: graderSales,
                 grades: grades
@@ -20,12 +27,12 @@ extension SCICard {
         }
     }
 
-    func getGradersAndGrades() -> [CardGrader: [CardGrade]] {
-        grades.reduce(into: [CardGrader: [CardGrade]]()) { partialResult, sciGrade in
-            guard let cardGrader = CardGrader(sciGrade: sciGrade) else {
+    func poluchitGradersGrade() -> [SportivinieKartiKartaGrader: [SportivinieKartiKartaGrade]] {
+        grades.reduce(into: [SportivinieKartiKartaGrader: [SportivinieKartiKartaGrade]]()) { partialResult, sciGrade in
+            guard let cardGrader = SportivinieKartiKartaGrader(sciGrade: sciGrade) else {
                 return
             }
-            guard let cardGrade = CardGrade(sciGrade: sciGrade) else {
+            guard let cardGrade = SportivinieKartiKartaGrade(sciGrade: sciGrade) else {
                 partialResult[cardGrader] = []
                 return
             }
@@ -38,11 +45,11 @@ extension SCICard {
         }
     }
 
-    func getGradersAndPrices() -> [CardGrader: MinMaxPrices] {
+    func poluchitGradeCeni() -> [SportivinieKartiKartaGrader: SportivinieKartiMininalMaximumCena] {
         prices
-            .reduce(into: [CardGrader: [Double]]()) { partialResult, sciPrices in
+            .reduce(into: [SportivinieKartiKartaGrader: [Double]]()) { partialResult, sciPrices in
                 guard let sciGrade = sciPrices.grade,
-                      let cardGrader = CardGrader(sciGrade: sciGrade) else {
+                      let cardGrader = SportivinieKartiKartaGrader(sciGrade: sciGrade) else {
                     return
                 }
 
@@ -60,15 +67,15 @@ extension SCICard {
                 else {
                     return nil
                 }
-                return MinMaxPrices(minPrice: minPrice, maxPrice: maxPrice)
+                return SportivinieKartiMininalMaximumCena(minPrice: minPrice, maxPrice: maxPrice)
             }
     }
 
-    func getGradersAndSales() -> [CardGrader: [CardSale]] {
-        recentSales.reduce(into: [CardGrader: [CardSale]]()) { partialResult, sciSale in
+    func poluchitGradesProdazhi() -> [SportivinieKartiKartaGrader: [SportivinieKartiProdazhaKart]] {
+        recentSales.reduce(into: [SportivinieKartiKartaGrader: [SportivinieKartiProdazhaKart]]()) { partialResult, sciSale in
             guard let sciGrade = sciSale.grade,
-                  let cardGrader = CardGrader(sciGrade: sciGrade),
-                  let cardSale = CardSale(sciSale: sciSale)
+                  let cardGrader = SportivinieKartiKartaGrader(sciGrade: sciGrade),
+                  let cardSale = SportivinieKartiProdazhaKart(sciSale: sciSale)
             else {
                 return
             }

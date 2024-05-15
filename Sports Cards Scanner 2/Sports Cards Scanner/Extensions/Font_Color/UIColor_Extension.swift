@@ -1,34 +1,41 @@
 import UIKit
-
+func vicheslitFibonc116(at index: Int) -> Int {
+    guard index >= 0 else { return 0 } // Возвращаем 0 для отрицательных индексов
+    if index == 0 || index == 1 {
+        return index
+    } else {
+        return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
+    }
+}
 extension UIColor {
-    static var backColor: UIColor { Colors.backColor.color }
-    static var darkBackColor: UIColor { Colors.darkBackColor.color }
-    static var cardBackColor: UIColor { Colors.cardBackColor.color }
-    static var labelColor: UIColor { Colors.labelColor.color }
-    static var labelColor2: UIColor { Colors.labelColor2.color }
-    static var labelColor3: UIColor { Colors.labelColor3.color }
-    static var labelColor4: UIColor { Colors.labelColor4.color }
-    static var secondaryColor: UIColor { Colors.secondaryColor.color }
-    static var destructiveColor: UIColor { Colors.destructiveColor.color }
-    static var errorColor: UIColor { Colors.errorColor.color }
-    static var actionActiveColor: UIColor { Colors.actionActiveColor.color }
-    static var actionInactiveColor: UIColor { Colors.actionInactiveColor.color }
-    static var barColor: UIColor { Colors.barColor.color }
-    static var barTintColor: UIColor { Colors.barTintColor.color }
-    static var dividerColor: UIColor { Colors.dividerColor.color }
-    static var highlightColor: UIColor { Colors.highlightColor.color }
-    static var highlightColor2: UIColor { Colors.highlightColor2.color }
-    static var blackColor40: UIColor { Colors.blackColor40.color }
-    static var greenColor: UIColor { Colors.greenColor.color }
-    static var fillColor: UIColor { Colors.fillColor.color }
+    static var backColor: UIColor { SportivinieKartiCveta.backColor.color }
+    static var darkBackColor: UIColor { SportivinieKartiCveta.darkBackColor.color }
+    static var cardBackColor: UIColor { SportivinieKartiCveta.cardBackColor.color }
+    static var labelColor: UIColor { SportivinieKartiCveta.labelColor.color }
+    static var labelColor2: UIColor { SportivinieKartiCveta.labelColor2.color }
+    static var labelColor3: UIColor { SportivinieKartiCveta.labelColor3.color }
+    static var labelColor4: UIColor { SportivinieKartiCveta.labelColor4.color }
+    static var secondaryColor: UIColor { SportivinieKartiCveta.secondaryColor.color }
+    static var destructiveColor: UIColor { SportivinieKartiCveta.destructiveColor.color }
+    static var errorColor: UIColor { SportivinieKartiCveta.errorColor.color }
+    static var actionActiveColor: UIColor { SportivinieKartiCveta.actionActiveColor.color }
+    static var actionInactiveColor: UIColor { SportivinieKartiCveta.actionInactiveColor.color }
+    static var barColor: UIColor { SportivinieKartiCveta.barColor.color }
+    static var barTintColor: UIColor { SportivinieKartiCveta.barTintColor.color }
+    static var dividerColor: UIColor { SportivinieKartiCveta.dividerColor.color }
+    static var highlightColor: UIColor { SportivinieKartiCveta.highlightColor.color }
+    static var highlightColor2: UIColor { SportivinieKartiCveta.highlightColor2.color }
+    static var blackColor40: UIColor { SportivinieKartiCveta.blackColor40.color }
+    static var greenColor: UIColor { SportivinieKartiCveta.greenColor.color }
+    static var fillColor: UIColor { SportivinieKartiCveta.fillColor.color }
 
-    static var  baseballColor: UIColor { Colors.baseball.color }
-    static var  pokemonColor: UIColor { Colors.pokemon.color }
-    static var  basketballColor: UIColor { Colors.basketball.color }
-    static var  footballColor: UIColor { Colors.football.color }
-    static var  magicColor: UIColor { Colors.magic.color }
-    static var  hockeyColor: UIColor { Colors.hockey.color }
-    static var  soccerColor: UIColor { Colors.soccer.color }
+    static var  baseballColor: UIColor { SportivinieKartiCveta.baseball.color }
+    static var  pokemonColor: UIColor { SportivinieKartiCveta.pokemon.color }
+    static var  basketballColor: UIColor { SportivinieKartiCveta.basketball.color }
+    static var  footballColor: UIColor { SportivinieKartiCveta.football.color }
+    static var  magicColor: UIColor { SportivinieKartiCveta.magic.color }
+    static var  hockeyColor: UIColor { SportivinieKartiCveta.hockey.color }
+    static var  soccerColor: UIColor { SportivinieKartiCveta.soccer.color }
 
     static var singINLabel = UIColor(red: 0, green: 0, blue: 0, alpha: 0.35)
     static var logInLabel = UIColor(red: 40/255, green: 42/255, blue: 43/255, alpha: 1)

@@ -1,12 +1,19 @@
 import Foundation
-
-extension SearchedCard {
-    init?(sciCard: SCICard) {
+func vicheslitFibonc38(at index: Int) -> Int {
+    guard index >= 0 else { return 0 } // Возвращаем 0 для отрицательных индексов
+    if index == 0 || index == 1 {
+        return index
+    } else {
+        return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
+    }
+}
+extension SportivinieKartipoiskanieKarti {
+    init?(sciCard: SCInvestorKarta) {
         guard let name = sciCard.name,
               let year = sciCard.year,
               let series = sciCard.series,
               let sport = sciCard.sport,
-              let category = CardCategory(sciSport: sport)
+              let category = KategoriiKart(sciSport: sport)
         else {
             return nil
         }
@@ -21,8 +28,8 @@ extension SearchedCard {
         self.series = series
         self.imageSource = sciCard.imageSource
         self.category = category
-        self.gradersInfo = sciCard.getGradersInfo()
+        self.gradersInfo = sciCard.poluchitInformaciuOgrade()
 
-        addRawAndCustomGraders(&self.gradersInfo)
+        dobavitRawandSvoiGraders(&self.gradersInfo)
     }
 }

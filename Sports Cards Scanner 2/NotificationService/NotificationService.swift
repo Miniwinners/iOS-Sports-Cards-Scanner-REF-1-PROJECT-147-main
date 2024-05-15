@@ -2,7 +2,7 @@
 //  NotificationService.swift
 //  NotificationService
 //
-//  Created by Александр Кузьминов on 28.04.24.
+//  Created by Александр Кузьминов on 8.05.24.
 //
 
 import UserNotifications

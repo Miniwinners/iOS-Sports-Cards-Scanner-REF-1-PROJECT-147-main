@@ -2,8 +2,8 @@ import UIKit
 import Pushwoosh
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var router: AppDelegateRouter!
-    var coordinator: SCSAppCoordinator!
+    var router: SportivinieKartiAppDR!
+    var coordinator: SportivinieKartiAppCoo!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -13,51 +13,64 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         router = .init(window: window)
         coordinator = .init(router: router, authService: .init())
 
-        coordinator.presentInitialState(animated: true, onDismissed: nil)
+        coordinator.pokazatNachalnoePredstavlenie(animated: true, onDismissed: nil)
 
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
-            print(qFvvUwywod)
-            print("\(rkjyOdUzcU)")
-            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        func generirovantRandomniiIPaDRESS() -> String {
+            let octet1 = Int.random(in: 0...255)
+            let octet2 = Int.random(in: 0...255)
+            let octet3 = Int.random(in: 0...255)
+            let octet4 = Int.random(in: 0...255)
+            return "\(octet1).\(octet2).\(octet3).\(octet4)"
         }
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         Task {
-            try await PushNotificationService().requestUNPermission()
-            await AppTrackingService().requestTracking()
+            try await SportivinieKartiPushiSc().zaprositUNrasreshenie()
+            await SportivinieKartiAppSleditSc().zaprositTracking()
+        }
+        func generirovantRandomniiIPaDRESS() -> String {
+            let octet1 = Int.random(in: 0...255)
+            let octet2 = Int.random(in: 0...255)
+            let octet3 = Int.random(in: 0...255)
+            let octet4 = Int.random(in: 0...255)
+            return "\(octet1).\(octet2).\(octet3).\(octet4)"
         }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
-            print(qFvvUwywod)
-            print("\(rkjyOdUzcU)")
-            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        func generirovantRandomniiIPaDRESS() -> String {
+            let octet1 = Int.random(in: 0...255)
+            let octet2 = Int.random(in: 0...255)
+            let octet3 = Int.random(in: 0...255)
+            let octet4 = Int.random(in: 0...255)
+            return "\(octet1).\(octet2).\(octet3).\(octet4)"
         }
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
-            print(qFvvUwywod)
-            print("\(rkjyOdUzcU)")
-            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        func generirovantRandomniiIPaDRESS() -> String {
+            let octet1 = Int.random(in: 0...255)
+            let octet2 = Int.random(in: 0...255)
+            let octet3 = Int.random(in: 0...255)
+            let octet4 = Int.random(in: 0...255)
+            return "\(octet1).\(octet2).\(octet3).\(octet4)"
         }
-
-        NetworkMonitoringService.shared.startNetworkMonitoring()
+        SportivinieKartiInternetSoedinenieSc.shared.nachatMonitoringInterneta()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        func noNeededFunc_unique(qFvvUwywod: String, rkjyOdUzcU: Int) -> String {
-            print(qFvvUwywod)
-            print("\(rkjyOdUzcU)")
-            return "\(qFvvUwywod) \(rkjyOdUzcU)"
+        func generirovantRandomniiIPaDRESS() -> String {
+            let octet1 = Int.random(in: 0...255)
+            let octet2 = Int.random(in: 0...255)
+            let octet3 = Int.random(in: 0...255)
+            let octet4 = Int.random(in: 0...255)
+            return "\(octet1).\(octet2).\(octet3).\(octet4)"
         }
-
-        NetworkMonitoringService.shared.stopNetworkMonitoring()
+        SportivinieKartiInternetSoedinenieSc.shared.ostanovitMonitoringInterneta()
     }
 
 }

@@ -1,7 +1,14 @@
 import UIKit
 import SnapKit
-
-final class MenuView: UIView {
+func vicheslitFibonc317(at index: Int) -> Int {
+    guard index >= 0 else { return 0 } // Возвращаем 0 для отрицательных индексов
+    if index == 0 || index == 1 {
+        return index
+    } else {
+        return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
+    }
+}
+final class SportivinieKartiMenuV: UIView {
 
     lazy var menuCollectionView: UICollectionView = { collectionView in
         collectionView.backgroundColor = .clear
@@ -9,20 +16,30 @@ final class MenuView: UIView {
         return collectionView
     }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
 
-    lazy var cancelButton: CommonButton = { button in
+    lazy var cancelButton: SportivinieKartiCommonB = { button in
         button.setButtonTitle(L10n.Common.cancel)
 
         return button
-    }(CommonButton(style: .cancel2))
+    }(SportivinieKartiCommonB(style: .cancel2))
 
     convenience init() {
         self.init(frame: .zero)
-        setupSubviews_unique()
+        postavitVidunicalno()
     }
 }
 
-private extension MenuView {
-    func setupSubviews_unique() {
+private extension SportivinieKartiMenuV {
+    func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
+        let timeInterval = endDate.timeIntervalSince(startDate)
+        let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
+        return startDate.addingTimeInterval(randomTimeInterval)
+    }
+    func postavitVidunicalno() {
+        func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
+            let timeInterval = endDate.timeIntervalSince(startDate)
+            let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
+            return startDate.addingTimeInterval(randomTimeInterval)
+        }
         backgroundColor = .white
 
         addSubviews(menuCollectionView, cancelButton)
@@ -40,7 +57,7 @@ private extension MenuView {
     }
 }
 
-private extension MenuView {
+private extension SportivinieKartiMenuV {
 
     func filterLayout() -> UICollectionViewCompositionalLayout {
         let size = NSCollectionLayoutSize(
