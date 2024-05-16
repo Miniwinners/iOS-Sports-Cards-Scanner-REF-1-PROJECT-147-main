@@ -173,34 +173,34 @@
 		419B8A402BF26ABD00628B99 /* SportivinieKartiSwipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419B8A302BF26ABC00628B99 /* SportivinieKartiSwipeVC.swift */; };
 		419C285F2BEBCAC100DDD67C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419C285E2BEBCAC100DDD67C /* NotificationService.swift */; };
 		419C28632BEBCAC100DDD67C /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 419C285C2BEBCAC000DDD67C /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		419C28692BEC06C900DDD67C /* SCSUserDefults_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419C28682BEC06C900DDD67C /* SCSUserDefults_Extension.swift */; };
-		41D6447A2BE3D75100642D21 /* SCSUIScreen_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644562BE3D75100642D21 /* SCSUIScreen_Extension.swift */; };
-		41D6447B2BE3D75100642D21 /* SCSUITabBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644572BE3D75100642D21 /* SCSUITabBar_Extension.swift */; };
+		419C28692BEC06C900DDD67C /* RachireniuaSportivnieUserDefults_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419C28682BEC06C900DDD67C /* RachireniuaSportivnieUserDefults_Extension.swift */; };
+		41D6447A2BE3D75100642D21 /* RachireniuaSportivnieUIScreen_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644562BE3D75100642D21 /* RachireniuaSportivnieUIScreen_Extension.swift */; };
+		41D6447B2BE3D75100642D21 /* RachireniuaSportivnieUITabBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644572BE3D75100642D21 /* RachireniuaSportivnieUITabBar_Extension.swift */; };
 		41D6447C2BE3D75100642D21 /* SCSUINavigationBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644582BE3D75100642D21 /* SCSUINavigationBar_Extension.swift */; };
-		41D6447D2BE3D75100642D21 /* SCSUITableView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644592BE3D75100642D21 /* SCSUITableView_Extension.swift */; };
-		41D6447E2BE3D75100642D21 /* SCSUIWindow_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445A2BE3D75100642D21 /* SCSUIWindow_Extension.swift */; };
-		41D6447F2BE3D75100642D21 /* SCSUILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445B2BE3D75100642D21 /* SCSUILabel_Extension.swift */; };
-		41D644802BE3D75100642D21 /* SCSUIDevice_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445C2BE3D75100642D21 /* SCSUIDevice_Extension.swift */; };
-		41D644812BE3D75100642D21 /* SCSUIViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445D2BE3D75100642D21 /* SCSUIViewController_Extension.swift */; };
-		41D644822BE3D75100642D21 /* SCSUIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445E2BE3D75100642D21 /* SCSUIImage_Extension.swift */; };
-		41D644832BE3D75100642D21 /* SCSUIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445F2BE3D75100642D21 /* SCSUIView_Extension.swift */; };
-		41D644842BE3D75100642D21 /* SCSString_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644612BE3D75100642D21 /* SCSString_Extension.swift */; };
-		41D644852BE3D75100642D21 /* SCSArray_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644622BE3D75100642D21 /* SCSArray_Extension.swift */; };
-		41D644862BE3D75100642D21 /* SCSCollection_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644632BE3D75100642D21 /* SCSCollection_Extension.swift */; };
-		41D644872BE3D75100642D21 /* SCSOptional_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644642BE3D75100642D21 /* SCSOptional_Extension.swift */; };
-		41D644882BE3D75100642D21 /* SCSNSObject_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644652BE3D75100642D21 /* SCSNSObject_Extension.swift */; };
-		41D644892BE3D75100642D21 /* SCSDouble_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644662BE3D75100642D21 /* SCSDouble_Extension.swift */; };
-		41D6448B2BE3D75100642D21 /* SCSNotification.Name_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644692BE3D75100642D21 /* SCSNotification.Name_Extension.swift */; };
-		41D6448C2BE3D75100642D21 /* SCICard+SCSExtension???.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6446B2BE3D75100642D21 /* SCICard+SCSExtension???.swift */; };
-		41D6448D2BE3D75100642D21 /* SCSError_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6446D2BE3D75100642D21 /* SCSError_Extension.swift */; };
-		41D6448E2BE3D75100642D21 /* SCSFirestore_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6446E2BE3D75100642D21 /* SCSFirestore_Extension.swift */; };
-		41D6448F2BE3D75100642D21 /* SCSCGPoint_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644702BE3D75100642D21 /* SCSCGPoint_Extension.swift */; };
-		41D644902BE3D75100642D21 /* SCSCGRect_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644712BE3D75100642D21 /* SCSCGRect_Extension.swift */; };
-		41D644912BE3D75100642D21 /* SCSUIFont_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644732BE3D75100642D21 /* SCSUIFont_Extension.swift */; };
-		41D644922BE3D75100642D21 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644742BE3D75100642D21 /* UIColor_Extension.swift */; };
+		41D6447D2BE3D75100642D21 /* RachireniuaSportivnieUITableView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644592BE3D75100642D21 /* RachireniuaSportivnieUITableView_Extension.swift */; };
+		41D6447E2BE3D75100642D21 /* RachireniuaSportivnieUIWindow_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445A2BE3D75100642D21 /* RachireniuaSportivnieUIWindow_Extension.swift */; };
+		41D6447F2BE3D75100642D21 /* RachireniuaSportivnieUILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445B2BE3D75100642D21 /* RachireniuaSportivnieUILabel_Extension.swift */; };
+		41D644802BE3D75100642D21 /* RachireniuaSportivnieUIDevice_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445C2BE3D75100642D21 /* RachireniuaSportivnieUIDevice_Extension.swift */; };
+		41D644812BE3D75100642D21 /* RachireniuaSportivnieUIViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445D2BE3D75100642D21 /* RachireniuaSportivnieUIViewController_Extension.swift */; };
+		41D644822BE3D75100642D21 /* RachireniuaSportivnieUIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445E2BE3D75100642D21 /* RachireniuaSportivnieUIImage_Extension.swift */; };
+		41D644832BE3D75100642D21 /* RachireniuaSportivnieUIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6445F2BE3D75100642D21 /* RachireniuaSportivnieUIView_Extension.swift */; };
+		41D644842BE3D75100642D21 /* RachireniuaSportivnieString_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644612BE3D75100642D21 /* RachireniuaSportivnieString_Extension.swift */; };
+		41D644852BE3D75100642D21 /* RachireniuaSportivnieArray_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644622BE3D75100642D21 /* RachireniuaSportivnieArray_Extension.swift */; };
+		41D644862BE3D75100642D21 /* RachireniuaSportivnieCollection_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644632BE3D75100642D21 /* RachireniuaSportivnieCollection_Extension.swift */; };
+		41D644872BE3D75100642D21 /* RachireniuaSportivnieOptional_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644642BE3D75100642D21 /* RachireniuaSportivnieOptional_Extension.swift */; };
+		41D644882BE3D75100642D21 /* RachireniuaSportivnieNSObject_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644652BE3D75100642D21 /* RachireniuaSportivnieNSObject_Extension.swift */; };
+		41D644892BE3D75100642D21 /* RachireniuaSportivnieDouble_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644662BE3D75100642D21 /* RachireniuaSportivnieDouble_Extension.swift */; };
+		41D6448B2BE3D75100642D21 /* RachireniuaSportivnieNotification.Name_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644692BE3D75100642D21 /* RachireniuaSportivnieNotification.Name_Extension.swift */; };
+		41D6448C2BE3D75100642D21 /* RachireniuaSportivnieCard+SCSExtension???.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6446B2BE3D75100642D21 /* RachireniuaSportivnieCard+SCSExtension???.swift */; };
+		41D6448D2BE3D75100642D21 /* RachireniuaSportivnieError_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6446D2BE3D75100642D21 /* RachireniuaSportivnieError_Extension.swift */; };
+		41D6448E2BE3D75100642D21 /* RachireniuaSportivnieFirestore_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6446E2BE3D75100642D21 /* RachireniuaSportivnieFirestore_Extension.swift */; };
+		41D6448F2BE3D75100642D21 /* RachireniuaSportivnieCGPoint_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644702BE3D75100642D21 /* RachireniuaSportivnieCGPoint_Extension.swift */; };
+		41D644902BE3D75100642D21 /* RachireniuaSportivnieCGRect_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644712BE3D75100642D21 /* RachireniuaSportivnieCGRect_Extension.swift */; };
+		41D644912BE3D75100642D21 /* RachireniuaSportivnieUIFont_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644732BE3D75100642D21 /* RachireniuaSportivnieUIFont_Extension.swift */; };
+		41D644922BE3D75100642D21 /* RachireniuaSportivnieUIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644742BE3D75100642D21 /* RachireniuaSportivnieUIColor_Extension.swift */; };
 		41D644932BE3D75100642D21 /* JSONDecoder+SCSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644762BE3D75100642D21 /* JSONDecoder+SCSExtension.swift */; };
 		41D644942BE3D75100642D21 /* JSONEncoder+SCSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644772BE3D75100642D21 /* JSONEncoder+SCSExtension.swift */; };
-		41D644952BE3D75100642D21 /* SCSNumberFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644792BE3D75100642D21 /* SCSNumberFormatter_Extension.swift */; };
+		41D644952BE3D75100642D21 /* RachireniuaSportivnieNumberFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D644792BE3D75100642D21 /* RachireniuaSportivnieNumberFormatter_Extension.swift */; };
 		41D923252BE3DAB700311A1B /* CVSportivnieCTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D922FC2BE3DAB700311A1B /* CVSportivnieCTVC.swift */; };
 		41D923262BE3DAB700311A1B /* CVSportivnieRCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D922FD2BE3DAB700311A1B /* CVSportivnieRCardCVC.swift */; };
 		41D923272BE3DAB700311A1B /* CVSportivnieSwitchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D922FE2BE3DAB700311A1B /* CVSportivnieSwitchTVC.swift */; };
@@ -601,34 +601,34 @@
 		419C285E2BEBCAC100DDD67C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		419C28602BEBCAC100DDD67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		419C28672BEBCDE400DDD67C /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
-		419C28682BEC06C900DDD67C /* SCSUserDefults_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCSUserDefults_Extension.swift; sourceTree = "<group>"; };
-		41D644562BE3D75100642D21 /* SCSUIScreen_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUIScreen_Extension.swift; sourceTree = "<group>"; };
-		41D644572BE3D75100642D21 /* SCSUITabBar_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUITabBar_Extension.swift; sourceTree = "<group>"; };
+		419C28682BEC06C900DDD67C /* RachireniuaSportivnieUserDefults_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUserDefults_Extension.swift; sourceTree = "<group>"; };
+		41D644562BE3D75100642D21 /* RachireniuaSportivnieUIScreen_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUIScreen_Extension.swift; sourceTree = "<group>"; };
+		41D644572BE3D75100642D21 /* RachireniuaSportivnieUITabBar_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUITabBar_Extension.swift; sourceTree = "<group>"; };
 		41D644582BE3D75100642D21 /* SCSUINavigationBar_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUINavigationBar_Extension.swift; sourceTree = "<group>"; };
-		41D644592BE3D75100642D21 /* SCSUITableView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUITableView_Extension.swift; sourceTree = "<group>"; };
-		41D6445A2BE3D75100642D21 /* SCSUIWindow_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUIWindow_Extension.swift; sourceTree = "<group>"; };
-		41D6445B2BE3D75100642D21 /* SCSUILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUILabel_Extension.swift; sourceTree = "<group>"; };
-		41D6445C2BE3D75100642D21 /* SCSUIDevice_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUIDevice_Extension.swift; sourceTree = "<group>"; };
-		41D6445D2BE3D75100642D21 /* SCSUIViewController_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUIViewController_Extension.swift; sourceTree = "<group>"; };
-		41D6445E2BE3D75100642D21 /* SCSUIImage_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUIImage_Extension.swift; sourceTree = "<group>"; };
-		41D6445F2BE3D75100642D21 /* SCSUIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUIView_Extension.swift; sourceTree = "<group>"; };
-		41D644612BE3D75100642D21 /* SCSString_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSString_Extension.swift; sourceTree = "<group>"; };
-		41D644622BE3D75100642D21 /* SCSArray_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSArray_Extension.swift; sourceTree = "<group>"; };
-		41D644632BE3D75100642D21 /* SCSCollection_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSCollection_Extension.swift; sourceTree = "<group>"; };
-		41D644642BE3D75100642D21 /* SCSOptional_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSOptional_Extension.swift; sourceTree = "<group>"; };
-		41D644652BE3D75100642D21 /* SCSNSObject_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSNSObject_Extension.swift; sourceTree = "<group>"; };
-		41D644662BE3D75100642D21 /* SCSDouble_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSDouble_Extension.swift; sourceTree = "<group>"; };
-		41D644692BE3D75100642D21 /* SCSNotification.Name_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSNotification.Name_Extension.swift; sourceTree = "<group>"; };
-		41D6446B2BE3D75100642D21 /* SCICard+SCSExtension???.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCICard+SCSExtension???.swift"; sourceTree = "<group>"; };
-		41D6446D2BE3D75100642D21 /* SCSError_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSError_Extension.swift; sourceTree = "<group>"; };
-		41D6446E2BE3D75100642D21 /* SCSFirestore_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSFirestore_Extension.swift; sourceTree = "<group>"; };
-		41D644702BE3D75100642D21 /* SCSCGPoint_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSCGPoint_Extension.swift; sourceTree = "<group>"; };
-		41D644712BE3D75100642D21 /* SCSCGRect_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSCGRect_Extension.swift; sourceTree = "<group>"; };
-		41D644732BE3D75100642D21 /* SCSUIFont_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSUIFont_Extension.swift; sourceTree = "<group>"; };
-		41D644742BE3D75100642D21 /* UIColor_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		41D644592BE3D75100642D21 /* RachireniuaSportivnieUITableView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUITableView_Extension.swift; sourceTree = "<group>"; };
+		41D6445A2BE3D75100642D21 /* RachireniuaSportivnieUIWindow_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUIWindow_Extension.swift; sourceTree = "<group>"; };
+		41D6445B2BE3D75100642D21 /* RachireniuaSportivnieUILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUILabel_Extension.swift; sourceTree = "<group>"; };
+		41D6445C2BE3D75100642D21 /* RachireniuaSportivnieUIDevice_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUIDevice_Extension.swift; sourceTree = "<group>"; };
+		41D6445D2BE3D75100642D21 /* RachireniuaSportivnieUIViewController_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUIViewController_Extension.swift; sourceTree = "<group>"; };
+		41D6445E2BE3D75100642D21 /* RachireniuaSportivnieUIImage_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUIImage_Extension.swift; sourceTree = "<group>"; };
+		41D6445F2BE3D75100642D21 /* RachireniuaSportivnieUIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUIView_Extension.swift; sourceTree = "<group>"; };
+		41D644612BE3D75100642D21 /* RachireniuaSportivnieString_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieString_Extension.swift; sourceTree = "<group>"; };
+		41D644622BE3D75100642D21 /* RachireniuaSportivnieArray_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieArray_Extension.swift; sourceTree = "<group>"; };
+		41D644632BE3D75100642D21 /* RachireniuaSportivnieCollection_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieCollection_Extension.swift; sourceTree = "<group>"; };
+		41D644642BE3D75100642D21 /* RachireniuaSportivnieOptional_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieOptional_Extension.swift; sourceTree = "<group>"; };
+		41D644652BE3D75100642D21 /* RachireniuaSportivnieNSObject_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieNSObject_Extension.swift; sourceTree = "<group>"; };
+		41D644662BE3D75100642D21 /* RachireniuaSportivnieDouble_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieDouble_Extension.swift; sourceTree = "<group>"; };
+		41D644692BE3D75100642D21 /* RachireniuaSportivnieNotification.Name_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieNotification.Name_Extension.swift; sourceTree = "<group>"; };
+		41D6446B2BE3D75100642D21 /* RachireniuaSportivnieCard+SCSExtension???.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RachireniuaSportivnieCard+SCSExtension???.swift"; sourceTree = "<group>"; };
+		41D6446D2BE3D75100642D21 /* RachireniuaSportivnieError_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieError_Extension.swift; sourceTree = "<group>"; };
+		41D6446E2BE3D75100642D21 /* RachireniuaSportivnieFirestore_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieFirestore_Extension.swift; sourceTree = "<group>"; };
+		41D644702BE3D75100642D21 /* RachireniuaSportivnieCGPoint_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieCGPoint_Extension.swift; sourceTree = "<group>"; };
+		41D644712BE3D75100642D21 /* RachireniuaSportivnieCGRect_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieCGRect_Extension.swift; sourceTree = "<group>"; };
+		41D644732BE3D75100642D21 /* RachireniuaSportivnieUIFont_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUIFont_Extension.swift; sourceTree = "<group>"; };
+		41D644742BE3D75100642D21 /* RachireniuaSportivnieUIColor_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieUIColor_Extension.swift; sourceTree = "<group>"; };
 		41D644762BE3D75100642D21 /* JSONDecoder+SCSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+SCSExtension.swift"; sourceTree = "<group>"; };
 		41D644772BE3D75100642D21 /* JSONEncoder+SCSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+SCSExtension.swift"; sourceTree = "<group>"; };
-		41D644792BE3D75100642D21 /* SCSNumberFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSNumberFormatter_Extension.swift; sourceTree = "<group>"; };
+		41D644792BE3D75100642D21 /* RachireniuaSportivnieNumberFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachireniuaSportivnieNumberFormatter_Extension.swift; sourceTree = "<group>"; };
 		41D922FC2BE3DAB700311A1B /* CVSportivnieCTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSportivnieCTVC.swift; sourceTree = "<group>"; };
 		41D922FD2BE3DAB700311A1B /* CVSportivnieRCardCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSportivnieRCardCVC.swift; sourceTree = "<group>"; };
 		41D922FE2BE3DAB700311A1B /* CVSportivnieSwitchTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSportivnieSwitchTVC.swift; sourceTree = "<group>"; };
@@ -1643,16 +1643,16 @@
 		41D644552BE3D75100642D21 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				41D644562BE3D75100642D21 /* SCSUIScreen_Extension.swift */,
-				41D644572BE3D75100642D21 /* SCSUITabBar_Extension.swift */,
+				41D644562BE3D75100642D21 /* RachireniuaSportivnieUIScreen_Extension.swift */,
+				41D644572BE3D75100642D21 /* RachireniuaSportivnieUITabBar_Extension.swift */,
 				41D644582BE3D75100642D21 /* SCSUINavigationBar_Extension.swift */,
-				41D644592BE3D75100642D21 /* SCSUITableView_Extension.swift */,
-				41D6445A2BE3D75100642D21 /* SCSUIWindow_Extension.swift */,
-				41D6445B2BE3D75100642D21 /* SCSUILabel_Extension.swift */,
-				41D6445C2BE3D75100642D21 /* SCSUIDevice_Extension.swift */,
-				41D6445D2BE3D75100642D21 /* SCSUIViewController_Extension.swift */,
-				41D6445E2BE3D75100642D21 /* SCSUIImage_Extension.swift */,
-				41D6445F2BE3D75100642D21 /* SCSUIView_Extension.swift */,
+				41D644592BE3D75100642D21 /* RachireniuaSportivnieUITableView_Extension.swift */,
+				41D6445A2BE3D75100642D21 /* RachireniuaSportivnieUIWindow_Extension.swift */,
+				41D6445B2BE3D75100642D21 /* RachireniuaSportivnieUILabel_Extension.swift */,
+				41D6445C2BE3D75100642D21 /* RachireniuaSportivnieUIDevice_Extension.swift */,
+				41D6445D2BE3D75100642D21 /* RachireniuaSportivnieUIViewController_Extension.swift */,
+				41D6445E2BE3D75100642D21 /* RachireniuaSportivnieUIImage_Extension.swift */,
+				41D6445F2BE3D75100642D21 /* RachireniuaSportivnieUIView_Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1660,12 +1660,12 @@
 		41D644602BE3D75100642D21 /* Data_Types */ = {
 			isa = PBXGroup;
 			children = (
-				41D644612BE3D75100642D21 /* SCSString_Extension.swift */,
-				41D644622BE3D75100642D21 /* SCSArray_Extension.swift */,
-				41D644632BE3D75100642D21 /* SCSCollection_Extension.swift */,
-				41D644642BE3D75100642D21 /* SCSOptional_Extension.swift */,
-				41D644652BE3D75100642D21 /* SCSNSObject_Extension.swift */,
-				41D644662BE3D75100642D21 /* SCSDouble_Extension.swift */,
+				41D644612BE3D75100642D21 /* RachireniuaSportivnieString_Extension.swift */,
+				41D644622BE3D75100642D21 /* RachireniuaSportivnieArray_Extension.swift */,
+				41D644632BE3D75100642D21 /* RachireniuaSportivnieCollection_Extension.swift */,
+				41D644642BE3D75100642D21 /* RachireniuaSportivnieOptional_Extension.swift */,
+				41D644652BE3D75100642D21 /* RachireniuaSportivnieNSObject_Extension.swift */,
+				41D644662BE3D75100642D21 /* RachireniuaSportivnieDouble_Extension.swift */,
 			);
 			path = Data_Types;
 			sourceTree = "<group>";
@@ -1673,8 +1673,8 @@
 		41D644672BE3D75100642D21 /* Notification_UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				41D644692BE3D75100642D21 /* SCSNotification.Name_Extension.swift */,
-				419C28682BEC06C900DDD67C /* SCSUserDefults_Extension.swift */,
+				41D644692BE3D75100642D21 /* RachireniuaSportivnieNotification.Name_Extension.swift */,
+				419C28682BEC06C900DDD67C /* RachireniuaSportivnieUserDefults_Extension.swift */,
 			);
 			path = Notification_UserDefaults;
 			sourceTree = "<group>";
@@ -1682,7 +1682,7 @@
 		41D6446A2BE3D75100642D21 /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				41D6446B2BE3D75100642D21 /* SCICard+SCSExtension???.swift */,
+				41D6446B2BE3D75100642D21 /* RachireniuaSportivnieCard+SCSExtension???.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -1690,8 +1690,8 @@
 		41D6446C2BE3D75100642D21 /* Error_Firestore */ = {
 			isa = PBXGroup;
 			children = (
-				41D6446D2BE3D75100642D21 /* SCSError_Extension.swift */,
-				41D6446E2BE3D75100642D21 /* SCSFirestore_Extension.swift */,
+				41D6446D2BE3D75100642D21 /* RachireniuaSportivnieError_Extension.swift */,
+				41D6446E2BE3D75100642D21 /* RachireniuaSportivnieFirestore_Extension.swift */,
 			);
 			path = Error_Firestore;
 			sourceTree = "<group>";
@@ -1699,8 +1699,8 @@
 		41D6446F2BE3D75100642D21 /* CG_Point_Rect */ = {
 			isa = PBXGroup;
 			children = (
-				41D644702BE3D75100642D21 /* SCSCGPoint_Extension.swift */,
-				41D644712BE3D75100642D21 /* SCSCGRect_Extension.swift */,
+				41D644702BE3D75100642D21 /* RachireniuaSportivnieCGPoint_Extension.swift */,
+				41D644712BE3D75100642D21 /* RachireniuaSportivnieCGRect_Extension.swift */,
 			);
 			path = CG_Point_Rect;
 			sourceTree = "<group>";
@@ -1708,8 +1708,8 @@
 		41D644722BE3D75100642D21 /* Font_Color */ = {
 			isa = PBXGroup;
 			children = (
-				41D644732BE3D75100642D21 /* SCSUIFont_Extension.swift */,
-				41D644742BE3D75100642D21 /* UIColor_Extension.swift */,
+				41D644732BE3D75100642D21 /* RachireniuaSportivnieUIFont_Extension.swift */,
+				41D644742BE3D75100642D21 /* RachireniuaSportivnieUIColor_Extension.swift */,
 			);
 			path = Font_Color;
 			sourceTree = "<group>";
@@ -1726,7 +1726,7 @@
 		41D644782BE3D75100642D21 /* NumberFormatter */ = {
 			isa = PBXGroup;
 			children = (
-				41D644792BE3D75100642D21 /* SCSNumberFormatter_Extension.swift */,
+				41D644792BE3D75100642D21 /* RachireniuaSportivnieNumberFormatter_Extension.swift */,
 			);
 			path = NumberFormatter;
 			sourceTree = "<group>";
@@ -2668,7 +2668,7 @@
 				41998A672BE6A7F000E62B80 /* SceniSportivnieIzmenitKartuVid.swift in Sources */,
 				41D9233B2BE3DAB800311A1B /* CVSportivnieCToolB.swift in Sources */,
 				419B8A0E2BF26AAA00628B99 /* ServiceSportivniiPoiskKarti.swift in Sources */,
-				41D6447B2BE3D75100642D21 /* SCSUITabBar_Extension.swift in Sources */,
+				41D6447B2BE3D75100642D21 /* RachireniuaSportivnieUITabBar_Extension.swift in Sources */,
 				41998A3E2BE6A7F000E62B80 /* KartiKategoriiDelegat.swift in Sources */,
 				41998A002BE6A7EF00E62B80 /* SceniSportivnieCenaOcenkaDetaliVid.swift in Sources */,
 				41D923342BE3DAB800311A1B /* CVSportivnieBaseCV.swift in Sources */,
@@ -2682,8 +2682,8 @@
 				41998A782BE6A7F000E62B80 /* SceniSportivnieSignInD.swift in Sources */,
 				41D923362BE3DAB800311A1B /* CVSportivnieCardMV.swift in Sources */,
 				4650DEDB2AA0957900F6F13C /* ModeliSportivnieSportCard+initSCI.swift in Sources */,
-				41D6448D2BE3D75100642D21 /* SCSError_Extension.swift in Sources */,
-				41D644872BE3D75100642D21 /* SCSOptional_Extension.swift in Sources */,
+				41D6448D2BE3D75100642D21 /* RachireniuaSportivnieError_Extension.swift in Sources */,
+				41D644872BE3D75100642D21 /* RachireniuaSportivnieOptional_Extension.swift in Sources */,
 				41998A162BE6A7EF00E62B80 /* SceniSportivnieSwipeKartiKnopka.swift in Sources */,
 				41998A1D2BE6A7EF00E62B80 /* SCSMenuKollekciiVc.swift in Sources */,
 				41D923432BE3DAB800311A1B /* CVSportivnieOptionV.swift in Sources */,
@@ -2751,8 +2751,8 @@
 				41D923372BE3DAB800311A1B /* CVSportivnieTTextFV.swift in Sources */,
 				41D923562BE3DD4700311A1B /* SportivniiRouterMNavR.swift in Sources */,
 				467CCC782A9813CC000AFC8F /* SportivniiProfileManager.swift in Sources */,
-				41D644812BE3D75100642D21 /* SCSUIViewController_Extension.swift in Sources */,
-				41D644912BE3D75100642D21 /* SCSUIFont_Extension.swift in Sources */,
+				41D644812BE3D75100642D21 /* RachireniuaSportivnieUIViewController_Extension.swift in Sources */,
+				41D644912BE3D75100642D21 /* RachireniuaSportivnieUIFont_Extension.swift in Sources */,
 				4650DF102AA2210600F6F13C /* ModeliSportivnieCardDetailsItem.swift in Sources */,
 				4650DED82AA094C500F6F13C /* ModeliSportivniePoiskKartOshibka.swift in Sources */,
 				46C55C632A9A61D2001006E2 /* InterfaceSportivnieApiRouteProtocol.swift in Sources */,
@@ -2764,17 +2764,17 @@
 				41D923F52BE3E1D500311A1B /* SportivniiSozdatKolleciuCoo.swift in Sources */,
 				4619AE5B2A77965700753891 /* AppDelegate.swift in Sources */,
 				419B8A372BF26ABD00628B99 /* SportivnieCommonOpciiUD.swift in Sources */,
-				419C28692BEC06C900DDD67C /* SCSUserDefults_Extension.swift in Sources */,
+				419C28692BEC06C900DDD67C /* RachireniuaSportivnieUserDefults_Extension.swift in Sources */,
 				41998A4F2BE6A7F000E62B80 /* SceniSportivniePortfolioInfoVid.swift in Sources */,
 				41998A532BE6A7F000E62B80 /* SceniSportivniePortfolioVid.swift in Sources */,
 				468A5CD02AB7243900D29443 /* SpirtivnieInterfaceCIdentifyOtvet.swift in Sources */,
-				41D6448E2BE3D75100642D21 /* SCSFirestore_Extension.swift in Sources */,
+				41D6448E2BE3D75100642D21 /* RachireniuaSportivnieFirestore_Extension.swift in Sources */,
 				41998A152BE6A7EF00E62B80 /* SceniSportivnieSwipeKartiVide.swift in Sources */,
 				41998A7E2BE6A7F000E62B80 /* SceniSportivnieRPVC.swift in Sources */,
 				41998A042BE6A7EF00E62B80 /* SceniSportivnieCurrentValueDetaliDelegat.swift in Sources */,
 				4650DE7F2A9A743700F6F13C /* SportKartaInvestorRoute.swift in Sources */,
 				41998A362BE6A7F000E62B80 /* SceniSportivnieProfilSelectTVC.swift in Sources */,
-				41D644852BE3D75100642D21 /* SCSArray_Extension.swift in Sources */,
+				41D644852BE3D75100642D21 /* RachireniuaSportivnieArray_Extension.swift in Sources */,
 				41998A6D2BE6A7F000E62B80 /* SceniSportivnieCardOwnVCDetailDelegate.swift in Sources */,
 				469668112A99513400F669E4 /* ModeliSportivnieCardGrader.swift in Sources */,
 				461CBD2E2AA9DE880025FF41 /* ModeliSportivnieKartaKollekcia.swift in Sources */,
@@ -2785,7 +2785,7 @@
 				461E2EE92A8F75DF009422E0 /* SportivniiAuthCredentialManager.swift in Sources */,
 				41998A1E2BE6A7EF00E62B80 /* SceniSportivnieGraderTCl.swift in Sources */,
 				41998A6A2BE6A7F000E62B80 /* SceniSportivnieNaibolsheeValueSpicokVC.swift in Sources */,
-				41D644902BE3D75100642D21 /* SCSCGRect_Extension.swift in Sources */,
+				41D644902BE3D75100642D21 /* RachireniuaSportivnieCGRect_Extension.swift in Sources */,
 				41D923932BE3DEB600311A1B /* SportivniiRecentCoo.swift in Sources */,
 				4650DED12AA0801E00F6F13C /* ModeliSportivniemagicheskayaKarta.swift in Sources */,
 				41998A0E2BE6A7EF00E62B80 /* DobavitKartiVKollekciuKategoriiVid.swift in Sources */,
@@ -2813,7 +2813,7 @@
 				41998A1C2BE6A7EF00E62B80 /* SCSMenuKollekciiDelegat.swift in Sources */,
 				419B8A152BF26AAA00628B99 /* ServiceSportivniiAdjust+PushWoosh.swift in Sources */,
 				419B8A3F2BF26ABD00628B99 /* SportivinieKartiPoziciaKletki.swift in Sources */,
-				41D644802BE3D75100642D21 /* SCSUIDevice_Extension.swift in Sources */,
+				41D644802BE3D75100642D21 /* RachireniuaSportivnieUIDevice_Extension.swift in Sources */,
 				41D923472BE3DAB800311A1B /* CVSportivnieDAVCD.swift in Sources */,
 				41D923902BE3DEB600311A1B /* SportivniiLogoutCoo.swift in Sources */,
 				41998A5A2BE6A7F000E62B80 /* SceniSportivnieDobavitKartiKolodaVC.swift in Sources */,
@@ -2846,7 +2846,7 @@
 				4650DEE12AA0B05300F6F13C /* ModeliSportivnieCardWrapper.swift in Sources */,
 				41D923912BE3DEB600311A1B /* SportivniiIdentifyCoo.swift in Sources */,
 				41998A0A2BE6A7EF00E62B80 /* DobavitKartiToCollectionKartiDelegat.swift in Sources */,
-				41D6447F2BE3D75100642D21 /* SCSUILabel_Extension.swift in Sources */,
+				41D6447F2BE3D75100642D21 /* RachireniuaSportivnieUILabel_Extension.swift in Sources */,
 				41998A722BE6A7F000E62B80 /* SceniSportivnieSFPV.swift in Sources */,
 				41D923282BE3DAB700311A1B /* CVSportivnieMSelectC.swift in Sources */,
 				419B8A312BF26ABD00628B99 /* SportivnieCommonOpciiAuthOpcii.swift in Sources */,
@@ -2854,10 +2854,10 @@
 				41998A4E2BE6A7F000E62B80 /* SceniSportivniePortfolioDelegat.swift in Sources */,
 				41D923972BE3DEB600311A1B /* SportivniiScanirovaineCoo.swift in Sources */,
 				461CBD3C2AAA7CF30025FF41 /* ModeliSportivnieKategoriiKartochek.swift in Sources */,
-				41D6448B2BE3D75100642D21 /* SCSNotification.Name_Extension.swift in Sources */,
+				41D6448B2BE3D75100642D21 /* RachireniuaSportivnieNotification.Name_Extension.swift in Sources */,
 				41998A522BE6A7F000E62B80 /* SceniSportivniePortfolioNetKartiVid.swift in Sources */,
 				4650DED32AA0813100F6F13C /* LegalnostKarti.swift in Sources */,
-				41D6448F2BE3D75100642D21 /* SCSCGPoint_Extension.swift in Sources */,
+				41D6448F2BE3D75100642D21 /* RachireniuaSportivnieCGPoint_Extension.swift in Sources */,
 				41998A652BE6A7F000E62B80 /* SceniSportivnieIzmenitKartuVC.swift in Sources */,
 				4650DECF2AA07C3A00F6F13C /* ModeliSportivnieKartaParallel.swift in Sources */,
 				41D9238D2BE3DEB600311A1B /* SportivniiHighValueCoo.swift in Sources */,
@@ -2869,8 +2869,8 @@
 				41998A3A2BE6A7F000E62B80 /* SceniSportivnieUpdateParolVC.swift in Sources */,
 				41D923402BE3DAB800311A1B /* CVSportivnieVidKnopki.swift in Sources */,
 				41998A492BE6A7F000E62B80 /* NedavnoDobavKartiVid.swift in Sources */,
-				41D644952BE3D75100642D21 /* SCSNumberFormatter_Extension.swift in Sources */,
-				41D644832BE3D75100642D21 /* SCSUIView_Extension.swift in Sources */,
+				41D644952BE3D75100642D21 /* RachireniuaSportivnieNumberFormatter_Extension.swift in Sources */,
+				41D644832BE3D75100642D21 /* RachireniuaSportivnieUIView_Extension.swift in Sources */,
 				41998A122BE6A7EF00E62B80 /* SceniSportivnieSozdatIzmenitKollekciuDelegat.swift in Sources */,
 				41998A432BE6A7F000E62B80 /* SceniSportivnieKategoriiValueCVC.swift in Sources */,
 				4619AE5D2A77965700753891 /* SceneDelegate.swift in Sources */,
@@ -2892,7 +2892,7 @@
 				41D923532BE3DD4700311A1B /* SportivniiRouterAppDR.swift in Sources */,
 				461CBD472AAC8A5E0025FF41 /* ModeliSportivnieCardCollectible.swift in Sources */,
 				41998A342BE6A7F000E62B80 /* SceniSportivnieScanirovanieKartiVC.swift in Sources */,
-				41D6448C2BE3D75100642D21 /* SCICard+SCSExtension???.swift in Sources */,
+				41D6448C2BE3D75100642D21 /* RachireniuaSportivnieCard+SCSExtension???.swift in Sources */,
 				41D9232B2BE3DAB700311A1B /* CVSportivnieCardPCVC.swift in Sources */,
 				461E2EEF2A8F816C009422E0 /* ModeliSportivnieCommonAuthOshibka.swift in Sources */,
 				41D923FC2BE3E1D500311A1B /* SportivniiYdalitKolodyCoo.swift in Sources */,
@@ -2903,15 +2903,15 @@
 				41D923772BE3DE0C00311A1B /* SportivnieResLocalizableStrings.swift in Sources */,
 				467CCC3B2A94180C000AFC8F /* InformaciaOPrilozhenii.swift in Sources */,
 				419989FD2BE6A7EF00E62B80 /* SceniSportivniePoiskKartiVC.swift in Sources */,
-				41D644822BE3D75100642D21 /* SCSUIImage_Extension.swift in Sources */,
+				41D644822BE3D75100642D21 /* RachireniuaSportivnieUIImage_Extension.swift in Sources */,
 				41998A752BE6A7F000E62B80 /* SCSRegistraciaVhodVC.swift in Sources */,
 				467CCC5E2A97802B000AFC8F /* ModeliSportivnieScanirovanieKartOshibka.swift in Sources */,
 				41D923292BE3DAB700311A1B /* CVSportivnieMSwitchC.swift in Sources */,
 				468C836D2AB60CA4003DC91A /* InterfaceSportivnieMultiDataZapros.swift in Sources */,
-				41D6447E2BE3D75100642D21 /* SCSUIWindow_Extension.swift in Sources */,
+				41D6447E2BE3D75100642D21 /* RachireniuaSportivnieUIWindow_Extension.swift in Sources */,
 				419B8A0F2BF26AAA00628B99 /* ServiceSportivniiKartaPoiskovaya.swift in Sources */,
 				41D9238C2BE3DEB600311A1B /* SCSCardCategoryCoo.swift in Sources */,
-				41D644892BE3D75100642D21 /* SCSDouble_Extension.swift in Sources */,
+				41D644892BE3D75100642D21 /* RachireniuaSportivnieDouble_Extension.swift in Sources */,
 				41D9239C2BE3DEB600311A1B /* SportivniiDetailCardCoo.swift in Sources */,
 				468C83602AB5FA00003DC91A /* InterfaceSportivnieKartaProRoute.swift in Sources */,
 				41998A472BE6A7F000E62B80 /* SceniSportivnieDoskaKartiVid.swift in Sources */,
@@ -2924,7 +2924,7 @@
 				41D6447C2BE3D75100642D21 /* SCSUINavigationBar_Extension.swift in Sources */,
 				41998A232BE6A7EF00E62B80 /* SceniSportivnieNedavnoDobavSpisokDelegat.swift in Sources */,
 				41998A1F2BE6A7EF00E62B80 /* SceniSportivnieGraderViborVc.swift in Sources */,
-				41D644842BE3D75100642D21 /* SCSString_Extension.swift in Sources */,
+				41D644842BE3D75100642D21 /* RachireniuaSportivnieString_Extension.swift in Sources */,
 				41998A562BE6A7F000E62B80 /* SceniSportivnieIdentifyKartiVid.swift in Sources */,
 				46C55C652A9A61EE001006E2 /* InterfaceSportivnieHTTPMd.swift in Sources */,
 				41998A212BE6A7EF00E62B80 /* SceniSportivnieGraderViborDelegat.swift in Sources */,
@@ -2963,12 +2963,12 @@
 				41998A282BE6A7EF00E62B80 /* SceniSportivnieSortirovkaKartVcDelegat.swift in Sources */,
 				41998A482BE6A7F000E62B80 /* SceniSportivnieNaibolshiiValueVid.swift in Sources */,
 				46C55C5C2A9A4BCC001006E2 /* InterfaceSportivnieInvestorKarta.swift in Sources */,
-				41D644862BE3D75100642D21 /* SCSCollection_Extension.swift in Sources */,
+				41D644862BE3D75100642D21 /* RachireniuaSportivnieCollection_Extension.swift in Sources */,
 				419B8A3E2BF26ABD00628B99 /* SportivinieKartiKlaviatyra.swift in Sources */,
 				41998A422BE6A7F000E62B80 /* SceniSportivnieProfilShtuka.swift in Sources */,
 				41998A252BE6A7EF00E62B80 /* SceniSportivnieGradeViborVc.swift in Sources */,
-				41D644882BE3D75100642D21 /* SCSNSObject_Extension.swift in Sources */,
-				41D644922BE3D75100642D21 /* UIColor_Extension.swift in Sources */,
+				41D644882BE3D75100642D21 /* RachireniuaSportivnieNSObject_Extension.swift in Sources */,
+				41D644922BE3D75100642D21 /* RachireniuaSportivnieUIColor_Extension.swift in Sources */,
 				41998A302BE6A7F000E62B80 /* SceniSportivnieScanirovanieKartiVid.swift in Sources */,
 				41998A262BE6A7EF00E62B80 /* SceniSportivnieSortirovkaKartTCL.swift in Sources */,
 				41998A642BE6A7F000E62B80 /* KartaKolodaDelegat.swift in Sources */,
@@ -2978,9 +2978,9 @@
 				41998A5F2BE6A7F000E62B80 /* SceniSportivnieSodatIzmenitDelegat.swift in Sources */,
 				41D923332BE3DAB700311A1B /* CVSportivnieGrabberV.swift in Sources */,
 				41998A2F2BE6A7EF00E62B80 /* SceniSportivnieTipGrade.swift in Sources */,
-				41D6447D2BE3D75100642D21 /* SCSUITableView_Extension.swift in Sources */,
+				41D6447D2BE3D75100642D21 /* RachireniuaSportivnieUITableView_Extension.swift in Sources */,
 				41D923452BE3DAB800311A1B /* DeleteAccountPresentStyle.swift in Sources */,
-				41D6447A2BE3D75100642D21 /* SCSUIScreen_Extension.swift in Sources */,
+				41D6447A2BE3D75100642D21 /* RachireniuaSportivnieUIScreen_Extension.swift in Sources */,
 				41998A732BE6A7F000E62B80 /* SCSSignUpD.swift in Sources */,
 				46C55C612A9A4C98001006E2 /* InterfaceSportivnieInvestorPoiskOtvet.swift in Sources */,
 				41998A552BE6A7F000E62B80 /* SceniSportivnieIdentifyKartiDelegat.swift in Sources */,

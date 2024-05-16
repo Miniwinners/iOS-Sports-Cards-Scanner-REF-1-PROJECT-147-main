@@ -46,7 +46,7 @@ final class SportivinieKartiCardMV: UIView {
 
     lazy var missingImageView: UIView = { view in
         view.cornerRadius = 12
-        view.backgroundColor = .black
+        view.backgroundColor = .clear
         return view
     }(UIView())
 

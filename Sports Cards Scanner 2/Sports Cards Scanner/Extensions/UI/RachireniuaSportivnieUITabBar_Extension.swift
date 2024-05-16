@@ -17,12 +17,12 @@ extension UISportivinieKartiTabBarUnic {
         tabBarAppearance.backgroundColor = .clear
 
         let normalItemAppearance = UITabBarItemAppearance()
-        normalItemAppearance.normal.titleTextAttributes = [.font: UIFont.font(.ubuntuBold700, size: UIDevice.isIpad ? 18 : 12)]
+        normalItemAppearance.normal.titleTextAttributes = [.font: UIFont.font(.ubuntuMedium500, size: UIDevice.isIpad ? 20 : 12)]
         normalItemAppearance.normal.iconColor = .singINLabel
 
         let selectedItemAppearance = UITabBarItemAppearance()
-        selectedItemAppearance.selected.titleTextAttributes = [.font: UIFont.font(.ubuntuMedium500, size: 0)]
-        selectedItemAppearance.selected.iconColor = .blue
+        selectedItemAppearance.selected.titleTextAttributes = [.font: UIFont.font(.ubuntuMedium500, size: UIDevice.isIpad ? 20 : 12)]
+        selectedItemAppearance.selected.iconColor = UIColor(red: 0, green: 89/255, blue: 231/255, alpha: 1)
 
         tabBarAppearance.stackedLayoutAppearance = normalItemAppearance
         tabBarAppearance.inlineLayoutAppearance = normalItemAppearance
@@ -33,7 +33,7 @@ extension UISportivinieKartiTabBarUnic {
         tabBarAppearance.compactInlineLayoutAppearance = selectedItemAppearance
 
         let posX: CGFloat = 0
-        let posY: CGFloat = UIDevice.isIpad ? 35 : 20
+        let posY: CGFloat = UIDevice.isIpad ? 25:20
         let width = bounds.width
         let height = bounds.height + posY * 2.6
 

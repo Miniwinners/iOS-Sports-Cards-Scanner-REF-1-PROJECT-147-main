@@ -21,7 +21,7 @@ final class SportivinieKartiLogoutCoo {
 
 extension SportivinieKartiLogoutCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiDAVC(description: L10n.Prompt.Logout.description, styleButton: .delete)
+        let viewController = SportivinieKartiDAVC(description: L10n.Prompt.Logout.description, styleButton: .logOut)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.Logout.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteAccount.keepAction)
         viewController.delegate = self

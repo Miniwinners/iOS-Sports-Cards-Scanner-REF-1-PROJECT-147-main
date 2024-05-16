@@ -34,7 +34,7 @@ final class SportivinieKartiDeleteAccCoo {
 
 extension SportivinieKartiDeleteAccCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiDAVC(description: L10n.Prompt.DeleteAccount.description, styleButton: .logOut)
+        let viewController = SportivinieKartiDAVC(description: L10n.Prompt.DeleteAccount.description, styleButton: .delete)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.DeleteAccount.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteAccount.keepAction)
         viewController.delegate = self

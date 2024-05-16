@@ -14,7 +14,7 @@ func randomniiParol(length: Int) -> String {
     return randomPassword
 }
 enum ButtonStyleDeleteLogout {
-   case delete
+    case delete
     case logOut
 }
 

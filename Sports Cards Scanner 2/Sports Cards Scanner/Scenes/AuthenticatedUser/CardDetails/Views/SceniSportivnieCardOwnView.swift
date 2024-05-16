@@ -105,33 +105,33 @@ final class SportivinieKartiCardOwnView: UIView {
             let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
             return startDate.addingTimeInterval(randomTimeInterval)
         }
-//        detailsListView.isHidden = cardType != .addedCard
-//        addCardButton.isHidden = cardType == .addedCard
-//        editCardButton.isHidden = cardType != .addedCard
-//        findCardButtonContainer.isHidden = cardType != .identifiedCard
-//        removeCardButtonContainer.isHidden = cardType != .addedCard
-//
-//        pricingReportButton.graderPriceView.type = cardType == .addedCard ? .main: .add
-//        pricingReportButton.graderPriceView.updateConstraints()
-//        pricingReportButton.customPriceView.type = cardType == .addedCard ? .main: .add
-//        pricingReportButton.customPriceView.updateConstraints()
-//        containerStackPriceAdd.snp.remakeConstraints { make in
-//            make.height.equalTo(cardType == .addedCard ? UIDevice.isIpad ? 115:65 : UIDevice.isIpad ? 180:130)
-//        }
-        detailsListView.isHidden = cardType == .addedCard
-        addCardButton.isHidden = cardType != .addedCard
-        editCardButton.isHidden = cardType == .addedCard
-        findCardButtonContainer.isHidden = cardType == .identifiedCard
-        removeCardButtonContainer.isHidden = cardType == .addedCard
+        detailsListView.isHidden = cardType != .addedCard
+        addCardButton.isHidden = cardType == .addedCard
+        editCardButton.isHidden = cardType != .addedCard
+        findCardButtonContainer.isHidden = cardType != .identifiedCard
+        removeCardButtonContainer.isHidden = cardType != .addedCard
 
-        pricingReportButton.graderPriceView.type = cardType != .addedCard ? .main: .add
+        pricingReportButton.graderPriceView.type = cardType == .addedCard ? .main: .add
         pricingReportButton.graderPriceView.updateConstraints()
-        pricingReportButton.customPriceView.type = cardType != .addedCard ? .main: .add
+        pricingReportButton.customPriceView.type = cardType == .addedCard ? .main: .add
         pricingReportButton.customPriceView.updateConstraints()
         containerStackPriceAdd.snp.remakeConstraints { make in
-            make.height.equalTo(cardType != .addedCard ? UIDevice.isIpad ? 115:65 : UIDevice.isIpad ? 180:130)
+            make.height.equalTo(cardType == .addedCard ? UIDevice.isIpad ? 115:65 : UIDevice.isIpad ? 180:130)
         }
-        containerStackPriceAdd.superview?.layoutIfNeeded()
+//        detailsListView.isHidden = cardType == .addedCard
+//        addCardButton.isHidden = cardType != .addedCard
+//        editCardButton.isHidden = cardType == .addedCard
+//        findCardButtonContainer.isHidden = cardType == .identifiedCard
+//        removeCardButtonContainer.isHidden = cardType == .addedCard
+//
+//        pricingReportButton.graderPriceView.type = cardType != .addedCard ? .main: .add
+//        pricingReportButton.graderPriceView.updateConstraints()
+//        pricingReportButton.customPriceView.type = cardType != .addedCard ? .main: .add
+//        pricingReportButton.customPriceView.updateConstraints()
+//        containerStackPriceAdd.snp.remakeConstraints { make in
+//            make.height.equalTo(cardType != .addedCard ? UIDevice.isIpad ? 115:65 : UIDevice.isIpad ? 180:130)
+//        }
+//        containerStackPriceAdd.superview?.layoutIfNeeded()
     }
 }
 private extension SportivinieKartiCardOwnView {
