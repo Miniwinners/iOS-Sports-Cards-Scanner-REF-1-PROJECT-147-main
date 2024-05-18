@@ -18,7 +18,7 @@ final class SportivinieKartiSodatIzmenitVid: UIView {
 
     lazy var containerView: UIView = .init()
 
-    lazy var nameView: SportivinieKartiTTextFV = { view in
+    lazy var nameView: SportivinieKartiTTextPoleVid = { view in
         view.title = L10n.CreateDeck.DeckName.title
         view.titleLabel.textAlignment = .center
         view.titleLabel.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
@@ -27,7 +27,7 @@ final class SportivinieKartiSodatIzmenitVid: UIView {
         view.textField.returnKeyType = .done
         view.textField.autocapitalizationType = .sentences
         return view
-    }(SportivinieKartiTTextFV())
+    }(SportivinieKartiTTextPoleVid())
 
     lazy var deckTypeLabel: UILabel = { label in
         label.font = .font(.ubuntuLight300, size: UIDevice.isIpad ? 22:16)
@@ -60,29 +60,29 @@ final class SportivinieKartiSodatIzmenitVid: UIView {
         return label
     }(UILabel())
 
-    lazy var descriptionTextView: SportivinieKartiBaseTextV = { textView in
+    lazy var descriptionTextView: SportivinieKartiBaseTextVid = { textView in
         textView.placeholder = L10n.CreateDeck.Description.placeholder
         textView.autocorrectionType = .no
         textView.backgroundColor = .skyBlue
         return textView
-    }(SportivinieKartiBaseTextV())
+    }(SportivinieKartiBaseTextVid())
 
-    lazy var createButton: SportivinieKartiCommonB = { button in
+    lazy var createButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.CreateDeck.Action.create)
         button.setImage(SportivinieKartiImages.collectionCards.image, for: .normal)
         button.configuration?.imagePadding = 20
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
-    lazy var cancelButton: SportivinieKartiCommonB = { button in
+    lazy var cancelButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.cancel)
         return button
-    }(SportivinieKartiCommonB(style: .cancel))
+    }(SportivinieKartiCommonKnopka(style: .cancel))
 
-    lazy var doneButton: SportivinieKartiCommonB = { button in
+    lazy var doneButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.done)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     convenience init() {
         self.init(frame: .zero)

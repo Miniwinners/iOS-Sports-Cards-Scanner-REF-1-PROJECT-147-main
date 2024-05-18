@@ -13,7 +13,7 @@ final class SportivinieKartiMNavR: NSObject {
     private lazy var navigationController: UINavigationController = { controller in
         controller.navigationBar.primenitVid()
         return controller
-    }(SportivinieKartiSNavVC())
+    }(SportivinieKartiSNaControllerontroller())
 
     private var onDismissForViewController: [UIViewController: Closure] = [:]
     init(parentViewController: UIViewController) {
@@ -30,13 +30,13 @@ extension SportivinieKartiMNavR: SportivinieKartiGlavniiRouterPrilozhania {
         onDismissForViewController[viewController] = onDismissed
 
         if navigationController.viewControllers.isEmpty {
-            pokazatVCModalno(viewController, animated: animated)
+            pokazatControllerModalno(viewController, animated: animated)
         } else {
             navigationController.pushViewController(viewController, animated: true)
         }
     }
 
-    private func pokazatVCModalno(_ viewController: UIViewController, animated: Bool) {
+    private func pokazatControllerModalno(_ viewController: UIViewController, animated: Bool) {
         navigationController.setViewControllers([viewController], animated: false)
         navigationController.modalPresentationStyle = .custom
         navigationController.presentationController?.delegate = self
@@ -46,11 +46,11 @@ extension SportivinieKartiMNavR: SportivinieKartiGlavniiRouterPrilozhania {
     }
 
     func ischeznytUnicalno(_ viewController: UIViewController, animated: Bool) {
-        guard let vcIndex = navigationController.viewControllers.firstIndex(where: { $0 === viewController }),
-              let previousVC = navigationController.viewControllers[safe: vcIndex - 1]
+        guard let controllerIndex = navigationController.viewControllers.firstIndex(where: { $0 === viewController }),
+              let previousController = navigationController.viewControllers[safe: controllerIndex - 1]
         else { return }
 
-        navigationController.popToViewController(previousVC, animated: true)
+        navigationController.popToViewController(previousController, animated: true)
         // Tip: performOnDismiss(for:) will called from navigationController(_:didShow:animated:)
     }
 
@@ -83,7 +83,7 @@ extension SportivinieKartiMNavR: UINavigationControllerDelegate {
         performOnDismiss(for: dismissedViewController)
     }
 
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromController: UIViewController, to toController: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return CustomNavigationAnimator()
     }
 

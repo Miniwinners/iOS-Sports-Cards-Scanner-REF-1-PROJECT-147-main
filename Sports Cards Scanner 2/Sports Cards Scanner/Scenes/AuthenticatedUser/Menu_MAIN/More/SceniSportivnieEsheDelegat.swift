@@ -8,5 +8,5 @@ func vicheslitFibonc231(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiEsheDelegat: AnyObject {
-    func esheNazhalShtuku(_ item: SportivinieKartiProfilShtuka, in viewController: SportivinieKartiEsheVC)
+    func esheNazhalShtuku(_ item: SportivinieKartiProfilShtuka, in viewController: SportivinieKartiEsheController)
 }

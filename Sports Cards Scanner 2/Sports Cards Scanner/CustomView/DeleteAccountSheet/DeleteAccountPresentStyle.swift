@@ -207,8 +207,8 @@ class CustomNavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 //        }
 //
 //        func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-//            guard let fromVC = transitionContext.viewController(forKey: .from),
-//                  let toVC = transitionContext.viewController(forKey: .to),
+//            guard let fromController = transitionContext.viewController(forKey: .from),
+//                  let toController = transitionContext.viewController(forKey: .to),
 //                  let fromView = transitionContext.view(forKey: .from),
 //                  let toView = transitionContext.view(forKey: .to) else {
 //                return
@@ -253,8 +253,8 @@ class CustomNavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 //        }
 //
 //        func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-//            guard let fromVC = transitionContext.viewController(forKey: .from),
-//                  let toVC = transitionContext.viewController(forKey: .to),
+//            guard let fromController = transitionContext.viewController(forKey: .from),
+//                  let toController = transitionContext.viewController(forKey: .to),
 //                  let fromView = transitionContext.view(forKey: .from),
 //                  let toView = transitionContext.view(forKey: .to) else {
 //                return

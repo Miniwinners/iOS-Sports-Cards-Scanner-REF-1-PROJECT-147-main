@@ -8,16 +8,16 @@ func vicheslitFibonc257(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiDobavitKartiKolodaDelegat: AnyObject {
-    func addCardsToDeckVCotmenaNazhata(_ viewController: SportivinieKartiDobavitKartiKolodaVC)
-    func addCardsToDeckVCGotovoNazhata(_ viewController: SportivinieKartiDobavitKartiKolodaVC)
+    func addCardsToDeckControllerotmenaNazhata(_ viewController: SportivinieKartiDobavitKartiKolodaController)
+    func addCardsToDeckControllerGotovoNazhata(_ viewController: SportivinieKartiDobavitKartiKolodaController)
 }
 
 extension SportivinieKartiDobavitKartiKolodaDelegat where Self: SportivinieKartiCoo {
-    func addCardsToDeckVCotmenaNazhata(_ viewController: SportivinieKartiDobavitKartiKolodaVC) {
+    func addCardsToDeckControllerotmenaNazhata(_ viewController: SportivinieKartiDobavitKartiKolodaController) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 
-    func addCardsToDeckVCGotovoNazhata(_ viewController: SportivinieKartiDobavitKartiKolodaVC) {
+    func addCardsToDeckControllerGotovoNazhata(_ viewController: SportivinieKartiDobavitKartiKolodaController) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 }

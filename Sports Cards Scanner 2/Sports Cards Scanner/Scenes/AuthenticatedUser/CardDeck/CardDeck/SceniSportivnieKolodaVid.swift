@@ -48,15 +48,15 @@ final class SportivinieKartiKolodaVid: UIView {
         return collection
     }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
 
-    lazy var noCardsView: SportivinieKartiCMessageV = { view in
+    lazy var noCardsView: SportivinieKartiCustomMessageVid = { view in
         view.postavitZagolovok(L10n.CardDeck.noCards)
         return view
-    }(SportivinieKartiCMessageV())
+    }(SportivinieKartiCustomMessageVid())
 
-    lazy var addCardsButton: SportivinieKartiCommonB = { button in
+    lazy var addCardsButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.CardDeck.Action.addCards)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     convenience init() {
         self.init(frame: .zero)

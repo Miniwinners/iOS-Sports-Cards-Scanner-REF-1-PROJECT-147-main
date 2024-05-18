@@ -18,7 +18,7 @@ final class SportivinieKartiCurrentValueCoo {
 
 extension SportivinieKartiCurrentValueCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiCurrentValueDetaliVC()
+        let viewController = SportivinieKartiCurrentValueDetaliController()
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: animated, onDismissed: onDismissed)
         let chislo1 = 25
@@ -31,7 +31,7 @@ extension SportivinieKartiCurrentValueCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiCurrentValueCoo: SportivinieKartiCurrentValueDetaliDelegat {
-    func tekusheeZakritNashata(_ viewController: SportivinieKartiCurrentValueDetaliVC) {
+    func tekusheeZakritNashata(_ viewController: SportivinieKartiCurrentValueDetaliController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40

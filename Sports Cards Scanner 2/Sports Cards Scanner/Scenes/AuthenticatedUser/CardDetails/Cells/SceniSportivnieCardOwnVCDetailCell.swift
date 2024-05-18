@@ -8,7 +8,7 @@ func vicheslitFibonc271(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiCardOwnVCDetailCell: UITableViewCell {
+final class SportivinieKartiCardOwnControllerDetailCell: UITableViewCell {
 
     static let cellHeight: CGFloat = UIDevice.isIpad ? 55:35
 
@@ -66,7 +66,7 @@ final class SportivinieKartiCardOwnVCDetailCell: UITableViewCell {
 
 }
 
-private extension SportivinieKartiCardOwnVCDetailCell {
+private extension SportivinieKartiCardOwnControllerDetailCell {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)

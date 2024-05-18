@@ -18,7 +18,7 @@ final class SportivinieKartiCardOwnListView: UIView {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.isUserInteractionEnabled = false
-        tableView.register(SportivinieKartiCardOwnVCDetailCell.self, forCellReuseIdentifier: SportivinieKartiCardOwnVCDetailCell.className)
+        tableView.register(SportivinieKartiCardOwnControllerDetailCell.self, forCellReuseIdentifier: SportivinieKartiCardOwnControllerDetailCell.className)
         tableView.dataSource = self
         return tableView
     }(UITableView())
@@ -70,7 +70,7 @@ private extension SportivinieKartiCardOwnListView {
             let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
             return startDate.addingTimeInterval(randomTimeInterval)
         }
-        let height = CGFloat(detailItems.count) * SportivinieKartiCardOwnVCDetailCell.cellHeight
+        let height = CGFloat(detailItems.count) * SportivinieKartiCardOwnControllerDetailCell.cellHeight
         detailsViewHeightConstraint?.update(offset: height)
     }
 
@@ -107,7 +107,7 @@ extension SportivinieKartiCardOwnListView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiCardOwnVCDetailCell.className, for: indexPath) as? SportivinieKartiCardOwnVCDetailCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiCardOwnControllerDetailCell.className, for: indexPath) as? SportivinieKartiCardOwnControllerDetailCell
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15

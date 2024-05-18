@@ -13,7 +13,7 @@ final class SportivinieKartiGraderViborVid: UIView {
     lazy var backView: BackView = .init()
     lazy var titleLabel: TitleLabel = .init()
 
-    lazy var grabberView: SportivinieKartiGrabberV = .init()
+    lazy var grabberView: SportivinieKartiGrabberVid = .init()
 
     lazy var gradersTableView: UITableView = { tableView in
         tableView.showsVerticalScrollIndicator = false
@@ -28,10 +28,10 @@ final class SportivinieKartiGraderViborVid: UIView {
         return tableView
     }(UITableView())
 
-    lazy var cancelButton: SportivinieKartiCommonB = { button in
+    lazy var cancelButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.cancel)
         return button
-    }(SportivinieKartiCommonB(style: .destructive))
+    }(SportivinieKartiCommonKnopka(style: .destructive))
 
     convenience init() {
         self.init(frame: .zero)

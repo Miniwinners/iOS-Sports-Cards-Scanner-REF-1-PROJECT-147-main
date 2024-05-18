@@ -4,7 +4,7 @@ final class SportivinieKartiKartaKollekciaCoo {
     var children: [SportivinieKartiCoo] = []
     let router: SportivinieKartiGlavniiRouterPrilozhania
 
-    var addCardsParentViewController: DobavitKartiVKollekciuKategoriiVC?
+    var addCardsParentViewController: DobavitKartiVKollekciuKategoriiController?
 
     init(router: SportivinieKartiGlavniiRouterPrilozhania) {
         self.router = router
@@ -20,7 +20,7 @@ final class SportivinieKartiKartaKollekciaCoo {
 
 extension SportivinieKartiKartaKollekciaCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SCDKartaKollekciiVc()
+        let viewController = SCDKartaKollekciiController()
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: true)
         let chislo1 = 25
@@ -33,8 +33,8 @@ extension SportivinieKartiKartaKollekciaCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiKartaKollekciaCoo: SportivinieKartiKartaKollekciiDelegat {
-    func cardCollectionViewControllerDobavitKarty(_ viewController: SCDKartaKollekciiVc) {
-        let viewController = DobavitKartiVKollekciuKategoriiVC()
+    func cardCollectionViewControllerDobavitKarty(_ viewController: SCDKartaKollekciiController) {
+        let viewController = DobavitKartiVKollekciuKategoriiController()
         viewController.delegate = self
         self.addCardsParentViewController = viewController
         router.poyavitsaUnicalno(viewController, animated: true)
@@ -49,7 +49,7 @@ extension SportivinieKartiKartaKollekciaCoo: SportivinieKartiKartaKollekciiDeleg
 }
 
 extension SportivinieKartiKartaKollekciaCoo: CardDetailsCoordinatorDelegate {
-    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail) {
+    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail) {
         router.ischeznytUnicalno(viewController, animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -75,7 +75,7 @@ extension SportivinieKartiKartaKollekciaCoo: DeleteCollectionDelegat {
 extension SportivinieKartiKartaKollekciaCoo: DobavitKartiVKollekciuKategoriiDelegat { }
 extension SportivinieKartiKartaKollekciaCoo: DobavitKartiToCollectionKartiDelegat { }
 extension SportivinieKartiKartaKollekciaCoo: SportivinieKartiRCardsFromKollekciiDelegat { }
-extension SportivinieKartiKartaKollekciaCoo: SportivinieKartiSortirovkaKartVcDelegat { }
+extension SportivinieKartiKartaKollekciaCoo: SportivinieKartiSortirovkaKartControllerDelegat { }
 extension SportivinieKartiKartaKollekciaCoo: SportivinieKartiSozdatIzmenitKollekciuDelegat { }
 
 enum KartaKollekciiCoo {

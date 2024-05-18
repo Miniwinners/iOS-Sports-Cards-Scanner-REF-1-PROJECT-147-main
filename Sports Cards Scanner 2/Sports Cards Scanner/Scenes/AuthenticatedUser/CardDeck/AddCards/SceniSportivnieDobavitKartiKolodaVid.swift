@@ -20,7 +20,7 @@ final class SportivinieKartiDobavitKartiKolodaVid: UIView {
         return label
     }(UILabel())
 
-    lazy var searchTextField: SportivinieKartiCTExtF = { textField in
+    lazy var searchTextField: SportivinieKartiCustomTextPole = { textField in
         textField.borderStyle = .none
         textField.font = .font(.interRegular, size: UIDevice.isIpad ? 22:16)
         textField.backgroundColor = .skyBlue
@@ -32,7 +32,7 @@ final class SportivinieKartiDobavitKartiKolodaVid: UIView {
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         return textField
-    }(SportivinieKartiCTExtF())
+    }(SportivinieKartiCustomTextPole())
 
     var searchImageView: UIImageView!
 
@@ -56,20 +56,20 @@ final class SportivinieKartiDobavitKartiKolodaVid: UIView {
         return tableView
     }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
 
-    lazy var noResultsView: SportivinieKartiCMessageV = { view in
+    lazy var noResultsView: SportivinieKartiCustomMessageVid = { view in
         view.postavitZagolovok(L10n.AddCards.noResult)
         return view
-    }(SportivinieKartiCMessageV())
+    }(SportivinieKartiCustomMessageVid())
 
-    lazy var cancelButton: SportivinieKartiCommonB = { button in
+    lazy var cancelButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.cancel)
         return button
-    }(SportivinieKartiCommonB(style: .cancel))
+    }(SportivinieKartiCommonKnopka(style: .cancel))
 
-    lazy var doneButton: SportivinieKartiCommonB = { button in
+    lazy var doneButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.done)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     convenience init() {
         self.init(frame: .zero)

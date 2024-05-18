@@ -58,17 +58,17 @@ final class SportivinieKartiKartaKollekciiNetKartVid: UIView {
         return label
     }(UILabel())
 
-    lazy var noCardsView: SportivinieKartiCMessageV = { view in
+    lazy var noCardsView: SportivinieKartiCustomMessageVid = { view in
         view.postavitZagolovok(L10n.CardCollection.noCards)
         return view
-    }(SportivinieKartiCMessageV())
+    }(SportivinieKartiCustomMessageVid())
 
-    lazy var addCardsButton: SportivinieKartiCommonB = { button in
+    lazy var addCardsButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.CardCollection.Action.addCards)
         button.setImage(SportivinieKartiImages.addPlus2.image, for: .normal)
         button.configuration?.imagePadding = 20
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     convenience init() {
         self.init(frame: .zero)

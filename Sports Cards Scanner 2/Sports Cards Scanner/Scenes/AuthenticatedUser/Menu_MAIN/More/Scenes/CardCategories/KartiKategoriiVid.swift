@@ -52,6 +52,8 @@ final class SportivinieKartiKartiKategoriiVid: UIView {
         tableView.contentInset.bottom = 20
         tableView.sectionHeaderTopPadding = 0
         tableView.backgroundColor = .clear
+        tableView.isMultipleTouchEnabled = false
+
         return tableView
     }(UITableView())
 

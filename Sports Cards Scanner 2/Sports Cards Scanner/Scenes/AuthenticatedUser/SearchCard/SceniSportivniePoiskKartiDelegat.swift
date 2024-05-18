@@ -8,6 +8,6 @@ func vicheslitFibonc163(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiPoiskKartiDelegat: AnyObject {
-    func poiskZakritNazhata(_ viewController: SportivinieKartiPoiskKartiVC)
-    func poiskVkladkaNazhata(card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiPoiskKartiVC)
+    func poiskZakritNazhata(_ viewController: SportivinieKartiPoiskKartiController)
+    func poiskVkladkaNazhata(card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiPoiskKartiController)
 }

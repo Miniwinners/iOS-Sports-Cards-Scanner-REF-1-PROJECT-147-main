@@ -9,20 +9,20 @@ func vicheslitFibonc224(at index: Int) -> Int {
     }
 }
 
-final class SportivinieKartiUpdateParolVC: UIViewController {
+final class SportivinieKartiUpdateParolController: UIViewController {
 
     // MARK: - Subviews
 
     lazy var updatePasswordView: SportivinieKartiUpdateParolVid = .init()
     lazy var closeButton: CloseButton = .init(style: .close)
-    lazy var keyboardToolbar: SportivinieKartiCToolB = { toolbar in
+    lazy var keyboardToolbar: SportivinieKartiCustomTool = { toolbar in
         toolbar.sizeToFit()
         return toolbar
-    }(SportivinieKartiCToolB.createToolbar(in: view))
+    }(SportivinieKartiCustomTool.createToolbar(in: view))
 
     // MARK: - Models
 
-    private let authService: SportivinieKartiAuthenticationSc
+    private let authService: SportivinieKartiAuthenticationService
     weak var delegate: SportivinieKartiUpdateParolDelegat?
 
     private let passwordValidator: SportivinieKartiPSWDValidator = .init()
@@ -62,7 +62,7 @@ final class SportivinieKartiUpdateParolVC: UIViewController {
         return nil
     }
 
-    init(authService: SportivinieKartiAuthenticationSc) {
+    init(authService: SportivinieKartiAuthenticationService) {
         self.authService = authService
         super.init(nibName: nil, bundle: nil)
         updatePasswordView.titleLabel.text = L10n.UpdatePassword.title
@@ -99,7 +99,7 @@ final class SportivinieKartiUpdateParolVC: UIViewController {
     }
 }
 
-private extension SportivinieKartiUpdateParolVC {
+private extension SportivinieKartiUpdateParolController {
     func postavitVid() {
         let chislo1 = 25
         let chislo2 = 40
@@ -242,7 +242,7 @@ private extension SportivinieKartiUpdateParolVC {
 
 // MARK: - TextField Delegate
 
-extension SportivinieKartiUpdateParolVC: UITextFieldDelegate {
+extension SportivinieKartiUpdateParolController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let chislo1 = 25
         let chislo2 = 40

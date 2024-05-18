@@ -43,7 +43,7 @@ final class SportivinieKartiCurrentKartiValueVid: UIView {
     }(UIImageView())
 
     lazy var categoriesCollectionView: UICollectionView = { collectionView in
-        collectionView.register(SportivinieKartiKategoriiValueCVC.self, forCellWithReuseIdentifier: SportivinieKartiKategoriiValueCVC.className)
+        collectionView.register(SportivinieKartiKategoriiValueCollectionKletka.self, forCellWithReuseIdentifier: SportivinieKartiKategoriiValueCollectionKletka.className)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isUserInteractionEnabled = false
@@ -149,7 +149,7 @@ private extension SportivinieKartiCurrentKartiValueVid {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         let categoriesCountInColumn = CGFloat(categoryValues.count) / 2
-        let categoriesViewHeight = categoriesCountInColumn.rounded(.up) * SportivinieKartiKategoriiValueCVC.cellHeight
+        let categoriesViewHeight = categoriesCountInColumn.rounded(.up) * SportivinieKartiKategoriiValueCollectionKletka.cellHeight
         categoriesViewHeightConstraint?.update(offset: categoriesViewHeight)
     }
 
@@ -190,7 +190,7 @@ extension SportivinieKartiCurrentKartiValueVid: UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiKategoriiValueCVC.className, for: indexPath) as? SportivinieKartiKategoriiValueCVC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiKategoriiValueCollectionKletka.className, for: indexPath) as? SportivinieKartiKategoriiValueCollectionKletka
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -214,7 +214,7 @@ extension SportivinieKartiCurrentKartiValueVid: UICollectionViewDataSource, UICo
         let itemWidth = (collectionView.bounds.width - inset) / 2
 
         spacing = collectionView.bounds.width - 2 * itemWidth
-        let itemHeight = SportivinieKartiKategoriiValueCVC.cellHeight
+        let itemHeight = SportivinieKartiKategoriiValueCollectionKletka.cellHeight
         return .init(width: itemWidth, height: itemHeight)
     }
 }

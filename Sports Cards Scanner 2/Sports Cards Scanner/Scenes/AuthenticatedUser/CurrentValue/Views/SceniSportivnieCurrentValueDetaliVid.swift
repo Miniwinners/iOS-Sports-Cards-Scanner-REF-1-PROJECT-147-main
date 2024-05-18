@@ -21,7 +21,7 @@ final class SportivinieKartiCurrentValueDetaliVid: UIView {
     }(UILabel())
 
     lazy var categoryValuesTable: UITableView = { table in
-        table.register(SCDCurrentValueDetaliCl.self, forCellReuseIdentifier: SCDCurrentValueDetaliCl.cellIdentifier)
+        table.register(SCDCurrentValueDetaliCollectionKletka.self, forCellReuseIdentifier: SCDCurrentValueDetaliCollectionKletka.cellIdentifier)
         table.separatorStyle = .none
         table.isUserInteractionEnabled = false
         return table

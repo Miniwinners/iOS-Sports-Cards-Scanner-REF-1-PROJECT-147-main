@@ -4,9 +4,9 @@ final class SportivinieKartiDeleteAccCoo {
     var children: [SportivinieKartiCoo] = []
     let router: SportivinieKartiGlavniiRouterPrilozhania
 
-    private let authService: SportivinieKartiAuthenticationSc
+    private let authService: SportivinieKartiAuthenticationService
     private let profileManager: SportivinieKartiProfileManager
-    private let cardPhotoService: SportivinieKartiPhotoKartiSc
+    private let cardPhotoService: SportivinieKartiPhotoKartiService
 
     private var isDeleteAccountInProcess = false
 
@@ -14,9 +14,9 @@ final class SportivinieKartiDeleteAccCoo {
 
     init(
         router: SportivinieKartiGlavniiRouterPrilozhania,
-        authService: SportivinieKartiAuthenticationSc,
+        authService: SportivinieKartiAuthenticationService,
         profileManager: SportivinieKartiProfileManager = .shared,
-        cardPhotoService: SportivinieKartiPhotoKartiSc = .init()
+        cardPhotoService: SportivinieKartiPhotoKartiService = .init()
     ) {
         self.router = router
         self.authService = authService
@@ -34,7 +34,7 @@ final class SportivinieKartiDeleteAccCoo {
 
 extension SportivinieKartiDeleteAccCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiDAVC(description: L10n.Prompt.DeleteAccount.description, styleButton: .delete)
+        let viewController = SportivinieKartiYdalitAccountController(description: L10n.Prompt.DeleteAccount.description, styleButton: .delete)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.DeleteAccount.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteAccount.keepAction)
         viewController.delegate = self
@@ -49,8 +49,8 @@ extension SportivinieKartiDeleteAccCoo: SportivinieKartiCoo {
 
 }
 
-extension SportivinieKartiDeleteAccCoo: SportivinieKartiDAVCD {
-    func promptViewControllerotmenaNazhata(_ viewController: SportivinieKartiDAVC) {
+extension SportivinieKartiDeleteAccCoo: ViewSportivnieYdalitAccaountDelegat {
+    func promptViewControllerotmenaNazhata(_ viewController: SportivinieKartiYdalitAccountController) {
 
         viewController.isModalInPresentation = true
         viewController.cancelButton.isLoading = true
@@ -85,7 +85,7 @@ extension SportivinieKartiDeleteAccCoo: SportivinieKartiDAVCD {
 
     }
 
-    func promptViewControllerPodtverditYdalitNazhata(_ viewController: SportivinieKartiDAVC) {
+    func promptViewControllerPodtverditYdalitNazhata(_ viewController: SportivinieKartiYdalitAccountController) {
         if isDeleteAccountInProcess { return }
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25

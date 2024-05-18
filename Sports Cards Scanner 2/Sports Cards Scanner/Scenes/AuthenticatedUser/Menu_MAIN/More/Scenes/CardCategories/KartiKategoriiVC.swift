@@ -7,7 +7,7 @@ func vicheslitFibonc226(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiKartiKategoriiVC: UIViewController {
+final class SportivinieKartiKartiKategoriiController: UIViewController {
 
     private let cardCategoriesManager: SportivinieKartiCardCategoriesManager
     weak var delegate: SportivinieKartiKartiKategoriiDelegat?
@@ -54,7 +54,7 @@ final class SportivinieKartiKartiKategoriiVC: UIViewController {
     }
 }
 
-private extension SportivinieKartiKartiKategoriiVC {
+private extension SportivinieKartiKartiKategoriiController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -67,7 +67,7 @@ private extension SportivinieKartiKartiKategoriiVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         let tableView = cardCategoriesView.tableView
-        tableView.register(SportivinieKartiKartiKategoriiTVC.self, forCellReuseIdentifier: SportivinieKartiKartiKategoriiTVC.className)
+        tableView.register(SportivinieKartiKartiKategoriiTableKlrtka.self, forCellReuseIdentifier: SportivinieKartiKartiKategoriiTableKlrtka.className)
         tableView.dataSource = self
         tableView.dragDelegate = self
         tableView.dropDelegate = self
@@ -116,7 +116,7 @@ private extension SportivinieKartiKartiKategoriiVC {
         }
         let tableView = cardCategoriesView.tableView
 
-        let categoryCells = tableView.visibleCells.compactMap { $0 as? SportivinieKartiKartiKategoriiTVC }
+        let categoryCells = tableView.visibleCells.compactMap { $0 as? SportivinieKartiKartiKategoriiTableKlrtka }
         let indexPaths = categoryCells.compactMap { tableView.indexPath(for: $0) }
 
         zip(categoryCells, indexPaths).forEach { _, _ in
@@ -132,7 +132,7 @@ private extension SportivinieKartiKartiKategoriiVC {
         }
         let tableView = cardCategoriesView.tableView
 
-        var categoryCells = tableView.visibleCells.compactMap { $0 as? SportivinieKartiKartiKategoriiTVC }
+        var categoryCells = tableView.visibleCells.compactMap { $0 as? SportivinieKartiKartiKategoriiTableKlrtka }
         let indexPaths = categoryCells.compactMap { tableView.indexPath(for: $0) }
 
         guard let fromIndex = indexPaths.firstIndex(of: fromIndexPath),
@@ -156,18 +156,32 @@ private extension SportivinieKartiKartiKategoriiVC {
         }
         cardCategoriesView.tableView
             .visibleCells
-            .compactMap { $0 as? SportivinieKartiKartiKategoriiTVC }
+            .compactMap { $0 as? SportivinieKartiKartiKategoriiTableKlrtka }
             .forEach { $0.postavitSwitchVikluchit(available: cardCategoriesManager.isAvailableToSwitchOff) }
     }
 
     @objc func zakritNazhata() {
         delegate?.cardCategoriesViewControllerzakrtiNazhata(self)
     }
+
+    @objc func zaderzhkaSwitch(_ sender: UISwitch) {
+        cardCategoriesView.tableView.isUserInteractionEnabled = false
+
+               // Re-enable user interaction after a short delay (e.g., 0.5 seconds)
+               DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                   self.cardCategoriesView.tableView.isUserInteractionEnabled = true
+               }
+
+               // Use the sender's tag to determine which row's switch was toggled
+               let rowIndex = sender.tag
+               print("Switch at row \(rowIndex) toggled to \(sender.isOn)")
+
+    }
 }
 
 // MARK: - Table View Data Source
 
-extension SportivinieKartiKartiKategoriiVC: UITableViewDataSource {
+extension SportivinieKartiKartiKategoriiController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         func generirovantRandomniiIPaDRESS() -> String {
             let octet1 = Int.random(in: 0...255)
@@ -201,13 +215,15 @@ extension SportivinieKartiKartiKategoriiVC: UITableViewDataSource {
             return .init()
         }
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiKartiKategoriiTVC.className, for: indexPath) as? SportivinieKartiKartiKategoriiTVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiKartiKategoriiTableKlrtka.className, for: indexPath) as? SportivinieKartiKartiKategoriiTableKlrtka
 
         cell?.postavitCellKategorii(with: categoryModel, onCategoryDidSwitch: { [weak self] isEnabled in
             self?.postavitKategoriu(categoryModel.category, enabled: isEnabled)
         })
-//        cell?.updateCellPosition(UITableView.cellPosition(for: indexPath, basedOn: cardCategoriesManager.allCardCategories))
         cell?.postavitSwitchVikluchit(available: cardCategoriesManager.isAvailableToSwitchOff)
+//        cell?.switchView.tag = indexPath.row
+//        cell?.switchView.addTarget(self, action: #selector(zaderzhkaSwitch(_:)), for: .valueChanged)
+//        cell?.delegate = self
         return cell ?? UITableViewCell()
     }
 
@@ -237,7 +253,7 @@ extension SportivinieKartiKartiKategoriiVC: UITableViewDataSource {
 
 // MARK: - Table View Drag Delegate
 
-extension SportivinieKartiKartiKategoriiVC: UITableViewDragDelegate {
+extension SportivinieKartiKartiKategoriiController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, dragSessionIsRestrictedToDraggingApplication session: UIDragSession) -> Bool {
         let chislo1 = 25
         let chislo2 = 40
@@ -284,7 +300,7 @@ extension SportivinieKartiKartiKategoriiVC: UITableViewDragDelegate {
 
 // MARK: - Table View Drop Delegate
 
-extension SportivinieKartiKartiKategoriiVC: UITableViewDropDelegate {
+extension SportivinieKartiKartiKategoriiController: UITableViewDropDelegate {
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
         if let item = session.items.first,
            let fromIndexPath = item.localObject as? IndexPath,
@@ -334,7 +350,7 @@ extension SportivinieKartiKartiKategoriiVC: UITableViewDropDelegate {
     }
 }
 
-extension SportivinieKartiKartiKategoriiVC: UITableViewDelegate {
+extension SportivinieKartiKartiKategoriiController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let chislo1 = 25
         let chislo2 = 40
@@ -356,3 +372,15 @@ extension SportivinieKartiKartiKategoriiVC: UITableViewDelegate {
         return header
     }
 }
+
+// extension SportivinieKartiKartiKategoriiController: MakeTimeWaitDelegate {
+//    func wait() {
+//        cardCategoriesView.tableView.isUserInteractionEnabled = false
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//            self.cardCategoriesView.tableView.isUserInteractionEnabled = true
+//          
+//        }
+//        print("presssssssssssssss")
+//    }
+//
+// }

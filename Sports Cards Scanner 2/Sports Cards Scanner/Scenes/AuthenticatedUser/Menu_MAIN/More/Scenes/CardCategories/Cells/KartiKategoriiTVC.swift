@@ -8,7 +8,12 @@ func vicheslitFibonc225(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiKartiKategoriiTVC: UITableViewCell {
+
+// protocol MakeTimeWaitDelegate: AnyObject {
+//    func wait()
+// }
+
+final class SportivinieKartiKartiKategoriiTableKlrtka: UITableViewCell {
 
     lazy var containerView: UIView = .init()
 
@@ -22,7 +27,11 @@ final class SportivinieKartiKartiKategoriiTVC: UITableViewCell {
         return label
     }(UILabel())
 
-    lazy var switchView: UISwitch = .init()
+    lazy var switchView: UISwitch = { switchV in
+        return switchV
+    }(UISwitch())
+//    let switchView = UISwitch()
+//    weak var delegate: MakeTimeWaitDelegate?
 
     private var topConstraint: Constraint!
     private var bottomConstraint: Constraint!
@@ -34,6 +43,8 @@ final class SportivinieKartiKartiKategoriiTVC: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         postavitVidunicalno()
+        self.isMultipleTouchEnabled = false
+
     }
 
     required init?(coder: NSCoder) {
@@ -76,9 +87,23 @@ final class SportivinieKartiKartiKategoriiTVC: UITableViewCell {
 
         switchView.isEnabled = available
     }
+//    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//
+//        return self.frame.contains(point)
+//
+//    }
+//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//    // Check if the touch point is within the bounds of the switchView subview
+//    let convertedPoint = self.convert(point, to: switchView)
+//    if switchView.bounds.contains(convertedPoint) {
+//   //здесь переключи свитч
+//    return self.view
+//    }
+//    return super.hitTest(point, with: event)
+//    }
 }
 
-private extension SportivinieKartiKartiKategoriiTVC {
+private extension SportivinieKartiKartiKategoriiTableKlrtka {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -128,6 +153,7 @@ private extension SportivinieKartiKartiKategoriiTVC {
         backgroundView = sodatZadniiVid()
 
         switchView.addTarget(self, action: #selector(switchStatusIzmenen(_:)), for: .valueChanged)
+//        self.isExclusiveTouch = true
     }
 
     func sodatZadniiVid() -> UIView {
@@ -157,5 +183,6 @@ private extension SportivinieKartiKartiKategoriiTVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         onCategoryDidSwitch?(sender.isOn)
+//        delegate?.wait()
     }
 }

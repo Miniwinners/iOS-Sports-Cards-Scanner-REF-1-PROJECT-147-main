@@ -8,29 +8,29 @@ func vicheslitFibonc186(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiSozdatIzmenitKollekciuDelegat: AnyObject {
-    func createCollectionVCzakrtiNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu)
-    func createCollectionVCCollectionBilSozdan(_ viewController: SportivinieKartiSodatIzmenitKollekciu)
-    func editCollectionVCotmenaNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu)
-    func editCollectionVCGotovoNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu)
+    func createCollectionControllerzakrtiNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu)
+    func createCollectionControllerCollectionBilSozdan(_ viewController: SportivinieKartiSodatIzmenitKollekciu)
+    func editCollectionControllerotmenaNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu)
+    func editCollectionControllerGotovoNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu)
 }
 
 extension SportivinieKartiSozdatIzmenitKollekciuDelegat where Self: SportivinieKartiCoo {
-    func createCollectionVCzakrtiNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu) {
+    func createCollectionControllerzakrtiNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu) {
 
         router.ischeznytPolnostuu(animated: true)
     }
 
-    func createCollectionVCCollectionBilSozdan(_ viewController: SportivinieKartiSodatIzmenitKollekciu) {
-        let viewController = SCDKartaKollekciiVc()
+    func createCollectionControllerCollectionBilSozdan(_ viewController: SportivinieKartiSodatIzmenitKollekciu) {
+        let viewController = SCDKartaKollekciiController()
         viewController.delegate = self as? SportivinieKartiKartaKollekciiDelegat
         router.poyavitsaUnicalno(viewController, animated: true)
     }
 
-    func editCollectionVCotmenaNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu) {
+    func editCollectionControllerotmenaNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 
-    func editCollectionVCGotovoNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu) {
+    func editCollectionControllerGotovoNazhata(_ viewController: SportivinieKartiSodatIzmenitKollekciu) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 }

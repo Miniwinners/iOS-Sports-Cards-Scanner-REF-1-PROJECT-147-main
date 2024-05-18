@@ -27,7 +27,7 @@ final class SportivinieKartiCategoryCoo {
 
 extension SportivinieKartiCategoryCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiKategoriiKartVC(category: category)
+        let viewController = SportivinieKartiKategoriiKarTableKlrtka(category: category)
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: animated, onDismissed: onDismissed)
         let chislo1 = 25
@@ -40,7 +40,7 @@ extension SportivinieKartiCategoryCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiCategoryCoo: SCDKategotiiKartDelegat {
-    func categoriiZakritnazhata(_ viewController: SportivinieKartiKategoriiKartVC) {
+    func categoriiZakritnazhata(_ viewController: SportivinieKartiKategoriiKarTableKlrtka) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -50,8 +50,8 @@ extension SportivinieKartiCategoryCoo: SCDKategotiiKartDelegat {
         let chislo6 = chislo2
     }
 
-    func categoriaNazahataVibrana(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiKategoriiKartVC) {
-        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, previousVC: .common, sample: nil)
+    func categoriaNazahataVibrana(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiKategoriiKarTableKlrtka) {
+        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, previousController: .common, sample: nil)
         coordinator.delegate = self
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
         let chislo1 = 25
@@ -64,7 +64,7 @@ extension SportivinieKartiCategoryCoo: SCDKategotiiKartDelegat {
 }
 
 extension SportivinieKartiCategoryCoo: CardDetailsCoordinatorDelegate {
-    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail) {
+    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail) {
         if cardsManager.karti(of: category).isEmpty {
             router.ischeznytPolnostuu(animated: true)
         } else {

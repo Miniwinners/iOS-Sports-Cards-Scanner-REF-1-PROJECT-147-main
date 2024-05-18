@@ -36,13 +36,13 @@ final class SportivinieKartiNedavnoDobavKartiVid: UIView {
     }(UIImageView())
 
     lazy var cardsCollectionView: UICollectionView = { collectionView in
-        collectionView.register(SportivinieKartiCardPCVC.self, forCellWithReuseIdentifier: SportivinieKartiCardPCVC.className)
+        collectionView.register(SportivinieKartiCardPCollectionKletka.self, forCellWithReuseIdentifier: SportivinieKartiCardPCollectionKletka.className)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = false
         return collectionView
-    }(SportivinieKartiBaseCV(frame: .zero, collectionViewLayout: sozdatLayout()))
+    }(SportivinieKartiBaseCollectionKletka(frame: .zero, collectionViewLayout: sozdatLayout()))
 
     convenience init() {
         self.init(frame: .zero)
@@ -171,7 +171,7 @@ extension SportivinieKartiNedavnoDobavKartiVid: UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiCardPCVC.className, for: indexPath) as? SportivinieKartiCardPCVC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiCardPCollectionKletka.className, for: indexPath) as? SportivinieKartiCardPCollectionKletka
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -196,7 +196,7 @@ extension SportivinieKartiNedavnoDobavKartiVid: UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiCardPCVC
+        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiCardPCollectionKletka
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -207,7 +207,7 @@ extension SportivinieKartiNedavnoDobavKartiVid: UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiCardPCVC
+        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiCardPCollectionKletka
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15

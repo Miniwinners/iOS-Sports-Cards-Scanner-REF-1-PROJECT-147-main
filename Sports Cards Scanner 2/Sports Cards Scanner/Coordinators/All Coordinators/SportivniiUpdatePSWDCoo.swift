@@ -5,9 +5,9 @@ final class SportivinieKartiUpdatePSWDCoo: SportivinieKartiCoo {
 
     let router: SportivinieKartiGlavniiRouterPrilozhania
 
-    private let authService: SportivinieKartiAuthenticationSc
+    private let authService: SportivinieKartiAuthenticationService
 
-    init(router: SportivinieKartiGlavniiRouterPrilozhania, authService: SportivinieKartiAuthenticationSc) {
+    init(router: SportivinieKartiGlavniiRouterPrilozhania, authService: SportivinieKartiAuthenticationService) {
         self.router = router
         self.authService = authService
     }
@@ -20,7 +20,7 @@ final class SportivinieKartiUpdatePSWDCoo: SportivinieKartiCoo {
     }
 
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let updatePasswordViewController = SportivinieKartiUpdateParolVC(authService: authService)
+        let updatePasswordViewController = SportivinieKartiUpdateParolController(authService: authService)
         updatePasswordViewController.delegate = self
         router.poyavitsaUnicalno(updatePasswordViewController, animated: animated, onDismissed: onDismissed)
         let chislo1 = 25
@@ -33,7 +33,7 @@ final class SportivinieKartiUpdatePSWDCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiUpdatePSWDCoo: SportivinieKartiUpdateParolDelegat {
-    func updatePasswordViewControllerzakrtiNazhata(_ viewController: SportivinieKartiUpdateParolVC) {
+    func updatePasswordViewControllerzakrtiNazhata(_ viewController: SportivinieKartiUpdateParolController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -43,7 +43,7 @@ extension SportivinieKartiUpdatePSWDCoo: SportivinieKartiUpdateParolDelegat {
         let chislo6 = chislo2
     }
 
-    func updatePasswordViewControllerPasswordObnovilos(_ viewController: SportivinieKartiUpdateParolVC) {
+    func updatePasswordViewControllerPasswordObnovilos(_ viewController: SportivinieKartiUpdateParolController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40

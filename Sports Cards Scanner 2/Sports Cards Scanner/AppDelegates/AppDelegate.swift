@@ -9,9 +9,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         podgotovitMangers()
-        SportivinieKartiInternetSoedinenieSc.shared.nachatMonitoringInterneta()
-        SportivinieKartiManagerSc.shared.initializeAdjust()
-        SportivinieKartiManagerSc.shared.initializePushwoosh(delegate: self)
+        SportivinieKartiInternetSoedinenieService.shared.nachatMonitoringInterneta()
+        SportivinieKartiManagerService.shared.initializeAdjust()
+        SportivinieKartiManagerService.shared.initializePushwoosh(delegate: self)
         return true
 
     }

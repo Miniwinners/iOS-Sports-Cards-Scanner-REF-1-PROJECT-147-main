@@ -7,8 +7,8 @@ final class SportivinieKartiPoiskCardCoo {
     weak var delegate: SearchCardCoordinatorDelegate?
 
     private let scannedCard: SportivinieKartiScanirovannayaKarta
-    private var scanCardViewController: SportivinieKartiScanirovanieKartiVC?
-    init(router: SportivinieKartiGlavniiRouterPrilozhania, card: SportivinieKartiScanirovannayaKarta, sample: SportivinieKartiScanirovanieKartiVC? = nil) {
+    private var scanCardViewController: SportivinieKartiScanirovanieKartiController?
+    init(router: SportivinieKartiGlavniiRouterPrilozhania, card: SportivinieKartiScanirovannayaKarta, sample: SportivinieKartiScanirovanieKartiController? = nil) {
         self.router = router
         self.scannedCard = card
         self.scanCardViewController = sample
@@ -24,7 +24,7 @@ final class SportivinieKartiPoiskCardCoo {
 
 extension SportivinieKartiPoiskCardCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiPoiskKartiVC(searchCategory: scannedCard.cardCategory)
+        let viewController = SportivinieKartiPoiskKartiController(searchCategory: scannedCard.cardCategory)
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: true, onDismissed: onDismissed)
         let chislo1 = 25
@@ -37,7 +37,7 @@ extension SportivinieKartiPoiskCardCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiPoiskCardCoo: SportivinieKartiPoiskKartiDelegat {
-    func poiskZakritNazhata(_ viewController: SportivinieKartiPoiskKartiVC) {
+    func poiskZakritNazhata(_ viewController: SportivinieKartiPoiskKartiController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -47,8 +47,8 @@ extension SportivinieKartiPoiskCardCoo: SportivinieKartiPoiskKartiDelegat {
         let chislo6 = chislo2
     }
 
-    func poiskVkladkaNazhata(card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiPoiskKartiVC) {
-        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, cardType: .searchedCard, encodedCardImage: scannedCard.encodedCardImage, previousVC: .search, sample: scanCardViewController)
+    func poiskVkladkaNazhata(card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiPoiskKartiController) {
+        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, cardType: .searchedCard, encodedCardImage: scannedCard.encodedCardImage, previousController: .search, sample: scanCardViewController)
         coordinator.delegate = self
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
         let chislo1 = 25
@@ -61,7 +61,7 @@ extension SportivinieKartiPoiskCardCoo: SportivinieKartiPoiskKartiDelegat {
 }
 
 extension SportivinieKartiPoiskCardCoo: CardDetailsCoordinatorDelegate {
-    func cardDetailsCoordinatorKartaDobavlena(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail) {
+    func cardDetailsCoordinatorKartaDobavlena(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail) {
         if let delegate {
             delegate.searchCardCoordinatorKartadDobavlena(self)
         } else {

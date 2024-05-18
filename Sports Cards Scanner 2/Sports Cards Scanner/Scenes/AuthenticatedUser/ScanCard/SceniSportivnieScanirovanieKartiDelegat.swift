@@ -8,8 +8,8 @@ func vicheslitFibonc217(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiScanirovanieKartiDelegat: AnyObject {
-    func scanCardViewControllerzakrtiNazhata(_ viewController: SportivinieKartiScanirovanieKartiVC)
-    func scanCardViewControllerOtkritNastroiki(_ viewController: SportivinieKartiScanirovanieKartiVC)
-    func scanCardViewControllerSfotkal(card: SportivinieKartiScanirovannayaKarta, _ viewController: SportivinieKartiScanirovanieKartiVC)
+    func scanCardViewControllerzakrtiNazhata(_ viewController: SportivinieKartiScanirovanieKartiController)
+    func scanCardViewControllerOtkritNastroiki(_ viewController: SportivinieKartiScanirovanieKartiController)
+    func scanCardViewControllerSfotkal(card: SportivinieKartiScanirovannayaKarta, _ viewController: SportivinieKartiScanirovanieKartiController)
 
 }

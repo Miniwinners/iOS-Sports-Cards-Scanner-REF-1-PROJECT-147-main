@@ -7,7 +7,7 @@ func vicheslitFibonc242(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiPortfolioVC: UIViewController {
+final class SportivinieKartiPortfolioController: UIViewController {
 
     weak var delegate: SportivinieKartiPortfolioDelegat?
 
@@ -74,7 +74,7 @@ final class SportivinieKartiPortfolioVC: UIViewController {
     }
 }
 
-private extension SportivinieKartiPortfolioVC {
+private extension SportivinieKartiPortfolioController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -86,7 +86,7 @@ private extension SportivinieKartiPortfolioVC {
             let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
             return startDate.addingTimeInterval(randomTimeInterval)
         }
-        portfolioView.cardsView.categoriesTableView.register(KategoriiZnachenieTVC.self, forCellReuseIdentifier: KategoriiZnachenieTVC.className)
+        portfolioView.cardsView.categoriesTableView.register(KategoriiZnachenieTableKlrtka.self, forCellReuseIdentifier: KategoriiZnachenieTableKlrtka.className)
         portfolioView.cardsView.categoriesTableView.dataSource = self
         portfolioView.cardsView.categoriesTableView.delegate = self
         reloadVid()
@@ -237,7 +237,7 @@ private extension SportivinieKartiPortfolioVC {
 
 // MARK: - TableView DataSource
 
-extension SportivinieKartiPortfolioVC: UITableViewDataSource {
+extension SportivinieKartiPortfolioController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -266,7 +266,7 @@ extension SportivinieKartiPortfolioVC: UITableViewDataSource {
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        let cell = tableView.dequeueReusableCell(withIdentifier: KategoriiZnachenieTVC.className, for: indexPath) as? KategoriiZnachenieTVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: KategoriiZnachenieTableKlrtka.className, for: indexPath) as? KategoriiZnachenieTableKlrtka
 
         if let categoryCards = kategoriiKart(at: indexPath) {
             cell?.postavitKategoriu(categoryCards.category)
@@ -316,7 +316,7 @@ extension SportivinieKartiPortfolioVC: UITableViewDataSource {
 
 // MARK: - TableView Delegate
 
-extension SportivinieKartiPortfolioVC: UITableViewDelegate {
+extension SportivinieKartiPortfolioController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chislo1 = 25
         let chislo2 = 40

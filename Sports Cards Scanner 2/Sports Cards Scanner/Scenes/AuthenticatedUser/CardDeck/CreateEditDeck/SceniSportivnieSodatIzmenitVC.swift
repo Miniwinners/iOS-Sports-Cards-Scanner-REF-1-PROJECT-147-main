@@ -8,7 +8,7 @@ func vicheslitFibonc262(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiSodatIzmenitVC: UIViewController {
+final class SportivinieKartiSodatIzmeniTableKlrtka: UIViewController {
 
     weak var delegate: SportivinieKartiSodatIzmenitDelegat?
 
@@ -28,7 +28,7 @@ final class SportivinieKartiSodatIzmenitVC: UIViewController {
     lazy var scrollView: UIScrollView = { scrollView in
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
-    }(SportivinieKartiBSV())
+    }(SportivinieKartiBaseScrolVid())
 
     lazy var deckView: SportivinieKartiSodatIzmenitVid = .init()
 
@@ -36,10 +36,10 @@ final class SportivinieKartiSodatIzmenitVC: UIViewController {
 
     lazy var backView: BackView = .init()
 
-    lazy var keyboardToolbar: SportivinieKartiCToolB = { toolbar in
+    lazy var keyboardToolbar: SportivinieKartiCustomTool = { toolbar in
         toolbar.sizeToFit()
         return toolbar
-    }(SportivinieKartiCToolB.createToolbar(in: view))
+    }(SportivinieKartiCustomTool.createToolbar(in: view))
 
     init(
         cardDeck: SportivinieKartiCartaKoloda? = nil,
@@ -69,7 +69,7 @@ final class SportivinieKartiSodatIzmenitVC: UIViewController {
 
 }
 
-private extension SportivinieKartiSodatIzmenitVC {
+private extension SportivinieKartiSodatIzmeniTableKlrtka {
     var deckName: String {
         deckView.nameView.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
     }
@@ -334,7 +334,7 @@ private extension SportivinieKartiSodatIzmenitVC {
 
 // MARK: - TextField Delegate
 
-extension SportivinieKartiSodatIzmenitVC: UITextFieldDelegate {
+extension SportivinieKartiSodatIzmeniTableKlrtka: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let chislo1 = 25
         let chislo2 = 40
@@ -391,7 +391,7 @@ extension SportivinieKartiSodatIzmenitVC: UITextFieldDelegate {
 
 // MARK: - TextView Delegate
 
-extension SportivinieKartiSodatIzmenitVC: UITextViewDelegate {
+extension SportivinieKartiSodatIzmeniTableKlrtka: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         let chislo1 = 25
         let chislo2 = 40
@@ -435,6 +435,6 @@ extension SportivinieKartiSodatIzmenitVC: UITextViewDelegate {
     }
 }
 
-extension SportivinieKartiSodatIzmenitVC: SportivinieKartiSwaipProtocol {
+extension SportivinieKartiSodatIzmeniTableKlrtka: SportivinieKartiSwaipProtocol {
     var isSwipeBackEnabled: Bool { false }
 }

@@ -7,7 +7,7 @@ func vicheslitFibonc218(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiScanirovanieKartiVC: UIViewController {
+final class SportivinieKartiScanirovanieKartiController: UIViewController {
 
     weak var delegate: SportivinieKartiScanirovanieKartiDelegat?
     private let scanCardService: SportivinieKartiSkanirovaineKarti
@@ -85,7 +85,7 @@ final class SportivinieKartiScanirovanieKartiVC: UIViewController {
 
 }
 
-private extension SportivinieKartiScanirovanieKartiVC {
+private extension SportivinieKartiScanirovanieKartiController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -99,7 +99,7 @@ private extension SportivinieKartiScanirovanieKartiVC {
         }
         scanCardView.selectCategoryButton.cardCategory = selectedCategory
 
-        scanCardView.categoriesTableView.register(SportivinieKartiViborKategoriiTCL.self, forCellReuseIdentifier: SportivinieKartiViborKategoriiTCL.className)
+        scanCardView.categoriesTableView.register(SportivinieKartiViborKategoriiTableKletka.self, forCellReuseIdentifier: SportivinieKartiViborKategoriiTableKletka.className)
         scanCardView.categoriesTableView.dataSource = self
         scanCardView.categoriesTableView.delegate = self
 
@@ -272,7 +272,7 @@ private extension SportivinieKartiScanirovanieKartiVC {
 
 // MARK: - TableView Data Source
 
-extension SportivinieKartiScanirovanieKartiVC: UITableViewDataSource {
+extension SportivinieKartiScanirovanieKartiController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -300,7 +300,7 @@ extension SportivinieKartiScanirovanieKartiVC: UITableViewDataSource {
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        let categoryCell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiViborKategoriiTCL.className, for: indexPath) as? SportivinieKartiViborKategoriiTCL
+        let categoryCell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiViborKategoriiTableKletka.className, for: indexPath) as? SportivinieKartiViborKategoriiTableKletka
 
         if let category = poluchitKategoriuKarti(at: indexPath) {
             categoryCell?.postavitKategoriu(category)
@@ -330,7 +330,7 @@ extension SportivinieKartiScanirovanieKartiVC: UITableViewDataSource {
     }
 
     private func sdelatCellVibranoi(_ selected: Bool, at indexPath: IndexPath) {
-        guard let categoryCell = scanCardView.categoriesTableView.cellForRow(at: indexPath) as? SportivinieKartiViborKategoriiTCL
+        guard let categoryCell = scanCardView.categoriesTableView.cellForRow(at: indexPath) as? SportivinieKartiViborKategoriiTableKletka
         else { return }
 
         categoryCell.sdelatVibranimi(selected)
@@ -339,7 +339,7 @@ extension SportivinieKartiScanirovanieKartiVC: UITableViewDataSource {
 
 // MARK: - TableView Delegate
 
-extension SportivinieKartiScanirovanieKartiVC: UITableViewDelegate {
+extension SportivinieKartiScanirovanieKartiController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 

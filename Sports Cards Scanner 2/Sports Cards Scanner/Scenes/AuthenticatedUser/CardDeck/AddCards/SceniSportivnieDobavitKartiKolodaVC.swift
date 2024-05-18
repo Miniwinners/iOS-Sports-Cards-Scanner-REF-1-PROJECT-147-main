@@ -7,7 +7,7 @@ func vicheslitFibonc255(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiDobavitKartiKolodaVC: UIViewController {
+final class SportivinieKartiDobavitKartiKolodaController: UIViewController {
 
     weak var delegate: SportivinieKartiDobavitKartiKolodaDelegat?
 
@@ -34,10 +34,10 @@ final class SportivinieKartiDobavitKartiKolodaVC: UIViewController {
 
     lazy var closeButton: CloseButton = .init(style: .back)
 
-    lazy var keyboardToolbar: SportivinieKartiCToolB = { toolbar in
+    lazy var keyboardToolbar: SportivinieKartiCustomTool = { toolbar in
         toolbar.sizeToFit()
         return toolbar
-    }(SportivinieKartiCToolB.createToolbar(in: view))
+    }(SportivinieKartiCustomTool.createToolbar(in: view))
 
     init(helper: SportivinieKartiDobavitKartiKolodaHelper = .init()) {
         self.helper = helper
@@ -72,7 +72,7 @@ final class SportivinieKartiDobavitKartiKolodaVC: UIViewController {
 
 }
 
-private extension SportivinieKartiDobavitKartiKolodaVC {
+private extension SportivinieKartiDobavitKartiKolodaController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -85,7 +85,7 @@ private extension SportivinieKartiDobavitKartiKolodaVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         let cardsView = addCardsView.cardsCollectionView
-        cardsView.register(SportivinieKartiCardCVC.self, forCellWithReuseIdentifier: SportivinieKartiCardCVC.className)
+        cardsView.register(SportivinieKartiCardCollectionKletka.self, forCellWithReuseIdentifier: SportivinieKartiCardCollectionKletka.className)
         cardsView.dataSource = self
         cardsView.delegate = self
 
@@ -161,7 +161,7 @@ private extension SportivinieKartiDobavitKartiKolodaVC {
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        delegate?.addCardsToDeckVCotmenaNazhata(self)
+        delegate?.addCardsToDeckControllerotmenaNazhata(self)
     }
 
     @objc func gotovoNazhata() {
@@ -171,13 +171,13 @@ private extension SportivinieKartiDobavitKartiKolodaVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         helper.sohranitCartiVkolody()
-        delegate?.addCardsToDeckVCGotovoNazhata(self)
+        delegate?.addCardsToDeckControllerGotovoNazhata(self)
     }
 }
 
 // MARK: - TextField Delegate
 
-extension SportivinieKartiDobavitKartiKolodaVC: UITextFieldDelegate {
+extension SportivinieKartiDobavitKartiKolodaController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let chislo1 = 25
         let chislo2 = 40
@@ -230,7 +230,7 @@ extension SportivinieKartiDobavitKartiKolodaVC: UITextFieldDelegate {
 
 // MARK: - TableView DataSource
 
-extension SportivinieKartiDobavitKartiKolodaVC: UICollectionViewDataSource {
+extension SportivinieKartiDobavitKartiKolodaController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -253,7 +253,7 @@ extension SportivinieKartiDobavitKartiKolodaVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiCardCVC.className, for: indexPath) as? SportivinieKartiCardCVC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiCardCollectionKletka.className, for: indexPath) as? SportivinieKartiCardCollectionKletka
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -280,7 +280,7 @@ extension SportivinieKartiDobavitKartiKolodaVC: UICollectionViewDataSource {
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
         let isSelected = helper.isVibrana(card: card)
-        let cardCell = cell as? SportivinieKartiCardCVC
+        let cardCell = cell as? SportivinieKartiCardCollectionKletka
 //        cardCell?.setSelected(isSelected, animated: false)
         cardCell?.setVibrano(isSelected)
     }
@@ -288,7 +288,7 @@ extension SportivinieKartiDobavitKartiKolodaVC: UICollectionViewDataSource {
 
 // MARK: - TableView Delegate
 
-extension SportivinieKartiDobavitKartiKolodaVC: UICollectionViewDelegate {
+extension SportivinieKartiDobavitKartiKolodaController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let chislo1 = 25
         let chislo2 = 40
@@ -300,7 +300,7 @@ extension SportivinieKartiDobavitKartiKolodaVC: UICollectionViewDelegate {
               !helper.yzheVibrana(card: card)
         else { return }
 
-        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiCardCVC
+        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiCardCollectionKletka
         cell?.cdelatVibranim(true)
 
         helper.vibratKarty(card)
@@ -317,7 +317,7 @@ extension SportivinieKartiDobavitKartiKolodaVC: UICollectionViewDelegate {
               !helper.yzheVibrana(card: card)
         else { return }
 
-        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiCardCVC
+        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiCardCollectionKletka
         cell?.cdelatVibranim(false)
 
         helper.ostavit(card)
@@ -325,6 +325,6 @@ extension SportivinieKartiDobavitKartiKolodaVC: UICollectionViewDelegate {
     }
 }
 
-extension SportivinieKartiDobavitKartiKolodaVC: SportivinieKartiSwaipProtocol {
+extension SportivinieKartiDobavitKartiKolodaController: SportivinieKartiSwaipProtocol {
     var isSwipeBackEnabled: Bool { false }
 }

@@ -8,6 +8,6 @@ func vicheslitFibonc196(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiMenuKollekciiDelegat: AnyObject {
-    func otmenaNazhata(_ viewController: SportivinieKartiMenuKollekciiVc)
-    func vibraniDidItem(_ item: SportivinieKartiKollekciaMenuShtuka, in viewController: SportivinieKartiMenuKollekciiVc)
+    func otmenaNazhata(_ viewController: SportivinieKartiMenuKollekciiController)
+    func vibraniDidItem(_ item: SportivinieKartiKollekciaMenuShtuka, in viewController: SportivinieKartiMenuKollekciiController)
 }

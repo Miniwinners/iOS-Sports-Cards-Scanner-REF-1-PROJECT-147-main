@@ -14,15 +14,15 @@ final class SportivinieKartiCenaOcenkaVide: UIView {
 
     lazy var backView: BackView = .init()
 
-    lazy var detailsButton: SportivinieKartiCommonB = { button in
+    lazy var detailsButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.EditCard.Action.updateDetails)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
-    lazy var noSalesView: SportivinieKartiCMessageV = { view in
+    lazy var noSalesView: SportivinieKartiCustomMessageVid = { view in
         view.postavitZagolovok(L10n.PricingReport.Details.noSales)
         return view
-    }(SportivinieKartiCMessageV())
+    }(SportivinieKartiCustomMessageVid())
 
     lazy var salesTableView: UITableView = { tableView in
         tableView.backgroundColor = .clear

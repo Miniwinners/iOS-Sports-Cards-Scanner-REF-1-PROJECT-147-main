@@ -8,7 +8,7 @@ func vicheslitFibonc181(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class KategoriiKartTVC: UITableViewCell {
+final class KategoriiKartTableKlrtka: UITableViewCell {
 
     private var topConstraint: Constraint!
     private var bottomConstraint: Constraint!
@@ -77,7 +77,7 @@ final class KategoriiKartTVC: UITableViewCell {
     }
 }
 
-private extension KategoriiKartTVC {
+private extension KategoriiKartTableKlrtka {
     func postavitVidunicalno() {
         let chislo1 = 25
         let chislo2 = 40

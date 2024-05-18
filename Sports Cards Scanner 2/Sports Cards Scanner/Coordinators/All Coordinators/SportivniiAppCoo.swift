@@ -5,12 +5,12 @@ final class SportivinieKartiAppCoo: NSObject {
     var children: [SportivinieKartiCoo] = []
     let router: SportivinieKartiGlavniiRouterPrilozhania
 
-    private let authService: SportivinieKartiAuthenticationSc
-    private lazy var alertService: SportivinieKartiAlertSc = .shared
+    private let authService: SportivinieKartiAuthenticationService
+    private lazy var alertService: SportivinieKartiAlertService = .shared
 
     private weak var authenticatedUserController: UITabBarController?
 
-    init(router: SportivinieKartiGlavniiRouterPrilozhania, authService: SportivinieKartiAuthenticationSc) {
+    init(router: SportivinieKartiGlavniiRouterPrilozhania, authService: SportivinieKartiAuthenticationService) {
         self.router = router
         self.authService = authService
     }
@@ -37,8 +37,8 @@ extension SportivinieKartiAppCoo: SportivinieKartiCoo {
 
 }
 
-extension SportivinieKartiAppCoo: SportivinieKartiCCD {
-    func proverkaInternetaZagryzka(_ viewController: SportivinieKartiCCVC) {
+extension SportivinieKartiAppCoo: SportivinieKartiSoedinenieDelegat {
+    func proverkaInternetaZagryzka(_ viewController: SceniSportivnieSoedinenieController) {
         predstavitNachalniiVid()
         SportivinieKartiAuthStateManager.shared.podpisPodAuthStatus(self) { [weak self] _, user in
             SportivinieKartiProfileManager.shared.postavitIDPolzovatelya(user?.uid)
@@ -53,36 +53,36 @@ extension SportivinieKartiAppCoo: SportivinieKartiCCD {
     }
 }
 extension SportivinieKartiAppCoo: SportivinieKartiSignInD {
-    func vhodNazhataKnopkaRegistracii(_ viewController: SportivinieKartiVhodVC) {
+    func vhodNazhataKnopkaRegistracii(_ viewController: SportivinieKartiVhodController) {
 
         vhodRegistracia()
     }
 
-    func vhodUserVoshel(_ viewController: SportivinieKartiVhodVC) {
+    func vhodUserVoshel(_ viewController: SportivinieKartiVhodController) {
 
         predstavitVidBezZagryzki()
     }
 
-    func vhodNazhataZabilParol(_ viewController: SportivinieKartiVhodVC) {
+    func vhodNazhataZabilParol(_ viewController: SportivinieKartiVhodController) {
 
         predstavitZabilParol(in: viewController)
     }
 }
 
 extension SportivinieKartiAppCoo: SportivinieKartiSignUpD {
-    func vhodVhodNazhata(_ viewController: SportivinieKartiRegistraciaVhodVC) {
+    func vhodVhodNazhata(_ viewController: SportivinieKartiRegistraciaVhodController) {
 
         predstavitVhod()
     }
 
-    func registraciaUserZaregalcya(_ viewController: SportivinieKartiRegistraciaVhodVC) {
+    func registraciaUserZaregalcya(_ viewController: SportivinieKartiRegistraciaVhodController) {
 
         predstavitVidBezZagryzki()
     }
 }
 
 extension SportivinieKartiAppCoo: SportivinieKartiEsheDelegat {
-    func esheNazhalShtuku(_ item: SportivinieKartiProfilShtuka, in viewController: SportivinieKartiEsheVC) {
+    func esheNazhalShtuku(_ item: SportivinieKartiProfilShtuka, in viewController: SportivinieKartiEsheController) {
         switch item {
         case .cardCategories:
             let router = SportivinieKartiMNavR(parentViewController: viewController)
@@ -109,28 +109,28 @@ extension SportivinieKartiAppCoo: SportivinieKartiEsheDelegat {
 }
 
 extension SportivinieKartiAppCoo: SportivinieKartiDoskaDelegat {
-    func doskaScannerNazhat(_ viewController: SportivinieKartiDoskaVC) {
+    func doskaScannerNazhat(_ viewController: SportivinieKartiDoskaController) {
 
         predstavitScannerKarti(from: viewController)
     }
 
-    func doskaDetaliKartiNazhata(card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiDoskaVC) {
+    func doskaDetaliKartiNazhata(card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiDoskaController) {
         predstavitDetaliKarti(of: card, from: viewController)
     }
 
-    func doskaTekushaaCenaDiscloseNazhata(_ viewController: SportivinieKartiDoskaVC) {
+    func doskaTekushaaCenaDiscloseNazhata(_ viewController: SportivinieKartiDoskaController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
         let coordinator = SportivinieKartiCurrentValueCoo(router: router)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func doskaNaibolshaiaCenaDiscloseNazhata(_ viewController: SportivinieKartiDoskaVC) {
+    func doskaNaibolshaiaCenaDiscloseNazhata(_ viewController: SportivinieKartiDoskaController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
         let coordinator = SportivinieKartiHighValueCoo(router: router)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func doskaNedavnoDobavlenieDiscloseNazhata(_ viewController: SportivinieKartiDoskaVC) {
+    func doskaNedavnoDobavlenieDiscloseNazhata(_ viewController: SportivinieKartiDoskaController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
         let coordinator = SportivinieKartiRecentCoo(router: router)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
@@ -138,40 +138,40 @@ extension SportivinieKartiAppCoo: SportivinieKartiDoskaDelegat {
 }
 
 extension SportivinieKartiAppCoo: SportivinieKartiPortfolioDelegat {
-    func portfolioKolodaPodpis(_ viewController: SportivinieKartiPortfolioVC) {
+    func portfolioKolodaPodpis(_ viewController: SportivinieKartiPortfolioController) {
 
     }
 
-    func portfolioSkanirovanieKarti(_ viewController: SportivinieKartiPortfolioVC) {
+    func portfolioSkanirovanieKarti(_ viewController: SportivinieKartiPortfolioController) {
 
         predstavitScannerKarti(from: viewController)
     }
 
-    func portolioSozdatKollekciuNazhata(_ viewController: SportivinieKartiPortfolioVC) {
+    func portolioSozdatKollekciuNazhata(_ viewController: SportivinieKartiPortfolioController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
         let coordinator = SportivinieKartiSozdatKolleciuCoo(router: router)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func portfolioSozdatKolodyNazhata(_ viewController: SportivinieKartiPortfolioVC) {
+    func portfolioSozdatKolodyNazhata(_ viewController: SportivinieKartiPortfolioController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
         let coordinator = SportivinieKartiSozdatKolodyCoo(router: router)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func portfolioPokazatKollekciuNazhata(_ viewController: SportivinieKartiPortfolioVC) {
+    func portfolioPokazatKollekciuNazhata(_ viewController: SportivinieKartiPortfolioController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
         let coordinator = SportivinieKartiKartaKollekciaCoo(router: router)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func portfolioPokazatKolodyNazhata(_ viewController: SportivinieKartiPortfolioVC) {
+    func portfolioPokazatKolodyNazhata(_ viewController: SportivinieKartiPortfolioController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
         let coordinator = SportivinieKartiKartaKolodaCoo(router: router)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func portfolioKategoriiNazhata(_ category: KategoriiKart, in viewController: SportivinieKartiPortfolioVC) {
+    func portfolioKategoriiNazhata(_ category: KategoriiKart, in viewController: SportivinieKartiPortfolioController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
         let coordinator = SportivinieKartiCategoryCoo(router: router, category: category)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
@@ -188,25 +188,25 @@ private extension SportivinieKartiAppCoo {
 
     func pokazatProverkyInterneta() {
         SportivinieKartiAuthStateManager.shared.otpisPodAuthStatus(self)
-        let checkConnectionVC = SportivinieKartiCCVC()
-        checkConnectionVC.delegate = self
-        router.poyavitsaUnicalno(checkConnectionVC, animated: true)
+        let checkConnectionController = SceniSportivnieSoedinenieController()
+        checkConnectionController.delegate = self
+        router.poyavitsaUnicalno(checkConnectionController, animated: true)
     }
 
     func predstavitVhod() {
-        let signInViewController = SportivinieKartiVhodVC(authService: authService)
+        let signInViewController = SportivinieKartiVhodController(authService: authService)
         signInViewController.delegate = self
         router.poyavitsaUnicalno(signInViewController, animated: true)
     }
 
     func pokazatAftorizirovanii() {
-        let dashboardViewController = SportivinieKartiDoskaVC()
+        let dashboardViewController = SportivinieKartiDoskaController()
         dashboardViewController.delegate = self
 
-        let portfolioViewController = SportivinieKartiPortfolioVC()
+        let portfolioViewController = SportivinieKartiPortfolioController()
         portfolioViewController.delegate = self
 
-        let moreViewController = SportivinieKartiEsheVC(authService: authService)
+        let moreViewController = SportivinieKartiEsheController(authService: authService)
         moreViewController.delegate = self
 
         let tabBarController = UITabBarController()
@@ -220,13 +220,13 @@ private extension SportivinieKartiAppCoo {
     }
 
     func predstavitVidBezZagryzki() {
-        let dashboardViewController = SportivinieKartiDoskaVC()
+        let dashboardViewController = SportivinieKartiDoskaController()
         dashboardViewController.delegate = self
 
-        let portfolioViewController = SportivinieKartiPortfolioVC()
+        let portfolioViewController = SportivinieKartiPortfolioController()
         portfolioViewController.delegate = self
 
-        let moreViewController = SportivinieKartiEsheVC(authService: authService)
+        let moreViewController = SportivinieKartiEsheController(authService: authService)
         moreViewController.delegate = self
 
         let tabBarController = UITabBarController()
@@ -239,7 +239,7 @@ private extension SportivinieKartiAppCoo {
     }
 
     func vhodRegistracia() {
-        let signUpViewController = SportivinieKartiRegistraciaVhodVC(authService: authService)
+        let signUpViewController = SportivinieKartiRegistraciaVhodController(authService: authService)
         signUpViewController.delegate = self
         router.poyavitsaUnicalno(signUpViewController, animated: true)
     }
@@ -263,7 +263,7 @@ private extension SportivinieKartiAppCoo {
 
     func predstavitDetaliKarti(of card: SportivinieKartiKartaPredstavlenie, from viewController: UIViewController) {
         let router = SportivinieKartiMNavR(parentViewController: viewController)
-        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, previousVC: .common, sample: nil)
+        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, previousController: .common, sample: nil)
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 

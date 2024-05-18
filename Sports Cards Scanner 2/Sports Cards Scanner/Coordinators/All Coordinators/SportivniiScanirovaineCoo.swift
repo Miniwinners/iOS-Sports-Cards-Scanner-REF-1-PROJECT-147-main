@@ -6,7 +6,7 @@ final class SportivinieKartiScanirovaineCoo {
 
     let router: SportivinieKartiGlavniiRouterPrilozhania
 
-    private var scanCardViewController: SportivinieKartiScanirovanieKartiVC!
+    private var scanCardViewController: SportivinieKartiScanirovanieKartiController!
     private var scannedCard: SportivinieKartiScanirovannayaKarta!
 
     init(router: SportivinieKartiGlavniiRouterPrilozhania) {
@@ -23,7 +23,7 @@ final class SportivinieKartiScanirovaineCoo {
 
 extension SportivinieKartiScanirovaineCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiScanirovanieKartiVC()
+        let viewController = SportivinieKartiScanirovanieKartiController()
         viewController.delegate = self
         viewController.modalPresentationStyle = .fullScreen
         router.poyavitsaUnicalno(viewController, animated: animated, onDismissed: onDismissed)
@@ -38,7 +38,7 @@ extension SportivinieKartiScanirovaineCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiScanirovaineCoo: SportivinieKartiScanirovanieKartiDelegat {
-    func scanCardViewControllerzakrtiNazhata(_ viewController: SportivinieKartiScanirovanieKartiVC) {
+    func scanCardViewControllerzakrtiNazhata(_ viewController: SportivinieKartiScanirovanieKartiController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -48,7 +48,7 @@ extension SportivinieKartiScanirovaineCoo: SportivinieKartiScanirovanieKartiDele
         let chislo6 = chislo2
     }
 
-    func scanCardViewControllerOtkritNastroiki(_ viewController: SportivinieKartiScanirovanieKartiVC) {
+    func scanCardViewControllerOtkritNastroiki(_ viewController: SportivinieKartiScanirovanieKartiController) {
         guard let settingsURL = InformaciaOPrilozhenii.settingsURL,
               UIApplication.shared.canOpenURL(settingsURL)
         else {
@@ -64,7 +64,7 @@ extension SportivinieKartiScanirovaineCoo: SportivinieKartiScanirovanieKartiDele
         let chislo6 = chislo2
     }
 
-    func scanCardViewControllerSfotkal(card: SportivinieKartiScanirovannayaKarta, _ viewController: SportivinieKartiScanirovanieKartiVC) {
+    func scanCardViewControllerSfotkal(card: SportivinieKartiScanirovannayaKarta, _ viewController: SportivinieKartiScanirovanieKartiController) {
         self.scannedCard = card
 
         let router = SportivinieKartiModalPR(parentViewController: viewController, presentStyle: .common)
@@ -97,7 +97,7 @@ extension SportivinieKartiScanirovaineCoo: IdentifyingKartaCooDelegat {
             router: router,
             card: identifiedCard,
             cardType: .identifiedCard,
-            encodedCardImage: coordinator.scannedCard.encodedCardImage, previousVC: .search, sample: scanCardViewController
+            encodedCardImage: coordinator.scannedCard.encodedCardImage, previousController: .search, sample: scanCardViewController
         )
         predstavitDocherniiCoo(coordinator, animated: true) { [weak self] in
             self?.scanCardViewController.restartScanning()

@@ -12,9 +12,9 @@ func vicheslitFibonc84(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-class SportivinieKartiManagerSc {
+class SportivinieKartiManagerService {
 
-    static let shared = SportivinieKartiManagerSc()
+    static let shared = SportivinieKartiManagerService()
     func peretusavarMassiv<T>(_ array: [T]) -> [T] {
         let chislo1 = 25
         let chislo2 = 40

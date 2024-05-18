@@ -9,7 +9,7 @@ final class SportivinieKartiRemoveCoo {
     private let card: SportivinieKartiKartaPredstavlenie
 
     private let cardsManager: SportivinieKartiUserKartManager
-    private let cardPhotoService: SportivinieKartiPhotoKartiSc
+    private let cardPhotoService: SportivinieKartiPhotoKartiService
 
     private var isRemoveCardInProcess = false
 
@@ -17,7 +17,7 @@ final class SportivinieKartiRemoveCoo {
         router: SportivinieKartiGlavniiRouterPrilozhania,
         card: SportivinieKartiKartaPredstavlenie,
         cardsManager: SportivinieKartiUserKartManager = .shared,
-        cardPhotoService: SportivinieKartiPhotoKartiSc = .init()
+        cardPhotoService: SportivinieKartiPhotoKartiService = .init()
     ) {
         self.router = router
         self.card = card
@@ -35,7 +35,7 @@ final class SportivinieKartiRemoveCoo {
 
 extension SportivinieKartiRemoveCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiDAVC(description: L10n.Prompt.RemoveCard.description, styleButton: .delete)
+        let viewController = SportivinieKartiYdalitAccountController(description: L10n.Prompt.RemoveCard.description, styleButton: .delete)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.RemoveCard.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.RemoveCard.keepAction)
         viewController.delegate = self
@@ -49,9 +49,9 @@ extension SportivinieKartiRemoveCoo: SportivinieKartiCoo {
     }
 }
 
-extension SportivinieKartiRemoveCoo: SportivinieKartiDAVCD {
-    func promptViewControllerotmenaNazhata(_ viewController: SportivinieKartiDAVC) {
-        guard SportivinieKartiInternetSoedinenieSc.shared.isNetworkAvailable else {
+extension SportivinieKartiRemoveCoo: ViewSportivnieYdalitAccaountDelegat {
+    func promptViewControllerotmenaNazhata(_ viewController: SportivinieKartiYdalitAccountController) {
+        guard SportivinieKartiInternetSoedinenieService.shared.isNetworkAvailable else {
             router.ischeznytPolnostuu(animated: true)
             delegate?.removeCardPromptCoordinatorYbranaOshibka(self)
             return
@@ -84,7 +84,7 @@ extension SportivinieKartiRemoveCoo: SportivinieKartiDAVCD {
         let chislo6 = chislo2
     }
 
-    func promptViewControllerPodtverditYdalitNazhata(_ viewController: SportivinieKartiDAVC) {
+    func promptViewControllerPodtverditYdalitNazhata(_ viewController: SportivinieKartiYdalitAccountController) {
         if isRemoveCardInProcess { return }
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25

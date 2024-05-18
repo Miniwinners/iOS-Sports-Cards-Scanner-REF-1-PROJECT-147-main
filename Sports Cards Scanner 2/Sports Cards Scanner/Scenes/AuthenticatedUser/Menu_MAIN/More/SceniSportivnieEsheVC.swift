@@ -8,10 +8,10 @@ func vicheslitFibonc230(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiEsheVC: UIViewController {
+final class SportivinieKartiEsheController: UIViewController {
 
     weak var delegate: SportivinieKartiEsheDelegat?
-    private let authService: SportivinieKartiAuthenticationSc
+    private let authService: SportivinieKartiAuthenticationService
 
     private lazy var profileItems: [SportivinieKartiProfilShtuka] = {
         SportivinieKartiProfilShtuka.allCases
@@ -23,7 +23,7 @@ final class SportivinieKartiEsheVC: UIViewController {
 
     lazy var moreView: SportivinieKartiEsheVid = .init()
 
-    init(authService: SportivinieKartiAuthenticationSc) {
+    init(authService: SportivinieKartiAuthenticationService) {
         self.authService = authService
 
         super.init(nibName: nil, bundle: nil)
@@ -55,7 +55,7 @@ final class SportivinieKartiEsheVC: UIViewController {
     }
 }
 
-private extension SportivinieKartiEsheVC {
+private extension SportivinieKartiEsheController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -67,8 +67,8 @@ private extension SportivinieKartiEsheVC {
             let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
             return startDate.addingTimeInterval(randomTimeInterval)
         }
-        moreView.tableView.register(SportivinieKartiProfilSelectTVC.self, forCellReuseIdentifier: SportivinieKartiProfilSelectTVC.className)
-        moreView.tableView.register(SportivinieKartiProfilSwitchTVC.self, forCellReuseIdentifier: SportivinieKartiProfilSwitchTVC.className)
+        moreView.tableView.register(SportivinieKartiProfilSelectTableKlrtka.self, forCellReuseIdentifier: SportivinieKartiProfilSelectTableKlrtka.className)
+        moreView.tableView.register(SportivinieKartiProfilSwitchTableKlrtka.self, forCellReuseIdentifier: SportivinieKartiProfilSwitchTableKlrtka.className)
 
         moreView.tableView.delegate = self
         moreView.tableView.dataSource = self
@@ -78,7 +78,7 @@ private extension SportivinieKartiEsheVC {
 
 // MARK: - TableView Data Source
 
-extension SportivinieKartiEsheVC: UITableViewDataSource {
+extension SportivinieKartiEsheController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -113,13 +113,13 @@ extension SportivinieKartiEsheVC: UITableViewDataSource {
 
         switch item.type {
         case .selectable:
-            let selectableCell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiProfilSelectTVC.className, for: indexPath) as? SportivinieKartiProfilSelectTVC
+            let selectableCell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiProfilSelectTableKlrtka.className, for: indexPath) as? SportivinieKartiProfilSelectTableKlrtka
             selectableCell?.postavitProfileShtuku(item)
             selectableCell?.titleLabel.textColor = item == .deleteAccount ? .destructiveColor : .tableViewTitleLabel
             if indexPath.section == 5 { selectableCell?.titleLabel.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 20:16) }
             cell = selectableCell
         case .switchable:
-            let switchableCell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiProfilSwitchTVC.className, for: indexPath) as? SportivinieKartiProfilSwitchTVC
+            let switchableCell = tableView.dequeueReusableCell(withIdentifier: SportivinieKartiProfilSwitchTableKlrtka.className, for: indexPath) as? SportivinieKartiProfilSwitchTableKlrtka
             switchableCell?.postavitProfileShtuku(item, selected: true)
             cell = switchableCell
         }
@@ -204,7 +204,7 @@ extension SportivinieKartiEsheVC: UITableViewDataSource {
 
 // MARK: - TableView Delegate
 
-extension SportivinieKartiEsheVC: UITableViewDelegate {
+extension SportivinieKartiEsheController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chislo1 = 25
         let chislo2 = 40

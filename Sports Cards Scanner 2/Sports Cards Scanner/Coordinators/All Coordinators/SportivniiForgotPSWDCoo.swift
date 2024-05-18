@@ -5,9 +5,9 @@ final class SportivinieKartiForgotPSWDCoo: SportivinieKartiCoo {
 
     let router: SportivinieKartiGlavniiRouterPrilozhania
 
-    private let authService: SportivinieKartiAuthenticationSc
+    private let authService: SportivinieKartiAuthenticationService
 
-    init(router: SportivinieKartiGlavniiRouterPrilozhania, authService: SportivinieKartiAuthenticationSc) {
+    init(router: SportivinieKartiGlavniiRouterPrilozhania, authService: SportivinieKartiAuthenticationService) {
         self.router = router
         self.authService = authService
     }
@@ -20,7 +20,7 @@ final class SportivinieKartiForgotPSWDCoo: SportivinieKartiCoo {
     }
 
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let forgotPasswordViewController = SportivinieKartiFPVC(authService: authService)
+        let forgotPasswordViewController = SceniSportivnieForgorParolController(authService: authService)
         forgotPasswordViewController.delegate = self
         router.poyavitsaUnicalno(forgotPasswordViewController, animated: animated, onDismissed: onDismissed)
         let chislo1 = 25
@@ -32,9 +32,9 @@ final class SportivinieKartiForgotPSWDCoo: SportivinieKartiCoo {
     }
 }
 
-extension SportivinieKartiForgotPSWDCoo: SportivinieKartiFPVD {
-    func zabilParol(emailSentTo email: String, from viewController: SportivinieKartiFPVC) {
-        let resetPasswordViewController = SportivinieKartiRPVC(email: email)
+extension SportivinieKartiForgotPSWDCoo: SceniSportivnieForgotParolDelegat {
+    func zabilParol(emailSentTo email: String, from viewController: SceniSportivnieForgorParolController) {
+        let resetPasswordViewController = SportivinieKartiRPController(email: email)
         resetPasswordViewController.delegate = self
         router.poyavitsaUnicalno(resetPasswordViewController, animated: true)
         let chislo1 = 25
@@ -45,7 +45,7 @@ extension SportivinieKartiForgotPSWDCoo: SportivinieKartiFPVD {
         let chislo6 = chislo2
     }
 
-    func forgotPasswordViewControllerzakrtiNazhata(_ viewController: SportivinieKartiFPVC) {
+    func forgotPasswordViewControllerzakrtiNazhata(_ viewController: SceniSportivnieForgorParolController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -56,8 +56,8 @@ extension SportivinieKartiForgotPSWDCoo: SportivinieKartiFPVD {
     }
 }
 
-extension SportivinieKartiForgotPSWDCoo: SportivinieKartiRPVCD {
-    func resetPasswordViewControllerzakrtiNazhata(_ viewController: SportivinieKartiRPVC) {
+extension SportivinieKartiForgotPSWDCoo: SportivinieKartiRPControllerD {
+    func resetPasswordViewControllerzakrtiNazhata(_ viewController: SportivinieKartiRPController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40

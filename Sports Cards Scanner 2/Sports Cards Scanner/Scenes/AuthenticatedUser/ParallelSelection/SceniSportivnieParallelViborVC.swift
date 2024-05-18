@@ -7,7 +7,7 @@ func vicheslitFibonc211(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiParallelViborVC: UIViewController {
+final class SportivinieKartiParallelViborController: UIViewController {
 
     private let parallels: [SportivinieKartiKartaParallel]
     private let selectedParallelIndex: Int?
@@ -32,10 +32,10 @@ final class SportivinieKartiParallelViborVC: UIViewController {
     lazy var parallelSelectionView: SportivinieKartiParallelViborVid = .init()
     lazy var closeButton: CloseButton = .init(style: .back)
 
-    lazy var keyboardToolbar: SportivinieKartiCToolB = { toolbar in
+    lazy var keyboardToolbar: SportivinieKartiCustomTool = { toolbar in
         toolbar.sizeToFit()
         return toolbar
-    }(SportivinieKartiCToolB.createToolbar(in: view))
+    }(SportivinieKartiCustomTool.createToolbar(in: view))
 
     init(parallels: [SportivinieKartiKartaParallel], selected: Int?) {
         self.parallels = parallels
@@ -73,7 +73,7 @@ final class SportivinieKartiParallelViborVC: UIViewController {
 
 }
 
-private extension SportivinieKartiParallelViborVC {
+private extension SportivinieKartiParallelViborController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -86,7 +86,7 @@ private extension SportivinieKartiParallelViborVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         let parallelsView = parallelSelectionView.parallelsCollectionView
-        parallelsView.register(SportivinieKartiParallelCCL.self, forCellWithReuseIdentifier: SportivinieKartiParallelCCL.className)
+        parallelsView.register(SportivinieKartiParallelCollectionKletka.self, forCellWithReuseIdentifier: SportivinieKartiParallelCollectionKletka.className)
         parallelsView.dataSource = self
         parallelsView.delegate = self
 
@@ -149,7 +149,7 @@ private extension SportivinieKartiParallelViborVC {
         let chislo6 = chislo2
         if let index = convertedToSearchedParallelIndex,
            let selectedCell = parallelSelectionView.parallelsCollectionView
-            .cellForItem(at: .init(row: index, section: 0)) as? SportivinieKartiParallelCCL {
+            .cellForItem(at: .init(row: index, section: 0)) as? SportivinieKartiParallelCollectionKletka {
             selectedCell.postavitParallelVibrano(false)
         }
 
@@ -168,7 +168,7 @@ private extension SportivinieKartiParallelViborVC {
 
 // MARK: - CollectionView DataSource
 
-extension SportivinieKartiParallelViborVC: UICollectionViewDataSource {
+extension SportivinieKartiParallelViborController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -196,7 +196,7 @@ extension SportivinieKartiParallelViborVC: UICollectionViewDataSource {
         _ = chislo2 - chislo1
         _ = chislo1 * 2
         _ = chislo2
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiParallelCCL.className, for: indexPath) as? SportivinieKartiParallelCCL
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiParallelCollectionKletka.className, for: indexPath) as? SportivinieKartiParallelCollectionKletka
 
         if let parallel = postavitParallel(at: indexPath) {
             cell?.postavitParallel(parallel)
@@ -209,7 +209,7 @@ extension SportivinieKartiParallelViborVC: UICollectionViewDataSource {
 
 // MARK: - CollectionView Flow Delegate
 
-extension SportivinieKartiParallelViborVC: UICollectionViewDelegateFlowLayout {
+extension SportivinieKartiParallelViborController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let chislo1 = 25
         let chislo2 = 40
@@ -235,13 +235,13 @@ extension SportivinieKartiParallelViborVC: UICollectionViewDelegateFlowLayout {
         _ = chislo2 - chislo1
         _ = chislo1 * 2
         _ = chislo2
-        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiParallelCCL
+        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiParallelCollectionKletka
         cell?.videlitCell(true)
 
     }
 
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiParallelCCL
+        let cell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiParallelCollectionKletka
         cell?.videlitCell(false)
         let chislo1 = 25
         let chislo2 = 40
@@ -259,11 +259,11 @@ extension SportivinieKartiParallelViborVC: UICollectionViewDelegateFlowLayout {
         _ = chislo1 * 2
         _ = chislo2
         if let index = convertedToSearchedParallelIndex,
-           let selectedCell = collectionView.cellForItem(at: .init(row: index, section: 0)) as? SportivinieKartiParallelCCL {
+           let selectedCell = collectionView.cellForItem(at: .init(row: index, section: 0)) as? SportivinieKartiParallelCollectionKletka {
             selectedCell.postavitParallelVibrano(false)
         }
 
-        let newSelectedCell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiParallelCCL
+        let newSelectedCell = collectionView.cellForItem(at: indexPath) as? SportivinieKartiParallelCollectionKletka
         newSelectedCell?.postavitParallelVibrano(true)
 
         guard let searchedParallel = postavitParallel(at: indexPath),
@@ -274,7 +274,7 @@ extension SportivinieKartiParallelViborVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension SportivinieKartiParallelViborVC: UITextFieldDelegate {
+extension SportivinieKartiParallelViborController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let chislo1 = 25
         let chislo2 = 40

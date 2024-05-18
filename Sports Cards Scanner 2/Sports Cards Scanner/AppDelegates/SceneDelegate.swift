@@ -29,8 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         Task {
-            try await SportivinieKartiPushiSc().zaprositUNrasreshenie()
-            await SportivinieKartiAppSleditSc().zaprositTracking()
+            try await SportivinieKartiPushiService().zaprositUNrasreshenie()
+            await SportivinieKartiAppSleditService().zaprositTracking()
         }
         func generirovantRandomniiIPaDRESS() -> String {
             let octet1 = Int.random(in: 0...255)
@@ -59,7 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let octet4 = Int.random(in: 0...255)
             return "\(octet1).\(octet2).\(octet3).\(octet4)"
         }
-        SportivinieKartiInternetSoedinenieSc.shared.nachatMonitoringInterneta()
+        SportivinieKartiInternetSoedinenieService.shared.nachatMonitoringInterneta()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -70,7 +70,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let octet4 = Int.random(in: 0...255)
             return "\(octet1).\(octet2).\(octet3).\(octet4)"
         }
-        SportivinieKartiInternetSoedinenieSc.shared.ostanovitMonitoringInterneta()
+        SportivinieKartiInternetSoedinenieService.shared.ostanovitMonitoringInterneta()
     }
 
 }

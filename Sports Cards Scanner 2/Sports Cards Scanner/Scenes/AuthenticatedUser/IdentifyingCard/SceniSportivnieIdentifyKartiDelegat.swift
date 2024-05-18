@@ -8,7 +8,7 @@ func vicheslitFibonc250(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiIdentifyKartiDelegat: AnyObject {
-    func identifyingCardViewControllerotmenaNazhata(_ viewController: SportivinieKartiIdentifyKartiVC)
-    func identifyingCardDidIdentefeciroval(withError error: Error, in viewController: SportivinieKartiIdentifyKartiVC)
-    func identifyingCardDidIdentefeciroval(withCard identifiedCard: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiIdentifyKartiVC)
+    func identifyingCardViewControllerotmenaNazhata(_ viewController: SportivinieKartiIdentifyKartiController)
+    func identifyingCardDidIdentefeciroval(withError error: Error, in viewController: SportivinieKartiIdentifyKartiController)
+    func identifyingCardDidIdentefeciroval(withCard identifiedCard: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiIdentifyKartiController)
 }

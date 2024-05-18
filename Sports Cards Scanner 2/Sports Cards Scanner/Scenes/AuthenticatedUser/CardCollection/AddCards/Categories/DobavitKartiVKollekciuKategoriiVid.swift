@@ -38,15 +38,15 @@ final class DobavitKartiVKollekciuKategoriiVid: UIView {
         return tableView
     }(UITableView())
 
-    lazy var cancelButton: SportivinieKartiCommonB = { button in
+    lazy var cancelButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.cancel)
         return button
-    }(SportivinieKartiCommonB(style: .cancel))
+    }(SportivinieKartiCommonKnopka(style: .cancel))
 
-    lazy var doneButton: SportivinieKartiCommonB = { button in
+    lazy var doneButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.done)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     convenience init() {
         self.init(frame: .zero)

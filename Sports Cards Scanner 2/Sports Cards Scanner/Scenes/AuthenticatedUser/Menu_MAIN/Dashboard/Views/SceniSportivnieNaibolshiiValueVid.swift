@@ -44,13 +44,13 @@ final class SportivinieKartiNaibolshiiValueVid: UIView {
 //        return collection
 //    }(UICollectionView(frame: .zero, collectionViewLayout: filterLayout()))
 
-    lazy var cardButton: SportivinieKartiCommonB = .init(style: .custom(sozdatVidKnopki()))
-    lazy var cardButtonTwo: SportivinieKartiCommonB = .init(style: .custom(sozdatVidKnopki()))
-    lazy var cardButtonThree: SportivinieKartiCommonB = .init(style: .custom(sozdatVidKnopki()))
+    lazy var cardButton: SportivinieKartiCommonKnopka = .init(style: .custom(sozdatVidKnopki()))
+    lazy var cardButtonTwo: SportivinieKartiCommonKnopka = .init(style: .custom(sozdatVidKnopki()))
+    lazy var cardButtonThree: SportivinieKartiCommonKnopka = .init(style: .custom(sozdatVidKnopki()))
 
-    lazy var cardView: SportivinieKartiCardMV = .init()
-    lazy var cardViewTwo: SportivinieKartiCardMV = .init()
-    lazy var cardViewThree: SportivinieKartiCardMV = .init()
+    lazy var cardView: SportivinieKartiCardMenuVid = .init()
+    lazy var cardViewTwo: SportivinieKartiCardMenuVid = .init()
+    lazy var cardViewThree: SportivinieKartiCardMenuVid = .init()
     convenience init() {
         self.init(frame: .zero)
         postavitVidunicalno()
@@ -220,7 +220,7 @@ private extension SportivinieKartiNaibolshiiValueVid {
         }
     }
 
-    private func sozdatVidKnopki() -> SportivinieKartiCommonB.SportivinieKartiVidKnopki {
+    private func sozdatVidKnopki() -> SportivinieKartiCommonKnopka.SportivinieKartiVidKnopki {
         func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
             let timeInterval = endDate.timeIntervalSince(startDate)
             let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)

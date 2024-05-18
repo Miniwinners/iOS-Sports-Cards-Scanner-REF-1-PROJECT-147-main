@@ -26,7 +26,7 @@ final class SportivinieKartiYdalitKollekciuCoo {
 
 extension SportivinieKartiYdalitKollekciuCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiDAVC(description: L10n.Prompt.DeleteCollection.description, styleButton: .delete)
+        let viewController = SportivinieKartiYdalitAccountController(description: L10n.Prompt.DeleteCollection.description, styleButton: .delete)
         viewController.delegate = self
         viewController.cancelButton.setButtonTitle(L10n.Prompt.DeleteCollection.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteCollection.keepAction)
@@ -40,8 +40,8 @@ extension SportivinieKartiYdalitKollekciuCoo: SportivinieKartiCoo {
     }
 }
 
-extension SportivinieKartiYdalitKollekciuCoo: SportivinieKartiDAVCD {
-    func promptViewControllerotmenaNazhata(_ viewController: SportivinieKartiDAVC) {
+extension SportivinieKartiYdalitKollekciuCoo: ViewSportivnieYdalitAccaountDelegat {
+    func promptViewControllerotmenaNazhata(_ viewController: SportivinieKartiYdalitAccountController) {
         cardCollectionManager.ydalitKollekciuKart()
         cardCollectionManager.sohranitKollekciuIFnado()
         delegate?.deleteCollectionPromptCoordinatorYdalitNazhata(self)
@@ -53,7 +53,7 @@ extension SportivinieKartiYdalitKollekciuCoo: SportivinieKartiDAVCD {
         let chislo6 = chislo2
     }
 
-    func promptViewControllerPodtverditYdalitNazhata(_ viewController: SportivinieKartiDAVC) {
+    func promptViewControllerPodtverditYdalitNazhata(_ viewController: SportivinieKartiYdalitAccountController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40

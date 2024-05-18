@@ -29,12 +29,12 @@ final class SportivinieKartiScanirovanieKartiVid: UIView {
         return button
     }(UIButton(type: .system))
 
-    lazy var gradeTypeButton: SportivinieKartiCommonB = {
+    lazy var gradeTypeButton: SportivinieKartiCommonKnopka = {
         var configuration: UIButton.Configuration = .filled()
         configuration.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
         configuration.background.cornerRadius = UIDevice.isIpad ? 24 : 10
         configuration.cornerStyle = .fixed
-        let appearance: SportivinieKartiCommonB.SportivinieKartiVidKnopki = .init(
+        let appearance: SportivinieKartiCommonKnopka.SportivinieKartiVidKnopki = .init(
             configuration: configuration,
             font: .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22 : 16),
             backgroundColors: .init(primary: .blue, highlighted: .highlightColor2),

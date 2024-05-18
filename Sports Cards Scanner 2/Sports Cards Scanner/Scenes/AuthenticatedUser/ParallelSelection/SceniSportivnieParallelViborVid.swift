@@ -13,7 +13,7 @@ final class SportivinieKartiParallelViborVid: UIView {
     lazy var backView: BackView = .init()
     lazy var titleLabel: TitleLabel = .init()
 
-    lazy var searchTextField: SportivinieKartiCTExtF = { textField in
+    lazy var searchTextField: SportivinieKartiCustomTextPole = { textField in
         textField.borderStyle = .none
         textField.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ?22:16)
         textField.backgroundColor = .skyBlue
@@ -26,7 +26,7 @@ final class SportivinieKartiParallelViborVid: UIView {
         textField.tintColor = .black
         textField.autocapitalizationType = .none
         return textField
-    }(SportivinieKartiCTExtF())
+    }(SportivinieKartiCustomTextPole())
 
     var searchImageView: UIImageView!
 
@@ -47,12 +47,12 @@ final class SportivinieKartiParallelViborVid: UIView {
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
-    }(SportivinieKartiBaseCV(frame: .zero, collectionViewLayout: sozdatLayoutKollekcii()))
+    }(SportivinieKartiBaseCollectionKletka(frame: .zero, collectionViewLayout: sozdatLayoutKollekcii()))
 
-    lazy var noResultsView: SportivinieKartiCMessageV = { view in
+    lazy var noResultsView: SportivinieKartiCustomMessageVid = { view in
         view.postavitZagolovok(L10n.ParallelSelection.noResult)
         return view
-    }(SportivinieKartiCMessageV())
+    }(SportivinieKartiCustomMessageVid())
 
     lazy var noneParallelButton: UIButton = { button in
         button.setTitle(L10n.ParallelSelection.Action.none, for: .normal)

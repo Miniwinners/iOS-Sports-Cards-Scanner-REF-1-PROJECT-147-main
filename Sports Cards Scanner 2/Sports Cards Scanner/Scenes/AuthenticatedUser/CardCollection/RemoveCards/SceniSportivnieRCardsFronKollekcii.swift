@@ -23,7 +23,7 @@ final class SportivinieKartiRCardsFronKollekcii: UIViewController {
 
     // MARK: - Subviews
 
-    lazy var removeCardsView: SportivinieKartiRCV = .init()
+    lazy var removeCardsView: SportivinieKartiRCollectionKletka = .init()
     lazy var closeButton: CloseButton = .init(style: .back)
 
     init(cardCollectionManager: SportivinieKartiKartaKollekciaManger = SportivinieKartiKartaPostavitManager.shared) {
@@ -82,7 +82,7 @@ private extension SportivinieKartiRCardsFronKollekcii {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         let cardsCollectionView = removeCardsView.cardsCollectionView
-        cardsCollectionView.register(SportivinieKartiRCardCVC.self, forCellWithReuseIdentifier: SportivinieKartiRCardCVC.className)
+        cardsCollectionView.register(SportivinieKartiRCardCollectionKletka.self, forCellWithReuseIdentifier: SportivinieKartiRCardCollectionKletka.className)
         cardsCollectionView.dataSource = self
         cardsCollectionView.delegate = self
 
@@ -166,7 +166,7 @@ extension SportivinieKartiRCardsFronKollekcii: UICollectionViewDataSource {
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiRCardCVC.className, for: indexPath) as? SportivinieKartiRCardCVC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiRCardCollectionKletka.className, for: indexPath) as? SportivinieKartiRCardCollectionKletka
 
         if let card = karta(at: indexPath) {
             cell?.postavitKarty(card)

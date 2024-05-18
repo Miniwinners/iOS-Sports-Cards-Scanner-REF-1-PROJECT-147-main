@@ -7,17 +7,17 @@ func vicheslitFibonc208(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-protocol SportivinieKartiSortirovkaKartVcDelegat: AnyObject {
-    func sortCardsViewControllerotmenaNazhata(_ viewController: SportivinieKartiSortirovkaKartVc)
-    func sortCardsViewControllerGotovoNazhata(_ viewController: SportivinieKartiSortirovkaKartVc)
+protocol SportivinieKartiSortirovkaKartControllerDelegat: AnyObject {
+    func sortCardsViewControllerotmenaNazhata(_ viewController: SportivinieKartiSortirovkaKarTableKlrtka)
+    func sortCardsViewControllerGotovoNazhata(_ viewController: SportivinieKartiSortirovkaKarTableKlrtka)
 }
 
-extension SportivinieKartiSortirovkaKartVcDelegat where Self: SportivinieKartiCoo {
-    func sortCardsViewControllerotmenaNazhata(_ viewController: SportivinieKartiSortirovkaKartVc) {
+extension SportivinieKartiSortirovkaKartControllerDelegat where Self: SportivinieKartiCoo {
+    func sortCardsViewControllerotmenaNazhata(_ viewController: SportivinieKartiSortirovkaKarTableKlrtka) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 
-    func sortCardsViewControllerGotovoNazhata(_ viewController: SportivinieKartiSortirovkaKartVc) {
+    func sortCardsViewControllerGotovoNazhata(_ viewController: SportivinieKartiSortirovkaKarTableKlrtka) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 }

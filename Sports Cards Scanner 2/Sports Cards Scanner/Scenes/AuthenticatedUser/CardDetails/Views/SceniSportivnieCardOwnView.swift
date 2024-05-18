@@ -60,34 +60,34 @@ final class SportivinieKartiCardOwnView: UIView {
         return label
     }(UILabel())
 
-    lazy var cardGraderButton: SportivinieKartiCGraderB = .init()
+    lazy var cardGraderButton: SportivinieKartiCGraderKnopka = .init()
 
-    lazy var pricingReportButton: SportivinieKartiPricingRB = .init(priceButtonType: .main)
+    lazy var pricingReportButton: SportivinieKartiPricingReportKnopka = .init(priceButtonType: .main)
 
     lazy var detailsListView: SportivinieKartiCardOwnListView = .init()
 
-    lazy var addCardButton: SportivinieKartiATPB = { button in
+    lazy var addCardButton: SportivinieKartiAddPortfolioKnopka = { button in
         return button
-    }(SportivinieKartiATPB())
+    }(SportivinieKartiAddPortfolioKnopka())
 
-    lazy var editCardButton: SportivinieKartiCommonB = { button in
+    lazy var editCardButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.CardDetails.Action.editCard)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
 //    lazy var lockImageView: UIImageView = .init(image: Images.lock.image)
 
     lazy var removeCardButtonContainer: UIView = getButtonContainer(for: removeCardButton)
-    lazy var removeCardButton: SportivinieKartiCommonB = { button in
+    lazy var removeCardButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.CardDetails.Action.removeCard)
         return button
-    }(SportivinieKartiCommonB(style: .cancel))
+    }(SportivinieKartiCommonKnopka(style: .cancel))
 
     lazy var findCardButtonContainer: UIView = getButtonContainer(for: findCardButton)
-    lazy var findCardButton: SportivinieKartiCommonB = { button in
+    lazy var findCardButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.CardDetails.Action.findCard)
         return button
-    }(SportivinieKartiCommonB(style: .cancel))
+    }(SportivinieKartiCommonKnopka(style: .cancel))
 
     init(locked: Bool) {
         self.locked = locked

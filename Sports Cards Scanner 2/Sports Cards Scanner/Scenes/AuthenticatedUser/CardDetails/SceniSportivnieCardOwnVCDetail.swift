@@ -10,18 +10,18 @@ func vicheslitFibonc272(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-enum PreviousVC {
+enum PreviousController {
     case search
     case common
 }
 
-final class SportivinieKartiCardOwnVCDetail: UIViewController {
+final class SportivinieKartiCardOwnControllerDetail: UIViewController {
 
     private let searchCardService: SportivinieKartiKartaPoiskovaya
-    private let cardPhotoService: SportivinieKartiPhotoKartiSc
+    private let cardPhotoService: SportivinieKartiPhotoKartiService
     private let cardsManager: SportivinieKartiUserKartManager
-    weak var delegate: SportivinieKartiCardOwnVCDetailDelegate?
-    private var previousVC: PreviousVC
+    weak var delegate: SportivinieKartiCardOwnControllerDetailDelegate?
+    private var previousController: PreviousController
     private var locked: Bool
     private(set) lazy var searchedCardsManager: SportivinieKartiKartUpdater = SportivinieKartiPoiskKartManager(card: card)
 
@@ -44,7 +44,7 @@ final class SportivinieKartiCardOwnVCDetail: UIViewController {
         scrollView.backgroundColor = .white
         scrollView.alwaysBounceVertical = false
         return scrollView
-    }(SportivinieKartiBSV())
+    }(SportivinieKartiBaseScrolVid())
 
     lazy var cardDetailsView: SportivinieKartiCardOwnView = .init(locked: locked)
 
@@ -58,9 +58,9 @@ final class SportivinieKartiCardOwnVCDetail: UIViewController {
         cardType: KartaType = .addedCard,
         encodedCardImage: Data? = nil,
         searchCardService: SportivinieKartiKartaPoiskovaya = SportivinieKartiPoiskKarti(),
-        cardPhotoService: SportivinieKartiPhotoKartiSc = .init(),
+        cardPhotoService: SportivinieKartiPhotoKartiService = .init(),
         cardsManager: SportivinieKartiUserKartManager = .shared,
-        previousVC: PreviousVC,
+        previousController: PreviousController,
         locked: Bool
     ) {
         self.card = card
@@ -69,7 +69,7 @@ final class SportivinieKartiCardOwnVCDetail: UIViewController {
         self.searchCardService = searchCardService
         self.cardPhotoService = cardPhotoService
         self.cardsManager = cardsManager
-        self.previousVC = previousVC
+        self.previousController = previousController
         self.locked = locked
         super.init(nibName: nil, bundle: nil)
     }
@@ -122,7 +122,7 @@ final class SportivinieKartiCardOwnVCDetail: UIViewController {
 
 }
 
-private extension SportivinieKartiCardOwnVCDetail {
+private extension SportivinieKartiCardOwnControllerDetail {
     func postavitVid() {
         let chislo1 = 25
         let chislo2 = 40
@@ -161,9 +161,9 @@ private extension SportivinieKartiCardOwnVCDetail {
 
     func setupButton() {
         if isRootViewController() {
-            stilZakritiya(style: previousVC)
+            stilZakritiya(style: previousController)
         } else {
-            if previousVC == .search { stilZakritiya(style: previousVC) } else {
+            if previousController == .search { stilZakritiya(style: previousController) } else {
                 let closeButton = CloseButton(style: .back)
                 closeButton.setLeft(in: view)
                 closeButton.addTarget(self, action: #selector(nazadNazhata), for: .touchUpInside)
@@ -171,7 +171,7 @@ private extension SportivinieKartiCardOwnVCDetail {
         }
     }
 
-    func stilZakritiya(style: PreviousVC) {
+    func stilZakritiya(style: PreviousController) {
         let closeButton = CloseButton(style: .close)
         closeButton.setCenter(in: view)
         if style == .search { closeButton.addTarget(self, action: #selector(zakritPoslePoiska), for: .touchUpInside) } else {
@@ -234,7 +234,7 @@ private extension SportivinieKartiCardOwnVCDetail {
         NotificationCenter.default.addObserver(self, selector: #selector(poiskKartaDidNazhata), name: .searchedCardDidUpdate, object: nil)
     }
 
-    func getPricingReportMode() -> SportivinieKartiPricingRB.OvetMod {
+    func getPricingReportMode() -> SportivinieKartiPricingReportKnopka.OvetMod {
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -362,9 +362,9 @@ private extension SportivinieKartiCardOwnVCDetail {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         setupLoadingScreen()
-        guard SportivinieKartiInternetSoedinenieSc.shared.isNetworkAvailable else {
+        guard SportivinieKartiInternetSoedinenieService.shared.isNetworkAvailable else {
             let alertType: SportivinieKartitipAlerta = .noInternetConnection(okAction: nil)
-            SportivinieKartiAlertSc.shared.podgotovitAlertController(type: alertType, in: self)
+            SportivinieKartiAlertService.shared.podgotovitAlertController(type: alertType, in: self)
             return
         }
 

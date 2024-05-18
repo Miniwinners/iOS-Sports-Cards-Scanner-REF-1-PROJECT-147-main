@@ -8,7 +8,7 @@ final class SportivinieKartiSozdatKolleciuCoo {
     var children: [SportivinieKartiCoo] = []
     let router: SportivinieKartiGlavniiRouterPrilozhania
 
-    var addCardsParentViewController: DobavitKartiVKollekciuKategoriiVC?
+    var addCardsParentViewController: DobavitKartiVKollekciuKategoriiController?
 
     init(router: SportivinieKartiGlavniiRouterPrilozhania) {
         self.router = router
@@ -37,9 +37,9 @@ extension SportivinieKartiSozdatKolleciuCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiSozdatKolleciuCoo: SportivinieKartiKartaKollekciiDelegat {
-    func cardCollectionViewControllerDobavitKarty(_ viewController: SCDKartaKollekciiVc) {
+    func cardCollectionViewControllerDobavitKarty(_ viewController: SCDKartaKollekciiController) {
 
-        let viewController = DobavitKartiVKollekciuKategoriiVC()
+        let viewController = DobavitKartiVKollekciuKategoriiController()
         viewController.delegate = self
         self.addCardsParentViewController = viewController
         router.poyavitsaUnicalno(viewController, animated: true)
@@ -53,7 +53,7 @@ extension SportivinieKartiSozdatKolleciuCoo: SportivinieKartiKartaKollekciiDeleg
 }
 
 extension SportivinieKartiSozdatKolleciuCoo: CardDetailsCoordinatorDelegate {
-    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail) {
+    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail) {
         router.ischeznytUnicalno(viewController, animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -79,5 +79,5 @@ extension SportivinieKartiSozdatKolleciuCoo: DeleteCollectionDelegat {
 extension SportivinieKartiSozdatKolleciuCoo: DobavitKartiVKollekciuKategoriiDelegat { }
 extension SportivinieKartiSozdatKolleciuCoo: DobavitKartiToCollectionKartiDelegat { }
 extension SportivinieKartiSozdatKolleciuCoo: SportivinieKartiRCardsFromKollekciiDelegat { }
-extension SportivinieKartiSozdatKolleciuCoo: SportivinieKartiSortirovkaKartVcDelegat { }
+extension SportivinieKartiSozdatKolleciuCoo: SportivinieKartiSortirovkaKartControllerDelegat { }
 extension SportivinieKartiSozdatKolleciuCoo: SportivinieKartiSozdatIzmenitKollekciuDelegat { }

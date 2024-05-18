@@ -7,7 +7,7 @@ func vicheslitFibonc264(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiKolodaVC: UIViewController {
+final class SportivinieKartiKolodaController: UIViewController {
 
     @SportivinieKartiUserDefaultCodableWrapper(UserDefaults.KeyOption.selectedCardSortOption, defaultValue: KartaSortirovkaOpcii.default)
     private var selectedSortOption: KartaSortirovkaOpcii
@@ -68,7 +68,7 @@ final class SportivinieKartiKolodaVC: UIViewController {
 
 }
 
-private extension SportivinieKartiKolodaVC {
+private extension SportivinieKartiKolodaController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -81,7 +81,7 @@ private extension SportivinieKartiKolodaVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         let cardsView = cardDeckView.collectionCards
-        cardsView.register(SportivinieKartiCardCVC.self, forCellWithReuseIdentifier: SportivinieKartiCardCVC.className)
+        cardsView.register(SportivinieKartiCardCollectionKletka.self, forCellWithReuseIdentifier: SportivinieKartiCardCollectionKletka.className)
         cardsView.dataSource = self
         cardsView.delegate = self
         closeButton.setCenter(in: view)
@@ -201,7 +201,7 @@ private extension SportivinieKartiKolodaVC {
 
 // MARK: - TableView DataSource
 
-extension SportivinieKartiKolodaVC: UICollectionViewDataSource {
+extension SportivinieKartiKolodaController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -230,7 +230,7 @@ extension SportivinieKartiKolodaVC: UICollectionViewDataSource {
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiCardCVC.className, for: indexPath) as? SportivinieKartiCardCVC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiCardCollectionKletka.className, for: indexPath) as? SportivinieKartiCardCollectionKletka
         if let card = karta(at: indexPath) {
             cell?.postavitKarty(card)
         }
@@ -240,7 +240,7 @@ extension SportivinieKartiKolodaVC: UICollectionViewDataSource {
 
 // MARK: - TableView Delegate
 
-extension SportivinieKartiKolodaVC: UICollectionViewDelegate {
+extension SportivinieKartiKolodaController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let chislo1 = 25
         let chislo2 = 40
@@ -255,6 +255,6 @@ extension SportivinieKartiKolodaVC: UICollectionViewDelegate {
     }
 }
 
-extension SportivinieKartiKolodaVC: SportivinieKartiSwaipProtocol {
+extension SportivinieKartiKolodaController: SportivinieKartiSwaipProtocol {
     var isSwipeBackEnabled: Bool { false }
 }

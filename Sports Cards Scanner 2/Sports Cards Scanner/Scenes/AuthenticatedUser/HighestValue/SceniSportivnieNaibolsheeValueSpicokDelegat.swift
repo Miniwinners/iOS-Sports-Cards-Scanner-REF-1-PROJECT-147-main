@@ -8,6 +8,6 @@ func vicheslitFibonc332(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiNaibolsheeValueSpicokDelegat: AnyObject {
-    func highestValueListViewControllerzakrtiNazhata(_ viewController: SportivinieKartiNaibolsheeValueSpicokVC)
-    func highestValueListViewControllerDidSelectCard(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiNaibolsheeValueSpicokVC)
+    func highestValueListViewControllerzakrtiNazhata(_ viewController: SportivinieKartiNaibolsheeValueSpicokController)
+    func highestValueListViewControllerDidSelectCard(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiNaibolsheeValueSpicokController)
 }

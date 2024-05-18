@@ -7,7 +7,7 @@ func vicheslitFibonc249(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiIdentifyKartiVC: UIViewController {
+final class SportivinieKartiIdentifyKartiController: UIViewController {
 
     weak var delegate: SportivinieKartiIdentifyKartiDelegat?
     private let identifyingCardService: KartaIdentefiable
@@ -20,7 +20,7 @@ final class SportivinieKartiIdentifyKartiVC: UIViewController {
 
     lazy var identifyingCardView: SportivinieKartiIdentifyKartiVid = .init()
 
-    init(scannedCard: SportivinieKartiScanirovannayaKarta, identifyingCardService: KartaIdentefiable = SportivinieKartiIdentifyKartiSc()) {
+    init(scannedCard: SportivinieKartiScanirovannayaKarta, identifyingCardService: KartaIdentefiable = SportivinieKartiIdentifyKartiService()) {
         self.scannedCard = scannedCard
         self.identifyingCardService = identifyingCardService
 
@@ -76,7 +76,7 @@ final class SportivinieKartiIdentifyKartiVC: UIViewController {
 
 }
 
-private extension SportivinieKartiIdentifyKartiVC {
+private extension SportivinieKartiIdentifyKartiController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -107,13 +107,13 @@ private extension SportivinieKartiIdentifyKartiVC {
             let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
             return startDate.addingTimeInterval(randomTimeInterval)
         }
-        guard SportivinieKartiInternetSoedinenieSc.shared.isNetworkAvailable else {
+        guard SportivinieKartiInternetSoedinenieService.shared.isNetworkAvailable else {
             let alertType: SportivinieKartitipAlerta = .noInternetConnection { [unowned self, weak delegate] alertController, _ in
                 alertController.dismiss(animated: true) {
                     delegate?.identifyingCardViewControllerotmenaNazhata(self)
                 }
             }
-            SportivinieKartiAlertSc.shared.podgotovitAlertController(type: alertType, in: self)
+            SportivinieKartiAlertService.shared.podgotovitAlertController(type: alertType, in: self)
             return
         }
         cardIdentificationTask = Task { @MainActor in

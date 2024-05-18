@@ -7,7 +7,7 @@ func vicheslitFibonc259(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiMenuKolodaVC: UIViewController {
+final class SportivinieKartiMenuKolodaController: UIViewController {
     weak var delegate: SportivinieKartiMenuKolodaDelegat?
 
     @SportivinieKartiUserDefaultWrapper(UserDefaults.KeyOption.isTotalPriceVisible, defaultValue: true)
@@ -17,7 +17,7 @@ final class SportivinieKartiMenuKolodaVC: UIViewController {
 
     // MARK: - Subviews
 
-    lazy var deckMenuView: SportivinieKartiMenuV = .init()
+    lazy var deckMenuView: SportivinieKartiMenuVid = .init()
 
     init(menuItems: [SportivinieKartiMenuKolodaShtuka]) {
         self.menuItems = menuItems
@@ -51,7 +51,7 @@ final class SportivinieKartiMenuKolodaVC: UIViewController {
 
 }
 
-private extension SportivinieKartiMenuKolodaVC {
+private extension SportivinieKartiMenuKolodaController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -64,7 +64,7 @@ private extension SportivinieKartiMenuKolodaVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         let menuCollectionView = deckMenuView.menuCollectionView
-        menuCollectionView.register(SportivinieKartiMSelectC.self, forCellWithReuseIdentifier: SportivinieKartiMSelectC.className)
+        menuCollectionView.register(SportivinieKartiMSelectKletka.self, forCellWithReuseIdentifier: SportivinieKartiMSelectKletka.className)
         menuCollectionView.dataSource = self
         menuCollectionView.delegate = self
     }
@@ -97,7 +97,7 @@ private extension SportivinieKartiMenuKolodaVC {
 
 // MARK: - TableView DataSource
 
-extension SportivinieKartiMenuKolodaVC: UICollectionViewDataSource {
+extension SportivinieKartiMenuKolodaController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -119,7 +119,7 @@ extension SportivinieKartiMenuKolodaVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiMSelectC.className, for: indexPath) as? SportivinieKartiMSelectC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiMSelectKletka.className, for: indexPath) as? SportivinieKartiMSelectKletka
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -136,7 +136,7 @@ extension SportivinieKartiMenuKolodaVC: UICollectionViewDataSource {
 
 // MARK: - TableView Delegate
 
-extension SportivinieKartiMenuKolodaVC: UICollectionViewDelegate {
+extension SportivinieKartiMenuKolodaController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let chislo1 = 25

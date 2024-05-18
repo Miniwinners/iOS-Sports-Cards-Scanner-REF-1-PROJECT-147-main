@@ -8,6 +8,6 @@ func vicheslitFibonc222(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiUpdateParolDelegat: AnyObject {
-    func updatePasswordViewControllerPasswordObnovilos(_ viewController: SportivinieKartiUpdateParolVC)
-    func updatePasswordViewControllerzakrtiNazhata(_ viewController: SportivinieKartiUpdateParolVC)
+    func updatePasswordViewControllerPasswordObnovilos(_ viewController: SportivinieKartiUpdateParolController)
+    func updatePasswordViewControllerzakrtiNazhata(_ viewController: SportivinieKartiUpdateParolController)
 }

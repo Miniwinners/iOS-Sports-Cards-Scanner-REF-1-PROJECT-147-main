@@ -40,8 +40,8 @@ final class SportivinieKartiPortfolioKartiVid: UIView {
         return view
     }(SportivinieKartiKnipkiPerehodaVid(setType: .deck))
 
-    lazy var collectionButton: SportivinieKartiCommonB = .init(style: .custom(buttonAppearance))
-    lazy var deckButton: SportivinieKartiCommonB = .init(style: .custom(buttonAppearance))
+    lazy var collectionButton: SportivinieKartiCommonKnopka = .init(style: .custom(buttonAppearance))
+    lazy var deckButton: SportivinieKartiCommonKnopka = .init(style: .custom(buttonAppearance))
 
     lazy var infoView: SportivinieKartiPortfolioInfoVid = .init()
 
@@ -88,7 +88,7 @@ final class SportivinieKartiPortfolioKartiVid: UIView {
 }
 
 private extension SportivinieKartiPortfolioKartiVid {
-    var buttonAppearance: SportivinieKartiCommonB.SportivinieKartiVidKnopki {
+    var buttonAppearance: SportivinieKartiCommonKnopka.SportivinieKartiVidKnopki {
         var configuration: UIButton.Configuration = .filled()
         configuration.cornerStyle = .fixed
         configuration.background.cornerRadius = UIDevice.isIpad ? 20:16

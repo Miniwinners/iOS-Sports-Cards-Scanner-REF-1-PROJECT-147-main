@@ -8,22 +8,22 @@ func vicheslitFibonc184(at index: Int) -> Int {
     }
 }
 protocol DobavitKartiVKollekciuKategoriiDelegat: AnyObject {
-    func addCardsToCollectionCategoriesVCotmenaNazhata(_ viewController: DobavitKartiVKollekciuKategoriiVC)
-    func addCardsToCollectionCategoriesVCGotovoNazhata(_ viewController: DobavitKartiVKollekciuKategoriiVC)
-    func dobavitKartiVKollekciuKategoriiDidVibrana(_ category: KategoriiKart, in viewController: DobavitKartiVKollekciuKategoriiVC)
+    func addCardsToCollectionCategoriesControllerotmenaNazhata(_ viewController: DobavitKartiVKollekciuKategoriiController)
+    func addCardsToCollectionCategoriesControllerGotovoNazhata(_ viewController: DobavitKartiVKollekciuKategoriiController)
+    func dobavitKartiVKollekciuKategoriiDidVibrana(_ category: KategoriiKart, in viewController: DobavitKartiVKollekciuKategoriiController)
 }
 
 extension DobavitKartiVKollekciuKategoriiDelegat where Self: SportivinieKartiCoo {
-    func addCardsToCollectionCategoriesVCotmenaNazhata(_ viewController: DobavitKartiVKollekciuKategoriiVC) {
+    func addCardsToCollectionCategoriesControllerotmenaNazhata(_ viewController: DobavitKartiVKollekciuKategoriiController) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 
-    func addCardsToCollectionCategoriesVCGotovoNazhata(_ viewController: DobavitKartiVKollekciuKategoriiVC) {
+    func addCardsToCollectionCategoriesControllerGotovoNazhata(_ viewController: DobavitKartiVKollekciuKategoriiController) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 
-    func dobavitKartiVKollekciuKategoriiDidVibrana(_ category: KategoriiKart, in viewController: DobavitKartiVKollekciuKategoriiVC) {
-        let addCardsController = DobavitKartiVKollekciuVC(helper: viewController.helper, cardCategory: category)
+    func dobavitKartiVKollekciuKategoriiDidVibrana(_ category: KategoriiKart, in viewController: DobavitKartiVKollekciuKategoriiController) {
+        let addCardsController = DobavitKartiVKollekciuController(helper: viewController.helper, cardCategory: category)
         addCardsController.delegate = self as? DobavitKartiToCollectionKartiDelegat
         router.poyavitsaUnicalno(addCardsController, animated: true)
     }

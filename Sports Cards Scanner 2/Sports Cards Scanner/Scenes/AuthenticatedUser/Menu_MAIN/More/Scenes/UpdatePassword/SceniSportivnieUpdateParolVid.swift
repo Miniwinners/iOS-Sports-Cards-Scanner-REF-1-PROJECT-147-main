@@ -43,7 +43,7 @@ final class SportivinieKartiUpdateParolVid: UIView {
         return image
     }(UIImageView())
 
-    lazy var passwordView: SportivinieKartiTTextFV = { view in
+    lazy var passwordView: SportivinieKartiTTextPoleVid = { view in
         view.title = L10n.UpdatePassword.NewPassword.title
         view.titleLabel.textAlignment = .center
         view.titleLabel.postavitRazmer(fontS: .ubuntuLight300, phone: 16, iPad: 24)
@@ -53,9 +53,9 @@ final class SportivinieKartiUpdateParolVid: UIView {
         view.textField.autocorrectionType = .no
         view.textField.returnKeyType = .next
         return view
-    }(SportivinieKartiTTextFV())
+    }(SportivinieKartiTTextPoleVid())
 
-    lazy var confirmPasswordView: SportivinieKartiTTextFV = { view in
+    lazy var confirmPasswordView: SportivinieKartiTTextPoleVid = { view in
         view.title = L10n.UpdatePassword.ConfirmNewPassword.title
         view.titleLabel.textAlignment = .center
         view.titleLabel.postavitRazmer(fontS: .ubuntuLight300, phone: 16, iPad: 24)
@@ -65,7 +65,7 @@ final class SportivinieKartiUpdateParolVid: UIView {
         view.textField.autocorrectionType = .no
         view.textField.returnKeyType = .done
         return view
-    }(SportivinieKartiTTextFV())
+    }(SportivinieKartiTTextPoleVid())
 
     lazy var passwordRequirementsLabel: UILabel = { label in
         label.postavitRazmer(fontS: .ubuntuLight300, phone: 12, iPad: 18)
@@ -77,10 +77,10 @@ final class SportivinieKartiUpdateParolVid: UIView {
         return label
     }(UILabel())
 
-    lazy var saveButton: SportivinieKartiCommonB = { button in
+    lazy var saveButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.UpdatePassword.Action.save)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     convenience init() {
         self.init(frame: .zero)
@@ -139,7 +139,7 @@ private extension SportivinieKartiUpdateParolVid {
         return startDate.addingTimeInterval(randomTimeInterval)
     }
     func makeTextBlue() -> NSMutableAttributedString {
-        let fullText = L10n.UpdatePassword.NewPassword.requirements(8)
+        let fullText = L10n.UpdatePassword.NewPassword.requierements
         let words = [L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut1,
                      L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut2,
                      L10n.UpdatePassword.NewPassword.updatePassword_newPassword_cut3,

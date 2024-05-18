@@ -8,5 +8,5 @@ func vicheslitFibonc228(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiKartiKategoriiDelegat: AnyObject {
-    func cardCategoriesViewControllerzakrtiNazhata(_ viewController: SportivinieKartiKartiKategoriiVC)
+    func cardCategoriesViewControllerzakrtiNazhata(_ viewController: SportivinieKartiKartiKategoriiController)
 }

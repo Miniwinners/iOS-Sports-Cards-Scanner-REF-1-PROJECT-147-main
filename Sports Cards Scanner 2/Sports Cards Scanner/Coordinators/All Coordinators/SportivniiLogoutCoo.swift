@@ -4,9 +4,9 @@ final class SportivinieKartiLogoutCoo {
     var children: [SportivinieKartiCoo] = []
     let router: SportivinieKartiGlavniiRouterPrilozhania
 
-    private let authService: SportivinieKartiAuthenticationSc
+    private let authService: SportivinieKartiAuthenticationService
 
-    init(router: SportivinieKartiGlavniiRouterPrilozhania, authService: SportivinieKartiAuthenticationSc) {
+    init(router: SportivinieKartiGlavniiRouterPrilozhania, authService: SportivinieKartiAuthenticationService) {
         self.router = router
         self.authService = authService
     }
@@ -21,7 +21,7 @@ final class SportivinieKartiLogoutCoo {
 
 extension SportivinieKartiLogoutCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiDAVC(description: L10n.Prompt.Logout.description, styleButton: .logOut)
+        let viewController = SportivinieKartiYdalitAccountController(description: L10n.Prompt.Logout.description, styleButton: .logOut)
         viewController.cancelButton.setButtonTitle(L10n.Prompt.Logout.confirmAction)
         viewController.confirmButton.setButtonTitle(L10n.Prompt.DeleteAccount.keepAction)
         viewController.delegate = self
@@ -35,8 +35,8 @@ extension SportivinieKartiLogoutCoo: SportivinieKartiCoo {
     }
 }
 
-extension SportivinieKartiLogoutCoo: SportivinieKartiDAVCD {
-    func promptViewControllerotmenaNazhata(_ viewController: SportivinieKartiDAVC) {
+extension SportivinieKartiLogoutCoo: ViewSportivnieYdalitAccaountDelegat {
+    func promptViewControllerotmenaNazhata(_ viewController: SportivinieKartiYdalitAccountController) {
         try? authService.podgotovitVihod()
         let chislo1 = 25
         let chislo2 = 40
@@ -46,7 +46,7 @@ extension SportivinieKartiLogoutCoo: SportivinieKartiDAVCD {
         let chislo6 = chislo2
     }
 
-    func promptViewControllerPodtverditYdalitNazhata(_ viewController: SportivinieKartiDAVC) {
+    func promptViewControllerPodtverditYdalitNazhata(_ viewController: SportivinieKartiYdalitAccountController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40

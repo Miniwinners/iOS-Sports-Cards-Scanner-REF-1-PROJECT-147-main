@@ -11,7 +11,7 @@ final class SportivinieKartiSozdatKolodyCoo {
 
 extension SportivinieKartiSozdatKolodyCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiSodatIzmenitVC()
+        let viewController = SportivinieKartiSodatIzmeniTableKlrtka()
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: animated, onDismissed: onDismissed)
     }
@@ -37,7 +37,7 @@ extension SportivinieKartiSozdatKolodyCoo: YdalitKolodyePromptDelegat {
 }
 
 extension SportivinieKartiSozdatKolodyCoo: CardDetailsCoordinatorDelegate {
-    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail) {
+    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail) {
         router.ischeznytUnicalno(viewController, animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -52,4 +52,4 @@ extension SportivinieKartiSozdatKolodyCoo: SportivinieKartiSodatIzmenitDelegat {
 extension SportivinieKartiSozdatKolodyCoo: KartaKolodaDelegat { }
 extension SportivinieKartiSozdatKolodyCoo: SportivinieKartiDobavitKartiKolodaDelegat { }
 extension SportivinieKartiSozdatKolodyCoo: SportivinieKartiYbratKartuKolodaDelegat { }
-extension SportivinieKartiSozdatKolodyCoo: SportivinieKartiSortirovkaKartVcDelegat { }
+extension SportivinieKartiSozdatKolodyCoo: SportivinieKartiSortirovkaKartControllerDelegat { }

@@ -55,10 +55,10 @@ final class SportivinieKartiKartaKollekciiKartiVid: UIView {
         collectionView.alwaysBounceVertical = false
         collectionView.backgroundColor = .clear
         return collectionView
-    }(SportivinieKartiBaseCV(frame: .zero, collectionViewLayout: filterLayout()))
+    }(SportivinieKartiBaseCollectionKletka(frame: .zero, collectionViewLayout: filterLayout()))
     lazy var cardsSwipeableView: SportivinieKartiSwipeKartiVide = .init()
 
-    lazy var cardsDisplayControl: UISegmentedControl = SportivinieKartiKartiSegmentPresentCl(
+    lazy var cardsDisplayControl: UISegmentedControl = SportivinieKartiKartiSegmentPresenTableKletka(
         items: KartiDisplayOpcii.allCases.map { $0.image }
     )
 

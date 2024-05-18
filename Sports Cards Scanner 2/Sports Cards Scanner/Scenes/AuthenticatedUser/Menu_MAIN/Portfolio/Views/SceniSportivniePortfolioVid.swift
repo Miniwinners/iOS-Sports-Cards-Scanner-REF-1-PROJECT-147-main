@@ -15,7 +15,7 @@ final class SportivinieKartiPortfolioVid: UIView {
         scrollView.alwaysBounceVertical = false
         scrollView.contentInset.bottom = 84
         return scrollView
-    }(SportivinieKartiBSV())
+    }(SportivinieKartiBaseScrolVid())
 
     lazy var contentView: UIView = { view in
         return view
@@ -24,12 +24,12 @@ final class SportivinieKartiPortfolioVid: UIView {
     lazy var noCardView: SportivinieKartiPortfolioNetKartiVid = .init()
     lazy var cardsView: SportivinieKartiPortfolioKartiVid = .init(unlock: unlock)
 
-    lazy var scanCardButton: SportivinieKartiCommonB = { button in
+    lazy var scanCardButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Dashboard.Action.scanCard)
         button.setImage(SportivinieKartiImages.scan.image, for: .normal)
         button.configuration?.imagePadding = 20
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     init(unlock: Bool) {
            self.unlock = unlock

@@ -8,7 +8,7 @@ func vicheslitFibonc267(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiIzmenitKartuDelegat: AnyObject {
-    func editCardViewParallelNazhata(_ viewController: SportivinieKartiIzmenitKartuVC)
-    func editCardViewGradeNazhata(_ viewController: SportivinieKartiIzmenitKartuVC)
-    func editCardViewControllerDetaliObnovleni(_ viewController: SportivinieKartiIzmenitKartuVC)
+    func editCardViewParallelNazhata(_ viewController: SportivinieKartiIzmenitKartuController)
+    func editCardViewGradeNazhata(_ viewController: SportivinieKartiIzmenitKartuController)
+    func editCardViewControllerDetaliObnovleni(_ viewController: SportivinieKartiIzmenitKartuController)
 }

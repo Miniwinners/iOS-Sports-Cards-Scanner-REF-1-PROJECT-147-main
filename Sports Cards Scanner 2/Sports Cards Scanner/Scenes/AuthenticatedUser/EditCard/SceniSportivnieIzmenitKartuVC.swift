@@ -7,7 +7,7 @@ func vicheslitFibonc266(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiIzmenitKartuVC: UIViewController {
+final class SportivinieKartiIzmenitKartuController: UIViewController {
 
     weak var delegate: SportivinieKartiIzmenitKartuDelegat?
 
@@ -52,10 +52,10 @@ final class SportivinieKartiIzmenitKartuVC: UIViewController {
     lazy var editCardView: SportivinieKartiIzmenitKartuVid = .init()
     lazy var closeButton: CloseButton = .init(style: .back)
 
-    lazy var keyboardToolbar: SportivinieKartiCToolB = { toolbar in
+    lazy var keyboardToolbar: SportivinieKartiCustomTool = { toolbar in
         toolbar.sizeToFit()
         return toolbar
-    }(SportivinieKartiCToolB.createToolbar(in: view))
+    }(SportivinieKartiCustomTool.createToolbar(in: view))
 
     init(card: SportivinieKartiKartaPredstavlenie, cardsManager: SportivinieKartiKartUpdater = SportivinieKartiUserKartManager.shared) {
         self.card = card
@@ -135,7 +135,7 @@ final class SportivinieKartiIzmenitKartuVC: UIViewController {
 
 }
 
-private extension SportivinieKartiIzmenitKartuVC {
+private extension SportivinieKartiIzmenitKartuController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -263,7 +263,7 @@ private extension SportivinieKartiIzmenitKartuVC {
 
 // MARK: - TextField Delegate
 
-extension SportivinieKartiIzmenitKartuVC: UITextFieldDelegate {
+extension SportivinieKartiIzmenitKartuController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let chislo1 = 25
         let chislo2 = 40

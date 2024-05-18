@@ -24,7 +24,7 @@ final class SportivinieKartiIdentifyCoo {
 
 extension SportivinieKartiIdentifyCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiIdentifyKartiVC(scannedCard: scannedCard)
+        let viewController = SportivinieKartiIdentifyKartiController(scannedCard: scannedCard)
         viewController.delegate = self
         viewController.modalPresentationStyle = .fullScreen
         viewController.modalTransitionStyle = .crossDissolve
@@ -39,7 +39,7 @@ extension SportivinieKartiIdentifyCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiIdentifyCoo: SportivinieKartiIdentifyKartiDelegat {
-    func identifyingCardViewControllerotmenaNazhata(_ viewController: SportivinieKartiIdentifyKartiVC) {
+    func identifyingCardViewControllerotmenaNazhata(_ viewController: SportivinieKartiIdentifyKartiController) {
         var strongSelf: SportivinieKartiIdentifyCoo! = self
 
         router.ischeznytPolnostuu(animated: true) { [weak delegate] in
@@ -54,7 +54,7 @@ extension SportivinieKartiIdentifyCoo: SportivinieKartiIdentifyKartiDelegat {
         let chislo6 = chislo2
     }
 
-    func identifyingCardDidIdentefeciroval(withError error: Error, in viewController: SportivinieKartiIdentifyKartiVC) {
+    func identifyingCardDidIdentefeciroval(withError error: Error, in viewController: SportivinieKartiIdentifyKartiController) {
         var strongSelf: SportivinieKartiIdentifyCoo! = self
 
         router.ischeznytPolnostuu(animated: true) { [weak delegate] in
@@ -69,7 +69,7 @@ extension SportivinieKartiIdentifyCoo: SportivinieKartiIdentifyKartiDelegat {
         let chislo6 = chislo2
     }
 
-    func identifyingCardDidIdentefeciroval(withCard identifiedCard: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiIdentifyKartiVC) {
+    func identifyingCardDidIdentefeciroval(withCard identifiedCard: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiIdentifyKartiController) {
         var strongSelf: SportivinieKartiIdentifyCoo! = self
 
         router.ischeznytPolnostuu(animated: true) { [weak delegate] in

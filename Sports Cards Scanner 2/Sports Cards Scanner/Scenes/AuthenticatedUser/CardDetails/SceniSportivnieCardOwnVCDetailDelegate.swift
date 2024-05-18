@@ -7,19 +7,19 @@ func vicheslitFibon273(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-protocol SportivinieKartiCardOwnVCDetailDelegate: AnyObject {
-    func cardDetailsViewControllerzakrtiNazhata(_ viewController: SportivinieKartiCardOwnVCDetail)
-    func nazadNazhata(_ viewController: SportivinieKartiCardOwnVCDetail)
-    func zakritPoslePoiska(_ viewController: SportivinieKartiCardOwnVCDetail)
+protocol SportivinieKartiCardOwnControllerDetailDelegate: AnyObject {
+    func cardDetailsViewControllerzakrtiNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail)
+    func nazadNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail)
+    func zakritPoslePoiska(_ viewController: SportivinieKartiCardOwnControllerDetail)
 
-    func graderNazhat(_ viewController: SportivinieKartiCardOwnVCDetail)
-    func cenaObzorNazhata(_ viewController: SportivinieKartiCardOwnVCDetail)
-    func izmenitKartuNazhata(_ viewController: SportivinieKartiCardOwnVCDetail)
-    func naitiKartyNazhata(_ viewController: SportivinieKartiCardOwnVCDetail)
+    func graderNazhat(_ viewController: SportivinieKartiCardOwnControllerDetail)
+    func cenaObzorNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail)
+    func izmenitKartuNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail)
+    func naitiKartyNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail)
 
-    func ybratKartyNazhata(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiCardOwnVCDetail)
+    func ybratKartyNazhata(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiCardOwnControllerDetail)
 
-    func kartaDobavlenaNazhata(_ viewController: SportivinieKartiCardOwnVCDetail)
+    func kartaDobavlenaNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail)
 
-    func izmenitKartyPodbischik(_ viewController: SportivinieKartiCardOwnVCDetail)
+    func izmenitKartyPodbischik(_ viewController: SportivinieKartiCardOwnControllerDetail)
 }

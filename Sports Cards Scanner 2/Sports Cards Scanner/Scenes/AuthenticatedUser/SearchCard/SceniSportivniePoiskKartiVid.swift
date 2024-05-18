@@ -12,7 +12,7 @@ final class SportivinieKartiPoiskKartiVid: UIView {
 
     lazy var backView: BackView = .init()
     lazy var titleLabel: TitleLabel = .init()
-    lazy var searchTextField: SportivinieKartiCTExtF = { textField in
+    lazy var searchTextField: SportivinieKartiCustomTextPole = { textField in
         textField.borderStyle = .none
         textField.font = .font(.interRegular, size: UIDevice.isIpad ? 24: 16)
         textField.backgroundColor = .skyBlue
@@ -25,7 +25,7 @@ final class SportivinieKartiPoiskKartiVid: UIView {
         textField.autocapitalizationType = .none
         textField.tintColor = .black
         return textField
-    }(SportivinieKartiCTExtF())
+    }(SportivinieKartiCustomTextPole())
 
     var searchImageView: UIImageView?
 
@@ -35,10 +35,10 @@ final class SportivinieKartiPoiskKartiVid: UIView {
         return indicator
     }(UIActivityIndicatorView(style: .medium))
 
-    lazy var noResultsView: SportivinieKartiCMessageV = { view in
+    lazy var noResultsView: SportivinieKartiCustomMessageVid = { view in
         view.postavitZagolovok(L10n.SearchCard.Error.tryAgain)
         return view
-    }(SportivinieKartiCMessageV())
+    }(SportivinieKartiCustomMessageVid())
 
     lazy var searchCollectionView: UICollectionView = { collectionView in
         collectionView.backgroundColor = .clear

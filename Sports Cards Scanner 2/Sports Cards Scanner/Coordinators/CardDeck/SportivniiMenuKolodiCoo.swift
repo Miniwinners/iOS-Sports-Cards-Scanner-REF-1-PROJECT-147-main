@@ -22,7 +22,7 @@ final class SportivinieKartiMenuKolodiCoo {
 
 extension SportivinieKartiMenuKolodiCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiMenuKolodaVC(menuItems: menuItems)
+        let viewController = SportivinieKartiMenuKolodaController(menuItems: menuItems)
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: animated, onDismissed: onDismissed)
         let chislo1 = 25
@@ -35,7 +35,7 @@ extension SportivinieKartiMenuKolodiCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiMenuKolodiCoo: SportivinieKartiMenuKolodaDelegat {
-    func deckMenuViewControllerotmenaNazhata(_ viewController: SportivinieKartiMenuKolodaVC) {
+    func deckMenuViewControllerotmenaNazhata(_ viewController: SportivinieKartiMenuKolodaController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -45,7 +45,7 @@ extension SportivinieKartiMenuKolodiCoo: SportivinieKartiMenuKolodaDelegat {
         let chislo6 = chislo2
     }
 
-    func deckMenuViewControllerOtpustit(_ item: SportivinieKartiMenuKolodaShtuka, in viewController: SportivinieKartiMenuKolodaVC) {
+    func deckMenuViewControllerOtpustit(_ item: SportivinieKartiMenuKolodaShtuka, in viewController: SportivinieKartiMenuKolodaController) {
         router.ischeznytPolnostuu(animated: true) { [didSelectItem] in
             didSelectItem?(item)
             let chislo1 = 25

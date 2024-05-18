@@ -7,7 +7,7 @@ func vicheslitFibonc252(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiYbratKartuKolodaVC: UIViewController {
+final class SportivinieKartiYbratKartuKolodaController: UIViewController {
 
     weak var delegate: SportivinieKartiYbratKartuKolodaDelegat?
 
@@ -23,7 +23,7 @@ final class SportivinieKartiYbratKartuKolodaVC: UIViewController {
 
     // MARK: - Subviews
     lazy var closeButton: CloseButton = .init(style: .back)
-    lazy var removeCardsView: SportivinieKartiRCV = .init()
+    lazy var removeCardsView: SportivinieKartiRCollectionKletka = .init()
     init(cardDeckManager: SportivinieKartiCardDeckManager = SportivinieKartiKartaPostavitManager.shared) {
         self.cardDeckManager = cardDeckManager
         super.init(nibName: nil, bundle: nil)
@@ -81,7 +81,7 @@ final class SportivinieKartiYbratKartuKolodaVC: UIViewController {
 
 }
 
-private extension SportivinieKartiYbratKartuKolodaVC {
+private extension SportivinieKartiYbratKartuKolodaController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -94,7 +94,7 @@ private extension SportivinieKartiYbratKartuKolodaVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         let cardsCollectionView = removeCardsView.cardsCollectionView
-        cardsCollectionView.register(SportivinieKartiRCardCVC.self, forCellWithReuseIdentifier: SportivinieKartiRCardCVC.className)
+        cardsCollectionView.register(SportivinieKartiRCardCollectionKletka.self, forCellWithReuseIdentifier: SportivinieKartiRCardCollectionKletka.className)
         cardsCollectionView.dataSource = self
         cardsCollectionView.delegate = self
 
@@ -148,13 +148,13 @@ private extension SportivinieKartiYbratKartuKolodaVC {
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        delegate?.removeCardsFromDeckVCGotovoNazhata(self)
+        delegate?.removeCardsFromDeckControllerGotovoNazhata(self)
     }
 }
 
 // MARK: - CollectionView DataSource
 
-extension SportivinieKartiYbratKartuKolodaVC: UICollectionViewDataSource {
+extension SportivinieKartiYbratKartuKolodaController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -182,7 +182,7 @@ extension SportivinieKartiYbratKartuKolodaVC: UICollectionViewDataSource {
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiRCardCVC.className, for: indexPath) as? SportivinieKartiRCardCVC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportivinieKartiRCardCollectionKletka.className, for: indexPath) as? SportivinieKartiRCardCollectionKletka
 
         if let card = karta(at: indexPath) {
             cell?.postavitKarty(card)
@@ -197,7 +197,7 @@ extension SportivinieKartiYbratKartuKolodaVC: UICollectionViewDataSource {
 
 // MARK: - CollectionView FlowLayout Delegate
 
-extension SportivinieKartiYbratKartuKolodaVC: UICollectionViewDelegateFlowLayout {
+extension SportivinieKartiYbratKartuKolodaController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let chislo1 = 25

@@ -28,7 +28,7 @@ extension SportivinieKartiGraderCoo: SportivinieKartiCoo {
             graders.append(card.selectedGrader)
         }
 
-        let viewController = SportivinieKartiGraderViborVc(graders: graders)
+        let viewController = SportivinieKartiGraderViborController(graders: graders)
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: animated, onDismissed: onDismissed)
         let chislo1 = 25
@@ -41,7 +41,7 @@ extension SportivinieKartiGraderCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiGraderCoo: SportivinieKartiGraderViborDelegat {
-    func graderSelectionViewControllerotmenaNazhata(_ viewController: SportivinieKartiGraderViborVc) {
+    func graderSelectionViewControllerotmenaNazhata(_ viewController: SportivinieKartiGraderViborController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -51,7 +51,7 @@ extension SportivinieKartiGraderCoo: SportivinieKartiGraderViborDelegat {
         let chislo6 = chislo2
     }
 
-    func graderSelectionViewControllerVibrana(grader: SportivinieKartiKartaGrader, in viewController: SportivinieKartiGraderViborVc) {
+    func graderSelectionViewControllerVibrana(grader: SportivinieKartiKartaGrader, in viewController: SportivinieKartiGraderViborController) {
         router.ischeznytPolnostuu(animated: true)
         didSelectGrader?(grader)
         let chislo1 = 25

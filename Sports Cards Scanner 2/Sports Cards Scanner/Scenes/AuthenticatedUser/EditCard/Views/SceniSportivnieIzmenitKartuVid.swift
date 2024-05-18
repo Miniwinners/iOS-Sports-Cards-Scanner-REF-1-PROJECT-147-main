@@ -26,13 +26,13 @@ final class SportivinieKartiIzmenitKartuVid: UIView {
         return view
     }(SportivinieKartiIzmenitKartuDetaliVid())
 
-    lazy var parallelDetailButton: SportivinieKartiCommonB = .init(style: .custom(buttonAppearance))
-    lazy var gradeDetailButton: SportivinieKartiCommonB = .init(style: .custom(buttonAppearance))
+    lazy var parallelDetailButton: SportivinieKartiCommonKnopka = .init(style: .custom(buttonAppearance))
+    lazy var gradeDetailButton: SportivinieKartiCommonKnopka = .init(style: .custom(buttonAppearance))
 
-    lazy var updateDetailsButton: SportivinieKartiCommonB = { button in
+    lazy var updateDetailsButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.EditCard.Action.updateDetails)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     lazy var setPriceLabel: UILabel = { label in
         label.text = L10n.EditCard.customPrice
@@ -41,7 +41,7 @@ final class SportivinieKartiIzmenitKartuVid: UIView {
         return label
     }(UILabel())
 
-    lazy var priceTextField: SportivinieKartiCTExtF = { textField in
+    lazy var priceTextField: SportivinieKartiCustomTextPole = { textField in
         textField.borderStyle = .none
         textField.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22: 16)
         textField.backgroundColor = .skyBlue
@@ -52,7 +52,7 @@ final class SportivinieKartiIzmenitKartuVid: UIView {
         textField.autocapitalizationType = .none
         textField.keyboardType = .decimalPad
         return textField
-    }(SportivinieKartiCTExtF())
+    }(SportivinieKartiCustomTextPole())
 
     lazy var customPriceLabel: UILabel = { label in
         label.textColor = .greenColor
@@ -73,7 +73,7 @@ private extension SportivinieKartiIzmenitKartuVid {
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
         return startDate.addingTimeInterval(randomTimeInterval)
     }
-    var buttonAppearance: SportivinieKartiCommonB.SportivinieKartiVidKnopki {
+    var buttonAppearance: SportivinieKartiCommonKnopka.SportivinieKartiVidKnopki {
         var configuration: UIButton.Configuration = .filled()
         configuration.cornerStyle = .fixed
         configuration.background.cornerRadius = UIDevice.isIpad ? 32:12

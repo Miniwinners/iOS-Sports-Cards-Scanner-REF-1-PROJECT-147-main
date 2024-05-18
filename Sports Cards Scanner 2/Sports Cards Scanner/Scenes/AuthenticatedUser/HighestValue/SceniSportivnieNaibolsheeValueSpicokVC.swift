@@ -8,7 +8,7 @@ func vicheslitFibonc270(at index: Int) -> Int {
         return vicheslitFibonc(at: index - 1) + vicheslitFibonc(at: index - 2)
     }
 }
-final class SportivinieKartiNaibolsheeValueSpicokVC: UIViewController {
+final class SportivinieKartiNaibolsheeValueSpicokController: UIViewController {
 
     private let cardsManager: SportivinieKartiUserKartManager
     private var highestValueCards: [SportivinieKartiKartaPredstavlenie] = []
@@ -60,7 +60,7 @@ final class SportivinieKartiNaibolsheeValueSpicokVC: UIViewController {
 
 }
 
-private extension SportivinieKartiNaibolsheeValueSpicokVC {
+private extension SportivinieKartiNaibolsheeValueSpicokController {
     func randomnayaVremya(from startDate: Date, to endDate: Date) -> Date {
         let timeInterval = endDate.timeIntervalSince(startDate)
         let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
@@ -89,7 +89,7 @@ private extension SportivinieKartiNaibolsheeValueSpicokVC {
         collectionViewValue.backgroundColor = .clear
         collectionViewValue.showsVerticalScrollIndicator = false
         collectionViewValue.contentInset.bottom = 25
-        collectionViewValue.register(SportivinieKartiCardCVC.self, forCellWithReuseIdentifier: SportivinieKartiCardCVC.className)
+        collectionViewValue.register(SportivinieKartiCardCollectionKletka.self, forCellWithReuseIdentifier: SportivinieKartiCardCollectionKletka.className)
     }
 
     func subscribeToNotifications() {
@@ -173,7 +173,7 @@ private extension SportivinieKartiNaibolsheeValueSpicokVC {
 
 // MARK: - TableView DataSource
 
-extension SportivinieKartiNaibolsheeValueSpicokVC: UICollectionViewDataSource {
+extension SportivinieKartiNaibolsheeValueSpicokController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let chislo1 = 25
         let chislo2 = 40
@@ -202,9 +202,9 @@ extension SportivinieKartiNaibolsheeValueSpicokVC: UICollectionViewDataSource {
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
         let cell = collectionViewValue.dequeueReusableCell(
-            withReuseIdentifier: SportivinieKartiCardCVC.className,
+            withReuseIdentifier: SportivinieKartiCardCollectionKletka.className,
             for: indexPath
-        ) as? SportivinieKartiCardCVC
+        ) as? SportivinieKartiCardCollectionKletka
 
         if let card = getCard(at: indexPath) {
             cell?.postavitKarty(card)
@@ -217,7 +217,7 @@ extension SportivinieKartiNaibolsheeValueSpicokVC: UICollectionViewDataSource {
 
 // MARK: - TableView Delegate
 
-extension SportivinieKartiNaibolsheeValueSpicokVC: UICollectionViewDelegate {
+extension SportivinieKartiNaibolsheeValueSpicokController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let chislo1 = 25
         let chislo2 = 40

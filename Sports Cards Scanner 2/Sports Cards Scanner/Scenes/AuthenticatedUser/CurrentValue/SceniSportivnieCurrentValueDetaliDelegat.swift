@@ -8,5 +8,5 @@ func vicheslitFibonc172(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiCurrentValueDetaliDelegat: AnyObject {
-    func tekusheeZakritNashata(_ viewController: SportivinieKartiCurrentValueDetaliVC)
+    func tekusheeZakritNashata(_ viewController: SportivinieKartiCurrentValueDetaliController)
 }

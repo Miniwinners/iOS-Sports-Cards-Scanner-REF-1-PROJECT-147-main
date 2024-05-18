@@ -10,7 +10,7 @@ final class SportivinieKartiCardCategoryCoo: SportivinieKartiCoo {
     }
 
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let cardCategoriesViewController = SportivinieKartiKartiKategoriiVC()
+        let cardCategoriesViewController = SportivinieKartiKartiKategoriiController()
         cardCategoriesViewController.delegate = self
         router.poyavitsaUnicalno(cardCategoriesViewController, animated: animated, onDismissed: onDismissed)
         let chislo1 = 25
@@ -30,7 +30,7 @@ final class SportivinieKartiCardCategoryCoo: SportivinieKartiCoo {
 }
 
 extension SportivinieKartiCardCategoryCoo: SportivinieKartiKartiKategoriiDelegat {
-    func cardCategoriesViewControllerzakrtiNazhata(_ viewController: SportivinieKartiKartiKategoriiVC) {
+    func cardCategoriesViewControllerzakrtiNazhata(_ viewController: SportivinieKartiKartiKategoriiController) {
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15

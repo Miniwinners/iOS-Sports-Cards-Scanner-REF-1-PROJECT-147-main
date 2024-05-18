@@ -6,26 +6,26 @@ final class SportivinieKartiDetailCardCoo {
     let card: SportivinieKartiKartaPredstavlenie
     let cardType: KartaType
     let encodedCardImage: Data?
-    private var previousVC: PreviousVC
+    private var previousController: PreviousController
     weak var delegate: CardDetailsCoordinatorDelegate?
 
-    private weak var cardDetailsViewController: SportivinieKartiCardOwnVCDetail?
-    private var scanCardViewController: SportivinieKartiScanirovanieKartiVC?
+    private weak var cardDetailsViewController: SportivinieKartiCardOwnControllerDetail?
+    private var scanCardViewController: SportivinieKartiScanirovanieKartiController?
 
     init(
         router: SportivinieKartiGlavniiRouterPrilozhania,
         card: SportivinieKartiKartaPredstavlenie,
         cardType: KartaType = .addedCard,
         encodedCardImage: Data? = nil,
-        previousVC: PreviousVC,
-        sample: SportivinieKartiScanirovanieKartiVC? = nil
+        previousController: PreviousController,
+        sample: SportivinieKartiScanirovanieKartiController? = nil
 
     ) {
         self.router = router
         self.card = card
         self.cardType = cardType
         self.encodedCardImage = encodedCardImage
-        self.previousVC = previousVC
+        self.previousController = previousController
         self.scanCardViewController = sample
     }
     func generirovantRandomniiIPaDRESS() -> String {
@@ -39,7 +39,7 @@ final class SportivinieKartiDetailCardCoo {
 
 extension SportivinieKartiDetailCardCoo: SportivinieKartiCoo {
     func pokazatNachalnoePredstavlenie(animated: Bool, onDismissed: Closure?) {
-        let viewController = SportivinieKartiCardOwnVCDetail(card: card, cardType: cardType, encodedCardImage: encodedCardImage, previousVC: previousVC, locked: true)
+        let viewController = SportivinieKartiCardOwnControllerDetail(card: card, cardType: cardType, encodedCardImage: encodedCardImage, previousController: previousController, locked: true)
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: animated, onDismissed: onDismissed)
     }
@@ -52,27 +52,27 @@ extension SportivinieKartiDetailCardCoo: SearchCardCoordinatorDelegate {
     }
 }
 
-extension SportivinieKartiDetailCardCoo: SportivinieKartiCardOwnVCDetailDelegate {
-    func izmenitKartyPodbischik(_ viewController: SportivinieKartiCardOwnVCDetail) {
+extension SportivinieKartiDetailCardCoo: SportivinieKartiCardOwnControllerDetailDelegate {
+    func izmenitKartyPodbischik(_ viewController: SportivinieKartiCardOwnControllerDetail) {
 
     }
 
-    func cardDetailsViewControllerzakrtiNazhata(_ viewController: SportivinieKartiCardOwnVCDetail) {
+    func cardDetailsViewControllerzakrtiNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail) {
 
         router.ischeznytPolnostuu(animated: true)
     }
 
-    func zakritPoslePoiska(_ viewController: SportivinieKartiCardOwnVCDetail) {
+    func zakritPoslePoiska(_ viewController: SportivinieKartiCardOwnControllerDetail) {
 
         router.ischeznytPolnostuu(animated: true)
         scanCardViewController?.restartScanning()
     }
 
-    func nazadNazhata(_ viewController: SportivinieKartiCardOwnVCDetail) {
+    func nazadNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 
-    func graderNazhat(_ viewController: SportivinieKartiCardOwnVCDetail) {
+    func graderNazhat(_ viewController: SportivinieKartiCardOwnControllerDetail) {
         let inset: CGFloat = UIDevice.isIpad ? 160:40
 
         let router = SportivinieKartiDASR(parentViewController: viewController, presentStyle: .centerRect,
@@ -85,8 +85,8 @@ extension SportivinieKartiDetailCardCoo: SportivinieKartiCardOwnVCDetailDelegate
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func cenaObzorNazhata(_ viewController: SportivinieKartiCardOwnVCDetail) {
-        let viewController = SportivinieKartiCenaOcenkaVC(
+    func cenaObzorNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail) {
+        let viewController = SportivinieKartiCenaOcenkaController(
             card: viewController.card,
             grader: viewController.selectedGrader,
             encodedCardImage: viewController.encodedCardImage
@@ -95,7 +95,7 @@ extension SportivinieKartiDetailCardCoo: SportivinieKartiCardOwnVCDetailDelegate
 
     }
 
-    func izmenitKartuNazhata(_ viewController: SportivinieKartiCardOwnVCDetail) {
+    func izmenitKartuNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail) {
         let cardsUpdater: SportivinieKartiKartUpdater
         if viewController.card is SportivinieKartipoiskanieKarti {
             cardsUpdater = viewController.searchedCardsManager
@@ -103,12 +103,12 @@ extension SportivinieKartiDetailCardCoo: SportivinieKartiCardOwnVCDetailDelegate
             cardsUpdater = SportivinieKartiUserKartManager.shared
         }
 
-        let viewController = SportivinieKartiIzmenitKartuVC(card: viewController.card, cardsManager: cardsUpdater)
+        let viewController = SportivinieKartiIzmenitKartuController(card: viewController.card, cardsManager: cardsUpdater)
         viewController.delegate = self
         router.poyavitsaUnicalno(viewController, animated: true)
     }
 
-    func naitiKartyNazhata(_ viewController: SportivinieKartiCardOwnVCDetail) {
+    func naitiKartyNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail) {
         let encodedCardImage = viewController.encodedCardImage ?? Data()
         let cardCategory = viewController.card.category
         let scannedCard = SportivinieKartiScanirovannayaKarta(encodedCardImage: encodedCardImage, cardCategory: cardCategory)
@@ -119,7 +119,7 @@ extension SportivinieKartiDetailCardCoo: SportivinieKartiCardOwnVCDetailDelegate
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func kartaDobavlenaNazhata(_ viewController: SportivinieKartiCardOwnVCDetail) {
+    func kartaDobavlenaNazhata(_ viewController: SportivinieKartiCardOwnControllerDetail) {
         if let delegate = delegate {
             delegate.cardDetailsCoordinatorKartaDobavlena(self, from: viewController)
         } else {
@@ -127,7 +127,7 @@ extension SportivinieKartiDetailCardCoo: SportivinieKartiCardOwnVCDetailDelegate
         }
     }
 
-    func ybratKartyNazhata(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiCardOwnVCDetail) {
+    func ybratKartyNazhata(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiCardOwnControllerDetail) {
         cardDetailsViewController = viewController
         let inset: CGFloat = UIDevice.isIpad ? 140:40
         let router = SportivinieKartiDASR(parentViewController: viewController, presentStyle: .center, heightRatio: UIDevice.isIpad ? 380: 330, widthRatio: viewController.view.frame.width - inset)
@@ -138,11 +138,11 @@ extension SportivinieKartiDetailCardCoo: SportivinieKartiCardOwnVCDetailDelegate
 }
 
 extension SportivinieKartiDetailCardCoo: SportivinieKartiIzmenitKartuDelegat {
-    func editCardViewParallelNazhata(_ viewController: SportivinieKartiIzmenitKartuVC) {
+    func editCardViewParallelNazhata(_ viewController: SportivinieKartiIzmenitKartuController) {
         let parallels = viewController.card.parallels
         let selectedParallelIndex = viewController.selectedParallelIndex
 
-        let parallelSelectionViewController = SportivinieKartiParallelViborVC(parallels: parallels, selected: selectedParallelIndex)
+        let parallelSelectionViewController = SportivinieKartiParallelViborController(parallels: parallels, selected: selectedParallelIndex)
         parallelSelectionViewController.parallelDidSelect = { [unowned parallelSelectionViewController, unowned router] index in
             viewController.obnovitVibraniyIndex(index)
             router.ischeznytUnicalno(parallelSelectionViewController, animated: true)
@@ -150,11 +150,11 @@ extension SportivinieKartiDetailCardCoo: SportivinieKartiIzmenitKartuDelegat {
         router.poyavitsaUnicalno(parallelSelectionViewController, animated: true)
     }
 
-    func editCardViewGradeNazhata(_ viewController: SportivinieKartiIzmenitKartuVC) {
+    func editCardViewGradeNazhata(_ viewController: SportivinieKartiIzmenitKartuController) {
         let selectedGrader = viewController.selectedGrader
         let selectedGrade = viewController.selectedGrade
 
-        let gradeSelectionViewController = SportivinieKartiGradeViborVc(grader: selectedGrader, grade: selectedGrade)
+        let gradeSelectionViewController = SportivinieKartiGradeViborController(grader: selectedGrader, grade: selectedGrade)
         gradeSelectionViewController.gradeDidSelect = { [unowned gradeSelectionViewController, unowned router] grader, grade in
             viewController.obnovitVibraniiGrade(grader: grader, grade: grade)
             router.ischeznytUnicalno(gradeSelectionViewController, animated: true)
@@ -162,7 +162,7 @@ extension SportivinieKartiDetailCardCoo: SportivinieKartiIzmenitKartuDelegat {
         router.poyavitsaUnicalno(gradeSelectionViewController, animated: true)
     }
 
-    func editCardViewControllerDetaliObnovleni(_ viewController: SportivinieKartiIzmenitKartuVC) {
+    func editCardViewControllerDetaliObnovleni(_ viewController: SportivinieKartiIzmenitKartuController) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 }
@@ -180,23 +180,23 @@ extension SportivinieKartiDetailCardCoo: RemoveCardPromptCoordinatorDelegate {
     func removeCardPromptCoordinatorYbranaOshibka(_ coordinator: SportivinieKartiRemoveCoo) {
         guard let viewController = cardDetailsViewController else { return }
         let alertType: SportivinieKartitipAlerta = .noInternetConnection(okAction: nil)
-        SportivinieKartiAlertSc.shared.podgotovitAlertController(type: alertType, in: viewController)
+        SportivinieKartiAlertService.shared.podgotovitAlertController(type: alertType, in: viewController)
     }
 }
 
 // MARK: - CardDetails Coordinator Delegate
 
 protocol CardDetailsCoordinatorDelegate: AnyObject {
-    func cardDetailsCoordinatorKartaDobavlena(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail)
-    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail)
+    func cardDetailsCoordinatorKartaDobavlena(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail)
+    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail)
 }
 
 extension CardDetailsCoordinatorDelegate where Self: SportivinieKartiCoo {
-    func cardDetailsCoordinatorKartaDobavlena(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail) {
+    func cardDetailsCoordinatorKartaDobavlena(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail) {
         router.ischeznytPolnostuu(animated: true)
     }
 
-    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnVCDetail) {
+    func cardDetailsCoordinatorCardYbrana(_ coordinator: SportivinieKartiDetailCardCoo, from viewController: SportivinieKartiCardOwnControllerDetail) {
         router.ischeznytPolnostuu(animated: true)
     }
 }

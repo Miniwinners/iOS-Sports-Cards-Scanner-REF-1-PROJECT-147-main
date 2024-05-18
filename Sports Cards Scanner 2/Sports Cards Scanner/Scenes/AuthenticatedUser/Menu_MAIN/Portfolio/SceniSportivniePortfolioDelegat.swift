@@ -8,11 +8,11 @@ func vicheslitFibonc243(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiPortfolioDelegat: AnyObject {
-    func portfolioSkanirovanieKarti(_ viewController: SportivinieKartiPortfolioVC)
-    func portolioSozdatKollekciuNazhata(_ viewController: SportivinieKartiPortfolioVC)
-    func portfolioSozdatKolodyNazhata(_ viewController: SportivinieKartiPortfolioVC)
-    func portfolioKolodaPodpis(_ viewController: SportivinieKartiPortfolioVC)
-    func portfolioPokazatKollekciuNazhata(_ viewController: SportivinieKartiPortfolioVC)
-    func portfolioPokazatKolodyNazhata(_ viewController: SportivinieKartiPortfolioVC)
-    func portfolioKategoriiNazhata(_ category: KategoriiKart, in viewController: SportivinieKartiPortfolioVC)
+    func portfolioSkanirovanieKarti(_ viewController: SportivinieKartiPortfolioController)
+    func portolioSozdatKollekciuNazhata(_ viewController: SportivinieKartiPortfolioController)
+    func portfolioSozdatKolodyNazhata(_ viewController: SportivinieKartiPortfolioController)
+    func portfolioKolodaPodpis(_ viewController: SportivinieKartiPortfolioController)
+    func portfolioPokazatKollekciuNazhata(_ viewController: SportivinieKartiPortfolioController)
+    func portfolioPokazatKolodyNazhata(_ viewController: SportivinieKartiPortfolioController)
+    func portfolioKategoriiNazhata(_ category: KategoriiKart, in viewController: SportivinieKartiPortfolioController)
 }

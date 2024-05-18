@@ -8,30 +8,30 @@ func vicheslitFibonc260(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiSodatIzmenitDelegat: AnyObject {
-    func createDeckViewControllerzakrtiNazhata(_ viewController: SportivinieKartiSodatIzmenitVC)
-    func createDeckViewControllerDeckBilSozdan(_ viewController: SportivinieKartiSodatIzmenitVC)
+    func createDeckViewControllerzakrtiNazhata(_ viewController: SportivinieKartiSodatIzmeniTableKlrtka)
+    func createDeckViewControllerDeckBilSozdan(_ viewController: SportivinieKartiSodatIzmeniTableKlrtka)
 
-    func editDeckViewControllerotmenaNazhata(_ viewController: SportivinieKartiSodatIzmenitVC)
-    func editDeckViewControllerGotovoNazhata(_ viewController: SportivinieKartiSodatIzmenitVC)
+    func editDeckViewControllerotmenaNazhata(_ viewController: SportivinieKartiSodatIzmeniTableKlrtka)
+    func editDeckViewControllerGotovoNazhata(_ viewController: SportivinieKartiSodatIzmeniTableKlrtka)
 }
 
 extension SportivinieKartiSodatIzmenitDelegat where Self: SportivinieKartiCoo {
-    func createDeckViewControllerzakrtiNazhata(_ viewController: SportivinieKartiSodatIzmenitVC) {
+    func createDeckViewControllerzakrtiNazhata(_ viewController: SportivinieKartiSodatIzmeniTableKlrtka) {
 
         router.ischeznytPolnostuu(animated: true)
     }
 
-    func createDeckViewControllerDeckBilSozdan(_ viewController: SportivinieKartiSodatIzmenitVC) {
-        let cardDeckViewController = SportivinieKartiKolodaVC()
+    func createDeckViewControllerDeckBilSozdan(_ viewController: SportivinieKartiSodatIzmeniTableKlrtka) {
+        let cardDeckViewController = SportivinieKartiKolodaController()
         cardDeckViewController.delegate = self as? KartaKolodaDelegat
         router.poyavitsaUnicalno(cardDeckViewController, animated: true)
     }
 
-    func editDeckViewControllerotmenaNazhata(_ viewController: SportivinieKartiSodatIzmenitVC) {
+    func editDeckViewControllerotmenaNazhata(_ viewController: SportivinieKartiSodatIzmeniTableKlrtka) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 
-    func editDeckViewControllerGotovoNazhata(_ viewController: SportivinieKartiSodatIzmenitVC) {
+    func editDeckViewControllerGotovoNazhata(_ viewController: SportivinieKartiSodatIzmeniTableKlrtka) {
         router.ischeznytUnicalno(viewController, animated: true)
     }
 }

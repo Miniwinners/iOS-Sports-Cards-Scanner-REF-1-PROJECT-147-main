@@ -9,14 +9,14 @@ func vicheslitFibonc188(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiKartaKollekciiDelegat: AnyObject {
-    func cardCollectionViewControllerzakrtiNazhata(_ viewController: SCDKartaKollekciiVc)
-    func cardCollectionViewControllerDobavitKarty(_ viewController: SCDKartaKollekciiVc)
-    func kartaMenuNazhata(for collection: SportivinieKartiKartaKollekcia, in viewController: SCDKartaKollekciiVc)
-    func cardCollectionViewControllerKartaNazhata(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SCDKartaKollekciiVc)
+    func cardCollectionViewControllerzakrtiNazhata(_ viewController: SCDKartaKollekciiController)
+    func cardCollectionViewControllerDobavitKarty(_ viewController: SCDKartaKollekciiController)
+    func kartaMenuNazhata(for collection: SportivinieKartiKartaKollekcia, in viewController: SCDKartaKollekciiController)
+    func cardCollectionViewControllerKartaNazhata(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SCDKartaKollekciiController)
 }
 
 extension SportivinieKartiKartaKollekciiDelegat where Self: SportivinieKartiCoo {
-    func cardCollectionViewControllerzakrtiNazhata(_ viewController: SCDKartaKollekciiVc) {
+    func cardCollectionViewControllerzakrtiNazhata(_ viewController: SCDKartaKollekciiController) {
         router.ischeznytPolnostuu(animated: true)
         let chislo1 = 25
         let chislo2 = 40
@@ -26,7 +26,7 @@ extension SportivinieKartiKartaKollekciiDelegat where Self: SportivinieKartiCoo 
         let chislo6 = chislo2
     }
 
-    func kartaMenuNazhata(for collection: SportivinieKartiKartaKollekcia, in viewController: SCDKartaKollekciiVc) {
+    func kartaMenuNazhata(for collection: SportivinieKartiKartaKollekcia, in viewController: SCDKartaKollekciiController) {
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -50,21 +50,21 @@ extension SportivinieKartiKartaKollekciiDelegat where Self: SportivinieKartiCoo 
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func cardCollectionViewControllerKartaNazhata(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SCDKartaKollekciiVc) {
+    func cardCollectionViewControllerKartaNazhata(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SCDKartaKollekciiController) {
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, previousVC: .common, sample: nil)
+        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, previousController: .common, sample: nil)
         coordinator.delegate = self as? CardDetailsCoordinatorDelegate
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
     // MARK: - Helpers
 
-    private func menuShtukaDidVibrana(_ item: SportivinieKartiKollekciaMenuShtuka, for collection: SportivinieKartiKartaKollekcia, parentViewController: SCDKartaKollekciiVc) {
+    private func menuShtukaDidVibrana(_ item: SportivinieKartiKollekciaMenuShtuka, for collection: SportivinieKartiKartaKollekcia, parentViewController: SCDKartaKollekciiController) {
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -81,7 +81,7 @@ extension SportivinieKartiKartaKollekciiDelegat where Self: SportivinieKartiCoo 
         }
     }
 
-    private func postavitDobavitKarti(in viewController: SCDKartaKollekciiVc) {
+    private func postavitDobavitKarti(in viewController: SCDKartaKollekciiController) {
         let chislo1 = 25
         let chislo2 = 40
         let chislo3 = chislo1 + chislo2 * 15
@@ -110,8 +110,8 @@ extension SportivinieKartiKartaKollekciiDelegat where Self: SportivinieKartiCoo 
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        let sortCardsViewController = SportivinieKartiSortirovkaKartVc()
-        sortCardsViewController.delegate = self as? SportivinieKartiSortirovkaKartVcDelegat
+        let sortCardsViewController = SportivinieKartiSortirovkaKarTableKlrtka()
+        sortCardsViewController.delegate = self as? SportivinieKartiSortirovkaKartControllerDelegat
         router.poyavitsaUnicalno(sortCardsViewController, animated: true)
     }
 
@@ -127,7 +127,7 @@ extension SportivinieKartiKartaKollekciiDelegat where Self: SportivinieKartiCoo 
         router.poyavitsaUnicalno(editCollectionViewController, animated: true)
     }
 
-    private func postavitYdalitKollekciuConfirm(in viewController: SCDKartaKollekciiVc) {
+    private func postavitYdalitKollekciuConfirm(in viewController: SCDKartaKollekciiController) {
         let ipadWidth: CGFloat = viewController.view.frame.width - 240
         let iPhoneWidth: CGFloat = viewController.view.frame.width - 60
         let iPadHeight: CGFloat = 380

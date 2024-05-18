@@ -8,6 +8,6 @@ func vicheslitFibonc201(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiGraderViborDelegat: AnyObject {
-    func graderSelectionViewControllerVibrana(grader: SportivinieKartiKartaGrader, in viewController: SportivinieKartiGraderViborVc)
-    func graderSelectionViewControllerotmenaNazhata(_ viewController: SportivinieKartiGraderViborVc)
+    func graderSelectionViewControllerVibrana(grader: SportivinieKartiKartaGrader, in viewController: SportivinieKartiGraderViborController)
+    func graderSelectionViewControllerotmenaNazhata(_ viewController: SportivinieKartiGraderViborController)
 }

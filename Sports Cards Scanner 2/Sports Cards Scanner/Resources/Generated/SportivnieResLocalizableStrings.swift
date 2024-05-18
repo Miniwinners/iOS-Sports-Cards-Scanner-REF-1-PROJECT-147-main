@@ -676,9 +676,9 @@ internal enum L10n {
             /// Enter your password
             internal static var placeholder: String { L10n.tr("Localizable", "signUp_password_placeholder") }
             /// Passwords must be at least %d characters and contain at least one uppercase letter (A-Z), one lowercase letter (a-z), one digit (0-9), and one special character (such as ! %% @ or #)
-            internal static func requirements(_ p1: Int) -> String {
-                return L10n.tr("Localizable", "signUp_password_requirements", p1)
-            }
+            
+            internal static var requirements: String { L10n.tr("Localizable", "signUp_password_requirements")}
+            
             /// Password
             internal static var title: String { L10n.tr("Localizable", "signUp_password_title") }
         }
@@ -733,9 +733,9 @@ internal enum L10n {
             /// Enter new password
             internal static var placeholder: String { L10n.tr("Localizable", "updatePassword_newPassword_placeholder") }
             /// Passwords must be at least %d characters and contain at least one uppercase letter (A-Z), one lowercase letter (a-z), one digit (0-9), and one special character (such as ! %% @ or #)
-            internal static func requirements(_ p1: Int) -> String {
-                return L10n.tr("Localizable", "updatePassword_newPassword_requirements", p1)
-            }
+            
+            internal static var requierements:String { L10n.tr("Localizable", "updatePassword_newPassword_requirements") }
+            
             ///cutText in Blue
             internal static var updatePassword_newPassword_cut1: String { L10n.tr("Localizable", "updatePassword_newPassword_cut1") }
             internal static var updatePassword_newPassword_cut2: String { L10n.tr("Localizable", "updatePassword_newPassword_cut2") }

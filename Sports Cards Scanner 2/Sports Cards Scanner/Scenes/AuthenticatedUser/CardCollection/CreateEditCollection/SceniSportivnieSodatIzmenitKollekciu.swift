@@ -23,7 +23,7 @@ final class SportivinieKartiSodatIzmenitKollekciu: UIViewController {
 
     lazy var titleLabel: TitleLabel = .init()
 
-    lazy var nameTextField: SportivinieKartiCTExtF = { textField in
+    lazy var nameTextField: SportivinieKartiCustomTextPole = { textField in
         textField.borderStyle = .none
         textField.font = .font(.ubuntuRegular400, size: UIDevice.isIpad ? 22:16)
         textField.backgroundColor = .skyBlue
@@ -35,30 +35,30 @@ final class SportivinieKartiSodatIzmenitKollekciu: UIViewController {
         textField.delegate = self
         textField.tintColor = .black
         return textField
-    }(SportivinieKartiCTExtF())
+    }(SportivinieKartiCustomTextPole())
 
-    lazy var keyboardToolbar: SportivinieKartiCToolB = { toolbar in
+    lazy var keyboardToolbar: SportivinieKartiCustomTool = { toolbar in
         toolbar.sizeToFit()
         return toolbar
-    }(SportivinieKartiCToolB.createToolbar(in: view))
+    }(SportivinieKartiCustomTool.createToolbar(in: view))
 
-    lazy var createButton: SportivinieKartiCommonB = { button in
+    lazy var createButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.CreateCollection.Action.create)
         button.setImage(SportivinieKartiImages.collectionCards.image, for: .normal)
         button.configuration?.imagePadding = 10
         button.isEnabled = false
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
-    lazy var cancelButton: SportivinieKartiCommonB = { button in
+    lazy var cancelButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.cancel)
         return button
-    }(SportivinieKartiCommonB(style: .cancel))
+    }(SportivinieKartiCommonKnopka(style: .cancel))
 
-    lazy var doneButton: SportivinieKartiCommonB = { button in
+    lazy var doneButton: SportivinieKartiCommonKnopka = { button in
         button.setButtonTitle(L10n.Common.done)
         return button
-    }(SportivinieKartiCommonB(style: .default))
+    }(SportivinieKartiCommonKnopka(style: .default))
 
     init(
         cardCollection: SportivinieKartiKartaKollekcia? = nil,
@@ -222,7 +222,7 @@ private extension SportivinieKartiSodatIzmenitKollekciu {
         let chislo4 = chislo2 - chislo1
         let chislo5 = chislo1 * 2
         let chislo6 = chislo2
-        delegate?.createCollectionVCzakrtiNazhata(self)
+        delegate?.createCollectionControllerzakrtiNazhata(self)
     }
 
     @objc func sozdatNazhata() {
@@ -235,7 +235,7 @@ private extension SportivinieKartiSodatIzmenitKollekciu {
         cardCollectionManager.sozdatKollekciu(named: collectionName)
         cardCollectionManager.sohranitKollekciuIFnado()
 
-        delegate?.createCollectionVCCollectionBilSozdan(self)
+        delegate?.createCollectionControllerCollectionBilSozdan(self)
     }
 
     @objc func otmenaNazhata() {
@@ -244,7 +244,7 @@ private extension SportivinieKartiSodatIzmenitKollekciu {
             let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
             return startDate.addingTimeInterval(randomTimeInterval)
         }
-        delegate?.editCollectionVCotmenaNazhata(self)
+        delegate?.editCollectionControllerotmenaNazhata(self)
     }
 
     @objc func gotovoNazhata() {
@@ -253,7 +253,7 @@ private extension SportivinieKartiSodatIzmenitKollekciu {
             let randomTimeInterval = TimeInterval.random(in: 0...timeInterval)
             return startDate.addingTimeInterval(randomTimeInterval)
         }
-        defer { delegate?.editCollectionVCGotovoNazhata(self) }
+        defer { delegate?.editCollectionControllerGotovoNazhata(self) }
 
         guard let oldCollectionName = cardCollection?.name,
               oldCollectionName != collectionName

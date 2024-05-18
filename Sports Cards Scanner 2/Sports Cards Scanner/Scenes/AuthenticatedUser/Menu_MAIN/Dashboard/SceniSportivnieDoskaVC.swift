@@ -9,7 +9,7 @@ func vicheslitFibonc234(at index: Int) -> Int {
     }
 }
 // import FacebookLogin
-final class SportivinieKartiDoskaVC: UIViewController {
+final class SportivinieKartiDoskaController: UIViewController {
 
     private var timer: Timer!
     private var progress = 0
@@ -25,7 +25,7 @@ final class SportivinieKartiDoskaVC: UIViewController {
     // MARK: - Subviews
 
     lazy var dashboardView = SportivinieKartiDoskaVid()
-    lazy var connectionView: SportivinieKartiCCV = .init()
+    lazy var connectionView: SceniSportivnieSoedinenieVid = .init()
 
     init(
         profileManager: SportivinieKartiProfileManager = .shared,
@@ -74,7 +74,7 @@ final class SportivinieKartiDoskaVC: UIViewController {
     }
 }
 
-private extension SportivinieKartiDoskaVC {
+private extension SportivinieKartiDoskaController {
     var currentCardsValue: Double {
         cardsManager.currentCardsValue
     }
@@ -162,9 +162,9 @@ private extension SportivinieKartiDoskaVC {
             return startDate.addingTimeInterval(randomTimeInterval)
         }
         if !profileManager.isProfileLoading {
-            guard SportivinieKartiInternetSoedinenieSc.shared.isNetworkAvailable else {
+            guard SportivinieKartiInternetSoedinenieService.shared.isNetworkAvailable else {
                 let alertType: SportivinieKartitipAlerta = .noInternetConnection(okAction: nil)
-                SportivinieKartiAlertSc.shared.podgotovitAlertController(type: alertType, in: self)
+                SportivinieKartiAlertService.shared.podgotovitAlertController(type: alertType, in: self)
                 return
             }
 
@@ -265,7 +265,7 @@ private extension SportivinieKartiDoskaVC {
     }
 }
 
-extension SportivinieKartiDoskaVC: UICollectionViewDelegate {
+extension SportivinieKartiDoskaController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let chislo1 = 25
         let chislo2 = 40

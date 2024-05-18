@@ -9,25 +9,25 @@ func vicheslitFibonc265(at index: Int) -> Int {
     }
 }
 protocol KartaKolodaDelegat: AnyObject {
-    func cardDeckViewControllerzakrtiNazhata(_ viewController: SportivinieKartiKolodaVC)
-    func kartaKolodaDobavitKartiNazhata(_ viewController: SportivinieKartiKolodaVC)
-    func kartaKolodaMenuNazhata(for deck: SportivinieKartiCartaKoloda, in viewController: SportivinieKartiKolodaVC)
-    func kartaKolodaDidVibrana(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiKolodaVC)
+    func cardDeckViewControllerzakrtiNazhata(_ viewController: SportivinieKartiKolodaController)
+    func kartaKolodaDobavitKartiNazhata(_ viewController: SportivinieKartiKolodaController)
+    func kartaKolodaMenuNazhata(for deck: SportivinieKartiCartaKoloda, in viewController: SportivinieKartiKolodaController)
+    func kartaKolodaDidVibrana(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiKolodaController)
 }
 
 extension KartaKolodaDelegat where Self: SportivinieKartiCoo {
-    func cardDeckViewControllerzakrtiNazhata(_ viewController: SportivinieKartiKolodaVC) {
+    func cardDeckViewControllerzakrtiNazhata(_ viewController: SportivinieKartiKolodaController) {
 
         router.ischeznytPolnostuu(animated: true)
     }
 
-    func kartaKolodaDobavitKartiNazhata(_ viewController: SportivinieKartiKolodaVC) {
-        let addCardsViewController = SportivinieKartiDobavitKartiKolodaVC()
+    func kartaKolodaDobavitKartiNazhata(_ viewController: SportivinieKartiKolodaController) {
+        let addCardsViewController = SportivinieKartiDobavitKartiKolodaController()
         addCardsViewController.delegate = self as? SportivinieKartiDobavitKartiKolodaDelegat
         router.poyavitsaUnicalno(addCardsViewController, animated: true)
     }
 
-    func kartaKolodaMenuNazhata(for deck: SportivinieKartiCartaKoloda, in viewController: SportivinieKartiKolodaVC) {
+    func kartaKolodaMenuNazhata(for deck: SportivinieKartiCartaKoloda, in viewController: SportivinieKartiKolodaController) {
         let iPhoneHeight: CGFloat = 124 * 3 + 20 * 7 + 28
         let iPhoneWidth: CGFloat = 145 * 2 + 20 * 2 + 10
         let iPadHeight: CGFloat = 212 * 3 + 20 * 7 + 96
@@ -43,15 +43,15 @@ extension KartaKolodaDelegat where Self: SportivinieKartiCoo {
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
-    func kartaKolodaDidVibrana(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiKolodaVC) {
-        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, previousVC: .common, sample: nil)
+    func kartaKolodaDidVibrana(_ card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiKolodaController) {
+        let coordinator = SportivinieKartiDetailCardCoo(router: router, card: card, previousController: .common, sample: nil)
         coordinator.delegate = self as? CardDetailsCoordinatorDelegate
         predstavitDocherniiCoo(coordinator, animated: true, onDismissed: nil)
     }
 
     // MARK: - Helpers
 
-    private func menuShtukaDidVibrana(_ item: SportivinieKartiMenuKolodaShtuka, for deck: SportivinieKartiCartaKoloda, parentViewController: SportivinieKartiKolodaVC) {
+    private func menuShtukaDidVibrana(_ item: SportivinieKartiMenuKolodaShtuka, for deck: SportivinieKartiCartaKoloda, parentViewController: SportivinieKartiKolodaController) {
         switch item {
         case .addCards: pokazatDobavitKarti(in: parentViewController)
         case .removeCards: pokazatYbratKarti()
@@ -61,29 +61,29 @@ extension KartaKolodaDelegat where Self: SportivinieKartiCoo {
         }
     }
 
-    private func pokazatDobavitKarti(in viewController: SportivinieKartiKolodaVC) {
+    private func pokazatDobavitKarti(in viewController: SportivinieKartiKolodaController) {
         kartaKolodaDobavitKartiNazhata(viewController)
     }
 
     private func pokazatYbratKarti() {
-        let removeCardsViewController = SportivinieKartiYbratKartuKolodaVC()
+        let removeCardsViewController = SportivinieKartiYbratKartuKolodaController()
         removeCardsViewController.delegate = self as? SportivinieKartiYbratKartuKolodaDelegat
         router.poyavitsaUnicalno(removeCardsViewController, animated: true)
     }
 
     private func pokazatSortirovkeKart() {
-        let sortCardsViewController = SportivinieKartiSortirovkaKartVc()
-        sortCardsViewController.delegate = self as? SportivinieKartiSortirovkaKartVcDelegat
+        let sortCardsViewController = SportivinieKartiSortirovkaKarTableKlrtka()
+        sortCardsViewController.delegate = self as? SportivinieKartiSortirovkaKartControllerDelegat
         router.poyavitsaUnicalno(sortCardsViewController, animated: true)
     }
 
     private func pokazatIzmenitKolody(_ cardDeck: SportivinieKartiCartaKoloda) {
-        let editDeckViewController = SportivinieKartiSodatIzmenitVC(cardDeck: cardDeck)
+        let editDeckViewController = SportivinieKartiSodatIzmeniTableKlrtka(cardDeck: cardDeck)
         editDeckViewController.delegate = self as? SportivinieKartiSodatIzmenitDelegat
         router.poyavitsaUnicalno(editDeckViewController, animated: true)
     }
 
-    private func pokazatYdalitKolodyConfirm(in viewController: SportivinieKartiKolodaVC) {
+    private func pokazatYdalitKolodyConfirm(in viewController: SportivinieKartiKolodaController) {
         let ipadWidth: CGFloat = viewController.view.frame.width - 240
         let iPhoneWidth: CGFloat = viewController.view.frame.width - 60
         let iPadHeight: CGFloat = 380

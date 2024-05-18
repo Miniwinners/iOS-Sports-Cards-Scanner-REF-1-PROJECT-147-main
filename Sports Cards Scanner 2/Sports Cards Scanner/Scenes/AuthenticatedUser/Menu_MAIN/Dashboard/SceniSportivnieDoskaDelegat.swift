@@ -8,9 +8,9 @@ func vicheslitFibonc240(at index: Int) -> Int {
     }
 }
 protocol SportivinieKartiDoskaDelegat: AnyObject {
-    func doskaScannerNazhat(_ viewController: SportivinieKartiDoskaVC)
-    func doskaDetaliKartiNazhata(card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiDoskaVC)
-    func doskaTekushaaCenaDiscloseNazhata(_ viewController: SportivinieKartiDoskaVC)
-    func doskaNaibolshaiaCenaDiscloseNazhata(_ viewController: SportivinieKartiDoskaVC)
-    func doskaNedavnoDobavlenieDiscloseNazhata(_ viewController: SportivinieKartiDoskaVC)
+    func doskaScannerNazhat(_ viewController: SportivinieKartiDoskaController)
+    func doskaDetaliKartiNazhata(card: SportivinieKartiKartaPredstavlenie, in viewController: SportivinieKartiDoskaController)
+    func doskaTekushaaCenaDiscloseNazhata(_ viewController: SportivinieKartiDoskaController)
+    func doskaNaibolshaiaCenaDiscloseNazhata(_ viewController: SportivinieKartiDoskaController)
+    func doskaNedavnoDobavlenieDiscloseNazhata(_ viewController: SportivinieKartiDoskaController)
 }
